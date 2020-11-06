@@ -9,10 +9,24 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { LoginComponent } from './login/login.component';
+import { VegetablesComponent } from './vegetables/vegetables.component';
+import { OrganicComponent } from './organic/organic.component';
+import { SnacksandbeveragesComponent } from './snacksandbeverages/snacksandbeverages.component';
+import { DairyComponent } from './dairy/dairy.component';
+import { BackeryandpasteryComponent } from './backeryandpastery/backeryandpastery.component';
+import { FishandmeatComponent } from './fishandmeat/fishandmeat.component';
 @NgModule({
-  declarations: [
+  declarations: [							
     AppComponent,
-      HomeComponent
+      HomeComponent,
+      LoginComponent,
+      VegetablesComponent,
+      OrganicComponent,
+      SnacksandbeveragesComponent,
+      DairyComponent,
+      BackeryandpasteryComponent,
+      FishandmeatComponent
    ],
   imports: [
     BrowserModule,

@@ -16,9 +16,10 @@ export class HomeComponent implements OnInit {
   deviceSm:boolean;
   imageObject: Array<object> = [{
 
-    thumbImage: 'assets/images/organic.jpg',
+    thumbImage: 'assets/images/vegPage.jpg',
     alt: 'alt of image',
-    title: 'Dairy'
+    title: 'Dairy',
+
 }, {
 
     thumbImage: 'assets/images/snacks.jpg',
