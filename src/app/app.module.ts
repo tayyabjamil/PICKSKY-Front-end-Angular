@@ -1,3 +1,5 @@
+import { AccountModule } from './account/account.module';
+import { HomeModule } from './home/home.module';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -11,27 +13,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { NgImageSliderModule } from 'ng-image-slider';
 
-import { VegetablesComponent } from './vegetables/vegetables.component';
-import { OrganicComponent } from './organic/organic.component';
-import { SnacksandbeveragesComponent } from './snacksandbeverages/snacksandbeverages.component';
-import { DairyComponent } from './dairy/dairy.component';
-import { BackeryandpasteryComponent } from './backeryandpastery/backeryandpastery.component';
-import { FishandmeatComponent } from './fishandmeat/fishandmeat.component';
-import { ProductDetailComponent } from './productDetail/productDetail.component';
-
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
-      HomeComponent,
 
-      VegetablesComponent,
-      OrganicComponent,
-      SnacksandbeveragesComponent,
-      DairyComponent,
-      BackeryandpasteryComponent,
-      FishandmeatComponent,
-      ProductDetailComponent
+
+
    ],
   imports: [
     BrowserModule,
@@ -39,7 +27,8 @@ import { ProductDetailComponent } from './productDetail/productDetail.component'
     NgImageSliderModule,
     CommonModule,
     FlexLayoutModule,
-
+    HomeModule,
+    AccountModule,
     BrowserAnimationsModule,
     MatCarouselModule.forRoot(),
   ],

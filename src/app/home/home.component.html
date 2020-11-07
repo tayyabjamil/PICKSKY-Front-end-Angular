@@ -1,595 +1,160 @@
 
+ <div  style="margin-top: 1%;margin-bottom: 1%;margin-left: 2%;margin-right: 2%;display:flex; flex-direction: row;justify-content:space-between;">
+  <p style="padding-left: 20%;font-size: 2vw;font-weight: bold;margin-top: 2%;" routerLink="">PICKSY</p>
+<div style="background-color: rgb(240, 238, 238);width: 60%;border-radius: 6px;padding-top: 1.5%;padding-left: 20px;">
 
-
- <!--  -->
- <div style="background-color: rgb(240, 236, 236)">
-  <div style="margin-top:2%;margin-right: 2%;margin-left: 3%;">
-
-    <p class="text-block1"  > Stay home & get <br><br> <span > your daily needs</span></p>
-    <p class="text-block2" >Start You'r Daily Sopping with JamCart</p>
-
-    <button class="btn text-block3"><i class="fa fa-arrow">Order Now</i></button>
-    <img class="img-responsive" style="width: 100%;" src="../assets/images/home.jpeg">
-    </div>
-
-<div style="margin-top:4%;margin-bottom: 4%;">
-<div  *ngIf="deviceXs">
-
-  <div class="row">
-    <div  style="display:flex;flex-direction: row;justify-content: space-evenly;">
-
-
-      <div class="col-lg-6">
-        <div style="text-align: center;">
-          <div ><i class="fa fa-home"  style="font-size: xx-large;"></i></div>
-
-        <div >
-        <div style="font-weight: bold;">Free Delivery</div>
-        <div >For all oders over $100</div>
-        </div>
-        </div>
-      </div>
-
-      <div>
-        <div class="col-lg-6">
-          <div style="text-align: center;">
-            <div ><i class="fa fa-home"  style="font-size: xx-large;"></i></div>
-
-          <div >
-          <div style="font-weight: bold;">Refundable</div>
-          <div>If your item have no </div>
-<div>damage we agree to refund it.</div>
-          </div>
-          </div>
-        </div>
-      </div>
-        </div>
-  </div>
-    <div class="row">
-      <div  style="display:flex;flex-direction: row;justify-content: space-evenly;">
-
-
-        <div class="col-lg-6">
-          <div style="text-align: center;">
-            <div ><i class="fa fa-home"  style="font-size: xx-large;"></i></div>
-
-          <div >
-          <div style="font-weight: bold;">Secure Payment</div>
-          <div>100% secure payment</div>
-          </div>
-          </div>
-        </div>
-
-        <div>
-          <div class="col-lg-6">
-            <div style="text-align: center;">
-              <div ><i class="fa fa-home"  style="font-size: xx-large;"></i></div>
-
-            <div >
-            <div style="font-weight: bold;">24/7 Customer Support</div>
-            <div>We have dedicated support</div>
-            </div>
-            </div>
-          </div>
-        </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-<div style="margin-top:4%;margin-bottom: 4%;">
-<div  *ngIf="deviceLg" style="display:flex;flex-direction: row;justify-content: space-evenly;">
-<div class="row">
-<div class="col-sm-2">
-  <div ><i class="fa fa-home"  style="font-size: xx-large;"></i></div>
+ <p style="font-weight: 300px;">
+ <span><i class="fa fa-search"  routerLink="/login"
+  style="font-weight: 200;font-size: large;margin-right: 2%;color: rgb(134, 132, 132);"></i></span>
+ What Are You Looking For?</p>
 </div>
-<div class="col-sm-10">
-<div style="font-weight: bold;">Free Deleviry</div>
-<div style="padding-top: 10px;">For All Orders Over 100$</div>
-</div>
-</div>
-<div>
+  <div style="margin-top: 1%;"><i class="fa fa-user-circle-o"  routerLink="/login"
+     style="font-size: xx-large;"></i></div>
 
-  <div class="row">
-    <div class="col-sm-2">
-      <div ><i class="fa fa-home"  style="font-size: xx-large;"></i></div>
-    </div>
-    <div class="col-sm-10">
-    <div style="font-weight: bold;">Refundable</div>
-    <div style="padding-top: 10px;">  If your item have no damage <br> we agree to refund it.</div>
-    </div>
-    </div>
-
-  </div>
+</div>
+<hr>
+ <header style="padding-bottom:5%" *ngIf="deviceLg || deviceMd" >
   <div>
 
-    <div class="row">
-      <div class="col-sm-2">
-        <div ><i class="fa fa-home"  style="font-size: xx-large;"></i></div>
-      </div>
-      <div class="col-sm-10">
-      <div style="font-weight: bold;">Secure Payment</div>
-      <div style="padding-top: 10px;">100% secure payment</div>
-      </div>
-      </div>
-
-    </div>
-
-    <div>
-      <div class="row">
-        <div class="col-sm-2">
-          <div ><i class="fa fa-home"  style="font-size: xx-large;"></i></div>
-        </div>
-        <div class="col-sm-10">
-        <div style="font-weight: bold;">24/7 Customer Support</div>
-        <div style="padding-top: 10px;">We have dedicated support</div>
-        </div>
-        </div>
-
-      </div>
-
-</div>
-</div>
-<hr>
-<div style="text-align: center;">
-  <p style="font-size: 1.5vw;font-weight: bold;">Shop by Category</p>
-  <p style="font-size: 1vw;">Visit our shop to see amazing products</p>
-</div>
-  <div style="margin:2%">
-  <ng-image-slider  [images]="imageObject" #nav></ng-image-slider>
-</div>
-<!-- ////////////////////////////////////////// featured  producsts-->
-<div style="border-radius: 6px;margin:2%;background-color: white;">
-  <p  style="font-weight: bold;font-size: 1.5vw;padding-left:3%;padding-top:4% ; "> Featured Products</p>
-  <div *ngIf="deviceLg || deviceMd" class="deviceLg">
-
-    <div style="padding:2%;width: 20%;" >
-      <div style="text-align: right;">
-      <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-    </div>
-    <div  >
-      <img class="img-responsive"  src="../assets/images/veg1.jpg">
-    </div>
-      <p style="font-weight: bold;">12$</p>
-      <p  > Twix 30g</p>
-    </div>
-
-    <div style="padding:2%;;width: 20%">
-      <div style="text-align: right;">
-        <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-      </div>
-      <div  >
-        <img class="img-responsive"   src="../assets/images/trend1.jpg">
-      </div>
-      <p style="font-weight: bold;">12$</p>
-      <p  > Twix 30g</p>
-    </div>
-
-    <div style="padding:2%;;width: 20%">
-      <div style="text-align: right;">
-        <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-      </div>
-      <div>
-      <img class="img-responsive"   src="../assets/images/trend2.jpg">
-     </div>
-      <p style="font-weight: bold;">12$</p>
-      <p  > Twix 30g</p>
-    </div>
-    <div style="padding:2%;;width: 20%">
-      <div style="text-align: right;">
-        <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-      </div>
-      <div >
-      <img class="img-responsive"   src="../assets/images/trend3.jpg">
-     </div>
-      <p style="font-weight: bold;">12$</p>
-      <p  > Twix 30g</p>
-    </div>
-    <div style="padding:2%;;width: 20%">
-      <div style="text-align: right;">
-        <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-      </div>
-      <div >
-      <img class="img-responsive"   src="../assets/images/trend4.jpg">
-     </div>
-      <p style="font-weight: bold;">12$</p>
-      <p  > Twix 30g</p>
-    </div>
-    <div style="padding:2%;;width: 20%" >
-      <div style="text-align: right;">
-        <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-      </div>
-      <div >
-      <img class="img-responsive"   src="../assets/images/trend1.jpg">
-     </div>
-      <p style="font-weight: bold;">12$</p>
-      <p  > Twix 30g</p>
-    </div>
-    <div style="padding:2%;;width: 20%">
-      <div style="text-align: right;">
-        <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-      </div>
-      <div >
-      <img class="img-responsive"   src="../assets/images/trend2.jpg">
-     </div>
-      <p style="font-weight: bold;">12$</p>
-      <p  > Twix 30g</p>
-    </div>
-    <div style="padding:2%;;width: 20%">
-      <div style="text-align: right;">
-        <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-      </div>
-      <div >
-      <img class="img-responsive"   src="../assets/images/trend3.jpg">
-     </div>
-      <p style="font-weight: bold;">12$</p>
-      <p  > Twix 30g</p>
-    </div>
-
-  </div>
-  <div *ngIf="deviceXs || deviceSm" >
-    <div class="row">
-      <div  style="display:flex;flex-direction: row;justify-content: space-evenly;">
+    <nav class="fundpress-menu" style="width: 200vw">
 
 
-        <div style="padding:2%">
-          <div style="text-align: right;">
-            <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-          </div>
-          <div style="width: 17vw">
-          <img class="img-responsive"   src="../assets/images/trend2.jpg">
-         </div>
-          <p style="font-weight: bold;">12$</p>
-          <p  > Twix 30g</p>
-        </div>
+        <ul  class="nav-menu">
 
-        <div>
-          <div class="col-lg-6">
-            <div style="padding:2%">
-              <div style="text-align: right;">
-                <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-              </div>
-              <div style="width: 17vw">
-              <img class="img-responsive"   src="../assets/images/trend2.jpg">
-             </div>
-              <p style="font-weight: bold;">12$</p>
-              <p  > Twix 30g</p>
-            </div>
-          </div>
-        </div>
-          </div>
-          <div  style="display:flex;flex-direction: row;justify-content: space-evenly;">
+          <li class="dropdown" routerLink="/veg"  >
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Vegetables
+              <span class="caret"></span></a>
+            <ul class="dropdown-menu" >
+              <li class="navitem"><a  href="#">Page 1-1</a></li>
+              <li><a href="#">Page 1-2</a></li>
+              <li><a href="#">Page 1-3</a></li>
+            </ul>
+          </li>
+          <li class="dropdown" routerLink="/organic">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Organic
+              <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Page 1-1</a></li>
+              <li><a href="#">Page 1-2</a></li>
+              <li><a href="#">Page 1-3</a></li>
+            </ul>
+          </li>
+          <li class="dropdown" routerLink="/snacks">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Snacks & Beverages
+              <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Page 1-1</a></li>
+              <li><a href="#">Page 1-2</a></li>
+              <li><a href="#">Page 1-3</a></li>
+            </ul>
+          </li>
+          <li class="dropdown" routerLink="/fish">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Fish & Meat
+              <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Page 1-1</a></li>
+              <li><a href="#">Page 1-2</a></li>
+              <li><a href="#">Page 1-3</a></li>
+            </ul>
+          </li>
+          <li class="dropdown" routerLink="/dairy">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dairy
+              <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Page 1-1</a></li>
+              <li><a href="#">Page 1-2</a></li>
+              <li><a href="#">Page 1-3</a></li>
+            </ul>
+          </li>
+          <li class="dropdown" routerLink="/bakery">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Bakery & Pastry
+              <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Page 1-1</a></li>
+              <li><a href="#">Page 1-2</a></li>
+              <li><a href="#">Page 1-3</a></li>
+            </ul>
+          </li>
 
-
-            <div style="padding:2%">
-              <div style="text-align: right;">
-                <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-              </div>
-              <div style="width: 17vw">
-              <img class="img-responsive"   src="../assets/images/trend2.jpg">
-             </div>
-              <p style="font-weight: bold;">12$</p>
-              <p  > Twix 30g</p>
-            </div>
-
-            <div>
-              <div class="col-lg-6">
-                <div style="padding:2%">
-                  <div style="text-align: right;">
-                    <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-                  </div>
-                  <div style="width: 17vw">
-                  <img class="img-responsive"   src="../assets/images/trend2.jpg">
-                 </div>
-                  <p style="font-weight: bold;">12$</p>
-                  <p  > Twix 30g</p>
-                </div>
-              </div>
-            </div>
-              </div>
-              <div  style="display:flex;flex-direction: row;justify-content: space-evenly;">
-
-
-                <div style="padding:2%">
-                  <div style="text-align: right;">
-                    <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-                  </div>
-                  <div style="width: 17vw">
-                  <img class="img-responsive"   src="../assets/images/trend2.jpg">
-                 </div>
-                  <p style="font-weight: bold;">12$</p>
-                  <p  > Twix 30g</p>
-                </div>
-
-                <div>
-                  <div class="col-lg-6">
-                    <div style="padding:2%">
-                      <div style="text-align: right;">
-                        <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-                      </div>
-                      <div style="width: 17vw">
-                      <img class="img-responsive"   src="../assets/images/trend2.jpg">
-                     </div>
-                      <p style="font-weight: bold;">12$</p>
-                      <p  > Twix 30g</p>
-                    </div>
-                  </div>
-                </div>
-                  </div>
-                  <div  style="display:flex;flex-direction: row;justify-content: space-evenly;">
+            </ul>
 
 
-                    <div style="padding:2%">
-                      <div style="text-align: right;">
-                        <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-                      </div>
-                      <div style="width: 17vw">
-                      <img class="img-responsive"   src="../assets/images/trend2.jpg">
-                     </div>
-                      <p style="font-weight: bold;">12$</p>
-                      <p  > Twix 30g</p>
-                    </div>
-
-                    <div>
-                      <div class="col-lg-6">
-                        <div style="padding:2%">
-                          <div style="text-align: right;">
-                            <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-                          </div>
-                          <div style="width: 17vw">
-                          <img class="img-responsive"   src="../assets/images/trend2.jpg">
-                         </div>
-                          <p style="font-weight: bold;">12$</p>
-                          <p  > Twix 30g</p>
-                        </div>
-                      </div>
-                    </div>
-                      </div>
-    </div>
-
-
-  </div>
-  </div>
-<!-- //////////////////////////////////featured Products -->
-<div style="margin:2%" *ngIf="deviceMd || deviceLg">
-  <ng-image-slider  [imageSize]=" {width: '50%', height: '50%', space: 4}" [images]="imageObject2" #nav></ng-image-slider>
-</div>
-<div style="margin:2%" *ngIf="deviceXs || deviceSm">
-  <ng-image-slider  [imageSize]=" {width: '100%', height: '50%', space: 4}" [images]="imageObject2" #nav></ng-image-slider>
-</div>
-<!-- ///////////////////////////////////trending products -->
-<div style="border-radius: 6px;margin:2%;background-color: white;">
-  <p  style="font-weight: bold;font-size: 1.5vw;padding-left:3%;padding-top:4% ; "> Trending Products</p>
-  <div *ngIf="deviceLg || deviceMd" class="deviceLg">
-
-    <div style="width:20%;padding:2%">
-      <div style="text-align: right;">
-      <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-    </div>
-    <div  >
-      <img class="img-responsive"  src="../assets/images/veg1.jpg">
-    </div>
-      <p style="font-weight: bold;">12$</p>
-      <p  > Twix 30g</p>
-    </div>
-
-    <div style="width:20%;padding:2%">
-      <div style="text-align: right;">
-        <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-      </div>
-      <div  >
-        <img class="img-responsive"   src="../assets/images/trend1.jpg">
-      </div>
-      <p style="font-weight: bold;">12$</p>
-      <p  > Twix 30g</p>
-    </div>
-
-    <div style="width:20%;padding:2%">
-      <div style="text-align: right;">
-        <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-      </div>
-      <div >
-      <img class="img-responsive"   src="../assets/images/trend2.jpg">
-     </div>
-      <p style="font-weight: bold;">12$</p>
-      <p  > Twix 30g</p>
-    </div>
-    <div style="width:20%;padding:2%">
-      <div style="text-align: right;">
-        <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-      </div>
-      <div >
-      <img class="img-responsive"   src="../assets/images/trend3.jpg">
-     </div>
-      <p style="font-weight: bold;">12$</p>
-      <p  > Twix 30g</p>
-    </div>
-    <div style="width:20%;padding:2%">
-      <div style="text-align: right;">
-        <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-      </div>
-      <div >
-      <img class="img-responsive"   src="../assets/images/trend4.jpg">
-     </div>
-      <p style="font-weight: bold;">12$</p>
-      <p  > Twix 30g</p>
-    </div>
-    <div style="width:20%;padding:2%">
-      <div style="text-align: right;">
-        <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-      </div>
-      <div >
-      <img class="img-responsive"   src="../assets/images/trend1.jpg">
-     </div>
-      <p style="font-weight: bold;">12$</p>
-      <p  > Twix 30g</p>
-    </div>
-    <div style="width:20%;padding:2%">
-      <div style="text-align: right;">
-        <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-      </div>
-      <div >
-      <img class="img-responsive"   src="../assets/images/trend3.jpg">
-     </div>
-      <p style="font-weight: bold;">12$</p>
-      <p  > Twix 30g</p>
-    </div>
-    <div style="width:20%;padding:2%">
-      <div style="text-align: right;">
-        <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-      </div>
-      <div >
-      <img class="img-responsive"   src="../assets/images/trend2.jpg">
-     </div>
-      <p style="font-weight: bold;">12$</p>
-      <p  > Twix 30g</p>
-    </div>
-
-  </div>
-  <div  *ngIf="deviceXs || deviceSm" >
-    <div class="row">
-      <div  style="display:flex;flex-direction: row;justify-content: space-evenly;">
-
-
-        <div style="padding:2%">
-          <div style="text-align: right;">
-            <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-          </div>
-          <div style="width: 17vw">
-          <img class="img-responsive"   src="../assets/images/trend2.jpg">
-         </div>
-          <p style="font-weight: bold;">12$</p>
-          <p  > Twix 30g</p>
-        </div>
-
-        <div>
-          <div class="col-lg-6">
-            <div style="padding:2%">
-              <div style="text-align: right;">
-                <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-              </div>
-              <div style="width: 17vw">
-              <img class="img-responsive"   src="../assets/images/trend2.jpg">
-             </div>
-              <p style="font-weight: bold;">12$</p>
-              <p  > Twix 30g</p>
-            </div>
-          </div>
-        </div>
-          </div>
-          <div  style="display:flex;flex-direction: row;justify-content: space-evenly;">
-
-
-            <div style="padding:2%">
-              <div style="text-align: right;">
-                <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-              </div>
-              <div style="width: 17vw">
-              <img class="img-responsive"   src="../assets/images/trend2.jpg">
-             </div>
-              <p style="font-weight: bold;">12$</p>
-              <p  > Twix 30g</p>
-            </div>
-
-            <div>
-              <div class="col-lg-6">
-                <div style="padding:2%">
-                  <div style="text-align: right;">
-                    <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-                  </div>
-                  <div style="width: 17vw">
-                  <img class="img-responsive"   src="../assets/images/trend2.jpg">
-                 </div>
-                  <p style="font-weight: bold;">12$</p>
-                  <p  > Twix 30g</p>
-                </div>
-              </div>
-            </div>
-              </div>
-              <div  style="display:flex;flex-direction: row;justify-content: space-evenly;">
-
-
-                <div style="padding:2%">
-                  <div style="text-align: right;">
-                    <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-                  </div>
-                  <div style="width: 17vw">
-                  <img class="img-responsive"   src="../assets/images/trend2.jpg">
-                 </div>
-                  <p style="font-weight: bold;">12$</p>
-                  <p  > Twix 30g</p>
-                </div>
-
-                <div>
-                  <div class="col-lg-6">
-                    <div style="padding:2%">
-                      <div style="text-align: right;">
-                        <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-                      </div>
-                      <div style="width: 17vw">
-                      <img class="img-responsive"   src="../assets/images/trend2.jpg">
-                     </div>
-                      <p style="font-weight: bold;">12$</p>
-                      <p  > Twix 30g</p>
-                    </div>
-                  </div>
-                </div>
-                  </div>
-                  <div  style="display:flex;flex-direction: row;justify-content: space-evenly;">
-
-
-                    <div style="padding:2%">
-                      <div style="text-align: right;">
-                        <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-                      </div>
-                      <div style="width: 17vw">
-                      <img class="img-responsive"   src="../assets/images/trend2.jpg">
-                     </div>
-                      <p style="font-weight: bold;">12$</p>
-                      <p  > Twix 30g</p>
-                    </div>
-
-                    <div>
-                      <div class="col-lg-6">
-                        <div style="padding:2%">
-                          <div style="text-align: right;">
-                            <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-                          </div>
-                          <div style="width: 17vw">
-                          <img class="img-responsive"   src="../assets/images/trend2.jpg">
-                         </div>
-                          <p style="font-weight: bold;">12$</p>
-                          <p  > Twix 30g</p>
-                        </div>
-                      </div>
-                    </div>
-                      </div>
-    </div>
-
-
-  </div>
-  </div>
-<!-- ////////////////////////////////////////trending products -->
-
-
-
-  <div class="row" >
-    <div style="margin-bottom: 2%;margin-left:3%;margin-right: 3%;border-radius: 8px;">
-
-       <p class="text-block1Footer"  > Fast, Free Shipping, <br><br> <span > Contactless Delivery.</span></p>
-       <p class="text-block2Footer" >Try it now, risk free!</p>
-
-       <button class="btn text-block3Footer"><i class="fa fa-arrow">Shop Now</i></button>
-       <img class="img-responsive" style="width: 100%;border-radius: 8px;" src="../assets/images/slide2.png">
-       </div>
-
-
-
+    </nav>
   </div>
 
-</div>
-<hr>
-<div style="padding:2%">
 
-  <div>Copyright © 2020 RedQ, Inc , All rights reserved</div>
-</div>
+
+
+</header>
+ <div style="text-align: left;" *ngIf="deviceXs">
+  <div    class="bignodisplay posright" (click)="draweropen=!draweropen">
+    <span class="material-icons f-27"> menu </span>
+  </div>
+  <div   *ngIf="draweropen" data-aos="fade-down-right" data-aos-once="true" data-aos-easing="fade-up-left"
+    data-aos-duration="600" class="width100  posright2 bg-sec-light">
+    <nav class="" style="width: 100%">
+
+
+      <ul  class="nav-menu">
+
+        <li class="dropdown" routerLink="/veg"  >
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Vegetables
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu" >
+            <li class="navitem"><a  href="#">Page 1-1</a></li>
+            <li><a href="#">Page 1-2</a></li>
+            <li><a href="#">Page 1-3</a></li>
+          </ul>
+        </li>
+        <li class="dropdown" routerLink="/organic">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Organic
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Page 1-1</a></li>
+            <li><a href="#">Page 1-2</a></li>
+            <li><a href="#">Page 1-3</a></li>
+          </ul>
+        </li>
+        <li class="dropdown" routerLink="/snacks">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Snacks & Beverages
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Page 1-1</a></li>
+            <li><a href="#">Page 1-2</a></li>
+            <li><a href="#">Page 1-3</a></li>
+          </ul>
+        </li>
+        <li class="dropdown" routerLink="/fish">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Fish & Meat
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Page 1-1</a></li>
+            <li><a href="#">Page 1-2</a></li>
+            <li><a href="#">Page 1-3</a></li>
+          </ul>
+        </li>
+        <li class="dropdown" routerLink="/dairy">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dairy
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Page 1-1</a></li>
+            <li><a href="#">Page 1-2</a></li>
+            <li><a href="#">Page 1-3</a></li>
+          </ul>
+        </li>
+        <li class="dropdown" routerLink="/bakery">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Bakery & Pastry
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Page 1-1</a></li>
+            <li><a href="#">Page 1-2</a></li>
+            <li><a href="#">Page 1-3</a></li>
+          </ul>
+        </li>
+
+          </ul>
+
+
+  </nav> </div>
+ </div>
+<router-outlet></router-outlet>

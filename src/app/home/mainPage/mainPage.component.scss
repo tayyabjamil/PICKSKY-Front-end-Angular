@@ -1,0 +1,87 @@
+.textimages{
+  top: 10%;
+  left: 10%;
+ position: absolute;
+}.text-block1 {
+  position: absolute;
+
+  color: white;
+  padding-top: 10%;
+  padding-left: 5%;
+  font-size: 3vw;
+  margin-bottom: 12px;
+}.text-block2 {
+  position: absolute;
+
+  color: white;
+  padding-top: 20%;
+  padding-left: 5%;
+  font-size: 1vw;
+
+}
+.btn:hover {
+  background-color: rgb(233, 230, 230);
+}
+.text-block3 {
+  position: absolute;
+  background-color:white;
+
+  font-weight: bold;
+  margin-top: 25%;
+  margin-left: 5%;
+  font-size: 1vw;
+  padding-top: 12px;
+  text-align: center;
+  height: 3vw;
+  width: 10vw;
+  border-radius: 6px;
+}
+.text-block1Footer {
+  position: absolute;
+
+  padding-top: 6%;
+  padding-left: 5%;
+  font-size: 3vw;
+  margin-bottom: 12px;
+}.text-block2Footer {
+  position: absolute;
+
+  padding-top: 15%;
+  padding-left: 5%;
+  font-size: 1vw;
+
+}
+.text-block3Footer {
+  position: absolute;
+  background-color:white;
+  font-weight: bold;
+  margin-top: 18%;
+  margin-left: 5%;
+  font-size: 1vw;
+  padding-top: 12px;
+  text-align: center;
+  height: 3.5vw;
+  width: 10vw;
+  border-radius: 6px;
+}
+.container {
+  position: relative;
+}
+.deviceXs{
+display: flex;
+flex-direction: column;
+justify-content: center;
+flex-wrap: wrap;
+flex:1
+}
+.deviceLg{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+ flex-wrap: wrap;
+}
+.slide1{
+position: absolute;
+font-size: 3vw;
+margin-bottom: 12px;
+}

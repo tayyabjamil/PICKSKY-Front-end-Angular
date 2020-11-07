@@ -2,3 +2,27 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+.nav-menu>li.active>a, .nav-menu>li.focus>a, .nav-menu>li:hover>a {
+color: green;
+font-weight: lighter;
+}
+.fundpress-menu .nav-menu li a {
+  padding: 20px 10px;
+  text-transform: uppercase;
+
+  position: relative;
+}
+
+.fundpress-menu .nav-menu li a:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0px;
+
+  height: 2px;
+  width: 0%;
+  background-color: green;
+}
