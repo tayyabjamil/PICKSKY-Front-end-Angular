@@ -1,22 +1,24 @@
 
- <div  style="margin-top: 1%;margin-bottom: 1%;margin-left: 2%;margin-right: 2%;display:flex; flex-direction: row;justify-content:space-between;">
-  <p style="padding-left: 20%;font-size: 2vw;font-weight: bold;margin-top: 2%;" routerLink="">PICKSY</p>
-<div style="background-color: rgb(240, 238, 238);width: 60%;border-radius: 6px;padding-top: 1.5%;padding-left: 20px;">
 
- <p style="font-weight: 300px;">
- <span><i class="fa fa-search"  routerLink="/login"
-  style="font-weight: 200;font-size: large;margin-right: 2%;color: rgb(134, 132, 132);"></i></span>
- What Are You Looking For?</p>
-</div>
-  <div style="margin-top: 1%;"><i class="fa fa-user-circle-o"  routerLink="/login"
-     style="font-size: xx-large;"></i></div>
-
-</div>
-<hr>
  <header style="padding-bottom:5%" *ngIf="deviceLg || deviceMd" >
   <div>
+    <div  style="margin-top: 1%;margin-bottom: 1%;margin-left: 2%;margin-right: 2%;display:flex; flex-direction: row;justify-content:space-between;">
+      <p style="padding-left: 20%;font-size: 2vw;font-weight: bold;margin-top: 2%;" routerLink="">PICKSY</p>
+    <div style="background-color: rgb(240, 238, 238);width: 60%;border-radius: 6px;padding-top: 1.5%;padding-left: 20px;">
 
-    <nav class="fundpress-menu" style="width: 200vw">
+     <p style="font-weight: 300px;">
+     <span><i class="fa fa-search"  routerLink="/login"
+      style="font-weight: 200;font-size: large;margin-right: 2%;color: rgb(134, 132, 132);"></i></span>
+     What Are You Looking For?</p>
+    </div>
+      <div style="margin-top: 1%;"><i class="fa fa-user-circle-o"  routerLink="/login"
+         style="font-size: xx-large;"></i></div>
+
+    </div>
+
+    <hr>
+
+    <nav class="fundpress-menu" style="width: 200vw;padding-bottom: 3%;">
 
 
         <ul  class="nav-menu">
@@ -80,81 +82,18 @@
 
 
     </nav>
+    <router-outlet></router-outlet>
   </div>
+
 
 
 
 
 </header>
- <div style="text-align: left;" *ngIf="deviceXs">
-  <div    class="bignodisplay posright" (click)="draweropen=!draweropen">
-    <span class="material-icons f-27"> menu </span>
-  </div>
-  <div   *ngIf="draweropen" data-aos="fade-down-right" data-aos-once="true" data-aos-easing="fade-up-left"
-    data-aos-duration="600" class="width100  posright2 bg-sec-light">
-    <nav class="" style="width: 100%">
 
+<div *ngIf="deviceXs || deviceSm">
+<app-nav>
+  <router-outlet></router-outlet>
 
-      <ul  class="nav-menu">
-
-        <li class="dropdown" routerLink="/veg"  >
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Vegetables
-            <span class="caret"></span></a>
-          <ul class="dropdown-menu" >
-            <li class="navitem"><a  href="#">Page 1-1</a></li>
-            <li><a href="#">Page 1-2</a></li>
-            <li><a href="#">Page 1-3</a></li>
-          </ul>
-        </li>
-        <li class="dropdown" routerLink="/organic">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Organic
-            <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Page 1-1</a></li>
-            <li><a href="#">Page 1-2</a></li>
-            <li><a href="#">Page 1-3</a></li>
-          </ul>
-        </li>
-        <li class="dropdown" routerLink="/snacks">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Snacks & Beverages
-            <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Page 1-1</a></li>
-            <li><a href="#">Page 1-2</a></li>
-            <li><a href="#">Page 1-3</a></li>
-          </ul>
-        </li>
-        <li class="dropdown" routerLink="/fish">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Fish & Meat
-            <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Page 1-1</a></li>
-            <li><a href="#">Page 1-2</a></li>
-            <li><a href="#">Page 1-3</a></li>
-          </ul>
-        </li>
-        <li class="dropdown" routerLink="/dairy">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Dairy
-            <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Page 1-1</a></li>
-            <li><a href="#">Page 1-2</a></li>
-            <li><a href="#">Page 1-3</a></li>
-          </ul>
-        </li>
-        <li class="dropdown" routerLink="/bakery">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Bakery & Pastry
-            <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Page 1-1</a></li>
-            <li><a href="#">Page 1-2</a></li>
-            <li><a href="#">Page 1-3</a></li>
-          </ul>
-        </li>
-
-          </ul>
-
-
-  </nav> </div>
- </div>
-<router-outlet></router-outlet>
+</app-nav>
+</div>

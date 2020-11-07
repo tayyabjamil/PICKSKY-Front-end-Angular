@@ -1,3 +1,4 @@
+
 import { AccountModule } from './account/account.module';
 import { HomeModule } from './home/home.module';
 
@@ -31,6 +32,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
     AccountModule,
     BrowserAnimationsModule,
     MatCarouselModule.forRoot(),
+
   ],
   providers: [],
   bootstrap: [AppComponent]
