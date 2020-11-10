@@ -1,3 +1,5 @@
+import { CartService } from './../cart.service';
+import { ProductService } from './../product.service';
 import { Component, OnInit } from '@angular/core';
 import  {MediaObserver, MediaChange} from '@angular/flex-layout';
 import  { Subscription } from 'rxjs';
@@ -8,8 +10,11 @@ import  { Subscription } from 'rxjs';
   styleUrls: ['./mainPage.component.scss']
 })
 export class MainPageComponent implements OnInit {
-
-  constructor(public mediaObserver:MediaObserver) { }
+products = []
+  constructor(public mediaObserver:MediaObserver,
+    public productService:ProductService,
+    public cartService:CartService
+    ) { }
   mediaSub:Subscription
   deviceXs:boolean;
   deviceLg:boolean;
@@ -77,5 +82,12 @@ thumbImage: 'assets/images/slide3.png',
       this.deviceMd = result.mqAlias === 'md'
 
     })
+    this.getproducts()
+  }
+  getproducts(){
+   this.products = this.productService.getProducts();
+  }
+  addProduct(item){
+this.cartService.addProduct(item);
   }
 }

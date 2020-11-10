@@ -23,6 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   imports: [
@@ -50,7 +51,7 @@ import { MatListModule } from '@angular/material/list';
     FishandmeatComponent,
     ProductDetailComponent,
     MainPageComponent,
-    NavComponent
+    CartComponent
   ],
   exports:[
     HomeComponent,
@@ -62,7 +63,8 @@ import { MatListModule } from '@angular/material/list';
     BackeryandpasteryComponent,
     FishandmeatComponent,
     ProductDetailComponent,
-    MainPageComponent
+    MainPageComponent,
+    CartComponent
 
   ]
 })

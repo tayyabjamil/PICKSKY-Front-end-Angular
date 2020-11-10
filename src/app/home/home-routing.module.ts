@@ -1,3 +1,4 @@
+import { CartComponent } from './cart/cart.component';
 import { MainPageComponent } from './mainPage/mainPage.component';
 import { ProductDetailComponent } from './productDetail/productDetail.component';
 import { FishandmeatComponent } from './fishandmeat/fishandmeat.component';
@@ -18,6 +19,8 @@ const routes: Routes = [
     { path: 'veg', component: VegetablesComponent },
     { path: 'organic', component: OrganicComponent },
     { path: 'dairy', component: DairyComponent },
+
+    { path: 'cart', component: CartComponent },
     { path: 'fish', component: FishandmeatComponent },
     { path: 'snacks', component: SnacksandbeveragesComponent },
     { path: 'bakery', component: BackeryandpasteryComponent },

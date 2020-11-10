@@ -38,3 +38,9 @@ font-weight: lighter;
   transition: color .3s,background .3s;
   width: 200%;
 }
+p {
+  color: rgb(58, 57, 57);
+}
+div {
+  color: rgb(54, 54, 54);
+}

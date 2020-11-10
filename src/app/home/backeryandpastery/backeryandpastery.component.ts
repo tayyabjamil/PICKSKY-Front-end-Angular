@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import  {MediaObserver, MediaChange} from '@angular/flex-layout';
 import  { Subscription } from 'rxjs';
+import { CartService } from '../cart.service';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-backeryandpastery',
@@ -8,8 +10,9 @@ import  { Subscription } from 'rxjs';
   styleUrls: ['./backeryandpastery.component.scss']
 })
 export class BackeryandpasteryComponent implements OnInit {
-
-  constructor(public mediaObserver:MediaObserver) { }
+ products = []
+  constructor(public mediaObserver:MediaObserver, public productService: ProductService,
+    public cartService: CartService) { }
   mediaSub:Subscription
   deviceXs:boolean;
   deviceLg:boolean;
@@ -25,6 +28,13 @@ export class BackeryandpasteryComponent implements OnInit {
            this.deviceMd = result.mqAlias === 'md'
 
          })
-       }
+         this.getproducts()
+        }
+        getproducts(){
+         this.products = this.productService.getProducts();
+        }
+        addProduct(item){
+      this.cartService.addProduct(item);
+        }
   }
 

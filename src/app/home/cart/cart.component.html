@@ -1,0 +1,29 @@
+<div style="margin-left: 5%;margin-right: 5%;margin-top: 5%;">
+<p style="font-size: xx-large;text-align: center;font-weight: 500;">Cart</p>
+
+<div class="row" style="background-color: lightgray;padding-top: 1.5%;padding-bottom: 1%;padding-left: 5%;padding-right: 10%;">
+  <p class="col-lg-2">Total Amount </p>
+  <div class="col-lg-8"></div>
+  <p class="col-lg-2">{{getTotal}}</p>
+</div>
+<div *ngFor="let item of cartItems"  >
+
+ <div class="row">
+  <div class="col-lg-3">
+<img src={{item.image}} alt="">
+  </div>
+  <div class="col-lg-6" style="padding-top: 3%">
+<div>
+<p>{{item.details}}</p>
+</div>
+<div style="padding-top: 3%;">
+<p> Unit price {{item.price}}</p>
+<p>Total Units {{item.productCount}}</p>
+</div>
+</div>
+  <div class="col-lg-3" style="padding-top: 3%;">
+<p>total price {{item.unitTotal}}</p>
+  </div>
+</div>
+</div>
+</div>

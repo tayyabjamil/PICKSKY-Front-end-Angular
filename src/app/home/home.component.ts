@@ -1,3 +1,4 @@
+import { CartService } from './cart.service';
 import { Component, OnInit } from '@angular/core';
 import  {MediaObserver, MediaChange} from '@angular/flex-layout';
 import  { Subscription } from 'rxjs';
@@ -8,7 +9,11 @@ import  { Subscription } from 'rxjs';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  constructor(public mediaObserver:MediaObserver) { }
+ cart = [];
+total ;
+  constructor(public mediaObserver:MediaObserver
+    ,public cartService:CartService
+    ) { }
   mediaSub:Subscription
   deviceXs:boolean;
   deviceLg:boolean;
@@ -26,4 +31,13 @@ export class HomeComponent implements OnInit {
     })
   }
 
+ get getCartProducts() {
+    this.cart =  this.cartService.getProducts();
+
+    return this.cart;
+  }
+  get getTotal() {
+   this.total =  this.cartService.getTotalPrice();
+   return this.total;
+    }
 }
