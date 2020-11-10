@@ -3,10 +3,11 @@
  <div style="background-color: rgb(240, 236, 236)">
   <div style="margin-top:2%;margin-right: 2%;margin-left: 3%;">
 
-    <p class="text-block1"  > Stay home & get <br><br> <span > your daily needs</span></p>
-    <p class="text-block2" >Start You'r Daily Sopping with JamCart</p>
+    <p class="text-block1"  > Stay home & get <br>
+      <p class="text-block2"> your daily needs</p>
+    <p class="text-block3" >Start You'r Daily Sopping with JamCart</p>
 
-    <button class="btn text-block3"><i class="fa fa-arrow">Order Now</i></button>
+    <button class="btn text-block4"><i class="fa fa-arrow">Order Now</i></button>
     <img class="img-responsive" style="width: 100%;" src="../assets/images/home.jpeg">
     </div>
 
@@ -176,13 +177,75 @@
   </div>
   </div>
 <!-- //////////////////////////////////featured Products -->
-<div style="margin:2%" *ngIf="deviceMd || deviceLg">
+<!-- <div style="margin:2%" *ngIf="deviceMd || deviceLg">
   <ng-image-slider  [imageSize]=" {width: '50%', height: '50%', space: 4}" [images]="imageObject2" #nav></ng-image-slider>
 </div>
 <div style="margin:2%" *ngIf="deviceXs || deviceSm">
   <ng-image-slider  [imageSize]=" {width: '100%', height: '50%', space: 4}" [images]="imageObject2" #nav></ng-image-slider>
-</div>
+</div> -->
 <!-- ///////////////////////////////////trending products -->
+
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+   <div class="item active">
+    <div class="col-lg-6">
+      <div style="margin-top:2%;margin-right: 2%;margin-left: 3%;">
+
+        <p class="text-block1Slider"  > Save upto 20% </p>
+        <p class="text-block2Slider" >Organic Foods</p>
+
+        <button class="btn text-block3Slider"><i class="fa fa-arrow">Order Now</i></button>
+        <img class="img-responsive" style="width: 100%;" src="../assets/images/slide1.png">
+        </div>
+
+    </div>
+    <div class="col-lg-6">
+      <div style="margin-top:2%;margin-right: 2%;margin-left: 3%;">
+
+        <p class="text-block1Slider"  > Save upto 20% </p>
+        <p class="text-block2Slider" >Organic Foods</p>
+
+        <button class="btn text-block3Slider"><i class="fa fa-arrow">Order Now</i></button>
+        <img class="img-responsive" style="width: 100%;" src="../assets/images/slide3.png">
+        </div>
+    </div>
+  </div>
+  <div class="item ">
+    <div class="col-lg-6">
+      <div style="margin-top:2%;margin-right: 2%;margin-left: 3%;">
+
+        <p class="text-block1Slider"  > Save upto 20% </p>
+        <p class="text-block2Slider" >Organic Foods</p>
+
+        <button class="btn text-block3Slider"><i class="fa fa-arrow">Order Now</i></button>
+        <img class="img-responsive" style="width: 100%;" src="../assets/images/slide1.png">
+        </div>   </div>
+    <div class="col-lg-6">
+      <div style="margin-top:2%;margin-right: 2%;margin-left: 3%;">
+
+        <p class="text-block1Slider"  > Save upto 20% </p>
+        <p class="text-block2Slider" >Organic Foods</p>
+
+        <button class="btn text-block3Slider"><i class="fa fa-arrow">Order Now</i></button>
+        <img class="img-responsive" style="width: 100%;" src="../assets/images/slide3.png">
+        </div>
+    </div>
+  </div>
+
+  </div>
+  </div>
+<!-- /////////////////////////    slider 2-->
+
+
 <div style="border-radius: 6px;margin:2%;background-color: white;">
   <p  style="font-weight: bold;font-size: 1.5vw;padding-left:3%;padding-top:4% ; "> Trending Products</p>
   <div *ngIf="deviceLg || deviceMd" class="deviceLg">
@@ -229,10 +292,11 @@
   <div class="row" >
     <div style="margin-bottom: 2%;margin-left:3%;margin-right: 3%;border-radius: 8px;">
 
-       <p class="text-block1Footer"  > Fast, Free Shipping, <br><br> <span > Contactless Delivery.</span></p>
-       <p class="text-block2Footer" >Try it now, risk free!</p>
+       <p class="text-block1Footer"  > Fast, Free Shipping,</p>
+       <p class="text-block2Footer"> Contactless Delivery.</p>
+       <p class="text-block3Footer" >Try it now, risk free!</p>
 
-       <button class="btn text-block3Footer"><i class="fa fa-arrow">Shop Now</i></button>
+       <button class="btn text-block4Footer"><i class="fa fa-arrow">Shop Now</i></button>
        <img class="img-responsive" style="width: 100%;border-radius: 8px;" src="../assets/images/slide2.png">
        </div>
 

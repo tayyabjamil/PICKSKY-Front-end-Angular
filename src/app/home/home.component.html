@@ -67,9 +67,9 @@
             >Vegetables <span class="caret"></span
           ></a>
           <ul class="dropdown-menu">
-            <li class="navitem"><a href="#">Page 1-1</a></li>
-            <li><a href="#">Page 1-2</a></li>
-            <li><a href="#">Page 1-3</a></li>
+            <li class="navitem"><a href="#">Herbs</a></li>
+            <li><a href="#">Fresh Vegetables</a></li>
+            <li><a href="#">Packed Vegetables</a></li>
           </ul>
         </li>
         <li class="dropdown" routerLink="/organic">
@@ -77,9 +77,9 @@
             >Organic <span class="caret"></span
           ></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Page 1-1</a></li>
-            <li><a href="#">Page 1-2</a></li>
-            <li><a href="#">Page 1-3</a></li>
+            <li><a href="#">Spice</a></li>
+            <li><a href="#">Honey</a></li>
+            <li><a href="#">Oil</a></li>
           </ul>
         </li>
         <li class="dropdown" routerLink="/snacks">
@@ -87,9 +87,12 @@
             >Snacks & Beverages <span class="caret"></span
           ></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Page 1-1</a></li>
-            <li><a href="#">Page 1-2</a></li>
-            <li><a href="#">Page 1-3</a></li>
+            <li><a href="#">Juice</a></li>
+            <li><a href="#">Coffe</a></li>
+            <li><a href="#">Tea</a></li>
+            <li><a href="#">Fizzy Drinks</a></li>
+            <li><a href="#">Crisp</a></li>
+            <li><a href="#">Chocolates</a></li>
           </ul>
         </li>
         <li class="dropdown" routerLink="/fish">
@@ -97,9 +100,10 @@
             >Fish & Meat <span class="caret"></span
           ></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Page 1-1</a></li>
-            <li><a href="#">Page 1-2</a></li>
-            <li><a href="#">Page 1-3</a></li>
+            <li><a href="#">Packed</a></li>
+            <li><a href="#">Fish Counter</a></li>
+            <li><a href="#">Poultry Counter</a></li>
+            <li><a href="#">Meat Counter</a></li>
           </ul>
         </li>
         <li class="dropdown" routerLink="/dairy">
@@ -107,9 +111,10 @@
             >Dairy <span class="caret"></span
           ></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Page 1-1</a></li>
-            <li><a href="#">Page 1-2</a></li>
-            <li><a href="#">Page 1-3</a></li>
+            <li><a href="#">Yougurt</a></li>
+            <li><a href="#">Milk</a></li>
+            <li><a href="#">Cheese</a></li>
+            <li><a href="#">Eggs</a></li>
           </ul>
         </li>
         <li class="dropdown" routerLink="/bakery">
@@ -117,9 +122,9 @@
             >Bakery & Pastry <span class="caret"></span
           ></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Page 1-1</a></li>
-            <li><a href="#">Page 1-2</a></li>
-            <li><a href="#">Page 1-3</a></li>
+            <li><a href="#">Bunny Rolls</a></li>
+            <li><a href="#">Pies</a></li>
+            <li><a href="#">Cakes</a></li>
           </ul>
         </li>
       </ul>
@@ -127,7 +132,7 @@
 
     <router-outlet> </router-outlet>
 
-    <div *ngIf="getCartProducts!=0" style="
+    <div *ngIf="getCartProducts!=0"  routerLink='/cart' style="
     box-sizing: border-box;
     min-width: 0px;
     max-width: 960px;
@@ -181,6 +186,57 @@
 </header>
 
 <div *ngIf="deviceXs || deviceSm">
+  <div *ngIf="getCartProducts!=0"  routerLink='/cart' style="
+  box-sizing: border-box;
+  min-width: 0px;
+  max-width: 960px;
+  margin: 0px auto;
+  pointer-events: none;
+  width: 10vw;
+  width: calc(100% - 40px);
+">
+    <button
+      style="
+        bottom: 87px;
+        opacity: 1;
+        transform: translateY(0px);
+        border: 0px;
+        outline: 0px;
+        max-width: 960px;
+        height: 50px;
+        color: white;
+        padding: 0px 30px;
+        position: fixed;
+        pointer-events: all;
+        width: calc(100% - 40px);
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: rgb(41, 41, 41);
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 12px;
+        cursor: pointer;
+        left: auto;
+        right: auto;
+        z-index: 999;
+      "
+    >
+      <div style="color: white;">
+        <svg width="16" height="16" viewBox="0 0 16 16">
+          <path
+            id="shopping-bag"
+            d="M4.4,3.6H15.6a.8.8,0,0,1,.8.8V15.6a.8.8,0,0,1-.8.8H4.4a.8.8,0,0,1-.8-.8V4.4A.8.8,0,0,1,4.4,3.6ZM2,4.4A2.4,2.4,0,0,1,4.4,2H15.6A2.4,2.4,0,0,1,18,4.4V15.6A2.4,2.4,0,0,1,15.6,18H4.4A2.4,2.4,0,0,1,2,15.6ZM10,10C7.791,10,6,7.851,6,5.2H7.6c0,2.053,1.335,3.2,2.4,3.2s2.4-1.147,2.4-3.2H14C14,7.851,12.209,10,10,10Z"
+            transform="translate(-2 -2)"
+            fill="#ffffff"
+            fill-rule="evenodd"
+          ></path>
+        </svg>
+        Added {{getCartProducts.length}} Items
+      </div>
+      <div style="color: white;">${{getTotal}}</div>
+    </button>
+  </div>
+
   <app-nav>
     <router-outlet></router-outlet>
   </app-nav>
