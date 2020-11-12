@@ -1,7 +1,10 @@
+import { ProductService } from './product.service';
 import { CartService } from './cart.service';
 import { Component, OnInit } from '@angular/core';
 import  {MediaObserver, MediaChange} from '@angular/flex-layout';
 import  { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -11,8 +14,10 @@ import  { Subscription } from 'rxjs';
 export class HomeComponent implements OnInit {
  cart = [];
 total ;
+allProducts;
   constructor(public mediaObserver:MediaObserver
-    ,public cartService:CartService
+    ,public cartService:CartService,  private productService: ProductService,
+    private router: Router,
     ) { }
   mediaSub:Subscription
   deviceXs:boolean;
@@ -29,6 +34,7 @@ total ;
       this.deviceMd = result.mqAlias === 'md'
 
     })
+
   }
 
  get getCartProducts() {
@@ -40,4 +46,5 @@ total ;
    this.total =  this.cartService.getTotalPrice();
    return this.total;
     }
+
 }

@@ -1,3 +1,4 @@
+import { FormGroup,FormControl,Validators,FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -7,13 +8,28 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  constructor(private router : Router) { }
+   rformLogin:FormGroup
+   email:String
+   password:String
+  constructor(private router : Router,public formBuilder:FormBuilder) { }
 
   ngOnInit() {
+    this.rformLogin = this.formBuilder.group({
 
+      email: new FormControl('', [Validators.required,Validators.email]),
+      password: new FormControl('', [Validators.required]),
+    })
   }
-signUp(){
-this.router.navigate['/signUp']
+public createAccount(){
+this.router.navigate(['/signUp'])
 }
+login(){
+  if(this.rformLogin.valid){
+    console.log(this.rformLogin.value)
+    }
+    else{
+      alert("Please Fill All the entries of the Form")
+    }
+  }
 }
+

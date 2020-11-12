@@ -1,3 +1,135 @@
-<p>
-  signUp works!
-</p>
+<div
+  style="
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: center;
+  "
+>
+  <div>
+    <p style="font-size: xx-large; font-weight: 500; text-align: center">
+      Create an Account
+    </p>
+    <br />
+    <form [formGroup]="rformSignup">
+    <div style="padding-bottom: 2%" class="">
+      <p style="padding-bottom: 1%">Username</p>
+      <ns-textField
+        name="username"
+        class="textfieldBorderColor font13"
+        [rformgroup]="rformSignup"
+        rformControlName="username"
+      >
+      </ns-textField>
+    </div>
+
+    <div style="padding-bottom: 2%">
+      <p style="padding-bottom: 1%">Email</p>
+      <ns-textField
+        name="email"
+        class="textfieldBorderColor font13"
+        [rformgroup]="rformSignup"
+        rformControlName="email"
+      >
+      </ns-textField>
+    </div>
+    <div>
+      <p style="padding-bottom: 1%">Password</p>
+      <ns-textField
+        name="password" type="password"
+        class="textfieldBorderColor font13"
+        [rformgroup]="rformSignup"
+        rformControlName="password"
+      >
+      </ns-textField>
+    </div>
+    <div style="padding-bottom: 2%">
+      <p style="padding-bottom: 1%">Contact</p>
+      <ns-textField
+        name="contact" type="number"
+        class="textfieldBorderColor font13"
+        [rformgroup]="rformSignup"
+        rformControlName="contact"
+      >
+      </ns-textField>
+    </div>
+
+    <p
+      style="
+        text-align: center;
+        padding-top: 2%;
+        padding-bottom: 2%;
+        font-size: small;
+        font-weight: 500;
+      "
+    >
+      Forget Your Password?
+    </p>
+    <div style="text-align: center">
+      <button
+      (click)="createAccount()"
+        class="btn"
+        style="
+          padding-left: 2.5%;
+          padding-right: 2.5%;
+          background-color: rgb(63, 61, 61);
+          color: whitesmoke;
+        "
+      >
+        <span style="font-weight: bold; font-size: small">SIGN IN</span>
+      </button>
+    </div>
+    <div>
+      <p
+        style="
+          text-align: center;
+          padding-top: 2%;
+          padding-bottom: 2%;
+          font-size: small;
+          font-weight: 500;
+        "
+      >
+        Create Account
+      </p>
+    </div>
+    </form>
+  </div>
+</div>
+<div style="background-color: rgb(231, 228, 228)">
+  <div
+    style="
+      padding-left: 5%;
+      padding-right: 5%;
+      padding-top: 3%;
+      padding-bottom: 3%;
+    "
+  >
+    <div class="row">
+      <div class="col-lg-6">
+        <p>Quick Links</p>
+        <p>Search</p>
+      </div>
+      <div class="col-lg-6">
+        NewsLetter
+        <input style="width: 40vw" />
+      </div>
+    </div>
+  </div>
+
+  <hr class="hr" style="background-color: black" />
+  <div style="padding: 5%">
+    <button
+      class="btn"
+      style="
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+        background-color: rgb(63, 61, 61);
+        color: whitesmoke;
+      "
+    >
+      <span style="font-weight: bold; font-size: small">SIGN IN</span>
+    </button>
+    <p style="text-align: right">© 2020, picksystore Powered by Shopify</p>
+  </div>
+</div>

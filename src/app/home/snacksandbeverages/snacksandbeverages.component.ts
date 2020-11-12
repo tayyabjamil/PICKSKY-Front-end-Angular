@@ -18,7 +18,7 @@ products = []
   deviceLg:boolean;
   deviceMd:boolean;
   deviceSm:boolean;
-
+  snacksProducts;
     ngOnInit() {
       this.mediaSub = this.mediaObserver.media$.subscribe((result:MediaChange)=>{
            console.log(result.mqAlias)
@@ -28,12 +28,16 @@ products = []
            this.deviceMd = result.mqAlias === 'md'
 
          })
-         this.getproducts();
+         this.getCatagoryProducts();
         }
 
-        getproducts(){
-          this.products = this.productService.getProducts();
-         }
+        getCatagoryProducts() {
+          this.productService.getCatagoryProducts('snacks').subscribe((products) => {
+            this.snacksProducts = products;
+          }, (error) => {
+            console.log('error in getting all products');
+          });
+        }
          addProduct(item){
        this.cartService.addProduct(item);
          }

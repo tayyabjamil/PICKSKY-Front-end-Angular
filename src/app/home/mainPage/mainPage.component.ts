@@ -10,7 +10,8 @@ import  { Subscription } from 'rxjs';
   styleUrls: ['./mainPage.component.scss']
 })
 export class MainPageComponent implements OnInit {
-products = []
+
+allProducts
   constructor(public mediaObserver:MediaObserver,
     public productService:ProductService,
     public cartService:CartService
@@ -106,10 +107,14 @@ alt: 'Image alt'
       this.deviceMd = result.mqAlias === 'md'
 
     })
-    this.getproducts()
+    this.getAllProducts()
   }
-  getproducts(){
-   this.products = this.productService.getProducts();
+  getAllProducts() {
+    this.productService.getProducts().subscribe((products) => {
+      this.allProducts = products;
+    }, (error) => {
+      console.log('error in getting all products');
+    });
   }
   addProduct(item){
 this.cartService.addProduct(item);

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import  {MediaObserver, MediaChange} from '@angular/flex-layout';
 import  { Subscription } from 'rxjs';
+
 import { CartService } from '../cart.service';
 import { ProductService } from '../product.service';
 
@@ -11,14 +12,16 @@ import { ProductService } from '../product.service';
 })
 export class BackeryandpasteryComponent implements OnInit {
  products = []
-  constructor(public mediaObserver:MediaObserver, public productService: ProductService,
+  constructor(public mediaObserver:MediaObserver,
+    public productService: ProductService,
+
     public cartService: CartService) { }
   mediaSub:Subscription
   deviceXs:boolean;
   deviceLg:boolean;
   deviceMd:boolean;
   deviceSm:boolean;
-
+  backeryProducts;
     ngOnInit() {
       this.mediaSub = this.mediaObserver.media$.subscribe((result:MediaChange)=>{
            console.log(result.mqAlias)
@@ -28,13 +31,20 @@ export class BackeryandpasteryComponent implements OnInit {
            this.deviceMd = result.mqAlias === 'md'
 
          })
-         this.getproducts()
+        //  this.getproducts()
         }
-        getproducts(){
-         this.products = this.productService.getProducts();
-        }
-        addProduct(item){
-      this.cartService.addProduct(item);
+        // getproducts(){
+        //  this.products = this.productService.getProducts();
+        // }
+        // addProduct(item){
+      // this.cartService.addProduct(item);
+      //   }
+        getCatagoryProducts() {
+          this.productService.getCatagoryProducts('backery').subscribe((products) => {
+            this.backeryProducts = products;
+          }, (error) => {
+            console.log('error in getting all products');
+          });
         }
   }
 

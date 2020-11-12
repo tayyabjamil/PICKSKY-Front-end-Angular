@@ -21,7 +21,7 @@ export class OrganicComponent implements OnInit {
   deviceLg: boolean;
   deviceMd: boolean;
   deviceSm: boolean;
-
+  organicProducts;
   ngOnInit() {
     this.mediaSub = this.mediaObserver.media$.subscribe(
       (result: MediaChange) => {
@@ -32,11 +32,15 @@ export class OrganicComponent implements OnInit {
         this.deviceMd = result.mqAlias === 'md';
       }
     );
-    this.getproducts();
+    this.getCatagoryProducts();
   }
 
-  getproducts() {
-    this.products = this.productService.getProducts();
+  getCatagoryProducts() {
+    this.productService.getCatagoryProducts('organic').subscribe((products) => {
+      this.organicProducts = products;
+    }, (error) => {
+      console.log('error in getting all products');
+    });
   }
   addProduct(item) {
     this.cartService.addProduct(item);

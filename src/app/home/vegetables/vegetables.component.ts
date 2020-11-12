@@ -15,6 +15,7 @@ export class VegetablesComponent implements OnInit {
   deviceMd:boolean;
   deviceSm:boolean;
 products = []
+vegProducts
   constructor(public mediaObserver:MediaObserver, public productService: ProductService,
     public cartService: CartService) { }
 
@@ -28,12 +29,16 @@ products = []
       this.deviceMd = result.mqAlias === 'md'
 
     })
-    this.getproducts();
+    this.getCatagoryProducts();
   }
 
-  getproducts(){
-    this.products = this.productService.getProducts();
-   }
+  getCatagoryProducts() {
+    this.productService.getCatagoryProducts('vegetables').subscribe((products) => {
+      this.vegProducts = products;
+    }, (error) => {
+      console.log('error in getting all products');
+    });
+  }
    addProduct(item){
  this.cartService.addProduct(item);
    }

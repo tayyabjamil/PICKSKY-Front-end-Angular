@@ -18,7 +18,8 @@ export class DairyComponent implements OnInit {
   deviceLg:boolean;
   deviceMd:boolean;
   deviceSm:boolean;
- products = []
+
+ backeryProducts;
     ngOnInit() {
       this.mediaSub = this.mediaObserver.media$.subscribe((result:MediaChange)=>{
            console.log(result.mqAlias)
@@ -28,13 +29,20 @@ export class DairyComponent implements OnInit {
            this.deviceMd = result.mqAlias === 'md'
 
          })
-         this.getproducts()
+        //  this.getproducts()
         }
-        getproducts(){
-         this.products = this.productService.getProducts();
-        }
+        // getproducts(){
+        //  this.products = this.productService.getProducts();
+        // }
         addProduct(item){
       this.cartService.addProduct(item);
+        }
+        getCatagoryProducts() {
+          this.productService.getCatagoryProducts('dairy').subscribe((products) => {
+            this.backeryProducts = products;
+          }, (error) => {
+            console.log('error in getting all products');
+          });
         }
   }
 
