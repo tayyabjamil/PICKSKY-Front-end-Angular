@@ -250,15 +250,16 @@
   <p  style="font-weight: bold;font-size: 1.5vw;padding-left:3%;padding-top:4% ; "> Trending Products</p>
   <div *ngIf="deviceLg || deviceMd" class="deviceLg">
 
-    <div *ngFor="let item of products" style="padding:2%;width: 20%;" >
+    <div *ngFor="let item of allProducts" style="padding:2%;width: 20%;" >
       <div style="text-align: right;">
       <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
     </div>
     <div  >
-      <img class="img-responsive"  src={{item.image}}>
+      <img class="img-responsive"  [src]='item.productImage'>
     </div>
-      <p style="font-weight: bold;">{{item.price}}</p>
-      <p  ></p>
+    <p  >{{item.name}</p>
+
+    <p style="font-weight: bold;">{{item.price}}</p>
     </div>
 
 
@@ -268,7 +269,7 @@
       <div  style="display:flex;flex-direction: row;flex-wrap: wrap;flex: 2;justify-content: space-evenly;">
 
 
-        <div *ngFor="let item of products" style="padding:2%;width: 40%;" >
+        <div *ngFor="let item of allProducts" style="padding:2%;width: 40%;" >
           <div style="text-align: right;">
           <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
         </div>

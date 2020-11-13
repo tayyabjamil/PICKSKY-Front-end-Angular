@@ -15,7 +15,7 @@ constructor(private http: HttpClient) { }
 createuserAccount(newUser) {
 
   return this.http.post(
-    'http://localhost:8000/api/user/createAccount',
+    'http://localhost:8000/api/users/'  ,
     {
       username: newUser.username,
       email: newUser.email,
@@ -29,7 +29,7 @@ createuserAccount(newUser) {
 login(user) {
 
   return this.http.post(
-    'http://localhost:8000/api/user/login',
+    'http://localhost:8000/api/users/login',
     {
       email: user.email,
       password: user.password,

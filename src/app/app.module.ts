@@ -1,3 +1,4 @@
+
 import { AdminModule } from './admin/admin.module';
 
 
@@ -15,7 +16,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { AccountModule } from './account/account.module';
 import { HomeModule } from './home/home.module';
 import { AppComponent } from './app.component';
-
+import { TextFieldComponent } from './account/textField/textField.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +35,6 @@ AdminModule,
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,TextFieldComponent]
 })
 export class AppModule { }

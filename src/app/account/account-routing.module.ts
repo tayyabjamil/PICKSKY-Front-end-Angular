@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', component: AccountComponent, children: [
 
   { path: 'signUp', component: SignUpComponent },
-
+  // { path: 'home', loadChildren: './home/home.module#HomeModule' },
   { path: '', component: LoginComponent },
 
  ]

@@ -1,6 +1,7 @@
 import { FormGroup,FormControl,Validators,FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AccountService } from '../account.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
    rformLogin:FormGroup
    email:String
    password:String
-  constructor(private router : Router,public formBuilder:FormBuilder) { }
+  constructor(private router : Router,public formBuilder:FormBuilder,public accountService:AccountService,) { }
 
   ngOnInit() {
     this.rformLogin = this.formBuilder.group({
@@ -25,11 +26,14 @@ this.router.navigate(['/signUp'])
 }
 login(){
   if(this.rformLogin.valid){
-    console.log(this.rformLogin.value)
-    }
-    else{
-      alert("Please Fill All the entries of the Form")
-    }
+    this.accountService.login(this.rformLogin.value).subscribe((data: any) => {
+      alert("Login Successful")
+      this.router.navigate(['/home'])
+
+      }, (error) => {
+        alert(error.error.message);
+
+      });
   }
 }
-
+}

@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AccountService } from './../account.service';
 import { FormBuilder, FormGroup,FormControl ,Validators} from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -12,7 +14,7 @@ export class SignUpComponent implements OnInit {
   email:string
   password:string
   contact:number
-  constructor(public formBuilder:FormBuilder) { }
+  constructor(public formBuilder:FormBuilder,public accountService:AccountService,private router:Router) { }
 
   ngOnInit() {
     this.rformSignup = this.formBuilder.group({
@@ -24,7 +26,14 @@ export class SignUpComponent implements OnInit {
   }
 createAccount(){
   if(this.rformSignup.valid){
-  console.log(this.rformSignup.value)
+ this.accountService.createuserAccount(this.rformSignup.value).subscribe((data: any) => {
+  alert("Account Created")
+  this.router.navigate(['/login'])
+
+  }, (error) => {
+    alert(error.error.message);
+
+  });
   }
   else{
     alert("Please Fill All the entries of the Form")

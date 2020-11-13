@@ -11,7 +11,7 @@
   <div style="border-radius: 6px;margin:2%;background-color: white;">
     <div *ngIf="deviceLg || deviceMd" class="deviceLg">
 
-     <div *ngFor="let item of products" (click)="addProduct(item)" style="padding:2%;width: 20%;" >
+     <div *ngFor="let item of dairyProducts" (click)="addProduct(item)" style="padding:2%;width: 20%;" >
        <div style="text-align: right;">
        <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
      </div>
@@ -28,7 +28,7 @@
        <div  style="display:flex;flex-direction: row;flex-wrap: wrap;flex: 2;justify-content: space-evenly;">
 
 
-         <div *ngFor="let item of products" (click)="addProduct(item)" style="padding:2%;width: 40%;" >
+         <div *ngFor="let item of dairyProducts" (click)="addProduct(item)" style="padding:2%;width: 40%;" >
            <div style="text-align: right;">
            <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
          </div>
