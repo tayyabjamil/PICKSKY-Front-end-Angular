@@ -11,7 +11,8 @@ import  { Subscription } from 'rxjs';
 })
 export class MainPageComponent implements OnInit {
 
-allProducts
+allProducts;
+featuredProducts
   constructor(public mediaObserver:MediaObserver,
     public productService:ProductService,
     public cartService:CartService
@@ -108,6 +109,7 @@ alt: 'Image alt'
 
     })
     this.getAllProducts()
+this.getfeaturedProducts();
   }
   getAllProducts() {
     this.productService.getProducts().subscribe((products) => {
@@ -116,7 +118,18 @@ alt: 'Image alt'
       console.log('error in getting all products');
     });
   }
+  getfeaturedProducts() {
+    this.productService.featuredProducts().subscribe((products) => {
+      this.featuredProducts = products;
+    }, (error) => {
+      console.log('error in getting featuredProducts ');
+    });
+  }
   addProduct(item){
 this.cartService.addProduct(item);
+  }
+  getImage(imageId) {
+    if (!imageId) return '';
+    return this.productService.productImageUrl(imageId);
   }
 }

@@ -1,3 +1,4 @@
+import { MyordersComponent } from './myorders/myorders.component';
 import { NavComponent } from './nav/nav.component';
 
 import { MainPageComponent } from './mainPage/mainPage.component';
@@ -29,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   imports: [
     CommonModule,
+
     HomeRoutingModule,
     NgImageSliderModule,
     HttpClientModule,
@@ -40,6 +42,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+
   ],
   declarations: [
     HomeComponent,
@@ -52,7 +55,8 @@ import { HttpClientModule } from '@angular/common/http';
     FishandmeatComponent,
     ProductDetailComponent,
     MainPageComponent,
-    CartComponent
+    CartComponent,
+    MyordersComponent
   ],
   exports:[
     HomeComponent,
@@ -65,7 +69,8 @@ import { HttpClientModule } from '@angular/common/http';
     FishandmeatComponent,
     ProductDetailComponent,
     MainPageComponent,
-    CartComponent
+    CartComponent,
+    MyordersComponent
 
   ]
 })

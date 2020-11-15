@@ -1,0 +1,36 @@
+<div style="margin-left: 5%;margin-right: 5%;margin-top: 5%;">
+  <p style="font-size: xx-large;text-align: center;font-weight: 500;">My Orders</p>
+  <div *ngFor="let item of allOrders" >
+  <div style="display: flex;flex-direction: row;justify-content: space-between;background-color: rgb(230, 230, 230);padding-top: 1.5%;padding-bottom: 1%;padding-left: 5%;padding-right: 10%;">
+    <p >Total Amount </p>
+    <p class="col-lg-2">{{item.total}}</p>
+    <div style="text-align: center;" >
+      <button style="background-color: rgb(43, 41, 41);
+      color: white;width: 100%;border-radius: 6px;" (click)="order()">Check Out</button>
+      </div>
+  </div>
+  <div *ngFor="let item of item.cartData"  >
+
+    <div style="display: flex;flex-direction: row;justify-content: space-between;padding-top: 1.5%;padding-bottom: 1%;padding-left: 5%;padding-right: 10%;">
+      <div class="col-lg-3">
+        <div >
+          <img [src]='getImage(item.productImage)'>
+        </div>
+    </div>
+    <div class="col-lg-6" style="padding-top: 3%">
+  <div>
+  <p>{{item.details}}</p>
+  </div>
+  <div style="padding-top: 3%;justify-content: center;">
+  <p style="font-size: larger;"> Unit price {{item.price}}</p>
+  <p style="font-size: larger;">Total Units {{item.productCount}}</p>
+  </div>
+  </div>
+    <div class="col-lg-3" style="padding-top: 10%;float:left">
+  <p style="font-weight: 500;font-size: large;">total price {{item.unitTotal}}</p>
+    </div>
+  </div>
+  <hr>
+  </div>
+  </div>
+</div>

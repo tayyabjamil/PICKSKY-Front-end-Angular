@@ -1,0 +1,56 @@
+<div  style="margin-top: 10%;" >
+  <hr>
+  <h1 style="text-align: center;font-weight: bold;">Admin Portal</h1>
+ <div style="border: 1px;border-style: groove;">
+    <div class="row" style="margin:1%">
+    <div class="col-lg-2">
+   <p style="font-size: large;">Order No #</p>
+    </div>
+    <div class="col-lg-2">
+   <p style="font-size: large;">Order Owner</p>
+      </div>
+      <div class="col-lg-2">
+     <p style="font-size: large;">Order Total</p>
+
+    </div>
+        <div class="col-lg-2">
+          <p style="font-size: large;">Order Phase</p>
+
+          </div>
+
+    </div>
+
+  <div  *ngFor="let item of allOrders">
+    <div class="row"   style="border:1px;border-style: groove;margin:1%;padding-top: 3px;">
+    <div class="col-lg-2" >
+
+    <p  >1#</p>
+  </div>
+  <!-- <div class="col-lg-2">
+
+    <p  >item?.name</p>
+  </div> -->
+  <div class="col-lg-2">
+
+    <p  >{{item?.username}}</p>
+  </div>
+  <div class="col-lg-2">
+
+    <p  >{{item?.total}}</p>
+  </div>
+
+  <div class="col-lg-2">
+
+    <p  >start phase</p>
+  </div>
+  <div class="col-lg-1">
+
+    <p     class="  btn  green-btn"  style="color: white;">Send Order</p>
+  </div>
+
+
+</div>
+</div>
+
+  </div>
+</div>

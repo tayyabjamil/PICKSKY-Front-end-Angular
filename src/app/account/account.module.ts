@@ -1,3 +1,4 @@
+import { ResetPasswordComponent } from './resetPassword/resetPassword.component';
 import { AccountService } from './account.service';
 import { TextFieldComponent } from './textField/textField.component';
 import { SignUpComponent } from './signUp/signUp.component';
@@ -20,12 +21,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     SignUpComponent,
     TextFieldComponent,
+    ResetPasswordComponent
   ],
   exports: [
     AccountComponent,
     LoginComponent,
     SignUpComponent,
     TextFieldComponent,
+    ResetPasswordComponent
   ], providers: [
     AccountService
   ],

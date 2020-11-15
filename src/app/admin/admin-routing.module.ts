@@ -1,3 +1,4 @@
+import { OrdersProgressComponent } from './ordersProgress/ordersProgress.component';
 import { AddProductComponent } from './addProduct/addProduct.component';
 
 import { NgModule } from '@angular/core';
@@ -7,7 +8,10 @@ import { AdminComponent } from './admin.component';
 const routes: Routes = [
   { path: '', component: AdminComponent, children: [
 
-    { path: '', component: AddProductComponent}
+    { path: '', component: OrdersProgressComponent},
+
+    { path: 'addProduct', component: AddProductComponent},
+
  ]
 },
 ];

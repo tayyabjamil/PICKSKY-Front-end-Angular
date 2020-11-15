@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { AuthService } from '../auth.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +12,7 @@ export class AccountService {
       accept: ' application/json'
     })
   };
-constructor(private http: HttpClient) { }
+constructor(private http: HttpClient,private myauthService: AuthService) { }
 createuserAccount(newUser) {
 
   return this.http.post(
@@ -34,6 +35,27 @@ login(user) {
       email: user.email,
       password: user.password,
 
+    },
+    this.httpHeaders
+  );
+}
+forgetPassword(){
+  const email = this.myauthService.getemail()
+  return this.http.post(
+    'http://localhost:8000/api/users/forgetPassword/',
+    {
+      email
+    },
+    this.httpHeaders
+  );
+}
+resetPassword(newPass){
+  return this.http.post(
+    'http://localhost:8000/api/users/resetPassword/',
+    {
+      confirmPassword: newPass.confirmPassword,
+      password: newPass.newPassword,
+      resetToken:newPass.resetToken
     },
     this.httpHeaders
   );

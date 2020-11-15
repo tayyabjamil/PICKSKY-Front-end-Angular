@@ -142,15 +142,26 @@
   <p  style="font-weight: bold;font-size: 1.5vw;padding-left:3%;padding-top:4% ; "> Featured Products</p>
   <div *ngIf="deviceLg || deviceMd" class="deviceLg">
 
-    <div *ngFor="let item of products" (click)="addProduct(item)" style="padding:2%;width: 20%;" >
+    <div *ngFor="let item of featuredProducts" style="padding:2%;width: 20%;" >
       <div style="text-align: right;">
-      <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
+      <button class="btn" title="Add to Cart">Add to Cart<i class="glyphicon glyphicon-shopping-cart"></i></button>
     </div>
-    <div  >
-      <img class="img-responsive"  src={{item.image}}>
+    <div >
+      <img [src]='getImage(item.productImage)'>
     </div>
       <p style="font-weight: bold;">{{item.price}}</p>
-      <p  ></p>
+      <button
+      (click)="addProduct(item)"
+        class="btn"
+        style="
+          padding-left: 2.5%;
+          padding-right: 2.5%;
+          background-color: rgb(63, 61, 61);
+          color: whitesmoke;
+        "
+      >
+        <span style="font-weight: bold; font-size: small">Add to Cart</span>
+      </button>
     </div>
 
   </div>
@@ -167,7 +178,18 @@
           <img class="img-responsive"  src={{item.image}}>
         </div>
           <p style="font-weight: bold;">{{item.price}}</p>
-          <p  ></p>
+          <button
+          (click)="addProduct(item)"
+            class="btn"
+            style="
+              padding-left: 2.5%;
+              padding-right: 2.5%;
+              background-color: rgb(63, 61, 61);
+              color: whitesmoke;
+            "
+          >
+            <span style="font-weight: bold; font-size: small">Add to Cart</span>
+          </button>
         </div>
       </div>
 
@@ -254,12 +276,24 @@
       <div style="text-align: right;">
       <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
     </div>
-    <div  >
-      <img class="img-responsive"  [src]='item.productImage'>
+    <div >
+      <img [src]='getImage(item.productImage)'>
     </div>
-    <p  >{{item.name}</p>
+    <p  >{{item.name}}</p>
 
     <p style="font-weight: bold;">{{item.price}}</p>
+    <button
+    (click)="addProduct(item)"
+      class="btn"
+      style="
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+        background-color: rgb(63, 61, 61);
+        color: whitesmoke;
+      "
+    >
+      <span style="font-weight: bold; font-size: small">Add to Cart</span>
+    </button>
     </div>
 
 
@@ -277,7 +311,18 @@
           <img class="img-responsive"  src={{item.image}}>
         </div>
           <p style="font-weight: bold;">{{item.price}}</p>
-          <p  ></p>
+          <button
+      (click)="addProduct(item)"
+        class="btn"
+        style="
+          padding-left: 2.5%;
+          padding-right: 2.5%;
+          background-color: rgb(63, 61, 61);
+          color: whitesmoke;
+        "
+      >
+        <span style="font-weight: bold; font-size: small">Add to Cart</span>
+      </button>
         </div>
       </div>
 

@@ -6,14 +6,16 @@
   <p class="col-lg-2">{{getTotal}}</p>
   <div style="text-align: center;" >
     <button style="background-color: rgb(43, 41, 41);
-    color: white;width: 100%;border-radius: 6px;">Check Out</button>
+    color: white;width: 100%;border-radius: 6px;" (click)="order()">Check Out</button>
     </div>
 </div>
 <div *ngFor="let item of cartItems"  >
 
   <div style="display: flex;flex-direction: row;justify-content: space-between;padding-top: 1.5%;padding-bottom: 1%;padding-left: 5%;padding-right: 10%;">
     <div class="col-lg-3">
-<img src={{item.image}} alt="">
+      <div >
+        <img [src]='getImage(item.productImage)'>
+      </div>
   </div>
   <div class="col-lg-6" style="padding-top: 3%">
 <div>

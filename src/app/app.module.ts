@@ -17,6 +17,9 @@ import { AccountModule } from './account/account.module';
 import { HomeModule } from './home/home.module';
 import { AppComponent } from './app.component';
 import { TextFieldComponent } from './account/textField/textField.component';
+import { AuthService } from '../app/auth.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +37,7 @@ AdminModule,
     MatCarouselModule.forRoot(),
 
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent,TextFieldComponent]
 })
 export class AppModule { }
