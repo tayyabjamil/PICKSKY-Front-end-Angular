@@ -33,5 +33,15 @@ export class ProductService {
   productImageUrl(name) {
     return 'http://localhost:8000/api/products/image/' + name;
   }
-
+  shippingPhase(shippingPhase){
+    return this.http.post(
+      'http://localhost:8000/api/orders/shipping',
+    {
+      phase: shippingPhase.phase,
+      ownerEmail: shippingPhase.ownerEmail,
+      orderId:shippingPhase.orderId
+    },
+    this.httpHeaders
+      );
+   }
 }

@@ -1,4 +1,4 @@
-<div style="margin-left: 5%;margin-right: 5%;margin-top: 5%;">
+<!-- <div style="margin-left: 5%;margin-right: 5%;margin-top: 5%;">
   <p style="font-size: xx-large;text-align: center;font-weight: 500;">My Orders</p>
   <div *ngFor="let item of allOrders" >
   <div style="display: flex;flex-direction: row;justify-content: space-between;background-color: rgb(230, 230, 230);padding-top: 1.5%;padding-bottom: 1%;padding-left: 5%;padding-right: 10%;">
@@ -32,5 +32,59 @@
   </div>
   <hr>
   </div>
+  </div>
+</div> -->
+
+<div  style="margin-top: 10%;" >
+  <hr>
+  <h1 style="text-align: center;font-weight: bold;">My ORders </h1>
+ <div style="border: 1px;border-style: groove;">
+    <div class="row" style="margin:1%">
+    <div class="col-lg-2">
+   <p style="font-size: large;">Order No #</p>
+    </div>
+    <div class="col-lg-2">
+   <p style="font-size: large;">Order Date</p>
+      </div>
+      <div class="col-lg-2">
+     <p style="font-size: large;">Order Total</p>
+
+    </div>
+        <div class="col-lg-2">
+          <p style="font-size: large;">Order Status</p>
+
+          </div>
+
+    </div>
+
+  <div  *ngFor="let item of allOrders">
+    <div class="row"   style="border:1px;border-style: groove;margin:1%;padding-top: 3px;">
+    <div class="col-lg-2" >
+
+    <p  >1#</p>
+  </div>
+
+  <div class="col-lg-2">
+
+    <p  >{{item.date}}</p>
+  </div>
+  <div class="col-lg-2">
+
+    <p  >{{item?.total}}</p>
+  </div>
+
+  <div class="col-lg-2">
+
+    <p  >start phase</p>
+  </div>
+  <div class="col-lg-1">
+
+    <p     class="  btn  green-btn"  style="color: white;">Complete Order</p>
+  </div>
+
+
+</div>
+</div>
+
   </div>
 </div>

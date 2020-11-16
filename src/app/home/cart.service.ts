@@ -34,7 +34,7 @@ export class CartService {
         }
       });
     }
-console.log(this.cart)
+    console.log(this.cart)
 }
 
   getProducts() {
@@ -52,16 +52,19 @@ console.log(this.cart)
   order(orderData){
   const username =this.myauthService.getusername()
   const user = this.myauthService.getID()
-    return this.http.post(
+  return this.http.post(
       'http://localhost:8000/api/orders/',
     {
       cartData: orderData.cartItems,
       total: orderData.total,
       user:user,
-      username:username
-
+      username:username,
+      refrence:orderData.refrence,
+      phase:orderData.phase,
+      ownerEmail:orderData.ownerEmail
     },
     this.httpHeaders
       );
      }
+
 }

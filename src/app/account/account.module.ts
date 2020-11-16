@@ -8,6 +8,7 @@ import { AccountComponent } from './account.component';
 import { LoginComponent } from './login/login.component';
 import { AccountRoutingModule } from './account-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
@@ -21,14 +22,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     SignUpComponent,
     TextFieldComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    ProfileComponent
   ],
   exports: [
     AccountComponent,
     LoginComponent,
     SignUpComponent,
     TextFieldComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    ProfileComponent
   ], providers: [
     AccountService
   ],

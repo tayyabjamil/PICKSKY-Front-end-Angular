@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { MyordersComponent } from './myorders/myorders.component';
 import { NavComponent } from './nav/nav.component';
 
@@ -26,11 +27,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { CartComponent } from './cart/cart.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { NgxPayPalModule } from 'ngx-paypal';
 @NgModule({
   imports: [
     CommonModule,
-
+FormsModule,
     HomeRoutingModule,
     NgImageSliderModule,
     HttpClientModule,
@@ -42,6 +43,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    NgxPayPalModule,
 
   ],
   declarations: [

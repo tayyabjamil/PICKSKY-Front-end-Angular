@@ -33,6 +33,7 @@ login(){
       this.setId(data.userId);
       this.setusername(data.username);
       this.setemail(data.email)
+      this.setRefrenceId(data.refrenceId)
       this.isLoggedIn = true;
       // this.router.navigate(['/home'])
 
@@ -44,6 +45,9 @@ login(){
 }
 setId(userId) {
   localStorage.setItem('userId', JSON.stringify(userId));
+}
+setRefrenceId(refrenceId) {
+  localStorage.setItem('refrenceId', JSON.stringify(refrenceId));
 }
 setusername(username) {
   localStorage.setItem('username', JSON.stringify(username));

@@ -16,6 +16,9 @@ getID() {
   getusername() {
     return JSON.parse(localStorage.getItem('username'));
   }
+  getRefrenceId() {
+    return JSON.parse(localStorage.getItem('refrenceId'));
+  }
   getemail() {
     return JSON.parse(localStorage.getItem('email'));
   }

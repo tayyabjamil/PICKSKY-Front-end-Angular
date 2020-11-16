@@ -7,9 +7,10 @@ import { ProductService } from 'src/app/home/product.service';
   styleUrls: ['./ordersProgress.component.scss']
 })
 export class OrdersProgressComponent implements OnInit {
-
+phase;
   constructor( public productService:ProductService) { }
 allOrders = []
+ownerEmail;
   ngOnInit() {
     this.orders()
   }
@@ -19,5 +20,19 @@ allOrders = []
     this.allOrders = data.product
 
   })
+}
+nextPhase(item){
+   this.phase = "shipping phase"
+   const orderShipped = {
+     phase : this.phase ,
+     ownerEmail : item.ownerEmail,
+     orderId:item._id
+
+   }
+  this.productService.shippingPhase(orderShipped).subscribe((data: any) => {
+    alert("Shipping")
+
+  })
+
 }
 }

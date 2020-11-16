@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from '../account.service';
 
 @Component({
@@ -13,26 +13,29 @@ export class ResetPasswordComponent implements OnInit {
   newPassword:String
   confirmPassword:String
   resetToken:String
-  constructor(private router : Router,public formBuilder:FormBuilder,public accountService:AccountService,) { }
+
+  constructor(    public route: ActivatedRoute,private router : Router,public formBuilder:FormBuilder,public accountService:AccountService,) { }
 
   ngOnInit() {
+    const id = this.route.snapshot.paramMap.get("id");
+    this.resetToken = id;
     this.rformPassword = this.formBuilder.group({
 
       newPassword: new FormControl('', [Validators.required]),
       confirmPassword: new FormControl('', [Validators.required]),
-      resetToken: new FormControl('', [Validators.required]),
+      resetToken: new FormControl(this.resetToken, [Validators.required]),
     })
   }
   changePassword(){
     if(this.rformPassword.valid){
-      this.accountService.resetPassword(this.rformPassword.value).subscribe((data: any) => {
+      this.accountService.resetPassword(this.rformPassword.value).subscribe(() => {
 
         alert("Login Successful")
 
 
         }, (error) => {
           alert(error.error.message);
-
+// console.log(error)
         });
     }
   }

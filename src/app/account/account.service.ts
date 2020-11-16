@@ -21,7 +21,8 @@ createuserAccount(newUser) {
       username: newUser.username,
       email: newUser.email,
       password: newUser.password,
-      conatct:newUser.contact
+      conatct:newUser.contact,
+      accountBonus: 1
 
     },
     this.httpHeaders

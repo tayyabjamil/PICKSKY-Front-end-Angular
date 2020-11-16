@@ -14,7 +14,7 @@ export class AddProductComponent implements OnInit {
   detail:String;
   catagory:String;
   image;
-  productCount : Number;
+  productOrders = '1';
   constructor(public adminService:AdminService,public formBuilder:FormBuilder) { }
 
   ngOnInit() {
@@ -24,7 +24,7 @@ export class AddProductComponent implements OnInit {
       price: new FormControl('', [Validators.required]),
       detail: new FormControl('', [Validators.required]),
       productImage: new FormControl(''),
-      productCount: new FormControl(1),
+      // productOrders: new FormControl(1),?
 
     })
   }
@@ -41,7 +41,7 @@ export class AddProductComponent implements OnInit {
       fd.append('catagory', this.productForm.value.catagory);
       fd.append('price', this.productForm.value.price);
       fd.append('detail', this.productForm.value.detail);
-      fd.append('productCount', this.productForm.value.productCount);
+      fd.append('productOrders', this.productOrders);
 
       if (this.productForm.value.productImage) {
         fd.append('productImage', this.productForm.value.productImage);

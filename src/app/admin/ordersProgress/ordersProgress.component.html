@@ -7,6 +7,10 @@
    <p style="font-size: large;">Order No #</p>
     </div>
     <div class="col-lg-2">
+      <p style="font-size: large;">Order Date</p>
+
+     </div>
+    <div class="col-lg-2">
    <p style="font-size: large;">Order Owner</p>
       </div>
       <div class="col-lg-2">
@@ -26,10 +30,10 @@
 
     <p  >1#</p>
   </div>
-  <!-- <div class="col-lg-2">
+  <div class="col-lg-2">
 
-    <p  >item?.name</p>
-  </div> -->
+    <p  >{{item?.date}}</p>
+  </div>
   <div class="col-lg-2">
 
     <p  >{{item?.username}}</p>
@@ -41,11 +45,11 @@
 
   <div class="col-lg-2">
 
-    <p  >start phase</p>
+    <p  >{{item.phase}}</p>
   </div>
   <div class="col-lg-1">
 
-    <p     class="  btn  green-btn"  style="color: white;">Send Order</p>
+    <p     class="  btn  green-btn"  style="color: white;" (click)="nextPhase(item)">Send Order</p>
   </div>
 
 
