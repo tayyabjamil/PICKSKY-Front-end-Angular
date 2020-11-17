@@ -6,72 +6,72 @@
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar [routerLink]="['/home']"
-    style="padding-left: 5%;background-color: rgb(216, 215, 215);color: grey;"  organic>Catagories</mat-toolbar>
+    style="padding-left: 5%;background-color: rgb(216, 215, 215);color: grey;"  traditionalpowders>Catagories</mat-toolbar>
     <mat-nav-list class="fundpress-menu"  style="background-color: white;">
       <ul class="nav-menu">
-        <li class="dropdown" routerLink="/veg">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#"
-            >Vegetables <span class="caret"></span
-          ></a>
+        <li class="dropdown" routerLink="/">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <p>{{getHeaderNames(1)}}</p>
+          </a>
+        </li>
+      
+        <li class="dropdown" routerLink="/pickles">
+          <a class="dropdown-toggle" data-toggle="dropown" href="#">{{getHeaderNames(2)}} <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li class="navitem"><a href="#">Herbs</a></li>
-            <li><a href="#">Fresh Vegetables</a></li>
-            <li><a href="#">Packed Vegetables</a></li>
+            <li><a href="#">{{getPicklesConstants(1)}}</a></li>
+            <li><a href="#">{{getPicklesConstants(2)}}</a></li>
           </ul>
         </li>
-        <li class="dropdown" routerLink="/organic">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#"
-            >Organic <span class="caret"></span
-          ></a>
+      
+        <li class="dropdown" routerLink="/traditionalpowders">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(3)}}<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Spice</a></li>
-            <li><a href="#">Honey</a></li>
-            <li><a href="#">Oil</a></li>
+            <li><a href="#">{{getTraditionalPodulu(1)}}</a></li>
+            <li><a href="#">{{getTraditionalPodulu(2)}}</a></li>
           </ul>
         </li>
-        <li class="dropdown" routerLink="/snacks">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#"
-            >Snacks & Beverages <span class="caret"></span
-          ></a>
+      
+        <li class="dropdown" routerLink="/sweets">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(4)}}<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Juice</a></li>
-            <li><a href="#">Coffe</a></li>
-            <li><a href="#">Tea</a></li>
-            <li><a href="#">Fizzy Drinks</a></li>
-            <li><a href="#">Crisp</a></li>
-            <li><a href="#">Chocolates</a></li>
+            <li><a href="#">{{getSweetsandHotConstants(1)}}</a></li>
+            <li><a href="#">{{getSweetsandHotConstants(2)}}</a></li>
           </ul>
         </li>
-        <li class="dropdown" routerLink="/fish">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#"
-            >Fish & Meat <span class="caret"></span
-          ></a>
+        <li class="dropdown" routerLink="/specialoffers">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(5)}} <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Packed</a></li>
-            <li><a href="#">Fish Counter</a></li>
-            <li><a href="#">Poultry Counter</a></li>
-            <li><a href="#">Meat Counter</a></li>
+            <li><a href="#">{{getSpecialConstants(1)}}</a></li>
+            <li><a href="#">{{getSpecialConstants(2)}}</a></li>
+            <li><a href="#">{{getSpecialConstants(3)}}</a></li>
+            <li><a href="#">{{getSpecialConstants(4)}}</a></li>
           </ul>
         </li>
-        <li class="dropdown" routerLink="/dairy">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#"
-            >Dairy <span class="caret"></span
-          ></a>
+        <li class="dropdown" routerLink="/others">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(6)}} <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Yougurt</a></li>
-            <li><a href="#">Milk</a></li>
-            <li><a href="#">Cheese</a></li>
-            <li><a href="#">Eggs</a></li>
+            <li><a href="#">{{getOthersConstants(1)}}</a></li>
+            <li><a href="#">{{getOthersConstants(1)}}</a></li>
+            <li><a href="#">{{getOthersConstants(1)}}</a></li>
           </ul>
         </li>
-        <li class="dropdown" routerLink="/bakery">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#"
-            >Bakery & Pastry <span class="caret"></span
-          ></a>
+        <li class="dropdown" routerLink="/aboutus">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(7)}} <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Bunny Rolls</a></li>
-            <li><a href="#">Pies</a></li>
-            <li><a href="#">Cakes</a></li>
+            <li><a href="#">{{getAboutusConstants(1)}}</a></li>
+            <li><a href="#">{{getAboutusConstants(2)}}</a></li>
+            <li><a href="#">{{getAboutusConstants(3)}}</a></li>
+            <li><a href="#">{{getAboutusConstants(4)}}</a></li>
+            <li><a href="#">{{getAboutusConstants(5)}}</a></li>
+          </ul>
+        </li>
+        <li class="dropdown" routerLink="/support">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(8)}} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">{{getSupportConstants(1)}}</a></li>
+            <li><a href="#">{{getSupportConstants(2)}}</a></li>
+            <li><a href="#">{{getSupportConstants(3)}}</a></li>
+            <li><a href="#">{{getSupportConstants(4)}}</a></li>
           </ul>
         </li>
       </ul>
@@ -92,7 +92,7 @@
         <mat-icon aria-label="Side nav toggle icon" style="color: black;">menu</mat-icon>
       </button>
         <p style="color: black;margin-top: 1%;padding-right: 20%;font-size: large;font-weight:500;"
-        routerLink="">PICKSY</p>
+        routerLink="">SHRIVASA FOODS</p>
 
         <p style="padding-left: 30%;font-weight: 300px;color: grey;">
        <i class="fa fa-search" ></i>

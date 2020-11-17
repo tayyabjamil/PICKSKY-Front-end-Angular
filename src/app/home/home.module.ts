@@ -7,12 +7,12 @@ import { HomeRoutingModule } from './home-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
-import { VegetablesComponent } from './vegetables/vegetables.component';
-import { OrganicComponent } from './organic/organic.component';
+import { PicklesComponent } from './pickles/pickles.component';
+import { TraditionalPowdersComponent } from './traditionalpowders/traditionalpowders.component';
 import { SnacksandbeveragesComponent } from './snacksandbeverages/snacksandbeverages.component';
-import { DairyComponent } from './dairy/dairy.component';
-import { BackeryandpasteryComponent } from './backeryandpastery/backeryandpastery.component';
-import { FishandmeatComponent } from './fishandmeat/fishandmeat.component';
+import { SpecialOffersComponent } from './specialoffers/specialoffers.component';
+import { OthersComponent } from './others/others.component';
+import { SweetandHotComponent } from './sweetandhot/sweetandhot.component';
 import { ProductDetailComponent } from './productDetail/productDetail.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -31,7 +31,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
 @NgModule({
   imports: [
     CommonModule,
-FormsModule,
+    FormsModule,
     HomeRoutingModule,
     NgImageSliderModule,
     HttpClientModule,
@@ -48,27 +48,27 @@ FormsModule,
   ],
   declarations: [
     HomeComponent,
-    VegetablesComponent,
-    OrganicComponent,
+    PicklesComponent,
+    TraditionalPowdersComponent,
     NavComponent,
     SnacksandbeveragesComponent,
-    DairyComponent,
-    BackeryandpasteryComponent,
-    FishandmeatComponent,
+    SpecialOffersComponent,
+    OthersComponent,
+    SweetandHotComponent,
     ProductDetailComponent,
     MainPageComponent,
     CartComponent,
     MyordersComponent
   ],
-  exports:[
+  exports: [
     HomeComponent,
-    VegetablesComponent,
-    OrganicComponent,
+    PicklesComponent,
+    TraditionalPowdersComponent,
     NavComponent,
     SnacksandbeveragesComponent,
-    DairyComponent,
-    BackeryandpasteryComponent,
-    FishandmeatComponent,
+    SpecialOffersComponent,
+    OthersComponent,
+    SweetandHotComponent,
     ProductDetailComponent,
     MainPageComponent,
     CartComponent,

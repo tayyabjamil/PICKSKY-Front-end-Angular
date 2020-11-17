@@ -1,89 +1,73 @@
-
-
 <div style="margin-top: 5%;display: flex;flex-direction: row;flex: 1;justify-content: center;">
   <div style="margin-bottom: 5%;">
-  <p style="font-size: xx-large;font-weight: 500;text-align: center;">Add Product</p><br>
-  <form [formGroup]="productForm">
-    <div style="padding-bottom: 2%" class="">
-      <p style="padding-bottom: 1%">name</p>
-      <ns-textField
-        name="name"
-        class="textfieldBorderColor font13"
-        [rformgroup]="productForm"
-        rformControlName="name"
-      >
-      </ns-textField>
-    </div>
+    <p style="font-size: xx-large;font-weight: 500;text-align: center;">Add Product</p><br>
+    <form [formGroup]="productForm">
+      <div style="padding-bottom: 2%" class="">
+        <p style="padding-bottom: 1%">name</p>
+        <ns-textField name="name" class="textfieldBorderColor font13" [rformgroup]="productForm"
+          rformControlName="name">
+        </ns-textField>
+      </div>
 
-    <div style="padding-bottom: 2%" class="">
-      <p style="padding-bottom: 1%">price</p>
-      <ns-textField
-        name="price" type="number"
-        class="textfieldBorderColor font13"
-        [rformgroup]="productForm"
-        rformControlName="price"
-      >
-      </ns-textField>
-    </div>
-    <div style="padding-bottom: 2%" class="">
-      <p style="padding-bottom: 1%">catagory</p>
-      <ns-textField
-        name="catagory"
-        class="textfieldBorderColor font13"
-        [rformgroup]="productForm"
-        rformControlName="catagory"
-      >
-      </ns-textField>
-    </div>
-    <div style="padding-bottom: 2%" class="">
-      <p style="padding-bottom: 1%">detail</p>
-      <ns-textField
-        name="detail"
-        class="textfieldBorderColor font13"
-        [rformgroup]="productForm"
-        rformControlName="detail"
-      >
-      </ns-textField>
-    </div>
+      <div style="padding-bottom: 2%" class="">
+        <p style="padding-bottom: 1%">price</p>
+        <ns-textField name="price" type="number" class="textfieldBorderColor font13" [rformgroup]="productForm"
+          rformControlName="price">
+        </ns-textField>
+      </div>
+      <div style="padding-bottom: 2%" class="">
+        <p style="padding-bottom: 1%">catagory</p>
+        <ns-textField name="catagory" class="textfieldBorderColor font13" [rformgroup]="productForm"
+          rformControlName="catagory">
+        </ns-textField>
+      </div>
+      <div style="padding-bottom: 2%" class="">
+        <p style="padding-bottom: 1%">detail</p>
+        <ns-textField name="detail" class="textfieldBorderColor font13" [rformgroup]="productForm"
+          rformControlName="detail">
+        </ns-textField>
+      </div>
 
 
-    <div class="form-group">
+      <div class="form-group">
 
-      <input style="float: left;width: 30%;" type="file" name="imagePath" (change)="selectProductImage($event)"
-        class="form-control" /><br>
+        <input style="float: left;width: 30%;" type="file" name="imagePath" (change)="selectProductImage($event)"
+          class="form-control" /><br>
 
-    </div>
+      </div>
 
     </form>
-<div style="text-align: center;">
+    <div style="text-align: center;">
 
 
-  <button class="btn" (click)="addProduct()" style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(63, 61, 61); color: whitesmoke">
-  <span style="font-weight: bold;font-size: small;">ADD PRODCUT</span></button>
-</div>
+      <button class="btn" (click)="addProduct()"
+        style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(63, 61, 61); color: whitesmoke">
+        <span style="font-weight: bold;font-size: small;">ADD PRODCUT</span></button>
+    </div>
 
 
-</div>
+  </div>
 </div>
 <div style="background-color: rgb(231, 228, 228);">
-<div style="padding-left:5% ;padding-right: 5%;padding-top: 3%;padding-bottom: 3%;">
-<div class="row">
-  <div class="col-lg-6">
-    <p>Quick Links</p>
-    <p>Search</p>
-  </div>
-  <div class="col-lg-6">
-    NewsLetter
-    <input style="width: 40vw;">
+  <div style="padding-left:5% ;padding-right: 5%;padding-top: 3%;padding-bottom: 3%;">
+    <div class="row">
+      <div class="col-lg-6">
+        <p>Quick Links</p>
+        <p>Search</p>
+      </div>
+      <div class="col-lg-6">
+        NewsLetter
+        <input style="width: 40vw;">
 
+      </div>
+    </div>
   </div>
-</div>
-</div>
 
-<hr class="hr" style="background-color: black;">
-<div style="padding:5%" (click)="addProduct()">
-  <button class="btn" style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(63, 61, 61); color: whitesmoke">
-    <span style="font-weight: bold;font-size: small;">SIGN IN</span></button>
-<p style="text-align: right;">© 2020, picksystore Powered by Shopify</p>
-</div>
+  <hr class="hr" style="background-color: black;">
+  <div style="padding:5%" (click)="addProduct()">
+    <button class="btn"
+      style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(63, 61, 61); color: whitesmoke">
+      <span style="font-weight: bold;font-size: small;">SIGN IN</span></button>
+    <p style="text-align: right;">© 2020, shrivasa-foodsstore Powered by Shopify</p>
+  </div>
 </div>

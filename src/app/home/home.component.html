@@ -15,7 +15,7 @@
         style="font-size: 2vw; font-weight: bold; margin-top: 2%"
         routerLink=""
       >
-        PICKSY
+        SHRIVASAFOODS
       </p>
       <div
         style="
@@ -79,182 +79,171 @@
 
     <nav class="fundpress-menu" style="width: 200vw; padding-bottom: 3%">
       <ul class="nav-menu">
-        <li class="dropdown" routerLink="/veg">
-          <a class="dropdown-toggle" data-toggle="dropdown"
-            >Vegetables <span class="caret"></span
-          ></a>
+        <li class="dropdown" routerLink="/">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <p>{{getHeaderNames(1)}}</p>
+          </a>
+        </li>
+    
+        <li class="dropdown" routerLink="/pickles">
+          <a class="dropdown-toggle" data-toggle="dropown" href="#">{{getHeaderNames(2)}} <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li class="navitem"><a  routerLink="/veg">Herbs</a></li>
-            <li><a  routerLink="/veg">Fresh Vegetables</a></li>
-            <li><a  routerLink="/veg">Packed Vegetables</a></li>
+            <li><a href="#">{{getPicklesConstants(1)}}</a></li>
+            <li><a href="#">{{getPicklesConstants(2)}}</a></li>
           </ul>
         </li>
-        <li class="dropdown" routerLink="/organic">
-          <a class="dropdown-toggle" data-toggle="dropdown"
-            >Organic <span class="caret"></span
-          ></a>
+    
+        <li class="dropdown" routerLink="/traditionalpowders">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(3)}}<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a   routerLink="/organic">Spice</a></li>
-            <li><a   routerLink="/organic">Honey</a></li>
-            <li><a   routerLink="/organic">Oil</a></li>
+            <li><a href="#">{{getTraditionalPodulu(1)}}</a></li>
+            <li><a href="#">{{getTraditionalPodulu(2)}}</a></li>
           </ul>
         </li>
-        <li class="dropdown" routerLink="/snacks">
-          <a class="dropdown-toggle" data-toggle="dropdown"
-            >Snacks & Beverages <span class="caret"></span
-          ></a>
+    
+        <li class="dropdown" routerLink="/sweets">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(4)}}<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a >Juice</a></li>
-            <li><a >Coffe</a></li>
-            <li><a >Tea</a></li>
-            <li><a >Fizzy Drinks</a></li>
-            <li><a >Crisp</a></li>
-            <li><a >Chocolates</a></li>
+            <li><a href="#">{{getSweetsandHotConstants(1)}}</a></li>
+            <li><a href="#">{{getSweetsandHotConstants(2)}}</a></li>
           </ul>
         </li>
-        <li class="dropdown" routerLink="/fish">
-          <a class="dropdown-toggle" data-toggle="dropdown"
-            >Fish & Meat <span class="caret"></span
-          ></a>
+        <li class="dropdown" routerLink="/specialoffers">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(5)}} <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a >Packed</a></li>
-            <li><a >Fish Counter</a></li>
-            <li><a >Poultry Counter</a></li>
-            <li><a >Meat Counter</a></li>
+            <li><a href="#">{{getSpecialConstants(1)}}</a></li>
+            <li><a href="#">{{getSpecialConstants(2)}}</a></li>
+            <li><a href="#">{{getSpecialConstants(3)}}</a></li>
+            <li><a href="#">{{getSpecialConstants(4)}}</a></li>
           </ul>
         </li>
-        <li class="dropdown" routerLink="/dairy">
-          <a class="dropdown-toggle" data-toggle="dropdown"
-            >Dairy <span class="caret"></span
-          ></a>
+        <li class="dropdown" routerLink="/others">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(6)}} <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a >Yougurt</a></li>
-            <li><a >Milk</a></li>
-            <li><a >Cheese</a></li>
-            <li><a >Eggs</a></li>
+            <li><a href="#">{{getOthersConstants(1)}}</a></li>
+            <li><a href="#">{{getOthersConstants(1)}}</a></li>
+            <li><a href="#">{{getOthersConstants(1)}}</a></li>
           </ul>
         </li>
-        <li class="dropdown" routerLink="/bakery">
-          <a class="dropdown-toggle" data-toggle="dropdown"
-            >Bakery & Pastry <span class="caret"></span
-          ></a>
+        <li class="dropdown" routerLink="/aboutus">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(7)}} <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a >Bunny Rolls</a></li>
-            <li><a >Pies</a></li>
-            <li><a >Cakes</a></li>
+            <li><a href="#">{{getAboutusConstants(1)}}</a></li>
+            <li><a href="#">{{getAboutusConstants(2)}}</a></li>
+            <li><a href="#">{{getAboutusConstants(3)}}</a></li>
+            <li><a href="#">{{getAboutusConstants(4)}}</a></li>
+            <li><a href="#">{{getAboutusConstants(5)}}</a></li>
+          </ul>
+        </li>
+        <li class="dropdown" routerLink="/support">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(8)}} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">{{getSupportConstants(1)}}</a></li>
+            <li><a href="#">{{getSupportConstants(2)}}</a></li>
+            <li><a href="#">{{getSupportConstants(3)}}</a></li>
+            <li><a href="#">{{getSupportConstants(4)}}</a></li>
           </ul>
         </li>
       </ul>
     </nav>
-
+    
     <router-outlet> </router-outlet>
-
-    <div *ngIf="getCartProducts!=0"  routerLink='/cart' style="
-    box-sizing: border-box;
-    min-width: 0px;
-    max-width: 960px;
-    margin: 0px auto;
-    pointer-events: none;
-    width: calc(100% - 40px);
-">
-      <button
-        style="
-          bottom: 87px;
-          opacity: 1;
-          transform: translateY(0px);
-          border: 0px;
-          outline: 0px;
-          max-width: 960px;
-          height: 50px;
-          color: white;
-          padding: 0px 30px;
-          position: fixed;
-          pointer-events: all;
-          width: calc(100% - 40px);
-          border-radius: 6px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          background-color: rgb(41, 41, 41);
-          box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 12px;
-          cursor: pointer;
-          left: auto;
-          right: auto;
-          z-index: 999;
-        "
-      >
+    
+    <div *ngIf="getCartProducts!=0" routerLink='/cart' style="
+        box-sizing: border-box;
+        min-width: 0px;
+        max-width: 960px;
+        margin: 0px auto;
+        pointer-events: none;
+        width: calc(100% - 40px);
+    ">
+      <button style="
+              bottom: 87px;
+              opacity: 1;
+              transform: translateY(0px);
+              border: 0px;
+              outline: 0px;
+              max-width: 960px;
+              height: 50px;
+              color: white;
+              padding: 0px 30px;
+              position: fixed;
+              pointer-events: all;
+              width: calc(100% - 40px);
+              border-radius: 6px;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              background-color: rgb(41, 41, 41);
+              box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 12px;
+              cursor: pointer;
+              left: auto;
+              right: auto;
+              z-index: 999;
+            ">
         <div style="color: white;">
           <svg width="16" height="16" viewBox="0 0 16 16">
-            <path
-              id="shopping-bag"
+            <path id="shopping-bag"
               d="M4.4,3.6H15.6a.8.8,0,0,1,.8.8V15.6a.8.8,0,0,1-.8.8H4.4a.8.8,0,0,1-.8-.8V4.4A.8.8,0,0,1,4.4,3.6ZM2,4.4A2.4,2.4,0,0,1,4.4,2H15.6A2.4,2.4,0,0,1,18,4.4V15.6A2.4,2.4,0,0,1,15.6,18H4.4A2.4,2.4,0,0,1,2,15.6ZM10,10C7.791,10,6,7.851,6,5.2H7.6c0,2.053,1.335,3.2,2.4,3.2s2.4-1.147,2.4-3.2H14C14,7.851,12.209,10,10,10Z"
-              transform="translate(-2 -2)"
-              fill="#ffffff"
-              fill-rule="evenodd"
-            ></path>
+              transform="translate(-2 -2)" fill="#ffffff" fill-rule="evenodd"></path>
           </svg>
           Added {{getCartProducts.length}} Items
         </div>
         <div style="color: white;">${{getTotal}}</div>
       </button>
     </div>
-
-  </div>
-</header>
-
-<div *ngIf="deviceXs || deviceSm">
-  <div *ngIf="getCartProducts!=0"  routerLink='/cart' style="
-  box-sizing: border-box;
-  min-width: 0px;
-  max-width: 960px;
-  margin: 0px auto;
-  pointer-events: none;
-  width: 10vw;
-  width: calc(100% - 40px);
-">
-    <button
-      style="
-        bottom: 87px;
-        opacity: 1;
-        transform: translateY(0px);
-        border: 0px;
-        outline: 0px;
-        max-width: 960px;
-        height: 50px;
-        color: white;
-        padding: 0px 30px;
-        position: fixed;
-        pointer-events: all;
-        width: calc(100% - 40px);
-        border-radius: 6px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background-color: rgb(41, 41, 41);
-        box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 12px;
-        cursor: pointer;
-        left: auto;
-        right: auto;
-        z-index: 999;
-      "
-    >
-      <div style="color: white;">
-        <svg width="16" height="16" viewBox="0 0 16 16">
-          <path
-            id="shopping-bag"
-            d="M4.4,3.6H15.6a.8.8,0,0,1,.8.8V15.6a.8.8,0,0,1-.8.8H4.4a.8.8,0,0,1-.8-.8V4.4A.8.8,0,0,1,4.4,3.6ZM2,4.4A2.4,2.4,0,0,1,4.4,2H15.6A2.4,2.4,0,0,1,18,4.4V15.6A2.4,2.4,0,0,1,15.6,18H4.4A2.4,2.4,0,0,1,2,15.6ZM10,10C7.791,10,6,7.851,6,5.2H7.6c0,2.053,1.335,3.2,2.4,3.2s2.4-1.147,2.4-3.2H14C14,7.851,12.209,10,10,10Z"
-            transform="translate(-2 -2)"
-            fill="#ffffff"
-            fill-rule="evenodd"
-          ></path>
-        </svg>
-        Added {{getCartProducts.length}} Items
+    
+    </div>
+    </header>
+    
+    <div *ngIf="deviceXs || deviceSm">
+      <div *ngIf="getCartProducts!=0" routerLink='/cart' style="
+      box-sizing: border-box;
+      min-width: 0px;
+      max-width: 960px;
+      margin: 0px auto;
+      pointer-events: none;
+      width: 10vw;
+      width: calc(100% - 40px);
+    ">
+        <button style="
+            bottom: 87px;
+            opacity: 1;
+            transform: translateY(0px);
+            border: 0px;
+            outline: 0px;
+            max-width: 960px;
+            height: 50px;
+            color: white;
+            padding: 0px 30px;
+            position: fixed;
+            pointer-events: all;
+            width: calc(100% - 40px);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgb(41, 41, 41);
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 12px;
+            cursor: pointer;
+            left: auto;
+            right: auto;
+            z-index: 999;
+          ">
+          <div style="color: white;">
+            <svg width="16" height="16" viewBox="0 0 16 16">
+              <path id="shopping-bag"
+                d="M4.4,3.6H15.6a.8.8,0,0,1,.8.8V15.6a.8.8,0,0,1-.8.8H4.4a.8.8,0,0,1-.8-.8V4.4A.8.8,0,0,1,4.4,3.6ZM2,4.4A2.4,2.4,0,0,1,4.4,2H15.6A2.4,2.4,0,0,1,18,4.4V15.6A2.4,2.4,0,0,1,15.6,18H4.4A2.4,2.4,0,0,1,2,15.6ZM10,10C7.791,10,6,7.851,6,5.2H7.6c0,2.053,1.335,3.2,2.4,3.2s2.4-1.147,2.4-3.2H14C14,7.851,12.209,10,10,10Z"
+                transform="translate(-2 -2)" fill="#ffffff" fill-rule="evenodd"></path>
+            </svg>
+            Added {{getCartProducts.length}} Items
+          </div>
+          <div style="color: white;">${{getTotal}}</div>
+        </button>
       </div>
-      <div style="color: white;">${{getTotal}}</div>
-    </button>
-  </div>
-
-  <app-nav>
-    <router-outlet></router-outlet>
-  </app-nav>
-</div>
+    
+      <app-nav>
+        <router-outlet></router-outlet>
+      </app-nav>
+    </div>
+    
