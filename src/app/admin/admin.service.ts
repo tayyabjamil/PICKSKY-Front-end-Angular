@@ -7,11 +7,12 @@ import { Injectable } from '@angular/core';
 export class AdminService {
   httpHeaders = {
     headers: new HttpHeaders({
-      'Content-Type': 'multipart/form-data; boundary=<calculated when request is sent>',
-      accept: '*/*',
-      Authorization: `Bearer auth-token`
+      'Content-Type': 'Application/Json',
+      accept: ' application/json'
     })
   };
+
+  phase = "delivery phase"
 constructor(private http: HttpClient) { }
 
   addProducts(fd) {
@@ -19,6 +20,23 @@ constructor(private http: HttpClient) { }
       'http://localhost:8000/api/products/', fd
     );
   }
+  shippingPhase(shippingPhase){
+    return this.http.post(
+      'http://localhost:8000/api/orders/shipping',
+    {
+      phase: this.phase = "shipping phase",
+      ownerEmail: shippingPhase.ownerEmail,
+      orderId:shippingPhase.orderId
+    },
+    this.httpHeaders
+      );
+   }
+   getAllOrders() {
+    return this.http.get('http://localhost:8000/api/orders/' , this.httpHeaders);
+  }
+  getPhase(){
 
+    return this.phase
+  }
 }
 

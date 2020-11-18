@@ -32,15 +32,15 @@ get getTotal() {
 }
    order(){
     this.authService.getemail()
-     const orderData = {
+    const orderData = {
       cartItems : this.cartItems,
       total : this.total,
       refrence: this.refrence,
       phase:"delievry phase",
       ownerEmail: this.authService.getemail()
      }
-     this.cartService.order(orderData).subscribe((data: any) => {
-      alert("Product Added")
+    this.cartService.order(orderData).subscribe((data: any) => {
+      alert("Order Sent")
 
    })
 }
@@ -52,7 +52,7 @@ getImage(imageId) {
 
    this.detection = (10 / 100) * this.total
 
-  console.log(this.totalafterBonus)
-  return this.totalafterBonus
+   console.log(this.totalafterBonus)
+   return this.totalafterBonus
 }
 }
