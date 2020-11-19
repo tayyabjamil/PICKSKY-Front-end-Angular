@@ -36,6 +36,7 @@ AdminModule,
     BrowserAnimationsModule,
     MatCarouselModule.forRoot(),
 
+
   ],
   providers: [AuthService],
   bootstrap: [AppComponent,TextFieldComponent]

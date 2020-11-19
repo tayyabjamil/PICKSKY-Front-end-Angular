@@ -10,34 +10,32 @@ color: green;
 font-weight: lighter;
 }
 .fundpress-menu .nav-menu li a {
-  padding: 20px 10px;
+  padding: 13px 10px;
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 400;
-  position: relative;
+  background-color: white;
+
 }
 
 .fundpress-menu .nav-menu li a:before {
-  position: absolute;
-  content: "";
-  left: 0;
-  bottom: 0px;
 
-  height: 2px;
-  width: 0%;
+  /* top: 0px; */
+
   background-color: green;
+
+
 }
 .nav-menu>li>a {
-  height: 50px;
+  height: 100%;
   /* padding: 26px 15px; */
-  display: inline-block;
-  position: relative;
-  text-decoration: none;
-  font-size: 14px;
-  -webkit-transition: color .3s;
-  transition: color .3s;
-  width: 200%;
+  /* -webkit-transition: color 1.3s; */
+  /* transition: color 1.3s; */
+  width: 100%;
+
+
 }
+
 p {
   color: rgb(58, 57, 57);
 }

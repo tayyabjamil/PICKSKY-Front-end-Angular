@@ -6,7 +6,7 @@ import { MainPageComponent } from './mainPage/mainPage.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home.component';
+import { HomeComponent } from './home/home.component';
 import { VegetablesComponent } from './vegetables/vegetables.component';
 import { OrganicComponent } from './organic/organic.component';
 import { SnacksandbeveragesComponent } from './snacksandbeverages/snacksandbeverages.component';
@@ -18,7 +18,7 @@ import { ProductDetailComponent } from './productDetail/productDetail.component'
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MatCarouselModule } from '@ngmodule/material-carousel';
-import { NgImageSliderModule } from 'ng-image-slider';
+// import { NgImageSliderModule } from 'ng-image-slider';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -33,7 +33,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
     CommonModule,
 FormsModule,
     HomeRoutingModule,
-    NgImageSliderModule,
+    // NgImageSliderModule,
     HttpClientModule,
     FlexLayoutModule,
     MatCarouselModule.forRoot(),
@@ -45,9 +45,10 @@ FormsModule,
     MatListModule,
     NgxPayPalModule,
 
+
   ],
   declarations: [
-    HomeComponent,
+HomeComponent,
     VegetablesComponent,
     OrganicComponent,
     NavComponent,

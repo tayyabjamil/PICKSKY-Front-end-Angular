@@ -1,5 +1,5 @@
 <header style="padding-bottom: 5%" *ngIf="deviceLg || deviceMd">
-  <div>
+   <div>
     <div
       style="
         margin-top: 1%;
@@ -80,9 +80,7 @@
     <nav class="fundpress-menu" style="width: 200vw; padding-bottom: 3%">
       <ul class="nav-menu">
         <li class="dropdown" routerLink="/veg">
-          <a class="dropdown-toggle" data-toggle="dropdown"
-            >Vegetables <span class="caret"></span
-          ></a>
+          <a class="dropdown-toggle" data-toggle="dropdown">Vegetables</a>
           <ul class="dropdown-menu">
             <li class="navitem"><a  routerLink="/veg">Herbs</a></li>
             <li><a  routerLink="/veg">Fresh Vegetables</a></li>
@@ -91,8 +89,7 @@
         </li>
         <li class="dropdown" routerLink="/organic">
           <a class="dropdown-toggle" data-toggle="dropdown"
-            >Organic <span class="caret"></span
-          ></a>
+            >Organic</a>
           <ul class="dropdown-menu">
             <li><a   routerLink="/organic">Spice</a></li>
             <li><a   routerLink="/organic">Honey</a></li>
@@ -101,8 +98,7 @@
         </li>
         <li class="dropdown" routerLink="/snacks">
           <a class="dropdown-toggle" data-toggle="dropdown"
-            >Snacks & Beverages <span class="caret"></span
-          ></a>
+            >Snacks & Beverages</a>
           <ul class="dropdown-menu">
             <li><a >Juice</a></li>
             <li><a >Coffe</a></li>
@@ -114,8 +110,7 @@
         </li>
         <li class="dropdown" routerLink="/fish">
           <a class="dropdown-toggle" data-toggle="dropdown"
-            >Fish & Meat <span class="caret"></span
-          ></a>
+            >Fish & Meat</a>
           <ul class="dropdown-menu">
             <li><a >Packed</a></li>
             <li><a >Fish Counter</a></li>
@@ -125,8 +120,7 @@
         </li>
         <li class="dropdown" routerLink="/dairy">
           <a class="dropdown-toggle" data-toggle="dropdown"
-            >Dairy <span class="caret"></span
-          ></a>
+            >Dairy</a>
           <ul class="dropdown-menu">
             <li><a >Yougurt</a></li>
             <li><a >Milk</a></li>
@@ -136,8 +130,7 @@
         </li>
         <li class="dropdown" routerLink="/bakery">
           <a class="dropdown-toggle" data-toggle="dropdown"
-            >Bakery & Pastry <span class="caret"></span
-          ></a>
+            >Bakery & Pastry</a>
           <ul class="dropdown-menu">
             <li><a >Bunny Rolls</a></li>
             <li><a >Pies</a></li>
@@ -146,7 +139,9 @@
         </li>
       </ul>
     </nav>
+<div style="margin: 2%;">
 
+</div>
     <router-outlet> </router-outlet>
 
     <div *ngIf="getCartProducts!=0"  routerLink='/cart' style="
@@ -199,7 +194,7 @@
       </button>
     </div>
 
-  </div>
+  </div> -->
 </header>
 
 <div *ngIf="deviceXs || deviceSm">

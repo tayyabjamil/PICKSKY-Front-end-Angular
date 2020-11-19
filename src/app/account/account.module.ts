@@ -1,3 +1,4 @@
+import { EmailVerifyComponent } from './../account/emailVerify/emailVerify.component';
 import { ResetPasswordComponent } from './resetPassword/resetPassword.component';
 import { AccountService } from './account.service';
 import { TextFieldComponent } from './textField/textField.component';
@@ -23,7 +24,8 @@ import { ProfileComponent } from './profile/profile.component';
     SignUpComponent,
     TextFieldComponent,
     ResetPasswordComponent,
-    ProfileComponent
+    ProfileComponent,
+    EmailVerifyComponent
   ],
   exports: [
     AccountComponent,
@@ -31,7 +33,8 @@ import { ProfileComponent } from './profile/profile.component';
     SignUpComponent,
     TextFieldComponent,
     ResetPasswordComponent,
-    ProfileComponent
+    ProfileComponent,
+    EmailVerifyComponent
   ], providers: [
     AccountService
   ],

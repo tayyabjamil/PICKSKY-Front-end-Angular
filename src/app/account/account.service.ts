@@ -61,4 +61,15 @@ resetPassword(newPass){
     this.httpHeaders
   );
 }
+accountVerify(data){
+  return this.http.post(
+    'http://localhost:8000/api/users/accountVerify/',
+    {
+      token: data.accountToken,
+      isVerify: data.isVerify,
+
+    },
+    this.httpHeaders
+  );
+}
 }
