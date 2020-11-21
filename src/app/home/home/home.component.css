@@ -98,3 +98,38 @@
   left: 10px;
   top: 10px;
 }
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+.nav-menu>li.active>a, .nav-menu>li.focus>a, .nav-menu>li:hover>a {
+color: green;
+
+}
+.fundpress-menu .nav-menu li a {
+  padding: 18px 10px;
+
+}
+.fundpress-menu .nav-menu li a:before {
+  background-color: green;
+
+}
+.nav-menu>li>a {
+  height: 50%;
+  width: 100%;
+  /*  */
+
+}
+.fundpress-menu .nav-menu {
+  padding-left: 2%;
+
+}
+
+.fundpress-menu .nav-menu li a{
+      font-weight: 100;
+
+}
+.mat-body, .mat-body-1, .mat-typography {
+  /* font: 10 7px/10px Roboto, ; */
+  /* letter-spacing: normal; */
+  font-weight: 100;
+}

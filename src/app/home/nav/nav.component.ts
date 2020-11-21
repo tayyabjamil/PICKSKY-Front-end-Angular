@@ -12,7 +12,7 @@ export class NavComponent implements OnInit {
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
-
+  isShow = false;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -21,5 +21,7 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  toggleDisplay() {
+    this.isShow = !this.isShow;
+  }
 }

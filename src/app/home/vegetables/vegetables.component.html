@@ -11,16 +11,28 @@
   <div *ngIf="deviceLg || deviceMd" class="deviceLg">
 
    <div *ngFor="let item of vegProducts" (click)="addProduct(item)" style="padding:2%;width: 20%;" >
-     <div style="text-align: right;">
-     <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
-   </div>
-   <div  >
-     <img class="img-responsive"  src={{item.image}}>
-   </div>
+
+   <div >
+    <img [src]='getImage(item.productImage)'>
+  </div>
      <p style="font-weight: bold;">{{item.price}}</p>
      <p  ></p>
    </div>
+   <div style="text-align: center;">
+    <button
+    (click)="addProduct(item)"
+      class="btn"
+      style="
+        padding-left: 2.5%;
+        padding-right: 2.5%;
+        background-color: rgb(63, 61, 61);
+        color: whitesmoke;
+      "
+    >
 
+      <span style="font-weight: bold; font-size: small">Add to Cart</span>
+    </button>
+  </div>
  </div>
  <div *ngIf="deviceXs || deviceSm" >
    <div class="row">
@@ -31,11 +43,26 @@
          <div style="text-align: right;">
          <button class="btn" ><i class="glyphicon glyphicon-shopping-cart"></i></button>
        </div>
-       <div  >
-         <img class="img-responsive"  src={{item.image}}>
-       </div>
+
+   <div >
+    <img [src]='getImage(item.productImage)'>
+  </div>
          <p style="font-weight: bold;">{{item.price}}</p>
-         <p  ></p>
+         <div style="text-align: center;">
+          <button
+          (click)="addProduct(item)"
+            class="btn"
+            style="
+              padding-left: 2.5%;
+              padding-right: 2.5%;
+              background-color: rgb(63, 61, 61);
+              color: whitesmoke;
+            "
+          >
+
+            <span style="font-weight: bold; font-size: small">Add to Cart</span>
+          </button>
+        </div>
        </div>
      </div>
 

@@ -26,7 +26,7 @@ export class ProductService {
   }
 
   getCatagoryProducts(catagory) {
-    return this.http.get('http://localhost:8000/api/products/' + catagory, this.httpHeaders);
+    return this.http.get('http://localhost:8000/api/products/catagory/' + catagory, this.httpHeaders);
   }
   productImageUrl(name) {
     return 'http://localhost:8000/api/products/image/' + name;

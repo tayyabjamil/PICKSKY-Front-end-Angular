@@ -31,7 +31,7 @@ import { AuthService } from '../app/auth.service';
     CommonModule,
     FlexLayoutModule,
     HomeModule,
-AdminModule,
+    AdminModule,
     AccountModule,
     BrowserAnimationsModule,
     MatCarouselModule.forRoot(),

@@ -33,7 +33,8 @@ vegProducts
   }
 
   getCatagoryProducts() {
-    this.productService.getCatagoryProducts('vegetables').subscribe((products) => {
+    const catagory = "vegetables"
+    this.productService.getCatagoryProducts(catagory).subscribe((products) => {
       this.vegProducts = products;
     }, (error) => {
       console.log('error in getting all products');
@@ -42,6 +43,10 @@ vegProducts
    addProduct(item){
  this.cartService.addProduct(item);
    }
+   getImage(imageId) {
+    if (!imageId) return '';
+    return this.productService.productImageUrl(imageId);
+  }
   }
 
 

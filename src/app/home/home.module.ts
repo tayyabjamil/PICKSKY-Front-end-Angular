@@ -31,7 +31,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
 @NgModule({
   imports: [
     CommonModule,
-FormsModule,
+    FormsModule,
     HomeRoutingModule,
     // NgImageSliderModule,
     HttpClientModule,
@@ -48,7 +48,7 @@ FormsModule,
 
   ],
   declarations: [
-HomeComponent,
+
     VegetablesComponent,
     OrganicComponent,
     NavComponent,
@@ -59,7 +59,9 @@ HomeComponent,
     ProductDetailComponent,
     MainPageComponent,
     CartComponent,
-    MyordersComponent
+    MyordersComponent,
+    HomeComponent
+
   ],
   exports:[
     HomeComponent,

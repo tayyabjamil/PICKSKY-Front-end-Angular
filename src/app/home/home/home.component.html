@@ -1,9 +1,9 @@
-<header style="padding-bottom: 5%" *ngIf="deviceLg || deviceMd">
+<header  *ngIf="deviceLg || deviceMd">
    <div>
     <div
-      style="
-        margin-top: 1%;
-        margin-bottom: 1%;
+      style="padding-top: 0.5%;
+
+
         margin-left: 2%;
         margin-right: 2%;
         display: flex;
@@ -12,21 +12,22 @@
       "
     >
       <p
-        style="font-size: 2vw; font-weight: bold; margin-top: 2%"
-        routerLink=""
+        style="padding-left: 0.5%;font-size: 2vw; font-weight: 500;padding-top:2%;"
+        routerLink="/"
       >
-        PICKSY
+        SHIRIVAS FOODS
       </p>
       <div
         style="
-          background-color: rgb(240, 238, 238);
+
           width: 60%;
-          border-radius: 6px;
-          padding-top: 1.5%;
-          padding-left: 20px;
+
+
+          padding: 10px;
         "
       >
-        <p style="font-weight: 300px">
+        <p  style="border-radius: 6px;font-weight: 300px  ;  margin-left: 5%;
+        margin-right: 5%;background-color: rgb(240, 238, 238);">
           <span
             ><i
               class="fa fa-search"
@@ -35,6 +36,8 @@
                 font-weight: 200;
                 font-size: large;
                 margin-right: 2%;
+                padding: 2%;
+
                 color: rgb(134, 132, 132);
               "
             ></i
@@ -42,15 +45,15 @@
           What Are You Looking For?
         </p>
       </div>
-      <div style="margin-top: 1%">
+      <div style="padding-top: 1%;">
         <i
           class="fa fa-user-circle-o"
           routerLink="/login"
           style="font-size: xx-large"
         ></i>
-         <p routerLink='/login' routerLinkActive="router-link-active" >UserAccount </p>
+         <p routerLink='/login' routerLinkActive="router-link-active" >Account </p>
       </div>
-      <div style="margin-top: 1%">
+      <div style="padding-top: 1%;">
         <i
           class="fa fa-user-circle-o"
           routerLink="/myOrders"
@@ -58,15 +61,15 @@
         ></i>
          <p routerLink='/myOrders' routerLinkActive="router-link-active" >My orders </p>
       </div>
-      <div style="margin-top: 1%">
+      <div style="padding-top: 1%;">
         <i
           class="fa fa-user-circle-o"
           routerLink="/admin"
           style="font-size: xx-large"
         ></i>
-         <p routerLink='/admin' routerLinkActive="router-link-active" >AdminAccount </p>
+         <p routerLink='/admin' routerLinkActive="router-link-active" >Admin </p>
       </div>
-      <div style="margin-top: 1%">
+      <div style="padding-top: 1%;">
         <i
           class="fa fa-shopping-cart"
           routerLink="/cart"
@@ -75,10 +78,13 @@
       </div>
     </div>
 
-    <hr />
+    <hr style="height: 1px;margin: 0px 0px;"/>
 
-    <nav class="fundpress-menu" style="width: 200vw; padding-bottom: 3%">
-      <ul class="nav-menu">
+    <nav class="fundpress-menu" style="margin-bottom: 4%;">
+      <ul class="nav-menu"  style="width: 100%;">
+        <li class="dropdown" routerLink="/">
+          <a >Home</a>
+        </li>
         <li class="dropdown" routerLink="/veg">
           <a class="dropdown-toggle" data-toggle="dropdown">Vegetables</a>
           <ul class="dropdown-menu">
@@ -139,9 +145,7 @@
         </li>
       </ul>
     </nav>
-<div style="margin: 2%;">
 
-</div>
     <router-outlet> </router-outlet>
 
     <div *ngIf="getCartProducts!=0"  routerLink='/cart' style="
@@ -194,7 +198,7 @@
       </button>
     </div>
 
-  </div> -->
+  </div>
 </header>
 
 <div *ngIf="deviceXs || deviceSm">

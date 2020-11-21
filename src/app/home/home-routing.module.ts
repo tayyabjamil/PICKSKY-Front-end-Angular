@@ -20,7 +20,7 @@ const routes: Routes = [
     { path: 'veg', component: VegetablesComponent },
     { path: 'organic', component: OrganicComponent },
     { path: 'dairy', component: DairyComponent },
-
+    { path: 'home', component: HomeComponent },
     { path: 'cart', component: CartComponent ,canActivate:[AuthGuard]},
     { path: 'fish', component: FishandmeatComponent },
     { path: 'snacks', component: SnacksandbeveragesComponent },
