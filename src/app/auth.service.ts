@@ -22,7 +22,7 @@ getID() {
   getemail() {
     return JSON.parse(localStorage.getItem('email'));
   }
-loggedOut() {
+loggedOutuserId() {
 
   return localStorage.removeItem('userId');
 
@@ -31,5 +31,12 @@ loggedOut() {
     return localStorage.removeItem('username');
 
   }
+  loggedOutRefrenceId() {
+    return localStorage.removeItem('refrenceId');
 
+  }
+  loggedOutEmail() {
+    return localStorage.removeItem('email');
+
+  }
 }

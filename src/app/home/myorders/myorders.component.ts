@@ -25,8 +25,14 @@ export class MyordersComponent implements OnInit {
       console.log('error in getting all products');
     });
   }
+  orderDetails(item){
+
+  }
   getImage(imageId) {
     if (!imageId) return '';
     return this.productService.productImageUrl(imageId);
   }
+orderCompleted(item){
+
+}
 }

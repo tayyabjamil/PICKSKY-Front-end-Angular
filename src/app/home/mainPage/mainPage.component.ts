@@ -1,135 +1,168 @@
 import { CartService } from './../cart.service';
 import { ProductService } from './../product.service';
 import { Component, OnInit } from '@angular/core';
-import  {MediaObserver, MediaChange} from '@angular/flex-layout';
-import  { Subscription } from 'rxjs';
+import { MediaObserver, MediaChange } from '@angular/flex-layout';
+import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { NgImageSliderComponent } from 'ng-image-slider';
 
 @Component({
   selector: 'app-mainPage',
   templateUrl: './mainPage.component.html',
-  styleUrls: ['./mainPage.component.scss']
+  styleUrls: ['./mainPage.component.scss'],
 })
 export class MainPageComponent implements OnInit {
+  allProducts;
+  featuredProducts;
+  loadingData = true;
+  loadingImage = true;
 
-allProducts;
-featuredProducts
-  constructor(public mediaObserver:MediaObserver,
-    public productService:ProductService,
-    public cartService:CartService
-    ) { }
-  mediaSub:Subscription
-  deviceXs:boolean;
-  deviceLg:boolean;
-  deviceMd:boolean;
-  deviceSm:boolean;
-//   imageObject: Array<object> = [
-//     {
+  // @ViewChild('nav') slider: NgImageSliderComponent;
+  constructor(
+    public mediaObserver: MediaObserver,
+    public productService: ProductService,
+    public cartService: CartService,
+    private router: Router,
+  ) {
 
-//     thumbImage: 'assets/images/vegPage.jpg',
+  }
+  mediaSub: Subscription;
+  deviceXs: boolean;
+  deviceLg: boolean;
+  deviceMd: boolean;
+  deviceSm: boolean;
+
+//   imageObject = [{
+//     image: 'assets/img/slider/1.jpg',
+//     thumbImage: 'assets/img/slider/1_min.jpeg',
 //     alt: 'alt of image',
-//     title: 'Dairy',
-
+//     title: 'title of image'
 // }, {
-
-//     thumbImage: 'assets/images/snacks.jpg',
-//     title: 'Bakery & Pastry',
-//     alt: 'Image alt'
-// },{
-// thumbImage: 'assets/images/veg1.jpg',
-// alt: 'alt of image',
-// title: 'Vegetables'
-// }, {
-// thumbImage: 'assets/images/bakery.jpg',
-// title: 'Image title',
-// alt: 'Image alt'
-// },{
-// thumbImage: 'assets/images/veg1.jpg',
-// alt: 'alt of image',
-// title: 'Fish & Meat'
-// }, {
-// thumbImage: 'assets/images/snacks.jpg',
-// title: 'Organic',
-// alt: 'Image alt'
-// },{
-// thumbImage: 'assets/images/veg1.jpg',
-// alt: 'alt of image',
-// title: 'Snakes & Beverages'
-// }, {
-// thumbImage: 'assets/images/snacks.jpg',
-// title: 'Dairy',
-// alt: 'Image alt'
-// },
-// {
-
-//   thumbImage: 'assets/images/vegPage.jpg',
-//   alt: 'alt of image',
-//   title: 'Dairy',
-
-// }, {
-
-//   thumbImage: 'assets/images/snacks.jpg',
-//   title: 'Bakery & Pastry',
-//   alt: 'Image alt'
-// },{
-// thumbImage: 'assets/images/veg1.jpg',
-// alt: 'alt of image',
-// title: 'Vegetables'
-// }, {
-// thumbImage: 'assets/images/bakery.jpg',
-// title: 'Image title',
-// alt: 'Image alt'
-// },{
-// thumbImage: 'assets/images/veg1.jpg',
-// alt: 'alt of image',
-// title: 'Fish & Meat'
-// }, {
-// thumbImage: 'assets/images/snacks.jpg',
-// title: 'Organic',
-// alt: 'Image alt'
-// },{
-// thumbImage: 'assets/images/veg1.jpg',
-// alt: 'alt of image',
-// title: 'Snakes & Beverages'
-// }, {
-// thumbImage: 'assets/images/snacks.jpg',
-// title: 'Dairy',
-// alt: 'Image alt'
-// },
-
+//     image: '.../iOe/xHHf4nf8AE75h3j1x64ZmZ//Z==', // Support base64 image
+//     thumbImage: '.../iOe/xHHf4nf8AE75h3j1x64ZmZ//Z==', // Support base64 image
+//     title: 'Image title', //Optional: You can use this key if want to show image with title
+//     alt: 'Image alt' //Optional: You can use this key if want to show image with alt
+// }
 // ];
 
+  imagesUrl = [
+    {
+      thumbImage: 'assets/images/slideimg1.jpg',
+      title: 'Bakery & Pastry',
+      alt: 'Image alt',
+      routeTo:'bakery',
+    },
+    {
+      thumbImage: 'assets/images/slideimg2.jpg',
+      alt: 'alt of image',
+      title: 'Vegetables',
+    },
+    {
+      thumbImage: 'assets/images/slideimg3.jpg',
+      title: 'Image title',
+      alt: 'Image alt',
+    },
+    {
+      thumbImage: 'assets/images/slideimg4.jpg',
+      alt: 'alt of image',
+      title: 'Fish & Meat',
+    },
+    {
+      thumbImage: 'assets/images/slideimg5.jpg',
+      title: 'Organic',
+      alt: 'Image alt',
+    },
+    {
+      thumbImage: 'assets/images/slideimg6.jpg',
+      alt: 'alt of image',
+      title: 'Snakes & Beverages',
+    },
+    {
+      thumbImage: 'assets/images/slideimg1.jpg',
+      title: 'Bakery & Pastry',
+      alt: 'Image alt',
+      routeTo:'bakery',
+    },
+    {
+      thumbImage: 'assets/images/slideimg2.jpg',
+      alt: 'alt of image',
+      title: 'Vegetables',
+    },
+    {
+      thumbImage: 'assets/images/slideimg3.jpg',
+      title: 'Image title',
+      alt: 'Image alt',
+    },
+    {
+      thumbImage: 'assets/images/slideimg4.jpg',
+      alt: 'alt of image',
+      title: 'Fish & Meat',
+    },
+    {
+      thumbImage: 'assets/images/slideimg5.jpg',
+      title: 'Organic',
+      alt: 'Image alt',
+    },
+    {
+      thumbImage: 'assets/images/slideimg6.jpg',
+      alt: 'alt of image',
+      title: 'Snakes & Beverages',
+    },
+  ];
 
   ngOnInit() {
-    this.mediaSub = this.mediaObserver.media$.subscribe((result:MediaChange)=>{
-      console.log(result.mqAlias)
-      this.deviceXs = result.mqAlias === 'xs'
-      this.deviceSm = result.mqAlias ==='sm'
-      this.deviceLg = result.mqAlias === 'lg'
-      this.deviceMd = result.mqAlias === 'md'
+    this.mediaSub = this.mediaObserver.media$.subscribe(
+      (result: MediaChange) => {
+        console.log(result.mqAlias);
+        this.deviceXs = result.mqAlias === 'xs';
+        this.deviceSm = result.mqAlias === 'sm';
+        this.deviceLg = result.mqAlias === 'lg';
+        this.deviceMd = result.mqAlias === 'md';
+      }
+    );
+    this.getAllProducts();
+    this.getfeaturedProducts();
+    }
 
-    })
-    this.getAllProducts()
-this.getfeaturedProducts();
-  }
+  // onImageClick(args) {
+  //   console.log(args)
+  //   this.router.navigate([this.imageObject[args].routeTo])
+  // }
+
   getAllProducts() {
-    this.productService.getProducts().subscribe((products) => {
-      this.allProducts = products;
-    }, (error) => {
-      console.log('error in getting all products');
-    });
+    this.productService.getProducts().subscribe(
+      (products) => {
+        this.loadingData = false;
+        this.allProducts = products;
+      },
+      (error) => {
+        console.log('error in getting all products');
+      }
+    );
   }
+
   getfeaturedProducts() {
-    this.productService.featuredProducts().subscribe((products) => {
-      this.featuredProducts = products;
-    }, (error) => {
-      console.log('error in getting featuredProducts ');
-    });
+    this.productService.featuredProducts().subscribe(
+      (products) => {
+        this.featuredProducts = products;
+      },
+      (error) => {
+        console.log('error in getting featuredProducts ');
+      }
+    );
   }
-  addProduct(item){
-this.cartService.addProduct(item);
+
+  addProduct(item) {
+    this.cartService.addProduct(item);
   }
   getImage(imageId) {
-    if (!imageId) return '';
-    return this.productService.productImageUrl(imageId);
+    this.loadingImage = true;
+    if (!imageId) {
+      return '';
+    } else {
+      this.loadingImage = false;
+
+      return this.productService.productImageUrl(imageId);
+    }
   }
 }

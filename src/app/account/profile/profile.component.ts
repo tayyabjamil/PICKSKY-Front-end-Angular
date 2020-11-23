@@ -1,3 +1,4 @@
+import { FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth.service';
@@ -11,6 +12,7 @@ export class ProfileComponent implements OnInit {
   username
   email
   refrenceId
+  rformEdit:FormGroup;
   constructor(public http: HttpClient,private myauthService: AuthService) { }
 
   ngOnInit() {

@@ -1,3 +1,4 @@
+import { AuthService } from './../../auth.service';
 import { ProductService } from '../product.service';
 import { CartService } from '../cart.service';
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit {
 total ;
 allProducts;
   constructor(public mediaObserver:MediaObserver
-    ,public cartService:CartService,  private productService: ProductService,
+    ,public cartService:CartService,  private productService: ProductService,private authService:AuthService,
     private router: Router,
     ) { }
   mediaSub:Subscription
@@ -47,4 +48,10 @@ allProducts;
    return this.total;
     }
 
+    onLogoutClick() {
+      this.authService.loggedOutName();
+      this.authService.loggedOutEmail;
+      this.authService.loggedOutuserId;
+      this.authService.loggedOutRefrenceId();
+    }
 }

@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 
 
 @Component({
-  selector: "ns-textField",
+  selector: 'ns-textField-account',
   templateUrl: './textField.component.html',
   styleUrls: ['./textField.component.scss']
 })

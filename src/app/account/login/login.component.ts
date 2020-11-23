@@ -2,7 +2,8 @@ import { FormGroup,FormControl,Validators,FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountService } from '../account.service';
-
+import  {MediaObserver, MediaChange} from '@angular/flex-layout';
+import  { Subscription } from 'rxjs';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,9 +14,23 @@ export class LoginComponent implements OnInit {
    isLoggedIn = true;
    email:String
    password:String
-  constructor(private router : Router,public formBuilder:FormBuilder,public accountService:AccountService,) { }
+
+  constructor(public mediaObserver:MediaObserver,private router : Router,public formBuilder:FormBuilder,public accountService:AccountService,) { }
+  mediaSub:Subscription
+  deviceXs:boolean;
+  deviceLg:boolean;
+  deviceMd:boolean;
+  deviceSm:boolean;
 
   ngOnInit() {
+    this.mediaSub = this.mediaObserver.media$.subscribe((result:MediaChange)=>{
+      console.log(result.mqAlias)
+      this.deviceXs = result.mqAlias === 'xs'
+      this.deviceSm = result.mqAlias ==='sm'
+      this.deviceLg = result.mqAlias === 'lg'
+      this.deviceMd = result.mqAlias === 'md'
+
+    })
     this.rformLogin = this.formBuilder.group({
 
       email: new FormControl('', [Validators.required,Validators.email]),

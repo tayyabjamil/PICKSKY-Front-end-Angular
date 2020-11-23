@@ -4,7 +4,7 @@ import { NavComponent } from './nav/nav.component';
 
 import { MainPageComponent } from './mainPage/mainPage.component';
 import { HomeRoutingModule } from './home-routing.module';
-import { NgModule } from '@angular/core';
+import { NgModule ,NO_ERRORS_SCHEMA} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { VegetablesComponent } from './vegetables/vegetables.component';
@@ -18,7 +18,7 @@ import { ProductDetailComponent } from './productDetail/productDetail.component'
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MatCarouselModule } from '@ngmodule/material-carousel';
-// import { NgImageSliderModule } from 'ng-image-slider';
+import { NgImageSliderModule } from 'ng-image-slider';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -28,12 +28,14 @@ import { MatListModule } from '@angular/material/list';
 import { CartComponent } from './cart/cart.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { BrowserModule } from '@angular/platform-browser'
 @NgModule({
   imports: [
+
     CommonModule,
     FormsModule,
     HomeRoutingModule,
-    // NgImageSliderModule,
+    NgImageSliderModule,
     HttpClientModule,
     FlexLayoutModule,
     MatCarouselModule.forRoot(),
@@ -77,6 +79,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
     CartComponent,
     MyordersComponent
 
-  ]
+  ],
+  schemas:[NO_ERRORS_SCHEMA]
 })
 export class HomeModule { }

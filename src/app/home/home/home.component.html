@@ -70,6 +70,11 @@
          <p routerLink='/admin' routerLinkActive="router-link-active" >Admin </p>
       </div>
       <div style="padding-top: 1%;">
+        <li  *ngIf="authService.loggedIn()"   style="font-size: xx-large" (click)="onLogoutClick()" class="fa fa-sign-out" >
+         </li>
+         <p>Logout</p>
+      </div>
+      <div style="padding-top: 1%;">
         <i
           class="fa fa-shopping-cart"
           routerLink="/cart"

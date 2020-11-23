@@ -39,5 +39,7 @@ createAccount(){
     alert("Please Fill All the entries of the Form")
   }
 }
-
+public login(){
+  this.router.navigate(['/login'])
+  }
 }
