@@ -1,3 +1,5 @@
+import { SupportPageComponent } from './supportPage/supportPage.component';
+import { FooterComponent } from './footer/footer.component';
 import { MyordersComponent } from './myorders/myorders.component';
 import { CartComponent } from './cart/cart.component';
 import { MainPageComponent } from './mainPage/mainPage.component';
@@ -15,10 +17,11 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [
     { path: '', component: HomeComponent, children: [
 
-    { path: '', component: MainPageComponent },
+
     { path: 'detail', component: ProductDetailComponent },
     { path: 'veg', component: VegetablesComponent },
     { path: 'organic', component: OrganicComponent },
+    { path: 'support', component: SupportPageComponent },
     { path: 'dairy', component: DairyComponent },
     { path: 'home', component: HomeComponent },
     { path: 'cart', component: CartComponent ,canActivate:[AuthGuard]},
@@ -26,6 +29,7 @@ const routes: Routes = [
     { path: 'snacks', component: SnacksandbeveragesComponent },
     { path: 'myOrders', component: MyordersComponent, canActivate:[AuthGuard]},
     { path: 'bakery', component: BackeryandpasteryComponent },
+    { path: '', component: MainPageComponent },
   ]
 },
 ];

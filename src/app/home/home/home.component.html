@@ -51,7 +51,7 @@
           routerLink="/login"
           style="font-size: xx-large"
         ></i>
-         <p routerLink='/login' routerLinkActive="router-link-active" >Account </p>
+         <p   routerLink='/login' routerLinkActive="router-link-active" >Login</p>
       </div>
       <div style="padding-top: 1%;">
         <i
@@ -64,6 +64,14 @@
       <div style="padding-top: 1%;">
         <i
           class="fa fa-user-circle-o"
+          routerLink="/support"
+          style="font-size: xx-large"
+        ></i>
+         <p routerLink='/support' routerLinkActive="router-link-active" >Support </p>
+      </div>
+      <div style="padding-top: 1%;">
+        <i
+          class="fa fa-user-circle-o"
           routerLink="/admin"
           style="font-size: xx-large"
         ></i>
@@ -72,7 +80,7 @@
       <div style="padding-top: 1%;">
         <li  *ngIf="authService.loggedIn()"   style="font-size: xx-large" (click)="onLogoutClick()" class="fa fa-sign-out" >
          </li>
-         <p>Logout</p>
+         <p *ngIf="authService.loggedIn()" >Logout</p>
       </div>
       <div style="padding-top: 1%;">
         <i

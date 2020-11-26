@@ -7,17 +7,16 @@
   r;border-radius: 6px;" src="../assets/images/veg.jpg">
 </div>
 </div>
-<div style="border-radius: 6px;margin:2%;background-color: white;">
+<div style="border-radius: 6px;margin:2%;background-color: white;min-height: 400px;">
   <div *ngIf="deviceLg || deviceMd" class="deviceLg">
 
    <div *ngFor="let item of vegProducts" (click)="addProduct(item)" style="padding:2%;width: 20%;" >
 
    <div >
-    <img [src]='getImage(item.productImage)'>
+    <img [src]='getImage(item.productImage)' style="width: 50%;">
   </div>
      <p style="font-weight: bold;">{{item.price}}</p>
-     <p  ></p>
-   </div>
+
    <div style="text-align: center;">
     <button
     (click)="addProduct(item)"
@@ -33,6 +32,8 @@
       <span style="font-weight: bold; font-size: small">Add to Cart</span>
     </button>
   </div>
+</div>
+
  </div>
  <div *ngIf="deviceXs || deviceSm" >
    <div class="row">
@@ -72,3 +73,4 @@
  </div>
  </div>
 </div>
+<app-footer></app-footer>

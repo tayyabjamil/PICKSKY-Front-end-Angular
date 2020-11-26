@@ -19,6 +19,9 @@ getID() {
   getRefrenceId() {
     return JSON.parse(localStorage.getItem('refrenceId'));
   }
+  getContact() {
+    return JSON.parse(localStorage.getItem('contact'));
+  }
   getemail() {
     return JSON.parse(localStorage.getItem('email'));
   }
@@ -37,6 +40,10 @@ loggedOutuserId() {
   }
   loggedOutEmail() {
     return localStorage.removeItem('email');
+
+  }
+  loggedOutContact() {
+    return localStorage.removeItem('contact');
 
   }
 }

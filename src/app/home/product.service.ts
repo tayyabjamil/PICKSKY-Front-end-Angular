@@ -32,5 +32,7 @@ export class ProductService {
     return 'http://localhost:8000/api/products/image/' + name;
   }
 
-
+// supportPage(data){
+//   return 'http://localhost:8000/api/products/image/' + data;
+// }
 }

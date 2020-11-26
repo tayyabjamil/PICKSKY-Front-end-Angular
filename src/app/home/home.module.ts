@@ -1,8 +1,10 @@
+
+import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { MyordersComponent } from './myorders/myorders.component';
 import { NavComponent } from './nav/nav.component';
 
-import { MainPageComponent } from './mainPage/mainPage.component';
+
 import { HomeRoutingModule } from './home-routing.module';
 import { NgModule ,NO_ERRORS_SCHEMA} from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -16,7 +18,7 @@ import { FishandmeatComponent } from './fishandmeat/fishandmeat.component';
 import { ProductDetailComponent } from './productDetail/productDetail.component';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { MainPageComponent } from './mainPage/mainPage.component';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -28,7 +30,7 @@ import { MatListModule } from '@angular/material/list';
 import { CartComponent } from './cart/cart.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPayPalModule } from 'ngx-paypal';
-import { BrowserModule } from '@angular/platform-browser'
+import { SupportPageComponent } from './supportPage/supportPage.component';
 @NgModule({
   imports: [
 
@@ -50,7 +52,7 @@ import { BrowserModule } from '@angular/platform-browser'
 
   ],
   declarations: [
-
+    HomeComponent,
     VegetablesComponent,
     OrganicComponent,
     NavComponent,
@@ -62,8 +64,9 @@ import { BrowserModule } from '@angular/platform-browser'
     MainPageComponent,
     CartComponent,
     MyordersComponent,
-    HomeComponent
 
+    FooterComponent,
+  //  SupportPageComponent
   ],
   exports:[
     HomeComponent,
@@ -77,8 +80,9 @@ import { BrowserModule } from '@angular/platform-browser'
     ProductDetailComponent,
     MainPageComponent,
     CartComponent,
-    MyordersComponent
-
+    // SupportPageComponent,
+    MyordersComponent,
+FooterComponent
   ],
   schemas:[NO_ERRORS_SCHEMA]
 })

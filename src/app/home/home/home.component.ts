@@ -50,8 +50,8 @@ allProducts;
 
     onLogoutClick() {
       this.authService.loggedOutName();
-      this.authService.loggedOutEmail;
-      this.authService.loggedOutuserId;
+      this.authService.loggedOutEmail();
+      this.authService.loggedOutuserId();
       this.authService.loggedOutRefrenceId();
     }
 }

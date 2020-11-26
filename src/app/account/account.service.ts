@@ -21,7 +21,7 @@ createuserAccount(newUser) {
       username: newUser.username,
       email: newUser.email,
       password: newUser.password,
-      conatct:newUser.contact,
+      contact:newUser.contact,
       accountBonus: 1
 
     },
@@ -71,5 +71,33 @@ accountVerify(data){
     },
     this.httpHeaders
   );
+}
+editInfo(data){
+    return this.http.post(
+    'http://localhost:8000/api/users/editInfo/',
+    {
+      userId :this.myauthService.getID(),
+      username: data.username,
+      email: data.email,
+      contact:data.contact,
+
+
+    },
+    this.httpHeaders
+  );
+
+}
+editPassword(data){
+  return this.http.post(
+  'http://localhost:8000/api/users/editPassword/',
+  {
+    userId :this.myauthService.getID(),
+    oldPassword: data.oldPassword,
+    newPassword: data.newPassword,
+
+  },
+  this.httpHeaders
+);
+
 }
 }

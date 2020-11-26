@@ -48,6 +48,7 @@ login(){
       this.setId(data.userId);
       this.setusername(data.username);
       this.setemail(data.email)
+      this.setcontact(data.contact)
       this.setRefrenceId(data.refrenceId)
       this.isLoggedIn = true;
       // this.router.navigate(['/home'])
@@ -66,6 +67,9 @@ setRefrenceId(refrenceId) {
 }
 setusername(username) {
   localStorage.setItem('username', JSON.stringify(username));
+}
+setcontact(contact) {
+  localStorage.setItem('contact', JSON.stringify(contact));
 }
 setemail(email) {
   localStorage.setItem('email', JSON.stringify(email));
