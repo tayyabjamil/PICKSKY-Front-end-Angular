@@ -23,10 +23,11 @@ export class ResetPasswordComponent implements OnInit {
 
       newPassword: new FormControl('', [Validators.required]),
       confirmPassword: new FormControl('', [Validators.required]),
-      resetToken: new FormControl(this.resetToken, [Validators.required]),
+      // resetToken: new FormControl(this.resetToken, [Validators.required]),
     })
   }
   changePassword(){
+
     if(this.rformPassword.valid){
       this.accountService.resetPassword(this.rformPassword.value).subscribe(() => {
 

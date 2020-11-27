@@ -1,33 +1,41 @@
+import { SupportPageComponent } from './supportPage/supportPage.component';
+import { FooterComponent } from './footer/footer.component';
 import { MyordersComponent } from './myorders/myorders.component';
 import { CartComponent } from './cart/cart.component';
 import { MainPageComponent } from './mainPage/mainPage.component';
 import { ProductDetailComponent } from './productDetail/productDetail.component';
-import { FishandmeatComponent } from './fishandmeat/fishandmeat.component';
-import { OrganicComponent } from './organic/organic.component';
-import { DairyComponent } from './dairy/dairy.component';
-import { SnacksandbeveragesComponent } from './snacksandbeverages/snacksandbeverages.component';
-import { BackeryandpasteryComponent } from './backeryandpastery/backeryandpastery.component';
-import { VegetablesComponent } from './vegetables/vegetables.component';
+import { SpecialOffersComponent } from './specialoffers/specialoffers.component';
+import { TraditionalPowdersComponent } from './TraditionalPowders/TraditionalPowders.component';
+import { SweetandHotComponent } from './sweetandhot/sweetandhot.component';
+import { OthersComponent } from './others/others.component';
+import { PicklesComponent } from './Pickles/Pickles.component';
+import { AboutUSComponent } from './aboutus/aboutus.component';
+import { SupportComponent } from './support/support.component';
 import { AuthGuard } from './../auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home.component';
+import { HomeComponent } from './home/home.component';
 const routes: Routes = [
-    { path: '', component: HomeComponent, children: [
+  {
+    path: '', component: HomeComponent, children: [
 
-    { path: '', component: MainPageComponent },
-    { path: 'detail', component: ProductDetailComponent },
-    { path: 'veg', component: VegetablesComponent },
-    { path: 'organic', component: OrganicComponent },
-    { path: 'dairy', component: DairyComponent },
 
-    { path: 'cart', component: CartComponent ,canActivate:[AuthGuard]},
-    { path: 'fish', component: FishandmeatComponent },
-    { path: 'snacks', component: SnacksandbeveragesComponent },
-    { path: 'myOrders', component: MyordersComponent, canActivate:[AuthGuard]},
-    { path: 'bakery', component: BackeryandpasteryComponent },
-  ]
-},
+      { path: 'detail', component: ProductDetailComponent },
+      { path: 'pickles', component: PicklesComponent },
+      { path: 'powders', component: TraditionalPowdersComponent },
+      { path: 'sweets', component: SweetandHotComponent },  
+      { path: 'specialoffers', component: SpecialOffersComponent },
+      { path: 'others', component: OthersComponent },
+      { path: 'aboutus', component: AboutUSComponent },
+      { path: 'support', component: SupportComponent },
+      { path: 'supportpage', component: SupportPageComponent },
+      { path: 'home', component: HomeComponent },
+      { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
+      { path: 'myOrders', component: MyordersComponent, canActivate: [AuthGuard] },
+      { path: '', component: MainPageComponent },
+
+    ]
+  },
 ];
 
 @NgModule({
