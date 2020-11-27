@@ -55,6 +55,9 @@ allProducts;
       this.authService.loggedOutuserId();
       this.authService.loggedOutRefrenceId();
     }
+    catagory(page){
+   this.router.navigate(['catagory/', page])
+    }
   getHeaderNames(indx: number) { return HeaderConstants[indx]; }
 
   getPicklesConstants(indx: number) { return PicklesConstants[indx]; }
@@ -110,6 +113,6 @@ allProducts;
   getSupport(indx: number) { }
 
 
-  getPayments(indx: number) { }		
+  getPayments(indx: number) { }
 
 }

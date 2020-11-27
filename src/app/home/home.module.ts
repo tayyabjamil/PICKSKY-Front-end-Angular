@@ -1,3 +1,4 @@
+import { CatagoryComponent } from './catagory/catagory.component';
 
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
@@ -32,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { SupportPageComponent } from './supportPage/supportPage.component';
 
+import { PopoverModule } from 'ngx-bootstrap/popover';
 
 @NgModule({
   imports: [
@@ -50,7 +52,7 @@ import { SupportPageComponent } from './supportPage/supportPage.component';
     MatIconModule,
     MatListModule,
     NgxPayPalModule,
-
+    PopoverModule.forRoot()
 
   ],
   declarations: [
@@ -67,6 +69,7 @@ import { SupportPageComponent } from './supportPage/supportPage.component';
     CartComponent,
     MyordersComponent,
     FooterComponent,
+    CatagoryComponent,
     //  SupportPageComponent,
     PicklesComponent,
     TraditionalPowdersComponent,

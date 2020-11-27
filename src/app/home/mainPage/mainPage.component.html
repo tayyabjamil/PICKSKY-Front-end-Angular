@@ -1,15 +1,20 @@
 
 
  <div style="background-color:#f7f7f7;width: 100%;">
-  <div style="padding-top:2%;margin-right: 2%;margin-left: 3%;">
+  <div class="container-fluid" style="width: 100%;padding-top: 2%;" >
+<div class="block">
+  <div class="text-block">
+  <p style="color: white; padding-bottom: 2%;"> Stay home & get <br>
+    <p  style="color: white;padding-bottom: 10%;"> your daily needs</p>
+  </div>
+    <p class="text-block-small" style="padding-bottom: 10%;">Start You'r Daily Sopping with JamCart</p>
 
-    <p class="text-block1"  > Stay home & get <br>
-      <p class="text-block2"> your daily needs</p>
-    <p class="text-block3" >Start You'r Daily Sopping with JamCart</p>
+    <button class="btn" style="background-color: #FFFFFF;width: 40%;"><span> Order Now </span></button>
+  </div>
+    <img class="img-responsive" style="min-height: 260px;width: 100%;" src="../assets/images/home.jpeg">
 
-    <button class="btn text-block4"><i class="fa fa-arrow">Order Now</i></button>
-    <img class="img-responsive" style="width: 100%;" src="../assets/images/home.jpeg">
-    </div>
+
+  </div>
 
 <div style="margin-top:4%;margin-bottom: 4%;">
 <div  *ngIf="deviceXs || deviceSm">
@@ -142,15 +147,15 @@
 
 <!-- /////////////////////////////////////////corosal -->
 
-<div >
+<div style="margin: 2%;">
   <ng-image-slider  [imagePopup]="false" *ngIf="deviceXs || deviceSm"
-    [imageSize]=" {width: '35%', height: '30%', space: 4}"
+    [imageSize]=" {width: '250px', height: '30%', space: 4}"
     [images]="imagesUrl" #nav></ng-image-slider>
   </div>
 
-<div >
+<div style="margin: 2%;">
   <ng-image-slider  [imagePopup]="false" *ngIf="deviceLg || deviceMd"
-    [imageSize]=" {width: '20%', height: '35%', space: 4}"
+    [imageSize]=" {width: '250px',height: '35%', space: 4}"
     [images]="imagesUrl" #nav></ng-image-slider>
   </div>
 <!-- ////////////////////////////////////////// featured  producsts-->
@@ -160,8 +165,8 @@
 
     <div *ngFor="let item of featuredProducts" style="padding:2%;width: 20%;" >
 
-    <div >
-      <img [src]='getImage(item.productImage)'>
+    <div style="height: 250px;width: 200px;">
+      <img [src]='getImage(item.productImage)' style="height: 250px;width: 200px;">
     </div>
       <p style="font-weight: bold;">{{item.price}}</p>
       <div style="text-align: center;">
@@ -189,8 +194,8 @@
 
         <div *ngFor="let item of featuredProducts" style="padding:2%;width: 40%;" >
 
-          <div >
-            <img [src]='getImage(item.productImage)'>
+          <div style="height: 250px;width: 200px;">
+            <img [src]='getImage(item.productImage)' style="height: 250px;width: 200px;">
           </div>
           <p style="font-weight: bold;">{{item.price}}</p>
           <div style="text-align: center;">
@@ -327,9 +332,9 @@
 
     <div *ngFor="let item of allProducts" style="padding:2%;width: 20%;" >
 
-    <div >
-      <img [src]='getImage(item.productImage)'>
-    </div>
+      <div style="height: 250px;width: 200px;">
+        <img [src]='getImage(item.productImage)' style="height: 250px;width: 200px;">
+      </div>
     <p  >{{item.name}}</p>
 
     <p style="font-weight: bold;">{{item.price}}</p>
@@ -359,8 +364,8 @@
 
         <div *ngFor="let item of allProducts" style="padding:2%;width: 40%;" >
 
-          <div >
-            <img [src]='getImage(item.productImage)'>
+          <div style="height: 250px;width: 200px;">
+            <img [src]='getImage(item.productImage)' style="height: 250px;width: 200px;">
           </div>
           <p style="font-weight: bold;">{{item.price}}</p>
           <div style="text-align: center;">
@@ -391,16 +396,21 @@
 
 
   <div class="row" >
-    <div style="margin-bottom: 2%;margin-left:3%;margin-right: 3%;border-radius: 8px;">
+       <div class="container-fluid" style="width: 100%;padding-top: 2%;" >
+        <div class="block">
+          <div >
 
-       <p class="text-block1Footer"  > Fast, Free Shipping,</p>
-       <p class="text-block2Footer"> Contactless Delivery.</p>
-       <p class="text-block3Footer" >Try it now, risk free!</p>
+            <p style="color: black; padding-bottom: 3%;font-size: 25px;">  Fast, Free Shipping<br>
+            <p  style="color: black;padding-bottom: 4%;font-size: 25px;"> Contactless Delivery.</p>
+          </div>
+            <p class="text-block-small" style="color: black;padding-bottom: 4%;">Try it now, risk free!</p>
 
-       <button class="text-block4Footer"><i class="fa fa-arrow">Shop Now</i></button>
-       <img class="img-responsive" style="width: 100%;border-radius: 8px;" src="../assets/images/slide2.png">
-       </div>
+            <button class="btn" style="background-color: #FFFFFF;width: 40%;"><span> Order Now </span></button>
+          </div>
+          <img class="img-responsive" style="min-height: 300px;width: 100%;border-radius: 8px;" src="../assets/images/slide2.png">
 
+
+          </div>
 
 
   </div>

@@ -19,21 +19,21 @@ export const PicklesConstants = {
 };
 
 export const TraditionalPodulu = {
-    1: "Podulu(Powders)",
-    2: "Home Made Masala's",
+    1: "PoduluPowders",
+    2: "HomeMadeMasala's",
 
 };
 export const SweetsandHotConstants = {
-    1: "Tradaitonal Sweets",
-    2: "Tradaitonal Hot"
+    1: "TradaitonalSweets",
+    2: "TradaitonalHot"
 
 }
 export const SpecialConstants = {
-    1: "Non-vegetarian Combo(3)",
-    2: "Vegetarian Combo(3)",
-    3: "Hot Combo(5)",
-    4: "Sweets Combo(4)",
-  
+    1: "Non-vegetarian Combo",
+    2: "Vegetarian Combo",
+    3: "Hot Combo",
+    4: "Sweets Combo",
+
 }
 export const OthersConstants = {
     1: "Books",
@@ -47,16 +47,16 @@ export const AboutusConstants = {
     4: "Privacy Policy",
     5: "Return & refunds",
 
-  
+
 }
 export const SupportConstants = {
     1: "FAQ",
     2: "Chat",
     3: "Call",
     4: "Email",
-     
+
 
 }
 export class AppConstants {
-    
-} 
+
+}
