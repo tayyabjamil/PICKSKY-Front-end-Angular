@@ -1,76 +1,83 @@
 <mat-sidenav-container class="sidenav-container" style="height: 100%">
   <mat-sidenav style="background-color: white;" #drawer class="sidenav" fixedInViewport="false"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-    <mat-toolbar routerLink='/' organic>Catagories</mat-toolbar>
-<mat-nav-list class="fundpress-menu" style="background-color: white;">
-  <ul class="nav-menu">
-    <li class="dropdown" routerLink="/">
-      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-        <p>{{getHeaderNames(1)}}</p>
-      </a>
-    </li>
+    <mat-toolbar routerLink='/' TraditionalPowders>Catagories</mat-toolbar>
+    <mat-nav-list class="fundpress-menu" style="background-color: white;">
+      <ul class="nav-menu">
+        <li class="dropdown" routerLink="/">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <p>{{getHeaderNames(1)}}</p>
+          </a>
+        </li>
 
-    <li class="dropdown" routerLink="/pickles">
-      <a class="dropdown-toggle" data-toggle="dropown" href="#">{{getHeaderNames(2)}} <span class="caret"></span></a>
-      <ul class="dropdown-menu">
-        <li><a href="#">{{getPicklesConstants(1)}}</a></li>
-        <li><a href="#">{{getPicklesConstants(2)}}</a></li>
-      </ul>
-    </li>
+        <li class="dropdown" routerLink="/pickles">
+          <a class="dropdown-toggle" data-toggle="dropown" href="#">{{getHeaderNames(2)}} <span
+              class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">{{getPicklesConstants(1)}}</a></li>
+            <li><a href="#">{{getPicklesConstants(2)}}</a></li>
+          </ul>
+        </li>
 
-    <li class="dropdown" routerLink="/traditionalpowders">
-      <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(3)}}<span class="caret"></span></a>
-      <ul class="dropdown-menu">
-        <li><a href="#">{{getTraditionalPodulu(1)}}</a></li>
-        <li><a href="#">{{getTraditionalPodulu(2)}}</a></li>
-      </ul>
-    </li>
+        <li class="dropdown" routerLink="/powders">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(3)}}<span
+              class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">{{getTraditionalPodulu(1)}}</a></li>
+            <li><a href="#">{{getTraditionalPodulu(2)}}</a></li>
+          </ul>
+        </li>
 
-    <li class="dropdown" routerLink="/sweets">
-      <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(4)}}<span class="caret"></span></a>
-      <ul class="dropdown-menu">
-        <li><a href="#">{{getSweetsandHotConstants(1)}}</a></li>
-        <li><a href="#">{{getSweetsandHotConstants(2)}}</a></li>
+        <li class="dropdown" routerLink="/sweets">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(4)}}<span
+              class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">{{getSweetsandHotConstants(1)}}</a></li>
+            <li><a href="#">{{getSweetsandHotConstants(2)}}</a></li>
+          </ul>
+        </li>
+        <li class="dropdown" routerLink="/specialoffers">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(5)}} <span
+              class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">{{getSpecialConstants(1)}}</a></li>
+            <li><a href="#">{{getSpecialConstants(2)}}</a></li>
+            <li><a href="#">{{getSpecialConstants(3)}}</a></li>
+            <li><a href="#">{{getSpecialConstants(4)}}</a></li>
+          </ul>
+        </li>
+        <li class="dropdown" routerLink="/others">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(6)}} <span
+              class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">{{getOthersConstants(1)}}</a></li>
+            <li><a href="#">{{getOthersConstants(1)}}</a></li>
+            <li><a href="#">{{getOthersConstants(1)}}</a></li>
+          </ul>
+        </li>
+        <li class="dropdown" routerLink="/aboutus">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(7)}} <span
+              class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">{{getAboutusConstants(1)}}</a></li>
+            <li><a href="#">{{getAboutusConstants(2)}}</a></li>
+            <li><a href="#">{{getAboutusConstants(3)}}</a></li>
+            <li><a href="#">{{getAboutusConstants(4)}}</a></li>
+            <li><a href="#">{{getAboutusConstants(5)}}</a></li>
+          </ul>
+        </li>
+        <li class="dropdown" routerLink="/support">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(8)}} <span
+              class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">{{getSupportConstants(1)}}</a></li>
+            <li><a href="#">{{getSupportConstants(2)}}</a></li>
+            <li><a href="#">{{getSupportConstants(3)}}</a></li>
+            <li><a href="#">{{getSupportConstants(4)}}</a></li>
+          </ul>
+        </li>
       </ul>
-    </li>
-    <li class="dropdown" routerLink="/specialoffers">
-      <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(5)}} <span class="caret"></span></a>
-      <ul class="dropdown-menu">
-        <li><a href="#">{{getSpecialConstants(1)}}</a></li>
-        <li><a href="#">{{getSpecialConstants(2)}}</a></li>
-        <li><a href="#">{{getSpecialConstants(3)}}</a></li>
-        <li><a href="#">{{getSpecialConstants(4)}}</a></li>
-      </ul>
-    </li>
-    <li class="dropdown" routerLink="/others">
-      <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(6)}} <span class="caret"></span></a>
-      <ul class="dropdown-menu">
-        <li><a href="#">{{getOthersConstants(1)}}</a></li>
-        <li><a href="#">{{getOthersConstants(1)}}</a></li>
-        <li><a href="#">{{getOthersConstants(1)}}</a></li>
-      </ul>
-    </li>
-    <li class="dropdown" routerLink="/aboutus">
-      <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(7)}} <span class="caret"></span></a>
-      <ul class="dropdown-menu">
-        <li><a href="#">{{getAboutusConstants(1)}}</a></li>
-        <li><a href="#">{{getAboutusConstants(2)}}</a></li>
-        <li><a href="#">{{getAboutusConstants(3)}}</a></li>
-        <li><a href="#">{{getAboutusConstants(4)}}</a></li>
-        <li><a href="#">{{getAboutusConstants(5)}}</a></li>
-      </ul>
-    </li>
-    <li class="dropdown" routerLink="/support">
-      <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(8)}} <span class="caret"></span></a>
-      <ul class="dropdown-menu">
-        <li><a href="#">{{getSupportConstants(1)}}</a></li>
-        <li><a href="#">{{getSupportConstants(2)}}</a></li>
-        <li><a href="#">{{getSupportConstants(3)}}</a></li>
-        <li><a href="#">{{getSupportConstants(4)}}</a></li>
-      </ul>
-    </li>
-  </ul>
-</mat-nav-list>
+    </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar style="background-color:white;">

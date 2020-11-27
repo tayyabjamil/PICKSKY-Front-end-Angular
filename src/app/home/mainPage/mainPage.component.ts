@@ -32,30 +32,30 @@ export class MainPageComponent implements OnInit {
   deviceMd: boolean;
   deviceSm: boolean;
 
-//   imageObject = [{
-//     image: 'assets/img/slider/1.jpg',
-//     thumbImage: 'assets/img/slider/1_min.jpeg',
-//     alt: 'alt of image',
-//     title: 'title of image'
-// }, {
-//     image: '.../iOe/xHHf4nf8AE75h3j1x64ZmZ//Z==', // Support base64 image
-//     thumbImage: '.../iOe/xHHf4nf8AE75h3j1x64ZmZ//Z==', // Support base64 image
-//     title: 'Image title', //Optional: You can use this key if want to show image with title
-//     alt: 'Image alt' //Optional: You can use this key if want to show image with alt
-// }
-// ];
+  //   imageObject = [{
+  //     image: 'assets/img/slider/1.jpg',
+  //     thumbImage: 'assets/img/slider/1_min.jpeg',
+  //     alt: 'alt of image',
+  //     title: 'title of image'
+  // }, {
+  //     image: '.../iOe/xHHf4nf8AE75h3j1x64ZmZ//Z==', // Support base64 image
+  //     thumbImage: '.../iOe/xHHf4nf8AE75h3j1x64ZmZ//Z==', // Support base64 image
+  //     title: 'Image title', //Optional: You can use this key if want to show image with title
+  //     alt: 'Image alt' //Optional: You can use this key if want to show image with alt
+  // }
+  // ];
 
   imagesUrl = [
     {
       thumbImage: 'assets/images/slideimg1.jpg',
       title: 'Bakery & Pastry',
       alt: 'Image alt',
-      routeTo:'bakery',
+      routeTo: 'bakery',
     },
     {
       thumbImage: 'assets/images/slideimg2.jpg',
       alt: 'alt of image',
-      title: 'Vegetables',
+      title: 'Pickles',
     },
     {
       thumbImage: 'assets/images/slideimg3.jpg',
@@ -69,7 +69,7 @@ export class MainPageComponent implements OnInit {
     },
     {
       thumbImage: 'assets/images/slideimg5.jpg',
-      title: 'Organic',
+      title: 'TraditionalPowders',
       alt: 'Image alt',
     },
     {
@@ -81,12 +81,12 @@ export class MainPageComponent implements OnInit {
       thumbImage: 'assets/images/slideimg1.jpg',
       title: 'Bakery & Pastry',
       alt: 'Image alt',
-      routeTo:'bakery',
+      routeTo: 'bakery',
     },
     {
       thumbImage: 'assets/images/slideimg2.jpg',
       alt: 'alt of image',
-      title: 'Vegetables',
+      title: 'Pickles',
     },
     {
       thumbImage: 'assets/images/slideimg3.jpg',
@@ -100,7 +100,7 @@ export class MainPageComponent implements OnInit {
     },
     {
       thumbImage: 'assets/images/slideimg5.jpg',
-      title: 'Organic',
+      title: 'TraditionalPowders',
       alt: 'Image alt',
     },
     {
@@ -122,7 +122,7 @@ export class MainPageComponent implements OnInit {
     );
     this.getAllProducts();
     this.getfeaturedProducts();
-    }
+  }
 
   // onImageClick(args) {
   //   console.log(args)
