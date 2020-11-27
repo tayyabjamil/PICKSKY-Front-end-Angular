@@ -1,13 +1,14 @@
 {
-  "name": "picksy",
+  "name": "shrivasafoods",
   "version": "0.0.0",
+  "ng": "ng",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
+    "start": "npm run build && ng serve --open",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "prod": "ng  build --aot --prod --output-hashing none"
   },
   "private": true,
   "dependencies": {
@@ -26,7 +27,10 @@
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
     "ng-image-slider": "^2.6.4",
+    "ngx-owl-carousel": "^2.0.7",
     "ngx-paypal": "^6.2.0",
+    "owl.carousel": "^2.3.4",
+    "react-multi-carousel": "^2.5.5",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

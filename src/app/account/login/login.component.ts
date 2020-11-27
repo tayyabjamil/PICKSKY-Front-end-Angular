@@ -2,7 +2,8 @@ import { FormGroup,FormControl,Validators,FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountService } from '../account.service';
-
+import  {MediaObserver, MediaChange} from '@angular/flex-layout';
+import  { Subscription } from 'rxjs';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,9 +14,23 @@ export class LoginComponent implements OnInit {
    isLoggedIn = true;
    email:String
    password:String
-  constructor(private router : Router,public formBuilder:FormBuilder,public accountService:AccountService,) { }
+
+  constructor(public mediaObserver:MediaObserver,private router : Router,public formBuilder:FormBuilder,public accountService:AccountService,) { }
+  mediaSub:Subscription
+  deviceXs:boolean;
+  deviceLg:boolean;
+  deviceMd:boolean;
+  deviceSm:boolean;
 
   ngOnInit() {
+    this.mediaSub = this.mediaObserver.media$.subscribe((result:MediaChange)=>{
+      console.log(result.mqAlias)
+      this.deviceXs = result.mqAlias === 'xs'
+      this.deviceSm = result.mqAlias ==='sm'
+      this.deviceLg = result.mqAlias === 'lg'
+      this.deviceMd = result.mqAlias === 'md'
+
+    })
     this.rformLogin = this.formBuilder.group({
 
       email: new FormControl('', [Validators.required,Validators.email]),
@@ -33,6 +48,7 @@ login(){
       this.setId(data.userId);
       this.setusername(data.username);
       this.setemail(data.email)
+      this.setcontact(data.contact)
       this.setRefrenceId(data.refrenceId)
       this.isLoggedIn = true;
       // this.router.navigate(['/home'])
@@ -51,6 +67,9 @@ setRefrenceId(refrenceId) {
 }
 setusername(username) {
   localStorage.setItem('username', JSON.stringify(username));
+}
+setcontact(contact) {
+  localStorage.setItem('contact', JSON.stringify(contact));
 }
 setemail(email) {
   localStorage.setItem('email', JSON.stringify(email));

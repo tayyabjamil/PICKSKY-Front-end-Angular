@@ -19,10 +19,13 @@ getID() {
   getRefrenceId() {
     return JSON.parse(localStorage.getItem('refrenceId'));
   }
+  getContact() {
+    return JSON.parse(localStorage.getItem('contact'));
+  }
   getemail() {
     return JSON.parse(localStorage.getItem('email'));
   }
-loggedOut() {
+loggedOutuserId() {
 
   return localStorage.removeItem('userId');
 
@@ -31,5 +34,16 @@ loggedOut() {
     return localStorage.removeItem('username');
 
   }
+  loggedOutRefrenceId() {
+    return localStorage.removeItem('refrenceId');
 
+  }
+  loggedOutEmail() {
+    return localStorage.removeItem('email');
+
+  }
+  loggedOutContact() {
+    return localStorage.removeItem('contact');
+
+  }
 }

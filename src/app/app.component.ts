@@ -7,12 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'PICKSY';
+  title = 'SHRIVASAFOODS';
   navShow = true;
-constructor(){
-}
-ngOnInIt(){
+  constructor() {
+  }
+  ngOnInIt() {
 
 
-}
+  }
 }

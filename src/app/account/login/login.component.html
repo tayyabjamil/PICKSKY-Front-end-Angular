@@ -1,57 +1,78 @@
+<div style="background-color: #f7f7f7;">
+  <div class="row"
+    style="display: flex;flex: 1;flex-direction: row;justify-content: center;text-align: center;padding-top: 5%;padding-bottom: 5%;padding-left: 10%;padding-right:10%">
 
+    <div style="float: left;width: 60%" class="cardLeft">
+      <div>
+        <p style="font-size: 2vw;padding-top: 15%;font-weight: 500;">Sign in to Account</p>
+        <hr style="margin-left: 35%;margin-right: 35%;">
+        <div style="margin-top: 5%;margin-bottom: 5%;display: flex;flex-direction: row;">
+          <!-- <button type="button" class="btn btn-outline-primary btn-sm"  style="width: 30%;">Sign Up</button> -->
+          <!-- <button type="button" class="btn btn-outline-primary btn-sm"  style="width: 30%;">Sign Up</button> -->
+          <!-- <button type="button" class="btn btn-outline-primary btn-sm"  style="width: 30%;">Sign Up</button> -->
+        </div>
+        <div style="padding-bottom: 5%;">
+          <p>Email</p>
+          <ns-textField-account name="email" class="textfieldBorderColor font13" [rformgroup]="rformLogin"
+            rformControlName="email">
+          </ns-textField-account>
+        </div>
+        <div style="padding-bottom: 5%;">
+          <p style="padding-bottom:1%">Password</p>
+          <ns-textField-account name="password" type="password" class="textfieldBorderColor font13"
+            [rformgroup]="rformLogin" rformControlName="password">
+          </ns-textField-account>
+        </div>
+        <div [ngClass]="{
+  'deviceLgClass': deviceLg,
+  'deviceSmClass': deviceSm
+}">
+          <p style="font-size: 2vw;">Forget Password? </p>
 
-<div style="margin-top: 5%;display: flex;flex-direction: row;flex: 1;justify-content: center;">
-  <div style="margin-bottom: 5%;">
-  <p style="font-size: xx-large;font-weight: 500;text-align: center;">Login</p><br>
-<div style="padding-bottom: 2%;">
-<p style="padding-bottom:1%">Email</p>
-<ns-textField
-name="email"
-class="textfieldBorderColor font13"
-[rformgroup]="rformLogin"
-rformControlName="email"
->
-</ns-textField>
+          <button (click)="reset()" type="button" class="btn btn-secondary">Reset</button>
+        </div>
+        <div style="text-align: center;padding: 15%;">
+          <!-- <p>Dont have an Account ? <button > SIGN IN </button> </p> -->
+          <button (click)="login()" type="button" class="btn btn-success">Login </button>
+
+          <!-- <button class="btn" style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(145, 145, 145); color: whitesmoke">
+  <span style="font-weight: bold;font-size: small;"></span></button> -->
+        </div>
+      </div>
+    </div>
+    <div style="float:right;width: 30%;" class="cardRight">
+      <p style="font-size: 2vw;padding: 5%;">Hello Friend</p>
+      <p style="font-size: 1.5vw;">Fill up the Form and </p>
+      <p style="font-size: 1.5vw;">start Journey with us</p>
+      <div style="text-align: center;padding: 5%;" (click)="createAccount()">
+        <button type="button" class="btn btn-outline-light" style="width: 50%;">Sign Up</button>
+      </div>
+
+    </div>
+
+  </div>
 </div>
-<div>
-  <p style="padding-bottom:1%">Password</p>
-  <ns-textField
-  name="password" type="password"
-  class="textfieldBorderColor font13"
-  [rformgroup]="rformLogin"
-  rformControlName="password"
->
-</ns-textField>
+
+<div style="background-color: rgb(189, 187, 187);">
+  <div style="padding-left:5% ;padding-right: 5%;padding-top: 3%;padding-bottom: 3%;">
+    <div class="row">
+      <div class="col-lg-6">
+        <p>Quick Links</p>
+        <p>Search</p>
+      </div>
+      <div class="col-lg-6">
+        NewsLetter
+        <input style="width: 40vw;">
+
+      </div>
+    </div>
   </div>
 
-<p>Forget Your Password? <button (click)="reset()">Reset</button> </p>
-<div style="text-align: center;">
-  <p>Dont have an Account ? <button (click)="createAccount()"> SIGN IN </button> </p>
-
-  <button class="btn" (click)="login()" style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(63, 61, 61); color: whitesmoke">
-  <span style="font-weight: bold;font-size: small;">LOGIN</span></button>
-</div>
-</div>
-</div>
-<div style="background-color: rgb(231, 228, 228);">
-<div style="padding-left:5% ;padding-right: 5%;padding-top: 3%;padding-bottom: 3%;">
-<div class="row">
-  <div class="col-lg-6">
-    <p>Quick Links</p>
-    <p>Search</p>
+  <hr class="hr" style="background-color: black;">
+  <div style="padding:5%" (click)="createAccount()">
+    <button class="btn"
+      style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(63, 61, 61); color: whitesmoke">
+      <span style="font-weight: bold;font-size: small;">SIGN IN</span></button>
+    <p style="text-align: right;">© 2020, Shrivasafoods store Powered by Shopify</p>
   </div>
-  <div class="col-lg-6">
-    NewsLetter
-    <input style="width: 40vw;">
-
-  </div>
-</div>
-</div>
-
-<hr class="hr" style="background-color: black;">
-<div style="padding:5%" (click)="createAccount()">
-  <button class="btn" style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(63, 61, 61); color: whitesmoke">
-    <span style="font-weight: bold;font-size: small;">SIGN IN</span></button>
-<p style="text-align: right;">© 2020, picksystore Powered by Shopify</p>
-</div>
 </div>

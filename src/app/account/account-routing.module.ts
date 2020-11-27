@@ -1,3 +1,4 @@
+import { EmailVerifyComponent } from './../account/emailVerify/emailVerify.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ResetPasswordComponent } from './resetPassword/resetPassword.component';
 import { SignUpComponent } from './signUp/signUp.component';
@@ -11,6 +12,7 @@ const routes: Routes = [
     { path: 'resetPassword/:id', component: ResetPasswordComponent },
   { path: 'signUp', component: SignUpComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'accountVerify/:token', component: EmailVerifyComponent },
 
   // { path: 'home', loadChildren: './home/home.module#HomeModule' },
   { path: '', component: LoginComponent },

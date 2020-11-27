@@ -3,7 +3,7 @@ import { AdminModule } from './admin/admin.module';
 
 
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -16,7 +16,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { AccountModule } from './account/account.module';
 import { HomeModule } from './home/home.module';
 import { AppComponent } from './app.component';
-import { TextFieldComponent } from './account/textField/textField.component';
+
 import { AuthService } from '../app/auth.service';
 
 
@@ -26,18 +26,21 @@ import { AuthService } from '../app/auth.service';
    ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     NgImageSliderModule,
     CommonModule,
     FlexLayoutModule,
     HomeModule,
-AdminModule,
+    AdminModule,
     AccountModule,
     BrowserAnimationsModule,
     MatCarouselModule.forRoot(),
 
+
   ],
   providers: [AuthService],
-  bootstrap: [AppComponent,TextFieldComponent]
+  bootstrap: [AppComponent],
+  schemas:[NO_ERRORS_SCHEMA ]
 })
 export class AppModule { }
