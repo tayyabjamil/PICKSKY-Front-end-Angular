@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "PICKSY": {
+    "SHRIVASAFOODS": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/PICKSY",
+            "outputPath": "dist/SHRIVASAFOODS",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "PICKSY:build"
+            "browserTarget": "SHRIVASAFOODS:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "PICKSY:build:production"
+              "browserTarget": "SHRIVASAFOODS:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "PICKSY:build"
+            "browserTarget": "SHRIVASAFOODS:build"
           }
         },
         "test": {
@@ -112,18 +112,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "PICKSY:serve"
+            "devServerTarget": "SHRIVASAFOODS:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "PICKSY:serve:production"
+              "devServerTarget": "SHRIVASAFOODS:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "PICKSY",
+  "defaultProject": "SHRIVASAFOODS",
   "cli": {
     "analytics": "40de07b6-5ed7-4787-b9f8-9cdcd8f5ab30"
   }

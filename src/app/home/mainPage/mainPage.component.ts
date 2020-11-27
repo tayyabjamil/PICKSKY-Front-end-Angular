@@ -165,4 +165,5 @@ export class MainPageComponent implements OnInit {
       return this.productService.productImageUrl(imageId);
     }
   }
+
 }

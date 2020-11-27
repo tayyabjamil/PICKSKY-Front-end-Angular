@@ -31,6 +31,17 @@ import { CartComponent } from './cart/cart.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { SupportPageComponent } from './supportPage/supportPage.component';
+
+import { PicklesComponent } from './pickles/pickles.component';
+import { TraditionalPowdersComponent } from './traditionalpowders/traditionalpowders.component';
+import { SpecialOffersComponent } from './specialoffers/specialoffers.component';
+import { OthersComponent } from './others/others.component';
+import { SweetandHotComponent } from './sweetandhot/sweetandhot.component';
+
+
+
+
+
 @NgModule({
   imports: [
 
@@ -64,9 +75,13 @@ import { SupportPageComponent } from './supportPage/supportPage.component';
     MainPageComponent,
     CartComponent,
     MyordersComponent,
-
     FooterComponent,
-  //  SupportPageComponent
+//  SupportPageComponent,
+    PicklesComponent,
+    TraditionalPowdersComponent,
+    SpecialOffersComponent,
+    OthersComponent,
+    SweetandHotComponent,
   ],
   exports:[
     HomeComponent,
@@ -82,8 +97,14 @@ import { SupportPageComponent } from './supportPage/supportPage.component';
     CartComponent,
     // SupportPageComponent,
     MyordersComponent,
-FooterComponent
+    FooterComponent,
+    PicklesComponent,
+    TraditionalPowdersComponent,
+    SpecialOffersComponent,
+    OthersComponent,
+    SweetandHotComponent,
   ],
   schemas:[NO_ERRORS_SCHEMA]
 })
+
 export class HomeModule { }

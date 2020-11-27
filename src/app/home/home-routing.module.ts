@@ -29,7 +29,16 @@ const routes: Routes = [
     { path: 'snacks', component: SnacksandbeveragesComponent },
     { path: 'myOrders', component: MyordersComponent, canActivate:[AuthGuard]},
     { path: 'bakery', component: BackeryandpasteryComponent },
-    { path: '', component: MainPageComponent },
+      { path: '', component: MainPageComponent },
+    
+      // { path: 'pickles', component: PicklesComponent },
+      // { path: 'traditionalpowders', component: TraditionalPowdersComponent },
+      // { path: 'sweets', component: SweetandHotComponent },
+      // { path: 'specialoffers', component: SpecialOffersComponent },
+      // { path: 'others', component: OthersComponent },
+      // { path: 'aboutus', component: AboutUSComponent },
+      // { path: 'support', component: SupportComponent },
+
   ]
 },
 ];

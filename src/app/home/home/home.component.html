@@ -96,66 +96,70 @@
     <nav class="fundpress-menu" style="margin-bottom: 4%;">
       <ul class="nav-menu"  style="width: 100%;">
         <li class="dropdown" routerLink="/">
-          <a >Home</a>
+          <a >{{getHeaderNames(1)}}</a>
         </li>
         <li class="dropdown" routerLink="/veg">
-          <a class="dropdown-toggle" data-toggle="dropdown">Vegetables</a>
+          <a class="dropdown-toggle" data-toggle="dropdown">{{getHeaderNames(2)}}</a>
           <ul class="dropdown-menu">
-            <li class="navitem"><a  routerLink="/veg">Herbs</a></li>
-            <li><a  routerLink="/veg">Fresh Vegetables</a></li>
-            <li><a  routerLink="/veg">Packed Vegetables</a></li>
+      <li><a href="#">{{getPicklesConstants(1)}}</a></li>
+      <li><a href="#">{{getPicklesConstants(2)}}</a></li>
           </ul>
         </li>
         <li class="dropdown" routerLink="/organic">
           <a class="dropdown-toggle" data-toggle="dropdown"
-            >Organic</a>
+            >{{getHeaderNames(3)}}</a>
           <ul class="dropdown-menu">
-            <li><a   routerLink="/organic">Spice</a></li>
-            <li><a   routerLink="/organic">Honey</a></li>
-            <li><a   routerLink="/organic">Oil</a></li>
+          <li><a href="#">{{getTraditionalPodulu(1)}}</a></li>
+          <li><a href="#">{{getTraditionalPodulu(2)}}</a></li>
           </ul>
         </li>
         <li class="dropdown" routerLink="/snacks">
           <a class="dropdown-toggle" data-toggle="dropdown"
-            >Snacks & Beverages</a>
+            >{{getHeaderNames(4)}}</a>
           <ul class="dropdown-menu">
-            <li><a >Juice</a></li>
-            <li><a >Coffe</a></li>
-            <li><a >Tea</a></li>
-            <li><a >Fizzy Drinks</a></li>
-            <li><a >Crisp</a></li>
-            <li><a >Chocolates</a></li>
+            <li><a href="#">{{getSweetsandHotConstants(1)}}</a></li>
+            <li><a href="#">{{getSweetsandHotConstants(2)}}</a></li>
           </ul>
         </li>
         <li class="dropdown" routerLink="/fish">
           <a class="dropdown-toggle" data-toggle="dropdown"
-            >Fish & Meat</a>
+            >{{getHeaderNames(5)}}</a>
           <ul class="dropdown-menu">
-            <li><a >Packed</a></li>
-            <li><a >Fish Counter</a></li>
-            <li><a >Poultry Counter</a></li>
-            <li><a >Meat Counter</a></li>
+            <li><a href="#">{{getSpecialConstants(1)}}</a></li>
+            <li><a href="#">{{getSpecialConstants(2)}}</a></li>
+            <li><a href="#">{{getSpecialConstants(3)}}</a></li>
+            <li><a href="#">{{getSpecialConstants(4)}}</a></li>
           </ul>
         </li>
         <li class="dropdown" routerLink="/dairy">
           <a class="dropdown-toggle" data-toggle="dropdown"
-            >Dairy</a>
+            >{{getHeaderNames(6)}}</a>
           <ul class="dropdown-menu">
-            <li><a >Yougurt</a></li>
-            <li><a >Milk</a></li>
-            <li><a >Cheese</a></li>
-            <li><a >Eggs</a></li>
+            <li><a href="#">{{getOthersConstants(1)}}</a></li>
+            <li><a href="#">{{getOthersConstants(1)}}</a></li>
+            <li><a href="#">{{getOthersConstants(1)}}</a></li>
           </ul>
         </li>
         <li class="dropdown" routerLink="/bakery">
           <a class="dropdown-toggle" data-toggle="dropdown"
-            >Bakery & Pastry</a>
+            >{{getHeaderNames(7)}}</a>
           <ul class="dropdown-menu">
-            <li><a >Bunny Rolls</a></li>
-            <li><a >Pies</a></li>
-            <li><a >Cakes</a></li>
+                <li><a href="#">{{getAboutusConstants(1)}}</a></li>
+                <li><a href="#">{{getAboutusConstants(2)}}</a></li>
+                <li><a href="#">{{getAboutusConstants(3)}}</a></li>
+                <li><a href="#">{{getAboutusConstants(4)}}</a></li>
+                <li><a href="#">{{getAboutusConstants(5)}}</a></li>
           </ul>
         </li>
+        <li class="dropdown" routerLink="/bakery">
+        <a class="dropdown-toggle" data-toggle="dropdown">{{getHeaderNames(8)}}</a>
+         <ul class="dropdown-menu">
+        <li><a href="#">{{getSupportConstants(1)}}</a></li>
+        <li><a href="#">{{getSupportConstants(2)}}</a></li>
+        <li><a href="#">{{getSupportConstants(3)}}</a></li>
+        <li><a href="#">{{getSupportConstants(4)}}</a></li>
+          </ul>
+                </li>
       </ul>
     </nav>
 

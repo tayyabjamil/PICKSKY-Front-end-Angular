@@ -1,128 +1,120 @@
-<mat-sidenav-container class="sidenav-container" style="height: 100%" >
-  <mat-sidenav style="background-color: white;"
-      #drawer
-      class="sidenav"
-      fixedInViewport="false"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-    <mat-toolbar routerLink='/'
-  organic>Catagories</mat-toolbar>
-    <mat-nav-list class="fundpress-menu"  style="background-color: white;">
-      <ul class="nav-menu">
-        <li class="dropdown" routerLink="/veg">
-          <a class="dropdown-toggle" data-toggle="dropdown"
-            >Vegetables </a>
-          <ul class="dropdown-menu">
-            <li class="navitem"><a >Herbs</a></li>
-            <li><a >Fresh Vegetables</a></li>
-            <li><a >Packed Vegetables</a></li>
-          </ul>
-        </li>
-        <li class="dropdown" routerLink="/organic">
-          <a class="dropdown-toggle" data-toggle="dropdown"
-            >Organic </a>
-          <ul class="dropdown-menu">
-            <li><a >Spice</a></li>
-            <li><a >Honey</a></li>
-            <li><a >Oil</a></li>
-          </ul>
-        </li>
-        <li class="dropdown" routerLink="/snacks">
-          <a class="dropdown-toggle" data-toggle="dropdown"
-            >Snacks & Beverages </a>
-          <ul class="dropdown-menu">
-            <li><a >Juice</a></li>
-            <li><a >Coffe</a></li>
-            <li><a >Tea</a></li>
-            <li><a >Fizzy Drinks</a></li>
-            <li><a >Crisp</a></li>
-            <li><a >Chocolates</a></li>
-          </ul>
-        </li>
-        <li class="dropdown" routerLink="/fish">
-          <a class="dropdown-toggle" data-toggle="dropdown"
-            >Fish & Meat </a>
-          <ul class="dropdown-menu">
-            <li><a >Packed</a></li>
-            <li><a >Fish Counter</a></li>
-            <li><a >Poultry Counter</a></li>
-            <li><a >Meat Counter</a></li>
-          </ul>
-        </li>
-        <li class="dropdown" routerLink="/dairy">
-          <a class="dropdown-toggle" data-toggle="dropdown"
-            >Dairy </a>
-          <ul class="dropdown-menu">
-            <li><a >Yougurt</a></li>
-            <li><a >Milk</a></li>
-            <li><a >Cheese</a></li>
-            <li><a >Eggs</a></li>
-          </ul>
-        </li>
-        <li class="dropdown" routerLink="/bakery">
-          <a class="dropdown-toggle" data-toggle="dropdown"
-            >Bakery & Pastry </a>
-          <ul class="dropdown-menu">
-            <li><a >Bunny Rolls</a></li>
-            <li><a >Pies</a></li>
-            <li><a >Cakes</a></li>
-          </ul>
-        </li>
+<mat-sidenav-container class="sidenav-container" style="height: 100%">
+  <mat-sidenav style="background-color: white;" #drawer class="sidenav" fixedInViewport="false"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar routerLink='/' organic>Catagories</mat-toolbar>
+<mat-nav-list class="fundpress-menu" style="background-color: white;">
+  <ul class="nav-menu">
+    <li class="dropdown" routerLink="/">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+        <p>{{getHeaderNames(1)}}</p>
+      </a>
+    </li>
+
+    <li class="dropdown" routerLink="/pickles">
+      <a class="dropdown-toggle" data-toggle="dropown" href="#">{{getHeaderNames(2)}} <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{getPicklesConstants(1)}}</a></li>
+        <li><a href="#">{{getPicklesConstants(2)}}</a></li>
       </ul>
-    </mat-nav-list>
+    </li>
+
+    <li class="dropdown" routerLink="/traditionalpowders">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(3)}}<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{getTraditionalPodulu(1)}}</a></li>
+        <li><a href="#">{{getTraditionalPodulu(2)}}</a></li>
+      </ul>
+    </li>
+
+    <li class="dropdown" routerLink="/sweets">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(4)}}<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{getSweetsandHotConstants(1)}}</a></li>
+        <li><a href="#">{{getSweetsandHotConstants(2)}}</a></li>
+      </ul>
+    </li>
+    <li class="dropdown" routerLink="/specialoffers">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(5)}} <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{getSpecialConstants(1)}}</a></li>
+        <li><a href="#">{{getSpecialConstants(2)}}</a></li>
+        <li><a href="#">{{getSpecialConstants(3)}}</a></li>
+        <li><a href="#">{{getSpecialConstants(4)}}</a></li>
+      </ul>
+    </li>
+    <li class="dropdown" routerLink="/others">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(6)}} <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{getOthersConstants(1)}}</a></li>
+        <li><a href="#">{{getOthersConstants(1)}}</a></li>
+        <li><a href="#">{{getOthersConstants(1)}}</a></li>
+      </ul>
+    </li>
+    <li class="dropdown" routerLink="/aboutus">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(7)}} <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{getAboutusConstants(1)}}</a></li>
+        <li><a href="#">{{getAboutusConstants(2)}}</a></li>
+        <li><a href="#">{{getAboutusConstants(3)}}</a></li>
+        <li><a href="#">{{getAboutusConstants(4)}}</a></li>
+        <li><a href="#">{{getAboutusConstants(5)}}</a></li>
+      </ul>
+    </li>
+    <li class="dropdown" routerLink="/support">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{getHeaderNames(8)}} <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="#">{{getSupportConstants(1)}}</a></li>
+        <li><a href="#">{{getSupportConstants(2)}}</a></li>
+        <li><a href="#">{{getSupportConstants(3)}}</a></li>
+        <li><a href="#">{{getSupportConstants(4)}}</a></li>
+      </ul>
+    </li>
+  </ul>
+</mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar style="background-color:white;">
-    <div *ngIf="isShow==true" style="width: 100%;margin-top: 1%;margin-left: 5%;margin-bottom: 1%" class="row">
-      <p *ngIf="isShow == true" class="col-xs-10"style="border-radius: 6px;font-weight: 300px  ;  background-color: rgb(240, 238, 238);">
-        <span
-          ><i
-            class="fa fa-search"
-            routerLink="/login"
-            style="
+      <div *ngIf="isShow==true" style="width: 100%;margin-top: 1%;margin-left: 5%;margin-bottom: 1%" class="row">
+        <p *ngIf="isShow == true" class="col-xs-10"
+          style="border-radius: 6px;font-weight: 300px  ;  background-color: rgb(240, 238, 238);">
+          <span><i class="fa fa-search" routerLink="/login" style="
               font-weight: 200;
               font-size: large;
 
               padding: 2%;
 
               color: rgb(134, 132, 132);
-            "
-          ></i
-        ></span>
-      </p>
-      <p  class="col-xs-2" (click) = toggleDisplay() style="padding-left: 2%;font-weight: 300px;color: grey;">
-        <i class="fa fa-times" ></i>
-       </p>
-    </div>
+            "></i></span>
+        </p>
+        <p class="col-xs-2" (click)=toggleDisplay() style="padding-left: 2%;font-weight: 300px;color: grey;">
+          <i class="fa fa-times"></i>
+        </p>
+      </div>
       <div *ngIf="isShow == false" style="margin-left: 2%;width: 100%;margin-top: 1%;margin-bottom: 1%" class="row">
 
 
-  <button class="col-xs-3"
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon" style="color: black;">menu</mat-icon>
-      </button>
-      <div class="col-xs-4">
-        <p  style="color: black;margin-top: 1%;padding-right: 5%;font-size: large;font-weight:500;"
-        routerLink="">PICKSY</p>
-      </div>
+        <button class="col-xs-3" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon" style="color: black;">menu</mat-icon>
+        </button>
+        <div class="col-xs-4">
+          <p style="color: black;margin-top: 1%;padding-right: 5%;font-size: large;font-weight:500;" routerLink="">
+            SHRIVASAFOODS</p>
+        </div>
 
         <div class="col-xs-4"></div>
-        <p  class="col-xs-1" (click) = toggleDisplay() style="padding-left: 2%;font-weight: 300px;color: grey;">
-       <i class="fa fa-search" ></i>
-      </p>
-       <i  class="col-xs-2"  class="fa fa-user-circle-o"  routerLink="/login"
-           style="color: gray;font-size: xx-large;"></i>
+        <p class="col-xs-1" (click)=toggleDisplay() style="padding-left: 2%;font-weight: 300px;color: grey;">
+          <i class="fa fa-search"></i>
+        </p>
+        <i class="col-xs-2" class="fa fa-user-circle-o" routerLink="/login"
+          style="color: gray;font-size: xx-large;"></i>
       </div>
 
 
     </mat-toolbar>
-  <ng-content>
+    <ng-content>
 
-  </ng-content>
+    </ng-content>
 
   </mat-sidenav-content>
 </mat-sidenav-container>
