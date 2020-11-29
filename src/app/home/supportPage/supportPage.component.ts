@@ -16,9 +16,10 @@ export class SupportPageComponent implements OnInit {
   username;
   email;
   message;
+  contact;
   constructor(
-    // public mediaObserver:MediaObserver,public formBuilder: FormBuilder, public productService: ProductService,
-    // private router: Router, public http: HttpClient
+    public mediaObserver:MediaObserver,public formBuilder: FormBuilder, public productService: ProductService,
+    private router: Router, public http: HttpClient
     ) { }
     mediaSub:Subscription
     deviceXs:boolean;
@@ -26,23 +27,23 @@ export class SupportPageComponent implements OnInit {
     deviceMd:boolean;
     deviceSm:boolean;
   ngOnInit() {
-    // this.mediaSub = this.mediaObserver.media$.subscribe((result:MediaChange)=>{
-    //   console.log(result.mqAlias)
-    //   this.deviceXs = result.mqAlias === 'xs'
-    //   this.deviceSm = result.mqAlias ==='sm'
-    //   this.deviceLg = result.mqAlias === 'lg'
-    //   this.deviceMd = result.mqAlias === 'md'
+    this.mediaSub = this.mediaObserver.media$.subscribe((result:MediaChange)=>{
+      console.log(result.mqAlias)
+      this.deviceXs = result.mqAlias === 'xs'
+      this.deviceSm = result.mqAlias ==='sm'
+      this.deviceLg = result.mqAlias === 'lg'
+      this.deviceMd = result.mqAlias === 'md'
 
-    // })
+    })
     // this.rformSupport = this.formBuilder.group({
     //   username: new FormControl(''),
     //   email: new FormControl('', Validators.email),
-
+    //   subjcet: new FormControl('' ),
     //   message: new FormControl('' )
     // });
   }
 
-  // sendQuery(){
+  submit(){
 
   //   this.productService.supportPage(this.rformSupport.value).subscribe((data: any) => {
   //    alert("Query Sent")
@@ -51,5 +52,5 @@ export class SupportPageComponent implements OnInit {
   //      alert(error.error.message);
 
   //    });
-  //  }
+   }
 }
