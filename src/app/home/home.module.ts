@@ -37,11 +37,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { SupportPageComponent } from './supportPage/supportPage.component';
 import { FAQComponent } from './FAQ/FAQ.component';
-
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DiscountComponent } from './discount/discount.component';
 import { BlogComponent } from './blog/blog.component';
+import { PrivacyandpolicyComponent } from './privacyandpolicy/privacyandpolicy.component';
+import { ReturnandrefundsComponent } from './returnandrefunds/returnandrefunds.component';
+
 
 @NgModule({
   imports: [
@@ -90,6 +92,10 @@ import { BlogComponent } from './blog/blog.component';
     FAQComponent,
     BlogComponent,
     TestimonalsComponent,
+    PrivacyandpolicyComponent,
+    ReturnandrefundsComponent,
+    PrivacyandpolicyComponent,
+    ReturnandrefundsComponent
 
   ],
   exports: [
@@ -117,6 +123,8 @@ import { BlogComponent } from './blog/blog.component';
     OthersComponent,
     SweetandHotComponent,
     TestimonalsComponent,
+    PrivacyandpolicyComponent,
+    ReturnandrefundsComponent
 
   ],
   schemas: [NO_ERRORS_SCHEMA]

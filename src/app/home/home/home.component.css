@@ -102,7 +102,7 @@
   display: block;
 }
 .nav-menu>li.active>a, .nav-menu>li.focus>a, .nav-menu>li:hover>a {
-color: green;
+color: #93bb36;
 
 }
 .fundpress-menu .nav-menu li a {
@@ -110,7 +110,7 @@ color: green;
 
 }
 .fundpress-menu .nav-menu li a:before {
-  background-color: #93bb36 ;
+  background-color: #b4d469 ;
 
 }
 .nav-menu>li>a {
