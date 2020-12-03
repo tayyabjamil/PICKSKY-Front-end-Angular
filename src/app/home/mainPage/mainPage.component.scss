@@ -2,48 +2,41 @@
   top: 10%;
   left: 10%;
  position: absolute;
-}.text-block1 {
+  
+  
+}
+.block {
   position: absolute;
-
+  left: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   color: white;
   padding-top: 10%;
-  padding-left: 5%;
-  font-size: 3vw;
-  margin-bottom: 12px;
-}.text-block2 {
-  position: absolute;
-
-  color: white;
-  padding-top: 13%;
-  padding-left: 5%;
-  font-size: 3vw;
-  margin-bottom: 12px;
+  padding-bottom: 20%;
+  padding-left: 20px;
+  padding-right: 20px;
 }
-.text-block3 {
-  position: absolute;
-
+.text-block {
   color: white;
-  padding-top: 17%;
-  padding-left: 5%;
-  font-size: 1.5vw;
-
+  font-size: 38px;
 }
-.text-block4 {
-  position: absolute;
-  background-color:white;
-  width: 15%;
+.text-blockFooter{
+font-size: 32px;
+}
+.text-block-small {
+  color: white;
+  font-size: 18px;
+}
+.text-block-btn {
+  width: 35%;
   font-weight: bold;
-  margin-top: 25%;
-  margin-left: 3%;
-  left: 5%;
-  font-size: 1.5vw;
-  // padding-top: 10px;
-  // padding-bottom: 10px;
+  min-width: 30%;
+  font-size: small;
   text-align: center;
-  // height: 3vw;
-  // width: 10vw;
 
   border-radius: 6px;
+  font-family: "Open Sans", sans-serif;
 }
 .text-block1Slider {
   position: absolute;
@@ -175,4 +168,10 @@ width: 100vw;
   // width: 10vw;
 
   border-radius: 6px;
+}
+
+.img-main  {
+
+width: 1460px;
+height: 550px
 }

@@ -30,19 +30,10 @@ export class AboutUSComponent implements OnInit {
 
     })
 
-    this.getCatagoryProducts();
-  }
 
-
-  getCatagoryProducts() {
-    this.productService.getCatagoryProducts('fish&meat').subscribe((products) => {
-      this.aboutUSProducts = products;
-    }, (error) => {
-      console.log('error in getting all products');
-    });
   }
-  addProduct(item) {
-    this.cartService.addProduct(item);
+  submit(){
+
   }
 }
 

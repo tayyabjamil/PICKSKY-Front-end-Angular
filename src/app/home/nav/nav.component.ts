@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { HeaderConstants, PicklesConstants, TraditionalPodulu, SweetsandHotConstants, SpecialConstants, SupportConstants, AboutusConstants } from '../../appconstants';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { HeaderConstants, PicklesConstants, TraditionalPodulu, SweetsandHotConst
 })
 export class NavComponent implements OnInit {
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, private router: Router ) {}
 
   isShow = false;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -26,7 +27,9 @@ export class NavComponent implements OnInit {
   toggleDisplay() {
     this.isShow = !this.isShow;
   }
-
+  catagory(page){
+    this.router.navigate(['catagory/', page])
+     }
   getHeaderNames(indx: number) { return HeaderConstants[indx]; }
 
   getPicklesConstants(indx: number) { return PicklesConstants[indx]; }
@@ -43,5 +46,5 @@ export class NavComponent implements OnInit {
 
   getSupportConstants(indx: number) { return SupportConstants[indx] }
 
-  
+
 }

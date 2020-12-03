@@ -35,6 +35,7 @@ import { AuthService } from '../app/auth.service';
     AdminModule,
     AccountModule,
     BrowserAnimationsModule,
+
     MatCarouselModule.forRoot(),
 
 

@@ -1,3 +1,8 @@
+import { FAQComponent } from './FAQ/FAQ.component';
+import { BlogComponent } from './blog/blog.component';
+import { TestimonalsComponent } from './testimonals/testimonals.component';
+import { DiscountComponent } from './discount/discount.component';
+import { CatagoryComponent } from './catagory/catagory.component';
 import { SupportPageComponent } from './supportPage/supportPage.component';
 import { FooterComponent } from './footer/footer.component';
 import { MyordersComponent } from './myorders/myorders.component';
@@ -23,12 +28,17 @@ const routes: Routes = [
       { path: 'detail', component: ProductDetailComponent },
       { path: 'pickles', component: PicklesComponent },
       { path: 'powders', component: TraditionalPowdersComponent },
-      { path: 'sweets', component: SweetandHotComponent },  
+      { path: 'sweets', component: SweetandHotComponent },
       { path: 'specialoffers', component: SpecialOffersComponent },
       { path: 'others', component: OthersComponent },
-      { path: 'aboutus', component: AboutUSComponent },
-      { path: 'support', component: SupportComponent },
+      { path: 'discount/:username', component: DiscountComponent },
+      { path: 'catagory/:page', component: CatagoryComponent },
+      { path: 'aboutUs', component: AboutUSComponent },
+      { path: 'testimonals', component: TestimonalsComponent },
+      { path: 'faq', component: FAQComponent },
+      // { path: 'support', component: SupportPageComponent },
       { path: 'supportpage', component: SupportPageComponent },
+      { path: 'blog', component: BlogComponent },
       { path: 'home', component: HomeComponent },
       { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
       { path: 'myOrders', component: MyordersComponent, canActivate: [AuthGuard] },

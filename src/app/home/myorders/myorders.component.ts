@@ -11,7 +11,8 @@ import  { Subscription } from 'rxjs';
 })
 export class MyordersComponent implements OnInit {
   allOrders = [];
-
+  friendEmail;
+  refrenceCode;
   constructor(public mediaObserver:MediaObserver,
     public productService:ProductService,
     public cartService:CartService) { }
@@ -48,6 +49,18 @@ export class MyordersComponent implements OnInit {
     return this.productService.productImageUrl(imageId);
   }
 orderCompleted(item){
+
+}
+refer(){
+  const data ={
+    refrenceCode:this.refrenceCode,
+    friendEmail:this.friendEmail
+  }
+  this.productService.referFriend(data).subscribe((products:any) => {
+  alert("refer");
+  }, (error) => {
+ alert("use correct refrenceId")
+  });
 
 }
 }

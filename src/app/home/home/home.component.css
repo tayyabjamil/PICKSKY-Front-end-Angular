@@ -110,7 +110,7 @@ color: green;
 
 }
 .fundpress-menu .nav-menu li a:before {
-  background-color: green;
+  background-color: #93bb36 ;
 
 }
 .nav-menu>li>a {
@@ -121,11 +121,30 @@ color: green;
 }
 .fundpress-menu .nav-menu {
   padding-left: 2%;
+ font-Family: 'Open Sans, sans-serif'; 
+
 
 }
 
 .fundpress-menu .nav-menu li a{
       font-weight: 100;
+      font-family: "Open Sans", sans-serif;
+      color: rgb(117, 117, 117);
+      font-size: 12px;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      align-items: center;
+      color: var(--theme-ui-colors-text,#5A5A5A);
+  
+    cursor: pointer;
+    font-weight: 400;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    text-decoration: none;
+    transition: color 0.2s ease 0s;
+      
+      
 
 }
 .mat-body, .mat-body-1, .mat-typography {
