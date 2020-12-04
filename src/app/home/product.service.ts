@@ -31,7 +31,17 @@ export class ProductService {
   productImageUrl(name) {
     return 'http://localhost:8000/api/products/image/' + name;
   }
-
+  referFriend(data){
+    return this.http.post(
+      'http://localhost:8000/api/users/referFriend',
+    {
+      userId :this.myauthService.getID(),
+     refrenceCode : data.refrenceCode,
+     friendEmail: data.friendEmail
+    },
+    this.httpHeaders
+      );
+  }
 // supportPage(data){
 //   return 'http://localhost:8000/api/products/image/' + data;
 // }

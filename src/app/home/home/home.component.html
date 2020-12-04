@@ -32,33 +32,45 @@
           What Are You Looking For?
         </p>
       </div>
-      <div style="padding-top: 1%;">
+      <div *ngIf="!authService.loggedIn()" style="padding-top: 1%;">
         <i class="fa fa-user-circle-o" routerLink="/login" style="font-size: xx-large"></i>
         <p routerLink='/login' routerLinkActive="router-link-active">Login</p>
       </div>
-      <div style="padding-top: 1%;">
-        <i class="fa fa-user-circle-o" routerLink="/myOrders" style="font-size: xx-large"></i>
-        <p routerLink='/myOrders' routerLinkActive="router-link-active">My orders </p>
-      </div>
-      <div style="padding-top: 1%;">
-        <i class="fa fa-user-circle-o" routerLink="/support" style="font-size: xx-large"></i>
-        <p routerLink='/support' routerLinkActive="router-link-active">Support </p>
-      </div>
-      <div style="padding-top: 1%;">
-        <i class="fa fa-user-circle-o" routerLink="/admin" style="font-size: xx-large"></i>
-        <p routerLink='/admin' routerLinkActive="router-link-active">Admin </p>
-      </div>
-      <div style="padding-top: 1%;">
-        <li *ngIf="authService.loggedIn()" style="font-size: xx-large" (click)="onLogoutClick()" class="fa fa-sign-out">
-        </li>
-        <p *ngIf="authService.loggedIn()">Logout</p>
-      </div>
-      <div>
-      <i class="fa fa-cog" style="font-size: xx-large" popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-      popoverTitle="Popover on bottom"
-      placement="bottom">
+      <div *ngIf="authService.loggedIn()"  style="display: flex;flex-direction: row;padding-top: 1%;">
+        <p style="font-size: large;padding-top: 5%;">Hi {{username}}</p>
+        <i class="fa fa-cog" style="font-size: xx-large" [popover]="popTemplate"  popoverTitle=Hi{{username}}
+              ></i>
+          <div>
+            <ng-template #popTemplate>
 
- </i>
+<div class="row">
+  <div class="col-lg-6">
+    <div style="padding-top: 1%;">
+      <i class="fa fa-user-circle-o" routerLink="/myOrders" style="font-size: xx-large"></i>
+      <p routerLink='/myOrders' routerLinkActive="router-link-active">My orders </p>
+    </div>
+    <div style="padding-top: 1%;">
+      <i class="fa fa-user-circle-o" routerLink="/support" style="font-size: xx-large"></i>
+      <p routerLink='/support' routerLinkActive="router-link-active">Support </p>
+    </div>
+
+  </div>
+  <div class="col-lg-6">
+    <div style="padding-top: 1%;">
+      <i class="fa fa-user-circle-o" routerLink="/admin" style="font-size: xx-large"></i>
+      <p routerLink='/admin' routerLinkActive="router-link-active">Admin </p>
+    </div>
+    <div style="padding-top: 1%;">
+      <li *ngIf="authService.loggedIn()" style="font-size: xx-large" (click)="onLogoutClick()" class="fa fa-sign-out">
+      </li>
+      <p *ngIf="authService.loggedIn()">Logout</p>
+    </div>
+  </div>
+
+  </div>
+
+            </ng-template>
+          </div>
 
 </div>
       <div style="padding-top: 1%;">
@@ -103,33 +115,33 @@
             <li><a (click)="catagory(getSpecialConstants(4))">{{getSpecialConstants(4)}}</a></li>
           </ul>
         </li>
-        <li class="dropdown" routerLink="/others">
+        <li class="dropdown" >
           <a class="dropdown-toggle" data-toggle="dropdown">{{getHeaderNames(6)}}</a>
           <ul class="dropdown-menu">
-            <li><a (click)="catagory(getOthersConstants(1))">{{getOthersConstants(1)}}</a></li>
-            <li><a (click)="catagory(getOthersConstants(1))">{{getOthersConstants(1)}}</a></li>
-            <li><a (click)="catagory(getOthersConstants(1))">{{getOthersConstants(1)}}</a></li>
+            <li><a  routerLink="/faq">{{getOthersConstants(1)}}</a></li>
+            <li><a  routerLink="/faq">{{getOthersConstants(1)}}</a></li>
+            <li><a  routerLink="/faq">{{getOthersConstants(1)}}</a></li>
           </ul>
         </li>
-        <li class="dropdown" routerLink="/aboutus">
+        <li class="dropdown" >
           <a class="dropdown-toggle" data-toggle="dropdown">{{getHeaderNames(7)}}</a>
           <ul class="dropdown-menu">
-            <li><a (click)="catagory(getAboutusConstants(1))">{{getAboutusConstants(1)}}</a></li>
-            <li><a (click)="catagory(getAboutusConstants(2))">{{getAboutusConstants(2)}}</a></li>
-            <li><a (click)="catagory(getAboutusConstants(3))">{{getAboutusConstants(3)}}</a></li>
+            <li><a [routerLink]="['/blog']">{{getAboutusConstants(1)}}</a></li>
+            <li><a [routerLink]="['/aboutUs']" >About US</a></li>
+            <li><a [routerLink]="['/testimonals']">{{getAboutusConstants(3)}}</a></li>
             <li><a (click)="catagory(getAboutusConstants(4))">{{getAboutusConstants(4)}}</a></li>
             <li><a (click)="catagory(getAboutusConstants(5))">{{getAboutusConstants(5)}}</a></li>
           </ul>
         </li>
-        <!-- <li class="dropdown" routerLink="/support">
+        <li class="dropdown" >
           <a class="dropdown-toggle" data-toggle="dropdown">{{getHeaderNames(8)}}</a>
           <ul class="dropdown-menu">
-            <li><a (click)="catagory(getSupportConstants(1))">{{getSupportConstants(1)}}</a></li>
-            <li><a (click)="catagory()">{{getSupportConstants(2)}}</a></li>
-            <li><a (click)="catagory()">{{getSupportConstants(3)}}</a></li>
-            <li><a (click)="catagory()">{{getSupportConstants(4)}}</a></li>
+            <li><a >{{getSupportConstants(1)}}</a></li>
+            <li><a >{{getSupportConstants(2)}}</a></li>
+            <li><a    >{{getSupportConstants(3)}}</a></li>
+            <li><a [routerLink]="['/supportpage']"  >{{getSupportConstants(4)}}</a></li>
           </ul>
-        </li> -->
+        </li>
       </ul>
     </nav>
 
@@ -232,3 +244,5 @@
     <router-outlet></router-outlet>
   </app-nav>
 </div>
+  <app-footer></app-footer>
+  

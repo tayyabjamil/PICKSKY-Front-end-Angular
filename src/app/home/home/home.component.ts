@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import  {MediaObserver, MediaChange} from '@angular/flex-layout';
 import  { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
-import { AboutusConstants, HeaderConstants, PicklesConstants, SpecialConstants, SupportConstants, SweetsandHotConstants, TraditionalPodulu } from './../../appconstants';
+import { AboutusConstants, HeaderConstants, PicklesConstants, SpecialConstants, SupportConstants, SweetsandHotConstants, TraditionalPodulu } from '../../appconstants';
 
 
 @Component({
@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
  cart = [];
 total ;
 allProducts;
+username
   constructor(public mediaObserver:MediaObserver
     ,public cartService:CartService,  private productService: ProductService,private authService:AuthService,
     private router: Router,
@@ -28,6 +29,7 @@ allProducts;
   deviceSm:boolean;
 
   ngOnInit() {
+this.username = this.authService.getusername()
     this.mediaSub = this.mediaObserver.media$.subscribe((result:MediaChange)=>{
       console.log(result.mqAlias)
       this.deviceXs = result.mqAlias === 'xs'

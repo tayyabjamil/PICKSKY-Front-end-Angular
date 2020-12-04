@@ -1,54 +1,23 @@
-<!-- <div style="margin-left:5%;margin-right: 5%;">
+<div style="margin-left:5%;margin-right: 5%;">
 
-  <div class="card"  style="margin-left: 10%;margin-right: 10%;">
-    <p style="font-size: large;font-weight: bold;">Ask Your Questions</p>
-    <hr>
-    <form [formGroup]="rformSupport">
-      <div style="display: flex;flex-direction: row;">
-      <div style="padding-bottom: 2%;padding-right: 20%;float: left;" class="">
-        <p style="padding-bottom: 1%">Username</p>
-        <ns-textField-account
-          name="username"
-          class="textfieldBorderColor font13"
-          [rformgroup]="rformSupport"
-          rformControlName="username"
-        >
-        </ns-textField-account>
+  <div   style="">
+    <p style="font-size: large;font-weight: bold;text-align: center;">Support Page</p>
+<hr>
+    <div  style="margin-left: 10%;margin-right: 10%;margin-top: 5%;display: flex;flex-direction: column;justify-content: space-evenly;">
 
-      </div>
+       <input [(ngModel)]="username" placeholder="username" style="margin-bottom: 2%;width: 40%;" class="form-control" type="text" name="username">
+       <input  [(ngModel)]="email" placeholder="email" style="margin-bottom: 2%;width: 40%;" class="form-control" type="text" name="email">
+       <input  [(ngModel)]="contact" placeholder="contact" style="margin-bottom: 2%;width: 40%;" class="form-control" type="text" name="contact">
 
-      <div style="padding-bottom: 2%;float:right">
-        <p style="padding-bottom: 1%">Email</p>
-        <ns-textField-account
-          name="email"
-          class="textfieldBorderColor font13"
-          [rformgroup]="rformSupport"
-          rformControlName="email"
-        >
-        </ns-textField-account>
-      </div>
-    </div>
-    <div style="display: flex;flex-direction: row;">
+  <textarea [(ngModel)]="message" placeholder="message" name="message"  rows="5" style="margin-bottom: 2%;margin-top: 2%;width: 100%;"></textarea>
+            <div>
+           <p  class="btn btn-primary"  (click)="submit()" >Submit</p>
+             </div>
 
-      <div style="padding-bottom: 2%">
-        <p style="padding-bottom: 1%">Message</p>
-        <ns-textField-account
-          name="message" type="text"
-          class="textfieldBorderColor font13"
-          [rformgroup]="rformSupport"
-          rformControlName="message"
-        >
-        </ns-textField-account>
-      </div>
-    </div>
-
-
-      </form>
-      <div style="text-align: right;">
-          <p  class="btn" (click)="sendQuery()" style="color: rgb(104, 104, 209);">Edit</p>
-        </div>
+             </div>
 
 
 
           </div>
-  </div> -->
+  </div>
+

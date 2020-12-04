@@ -1,3 +1,7 @@
+
+import { AboutUSComponent } from './aboutus/aboutus.component';
+import { AboutusConstants } from './../appconstants';
+import { TestimonalsComponent } from './testimonals/testimonals.component';
 import { CatagoryComponent } from './catagory/catagory.component';
 
 import { FooterComponent } from './footer/footer.component';
@@ -32,8 +36,14 @@ import { CartComponent } from './cart/cart.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { SupportPageComponent } from './supportPage/supportPage.component';
-
+import { FAQComponent } from './FAQ/FAQ.component';
 import { PopoverModule } from 'ngx-bootstrap/popover';
+import { MatTabsModule } from '@angular/material/tabs';
+import { DiscountComponent } from './discount/discount.component';
+import { BlogComponent } from './blog/blog.component';
+import { PrivacyandpolicyComponent } from './privacyandpolicy/privacyandpolicy.component';
+import { ReturnandrefundsComponent } from './returnandrefunds/returnandrefunds.component';
+
 
 @NgModule({
   imports: [
@@ -52,6 +62,7 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
     MatIconModule,
     MatListModule,
     NgxPayPalModule,
+    MatTabsModule,
     PopoverModule.forRoot()
 
   ],
@@ -70,12 +81,22 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
     MyordersComponent,
     FooterComponent,
     CatagoryComponent,
-    //  SupportPageComponent,
+    DiscountComponent,
+     SupportPageComponent,
     PicklesComponent,
     TraditionalPowdersComponent,
     SpecialOffersComponent,
     OthersComponent,
     SweetandHotComponent,
+    AboutUSComponent,
+    FAQComponent,
+    BlogComponent,
+    TestimonalsComponent,
+    PrivacyandpolicyComponent,
+    ReturnandrefundsComponent,
+    PrivacyandpolicyComponent,
+    ReturnandrefundsComponent
+
   ],
   exports: [
     HomeComponent,
@@ -89,7 +110,11 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
     ProductDetailComponent,
     MainPageComponent,
     CartComponent,
-    // SupportPageComponent,
+    DiscountComponent,
+    BlogComponent,
+   FAQComponent,
+    SupportPageComponent,
+    AboutUSComponent,
     MyordersComponent,
     FooterComponent,
     PicklesComponent,
@@ -97,6 +122,10 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
     SpecialOffersComponent,
     OthersComponent,
     SweetandHotComponent,
+    TestimonalsComponent,
+    PrivacyandpolicyComponent,
+    ReturnandrefundsComponent
+
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })

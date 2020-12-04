@@ -13,7 +13,19 @@
 </div>
 <form [formGroup]="rformSignup">
   <div style="padding-bottom: 2%" class="">
-    <p style="padding-bottom: 1%">Username</p>
+    <p style="padding-bottom: 1%;padding-right: 85%;">First Name</p>
+    <ns-textField-account name="username" class="textfieldBorderColor font13" [rformgroup]="rformSignup"
+      rformControlName="username">
+    </ns-textField-account>
+  </div>
+  <div style="padding-bottom: 2%" class="">
+    <p style="padding-bottom: 1%;padding-right: 85%;">Last Name</p>
+    <ns-textField-account name="username" class="textfieldBorderColor font13" [rformgroup]="rformSignup"
+      rformControlName="username">
+    </ns-textField-account>
+  </div>
+  <div style="padding-bottom: 2%" class="">
+    <p style="padding-bottom: 1%;padding-right: 85%;">Username</p>
     <ns-textField-account
       name="username"
       class="textfieldBorderColor font13"
@@ -24,7 +36,7 @@
   </div>
 
   <div style="padding-bottom: 2%">
-    <p style="padding-bottom: 1%">Email</p>
+    <p style="padding-bottom: 1%;padding-right: 88%;">Email</p>
     <ns-textField-account
       name="email"
       class="textfieldBorderColor font13"
@@ -34,7 +46,7 @@
     </ns-textField-account>
   </div>
   <div>
-    <p style="padding-bottom: 1%">Password</p>
+    <p style="padding-bottom: 1%;padding-right: 85%;">Password</p>
     <ns-textField-account
       name="password" type="password"
       class="textfieldBorderColor font13"
@@ -44,7 +56,7 @@
     </ns-textField-account>
   </div>
   <div style="padding-bottom: 2%">
-    <p style="padding-bottom: 1%">Contact</p>
+    <p style="padding-bottom: 1%;padding-right: 85%;">Contact</p>
     <ns-textField-account
       name="contact" type="text"
       class="textfieldBorderColor font13"
