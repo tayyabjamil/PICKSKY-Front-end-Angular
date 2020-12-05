@@ -16,6 +16,8 @@ import { OthersComponent } from './others/others.component';
 import { PicklesComponent } from './Pickles/Pickles.component';
 import { AboutUSComponent } from './aboutus/aboutus.component';
 import { SupportComponent } from './support/support.component';
+import { PrivacyandpolicyComponent } from './privacyandpolicy/privacyandpolicy.component';
+import { ReturnandrefundsComponent } from './returnandrefunds/returnandrefunds.component';
 import { AuthGuard } from './../auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -36,6 +38,8 @@ const routes: Routes = [
       { path: 'aboutUs', component: AboutUSComponent },
       { path: 'testimonals', component: TestimonalsComponent },
       { path: 'faq', component: FAQComponent },
+      { path: 'privacy', component: PrivacyandpolicyComponent },
+      { path: 'returns', component: ReturnandrefundsComponent },
       // { path: 'support', component: SupportPageComponent },
       { path: 'supportpage', component: SupportPageComponent },
       { path: 'blog', component: BlogComponent },
