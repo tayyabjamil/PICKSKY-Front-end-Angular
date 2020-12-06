@@ -1,0 +1,31 @@
+.text-block1 {
+  position: absolute;
+  color: white;
+  padding-top: 9%;
+  padding-left: 39%;
+  font-size: 2vw;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+.deviceXs{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex:1
+}
+.deviceLg{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+   flex-wrap: wrap;
+}
+.gradient{
+  background-color:  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 80%;
+
+  padding:2%
+}

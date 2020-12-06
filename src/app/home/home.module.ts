@@ -1,4 +1,9 @@
 
+import { AboutUSComponent } from './aboutus/aboutus.component';
+import { AboutusConstants } from './../appconstants';
+import { TestimonalsComponent } from './testimonals/testimonals.component';
+import { CatagoryComponent } from './catagory/catagory.component';
+
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { MyordersComponent } from './myorders/myorders.component';
@@ -31,6 +36,13 @@ import { CartComponent } from './cart/cart.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { SupportPageComponent } from './supportPage/supportPage.component';
+import { FAQComponent } from './FAQ/FAQ.component';
+import { PopoverModule } from 'ngx-bootstrap/popover';
+import { MatTabsModule } from '@angular/material/tabs';
+import { DiscountComponent } from './discount/discount.component';
+import { BlogComponent } from './blog/blog.component';
+import { PrivacyandpolicyComponent } from './privacyandpolicy/privacyandpolicy.component';
+import { ReturnandrefundsComponent } from './returnandrefunds/returnandrefunds.component';
 
 
 @NgModule({
@@ -50,7 +62,8 @@ import { SupportPageComponent } from './supportPage/supportPage.component';
     MatIconModule,
     MatListModule,
     NgxPayPalModule,
-
+    MatTabsModule,
+    PopoverModule.forRoot()
 
   ],
   declarations: [
@@ -67,12 +80,23 @@ import { SupportPageComponent } from './supportPage/supportPage.component';
     CartComponent,
     MyordersComponent,
     FooterComponent,
-    //  SupportPageComponent,
+    CatagoryComponent,
+    DiscountComponent,
+     SupportPageComponent,
     PicklesComponent,
     TraditionalPowdersComponent,
     SpecialOffersComponent,
     OthersComponent,
     SweetandHotComponent,
+    AboutUSComponent,
+    FAQComponent,
+    BlogComponent,
+    TestimonalsComponent,
+    PrivacyandpolicyComponent,
+    ReturnandrefundsComponent,
+    PrivacyandpolicyComponent,
+    ReturnandrefundsComponent
+
   ],
   exports: [
     HomeComponent,
@@ -86,7 +110,11 @@ import { SupportPageComponent } from './supportPage/supportPage.component';
     ProductDetailComponent,
     MainPageComponent,
     CartComponent,
-    // SupportPageComponent,
+    DiscountComponent,
+    BlogComponent,
+   FAQComponent,
+    SupportPageComponent,
+    AboutUSComponent,
     MyordersComponent,
     FooterComponent,
     PicklesComponent,
@@ -94,6 +122,10 @@ import { SupportPageComponent } from './supportPage/supportPage.component';
     SpecialOffersComponent,
     OthersComponent,
     SweetandHotComponent,
+    TestimonalsComponent,
+    PrivacyandpolicyComponent,
+    ReturnandrefundsComponent
+
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })

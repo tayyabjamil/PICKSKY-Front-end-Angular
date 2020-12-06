@@ -4,7 +4,7 @@
 
 <div style="float: left;width: 60%" class="cardLeft">
   <div >
-  <p style="font-size: 2vw;padding-top: 15%;font-weight: 500;">Create Account</p>
+  <p style="font-size: large;padding-top: 15%;font-weight: 500;">Create Account</p>
   <hr style="margin-left: 35%;margin-right: 35%;">
 <div style="margin-top: 5%;margin-bottom: 5%;display: flex;flex-direction: row;">
   <!-- <button type="button" class="btn btn-outline-primary btn-sm"  style="width: 30%;">Sign Up</button> -->
@@ -13,7 +13,19 @@
 </div>
 <form [formGroup]="rformSignup">
   <div style="padding-bottom: 2%" class="">
-    <p style="padding-bottom: 1%">Username</p>
+    <p style="padding-bottom: 1%;padding-right: 85%;">First Name</p>
+    <ns-textField-account name="username" class="textfieldBorderColor font13" [rformgroup]="rformSignup"
+      rformControlName="username">
+    </ns-textField-account>
+  </div>
+  <div style="padding-bottom: 2%" class="">
+    <p style="padding-bottom: 1%;padding-right: 85%;">Last Name</p>
+    <ns-textField-account name="username" class="textfieldBorderColor font13" [rformgroup]="rformSignup"
+      rformControlName="username">
+    </ns-textField-account>
+  </div>
+  <div style="padding-bottom: 2%" class="">
+    <p style="padding-bottom: 1%;padding-right: 85%;">Username</p>
     <ns-textField-account
       name="username"
       class="textfieldBorderColor font13"
@@ -24,7 +36,7 @@
   </div>
 
   <div style="padding-bottom: 2%">
-    <p style="padding-bottom: 1%">Email</p>
+    <p style="padding-bottom: 1%;padding-right: 88%;">Email</p>
     <ns-textField-account
       name="email"
       class="textfieldBorderColor font13"
@@ -34,7 +46,7 @@
     </ns-textField-account>
   </div>
   <div>
-    <p style="padding-bottom: 1%">Password</p>
+    <p style="padding-bottom: 1%;padding-right: 85%;">Password</p>
     <ns-textField-account
       name="password" type="password"
       class="textfieldBorderColor font13"
@@ -44,7 +56,7 @@
     </ns-textField-account>
   </div>
   <div style="padding-bottom: 2%">
-    <p style="padding-bottom: 1%">Contact</p>
+    <p style="padding-bottom: 1%;padding-right: 85%;">Contact</p>
     <ns-textField-account
       name="contact" type="text"
       class="textfieldBorderColor font13"
@@ -67,9 +79,9 @@
 </div>
 </div>
 <div style="float:right;width: 30%;" class="cardRight">
-<p style="font-size: 2vw;padding: 5%;">Hello Friend</p>
-<p style="font-size: 1.5vw;">Fill up the Form and </p>
-<p style="font-size: 1.5vw;">start Journey with us</p>
+<p style="font-size: large;padding: 5%;">Hello Friend</p>
+<p style="font-size: large;">Fill up the Form and </p>
+<p style="font-size: large;">start Journey with us</p>
 <div style="text-align: center;padding: 5%;" (click)="login()">
   <button type="button" class="btn btn-outline-light"  style="width: 50%;">Login </button>
 </div>
