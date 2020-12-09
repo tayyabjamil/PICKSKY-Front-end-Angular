@@ -4,10 +4,10 @@
   <div class="container-fluid" style="width: 100%;padding-top: 2%;" >
 <div class="block">
   <div class="text-block">
-  <p style="color: white; padding-bottom: 2%;"> Stay home & get <br>
-    <p  style="color: white;padding-bottom: 10%;"> your tradational food</p>
+  <p style="color: white; padding-bottom: 2%;font-size: xx-large;"> Stay home & get </p><br>
+    <p  style="color: white;padding-bottom: 7%;font-size: xx-large"> your tradational food</p>
   </div>
-    <p class="text-block-small" style="padding-bottom: 10%;">Start You'r Shopping with Shrivasafoods</p>
+    <p class="text-block-small" style="padding-bottom: 7%;">Start You'r Shopping with Shrivasafoods</p>
 
     <button class="btn" style="background-color: #FFFFFF;width: 40%;"><span> Order Now </span></button>
   </div>
@@ -157,14 +157,14 @@
     [images]="imagesUrl" #nav></ng-image-slider>
   </div>
 <!-- ////////////////////////////////////////// featured  producsts-->
-<div style="border-radius: 6px;margin:2%;background-color: white;">
+<div style="border-radius: 6px;margin:2%;">
   <p  style="font-weight: bold;padding-left:3%;padding-top:4% ; "> Featured Products</p>
   <div *ngIf="deviceLg || deviceMd" class="deviceLg">
 
-    <div *ngFor="let item of featuredProducts" style="padding:2%;width: 20%;" >
+    <div [routerLink]="['/detail']" routerLinkActive="router-link-active"  *ngFor="let item of featuredProducts" style="padding:2%;width: 18%;background-color: white;margin: 0.5%;" >
 
-    <div style="height: 250px;width: 200px;">
-      <img [src]='getImage(item.productImage)' style="height: 250px;width: 200px;">
+    <div style="height: 15vw;width: 100%;">
+      <img [src]='getImage(item.productImage)' style="height: 15vw;width: 100%;">
     </div>
       <p style="font-weight: bold;">{{item.price}}</p>
       <div style="text-align: center;">
@@ -187,13 +187,13 @@
   </div>
   <div *ngIf="deviceXs || deviceSm" >
     <div class="row">
-      <div  style="display:flex;flex-direction: row;flex-wrap: wrap;flex: 2;justify-content: space-evenly;">
+      <div [routerLink]="['/detail']"   style="display:flex;flex-direction: row;flex-wrap: wrap;flex: 2;justify-content: space-evenly;">
 
 
-        <div *ngFor="let item of featuredProducts" style="padding:2%;width: 40%;" >
+        <div *ngFor="let item of featuredProducts" style="padding:2%;width: 18%;background-color: white;margin: 0.5%;" >
 
-          <div style="height: 250px;width: 200px;">
-            <img [src]='getImage(item.productImage)' style="height: 250px;width: 200px;">
+          <div style="height: 15vw;width: 100%;">
+            <img [src]='getImage(item.productImage)' style="height: 15vw;width: 100%;">
           </div>
           <p style="font-weight: bold;">{{item.price}}</p>
           <div style="text-align: center;">
@@ -324,14 +324,14 @@
 <!-- /////////////////////////    slider 2-->
 
 
-<div style="border-radius: 6px;margin:2%;background-color: white;">
+<div style="border-radius: 6px;margin:2%;">
   <p  style="font-weight: bold;font-size: 1.5vw;padding-left:3%;padding-top:4% ; "> Trending Products</p>
   <div *ngIf="deviceLg || deviceMd" class="deviceLg">
 
-    <div *ngFor="let item of allProducts" style="padding:2%;width: 20%;" >
+    <div  [routerLink]="['/detail']"  *ngFor="let item of allProducts" style="padding:2%;width: 18%;background-color: white;margin: 0.5%;" >
 
-      <div style="height: 250px;width: 200px;">
-        <img [src]='getImage(item.productImage)' style="height: 250px;width: 200px;">
+      <div style="height: 15vw;width: 100%;">
+        <img [src]='getImage(item.productImage)' style="height: 15vw;width: 100%;">
       </div>
     <p  >{{item.name}}</p>
 
@@ -357,13 +357,13 @@
   </div>
   <div  *ngIf="deviceXs || deviceSm" >
     <div class="row">
-      <div  style="display:flex;flex-direction: row;flex-wrap: wrap;flex: 2;justify-content: space-evenly;">
+      <div  [routerLink]="['/detail']"  style="display:flex;flex-direction: row;flex-wrap: wrap;flex: 2;justify-content: space-evenly;">
 
 
-        <div *ngFor="let item of allProducts" style="padding:2%;width: 40%;" >
+        <div *ngFor="let item of allProducts" style="padding:2%;width: 18%;background-color: white;margin: 0.5%;" >
 
-          <div style="height: 250px;width: 200px;">
-            <img [src]='getImage(item.productImage)' style="height: 250px;width: 200px;">
+          <div style="height: 15vw;width: 100%;">
+            <img [src]='getImage(item.productImage)' style="height: 15vw;width: 100%;">
           </div>
           <p style="font-weight: bold;">{{item.price}}</p>
           <div style="text-align: center;">
@@ -419,3 +419,4 @@
 
   <div>Copyright © 2020 RedQ, Inc , All rights reserved</div>
 
+</div>

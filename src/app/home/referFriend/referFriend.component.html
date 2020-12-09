@@ -1,0 +1,32 @@
+<div  style="min-height: 200px;margin: 10%;">
+  <div class="row">
+<div class="col-xs-6">
+ <h1>Share GRUBHUB and get 10%</h1>
+</div>
+<div class="col-xs-6">
+ Image
+</div>
+</div>
+<div>
+ <h4 style="width: 50%;word-wrap: break-word;">invite a friend you will both get 10% off ..............</h4>
+ <div >
+   <div>
+     <p style="font-size: xx-large">Share to Your Friends</p>
+     <p style="font-size: xx-large">and Get 10$ discount</p>
+ <p>Invite through Email</p>
+     <input [(ngModel)]="friendEmail" placeholder="Your Friend Email" style="width: 30%;" class="form-control" type="text" name="refrence">
+     <input  [(ngModel)]="refrenceCode" placeholder="Your Refrence Code" style="width: 30%;" class="form-control" type="text" name="refrence">
+
+   </div>
+   <button (click)="refer()" class="btn btn-primary" style="margin:2%">Send Code</button>
+   <div>
+     <p>How it works</p>
+   <div style="display: flex;flex-direction: row;justify-content: space-between;margin-left: 5%;margin-right: 5%;">
+     <p style="width: 40%;font-weight: bold;word-wrap: break-word;"> 1. <span > Send your refrence code to your friend</span></p>
+     <p style="width: 40%;font-weight: bold;word-wrap: break-word;"> 2.<span > Ask your friend to use your refrence code to order something</span></p>
+     <p style="width: 40%;font-weight: bold;word-wrap: break-word;"> 3.<span > Get 10$ on every order your friend did using your refrence Id</span></p>
+   </div>
+   </div>
+ </div>
+</div>
+</div>

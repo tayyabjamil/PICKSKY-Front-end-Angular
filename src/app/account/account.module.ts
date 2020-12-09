@@ -1,3 +1,4 @@
+import { ForgetPasswordComponent } from './forgetPassword/forgetPassword.component';
 import { EmailVerifyComponent } from './../account/emailVerify/emailVerify.component';
 import { ResetPasswordComponent } from './resetPassword/resetPassword.component';
 import { AccountService } from './account.service';
@@ -11,12 +12,15 @@ import { AccountRoutingModule } from './account-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { NgModule,NO_ERRORS_SCHEMA } from '@angular/core';
+
+
 @NgModule({
   imports: [
     CommonModule,
     AccountRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
   ],
   declarations: [
     AccountComponent,
@@ -25,7 +29,8 @@ import { NgModule,NO_ERRORS_SCHEMA } from '@angular/core';
     TextFieldComponent,
     ResetPasswordComponent,
     ProfileComponent,
-    EmailVerifyComponent
+    EmailVerifyComponent,
+    ForgetPasswordComponent
   ],
   exports: [
     AccountComponent,
@@ -34,9 +39,11 @@ import { NgModule,NO_ERRORS_SCHEMA } from '@angular/core';
     TextFieldComponent,
     ResetPasswordComponent,
     ProfileComponent,
-    EmailVerifyComponent
+    EmailVerifyComponent,
+    ForgetPasswordComponent
   ], providers: [
-    AccountService
+    AccountService,
+
   ],
   schemas:[NO_ERRORS_SCHEMA ]
 })

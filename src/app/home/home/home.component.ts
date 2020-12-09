@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
  cart = [];
 total ;
 allProducts;
-username
+username = ' username'
   constructor(public mediaObserver:MediaObserver
     ,public cartService:CartService,  private productService: ProductService,private authService:AuthService,
     private router: Router,
@@ -29,7 +29,6 @@ username
   deviceSm:boolean;
 
   ngOnInit() {
-this.username = this.authService.getusername()
     this.mediaSub = this.mediaObserver.media$.subscribe((result:MediaChange)=>{
       console.log(result.mqAlias)
       this.deviceXs = result.mqAlias === 'xs'
@@ -39,8 +38,12 @@ this.username = this.authService.getusername()
 
     })
 
-  }
 
+  }
+// get usernameLogin(){
+//   this.username = this.authService.getusername()
+//   return this.username
+// }
  get getCartProducts() {
     this.cart =  this.cartService.getProducts();
 

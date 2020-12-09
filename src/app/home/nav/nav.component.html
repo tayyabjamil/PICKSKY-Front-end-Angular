@@ -97,11 +97,52 @@
             SHRIVASAFOODS</p>
         </div>
 
-        <div class="col-xs-4"></div>
+        <div class="col-xs-2"></div>
         <p class="col-xs-1" (click)=toggleDisplay() style="padding-left: 2%;font-weight: 300px;color: grey;">
           <i class="fa fa-search"></i>
         </p>
-        <i class="col-xs-2" class="fa fa-user-circle-o" routerLink="/login"
+
+        <div  class="col-xs-2" *ngIf="authService.loggedIn()"  style="display: flex;flex-direction: row;padding-top: 1%;">
+          <p style="font-size: large;padding-top: 5%;">Hi {{username}}</p>
+          <i class="fa fa-cog" style="font-size: xx-large" [popover]="popTemplate"  popoverTitle=Hi{{username}}
+                ></i>
+            <div>
+              <ng-template #popTemplate>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <div style="padding-top: 1%;">
+        <i class="fa fa-user-circle-o" routerLink="/myOrders" style="font-size: xx-large"></i>
+        <p routerLink='/myOrders' routerLinkActive="router-link-active">My orders </p>
+      </div>
+      <div style="padding-top: 1%;">
+        <i class="fa fa-user-circle-o" routerLink="/support" style="font-size: xx-large"></i>
+        <p routerLink='/support' routerLinkActive="router-link-active">Support </p>
+      </div>
+
+    </div>
+    <div class="col-lg-6">
+      <div style="padding-top: 1%;">
+        <i class="fa fa-user-circle-o" routerLink="/admin" style="font-size: xx-large"></i>
+        <p routerLink='/admin' routerLinkActive="router-link-active">Admin </p>
+      </div>
+      <div style="padding-top: 1%;">
+        <li *ngIf="authService.loggedIn()" style="font-size: xx-large" (click)="onLogoutClick()" class="fa fa-sign-out">
+        </li>
+        <p *ngIf="authService.loggedIn()">Logout</p>
+      </div>
+    </div>
+
+    </div>
+
+              </ng-template>
+            </div>
+
+  </div>
+
+
+
+        <i class="col-xs-2" *ngIf="!authService.loggedIn()" class="fa fa-user-circle-o" routerLink="/login"
           style="color: gray;font-size: xx-large;"></i>
       </div>
 

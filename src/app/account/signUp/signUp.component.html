@@ -1,42 +1,35 @@
 
 <div style="background-color: #f7f7f7">
-  <div class="row" style="display: flex;flex: 1;flex-direction: row;justify-content: center;text-align: center;padding-top: 5%;padding-bottom: 5%;padding-left: 10%;padding-right:10%" >
+  <div class="row" style="display: flex;flex: 1;flex-direction: row;justify-content: center;text-align: center;padding-top: 5%;padding-bottom: 5%;padding-left: 10vw;padding-right: 10vw;" >
 
 <div style="float: left;width: 60%" class="cardLeft">
   <div >
-  <p style="font-size: large;padding-top: 15%;font-weight: 500;">Create Account</p>
-  <hr style="margin-left: 35%;margin-right: 35%;">
-<div style="margin-top: 5%;margin-bottom: 5%;display: flex;flex-direction: row;">
-  <!-- <button type="button" class="btn btn-outline-primary btn-sm"  style="width: 30%;">Sign Up</button> -->
-  <!-- <button type="button" class="btn btn-outline-primary btn-sm"  style="width: 30%;">Sign Up</button> -->
-  <!-- <button type="button" class="btn btn-outline-primary btn-sm"  style="width: 30%;">Sign Up</button> -->
+<div style="width: 100%;">
+    <p [style.font-size.px]="deviceXs || deviceSm ? '20':'30'"
+  style="text-align: left;padding-top: 15%;font-weight: 500;">Create Your Account</p>
 </div>
-<form [formGroup]="rformSignup">
-  <div style="padding-bottom: 2%" class="">
-    <p style="padding-bottom: 1%;padding-right: 85%;">First Name</p>
-    <ns-textField-account name="username" class="textfieldBorderColor font13" [rformgroup]="rformSignup"
-      rformControlName="username">
+  <hr >
+
+<form [formGroup]="rformSignup" style="text-align: left">
+  <div style="display: flex;flex-direction: row;justify-content: space-between;">
+  <div style="padding-right: 2%;min-width: 60px;" class="">
+    <p >First Name</p>
+    <ns-textField-account style="min-width: 100px;" name="firstName" class="textfieldBorderColor font13" [rformgroup]="rformSignup"
+      rformControlName="firstName">
     </ns-textField-account>
   </div>
-  <div style="padding-bottom: 2%" class="">
-    <p style="padding-bottom: 1%;padding-right: 85%;">Last Name</p>
-    <ns-textField-account name="username" class="textfieldBorderColor font13" [rformgroup]="rformSignup"
-      rformControlName="username">
+  <div style="padding-left: 2%;" class="">
+    <p >Last Name</p>
+    <ns-textField-account name="lastName" class="textfieldBorderColor font13" [rformgroup]="rformSignup"
+      rformControlName="lastName">
     </ns-textField-account>
   </div>
-  <div style="padding-bottom: 2%" class="">
-    <p style="padding-bottom: 1%;padding-right: 85%;">Username</p>
-    <ns-textField-account
-      name="username"
-      class="textfieldBorderColor font13"
-      [rformgroup]="rformSignup"
-      rformControlName="username"
-    >
-    </ns-textField-account>
-  </div>
+</div>
+
 
   <div style="padding-bottom: 2%">
-    <p style="padding-bottom: 1%;padding-right: 88%;">Email</p>
+    <p >Email or Phone number</p>
+
     <ns-textField-account
       name="email"
       class="textfieldBorderColor font13"
@@ -46,7 +39,7 @@
     </ns-textField-account>
   </div>
   <div>
-    <p style="padding-bottom: 1%;padding-right: 85%;">Password</p>
+    <p style="padding-bottom: 1%">Password</p>
     <ns-textField-account
       name="password" type="password"
       class="textfieldBorderColor font13"
@@ -56,12 +49,12 @@
     </ns-textField-account>
   </div>
   <div style="padding-bottom: 2%">
-    <p style="padding-bottom: 1%;padding-right: 85%;">Contact</p>
+    <p style="padding-bottom: 1%">Confirm Password</p>
     <ns-textField-account
-      name="contact" type="text"
+      name="contact" type="password"
       class="textfieldBorderColor font13"
       [rformgroup]="rformSignup"
-      rformControlName="contact"
+      rformControlName="confirmPassword"
     >
     </ns-textField-account>
   </div>
@@ -69,21 +62,19 @@
 
 
   </form>
-<div style="text-align: center;padding: 15%;">
-  <!-- <p>Dont have an Account ? <button > SIGN IN </button> </p> -->
-  <button   (click)="createAccount()"type="button" class="btn btn-success"  >Create Account </button>
+<div style="text-align: center;margin-top: 5%;">
+  <button   (click)="createAccount()" style="width: 100%;" type="button" class="btn btn-primary"  >Create Account </button>
 
-  <!-- <button class="btn" style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(145, 145, 145); color: whitesmoke">
-  <span style="font-weight: bold;font-size: small;"></span></button> -->
 </div>
 </div>
 </div>
 <div style="float:right;width: 30%;" class="cardRight">
-<p style="font-size: large;padding: 5%;">Hello Friend</p>
-<p style="font-size: large;">Fill up the Form and </p>
-<p style="font-size: large;">start Journey with us</p>
-<div style="text-align: center;padding: 5%;" (click)="login()">
-  <button type="button" class="btn btn-outline-light"  style="width: 50%;">Login </button>
+<h3 style="padding: 5%;">Hello Friend</h3>
+<h4 style="">Fill up the Form and </h4>
+<h4 style="">start Journey with us</h4>
+<div style="text-align: center;margin:5%">
+  <button   (click)="login()" style="width: 100%;" type="button" class="btn btn-primary"  >Login</button>
+
 </div>
 
 </div>
@@ -109,7 +100,7 @@
 
 <hr class="hr" style="background-color: black;">
 <div style="padding:5%" (click)="createAccount()">
-  <button class="btn" style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(63, 61, 61); color: whitesmoke">
+  <button class="btn btn-primary" style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(63, 61, 61); color: whitesmoke">
     <span style="font-weight: bold;font-size: small;">SIGN IN</span></button>
 <p style="text-align: right;">© 2020, Shrivasafoods store Powered by Shopify</p>
 </div>

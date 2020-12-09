@@ -1,3 +1,5 @@
+import { ReferFriendComponent } from './referFriend/referFriend.component';
+import { GiftCardsComponent } from './giftCards/giftCards.component';
 import { FAQComponent } from './FAQ/FAQ.component';
 import { BlogComponent } from './blog/blog.component';
 import { TestimonalsComponent } from './testimonals/testimonals.component';
@@ -44,7 +46,10 @@ const routes: Routes = [
       { path: 'supportpage', component: SupportPageComponent },
       { path: 'blog', component: BlogComponent },
       { path: 'home', component: HomeComponent },
-      { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
+      { path: 'giftCards', component: GiftCardsComponent },
+      { path: 'referFriend', component: ReferFriendComponent },
+
+      { path: 'cart', component: CartComponent, },
       { path: 'myOrders', component: MyordersComponent, canActivate: [AuthGuard] },
       { path: '', component: MainPageComponent },
 

@@ -19,6 +19,14 @@ import { AppComponent } from './app.component';
 
 import { AuthService } from '../app/auth.service';
 
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import {
+  GoogleLoginProvider,
+  FacebookLoginProvider
+} from 'angularx-social-login';
+
+const googleid = '' ;
+const facebookid = '2702502043208538';
 
 @NgModule({
   declarations: [
@@ -35,12 +43,30 @@ import { AuthService } from '../app/auth.service';
     AdminModule,
     AccountModule,
     BrowserAnimationsModule,
+    SocialLoginModule,
 
     MatCarouselModule.forRoot(),
 
 
   ],
-  providers: [AuthService],
+  providers: [AuthService,{
+    provide: 'SocialAuthServiceConfig',
+    useValue: {
+      autoLogin: false,
+      providers: [
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider(
+            '957381003231-bt0brr1vn47vpgg10u2naiekq1tgbo3k.apps.googleusercontent.com'
+          )
+        },
+        {
+          id: FacebookLoginProvider.PROVIDER_ID,
+          provider: new FacebookLoginProvider('712246012755918')
+        }
+      ]
+    } as SocialAuthServiceConfig,
+  }],
   bootstrap: [AppComponent],
   schemas:[NO_ERRORS_SCHEMA ]
 })
