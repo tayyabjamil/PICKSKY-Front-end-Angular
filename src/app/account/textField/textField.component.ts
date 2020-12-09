@@ -42,7 +42,8 @@ export class TextFieldComponent implements OnInit {
       this.rformgroup.controls[this.rformControlName].errors &&
       this.rformgroup.controls[this.rformControlName].errors.required
     ) {
-      return true;
+
+      return true ;
     } else {
       return false;
     }
@@ -72,6 +73,20 @@ export class TextFieldComponent implements OnInit {
       return false;
     }
   }
+
+  get minlength(){
+    if (
+      this.rformgroup.dirty &&
+      this.rformgroup.controls[this.rformControlName].touched &&
+      this.rformgroup.controls[this.rformControlName].errors &&
+      this.rformgroup.controls[this.rformControlName].errors.minlength
+    ) {
+      return  this.rformgroup.controls[this.rformControlName].errors.minlength.requiredLength;
+    } else {
+      return false;
+    }
+  }
+
   get errormaxLength() {
     if (
       this.rformgroup.dirty &&

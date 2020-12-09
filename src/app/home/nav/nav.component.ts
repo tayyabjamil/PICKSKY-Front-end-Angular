@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
@@ -5,6 +6,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { HeaderConstants, PicklesConstants, TraditionalPodulu, SweetsandHotConstants, SpecialConstants, SupportConstants, AboutusConstants } from '../../appconstants';
 import { Router } from '@angular/router';
 
+import { AuthService } from './../../auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -13,8 +15,8 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
 
-  constructor(private breakpointObserver: BreakpointObserver, private router: Router ) {}
-
+  constructor(private breakpointObserver: BreakpointObserver, private router: Router,private authService:AuthService, ) {}
+  username =" username";
   isShow = false;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -23,6 +25,7 @@ export class NavComponent implements OnInit {
     );
 
   ngOnInit() {
+    // this.username=this.authService.getusername()
   }
   toggleDisplay() {
     this.isShow = !this.isShow;
@@ -30,6 +33,7 @@ export class NavComponent implements OnInit {
   catagory(page){
     this.router.navigate(['catagory/', page])
      }
+
   getHeaderNames(indx: number) { return HeaderConstants[indx]; }
 
   getPicklesConstants(indx: number) { return PicklesConstants[indx]; }

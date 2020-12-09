@@ -4,10 +4,9 @@
   background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  padding-left: 15%;
-  padding-right: 15%;
+
+  padding-left: 6vw;
+  padding-right: 6vw;
 
   }
   .cardRight{
@@ -45,3 +44,9 @@
   .deviceSmFontClass{
   font-size: small;
   }
+.deviceXs{
+  font-size: small;
+}
+.deviceLgClass {
+  font-size:xx-large;
+}

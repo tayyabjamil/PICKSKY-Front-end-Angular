@@ -1,3 +1,4 @@
+import { ForgetPasswordComponent } from './forgetPassword/forgetPassword.component';
 import { EmailVerifyComponent } from './../account/emailVerify/emailVerify.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ResetPasswordComponent } from './resetPassword/resetPassword.component';
@@ -12,9 +13,10 @@ const routes: Routes = [
     { path: 'resetPassword/:id', component: ResetPasswordComponent },
   { path: 'signUp', component: SignUpComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'forgetPassword', component: ForgetPasswordComponent },
   { path: 'accountVerify/:token', component: EmailVerifyComponent },
 
-  // { path: 'home', loadChildren: './home/home.module#HomeModule' },
+  // { path: '', loadChildren: './home/home.module#HomeModule' },
   { path: '', component: LoginComponent },
 
  ]

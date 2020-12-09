@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { AuthService } from '../auth.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,17 +13,38 @@ export class AccountService {
       accept: ' application/json'
     })
   };
-constructor(private http: HttpClient,private myauthService: AuthService) { }
+constructor(private http: HttpClient,private myauthService: AuthService,) { }
+
 createuserAccount(newUser) {
 
   return this.http.post(
     'http://localhost:8000/api/users/'  ,
     {
+      firstName: newUser.firstName,
+      lastName:newUser.lastName,
+      email: newUser.email,
+      password: newUser.password,
+
+      accountBonus: 1,
+      provider:newUser.provider,
+      token:newUser.token
+
+    },
+    this.httpHeaders
+  );
+}
+signIn(newUser) {
+
+  return this.http.post(
+    'http://localhost:8000/api/users/signIn'  ,
+    {
       username: newUser.username,
       email: newUser.email,
       password: newUser.password,
       contact:newUser.contact,
-      accountBonus: 1
+      accountBonus: 1,
+      provider:newUser.provider,
+      token:newUser.token
 
     },
     this.httpHeaders
@@ -35,17 +57,19 @@ login(user) {
     {
       email: user.email,
       password: user.password,
+      idToken:user.idToken,
+      provider:user.provider
 
     },
     this.httpHeaders
   );
 }
-forgetPassword(){
-  const email = this.myauthService.getemail()
+forgetPassword(data){
+  // const email = this.myauthService.getemail()
   return this.http.post(
     'http://localhost:8000/api/users/forgetPassword/',
     {
-      email
+      email:data.email
     },
     this.httpHeaders
   );

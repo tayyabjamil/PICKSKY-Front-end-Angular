@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-
+import { MediaObserver, MediaChange } from '@angular/flex-layout';
+import { Subscription } from 'rxjs';
 import { CartService } from '../cart.service';
 import { ProductService } from '../product.service';
-import  {MediaObserver, MediaChange} from '@angular/flex-layout';
-import  { Subscription } from 'rxjs';
+
 @Component({
-  selector: 'app-myorders',
-  templateUrl: './myorders.component.html',
-  styleUrls: ['./myorders.component.scss']
+  selector: 'app-referFriend',
+  templateUrl: './referFriend.component.html',
+  styleUrls: ['./referFriend.component.css']
 })
-export class MyordersComponent implements OnInit {
+export class ReferFriendComponent implements OnInit {
   allOrders = [];
   friendEmail;
   refrenceCode;
@@ -31,25 +31,17 @@ export class MyordersComponent implements OnInit {
       this.deviceMd = result.mqAlias === 'md'
 
     })
-
-    this.myOrders()
   }
-  myOrders() {
-    this.productService.getOrders().subscribe((products:any) => {
-      this.allOrders = products.orders;
+  refer(){
+    const data ={
+      refrenceCode:this.refrenceCode,
+      friendEmail:this.friendEmail
+    }
+    this.productService.referFriend(data).subscribe((products:any) => {
+    alert("refer");
     }, (error) => {
-      console.log('error in getting all products');
+   alert("use correct refrenceId")
     });
-  }
-  orderDetails(item){
 
   }
-  getImage(imageId) {
-    if (!imageId) return '';
-    return this.productService.productImageUrl(imageId);
-  }
-orderCompleted(item){
-
-}
-
 }

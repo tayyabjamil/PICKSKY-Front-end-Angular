@@ -1,3 +1,5 @@
+import { ReferFriendComponent } from './referFriend/referFriend.component';
+import { GiftCardsComponent } from './giftCards/giftCards.component';
 
 import { AboutUSComponent } from './aboutus/aboutus.component';
 import { AboutusConstants } from './../appconstants';
@@ -95,7 +97,9 @@ import { ReturnandrefundsComponent } from './returnandrefunds/returnandrefunds.c
     PrivacyandpolicyComponent,
     ReturnandrefundsComponent,
     PrivacyandpolicyComponent,
-    ReturnandrefundsComponent
+    ReturnandrefundsComponent,
+    GiftCardsComponent,
+    ReferFriendComponent
 
   ],
   exports: [
@@ -124,8 +128,9 @@ import { ReturnandrefundsComponent } from './returnandrefunds/returnandrefunds.c
     SweetandHotComponent,
     TestimonalsComponent,
     PrivacyandpolicyComponent,
-    ReturnandrefundsComponent
-
+    ReturnandrefundsComponent,
+    GiftCardsComponent,
+    ReferFriendComponent
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })
