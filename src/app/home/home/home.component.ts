@@ -18,7 +18,9 @@ export class HomeComponent implements OnInit {
 total ;
 allProducts;
 username = ' username'
-  constructor(public mediaObserver:MediaObserver
+checkOutTab = false;
+
+constructor(public mediaObserver:MediaObserver
     ,public cartService:CartService,  private productService: ProductService,private authService:AuthService,
     private router: Router,
     ) { }
@@ -27,7 +29,6 @@ username = ' username'
   deviceLg:boolean;
   deviceMd:boolean;
   deviceSm:boolean;
-
   ngOnInit() {
     this.mediaSub = this.mediaObserver.media$.subscribe((result:MediaChange)=>{
       console.log(result.mqAlias)
@@ -40,14 +41,23 @@ username = ' username'
 
 
   }
-// get usernameLogin(){
-//   this.username = this.authService.getusername()
-//   return this.username
-// }
+get usernameLogin(){
+  this.username = this.authService.getusername()
+  return this.username
+}
  get getCartProducts() {
     this.cart =  this.cartService.getProducts();
 
     return this.cart;
+  }
+  cartPage(){
+    this.router.navigate(['cart'])
+    this.checkOutTab = true
+  }
+
+  checkOut(){
+    this.router.navigate(['checkOut'])
+    this.checkOutTab = false
   }
   get getTotal() {
    this.total =  this.cartService.getTotalPrice();

@@ -1,3 +1,4 @@
+
 import { ReferFriendComponent } from './referFriend/referFriend.component';
 import { GiftCardsComponent } from './giftCards/giftCards.component';
 
@@ -46,7 +47,9 @@ import { BlogComponent } from './blog/blog.component';
 import { PrivacyandpolicyComponent } from './privacyandpolicy/privacyandpolicy.component';
 import { ReturnandrefundsComponent } from './returnandrefunds/returnandrefunds.component';
 
-
+import { ReactiveFormsModule} from '@angular/forms';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatInputModule} from '@angular/material/input';
 @NgModule({
   imports: [
 
@@ -63,8 +66,11 @@ import { ReturnandrefundsComponent } from './returnandrefunds/returnandrefunds.c
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    ReactiveFormsModule,
+    MatStepperModule,
     NgxPayPalModule,
     MatTabsModule,
+    MatInputModule,
     PopoverModule.forRoot()
 
   ],
@@ -99,7 +105,8 @@ import { ReturnandrefundsComponent } from './returnandrefunds/returnandrefunds.c
     PrivacyandpolicyComponent,
     ReturnandrefundsComponent,
     GiftCardsComponent,
-    ReferFriendComponent
+    ReferFriendComponent,
+
 
   ],
   exports: [
@@ -130,7 +137,8 @@ import { ReturnandrefundsComponent } from './returnandrefunds/returnandrefunds.c
     PrivacyandpolicyComponent,
     ReturnandrefundsComponent,
     GiftCardsComponent,
-    ReferFriendComponent
+    ReferFriendComponent,
+
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })

@@ -1,85 +1,111 @@
 
-<div style="background-color: #f7f7f7">
-  <div class="row" style="display: flex;flex: 1;flex-direction: row;justify-content: center;text-align: center;padding-top: 5%;padding-bottom: 5%;padding-left: 10vw;padding-right: 10vw;" >
-
-<div style="float: left;width: 60%" class="cardLeft">
-  <div >
-<div style="width: 100%;">
-    <p [style.font-size.px]="deviceXs || deviceSm ? '20':'30'"
-  style="text-align: left;padding-top: 15%;font-weight: 500;">Create Your Account</p>
-</div>
-  <hr >
-
-<form [formGroup]="rformSignup" style="text-align: left">
-  <div style="display: flex;flex-direction: row;justify-content: space-between;">
-  <div style="padding-right: 2%;min-width: 60px;" class="">
-    <p >First Name</p>
-    <ns-textField-account style="min-width: 100px;" name="firstName" class="textfieldBorderColor font13" [rformgroup]="rformSignup"
-      rformControlName="firstName">
-    </ns-textField-account>
-  </div>
-  <div style="padding-left: 2%;" class="">
-    <p >Last Name</p>
-    <ns-textField-account name="lastName" class="textfieldBorderColor font13" [rformgroup]="rformSignup"
-      rformControlName="lastName">
-    </ns-textField-account>
-  </div>
-</div>
 
 
-  <div style="padding-bottom: 2%">
-    <p >Email or Phone number</p>
 
-    <ns-textField-account
-      name="email"
-      class="textfieldBorderColor font13"
-      [rformgroup]="rformSignup"
-      rformControlName="email"
+
+
+
+
+
+
+<div style="background-color: #f7f7f7;">
+  <div class="row" style="height: 500px;flex-direction: row;justify-content: center;text-align: center;padding-top: 2%;padding-bottom: 2%;padding-left: 10vw;padding-right: 10vw;" >
+    <div style="float: left;width: 60%;text-align: left;" class="cardLeft">
+      <div style="width: 100%;padding-bottom: 4%;">
+        <p [style.font-size.px]="deviceXs || deviceSm ? '15':'25'"
+      style="text-align: left;padding-top: 10%;font-weight: 500;">Create Your Account</p>
+    </div>
+      <form [formGroup]="rformSignup" style="text-align: left">
+        <div style="display: flex;flex-direction: row;justify-content: space-between;">
+        <div style="padding-bottom: 5%;padding-right: 2%;min-width: 60px;" class="">
+
+          <ns-textField-account placeholder="First Name" style="min-width: 100px;" name="firstName" class="textfieldBorderColor font13" [rformgroup]="rformSignup"
+            rformControlName="firstName">
+          </ns-textField-account>
+        </div>
+        <div style="padding-bottom: 5%;padding-left: 2%;" class="">
+          <!-- <p ></p> -->
+          <ns-textField-account  placeholder="Last Name" name="lastName" class="textfieldBorderColor font13" [rformgroup]="rformSignup"
+            rformControlName="lastName">
+          </ns-textField-account>
+        </div>
+      </div>
+
+
+        <div style="padding-bottom: 5%">
+          <!-- <p ></p> -->
+
+          <ns-textField-account
+          placeholder="Email or Phone number"
+            name="email"
+            class="textfieldBorderColor font13"
+            [rformgroup]="rformSignup"
+            rformControlName="email"
+          >
+          </ns-textField-account>
+        </div>
+        <div style="padding-bottom: 5%;">
+          <!-- <p style="padding-bottom: 1%"></p> -->
+          <ns-textField-account
+          placeholder="Password"
+            name="password" type="password"
+            class="textfieldBorderColor font13"
+            [rformgroup]="rformSignup"
+            rformControlName="password"
+          >
+          </ns-textField-account>
+          <h3
+          class="errorlbl"
+          *ngIf="rformSignup.controls['password'].hasError('hasCapitalCase')"
+        >
+         password must have at least 1 Capital letter!
+        </h3>
+        <h3
+        class="errorlbl"
+        *ngIf="rformSignup.controls['password'].hasError('hasSmallCase')"
+      >
+        passowrd must have at least 1 Small letter!
+      </h3>
+      <h3
+      class="errorlbl"
+      *ngIf="rformSignup.controls['password'].hasError('hasDigit')"
     >
-    </ns-textField-account>
-  </div>
-  <div>
-    <p style="padding-bottom: 1%">Password</p>
-    <ns-textField-account
-      name="password" type="password"
-      class="textfieldBorderColor font13"
-      [rformgroup]="rformSignup"
-      rformControlName="password"
-    >
-    </ns-textField-account>
-  </div>
-  <div style="padding-bottom: 2%">
-    <p style="padding-bottom: 1%">Confirm Password</p>
-    <ns-textField-account
-      name="contact" type="password"
-      class="textfieldBorderColor font13"
-      [rformgroup]="rformSignup"
-      rformControlName="confirmPassword"
-    >
-    </ns-textField-account>
-  </div>
+      passowrd must have at least 1 number!
+    </h3>
+        </div>
+
+      <div style="padding-bottom: 5%">
+          <!-- <p style="padding-bottom: 1%"></p> -->
+          <ns-textField-account
+          placeholder="Confirm Password"
+            name="contact" type="password"
+            class="textfieldBorderColor font13"
+            [rformgroup]="rformSignup"
+            rformControlName="confirmPassword"
+          >
+          </ns-textField-account>
+        </div>
 
 
 
-  </form>
-<div style="text-align: center;margin-top: 5%;">
-  <button   (click)="createAccount()" style="width: 100%;" type="button" class="btn btn-primary"  >Create Account </button>
+        </form>
+      <div style="text-align: center;margin-top: 2%;padding-bottom: 2%;">
+        <button   (click)="createAccount()" style="width: 100%;" type="button" class="btn btn-primary"  >Create Account </button>
+
+      </div>
+    </div>
+    <div style="float:right;width: 30%;" class="cardRight">
+      <h3 >Hello Friend</h3>
+      <h4 >Fill up the Form and </h4>
+      <h4 >start Journey with us</h4>
+
+      <div style="text-align: center;width: 100%;">
+        <button   (click)="login()"  type="button" class="btn btn-primary"  >Login</button>
+
+      </div>
 
 </div>
-</div>
-</div>
-<div style="float:right;width: 30%;" class="cardRight">
-<h3 style="padding: 5%;">Hello Friend</h3>
-<h4 style="">Fill up the Form and </h4>
-<h4 style="">start Journey with us</h4>
-<div style="text-align: center;margin:5%">
-  <button   (click)="login()" style="width: 100%;" type="button" class="btn btn-primary"  >Login</button>
 
-</div>
-
-</div>
-<div>
-</div>
 </div>
 </div>
 
@@ -100,8 +126,8 @@
 
 <hr class="hr" style="background-color: black;">
 <div style="padding:5%" (click)="createAccount()">
-  <button class="btn btn-primary" style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(63, 61, 61); color: whitesmoke">
+  <button class="btn" style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(63, 61, 61); color: whitesmoke">
     <span style="font-weight: bold;font-size: small;">SIGN IN</span></button>
-<p style="text-align: right;">© 2020, Shrivasafoods store Powered by Shopify</p>
+<p style="text-align: right;">© 2020, picksystore Powered by Shopify</p>
 </div>
 </div>

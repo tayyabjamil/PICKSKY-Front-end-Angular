@@ -1,3 +1,4 @@
+import { TextFieldComponent } from './../../account/textField/textField.component';
 import { Router } from '@angular/router';
 import { AccountService } from './../account.service';
 import { FormBuilder, FormGroup,FormControl ,Validators} from '@angular/forms';
@@ -6,6 +7,8 @@ import { SocialAuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
 import  {MediaObserver, MediaChange} from '@angular/flex-layout';
 import  { Subscription } from 'rxjs';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import {patternValidator} from '../customValidator'
 import {
   GoogleLoginProvider,
   FacebookLoginProvider,
@@ -48,10 +51,22 @@ export class SignUpComponent implements OnInit {
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required,Validators.email]),
-      password: new FormControl('', [Validators.required,Validators.minLength(8)]),
+      password: new FormControl('',  Validators.compose([
+        Validators.required,
+        Validators.minLength(8),
+
+        patternValidator(/[A-Z]/, { hasCapitalCase: true }),
+        patternValidator(/[a-z]/,{ hasSmallCase: true }),
+        patternValidator(/[0-9]/,{ hasDigit: true }),
+
+        // TextFieldComponent.patternValidator(/[ [!@#$%^&*()_+-=[]{};':"|,.<>/?]/](<mailto:!@#$%^&*()_+-=[]{};':"|,.<>/?]/>), { hasSpecialCharacters: true }),
+
+      ])  ),
       confirmPassword: new FormControl('', [Validators.required,Validators.minLength(8)]),
     })
   }
+
+
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }

@@ -38,7 +38,8 @@ signIn(newUser) {
   return this.http.post(
     'http://localhost:8000/api/users/signIn'  ,
     {
-      username: newUser.username,
+      firstName: newUser.firstName,
+      lastName:newUser.lastName,
       email: newUser.email,
       password: newUser.password,
       contact:newUser.contact,

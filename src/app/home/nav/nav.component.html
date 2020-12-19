@@ -1,9 +1,9 @@
 <mat-sidenav-container class="sidenav-container" style="height: 100%">
   <mat-sidenav style="background-color: white;" #drawer class="sidenav" fixedInViewport="false"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"   [opened]="(isHandset$ | async) === false">
     <mat-toolbar routerLink='/' TraditionalPowders>Catagories</mat-toolbar>
     <mat-nav-list class="fundpress-menu" style="background-color: white;">
-      <ul class="nav-menu">
+      <ul class="nav-menu" (click)="drawer.toggle()">
         <li class="dropdown" routerLink="/">
           <a>{{getHeaderNames(1)}}</a>
         </li>

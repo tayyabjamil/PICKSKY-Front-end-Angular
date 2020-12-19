@@ -1,0 +1,174 @@
+
+ <div style="min-height: 500px;">
+
+  <div class="col-lg-7" style="padding-top:5%;;background-color: #ffffff">
+    <p style="font-size: large;font-weight: bold;padding-left: 5%;">Shirivas Store</p>
+    <div style="display: flex;flex-direction: row;justify-content: space-between;padding-left: 5%;">
+    <p>Contact Information</p>
+    <p >Already have an account ?<span class="text text-primary btn"  [routerLink]="['/login']" routerLinkActive="router-link-active" >Login</span> </p>
+  </div>
+    <mat-horizontal-stepper [linear]="isLinear" #stepper  >
+
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup" style="padding-left: 10%;padding-right: 10%;">
+          <ng-template matStepLabel>Information</ng-template>
+          <mat-form-field >
+            <mat-label>Email or Phone number</mat-label>
+            <input matInput  formControlName="email" >
+          </mat-form-field>
+         <p style="font-size: large;">Shipping Adress</p>
+         <div style="display: flex;flex-direction: row;justify-content: space-between;">
+         <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input matInput  formControlName="fname" >
+          </mat-form-field>
+          <br/>
+          <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input matInput  formControlName="lname" >
+          </mat-form-field>
+        </div>
+        <div style="display: flex;flex-direction: row;justify-content: space-between;">
+        <mat-form-field>
+          <mat-label>Adress</mat-label>
+          <input matInput  formControlName="adress" >
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>City</mat-label>
+          <input matInput  formControlName="city" >
+        </mat-form-field>
+        </div>
+
+          <div  style="text-align: right;padding-top: 5%;">
+            <button class="btn btn-primary"  matStepperNext>Continue to Shipping</button>
+
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Shipping</ng-template>
+          <mat-form-field>
+            <mat-label>Contact</mat-label>
+            <input matInput placeholder="Contact" formControlName="contact" required>
+          </mat-form-field>
+          <br/>
+          <mat-form-field>
+            <mat-label>Shipping Method</mat-label>
+            <input matInput placeholder="method" formControlName="method" required>
+          </mat-form-field>
+          <br/>
+          <div  style="text-align: right;padding-top: 5%;">
+            <button  class="btn btn-secondry"  matStepperPrevious>Back</button>
+            <button  class="btn btn-primary"  matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="thirdFormGroup">
+        <form [formGroup]="thirdFormGroup">
+          <ng-template matStepLabel>Paymemt</ng-template>
+          <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+          <div  style="text-align: right;padding-top: 5%;">
+            <button  class="btn btn-secondry"  matStepperPrevious>Back</button>
+            <button  class="btn btn-primary"  matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+
+        <mat-list style="padding: 10%;">
+       <mat-list-item>
+         <div style="width: 100%;display: flex;flex-direction: row;justify-content: space-between;">
+           <strong>Name:</strong>
+           <span > {{ this.firstFormGroup.value.name }}</span>
+        </div>
+
+          </mat-list-item>
+
+       <mat-list-item>
+        <div style="width:100%;display: flex;flex-direction: row;justify-content: space-between;">
+        <strong>Email:</strong> <span >{{ this.firstFormGroup.value.email }}</span>
+      </div>
+      </mat-list-item>
+       <mat-list-item>
+         <div style="width:100%;display: flex;flex-direction: row;justify-content: space-between;">
+        <strong>Adress:</strong> <span >{{ this.secondFormGroup.value.adress }}</span>
+      </div>
+      </mat-list-item>
+       <mat-list-item>
+         <div style="width:100%;display: flex;flex-direction: row;justify-content: space-between;">
+        <strong>Contact:</strong> <span >{{ this.secondFormGroup.value.contact }}</span>
+      </div>
+      </mat-list-item>
+
+        <mat-list-item>
+         <div style="width:100%;display: flex;flex-direction: row;justify-content: space-between;">
+        <strong>Shipping Method:</strong> <span >{{ this.secondFormGroup.value.method }}</span>
+      </div>
+      </mat-list-item>
+
+      </mat-list>
+
+        <div  style="text-align: right;padding-top: 5%;">
+          <button class="btn btn-primary" style="margin:1%;" matStepperPrevious>Back</button>
+          <button class="btn btn-primary" style="margin:1%;" (click)="stepper.reset()">Reset</button>
+          <button class="btn btn-primary" style="margin:1%;" (click)="order()">Submit</button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>
+  <div class="col-lg-5" style="padding-top: 5%;min-height: 700px;background-color: #f3f3f3;">
+    <div style="padding-left:7%;padding-right: 7%;padding-top: 5%;">
+
+      <div *ngFor="let item of cartItems" >
+
+        <div  >
+      <div class="row" style="width: 100%;">
+          <div class="col-xs-4" >
+            <div >
+              <img [src]='getImage(item.productImage)' style="width: 50%;">
+            </div>
+        </div>
+        <div class="col-xs-8" style="display: flex;flex-direction: row;justify-content: space-between;min-width: 30px;" >
+      <div>
+      <p>{{item.name}}</p>
+      </div>
+      <div >
+        <p style="font-weight: 500;"> ${{item.unitTotal}}</p>
+      </div>
+      </div>
+      </div>
+        </div>
+      </div>
+<div>
+    <hr class="hr" style="background-color: grey;height: 2px;width: 100%;">
+     <div  style="display: flex;flex-direction: row;justify-content: space-between;">
+        <p >Subtotal</p>
+        <p style="font-weight: 500;">${{getTotal}}</p>
+      </div>
+      <div  style="display: flex;flex-direction: row;justify-content: space-between;">
+
+        <p >Shipping</p>
+        <p style="font-weight: 500;">Calculated at next step</p>
+
+      </div>
+      <hr class="hr" style="background-color: grey;height: 2px;width: 100%;">
+    </div>
+
+      <div  style="display: flex;flex-direction: row;justify-content: space-between;">
+
+        <p >Total</p>
+        <p style="font-weight: 500;">${{getTotal}}</p>
+      </div>
+
+    </div>
+
+
+      </div>
+      </div>
+
+
+

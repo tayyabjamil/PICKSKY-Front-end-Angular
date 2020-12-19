@@ -8,7 +8,7 @@ import { ProductService } from 'src/app/home/product.service';
   styleUrls: ['./ordersProgress.component.scss']
 })
 export class OrdersProgressComponent implements OnInit {
-phase ="delievery phase";
+phase ="delievery";
   constructor( public adminService:AdminService) { }
 allOrders = []
 ownerEmail;
@@ -25,7 +25,7 @@ ownerEmail;
 nextPhase(item){
 
    const orderShipped = {
-     phase : this.phase = "shipping phase" ,
+     phase : this.phase = "shipping" ,
      ownerEmail : item.ownerEmail,
      orderId:item._id
 

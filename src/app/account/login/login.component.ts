@@ -105,7 +105,8 @@ signInGoogle(platform: string) {
 
       const userAccount = {
         email: Response.email,
-        username: Response.name,
+        firstName: Response.firstName,
+        lastName: Response.lastName,
         contact:Response.provider,
         provider:Response.provider,
 
@@ -121,7 +122,7 @@ signInGoogle(platform: string) {
         this.setcontact(data.contact)
         this.setRefrenceId(data.refrenceId)
         this.isLoggedIn = true;
-    // this.router.navigate(['/'])
+    this.router.navigate(['/'])
 
 
 
@@ -147,7 +148,8 @@ signInFacebook(platform: string) {
       // tslint:disable-next-line: no-unused-expression
       const userAccount = {
         email: Response.name,
-        username: Response.firstName,
+        firstName: Response.firstName,
+        lastName: Response.lastName,
         password: Response.id,
         token: Response.authToken,
       };
@@ -162,6 +164,7 @@ signInFacebook(platform: string) {
         this.setcontact(data.contact)
         this.setRefrenceId(data.refrenceId)
         this.isLoggedIn = true;
+        this.router.navigate(['/'])
 
 
 
