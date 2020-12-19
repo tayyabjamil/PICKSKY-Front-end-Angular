@@ -13,28 +13,28 @@ export class AdminService {
   };
 
   phase = "delivery phase"
-constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   addProducts(fd) {
     return this.http.post(
-      'http://localhost:8000/api/products/', fd
+      'https://calm-lake-26690.herokuapp.com/api/products/', fd
     );
   }
-  shippingPhase(shippingPhase){
+  shippingPhase(shippingPhase) {
     return this.http.post(
-      'http://localhost:8000/api/orders/shipping',
-    {
-      phase: this.phase = "shipping",
-      ownerEmail: shippingPhase.ownerEmail,
-      orderId:shippingPhase.orderId
-    },
-    this.httpHeaders
-      );
-   }
-   getAllOrders() {
-    return this.http.get('http://localhost:8000/api/orders/' , this.httpHeaders);
+      'https://calm-lake-26690.herokuapp.com/api/orders/shipping',
+      {
+        phase: this.phase = "shipping",
+        ownerEmail: shippingPhase.ownerEmail,
+        orderId: shippingPhase.orderId
+      },
+      this.httpHeaders
+    );
   }
-  getPhase(){
+  getAllOrders() {
+    return this.http.get('https://calm-lake-26690.herokuapp.com/api/orders/', this.httpHeaders);
+  }
+  getPhase() {
 
     return this.phase
   }

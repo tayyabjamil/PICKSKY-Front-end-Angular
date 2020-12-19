@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../auth.service';
 
 @Injectable({
@@ -13,134 +13,134 @@ export class AccountService {
       accept: ' application/json'
     })
   };
-constructor(private http: HttpClient,private myauthService: AuthService,) { }
+  constructor(private http: HttpClient, private myauthService: AuthService,) { }
 
-createuserAccount(newUser) {
+  createuserAccount(newUser) {
 
-  return this.http.post(
-    'http://localhost:8000/api/users/'  ,
-    {
-      firstName: newUser.firstName,
-      lastName:newUser.lastName,
-      email: newUser.email,
-      password: newUser.password,
-      phone:newUser.phone,
-      accountBonus: 1,
-      provider:newUser.provider,
-      token:newUser.token
-
-    },
-    this.httpHeaders
-  );
-}
-signUp(newUser) {
-
-  return this.http.post(
-    'http://localhost:8000/api/users/signUp'  ,
-    {
-      firstName: newUser.firstName,
-      lastName:newUser.lastName,
-      email: newUser.email,
-      password: newUser.password,
-      contact:newUser.contact,
-      accountBonus: 1,
-      provider:newUser.provider,
-      token:newUser.token
-
-    },
-    this.httpHeaders
-  );
-}
-signIn(newUser) {
-
-  return this.http.post(
-    'http://localhost:8000/api/users/signIn'  ,
-    {
-      firstName: newUser.firstName,
-      lastName:newUser.lastName,
-      email: newUser.email,
-      password: newUser.password,
-      contact:newUser.contact,
-      accountBonus: 1,
-      provider:newUser.provider,
-      token:newUser.token
-
-    },
-    this.httpHeaders
-  );
-}
-login(user) {
-
-  return this.http.post(
-    'http://localhost:8000/api/users/login',
-    {
-      email: user.email,
-      password: user.password,
-      idToken:user.idToken,
-      provider:user.provider
-
-    },
-    this.httpHeaders
-  );
-}
-forgetPassword(data){
-  // const email = this.myauthService.getemail()
-  return this.http.post(
-    'http://localhost:8000/api/users/forgetPassword/',
-    {
-      email:data.email
-    },
-    this.httpHeaders
-  );
-}
-resetPassword(newPass){
-  return this.http.post(
-    'http://localhost:8000/api/users/resetPassword/',
-    {
-      confirmPassword: newPass.confirmPassword,
-      password: newPass.newPassword,
-      resetToken:newPass.resetToken
-    },
-    this.httpHeaders
-  );
-}
-accountVerify(data){
-  return this.http.post(
-    'http://localhost:8000/api/users/accountVerify/',
-    {
-      token: data.accountToken,
-      isVerify: data.isVerify,
-
-    },
-    this.httpHeaders
-  );
-}
-editInfo(data){
     return this.http.post(
-    'http://localhost:8000/api/users/editInfo/',
-    {
-      userId :this.myauthService.getID(),
-      username: data.username,
-      email: data.email,
-      contact:data.contact,
+      'https://calm-lake-26690.herokuapp.com/api/users/',
+      {
+        firstName: newUser.firstName,
+        lastName: newUser.lastName,
+        email: newUser.email,
+        password: newUser.password,
+        phone: newUser.phone,
+        accountBonus: 1,
+        provider: newUser.provider,
+        token: newUser.token
+
+      },
+      this.httpHeaders
+    );
+  }
+  signUp(newUser) {
+
+    return this.http.post(
+      'https://calm-lake-26690.herokuapp.com/api/users/signUp',
+      {
+        firstName: newUser.firstName,
+        lastName: newUser.lastName,
+        email: newUser.email,
+        password: newUser.password,
+        contact: newUser.contact,
+        accountBonus: 1,
+        provider: newUser.provider,
+        token: newUser.token
+
+      },
+      this.httpHeaders
+    );
+  }
+  signIn(newUser) {
+
+    return this.http.post(
+      'https://calm-lake-26690.herokuapp.com/api/users/signIn',
+      {
+        firstName: newUser.firstName,
+        lastName: newUser.lastName,
+        email: newUser.email,
+        password: newUser.password,
+        contact: newUser.contact,
+        accountBonus: 1,
+        provider: newUser.provider,
+        token: newUser.token
+
+      },
+      this.httpHeaders
+    );
+  }
+  login(user) {
+
+    return this.http.post(
+      'https://calm-lake-26690.herokuapp.com/api/users/login',
+      {
+        email: user.email,
+        password: user.password,
+        idToken: user.idToken,
+        provider: user.provider
+
+      },
+      this.httpHeaders
+    );
+  }
+  forgetPassword(data) {
+    // const email = this.myauthService.getemail()
+    return this.http.post(
+      'https://calm-lake-26690.herokuapp.com/api/users/forgetPassword/',
+      {
+        email: data.email
+      },
+      this.httpHeaders
+    );
+  }
+  resetPassword(newPass) {
+    return this.http.post(
+      'https://calm-lake-26690.herokuapp.com/api/users/resetPassword/',
+      {
+        confirmPassword: newPass.confirmPassword,
+        password: newPass.newPassword,
+        resetToken: newPass.resetToken
+      },
+      this.httpHeaders
+    );
+  }
+  accountVerify(data) {
+    return this.http.post(
+      'https://calm-lake-26690.herokuapp.com/api/users/accountVerify/',
+      {
+        token: data.accountToken,
+        isVerify: data.isVerify,
+
+      },
+      this.httpHeaders
+    );
+  }
+  editInfo(data) {
+    return this.http.post(
+      'https://calm-lake-26690.herokuapp.com/api/users/editInfo/',
+      {
+        userId: this.myauthService.getID(),
+        username: data.username,
+        email: data.email,
+        contact: data.contact,
 
 
-    },
-    this.httpHeaders
-  );
+      },
+      this.httpHeaders
+    );
 
-}
-editPassword(data){
-  return this.http.post(
-  'http://localhost:8000/api/users/editPassword/',
-  {
-    userId :this.myauthService.getID(),
-    oldPassword: data.oldPassword,
-    newPassword: data.newPassword,
+  }
+  editPassword(data) {
+    return this.http.post(
+      'https://calm-lake-26690.herokuapp.com/api/users/editPassword/',
+      {
+        userId: this.myauthService.getID(),
+        oldPassword: data.oldPassword,
+        newPassword: data.newPassword,
 
-  },
-  this.httpHeaders
-);
+      },
+      this.httpHeaders
+    );
 
-}
+  }
 }
