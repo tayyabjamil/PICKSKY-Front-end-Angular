@@ -15,25 +15,25 @@ export class ProductService {
   };
 
   getProducts() {
-    return this.http.get('https://calm-lake-26690.herokuapp.com/api/products', this.httpHeaders);
+    return this.http.get('http://localhost:8000/api/products', this.httpHeaders);
   }
   getOrders() {
-    return this.http.get('https://calm-lake-26690.herokuapp.com/api/orders/' + this.myauthService.getID(), this.httpHeaders);
+    return this.http.get('http://localhost:8000/api/orders/' + this.myauthService.getID(), this.httpHeaders);
   }
 
   featuredProducts() {
-    return this.http.get('https://calm-lake-26690.herokuapp.com/api/products/featuredProducts', this.httpHeaders);
+    return this.http.get('http://localhost:8000/api/products/featuredProducts', this.httpHeaders);
   }
 
   getCatagoryProducts(catagory) {
-    return this.http.get('https://calm-lake-26690.herokuapp.com/api/products/catagory/' + catagory, this.httpHeaders);
+    return this.http.get('http://localhost:8000/api/products/catagory/' + catagory, this.httpHeaders);
   }
   productImageUrl(name) {
-    return 'https://calm-lake-26690.herokuapp.com/api/products/image/' + name;
+    return 'http://localhost:8000/api/products/image/' + name;
   }
   referFriend(data) {
     return this.http.post(
-      'https://calm-lake-26690.herokuapp.com/api/users/referFriend',
+      'http://localhost:8000/api/users/referFriend',
       {
         userId: this.myauthService.getID(),
         refrenceCode: data.refrenceCode,
@@ -43,6 +43,6 @@ export class ProductService {
     );
   }
   // supportPage(data){
-  //   return 'https://calm-lake-26690.herokuapp.com/api/products/image/' + data;
+  //   return 'http://localhost:8000/api/products/image/' + data;
   // }
 }

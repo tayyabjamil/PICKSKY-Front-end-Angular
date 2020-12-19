@@ -17,12 +17,12 @@ export class AdminService {
 
   addProducts(fd) {
     return this.http.post(
-      'https://calm-lake-26690.herokuapp.com/api/products/', fd
+      'http://localhost:8000/api/products/', fd
     );
   }
   shippingPhase(shippingPhase) {
     return this.http.post(
-      'https://calm-lake-26690.herokuapp.com/api/orders/shipping',
+      'http://localhost:8000/api/orders/shipping',
       {
         phase: this.phase = "shipping",
         ownerEmail: shippingPhase.ownerEmail,
@@ -32,7 +32,7 @@ export class AdminService {
     );
   }
   getAllOrders() {
-    return this.http.get('https://calm-lake-26690.herokuapp.com/api/orders/', this.httpHeaders);
+    return this.http.get('http://localhost:8000/api/orders/', this.httpHeaders);
   }
   getPhase() {
 
