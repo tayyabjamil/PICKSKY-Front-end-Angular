@@ -24,7 +24,7 @@ contact;
      this.username = this.myauthService.getusername();
      this.email = this.myauthService.getemail();
      this.refrenceId = this.myauthService.getRefrenceId();
-     this.contact = this.myauthService.getContact();
+
 
 
      this.rformEdit = this.formBuilder.group({

@@ -1,4 +1,4 @@
-<div class="container-fluid">
+ <div class="container-fluid">
 
 <header *ngIf="deviceLg || deviceMd">
   <div>
@@ -38,9 +38,9 @@
         <i class="fa fa-user-circle-o" routerLink="/login" style="font-size: xx-large"></i>
         <p routerLink='/login' routerLinkActive="router-link-active">Login</p>
       </div>
-      <div *ngIf="authService.loggedIn()"  style="display: flex;flex-direction: row;padding-top: 1%;">
+      <div   style="display: flex;flex-direction: row;padding-top: 1%;">
         <p *ngIf="authService.loggedIn()" style="font-size: large;padding-top: 5%;">Hi {{usernameLogin}}</p>
-        <i class="fa fa-cog" style="font-size: xx-large" [popover]="popTemplate"  popoverTitle=Hi{{usernameLogin}}
+        <i class="fa fa-cog" style="font-size: xx-large" [popover]="popTemplate"
               ></i>
           <div>
             <ng-template #popTemplate>
@@ -92,7 +92,7 @@
 
     <hr style="height: 1px;margin: 0px 0px;" />
 
-    <nav class="fundpress-menu" style="margin-bottom: 4%;">
+    <nav class="fundpress-menu navbar sticky-top navbar-light" style="background-color: white;" >
       <ul class="nav-menu" style="width: 100%;">
         <li class="dropdown" routerLink="/">
           <a>{{getHeaderNames(1)}}</a>

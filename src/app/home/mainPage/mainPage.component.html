@@ -4,7 +4,7 @@
   <div class="container-fluid" style="width: 100%;padding-top: 2%;" >
 <div class="block">
   <div class="text-block">
-  <p style="color: white; padding-bottom: 2%;font-size: xx-large;"> Stay home & get </p><br>
+  <p style="color: white; padding-bottom: 2%;font-size: xx-large;"> Stay home & get </p>
     <p  style="color: white;padding-bottom: 7%;font-size: xx-large"> your tradational food</p>
   </div>
     <p class="text-block-small" style="padding-bottom: 7%;">Start You'r Shopping with Shrivasafoods</p>
@@ -35,7 +35,7 @@
 
 
     <div class="row" style="padding-bottom: 5%;">
-      <div  style="float:left;padding-right: 4%;">
+      <div  style="float:left;padding-right: 2%;">
           <i   class="fa fa-home"  style="width: 10%;font-size: xx-large;"></i>
         </div>
 
@@ -161,11 +161,11 @@
   <p  style="font-weight: bold;padding-left:3%;padding-top:4% ; "> Featured Products</p>
   <div *ngIf="deviceLg || deviceMd" class="deviceLg">
 
-    <div  routerLinkActive="router-link-active"  *ngFor="let item of featuredProducts" style="padding:2%;width: 24%;background-color: white;margin: 0.5%;" >
+    <div  routerLinkActive="router-link-active"  *ngFor="let item of featuredProducts" style="padding:1%;width: 200px;height: 200px;;background-color: white;margin: 0.1%;" >
 
-    <div [routerLink]="['/detail']" style="height: 15vw;width: 100%;">
-      <img [src]='getImage(item.productImage)' style="height: 15vw;width: 100%;">
-      <div *ngIf="loadingImage" class="spinner-border" role="status">
+    <div [routerLink]="['/detail']" style="padding-left: 45px;height: 100px;width: 200px">
+      <img [src]='getImage(item.productImage)' style="height: 100px;width: auto">
+    <div *ngIf="loadingImage" class="spinner-border" role="status">
         <span class="sr-only">Loading...</span>
       </div>
     </div>
@@ -193,11 +193,12 @@
       <div   style="display:flex;flex-direction: row;flex-wrap: wrap;flex: 2;justify-content: space-evenly;">
 
 
-        <div *ngFor="let item of featuredProducts" style="padding:2%;width: 40%;background-color: white;margin: 2%;" >
+        <div *ngFor="let item of featuredProducts" style="padding:2%;width: 180px;height: 180px;background-color: white;margin: 2%;" >
 
-          <div   [routerLink]="['/detail']" style="height: 150px;width: 100%;">
-            <img [src]='getImage(item.productImage)' style="height: 130px;width: 100%;">
-          </div>
+          <div   [routerLink]="['/detail']"  >
+            <img [src]='getImage(item.productImage)' style="padding-left: 30px;height: 100px;width:auto;">
+         </div>
+
           <p style="font-weight: bold;">{{item.price}}</p>
           <div style="text-align: center;">
             <button
@@ -331,43 +332,44 @@
   <p  style="font-weight: bold;font-size: 1.5vw;padding-left:3%;padding-top:4% ; "> Trending Products</p>
   <div *ngIf="deviceLg || deviceMd" class="deviceLg">
 
-    <div  *ngFor="let item of allProducts" style="padding:2%;width: 24%;background-color: white;margin: 0.5%;" >
+    <div  routerLinkActive="router-link-active"  *ngFor="let item of allProducts" style="padding:1%;width: 200px;height: 200px;;background-color: white;margin: 0.1%;" >
 
-      <div [routerLink]="['/detail']"   style="height: 15vw;width: 100%;">
-        <img [src]='getImage(item.productImage)' style="height: 15vw;width: 100%;">
+      <div [routerLink]="['/detail']" style="padding-left: 45px;height: 100px;width: 200px">
+        <img [src]='getImage(item.productImage)' style="height: 100px;width: auto">
+      <div *ngIf="loadingImage" class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
       </div>
-    <p  >{{item.name}}</p>
+        <p style="font-weight: bold;">{{item.price}}</p>
+        <div style="text-align: center;">
+          <button
+          (click)="addProduct(item)"
+            class="btn"
+            style="
+              padding-left: 2.5%;
+              padding-right: 2.5%;
+              background-color: rgb(63, 61, 61);
+              color: whitesmoke;
+            "
+          >
 
-    <p style="font-weight: bold;">{{item.price}}</p>
-   <div style="text-align: center;">
-    <button
-    (click)="addProduct(item)"
-      class="btn"
-      style="
-        padding-left: 2.5%;
-        padding-right: 2.5%;
-        background-color: rgb(63, 61, 61);
-        color: whitesmoke;
-      "
-    >
-
-      <span style="font-weight: bold; font-size: small">Add to Cart</span>
-    </button>
-  </div>
-    </div>
+            <span style="font-weight: bold; font-size: small">Add to Cart</span>
+          </button>
+        </div>
+      </div>
 
 
   </div>
-  <div  *ngIf="deviceXs || deviceSm" >
+  <div *ngIf="deviceXs || deviceSm" >
     <div class="row">
-      <div    style="display:flex;flex-direction: row;flex-wrap: wrap;flex: 2;justify-content: space-between;">
+      <div   style="display:flex;flex-direction: row;flex-wrap: wrap;flex: 2;justify-content: space-evenly;">
 
 
-        <div *ngFor="let item of allProducts" style="padding:2%;width: 40%;background-color: white;margin: 0.5%;" >
+        <div *ngFor="let item of allProducts" style="padding:2%;width: 180px;height: 180px;background-color: white;margin: 2%;" >
 
-          <div [routerLink]="['/detail']" style="height: 150px;width: 100%;">
-            <img [src]='getImage(item.productImage)' style="height: 130px;width: 100%;">
-          </div>
+          <div   [routerLink]="['/detail']"  >
+            <img [src]='getImage(item.productImage)' style="padding-left: 30px;height: 100px;width:auto;">
+         </div>
           <p style="font-weight: bold;">{{item.price}}</p>
           <div style="text-align: center;">
             <button

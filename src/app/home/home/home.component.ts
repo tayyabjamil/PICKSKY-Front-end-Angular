@@ -42,8 +42,8 @@ constructor(public mediaObserver:MediaObserver
 
   }
 get usernameLogin(){
-  this.username = this.authService.getusername()
-  return this.username
+  return this.authService.getusername()
+
 }
  get getCartProducts() {
     this.cart =  this.cartService.getProducts();

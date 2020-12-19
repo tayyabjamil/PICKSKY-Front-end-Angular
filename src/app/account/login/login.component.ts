@@ -67,7 +67,7 @@ login(){
       this.setId(data.userId);
       this.setusername(data.username);
       this.setemail(data.email)
-      this.setcontact(data.contact)
+
       this.setRefrenceId(data.refrenceId)
       this.isLoggedIn = true;
       this.router.navigate(['/'])
@@ -119,22 +119,17 @@ signInGoogle(platform: string) {
         this.setId(data.userId);
         this.setusername(data.username);
         this.setemail(data.email)
-        this.setcontact(data.contact)
+
         this.setRefrenceId(data.refrenceId)
         this.isLoggedIn = true;
-    this.router.navigate(['/'])
+         this.router.navigate(['/'])
 
 
 
 
         }, (error) => {
-          if(error.error.message){
-            this.socailLogin(userAccount)
-            }else{
-              alert("Login Failed")
-            }
-
-
+         alert("NO Account Sign up First")
+         this.router.navigate(['/signUp'])
         });
       });
 
@@ -161,7 +156,7 @@ signInFacebook(platform: string) {
         this.setId(data.userId);
         this.setusername(data.username);
         this.setemail(data.email)
-        this.setcontact(data.contact)
+
         this.setRefrenceId(data.refrenceId)
         this.isLoggedIn = true;
         this.router.navigate(['/'])
@@ -171,12 +166,8 @@ signInFacebook(platform: string) {
 
 
         }, (error) => {
-          if(error.error.message){
-            this.socailLogin(userAccount)
-            }else{
-              alert("Login Failed")
-            }
-
+          alert("NO Account Sign up First")
+          this.router.navigate(['/signUp'])
 
         });
       });
@@ -190,7 +181,7 @@ socailLogin(userAccount){
     this.setId(data.userId);
     this.setusername(data.username);
     this.setemail(data.email)
-    this.setcontact(data.contact)
+
     this.setRefrenceId(data.refrenceId)
     this.isLoggedIn = true;
     this.router.navigate(['/'])

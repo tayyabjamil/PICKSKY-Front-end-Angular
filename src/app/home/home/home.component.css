@@ -1,3 +1,12 @@
+
+
+.navbar{
+  /* position: relative; */
+  /* min-height: 50px; */
+  height: 10px;
+  background-color: green;
+  border: 1px solid transparent;
+}
 .textimages{
     top: 10%;
     left: 10%;
@@ -105,6 +114,9 @@
 color: #93bb36;
 
 }
+.fundpress-menu{
+  height: 10px;
+}
 .fundpress-menu .nav-menu li a {
   padding: 18px 10px;
 
@@ -121,7 +133,7 @@ color: #93bb36;
 }
 .fundpress-menu .nav-menu {
   padding-left: 2%;
- font-Family: 'Open Sans, sans-serif'; 
+ font-Family: 'Open Sans, sans-serif';
 
 
 }
@@ -135,7 +147,7 @@ color: #93bb36;
       display: flex;
       align-items: center;
       color: var(--theme-ui-colors-text,#5A5A5A);
-  
+
     cursor: pointer;
     font-weight: 400;
     display: flex;
@@ -143,8 +155,8 @@ color: #93bb36;
     align-items: center;
     text-decoration: none;
     transition: color 0.2s ease 0s;
-      
-      
+
+
 
 }
 .mat-body, .mat-body-1, .mat-typography {

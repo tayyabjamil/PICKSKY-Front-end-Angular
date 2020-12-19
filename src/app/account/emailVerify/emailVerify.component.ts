@@ -28,7 +28,6 @@ verify(){
 
    }
   this.accountService.accountVerify(data).subscribe((data: any) => {
-    alert("Shipping")
 
   })
 

@@ -27,6 +27,10 @@ export class NavComponent implements OnInit {
   ngOnInit() {
     // this.username=this.authService.getusername()
   }
+  get usernameLogin(){
+    return this.authService.getusername()
+
+  }
   toggleDisplay() {
     this.isShow = !this.isShow;
   }
@@ -50,5 +54,10 @@ export class NavComponent implements OnInit {
 
   getSupportConstants(indx: number) { return SupportConstants[indx] }
 
-
+  onLogoutClick() {
+    this.authService.loggedOutName();
+    this.authService.loggedOutEmail();
+    this.authService.loggedOutuserId();
+    this.authService.loggedOutRefrenceId();
+  }
 }

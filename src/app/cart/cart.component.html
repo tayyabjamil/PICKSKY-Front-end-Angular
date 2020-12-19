@@ -13,23 +13,27 @@
   </div>
   </div>
   </div>
-  <div style="padding-left: 25%;padding-right: 25%;">
- <div *ngIf="getCartItems.length==0">
+  <div class="container">
+  <div class="row" *ngIf="getCartItems.length==0">
+<div class="col-4"></div>
+    <img class="col-4" class="img-responsive" style="min-height: 260px;" src="../assets/images/blank.PNG">
+   <div class="col-4"></div>
+  </div>
 
-  <img class="img-responsive" style="min-height: 260px;width: 100%;" src="../assets/images/blank.PNG">
- </div>
-    <div *ngFor="let item of getCartItems" >
+  </div>
+  <div class="">
+    <div class="row" *ngFor="let item of getCartItems" >
+<div class="col-lg-2 col-md-2"></div>
+  <div class="col-lg-8 col-xs-12 col-sm-12" >
+    <div class="row" style="padding-top: 2%;">
+    <div class="col-4 col-lg-4"  (click)="removeProduct(item)" >
 
-    <div  style="padding-top: 2%;;padding-bottom: 2%;" >
-  <div class="row" style="width: 100%;">
-      <div class="col-xs-5" style="padding-top: 2%;" (click)="removeProduct(item)" >
-
-        <div class="container" >
-          <div  style="background-color: grey;">
-            <img class="image" style="width: 100%;min-height: 100%;"  [src]='getImage(item.productImage)'>
+        <div class="container" style="height: 80px;width: 130px;" >
+            <div  style="background-color: grey;">
+            <img class="image" style="width: 130px;height: 80px;"  [src]='getImage(item.productImage)'>
           </div>
 
-          <div class="middle">
+          <div class="middle" >
             <span class="glyphicon glyphicon-remove" style="background-color: white;padding: 15%;border-radius: 12px;"></span>
           </div>
         </div>
@@ -38,7 +42,7 @@
 
 
     </div>
-    <div class="col-xs-4" style="min-width: 30px;padding-top: 5%;" >
+    <div class="col-4 col-lg-6" style="min-width: 30px;" >
   <div>
   <p>{{item.name}}</p>
   </div>
@@ -47,11 +51,13 @@
   <p>Total Units : {{item.productCount}}</p>
   </div>
   </div>
-    <div class="col-xs-3" style="text-align: right;padding-top: 5%;">
+    <div class="col-4 col-lg-2" style="text-align: left;">
   <p style="font-weight: 500;">${{item.unitTotal}}</p>
     </div>
   </div>
   </div>
+  <div class="col-lg-2 col-md-2"></div>
+
   <hr >
   </div>
   </div>
@@ -125,4 +131,14 @@
 
         <button style="background-color: rgb(43, 41, 41);
         color: white;width: 100%;border-radius: 6px;" (click)="getBonus()">USE BONUS</button>
-      </div> -->
+      </div>
+<!-- <div class="container">
+<div class="row">
+  <div class="col-2" style="background-color: green;">col 1</div>
+  <div class="col-4" style="background-color: yellow;">col 1</div>
+  <div class="col-4" style="background-color: blue;">col 1</div>
+
+  <div class="col-2" style="background-color: grey;">col 2</div>
+
+</div>
+</div> -->

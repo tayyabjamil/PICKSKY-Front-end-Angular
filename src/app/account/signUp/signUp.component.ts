@@ -25,6 +25,7 @@ export class SignUpComponent implements OnInit {
   email:string
   password:string
   contact:number
+  phone;
   constructor(
 
     public mediaObserver:MediaObserver,
@@ -50,6 +51,7 @@ export class SignUpComponent implements OnInit {
     this.rformSignup = this.formBuilder.group({
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
+      phone: new FormControl(''),
       email: new FormControl('', [Validators.required,Validators.email]),
       password: new FormControl('',  Validators.compose([
         Validators.required,
@@ -67,9 +69,66 @@ export class SignUpComponent implements OnInit {
   }
 
 
-  signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-  }
+
+signUpGoogle(platform: string) {
+  platform = GoogleLoginProvider.PROVIDER_ID;
+  this.authService.signIn(GoogleLoginProvider.PROVIDER_ID)
+    .then((Response) => {
+      console.log(platform + 'logged in user is ', Response);
+
+      const userAccount = {
+        email: Response.email,
+        firstName: Response.firstName,
+        lastName: Response.lastName,
+        contact:Response.provider,
+        provider:Response.provider,
+
+        password: Response.id,
+      };
+      this.accountService.signUp(userAccount).subscribe((data: any) => {
+
+        this.router.navigate(['/login'])
+
+
+
+        }, (error) => {
+          alert("Already have an account Just login")
+              this.router.navigate(['/login'])
+
+
+        });
+      });
+
+}
+signUpFacebook(platform: string) {
+  platform = FacebookLoginProvider.PROVIDER_ID;
+  this.authService
+    .signIn(FacebookLoginProvider.PROVIDER_ID)
+    .then((Response) => {
+      console.log(platform + 'logged in user is ', Response);
+      // tslint:disable-next-line: no-unused-expression
+      const userAccount = {
+        email: Response.name,
+        firstName: Response.firstName,
+        lastName: Response.lastName,
+        password: Response.id,
+        token: Response.authToken,
+      };
+
+      this.accountService.signUp(userAccount).subscribe((data: any) => {
+
+        this.router.navigate(['/login'])
+
+
+
+
+        }, (error) => {
+              alert("Already have an account Just login")
+              this.router.navigate(['/login'])
+
+        });
+      });
+}
   signOut(): void {
     this.authService.signOut();
   }

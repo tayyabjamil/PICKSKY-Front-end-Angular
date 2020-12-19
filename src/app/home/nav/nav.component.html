@@ -85,25 +85,25 @@
           <i class="fa fa-times"></i>
         </p>
       </div>
-      <div *ngIf="isShow == false" style="margin-left: 2%;width: 100%;margin-top: 1%;margin-bottom: 1%" class="row">
+      <div *ngIf="isShow == false" style="width: 100%;margin-top: 1%;margin-bottom: 1%" class="row">
 
 
         <button class="col-xs-3" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
           *ngIf="isHandset$ | async">
           <mat-icon aria-label="Side nav toggle icon" style="color: black;">menu</mat-icon>
         </button>
-        <div class="col-xs-4">
+        <div class="col-xs-3">
           <p style="color: black;margin-top: 1%;padding-right: 5%;font-size: large;font-weight:500;" routerLink="">
             SHRIVASAFOODS</p>
         </div>
 
-        <div class="col-xs-2"></div>
+        <div class="col-xs-3"></div>
         <p class="col-xs-1" (click)=toggleDisplay() style="padding-left: 2%;font-weight: 300px;color: grey;">
           <i class="fa fa-search"></i>
         </p>
 
         <div  class="col-xs-2" *ngIf="authService.loggedIn()"  style="display: flex;flex-direction: row;padding-top: 1%;">
-          <p style="font-size: large;padding-top: 5%;">Hi {{username}}</p>
+          <p *ngIf="authService.loggedIn()" style="font-size: large;padding-top: 5%;">Hi {{usernameLogin}}</p>
           <i class="fa fa-cog" style="font-size: xx-large" [popover]="popTemplate"  popoverTitle=Hi{{username}}
                 ></i>
             <div>

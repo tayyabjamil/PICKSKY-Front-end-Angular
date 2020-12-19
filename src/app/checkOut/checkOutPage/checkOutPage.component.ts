@@ -35,15 +35,17 @@ refrence:string;
       fname: ['', ],
       lname: ['', ],
       city: ['', ],
-      adress: ['', ]
+      adress: ['', ],
+      contry:['',],
+      code:['']
+      ,
     });
     this.secondFormGroup = this._formBuilder.group({
-      contact: ['', Validators.required],
-      method: ['', Validators.required]
+      method: ['', ]
     });
     this.thirdFormGroup = this._formBuilder.group({
       // contact: ['', Validators.required],
-      // method: ['', Validators.required]
+
     });
   }
   getCartItems(){

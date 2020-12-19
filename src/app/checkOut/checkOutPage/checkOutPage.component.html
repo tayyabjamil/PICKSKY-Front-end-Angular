@@ -39,7 +39,21 @@
           <input matInput  formControlName="city" >
         </mat-form-field>
         </div>
+        <div style="display: flex;flex-direction: row;justify-content: space-between;">
+          <mat-form-field>
+            <mat-label>Contry</mat-label>
+            <input matInput  formControlName="contry" >
+          </mat-form-field>
 
+          <mat-form-field>
+            <mat-label>Postal Code</mat-label>
+            <input matInput  formControlName="code" >
+          </mat-form-field>
+          </div>
+          <div  style="display: flex;flex-direction: row;justify-content: space-between;">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" style="padding-right: 4%;">
+            <label  style="margin-left: 3%;">Save details for next time</label>
+          </div>
           <div  style="text-align: right;padding-top: 5%;">
             <button class="btn btn-primary"  matStepperNext>Continue to Shipping</button>
 
@@ -49,16 +63,29 @@
       <mat-step [stepControl]="secondFormGroup">
         <form [formGroup]="secondFormGroup">
           <ng-template matStepLabel>Shipping</ng-template>
-          <mat-form-field>
-            <mat-label>Contact</mat-label>
-            <input matInput placeholder="Contact" formControlName="contact" required>
-          </mat-form-field>
-          <br/>
-          <mat-form-field>
-            <mat-label>Shipping Method</mat-label>
-            <input matInput placeholder="method" formControlName="method" required>
-          </mat-form-field>
-          <br/>
+          <div style="border: 1px;border-style: groove;padding: 1%;margin-top: 2%;border-radius: 6px;border-color: rgb(160, 158, 158);">
+            <div class="row" style="height: 10px;">
+            <p class="col-3">Contact</p>
+            <mat-label class="col-9">{{this.firstFormGroup.value.email}}</mat-label>
+          </div>
+          <hr/>
+          <div class="row" style="height: 10px;">
+            <p class="col-3">Shipping</p>
+            <mat-label class="col-9">{{this.firstFormGroup.value.adress}}</mat-label>
+          </div>
+
+        </div>
+
+       <div style="margin: 3%;">
+        <label>Shipping Method</label>
+
+        <div class="row" style="border: 1px;border-style: groove;padding-left: 3%;border-radius: 6px;border-color: rgb(145, 141, 141);">
+            <input class="col-3" type="checkbox" class="form-check-input" id="exampleCheck2">
+
+            <div class="col-6"></div>
+            <mat-label class="col-3">Standard</mat-label>
+          </div>
+        </div>
           <div  style="text-align: right;padding-top: 5%;">
             <button  class="btn btn-secondry"  matStepperPrevious>Back</button>
             <button  class="btn btn-primary"  matStepperNext>Next</button>
@@ -79,36 +106,33 @@
         <ng-template matStepLabel>Done</ng-template>
         <p>You are now done.</p>
 
-        <mat-list style="padding: 10%;">
-       <mat-list-item>
-         <div style="width: 100%;display: flex;flex-direction: row;justify-content: space-between;">
-           <strong>Name:</strong>
-           <span > {{ this.firstFormGroup.value.name }}</span>
+        <mat-list style="padding: 5%;">
+          <div style="border: 1px;border-style: groove;padding: 1%;margin-top: 2%;border-color: gray;border-radius: 6px;background-color: rgb(235, 235, 235);">
+            <div class="row" style="height: 10px;">
+            <p class="col-3">Name</p>
+            <mat-label class="col-9"> {{ this.firstFormGroup.value.fname }}</mat-label>
+          </div>
+          <hr/>
+          <div class="row" style="height: 10px;">
+            <p class="col-3">Email</p>
+            <mat-label class="col-9">{{ this.firstFormGroup.value.email }}</mat-label>
+          </div>
+          <hr/>
+          <div class="row" style="height: 10px;">
+            <p class="col-3">Adress</p>
+            <mat-label class="col-9">{{ this.firstFormGroup.value.adress }}</mat-label>
+          </div>
+          <hr>
+          <div class="row" style="height: 10px;">
+            <p class="col-3">Contact</p>
+            <mat-label class="col-9">{{ this.firstFormGroup.value.contact }}</mat-label>
+          </div>
+          <hr>
+          <div class="row" style="height: 10px;">
+            <p class="col-4">Shipping Method:</p>
+            <mat-label class="col-8">{{ this.secondFormGroup.value.method }}</mat-label>
+          </div>
         </div>
-
-          </mat-list-item>
-
-       <mat-list-item>
-        <div style="width:100%;display: flex;flex-direction: row;justify-content: space-between;">
-        <strong>Email:</strong> <span >{{ this.firstFormGroup.value.email }}</span>
-      </div>
-      </mat-list-item>
-       <mat-list-item>
-         <div style="width:100%;display: flex;flex-direction: row;justify-content: space-between;">
-        <strong>Adress:</strong> <span >{{ this.secondFormGroup.value.adress }}</span>
-      </div>
-      </mat-list-item>
-       <mat-list-item>
-         <div style="width:100%;display: flex;flex-direction: row;justify-content: space-between;">
-        <strong>Contact:</strong> <span >{{ this.secondFormGroup.value.contact }}</span>
-      </div>
-      </mat-list-item>
-
-        <mat-list-item>
-         <div style="width:100%;display: flex;flex-direction: row;justify-content: space-between;">
-        <strong>Shipping Method:</strong> <span >{{ this.secondFormGroup.value.method }}</span>
-      </div>
-      </mat-list-item>
 
       </mat-list>
 
