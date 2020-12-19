@@ -1,3 +1,4 @@
+import { TextFieldComponent } from './../../account/textField/textField.component';
 import { Router } from '@angular/router';
 import { AccountService } from './../account.service';
 import { FormBuilder, FormGroup,FormControl ,Validators} from '@angular/forms';
@@ -6,6 +7,8 @@ import { SocialAuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
 import  {MediaObserver, MediaChange} from '@angular/flex-layout';
 import  { Subscription } from 'rxjs';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import {patternValidator} from '../customValidator'
 import {
   GoogleLoginProvider,
   FacebookLoginProvider,
@@ -22,6 +25,7 @@ export class SignUpComponent implements OnInit {
   email:string
   password:string
   contact:number
+  phone;
   constructor(
 
     public mediaObserver:MediaObserver,
@@ -47,14 +51,84 @@ export class SignUpComponent implements OnInit {
     this.rformSignup = this.formBuilder.group({
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
+      phone: new FormControl(''),
       email: new FormControl('', [Validators.required,Validators.email]),
-      password: new FormControl('', [Validators.required,Validators.minLength(8)]),
+      password: new FormControl('',  Validators.compose([
+        Validators.required,
+        Validators.minLength(8),
+
+        patternValidator(/[A-Z]/, { hasCapitalCase: true }),
+        patternValidator(/[a-z]/,{ hasSmallCase: true }),
+        patternValidator(/[0-9]/,{ hasDigit: true }),
+
+        // TextFieldComponent.patternValidator(/[ [!@#$%^&*()_+-=[]{};':"|,.<>/?]/](<mailto:!@#$%^&*()_+-=[]{};':"|,.<>/?]/>), { hasSpecialCharacters: true }),
+
+      ])  ),
       confirmPassword: new FormControl('', [Validators.required,Validators.minLength(8)]),
     })
   }
-  signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-  }
+
+
+
+signUpGoogle(platform: string) {
+  platform = GoogleLoginProvider.PROVIDER_ID;
+  this.authService.signIn(GoogleLoginProvider.PROVIDER_ID)
+    .then((Response) => {
+      console.log(platform + 'logged in user is ', Response);
+
+      const userAccount = {
+        email: Response.email,
+        firstName: Response.firstName,
+        lastName: Response.lastName,
+        contact:Response.provider,
+        provider:Response.provider,
+
+        password: Response.id,
+      };
+      this.accountService.signUp(userAccount).subscribe((data: any) => {
+
+        this.router.navigate(['/login'])
+
+
+
+        }, (error) => {
+          alert("Already have an account Just login")
+              this.router.navigate(['/login'])
+
+
+        });
+      });
+
+}
+signUpFacebook(platform: string) {
+  platform = FacebookLoginProvider.PROVIDER_ID;
+  this.authService
+    .signIn(FacebookLoginProvider.PROVIDER_ID)
+    .then((Response) => {
+      console.log(platform + 'logged in user is ', Response);
+      // tslint:disable-next-line: no-unused-expression
+      const userAccount = {
+        email: Response.name,
+        firstName: Response.firstName,
+        lastName: Response.lastName,
+        password: Response.id,
+        token: Response.authToken,
+      };
+
+      this.accountService.signUp(userAccount).subscribe((data: any) => {
+
+        this.router.navigate(['/login'])
+
+
+
+
+        }, (error) => {
+              alert("Already have an account Just login")
+              this.router.navigate(['/login'])
+
+        });
+      });
+}
   signOut(): void {
     this.authService.signOut();
   }

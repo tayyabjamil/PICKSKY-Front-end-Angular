@@ -1,0 +1,144 @@
+<div style="min-height: 500px;padding-bottom: 15%;">
+  <div class="row" >
+  <div class="col-xs-12" style="">
+    <div style="margin-top: 3.0%;margin-bottom: 3%;;display: flex;flex-direction: row;justify-content: space-between;padding-left: 25%;padding-right: 25%;">
+      <p style="font-size:x-large;font-weight:bolder;text-align: center;font-weight: bold;">Cart</p>
+      <span class="glyphicon glyphicon-remove" [routerLink]="['/']" routerLinkActive="router-link-active" ></span>
+    </div>
+  <div  style="display: flex;flex-direction: row;justify-content: space-between;background-color: rgb(243, 242, 242);padding-left: 25%;padding-right: 25%;padding-top: 20px;">
+    <p >Total Amount </p>
+    <p style="font-weight: 500;">${{getTotal}}</p>
+
+
+  </div>
+  </div>
+  </div>
+  <div class="container">
+  <div class="row" *ngIf="getCartItems.length==0">
+<div class="col-4"></div>
+    <img class="col-4" class="img-responsive" style="min-height: 260px;" src="../assets/images/blank.PNG">
+   <div class="col-4"></div>
+  </div>
+
+  </div>
+  <div class="">
+    <div class="row" *ngFor="let item of getCartItems" >
+<div class="col-lg-2 col-md-2"></div>
+  <div class="col-lg-8 col-xs-12 col-sm-12" >
+    <div class="row" style="padding-top: 2%;">
+    <div class="col-4 col-lg-4"  (click)="removeProduct(item)" >
+
+        <div class="container" style="height: 80px;width: 130px;" >
+            <div  style="background-color: grey;">
+            <img class="image" style="width: 130px;height: 80px;"  [src]='getImage(item.productImage)'>
+          </div>
+
+          <div class="middle" >
+            <span class="glyphicon glyphicon-remove" style="background-color: white;padding: 15%;border-radius: 12px;"></span>
+          </div>
+        </div>
+
+
+
+
+    </div>
+    <div class="col-4 col-lg-6" style="min-width: 30px;" >
+  <div>
+  <p>{{item.name}}</p>
+  </div>
+  <div >
+  <p> Unit price : ${{item.price}}</p>
+  <p>Total Units : {{item.productCount}}</p>
+  </div>
+  </div>
+    <div class="col-4 col-lg-2" style="text-align: left;">
+  <p style="font-weight: 500;">${{item.unitTotal}}</p>
+    </div>
+  </div>
+  </div>
+  <div class="col-lg-2 col-md-2"></div>
+
+  <hr >
+  </div>
+  </div>
+
+  </div>
+
+  <div [routerLink]="['/checkOut']" *ngIf="getCartItems.length!==0"  style="
+  box-sizing: border-box;
+  min-width: 0px;
+  max-width: 960px;
+  margin: 0px auto;
+  pointer-events: none;
+  width: calc(100% - 40px);
+">
+    <button style="
+        bottom: 87px;
+        opacity: 1;
+        transform: translateY(0px);
+        border: 0px;
+        outline: 0px;
+        max-width: 960px;
+        height: 50px;
+        color: white;
+        padding-left:33% ;
+        position: fixed;
+        pointer-events: all;
+        width: calc(100% - 40px);
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: rgb(41, 41, 41);
+        box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 12px;
+        cursor: pointer;
+        left: auto;
+        right: auto;
+        z-index: 999;
+        text-align: center;
+      ">
+      <div style="color: white;text-align: center;">
+        <svg width="16" height="16" viewBox="0 0 16 16">
+          <path id="shopping-bag"
+            d="M4.4,3.6H15.6a.8.8,0,0,1,.8.8V15.6a.8.8,0,0,1-.8.8H4.4a.8.8,0,0,1-.8-.8V4.4A.8.8,0,0,1,4.4,3.6ZM2,4.4A2.4,2.4,0,0,1,4.4,2H15.6A2.4,2.4,0,0,1,18,4.4V15.6A2.4,2.4,0,0,1,15.6,18H4.4A2.4,2.4,0,0,1,2,15.6ZM10,10C7.791,10,6,7.851,6,5.2H7.6c0,2.053,1.335,3.2,2.4,3.2s2.4-1.147,2.4-3.2H14C14,7.851,12.209,10,10,10Z"
+            transform="translate(-2 -2)" fill="#ffffff" fill-rule="evenodd"></path>
+        </svg>
+    <span style="justify-content: center;text-align: center;">Proceed To Check out</span>
+      </div>
+
+    </button>
+  </div>
+<!-- <div class="col-lg-4" >
+    <div>
+      <p style="font-size: xx-large">Share to Your Friends</p>
+      <p style="font-size: xx-large">and Get 10$ discount</p>
+  <p>Invite through Email</p>
+      <input [(ngModel)]='refrence' placeholder="Your Friend Email" style="width: 50%;" class="form-control" type="text" name="refrence">
+      <input [(ngModel)]='refrence' placeholder="Your Refrence Code" style="width: 50%;" class="form-control" type="text" name="refrence">
+
+    </div>
+    <div>
+      <p>How it works</p>
+
+      <p style="width: 40%;font-weight: bold;"> 1. <span > Send your refrence code to your friend</span></p>
+      <p style="width: 40%;font-weight: bold;"> 2.<span > Ask your friend to use your refrence code to order something</span></p>
+      <p style="width: 40%;font-weight: bold;"> 3.<span > Get 10$ on every order your friend did using your refrence Id</span></p>
+
+    </div>
+  </div> --> <!-- <div style="text-align: center;" >
+      <button style="background-color: rgb(43, 41, 41);
+      color: white;width: 100%;border-radius: 6px;" (click)="order()">Check Out</button>
+
+        <button style="background-color: rgb(43, 41, 41);
+        color: white;width: 100%;border-radius: 6px;" (click)="getBonus()">USE BONUS</button>
+      </div>
+<!-- <div class="container">
+<div class="row">
+  <div class="col-2" style="background-color: green;">col 1</div>
+  <div class="col-4" style="background-color: yellow;">col 1</div>
+  <div class="col-4" style="background-color: blue;">col 1</div>
+
+  <div class="col-2" style="background-color: grey;">col 2</div>
+
+</div>
+</div> -->

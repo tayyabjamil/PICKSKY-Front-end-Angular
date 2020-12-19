@@ -132,7 +132,7 @@ export class MainPageComponent implements OnInit {
   getAllProducts() {
     this.productService.getProducts().subscribe(
       (products) => {
-        this.loadingData = false;
+
         this.allProducts = products;
       },
       (error) => {
@@ -156,11 +156,12 @@ export class MainPageComponent implements OnInit {
     this.cartService.addProduct(item);
   }
   getImage(imageId) {
-    this.loadingImage = true;
+    // this.loadingImage = true;
+// this.loadingImage = false;
     if (!imageId) {
       return '';
     } else {
-      this.loadingImage = false;
+
 
       return this.productService.productImageUrl(imageId);
     }

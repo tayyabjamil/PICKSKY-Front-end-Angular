@@ -12,15 +12,18 @@ import { AccountRoutingModule } from './account-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { NgModule,NO_ERRORS_SCHEMA } from '@angular/core';
-
-
+import { MatInputModule } from '@angular/material/input';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
 @NgModule({
   imports: [
     CommonModule,
     AccountRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-
+    MatTabsModule,
+    MatInputModule,
+    MatToolbarModule
   ],
   declarations: [
     AccountComponent,

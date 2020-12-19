@@ -24,7 +24,7 @@ constructor(private http: HttpClient) { }
     return this.http.post(
       'http://localhost:8000/api/orders/shipping',
     {
-      phase: this.phase = "shipping phase",
+      phase: this.phase = "shipping",
       ownerEmail: shippingPhase.ownerEmail,
       orderId:shippingPhase.orderId
     },

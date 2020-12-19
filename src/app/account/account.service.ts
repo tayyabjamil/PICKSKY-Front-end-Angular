@@ -24,7 +24,25 @@ createuserAccount(newUser) {
       lastName:newUser.lastName,
       email: newUser.email,
       password: newUser.password,
+      phone:newUser.phone,
+      accountBonus: 1,
+      provider:newUser.provider,
+      token:newUser.token
 
+    },
+    this.httpHeaders
+  );
+}
+signUp(newUser) {
+
+  return this.http.post(
+    'http://localhost:8000/api/users/signUp'  ,
+    {
+      firstName: newUser.firstName,
+      lastName:newUser.lastName,
+      email: newUser.email,
+      password: newUser.password,
+      contact:newUser.contact,
       accountBonus: 1,
       provider:newUser.provider,
       token:newUser.token
@@ -38,7 +56,8 @@ signIn(newUser) {
   return this.http.post(
     'http://localhost:8000/api/users/signIn'  ,
     {
-      username: newUser.username,
+      firstName: newUser.firstName,
+      lastName:newUser.lastName,
       email: newUser.email,
       password: newUser.password,
       contact:newUser.contact,

@@ -1,3 +1,4 @@
+import { CheckOutComponent } from './checkOut/checkOut.component';
 import { ReferFriendComponent } from './referFriend/referFriend.component';
 import { GiftCardsComponent } from './giftCards/giftCards.component';
 import { FAQComponent } from './FAQ/FAQ.component';
@@ -24,11 +25,15 @@ import { AuthGuard } from './../auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+// import check from '../cart/cart.module'
 const routes: Routes = [
+  { path: 'checkOut', loadChildren: '../checkOut/checkOut.module#CheckOutModule' },
+  { path: 'cart', loadChildren: '../cart/cart.module#CartModule' },
   {
-    path: '', component: HomeComponent, children: [
+    path: '', component: HomeComponent,
 
-
+    children: [
+      // ./checkOut/checkOut.module#CheckOutModule
       { path: 'detail', component: ProductDetailComponent },
       { path: 'pickles', component: PicklesComponent },
       { path: 'powders', component: TraditionalPowdersComponent },
@@ -46,10 +51,11 @@ const routes: Routes = [
       { path: 'supportpage', component: SupportPageComponent },
       { path: 'blog', component: BlogComponent },
       { path: 'home', component: HomeComponent },
+
       { path: 'giftCards', component: GiftCardsComponent },
       { path: 'referFriend', component: ReferFriendComponent },
 
-      { path: 'cart', component: CartComponent, },
+
       { path: 'myOrders', component: MyordersComponent, canActivate: [AuthGuard] },
       { path: '', component: MainPageComponent },
 

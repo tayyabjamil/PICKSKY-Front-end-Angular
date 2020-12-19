@@ -1,3 +1,5 @@
+import { CartModule } from './cart/cart.module';
+import { CheckOutModule } from './checkOut/checkOut.module';
 
 import { AdminModule } from './admin/admin.module';
 
@@ -40,8 +42,10 @@ const facebookid = '2702502043208538';
     CommonModule,
     FlexLayoutModule,
     HomeModule,
+    CheckOutModule,
     AdminModule,
     AccountModule,
+    CartModule,
     BrowserAnimationsModule,
     SocialLoginModule,
 

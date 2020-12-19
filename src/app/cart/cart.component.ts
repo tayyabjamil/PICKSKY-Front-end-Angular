@@ -1,7 +1,7 @@
-import { AuthService } from './../../auth.service';
-import { CartService } from './../cart.service';
+import { AuthService } from './../auth.service';
+import { CartService } from './../home/cart.service'
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../product.service';
+import { ProductService } from './../home/product.service';
 
 @Component({
   selector: 'app-cart',
@@ -19,19 +19,22 @@ refrence:string;
 constructor(public cartService:CartService, public productService:ProductService,public authService:AuthService) { }
 
   ngOnInit() {
-  this.getCartItems()
+
 
   }
-getCartItems(){
+get getCartItems(){
  this.cartItems = this.cartService.getProducts()
+
  console.log(this.cartItems)
+
+ return this.cartItems
 }
 
 get getTotal() {
   this.total =  this.cartService.getTotalPrice();
 
   this.totalafterBonus = this.total-this.detection
-  return this.totalafterBonus.toFixed(2);
+  return this.totalafterBonus.toFixed(0);
 }
    order(){
     this.authService.getemail()
@@ -58,5 +61,8 @@ getImage(imageId) {
    console.log(this.totalafterBonus)
    return this.totalafterBonus
 }
+removeProduct(product){
+  this.cartService.removeProduct(product)
 
+}
 }

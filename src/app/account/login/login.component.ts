@@ -67,7 +67,7 @@ login(){
       this.setId(data.userId);
       this.setusername(data.username);
       this.setemail(data.email)
-      this.setcontact(data.contact)
+
       this.setRefrenceId(data.refrenceId)
       this.isLoggedIn = true;
       this.router.navigate(['/'])
@@ -105,7 +105,8 @@ signInGoogle(platform: string) {
 
       const userAccount = {
         email: Response.email,
-        username: Response.name,
+        firstName: Response.firstName,
+        lastName: Response.lastName,
         contact:Response.provider,
         provider:Response.provider,
 
@@ -118,22 +119,17 @@ signInGoogle(platform: string) {
         this.setId(data.userId);
         this.setusername(data.username);
         this.setemail(data.email)
-        this.setcontact(data.contact)
+
         this.setRefrenceId(data.refrenceId)
         this.isLoggedIn = true;
-    // this.router.navigate(['/'])
+         this.router.navigate(['/'])
 
 
 
 
         }, (error) => {
-          if(error.error.message){
-            this.socailLogin(userAccount)
-            }else{
-              alert("Login Failed")
-            }
-
-
+         alert("NO Account Sign up First")
+         this.router.navigate(['/signUp'])
         });
       });
 
@@ -147,7 +143,8 @@ signInFacebook(platform: string) {
       // tslint:disable-next-line: no-unused-expression
       const userAccount = {
         email: Response.name,
-        username: Response.firstName,
+        firstName: Response.firstName,
+        lastName: Response.lastName,
         password: Response.id,
         token: Response.authToken,
       };
@@ -159,21 +156,18 @@ signInFacebook(platform: string) {
         this.setId(data.userId);
         this.setusername(data.username);
         this.setemail(data.email)
-        this.setcontact(data.contact)
+
         this.setRefrenceId(data.refrenceId)
         this.isLoggedIn = true;
+        this.router.navigate(['/'])
 
 
 
 
 
         }, (error) => {
-          if(error.error.message){
-            this.socailLogin(userAccount)
-            }else{
-              alert("Login Failed")
-            }
-
+          alert("NO Account Sign up First")
+          this.router.navigate(['/signUp'])
 
         });
       });
@@ -187,7 +181,7 @@ socailLogin(userAccount){
     this.setId(data.userId);
     this.setusername(data.username);
     this.setemail(data.email)
-    this.setcontact(data.contact)
+
     this.setRefrenceId(data.refrenceId)
     this.isLoggedIn = true;
     this.router.navigate(['/'])

@@ -1,60 +1,64 @@
 <div style="background-color: #f7f7f7;">
-  <div class="row" style="display: flex;flex: 1;flex-direction: row;justify-content: center;text-align: center;padding-top: 5%;padding-bottom: 5%;padding-left: 10vw;padding-right: 10vw;" >
-    <div style="float: left;width: 60%;text-align: left;" class="cardLeft">
-      <div >
-        <p style="font-size:x-large;padding-top: 15%;font-weight: 500;">Log in to Account</p>
+<div class="container" style="margin-left: 5%;">
+  <div  class="row" style="width: 100%;">
+  <div class="col-lg-1 col-1 container"></div>
+  <div class="col-lg-10 col-12 row" style="height: 550px;padding-top: 2%;padding-bottom: 2%;" >
+    <div  class="cardLeft col-lg-8 col-8">
+
+        <p style="font-size:x-large;padding-top: 10%;font-weight: 500;">Log in to Account</p>
         <hr >
-        <div style="padding-bottom: 5%;padding-top: 5%;">
-          <p style="font-weight: bold;">Email</p>
-         <div >
-          <ns-textField-account name="email" class="textfieldBorderColor font13" [rformgroup]="rformLogin"
+        <div class="row"  style="padding-bottom: 5%;padding-top: 5%;">
+
+
+           <div style="width: 100%;">
+          <ns-textField-account placeholder="Email" name="email" class="textfieldBorderColor font13" [rformgroup]="rformLogin"
             rformControlName="email">
           </ns-textField-account>
         </div>
-      </div>
-        <p style="font-weight: bold;">Password (8 characters minimun)</p>
 
-        <div class="input-group" style="display: flex;flex-direction: row;">
-        <div style="width: 90%;" >
-         <ns-textField-account name="password"  [type]="show ? 'text' : 'password'" class="textfieldBorderColor font13"
+      </div>
+
+        <div class="row" style="display: flex;flex-direction: row;">
+        <div style="width: 94%;" >
+         <ns-textField-account placeholder="Password (8 characters minimun)" name="password"  [type]="show ? 'text' : 'password'" class="textfieldBorderColor font13"
             [rformgroup]="rformLogin" rformControlName="password">
           </ns-textField-account>
         </div>
-          <div style="width: 10%;">
+          <div style="width: 6%;">
             <button style="height: 35px;" class="btn btn-default" (click)="passwordshow()" type="submit">
-              <i class="glyphicon glyphicon-eye-open"></i>
+              <i *ngIf="show" class="glyphicon glyphicon-eye-open"></i>
+              <i *ngIf="!show" class="glyphicon glyphicon-eye-close"></i>
             </button>
           </div>
         </div>
 
         <div style="text-align: right;">
-<p (click)="forgetPassword()" class="text text-primary" >Forget Password?  </p>
+<p (click)="forgetPassword()" class="text text-primary btn" >Forget Password?  </p>
 
 </div>
-<div *ngIf="deviceMd || deviceLg" style="text-align: center;">
-  <button   (click)="login()" style="width: 100%;" type="button" class="btn btn-primary"  >Login</button>
-  <div style="margin-top: 3%;display: flex;flex-direction: row;justify-content: space-evenly;">
-    <button (click)="signInGoogle('google')" class="btn btn-danger">Sign in With Google</button>
-    <button (click)="signInFacebook('facebook')" style="margin-left: 4%;" class="btn btn-primary">Sign in With
-       facebook</button>
-  </div>
+<div  class="row">
+ <div class="col-lg-2"></div>
+  <button class="col-lg-8 btn btn-primary"  (click)="login()" type="button"  >Login</button>
+  <div class="col-lg-2"></div>
 
 </div>
 
-<div *ngIf="deviceXs || deviceSm" style="text-align: center">
-  <button   (click)="login()" style="width: 100%;" type="button" class="btn btn-primary"  >Login</button>
-  <div style="margin-top: 3%;display: flex;flex-direction: column;justify-content: center;;">
-    <button (click)="signInGoogle('google')" class="btn btn-danger">Sign in With Google</button>
-    <button (click)="signInFacebook('facebook')" style="margin-top: 4%;" class="btn btn-primary">Sign in With
-       facebook</button>
-  </div>
+  <div class="row" style="margin-top: 3%">
+    <div class="col-lg-2"></div>
 
-</div>
+    <button (click)="signInGoogle('google')" class="  col-lg-3 btn btn-danger">Sign in With Google</button>
+   <div class="col-lg-2"></div>
+    <button (click)="signInFacebook('facebook')" class="  col-lg-3 btn btn-primary">Sign in With facebook</button>
+       <div class="col-lg-2"></div>
+
+      </div>
+
+
 <!-- <button class="btn" style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(145, 145, 145); color: whitesmoke">
   <span style="font-weight: bold;font-size: small;"></span></button> -->
-        </div>
+
     </div>
-    <div style="float:right;width: 30%;" class="cardRight">
+    <div class="col-lg-4 col-4 cardRight">
       <h3 >Hello Friend</h3>
       <h4 >Fill up the Form and </h4>
       <h4 >start Journey with us</h4>
@@ -65,6 +69,9 @@
       </div>
 
 </div>
+
+</div>
+<div class="col-lg-1 col-1"></div>
 
 </div>
 </div>
@@ -89,5 +96,6 @@
   <button class="btn" style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(63, 61, 61); color: whitesmoke">
     <span style="font-weight: bold;font-size: small;">SIGN IN</span></button>
 <p style="text-align: right;">© 2020, picksystore Powered by Shopify</p>
+</div>
 </div>
 </div>

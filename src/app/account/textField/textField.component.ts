@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { AbstractControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 
 @Component({
@@ -11,7 +11,7 @@ export class TextFieldComponent implements OnInit {
   @Input() rformgroup: FormGroup;
   @Input() rformControlName;
   @Input() rtext;
-
+  @Input() placeholder;
 
   @Input() class;
   @Input() type;
@@ -99,4 +99,6 @@ export class TextFieldComponent implements OnInit {
       return false;
     }
   }
+
+
 }

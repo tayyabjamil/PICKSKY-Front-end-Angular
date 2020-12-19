@@ -8,6 +8,7 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./textField.component.scss']
 })
 export class TextFieldComponent implements OnInit {
+
   @Input() rformgroup: FormGroup;
   @Input() rformControlName;
   @Input() rtext;
