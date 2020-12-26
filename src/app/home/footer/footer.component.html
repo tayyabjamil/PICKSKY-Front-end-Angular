@@ -2,23 +2,27 @@
 <div class="row" *ngIf="deviceLg || deviceMd" style="padding: 5%; background-color: black;">
 <div class="col-lg-3">
   <h2 style="color: white;">Company</h2>
-  <h4 style="color: white;">About Us</h4>
-  <h4 style="color: white;">Our Offerings</h4>
-  <h4 style="color: white;">News Room</h4>
-  <h4 style="color: white;">Investors</h4>
-  <h4 style="color: white;">Blog</h4>
-  <h4 style="color: white;">Careers</h4>
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(6)}}</h4>
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(1)}}</h4>
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(2)}}</h4>
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(3)}}</h4>
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(4)}}</h4>
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(5)}}</h4>
 </div>
 <div class="col-lg-3">
   <h2 style="color: white;">Products</h2>
-  <h4 style="color: white;">Ride</h4>
-  <h4 style="color: white;">Drive</h4>
-  <h4 style="color: white;">Eat</h4>
-  <h4 style="color: white;">Bussniss</h4>
 
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getHeaderNames(2)}}</h4>
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getHeaderNames(3)}}</h4>
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getHeaderNames(4)}}</h4>
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getSpecialConstants(1)}}</h4>
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getSpecialConstants(2)}}</h4>
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getSpecialConstants(3)}}</h4>
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getSpecialConstants(4)}}</h4>
+  
 </div>
 <div class="col-lg-3" >
-  <h2 style="color: white;">Global CitizenShip</h2>
+  <h2 style="color: white;">Location</h2>
   <h4 style="color: white;">Saftey</h4>
 </div>
 <div class="col-lg-3">
@@ -26,6 +30,8 @@
   <h4 style="color: white;">Advanced Technoglogy</h4>
   <h4 style="color: white;">AI</h4>
 </div>
+ <a class="dropdown-toggle" data-toggle="dropdown">{{getUserLocation()}}</a>
+<hr>
 <div
 class="col-lg-3 p-l-33 ">
 <span
@@ -62,21 +68,21 @@ class="col-lg-3 p-l-33 ">
 <div *ngIf="deviceXs || deviceSm">
   <div class="row" style="padding: 5%; background-color: black;">
     <div class="col-xs-3">
-      <p style="color: white;">Company</p>
-      <p style="color: white;">About Us</p>
-      <p style="color: white;">Our Offerings</p>
-      <p style="color: white;">News Room</p>
-      <p style="color: white;">Investors</p>
-      <p style="color: white;">Blog</p>
-      <p style="color: white;">Careers</p>
-    </div>
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(6)}}</h4>
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(1)}}</h4>
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(2)}}</h4>
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(3)}}</h4>
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(4)}}</h4>
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(5)}}</h4>
+ </div>
     <div class="col-xs-3">
-      <p style="color: white;">Products</p>
-      <p style="color: white;">Ride</p>
-      <p style="color: white;">Drive</p>
-      <p style="color: white;">Eat</p>
-      <p style="color: white;">Bussniss</p>
-
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getHeaderNames(2)}}</h4>
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getHeaderNames(3)}}</h4>
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getHeaderNames(4)}}</h4>
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getSpecialConstants(1)}}</h4>
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getSpecialConstants(2)}}</h4>
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getSpecialConstants(3)}}</h4>
+  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getSpecialConstants(4)}}</h4>
     </div>
     <div class="col-xs-3">
       <p style="color: white;">Global CitizenShip</p>

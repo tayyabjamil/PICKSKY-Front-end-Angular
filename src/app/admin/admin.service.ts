@@ -39,5 +39,9 @@ export class AdminService {
     return this.phase
   }
 
+  getlocation(url:string) {
+    return this.http.post(url, this.httpHeaders);  
+  }
+
 }
 
