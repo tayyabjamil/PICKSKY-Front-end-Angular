@@ -18,7 +18,7 @@ export class AccountService {
   createuserAccount(newUser) {
 
     return this.http.post(
-      'http://localhost:8000/api/users/',
+      'https://calm-lake-26690.herokuapp.com/api/users/',
       {
         firstName: newUser.firstName,
         lastName: newUser.lastName,
@@ -36,7 +36,7 @@ export class AccountService {
   signUp(newUser) {
 
     return this.http.post(
-      'http://localhost:8000/api/users/signUp',
+      'https://calm-lake-26690.herokuapp.com/api/users/signUp',
       {
         firstName: newUser.firstName,
         lastName: newUser.lastName,
@@ -54,7 +54,7 @@ export class AccountService {
   signIn(newUser) {
 
     return this.http.post(
-      'http://localhost:8000/api/users/signIn',
+      'https://calm-lake-26690.herokuapp.com/api/users/signIn',
       {
         firstName: newUser.firstName,
         lastName: newUser.lastName,
@@ -72,7 +72,7 @@ export class AccountService {
   login(user) {
 
     return this.http.post(
-      'http://localhost:8000/api/users/login',
+      'https://calm-lake-26690.herokuapp.com/api/users/login',
       {
         email: user.email,
         password: user.password,
@@ -86,7 +86,7 @@ export class AccountService {
   forgetPassword(data) {
     // const email = this.myauthService.getemail()
     return this.http.post(
-      'http://localhost:8000/api/users/forgetPassword/',
+      'https://calm-lake-26690.herokuapp.com/api/users/forgetPassword/',
       {
         email: data.email
       },
@@ -95,7 +95,7 @@ export class AccountService {
   }
   resetPassword(newPass) {
     return this.http.post(
-      'http://localhost:8000/api/users/resetPassword/',
+      'https://calm-lake-26690.herokuapp.com/api/users/resetPassword/',
       {
         confirmPassword: newPass.confirmPassword,
         password: newPass.newPassword,
@@ -106,7 +106,7 @@ export class AccountService {
   }
   accountVerify(data) {
     return this.http.post(
-      'http://localhost:8000/api/users/accountVerify/',
+      'https://calm-lake-26690.herokuapp.com/api/users/accountVerify/',
       {
         token: data.accountToken,
         isVerify: data.isVerify,
@@ -117,7 +117,7 @@ export class AccountService {
   }
   editInfo(data) {
     return this.http.post(
-      'http://localhost:8000/api/users/editInfo/',
+      'https://calm-lake-26690.herokuapp.com/api/users/editInfo/',
       {
         userId: this.myauthService.getID(),
         username: data.username,
@@ -132,7 +132,7 @@ export class AccountService {
   }
   editPassword(data) {
     return this.http.post(
-      'http://localhost:8000/api/users/editPassword/',
+      'https://calm-lake-26690.herokuapp.com/api/users/editPassword/',
       {
         userId: this.myauthService.getID(),
         oldPassword: data.oldPassword,
