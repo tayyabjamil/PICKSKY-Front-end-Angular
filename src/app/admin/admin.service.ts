@@ -39,5 +39,21 @@ export class AdminService {
     return this.phase
   }
 
+  // getlocations(latitude: number, longitude: number ){
+  //   return this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyAYJvPnMzFkvkeka7kw_aV4Pjn3TeeACv8`);  
+  // }
+
+
+  getlocation(latitude: number, longitude: number) {
+    return this.http.post(
+      'https://calm-lake-26690.herokuapp.com/api/location',
+      {
+
+        latitude: latitude,
+        longitude: longitude
+      },
+      this.httpHeaders
+    );
+  }
 }
 

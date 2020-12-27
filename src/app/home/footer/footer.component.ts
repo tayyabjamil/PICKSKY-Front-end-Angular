@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CartService } from '../cart.service';
 import { ProductService } from '../product.service';
+import { AboutusConstants, HeaderConstants, SpecialConstants } from '../../appconstants';
+import { AdminService } from '../../admin/admin.service'
+
 
 @Component({
   selector: 'app-footer',
@@ -11,12 +14,14 @@ import { ProductService } from '../product.service';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+  location:any
 
   constructor(
     public mediaObserver: MediaObserver,
     public productService: ProductService,
     public cartService: CartService,
     private router: Router,
+    public adminService: AdminService
   ) {
 
   }
@@ -29,6 +34,7 @@ export class FooterComponent implements OnInit {
 
 
   ngOnInit() {
+    this.getlocation()
     this.mediaSub = this.mediaObserver.media$.subscribe(
       (result: MediaChange) => {
         console.log(result.mqAlias);
@@ -40,4 +46,35 @@ export class FooterComponent implements OnInit {
     );
   }
 
+  watchpostion(): Promise<any> {
+    return new Promise((reslove, reject) => {
+       window.navigator.geolocation.watchPosition(position => {
+        reslove({ latitude: position.coords.latitude, longitude: position.coords.longitude})
+      }, (err) => {
+          reject("error" + err)
+      }, {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+      });
+    });
+  
+  }
+  
+  getlocation() {
+    this.watchpostion().then(resp => {
+      this.adminService.getlocation(resp.latitude, resp.longitude).subscribe((data: any) => {
+        let value = data.plus_code.compound_code
+        console.log("lat " + value)
+      });
+    }, (err) => {
+      console.log("error" + err)
+    });
+  }
+
+  getHeaderNames(indx: number) { return HeaderConstants[indx]; }
+
+  getSpecialConstants(indx: number) { return SpecialConstants[indx]; }
+
+  getAboutusConstants(indx: number) { return AboutusConstants[indx] }
 }
