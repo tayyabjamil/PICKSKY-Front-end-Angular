@@ -19,13 +19,13 @@ export const PicklesConstants = {
 };
 
 export const TraditionalPodulu = {
-    1: "PoduluPowders",
-    2: "HomeMadeMasala's",
+    1: "Podulu(Powders)",
+    2: "HomeMade Masala's",
 
 };
 export const SweetsandHotConstants = {
-    1: "TradaitonalSweets",
-    2: "TradaitonalHot"
+    1: "Tradaitonal Sweets",
+    2: "Tradaitonal Hot"
 
 }
 export const SpecialConstants = {
@@ -46,8 +46,7 @@ export const AboutusConstants = {
     3:"testimonials",
     4: "Privacy Policy",
     5: "Return & refunds",
-
-
+    6: "About-US",
 }
 export const SupportConstants = {
     1: "FAQ",
