@@ -71,25 +71,6 @@ export class FooterComponent implements OnInit {
       console.log("error" + err)
     });
   }
-  // getlocations() {
-  //   let watchId = window.navigator.geolocation.watchPosition(position => {
-  //     console.log("before " + position.coords.latitude)
-  //     console.log("after " + position.coords.latitude)
-  //     this.adminService.getlocation(position.coords.latitude, position.coords.longitude).subscribe((data: any) => {
-  //     let value = data.plus_code.compound_code
-  //       console.log("lat " + value)
-  //     });
-  //     window.navigator.geolocation.clearWatch(watchId);   
-  //   }, (err) => {
-  //     console.log("error" + err)
-  //   }, {
-  //     enableHighAccuracy: true,
-  //     timeout: 5000,
-  //     maximumAge: 0
-  //   });
-
-  // }
-
 
   getHeaderNames(indx: number) { return HeaderConstants[indx]; }
 
