@@ -34,6 +34,7 @@ export class FooterComponent implements OnInit {
 
 
   ngOnInit() {
+    this.getlocation()
     this.mediaSub = this.mediaObserver.media$.subscribe(
       (result: MediaChange) => {
         console.log(result.mqAlias);
@@ -45,47 +46,50 @@ export class FooterComponent implements OnInit {
     );
   }
 
-  getUserLocation() {
-    if (!navigator.geolocation) {
-      console.log("location not supported ")
-    }
-    navigator.geolocation.getCurrentPosition(position => {
-      console.log("location supported ")
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-      console.log("lat" + latitude)
-      console.log("lon" + longitude)
-      const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyAYJvPnMzFkvkeka7kw_aV4Pjn3TeeACv8`
-      console.log("location not supported " + url)
-      this.adminService.getlocation(url).subscribe((data: any) => {
-        this.location = data.plus_code.global_code
-
+  watchpostion(): Promise<any> {
+    return new Promise((reslove, reject) => {
+       window.navigator.geolocation.watchPosition(position => {
+        reslove({ latitude: position.coords.latitude, longitude: position.coords.longitude})
+      }, (err) => {
+          reject("error" + err)
+      }, {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
       });
-
     });
+  
   }
-
-
-  watchpostion() {
-    let navigation = navigator.geolocation.watchPosition(position => {
-      console.log("location not supported ")
-      const lat = position.coords.latitude;
-      const lng = position.coords.longitude;
-      console.log("lat" + lat)
-      console.log("lon" + lng)
-
-      if (position.coords.latitude === lat) {
-        navigator.geolocation.clearWatch(navigation);
-      }
+  
+  getlocation() {
+    this.watchpostion().then(resp => {
+      this.adminService.getlocation(resp.latitude, resp.longitude).subscribe((data: any) => {
+        let value = data.plus_code.compound_code
+        console.log("lat " + value)
+      });
     }, (err) => {
       console.log("error" + err)
-    }, {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0
     });
-
   }
+  // getlocations() {
+  //   let watchId = window.navigator.geolocation.watchPosition(position => {
+  //     console.log("before " + position.coords.latitude)
+  //     console.log("after " + position.coords.latitude)
+  //     this.adminService.getlocation(position.coords.latitude, position.coords.longitude).subscribe((data: any) => {
+  //     let value = data.plus_code.compound_code
+  //       console.log("lat " + value)
+  //     });
+  //     window.navigator.geolocation.clearWatch(watchId);   
+  //   }, (err) => {
+  //     console.log("error" + err)
+  //   }, {
+  //     enableHighAccuracy: true,
+  //     timeout: 5000,
+  //     maximumAge: 0
+  //   });
+
+  // }
+
 
   getHeaderNames(indx: number) { return HeaderConstants[indx]; }
 

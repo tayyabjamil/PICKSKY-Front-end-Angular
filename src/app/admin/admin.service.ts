@@ -39,9 +39,21 @@ export class AdminService {
     return this.phase
   }
 
-  getlocation(url:string) {
-    return this.http.post(url, this.httpHeaders);  
-  }
+  // getlocations(latitude: number, longitude: number ){
+  //   return this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyAYJvPnMzFkvkeka7kw_aV4Pjn3TeeACv8`);  
+  // }
 
+
+  getlocation(latitude: number, longitude: number) {
+    return this.http.post(
+      'http://localhost:8000/api/location',
+      {
+
+        latitude: latitude,
+        longitude: longitude
+      },
+      this.httpHeaders
+    );
+  }
 }
 
