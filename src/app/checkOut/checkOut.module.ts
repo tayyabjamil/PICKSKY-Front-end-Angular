@@ -23,6 +23,8 @@ import { NgxPayPalModule } from 'ngx-paypal';
 import { AuthService } from '../auth.service';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { CheckOutComponent } from './../home/checkOut/checkOut.component';
+// import { AppMaterialModules } from './material.module';
+
 @NgModule({
   imports: [
 

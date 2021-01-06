@@ -50,6 +50,7 @@ import { ReturnandrefundsComponent } from './returnandrefunds/returnandrefunds.c
 import { ReactiveFormsModule} from '@angular/forms';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
+import { MainPageListItemComponent } from './mainPage-listItem/mainPage-listItem.component';
 @NgModule({
   imports: [
 
@@ -106,7 +107,7 @@ import {MatInputModule} from '@angular/material/input';
     ReturnandrefundsComponent,
     GiftCardsComponent,
     ReferFriendComponent,
-
+    MainPageListItemComponent
 
   ],
   exports: [

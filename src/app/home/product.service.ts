@@ -31,6 +31,10 @@ export class ProductService {
   productImageUrl(name) {
     return 'http://localhost:8000/api/products/image/' + name;
   }
+  getOrsers(id){
+    return this.http.get('http://localhost:8000/api/orders/' + id, this.httpHeaders);
+
+  }
   referFriend(data) {
     return this.http.post(
       'http://localhost:8000/api/users/referFriend',

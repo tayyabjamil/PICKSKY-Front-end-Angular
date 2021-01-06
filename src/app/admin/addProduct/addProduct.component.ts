@@ -1,6 +1,7 @@
 import { AdminService } from './../admin.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-addProduct',
@@ -14,20 +15,37 @@ export class AddProductComponent implements OnInit {
   detail:String;
   catagory:String;
   image;
+  data;
   productOrders = '1';
-  constructor(public adminService:AdminService,public formBuilder:FormBuilder) { }
+  constructor( public route: ActivatedRoute,
+    public adminService:AdminService,public formBuilder:FormBuilder) { }
 
   ngOnInit() {
+    const object = this.route.snapshot.paramMap.get('id');
+    this.data  = JSON.parse(object);
+    if (this.data) {
+      this.productForm = this.formBuilder.group({
+        _id : new FormControl(this.data._id),
+
+        name: new FormControl(this.data.name, ),
+        catagory: new FormControl(this.data.catagory, ),
+        price: new FormControl(this.data.price, ),
+        detail: new FormControl(this.data.detail, ),
+        productImage: new FormControl(this.data.productImage),
+
+    })
+  } else {
     this.productForm = this.formBuilder.group({
       name: new FormControl('', [Validators.required]),
       catagory: new FormControl('', [Validators.required]),
       price: new FormControl('', [Validators.required]),
       detail: new FormControl('', [Validators.required]),
       productImage: new FormControl(''),
-      // productOrders: new FormControl(1),?
+
 
     })
   }
+}
   selectProductImage(event) {
     const file = event.target.files[0];
     this.image = file;
@@ -60,4 +78,25 @@ export class AddProductComponent implements OnInit {
         alert("Please Fill All the entries of the Form")
       }
     }
+    edit() {
+        const fd = new FormData();
+        fd.append('_id', this.productForm.value._id);
+        fd.append('name', this.productForm.value.name);
+        fd.append('catagory', this.productForm.value.catagory);
+        fd.append('price', this.productForm.value.price);
+        fd.append('detail', this.productForm.value.detail);
+        fd.append('productOrders', this.productOrders);
+
+        if (this.productForm.value.productImage) {
+          fd.append('productImage', this.productForm.value.productImage);
+        }
+
+        this.adminService.edit(fd).subscribe((campaignData) => {
+
+          alert('Edited');
+        }, (error) => {
+          alert('failed');
+        });
+      }
+
 }

@@ -23,7 +23,7 @@ export class AdminService {
   shippingPhase(shippingPhase) {
     return this.http.post(
       'http://localhost:8000/api/orders/shipping',
-      {
+    {
         phase: this.phase = "shipping",
         ownerEmail: shippingPhase.ownerEmail,
         orderId: shippingPhase.orderId
@@ -40,7 +40,7 @@ export class AdminService {
   }
 
   // getlocations(latitude: number, longitude: number ){
-  //   return this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyAYJvPnMzFkvkeka7kw_aV4Pjn3TeeACv8`);  
+  //   return this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyAYJvPnMzFkvkeka7kw_aV4Pjn3TeeACv8`);
   // }
 
 
@@ -55,5 +55,20 @@ export class AdminService {
       this.httpHeaders
     );
   }
+  edit(data){
+    return this.http.post(
+      'http://localhost:8000/api/products/editProduct',
+      data
+    );
+
+  }
+  deleteProduct(id) {
+    return this.http.post('http://localhost:8000/api/products/delete',
+    {
+     id:id
+    },
+    this.httpHeaders
+  );
+}
 }
 

@@ -23,6 +23,8 @@ export class CartService {
       if (item._id === product._id && proudctRemoved == false) {
         if (item.productCount === 1) {
           this.cart.splice(item._id, 1)
+          item.productCount = item.productCount - 1;
+
           return true
         }
         else {
@@ -46,6 +48,7 @@ export class CartService {
 
     if (!productInCart) {
       this.cart.push(product);
+       product.productCount ++
     } else {
       this.cart.forEach((item) => {
         if (item._id == product._id) {
@@ -69,6 +72,7 @@ export class CartService {
     });
     return subtotal;
   }
+
   order(orderData) {
     const username = this.myauthService.getusername()
     const user = this.myauthService.getID()
@@ -81,7 +85,15 @@ export class CartService {
         username: username,
         refrence: orderData.refrence,
         phase: orderData.phase,
-        ownerEmail: orderData.ownerEmail
+        ownerEmail: orderData.ownerEmail,
+        firstName:orderData.firstName,
+      lastName:orderData.lastName,
+      city:orderData.city,
+      adress:orderData.adress,
+      code:orderData.code,
+      contry:orderData.contry,
+      method:orderData.method,
+
       },
       this.httpHeaders
     );

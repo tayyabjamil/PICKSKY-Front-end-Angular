@@ -58,8 +58,10 @@
 <div style="text-align: center;">
 
 
-  <button class="btn" (click)="addProduct()" style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(63, 61, 61); color: whitesmoke">
+  <button *ngIf="!data" class="btn" (click)="addProduct()" style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(63, 61, 61); color: whitesmoke">
   <span style="font-weight: bold;font-size: small;">ADD PRODCUT</span></button>
+  <button *ngIf="data" class="btn" (click)="edit()" style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(63, 61, 61); color: whitesmoke">
+    <span style="font-weight: bold;font-size: small;">Edit PRODCUT</span></button>
 </div>
 
 

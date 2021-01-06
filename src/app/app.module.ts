@@ -26,6 +26,7 @@ import {
   GoogleLoginProvider,
   FacebookLoginProvider
 } from 'angularx-social-login';
+import { RouterModule } from '@angular/router';
 
 const googleid = '' ;
 const facebookid = '2702502043208538';
@@ -37,6 +38,7 @@ const facebookid = '2702502043208538';
   imports: [
     BrowserModule,
     CommonModule,
+
     AppRoutingModule,
     NgImageSliderModule,
     CommonModule,

@@ -1,0 +1,49 @@
+<div  style="margin-top: 10%;" >
+  <hr>
+  <h1 style="text-align: center;font-weight: bold;">Products</h1>
+ <div style="border: 1px;border-style: groove;">
+    <div class="row" style="margin:1%">
+    <div class="col-lg-2">
+   <p style="font-size: large;">Product Name #</p>
+    </div>
+    <div class="col-lg-2">
+      <p style="font-size: large;">Product Price</p>
+
+     </div>
+    <div class="col-lg-2">
+   <p style="font-size: large;">Product Orders</p>
+      </div>
+
+    </div>
+
+  <div  *ngFor="let item of allProducts">
+    <div class="row"   style="border:1px;border-style: groove;margin:1%;padding-top: 3px;">
+  <div class="col-lg-2">
+
+    <p  >{{item?.name}}</p>
+  </div>
+  <div class="col-lg-2">
+
+    <p  >{{item?.price}}</p>
+  </div>
+  <div class="col-lg-2">
+
+    <p  >{{item?.productOrders}}</p>
+  </div>
+
+  <div class="col-lg-1">
+
+    <p     class="  btn  green-btn"  style="color: white;" (click)="edit(item)">Edit</p>
+  </div>
+
+  <div class="col-lg-1">
+
+    <p     class="  btn  btn-danger"  style="color: white;" (click)="delete(item)">Delete</p>
+  </div>
+
+
+</div>
+</div>
+
+  </div>
+</div>

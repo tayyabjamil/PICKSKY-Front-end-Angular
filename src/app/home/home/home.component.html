@@ -1,4 +1,4 @@
- <div class="container-fluid">
+ <div >
 
 <header *ngIf="deviceLg || deviceMd">
   <div>
@@ -34,7 +34,7 @@
           What Are You Looking For?
         </p>
       </div>
-      <div *ngIf="!authService.loggedIn()" style="padding-top: 1%;">
+      <div style="padding-top: 1%;">
         <i class="fa fa-user-circle-o" routerLink="/login" style="font-size: xx-large"></i>
         <p routerLink='/login' routerLinkActive="router-link-active">Login</p>
       </div>
@@ -52,10 +52,21 @@
       <p routerLink='/myOrders' routerLinkActive="router-link-active">My orders </p>
     </div>
     <div style="padding-top: 1%;">
-      <i class="fa fa-user-circle-o" routerLink="/support" style="font-size: xx-large"></i>
-      <p routerLink='/support' routerLinkActive="router-link-active">Support </p>
+      <i class="fa fa-user-circle-o" routerLink="/supportpage" style="font-size: xx-large"></i>
+      <p routerLink='/supportpage' routerLinkActive="router-link-active">Support </p>
     </div>
-
+    <div style="padding-top: 1%;">
+      <i class="fa fa-user-circle-o" routerLink="/aboutUs" style="font-size: xx-large"></i>
+      <p routerLink='/aboutUs' routerLinkActive="router-link-active">About </p>
+    </div>
+    <div style="padding-top: 1%;">
+      <i class="fa fa-user-circle-o" routerLink="/testimonals" style="font-size: xx-large"></i>
+      <p routerLink='/testimonals' routerLinkActive="router-link-active">Testimonals </p>
+    </div>
+    <div style="padding-top: 1%;">
+      <i class="fa fa-user-circle-o" routerLink="/blog" style="font-size: xx-large"></i>
+      <p routerLink='/blog' routerLinkActive="router-link-active">Blog </p>
+    </div>
   </div>
   <div class="col-lg-6">
     <div style="padding-top: 1%;">
@@ -92,8 +103,8 @@
 
     <hr style="height: 1px;margin: 0px 0px;" />
 
-    <nav class="fundpress-menu navbar sticky-top navbar-light" style="background-color: white;" >
-      <ul class="nav-menu" style="width: 100%;">
+    <nav   class="navbar sticky-top fundpress-menu navbar sticky-top navbar-light" style="min-height: 50px;background-color: white;" >
+      <ul class="nav-menu" style="width:90%">
         <li class="dropdown" routerLink="/">
           <a>{{getHeaderNames(1)}}</a>
         </li>
@@ -144,7 +155,15 @@
             <li><a [routerLink]="['/supportpage']"  >{{getSupportConstants(4)}}</a></li>
           </ul>
         </li>
+        
       </ul>
+      <div  >
+        <i class="fa fa-user-circle-o" routerLink="/login" style="font-size: xx-large"></i>
+       
+      </div>
+      <div>
+        <i class="fa fa-shopping-cart" routerLink="/cart" style="font-size: xx-large"></i>
+      </div>
     </nav>
 
     <router-outlet> </router-outlet>
