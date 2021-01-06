@@ -32,18 +32,6 @@ export class MainPageComponent implements OnInit {
   deviceMd: boolean;
   deviceSm: boolean;
 
-  //   imageObject = [{
-  //     image: 'assets/img/slider/1.jpg',
-  //     thumbImage: 'assets/img/slider/1_min.jpeg',
-  //     alt: 'alt of image',
-  //     title: 'title of image'
-  // }, {
-  //     image: '.../iOe/xHHf4nf8AE75h3j1x64ZmZ//Z==', // Support base64 image
-  //     thumbImage: '.../iOe/xHHf4nf8AE75h3j1x64ZmZ//Z==', // Support base64 image
-  //     title: 'Image title', //Optional: You can use this key if want to show image with title
-  //     alt: 'Image alt' //Optional: You can use this key if want to show image with alt
-  // }
-  // ];
 
   imagesUrl = [
     {
@@ -128,7 +116,9 @@ export class MainPageComponent implements OnInit {
   //   console.log(args)
   //   this.router.navigate([this.imageObject[args].routeTo])
   // }
-
+  scrollToFeatured(){
+  document.getElementById("target").scrollIntoView({behavior:"smooth"})
+  }
   getAllProducts() {
     this.productService.getProducts().subscribe(
       (products) => {
@@ -155,16 +145,27 @@ export class MainPageComponent implements OnInit {
   addProduct(item) {
     this.cartService.addProduct(item);
   }
+
+  imageLoaded() {
+    this.loadingImage = false;
+  }
+
+  get loadingImageGetter() {
+    return this.loadingImage;
+  }
+
   getImage(imageId) {
     // this.loadingImage = true;
 // this.loadingImage = false;
     if (!imageId) {
       return '';
     } else {
-
-
       return this.productService.productImageUrl(imageId);
     }
   }
 
+  removeProduct(product){
+    this.cartService.removeProduct(product)
+
+  }
 }

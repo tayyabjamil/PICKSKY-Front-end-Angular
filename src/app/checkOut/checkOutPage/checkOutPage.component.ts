@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ViewChild} from '@angular/core';
 import { AuthService } from 'src/app/auth.service';
 import { CartService } from '../../home/cart.service';
 import { ProductService } from '../../home/product.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import { Router } from '@angular/router';
+import { MatStepper } from '@angular/material/stepper/stepper';
+
 @Component({
   selector: 'app-checkOutPage',
   templateUrl: './checkOutPage.component.html',
@@ -17,19 +19,26 @@ export class CheckOutPageComponent implements OnInit {
     public cartService:CartService,
      public productService:ProductService,
      public authService:AuthService,    private router: Router,) { }
-cartItems
+
+
+     cartItems
 total;
 title = 'newMat';
 showSuccess :any;
 isLinear = true;
+dataOrder;
 firstFormGroup: FormGroup;
 secondFormGroup: FormGroup;
 thirdFormGroup: FormGroup;
 public payPalConfig?: IPayPalConfig;
 refrence:string;
-  ngOnInit() {
+previousData;
+// @ViewChild('stepper') private stepper: MatStepper;
+@ViewChild('stepper') public stepper: MatStepper;
+ngOnInit() {
     this.initConfig();
     this.getCartItems()
+
     this.firstFormGroup = this._formBuilder.group({
       email: ['', ],
       fname: ['', ],
@@ -47,6 +56,7 @@ refrence:string;
       // contact: ['', Validators.required],
 
     });
+    this.getAllOrders()
   }
   getCartItems(){
     this.cartItems = this.cartService.getProducts()
@@ -65,6 +75,14 @@ refrence:string;
     const orderData = {
       cartItems : this.cartItems,
       total : this.total,
+      firstName:this.firstFormGroup.value.fname,
+      lastName:this.firstFormGroup.value.lname,
+      city:this.firstFormGroup.value.city,
+      adress:this.firstFormGroup.value.adress,
+      code:this.firstFormGroup.value.code,
+      contry:this.firstFormGroup.value.contry,
+      method:this.secondFormGroup.value.method,
+
       refrence: this.refrence,
       phase:"delievry phase",
       ownerEmail: this.authService.getemail()
@@ -73,6 +91,20 @@ refrence:string;
       this.router.navigate(['/'])
    })
 }
+move(index: number) {
+  this.stepper.selectedIndex = index;
+}
+getAllOrders(){
+ let id= this.authService.getID()
+ this.productService.getOrders().subscribe((data: any) => {
+   this.dataOrder = data.orders
+})
+}
+get useAdress(){
+ this.previousData = this.dataOrder[0].adress
+ return this.previousData
+}
+
 private initConfig(): void {
   this.payPalConfig = {
   currency: 'EUR',

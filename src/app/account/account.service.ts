@@ -36,7 +36,7 @@ export class AccountService {
   signUp(newUser) {
 
     return this.http.post(
-      'http://localhost:8000/api/users/signUp',
+      'http://localhost:8000/api/users/signUpSocial',
       {
         firstName: newUser.firstName,
         lastName: newUser.lastName,
@@ -54,7 +54,7 @@ export class AccountService {
   signIn(newUser) {
 
     return this.http.post(
-      'http://localhost:8000/api/users/signIn',
+      'http://localhost:8000/api/users/signInSocial',
       {
         firstName: newUser.firstName,
         lastName: newUser.lastName,

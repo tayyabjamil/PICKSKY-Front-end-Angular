@@ -1,0 +1,20 @@
+<div style="height: 150px;width: 160px;margin-right: 20px;margin-left: 20px;">
+  <div (click)="addProduct(item)" *ngIf="item.productCount===0" style="text-align: right;">
+   <button><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+  </div>
+  <div *ngIf="item.productCount > 0" style="display: flex;flex-direction: row;width: 100px;height: 40px;
+   background-color: rgb(63, 61, 61);border-radius: 6px;border-style: groove;margin: 5%;
+   color: rgb(8, 5, 5);" >
+     <div (click)="addProduct(item)" class="btn" style="text-align: center;width: 40px;color: white;font-size: large;font-weight: bold;">
+     <span > +</span>
+     </div>
+     <div  style="width: 20px;color: white;font-size: large;text-align: center;padding-top: 7px;">{{item.productCount}}</div>
+     <div (click)="removeProduct(item)" class="btn" style="text-align: center;width: 40px;color: white;font-size: large;font-weight: bold;">
+      <span > -</span>
+       </div>
+      </div>
+   <img (load)='imageLoaded()' [src]='getImage(item.productImage)' style="height: 100px;width: auto">
+   <div *ngIf="loadingImageGetter" class="spinner-border" role="status">
+     <span class="sr-only">Loading...</span>
+   </div>
+ </div>

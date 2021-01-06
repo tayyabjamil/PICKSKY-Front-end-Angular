@@ -10,11 +10,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TextFieldComponent } from './../admin/textField/textField.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
   imports: [CommonModule, AdminRoutingModule, FormsModule, ReactiveFormsModule, MatSelectModule, MatFormFieldModule],
-  declarations: [AdminComponent, AddProductComponent, TextFieldComponent, OrdersProgressComponent],
-  exports: [AdminComponent, AddProductComponent, TextFieldComponent, OrdersProgressComponent],
+  declarations: [AdminComponent, AddProductComponent,ProductsComponent, TextFieldComponent, OrdersProgressComponent],
+  exports: [AdminComponent, AddProductComponent, ProductsComponent,TextFieldComponent, OrdersProgressComponent],
   providers: [AdminService],
   schemas: [NO_ERRORS_SCHEMA]
 })

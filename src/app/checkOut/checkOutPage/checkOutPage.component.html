@@ -7,10 +7,13 @@
     <p>Contact Information</p>
     <p >Already have an account ?<span class="text text-primary btn"  [routerLink]="['/login']" routerLinkActive="router-link-active" >Login</span> </p>
   </div>
+<div class="row">
+  <div class="col-lg-1 "></div>
+<div class="col-lg-10 col-xs-12 col-sm-12">
     <mat-horizontal-stepper [linear]="isLinear" #stepper  >
 
       <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup" style="padding-left: 10%;padding-right: 10%;">
+        <form [formGroup]="firstFormGroup" >
           <ng-template matStepLabel>Information</ng-template>
           <mat-form-field >
             <mat-label>Email or Phone number</mat-label>
@@ -54,24 +57,34 @@
             <input type="checkbox" class="form-check-input" id="exampleCheck1" style="padding-right: 4%;">
             <label  style="margin-left: 3%;">Save details for next time</label>
           </div>
+
+
           <div  style="text-align: right;padding-top: 5%;">
+
             <button class="btn btn-primary"  matStepperNext>Continue to Shipping</button>
 
           </div>
+
         </form>
       </mat-step>
+
       <mat-step [stepControl]="secondFormGroup">
-        <form [formGroup]="secondFormGroup">
+        <form [formGroup]="secondFormGroup" >
           <ng-template matStepLabel>Shipping</ng-template>
           <div style="border: 1px;border-style: groove;padding: 1%;margin-top: 2%;border-radius: 6px;border-color: rgb(160, 158, 158);">
             <div class="row" style="height: 10px;">
             <p class="col-3">Contact</p>
-            <mat-label class="col-9">{{this.firstFormGroup.value.email}}</mat-label>
+            <mat-label class="col-6">{{this.firstFormGroup.value.email}}</mat-label>
+            <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
           </div>
           <hr/>
           <div class="row" style="height: 10px;">
-            <p class="col-3">Shipping</p>
-            <mat-label class="col-9">{{this.firstFormGroup.value.adress}}</mat-label>
+            <p class="col-3">Shipping Adress</p>
+            <mat-label class="col-6">{{useAdress}}</mat-label>
+
+            <p class="col-3 text-primary btn">Change</p>
+
           </div>
 
         </div>
@@ -86,19 +99,25 @@
             <mat-label class="col-3">Standard</mat-label>
           </div>
         </div>
-          <div  style="text-align: right;padding-top: 5%;">
-            <button  class="btn btn-secondry"  matStepperPrevious>Back</button>
-            <button  class="btn btn-primary"  matStepperNext>Next</button>
-          </div>
-        </form>
+        <div  class="row">
+
+          <button  class="col-2 btn text-primary"  matStepperPrevious>< Back</button>
+           <div class="col-8"></div>
+
+          <button  class="col-2 btn btn-primary"  matStepperNext>Next</button>
+        </div>
+     </form>
       </mat-step>
       <mat-step [stepControl]="thirdFormGroup">
-        <form [formGroup]="thirdFormGroup">
+        <form [formGroup]="thirdFormGroup" >
           <ng-template matStepLabel>Paymemt</ng-template>
           <ngx-paypal [config]="payPalConfig"></ngx-paypal>
-          <div  style="text-align: right;padding-top: 5%;">
-            <button  class="btn btn-secondry"  matStepperPrevious>Back</button>
-            <button  class="btn btn-primary"  matStepperNext>Next</button>
+          <div  class="row">
+
+            <button  class="col-2 btn text-primary"  matStepperPrevious>< Back</button>
+             <div class="col-8"></div>
+
+            <button  class="col-2 btn btn-primary"  matStepperNext>Next</button>
           </div>
         </form>
       </mat-step>
@@ -106,43 +125,66 @@
         <ng-template matStepLabel>Done</ng-template>
         <p>You are now done.</p>
 
-        <mat-list style="padding: 5%;">
-          <div style="border: 1px;border-style: groove;padding: 1%;margin-top: 2%;border-color: gray;border-radius: 6px;background-color: rgb(235, 235, 235);">
+        <mat-list >
+          <div style="border: 1px;padding: 1%;
+          margin-top: 2%;">
             <div class="row" style="height: 10px;">
             <p class="col-3">Name</p>
-            <mat-label class="col-9"> {{ this.firstFormGroup.value.fname }}</mat-label>
+            <mat-label class="col-6">{{this.firstFormGroup.value.fname}}</mat-label>
+            <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
           </div>
-          <hr/>
+          <hr />
           <div class="row" style="height: 10px;">
             <p class="col-3">Email</p>
-            <mat-label class="col-9">{{ this.firstFormGroup.value.email }}</mat-label>
+            <mat-label class="col-6">{{this.firstFormGroup.value.email}}</mat-label>
+            <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
           </div>
           <hr/>
+
           <div class="row" style="height: 10px;">
             <p class="col-3">Adress</p>
-            <mat-label class="col-9">{{ this.firstFormGroup.value.adress }}</mat-label>
+            <mat-label class="col-6">{{this.firstFormGroup.value.adress}}</mat-label>
+            <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
           </div>
-          <hr>
+          <hr/>
+
           <div class="row" style="height: 10px;">
             <p class="col-3">Contact</p>
-            <mat-label class="col-9">{{ this.firstFormGroup.value.contact }}</mat-label>
+            <mat-label class="col-6">{{this.firstFormGroup.value.contact}}</mat-label>
+            <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
           </div>
-          <hr>
+          <hr/>
+
           <div class="row" style="height: 10px;">
-            <p class="col-4">Shipping Method:</p>
-            <mat-label class="col-8">{{ this.secondFormGroup.value.method }}</mat-label>
+            <p class="col-3">Shipping Method:</p>
+            <mat-label class="col-6">{{this.firstFormGroup.value.method}}</mat-label>
+            <p class="col-3 text-primary btn" (click)="move(1)">Change</p>
+
           </div>
+          <hr/>
+
         </div>
+
 
       </mat-list>
 
-        <div  style="text-align: right;padding-top: 5%;">
-          <button class="btn btn-primary" style="margin:1%;" matStepperPrevious>Back</button>
-          <button class="btn btn-primary" style="margin:1%;" (click)="stepper.reset()">Reset</button>
-          <button class="btn btn-primary" style="margin:1%;" (click)="order()">Submit</button>
+      <div  class="row" >
+
+        <button  class="col-2 btn text-primary"  matStepperPrevious>< Back</button>
+         <div class="col-8"></div>
+
+         <button class="btn btn-primary" style="margin:1%;" (click)="order()">Submit</button>
         </div>
+
       </mat-step>
     </mat-horizontal-stepper>
+  </div>
+    <div class="col-lg-1"></div>
+  </div>
   </div>
   <div class="col-lg-5" style="padding-top: 5%;min-height: 700px;background-color: #f3f3f3;">
     <div style="padding-left:7%;padding-right: 7%;padding-top: 5%;">

@@ -65,4 +65,7 @@ removeProduct(product){
   this.cartService.removeProduct(product)
 
 }
+addProduct(item) {
+  this.cartService.addProduct(item);
+}
 }

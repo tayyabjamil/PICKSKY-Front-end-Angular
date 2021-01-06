@@ -1,4 +1,5 @@
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
  <div style="background-color:#f7f7f7;width: 100%;">
   <div class="container-fluid" style="width: 100%;padding-top: 2%;" >
@@ -9,7 +10,7 @@
   </div>
     <p class="text-block-small" style="padding-bottom: 7%;">Start You'r Shopping with Shrivasafoods</p>
 
-    <button class="btn" style="background-color: #FFFFFF;width: 40%;"><span> Order Now </span></button>
+    <button class="btn"(click)="scrollToFeatured()" style="background-color: #FFFFFF;width: 40%;"><span> Order Now </span></button>
   </div>
     <img class="img-responsive" style="min-height: 260px;width: 100%;" src="../assets/images/home.jpeg">
   </div>
@@ -159,33 +160,34 @@
 <!-- ////////////////////////////////////////// featured  producsts-->
 <div style="border-radius: 6px;margin:2%;">
   <p  style="font-weight: bold;padding-left:3%;padding-top:4% ; "> Featured Products</p>
-  <div *ngIf="deviceLg || deviceMd" class="deviceLg">
+  <div *ngIf="deviceLg || deviceMd" class="deviceLg" id="target">
 
-    <div  routerLinkActive="router-link-active"  *ngFor="let item of featuredProducts" style="padding:1%;width: 200px;height: 200px;;background-color: white;margin: 0.1%;" >
+    <div  routerLinkActive="router-link-active"  *ngFor="let item of featuredProducts"
+    style="padding:1%;width: 200px;height: 200px;;background-color: white;margin: 0.1%;" >
 
-    <div [routerLink]="['/detail']" style="padding-left: 45px;height: 100px;width: 200px">
+    <div style="height: 150px;width: 160px;margin-right: 20px;margin-left: 20px;">
+     <div (click)="addProduct(item)" *ngIf="item.productCount===0" style="text-align: right;">
+      <button><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+     </div>
+     <div *ngIf="item.productCount > 0" style="display: flex;flex-direction: row;width: 100px;height: 40px;
+      background-color: rgb(63, 61, 61);border-radius: 6px;border-style: groove;margin: 5%;
+      color: whitesmoke;" >
+        <div (click)="addProduct(item)" class="btn" style="text-align: center;width: 40px;color: white;font-size: large;font-weight: bold;">
+        <span > +</span>
+        </div>
+        <div  style="width: 20px;color: white;font-size: large;text-align: center;padding-top: 7px;">{{item.productCount}}</div>
+        <div (click)="removeProduct(item)" class="btn" style="text-align: center;width: 40px;color: white;font-size: large;font-weight: bold;">
+         <span > -</span>
+          </div>
+         </div>
       <img [src]='getImage(item.productImage)' style="height: 100px;width: auto">
-    <div *ngIf="loadingImage" class="spinner-border" role="status">
+
+      <div *ngIf="loadingImage" class="spinner-border" role="status">
         <span class="sr-only">Loading...</span>
       </div>
     </div>
       <p style="font-weight: bold;">{{item.price}}</p>
-      <div style="text-align: center;">
-        <button
-        (click)="addProduct(item)"
-          class="btn"
-          style="
-            padding-left: 2.5%;
-            padding-right: 2.5%;
-            background-color: rgb(63, 61, 61);
-            color: whitesmoke;
-          "
-        >
-
-          <span style="font-weight: bold; font-size: small">Add to Cart</span>
-        </button>
-      </div>
-    </div>
+        </div>
 
   </div>
   <div *ngIf="deviceXs || deviceSm" >
@@ -194,27 +196,28 @@
 
 
         <div *ngFor="let item of featuredProducts" style="padding:2%;width: 180px;height: 180px;background-color: white;margin: 2%;" >
+          <div style="height: 150px;width: 160px;margin-right: 20px;margin-left: 20px;">
+            <div (click)="addProduct(item)" *ngIf="item.productCount===0" style="text-align: right;">
+             <button><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+            </div>
+            <div *ngIf="item.productCount > 0" style="display: flex;flex-direction: row;width: 100px;height: 40px;
+             background-color: rgb(63, 61, 61);border-radius: 6px;border-style: groove;margin: 5%;
+             color: whitesmoke;" >
+               <div (click)="addProduct(item)" class="btn" style="text-align: center;width: 40px;color: white;font-size: large;font-weight: bold;">
+               <span > +</span>
+               </div>
+               <div  style="width: 20px;color: white;font-size: large;text-align: center;padding-top: 7px;">{{item.productCount}}</div>
+               <div (click)="removeProduct(item)" class="btn" style="text-align: center;width: 40px;color: white;font-size: large;font-weight: bold;">
+                <span > -</span>
+                 </div>
+                </div>
+             <img [src]='getImage(item.productImage)' style="height: 100px;width: auto">
 
-          <div   [routerLink]="['/detail']"  >
-            <img [src]='getImage(item.productImage)' style="padding-left: 30px;height: 100px;width:auto;">
-         </div>
+             <div *ngIf="loadingImage" class="spinner-border" role="status">
+               <span class="sr-only">Loading...</span>
+             </div>
+           </div>
 
-          <p style="font-weight: bold;">{{item.price}}</p>
-          <div style="text-align: center;">
-            <button
-            (click)="addProduct(item)"
-              class="btn"
-              style="
-                padding-left: 2.5%;
-                padding-right: 2.5%;
-                background-color: rgb(63, 61, 61);
-                color: whitesmoke;
-              "
-            >
-
-              <span style="font-weight: bold; font-size: small">Add to Cart</span>
-            </button>
-          </div>
         </div>
       </div>
 
@@ -333,29 +336,7 @@
   <div *ngIf="deviceLg || deviceMd" class="deviceLg">
 
     <div  routerLinkActive="router-link-active"  *ngFor="let item of allProducts" style="padding:1%;width: 200px;height: 200px;;background-color: white;margin: 0.1%;" >
-
-      <div [routerLink]="['/detail']" style="padding-left: 45px;height: 100px;width: 200px">
-        <img [src]='getImage(item.productImage)' style="height: 100px;width: auto">
-      <div *ngIf="loadingImage" class="spinner-border" role="status">
-          <span class="sr-only">Loading...</span>
-        </div>
-      </div>
-        <p style="font-weight: bold;">{{item.price}}</p>
-        <div style="text-align: center;">
-          <button
-          (click)="addProduct(item)"
-            class="btn"
-            style="
-              padding-left: 2.5%;
-              padding-right: 2.5%;
-              background-color: rgb(63, 61, 61);
-              color: whitesmoke;
-            "
-          >
-
-            <span style="font-weight: bold; font-size: small">Add to Cart</span>
-          </button>
-        </div>
+      <app-mainPage-listItem [item]="item"></app-mainPage-listItem>
       </div>
 
 
@@ -366,26 +347,28 @@
 
 
         <div *ngFor="let item of allProducts" style="padding:2%;width: 180px;height: 180px;background-color: white;margin: 2%;" >
+          <div style="height: 150px;width: 160px;margin-right: 20px;margin-left: 20px;">
+            <div (click)="addProduct(item)" *ngIf="item.productCount===0" style="text-align: right;">
+             <button><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+            </div>
+            <div *ngIf="item.productCount > 0" style="display: flex;flex-direction: row;width: 100px;height: 40px;
+             background-color: rgb(63, 61, 61);border-radius: 6px;border-style: groove;margin: 5%;
+             color: whitesmoke;" >
+               <div (click)="addProduct(item)" class="btn" style="text-align: center;width: 40px;color: white;font-size: large;font-weight: bold;">
+               <span > +</span>
+               </div>
+               <div  style="width: 20px;color: white;font-size: large;text-align: center;padding-top: 7px;">{{item.productCount}}</div>
+               <div (click)="removeProduct(item)" class="btn" style="text-align: center;width: 40px;color: white;font-size: large;font-weight: bold;">
+                <span > -</span>
+                 </div>
+                </div>
+             <img [src]='getImage(item.productImage)' style="height: 100px;width: auto">
 
-          <div   [routerLink]="['/detail']"  >
-            <img [src]='getImage(item.productImage)' style="padding-left: 30px;height: 100px;width:auto;">
-         </div>
-          <p style="font-weight: bold;">{{item.price}}</p>
-          <div style="text-align: center;">
-            <button
-            (click)="addProduct(item)"
-              class="btn"
-              style="
-                padding-left: 2.5%;
-                padding-right: 2.5%;
-                background-color: rgb(63, 61, 61);
-                color: whitesmoke;
-              "
-            >
+             <div *ngIf="!getImage(item.productImage)" class="spinner-border" role="status">
+               <span class="sr-only">Loading...</span>
+             </div>
+           </div>
 
-              <span style="font-weight: bold; font-size: small">Add to Cart</span>
-            </button>
-          </div>
         </div>
       </div>
 

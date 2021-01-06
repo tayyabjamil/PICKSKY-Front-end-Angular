@@ -1,9 +1,9 @@
 import { AuthService } from './../../auth.service';
 import { ProductService } from '../product.service';
 import { CartService } from '../cart.service';
-import { Component, OnInit } from '@angular/core';
-import  {MediaObserver, MediaChange} from '@angular/flex-layout';
-import  { Subscription } from 'rxjs';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { MediaObserver, MediaChange } from '@angular/flex-layout';
+import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { AboutusConstants, HeaderConstants, PicklesConstants, SpecialConstants, SupportConstants, SweetsandHotConstants, TraditionalPodulu } from '../../appconstants';
 
@@ -14,65 +14,80 @@ import { AboutusConstants, HeaderConstants, PicklesConstants, SpecialConstants, 
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
- cart = [];
-total ;
-allProducts;
-username = ' username'
-checkOutTab = false;
-
-constructor(public mediaObserver:MediaObserver
-    ,public cartService:CartService,  private productService: ProductService,private authService:AuthService,
+  cart = [];
+  total;
+  allProducts;
+  username = ' username'
+  checkOutTab = false;
+  visible= false;
+  constructor(public mediaObserver: MediaObserver
+    , public cartService: CartService, private productService: ProductService, private authService: AuthService,
     private router: Router,
-    ) { }
-  mediaSub:Subscription
-  deviceXs:boolean;
-  deviceLg:boolean;
-  deviceMd:boolean;
-  deviceSm:boolean;
+  ) { }
+  mediaSub: Subscription
+  deviceXs: boolean;
+  deviceLg: boolean;
+  deviceMd: boolean;
+  deviceSm: boolean;
   ngOnInit() {
-    this.mediaSub = this.mediaObserver.media$.subscribe((result:MediaChange)=>{
+    this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
       console.log(result.mqAlias)
       this.deviceXs = result.mqAlias === 'xs'
-      this.deviceSm = result.mqAlias ==='sm'
+      this.deviceSm = result.mqAlias === 'sm'
       this.deviceLg = result.mqAlias === 'lg'
       this.deviceMd = result.mqAlias === 'md'
 
     })
 
 
-  }
-get usernameLogin(){
-  return this.authService.getusername()
 
-}
- get getCartProducts() {
-    this.cart =  this.cartService.getProducts();
+    this.getScrollingElement()
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event) {
+    if (event) {
+      this.visible = true;
+    } else {
+      this.visible = false;
+    }
+  }
+
+  getScrollingElement(): Element {
+    return document.scrollingElement || document.documentElement;
+  }
+  get usernameLogin() {
+    return this.authService.getusername()
+
+  }
+  get getCartProducts() {
+    this.cart = this.cartService.getProducts();
 
     return this.cart;
   }
-  cartPage(){
+  cartPage() {
     this.router.navigate(['cart'])
     this.checkOutTab = true
   }
 
-  checkOut(){
+  checkOut() {
     this.router.navigate(['checkOut'])
     this.checkOutTab = false
   }
   get getTotal() {
-   this.total =  this.cartService.getTotalPrice();
-   return this.total;
-    }
+    this.total = this.cartService.getTotalPrice();
+    return this.total;
+  }
 
-    onLogoutClick() {
-      this.authService.loggedOutName();
-      this.authService.loggedOutEmail();
-      this.authService.loggedOutuserId();
-      this.authService.loggedOutRefrenceId();
-    }
-    catagory(page){
-   this.router.navigate(['catagory/', page])
-    }
+  onLogoutClick() {
+    this.authService.loggedOutName();
+    this.authService.loggedOutEmail();
+    this.authService.loggedOutuserId();
+    this.authService.loggedOutRefrenceId();
+  }
+  catagory(page) {
+    this.router.navigate(['catagory/', page])
+  }
   getHeaderNames(indx: number) { return HeaderConstants[indx]; }
 
   getPicklesConstants(indx: number) { return PicklesConstants[indx]; }
