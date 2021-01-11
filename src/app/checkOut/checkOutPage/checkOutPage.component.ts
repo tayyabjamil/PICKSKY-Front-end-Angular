@@ -10,7 +10,7 @@ import { MatStepper } from '@angular/material/stepper/stepper';
 @Component({
   selector: 'app-checkOutPage',
   templateUrl: './checkOutPage.component.html',
-  styleUrls: ['./checkOutPage.component.scss']
+  styleUrls: ['./checkOutPage.component.css']
 })
 export class CheckOutPageComponent implements OnInit {
 
@@ -90,7 +90,8 @@ ngOnInit() {
     this.cartService.order(orderData).subscribe((data: any) => {
       this.router.navigate(['/'])
    })
-}
+   this.cartService.emptyProduct()
+  }
 move(index: number) {
   this.stepper.selectedIndex = index;
 }

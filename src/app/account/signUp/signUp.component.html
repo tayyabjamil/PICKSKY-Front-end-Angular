@@ -8,12 +8,11 @@
   <div class="col-lg-8 col-xs-10 col-sm-12" >
     <div  class="cardLeft col-lg-8 col-xs-12 col-sm-12">
 
-      <div style="width: 100%;padding-bottom: 2%;">
-        <p [style.font-size.px]="deviceXs || deviceSm ? '15':'25'"
+      <div style="width: 100%;padding-bottom: 8%;">
+        <p [style.font-size.px]="deviceXs || deviceSm ? '15':'25'" class="btn"
       style="text-align: left;padding-top: 5%;font-weight: 500;">Create Your Account</p>
     </div>
-      <hr >
-      <form [formGroup]="rformSignup" style="text-align: left">
+      <form [formGroup]="rformSignup" style="text-align: left;">
         <div style="display: flex;flex-direction: row;justify-content: space-between;">
         <div style="padding-bottom: 2%;padding-right: 2%;min-width: 60px;width: 50%;" class="">
 
@@ -30,7 +29,7 @@
       </div>
 
 
-        <div style="padding-bottom: 2%">
+        <div style="padding-bottom: 2%;width:400px;">
           <!-- <p ></p> -->
 
           <ns-textField-account
@@ -43,47 +42,61 @@
           </ns-textField-account>
         </div>
 
-        <div style="padding-bottom: 2%;">
-          <!-- <p style="padding-bottom: 1%"></p> -->
+        <div  style="padding-bottom: 2%;display: flex;flex-direction: row;width:400px;">
+        <div style="width: 360px;">
           <ns-textField-account
           placeholder="Password"
-            name="password" type="password"
+            name="password"
             class="textfieldBorderColor font13"
             [rformgroup]="rformSignup"
             rformControlName="password"
-          >
+            [type]="showPass ? 'text' : 'password'"
+            >
           </ns-textField-account>
           <p
+          style="font-size: 14px;"
           class="errorlbl"
           *ngIf="rformSignup.controls['password'].hasError('hasCapitalCase')"
         >
          password must have at least 1 Capital letter!
         </p>
         <p
+        style="font-size: 14px;"
         class="errorlbl"
         *ngIf="rformSignup.controls['password'].hasError('hasSmallCase')"
       >
         passowrd must have at least 1 Small letter!
       </p>
       <p
-      class="errorlbl"
+      style="font-size: 14px;"
+
       *ngIf="rformSignup.controls['password'].hasError('hasDigit')"
     >
       passowrd must have at least 1 number!
     </p>
-        </div>
+  </div>
+  <div style="width: 30px;">
+    <button style="height: 35px;" class="btn btn-default" (click)="passwordshow()" type="submit">
+      <i *ngIf="showPass" class="glyphicon glyphicon-eye-open"></i>
+      <i *ngIf="!showPass" class="glyphicon glyphicon-eye-close"></i>
+    </button>
+  </div>
 
-      <div style="padding-bottom: 2%">
-          <!-- <p style="padding-bottom: 1%"></p> -->
-          <ns-textField-account
-          placeholder="Confirm Password"
-            name="contact" type="password"
-            class="textfieldBorderColor font13"
-            [rformgroup]="rformSignup"
-            rformControlName="confirmPassword"
-          >
-          </ns-textField-account>
-        </div>
+</div>
+
+        <div  style="padding-bottom: 2%;display: flex;flex-direction: row;justify-content: space-between;">
+          <div style="width: 360px;" >
+           <ns-textField-account placeholder="Confirm Password " name="password"  [type]="showConfirmPass ? 'text' : 'password'" class="textfieldBorderColor font13"
+              [rformgroup]="rformSignup" rformControlName="confirmPassword">
+            </ns-textField-account>
+          </div>
+            <div style="width:40px">
+              <button style="height: 35px;" class="btn btn-default" (click)="confirmpasswordshow()" type="submit">
+                <i *ngIf="showConfirmPass" class="glyphicon glyphicon-eye-open"></i>
+                <i *ngIf="!showConfirmPass" class="glyphicon glyphicon-eye-close"></i>
+              </button>
+            </div>
+          </div>
 
 <div style="padding-bottom: 2%">
           <!-- <p ></p> -->
@@ -102,22 +115,23 @@
         </div>
 
         </form>
-    
+
         <div  class="row">
           <div class="col-1"></div>
           <button class="col-10 btn btn-primary"  (click)="createAccount()" type="button"  >Create Account</button>
           <div class="col-1"></div>
-          
-          </div>
-      <div class="row" style="margin-top: 3%">
-        <div class="col-lg-1"></div>
-
-        <button (click)="signUpGoogle('google')" class="  col-lg-5 btn btn-danger">Sign up With Google</button>
-       <!-- <div class="col-lg-2"></div> -->
-        <button (click)="signUpFacebook('facebook')" class="  col-lg-5 btn btn-primary">Sign up With facebook</button>
-           <div class="col-lg-1"></div>
 
           </div>
+          <div class="row" style="margin-top: 3%">
+            <div class="col-lg-1"></div>
+
+            <button (click)="signUpGoogle('google')" style="padding-right: 5px;" class="col-lg-4 btn btn-danger">SignUp With Google</button>
+            <div class="col-lg-2"></div>
+
+            <button (click)="signUpFacebook('facebook')" style="padding-left: 5px;" class="  col-lg-4 btn btn-primary">SignUp With facebook</button>
+               <div class="col-lg-1"></div>
+
+              </div>
 
 
 <!-- <button class="btn" style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(145, 145, 145); color: whitesmoke">
@@ -125,9 +139,9 @@
 
   </div>
   <div class="col-lg-4 col-xs-12 col-sm-12 cardRight">
-    <h3 >Hello Friend</h3>
-    <h4 >Fill up the Form and </h4>
-    <h4 >start Journey with us</h4>
+    <h3 class="btn">Hello Friend</h3>
+    <h4 class="btn">Fill up the Form and </h4>
+    <h4 class="btn">start Journey with us</h4>
 
     <div style="text-align: center;width: 100%;">
       <button   (click)="login()"  type="button" class="btn btn-primary"  >Login</button>
@@ -136,7 +150,7 @@
 
 </div>
 
-  
+
 </div>
 <div class="col-lg-2 col-xs-1 col-sm-1"></div>
 </div>

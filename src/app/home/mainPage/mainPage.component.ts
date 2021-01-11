@@ -1,6 +1,6 @@
 import { CartService } from './../cart.service';
 import { ProductService } from './../product.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
@@ -12,11 +12,13 @@ import { NgImageSliderComponent } from 'ng-image-slider';
   styleUrls: ['./mainPage.component.scss'],
 })
 export class MainPageComponent implements OnInit {
+  @Input() search
   allProducts;
   featuredProducts;
   loadingData = true;
   loadingImage = true;
-
+  searchProductsData = [];
+  productSearch: Subscription;
   // @ViewChild('nav') slider: NgImageSliderComponent;
   constructor(
     public mediaObserver: MediaObserver,
@@ -110,20 +112,37 @@ export class MainPageComponent implements OnInit {
     );
     this.getAllProducts();
     this.getfeaturedProducts();
+
+    this.productSearch = this.productService.searchItems.subscribe((searchitem) => {
+      if (searchitem) {
+        this.searchProductsData = this.allProducts.find((productItem) => {
+          if (productItem && productItem.name && productItem.name.find(searchitem)) {
+           return true;
+          }
+        })
+        this.searchProductsData;
+      } else {
+        this.searchProductsData = this.allProducts;
+      }
+    })
   }
 
-  // onImageClick(args) {
-  //   console.log(args)
-  //   this.router.navigate([this.imageObject[args].routeTo])
-  // }
-  scrollToFeatured(){
-  document.getElementById("target").scrollIntoView({behavior:"smooth"})
+
+  scrollToFeatured() {
+    document.getElementById("target").scrollIntoView({ behavior: "smooth" })
   }
+
+  get searchProducts() {
+    let search = this.productService.searchProducts()
+    return search;
+  }
+
   getAllProducts() {
     this.productService.getProducts().subscribe(
       (products) => {
 
         this.allProducts = products;
+        this.searchProductsData = products;
       },
       (error) => {
         console.log('error in getting all products');
@@ -156,7 +175,7 @@ export class MainPageComponent implements OnInit {
 
   getImage(imageId) {
     // this.loadingImage = true;
-// this.loadingImage = false;
+    // this.loadingImage = false;
     if (!imageId) {
       return '';
     } else {
@@ -164,7 +183,7 @@ export class MainPageComponent implements OnInit {
     }
   }
 
-  removeProduct(product){
+  removeProduct(product) {
     this.cartService.removeProduct(product)
 
   }

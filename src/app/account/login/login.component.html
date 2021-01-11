@@ -25,7 +25,7 @@
   <div class="col-lg-8 col-xs-10 col-sm-12" >
     <div  class="cardLeft col-lg-8 col-xs-12 col-sm-12">
 
-      <p style="font-size:x-large;padding-top: 10%;font-weight: 500;">Log in to Account</p>
+      <p style="font-size:x-large;padding-top: 10%;font-weight: 500;" class="btn">Log in to Account</p>
       <hr >
       <div class="row"  style="padding-bottom: 5%;padding-top: 5%;">
 
@@ -66,9 +66,10 @@
 <div class="row" style="margin-top: 3%">
   <div class="col-lg-1"></div>
 
-  <button (click)="signInGoogle('google')" style="padding-right: 5px;" class="col-lg-5 btn btn-danger">Sign in With Google</button>
- 
-  <button (click)="signInFacebook('facebook')" style="padding-left: 5px;" class="  col-lg-5 btn btn-primary">Sign in With facebook</button>
+  <button (click)="signInGoogle('google')" style="padding-right: 5px;" class="col-lg-4 btn btn-danger">Sign in With Google</button>
+  <div class="col-lg-2"></div>
+
+  <button (click)="signInFacebook('facebook')" style="padding-left: 5px;" class="  col-lg-4 btn btn-primary">Sign in With facebook</button>
      <div class="col-lg-1"></div>
 
     </div>
@@ -79,9 +80,9 @@
 
   </div>
   <div class="col-lg-4 col-xs-12 col-sm-12 cardRight">
-    <h3 >Hello Friend</h3>
-    <h4 >Fill up the Form and </h4>
-    <h4 >start Journey with us</h4>
+    <h3 class="btn">Hello Friend</h3>
+    <h4 class="btn">Fill up the Form and </h4>
+    <h4 class="btn">start Journey with us</h4>
 
     <div style="text-align: center;width: 100%;">
       <button   (click)="createAccount()"  type="button" class="btn btn-primary"  >Create Account </button>
@@ -90,7 +91,7 @@
 
 </div>
 
-  
+
 </div>
 <div class="col-lg-2 col-xs-1 col-sm-1"></div>
 </div>

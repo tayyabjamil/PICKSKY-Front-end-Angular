@@ -17,6 +17,9 @@ export class CartService {
       accept: ' application/json'
     })
   };
+  emptyProduct(){
+  this.cart = []
+  }
   removeProduct(product) {
     let proudctRemoved = false
     this.cart.find((item) => {

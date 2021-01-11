@@ -29,7 +29,6 @@ export class ForgetPasswordComponent implements OnInit {
       this.deviceSm = result.mqAlias ==='sm'
       this.deviceLg = result.mqAlias === 'lg'
       this.deviceMd = result.mqAlias === 'md'
-      this.show = false;
     })
 
     this.forgetPasswordForm = this.formBuilder.group({

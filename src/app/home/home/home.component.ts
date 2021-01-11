@@ -14,6 +14,9 @@ import { AboutusConstants, HeaderConstants, PicklesConstants, SpecialConstants, 
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+  enableSearchProduct = '';
+
   cart = [];
   total;
   allProducts;
@@ -21,7 +24,7 @@ export class HomeComponent implements OnInit {
   checkOutTab = false;
   visible= false;
   constructor(public mediaObserver: MediaObserver
-    , public cartService: CartService, private productService: ProductService, private authService: AuthService,
+    , public cartService: CartService, private productService: ProductService, public authService: AuthService,
     private router: Router,
   ) { }
   mediaSub: Subscription
@@ -29,6 +32,7 @@ export class HomeComponent implements OnInit {
   deviceLg: boolean;
   deviceMd: boolean;
   deviceSm: boolean;
+  search : true
   ngOnInit() {
     this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
       console.log(result.mqAlias)
@@ -62,7 +66,6 @@ export class HomeComponent implements OnInit {
   }
   get getCartProducts() {
     this.cart = this.cartService.getProducts();
-
     return this.cart;
   }
   cartPage() {
@@ -85,6 +88,18 @@ export class HomeComponent implements OnInit {
     this.authService.loggedOutuserId();
     this.authService.loggedOutRefrenceId();
   }
+  getAllProducts() {
+    this.productService.getProducts().subscribe(
+      (products) => {
+
+        this.allProducts = products;
+      },
+      (error) => {
+        console.log('error in getting all products');
+      }
+    );
+  }
+
   catagory(page) {
     this.router.navigate(['catagory/', page])
   }
@@ -145,4 +160,13 @@ export class HomeComponent implements OnInit {
 
   getPayments(indx: number) { }
 
+  onSearchChange(searchValue: string): void {
+    if (searchValue) {
+      this.productService.search = true;
+    } else {
+      this.productService.search = false;
+    }
+
+    this.productService.setSearchItems(searchValue);
+  }
 }

@@ -26,6 +26,9 @@ export class SignUpComponent implements OnInit {
   password:string
   contact:number
   phone;
+
+  showConfirmPass:boolean
+  showPass:boolean
   constructor(
 
     public mediaObserver:MediaObserver,
@@ -132,7 +135,12 @@ signUpFacebook(platform: string) {
   signOut(): void {
     this.authService.signOut();
   }
-
+  public passwordshow() {
+    this.showPass = !this.showPass;
+  }
+  public confirmpasswordshow() {
+    this.showConfirmPass = !this.showConfirmPass;
+  }
   setId(userId) {
     localStorage.setItem('userId', JSON.stringify(userId));
   }
