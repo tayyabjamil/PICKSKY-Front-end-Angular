@@ -22,17 +22,18 @@ export class HomeComponent implements OnInit {
   allProducts;
   username = ' username'
   checkOutTab = false;
-  visible= false;
+  visible = false;
   constructor(public mediaObserver: MediaObserver
     , public cartService: CartService, private productService: ProductService, public authService: AuthService,
     private router: Router,
   ) { }
+
   mediaSub: Subscription
   deviceXs: boolean;
   deviceLg: boolean;
   deviceMd: boolean;
   deviceSm: boolean;
-  search : true
+  search: true
   ngOnInit() {
     this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
       console.log(result.mqAlias)
@@ -50,13 +51,16 @@ export class HomeComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event) {
-    if (event) {
+    if (window.pageYOffset >= 80) {
       this.visible = true;
     } else {
       this.visible = false;
     }
   }
 
+  get visibleI() {
+    return this.visible;
+  }
   getScrollingElement(): Element {
     return document.scrollingElement || document.documentElement;
   }

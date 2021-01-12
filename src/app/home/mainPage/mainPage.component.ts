@@ -142,7 +142,8 @@ export class MainPageComponent implements OnInit {
       (products) => {
 
         this.allProducts = products;
-        this.searchProductsData = products;
+        this.searchProductsData = this.allProducts
+        // this.searchProductsData = products;
       },
       (error) => {
         console.log('error in getting all products');

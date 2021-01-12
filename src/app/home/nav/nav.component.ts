@@ -6,7 +6,11 @@ import { map, shareReplay } from 'rxjs/operators';
 import { HeaderConstants, PicklesConstants, TraditionalPodulu, SweetsandHotConstants, SpecialConstants, SupportConstants, AboutusConstants } from '../../appconstants';
 import { Router } from '@angular/router';
 
+import { MediaObserver, MediaChange } from '@angular/flex-layout';
+import { Subscription } from 'rxjs';
 import { AuthService } from './../../auth.service';
+import { ProductService } from '../product.service';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-nav',
@@ -15,7 +19,21 @@ import { AuthService } from './../../auth.service';
 })
 export class NavComponent implements OnInit {
 
-  constructor(private breakpointObserver: BreakpointObserver, private router: Router,private authService:AuthService, ) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver, private router: Router,private authService:AuthService,
+    public mediaObserver: MediaObserver,
+    public productService: ProductService,
+    public cartService: CartService,
+
+  ) {
+
+  }
+  mediaSub: Subscription;
+  deviceXs: boolean;
+  deviceLg: boolean;
+  deviceMd: boolean;
+  deviceSm: boolean;
+
   username =" username";
   isShow = false;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -26,6 +44,16 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
     // this.username=this.authService.getusername()
+    this.mediaSub = this.mediaObserver.media$.subscribe(
+      (result: MediaChange) => {
+        console.log(result.mqAlias);
+        this.deviceXs = result.mqAlias === 'xs';
+        this.deviceSm = result.mqAlias === 'sm';
+        this.deviceLg = result.mqAlias === 'lg';
+        this.deviceMd = result.mqAlias === 'md';
+      }
+    );
+
   }
   get usernameLogin(){
     return this.authService.getusername()

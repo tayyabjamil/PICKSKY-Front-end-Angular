@@ -8,7 +8,8 @@
           margin-right: 2%;
           display: flex;
           flex-direction: row;
-          justify-content: space-between;"
+          justify-content: space-between;
+        "
       >
         <p
           style="
@@ -21,7 +22,7 @@
         >
           SHIRIVAS FOODS
         </p>
-        <div  style="width: 60%; padding: 10px">
+        <div style="width: 60%; padding: 10px">
           <div
             style="
               border-radius: 6px;
@@ -42,13 +43,15 @@
                   font-size: large;
                   margin-right: 2%;
                   padding: 2%;
-
-                  color: rgb(134, 132, 132);
-                "
+                  color: rgb(134, 132, 132);"
               ></i
             ></span>
-            <input class="searchHome"  (input)="onSearchChange($event.target.value)" placeholder="What Are You Looking For?">
-        </div>
+            <input
+              class="searchHome"
+              (input)="onSearchChange($event.target.value)"
+              placeholder="What Are You Looking For?"
+            />
+          </div>
         </div>
         <div style="padding-top: 1%">
           <i
@@ -163,8 +166,7 @@
                 </div>
                 <div class="col-lg-6">
                   <div style="padding-top: 1%">
-                    <i
-                      class="fa fa-user-circle-o"
+                    <i class="fa fa-user-circle-o"
                       routerLink="/giftCards"
                       style="font-size: xx-large"
                     ></i>
@@ -324,14 +326,14 @@
             </ul>
           </li>
         </ul>
-        <div>
+        <div *ngIf="visibleI">
           <i
             class="fa fa-user-circle-o"
             routerLink="/login"
             style="font-size: xx-large"
           ></i>
         </div>
-        <div>
+        <div *ngIf="visibleI">
           <i
             class="fa fa-shopping-cart"
             routerLink="/cart"
@@ -350,14 +352,14 @@
             box-sizing: border-box;
             min-width: 0px;
             max-width: 960px;
-            margin: 0px auto;
+            margin-left: 20%;
             pointer-events: none;
             width: calc(100% - 40px);
           "
         >
           <button
             style="
-              bottom: 87px;
+              bottom: 32px;
               opacity: 1;
               transform: translateY(0px);
               border: 0px;
@@ -368,7 +370,7 @@
               padding: 0px 30px;
               position: fixed;
               pointer-events: all;
-              width: calc(100% - 40px);
+              width: 60% !important;
               border-radius: 6px;
               display: flex;
               align-items: center;
@@ -381,7 +383,7 @@
               z-index: 999;
             "
           >
-            <div style="color: white">
+            <div style="color: white;width: 100%;">
               <svg width="16" height="16" viewBox="0 0 16 16">
                 <path
                   id="shopping-bag"
@@ -391,7 +393,9 @@
                   fill-rule="evenodd"
                 ></path>
               </svg>
-              Added {{ getCartProducts.length }} Items
+              <span style="margin-left:5px">
+                Added {{ getCartProducts.length }} Items
+              </span>
             </div>
             <div style="color: white">${{ getTotal }}</div>
           </button>
@@ -409,14 +413,14 @@
           box-sizing: border-box;
           min-width: 0px;
           max-width: 960px;
-          margin: 0px auto;
+          margin-left: 20%;
           pointer-events: none;
           width: calc(100% - 40px);
         "
       >
         <button
           style="
-            bottom: 87px;
+            bottom: 32px;
             opacity: 1;
             transform: translateY(0px);
             border: 0px;
@@ -427,7 +431,7 @@
             padding: 0px 30px;
             position: fixed;
             pointer-events: all;
-            width: calc(100% - 40px);
+            width: 60% !important;
             border-radius: 6px;
             display: flex;
             align-items: center;
@@ -440,7 +444,7 @@
             z-index: 999;
           "
         >
-          <div style="color: white">
+          <div style="color: white;width: 100%;">
             <svg width="16" height="16" viewBox="0 0 16 16">
               <path
                 id="shopping-bag"
