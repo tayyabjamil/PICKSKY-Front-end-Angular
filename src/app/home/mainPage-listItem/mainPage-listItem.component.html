@@ -1,10 +1,12 @@
-<div style="height: 150px;width: 160px;margin-right: 20px;margin-left: 20px;">
+<div style="height: 180px;width: 160px;">
+ <div style="min-height: 45px;">
   <div (click)="addProduct(item)" *ngIf="item.productCount===0" style="text-align: right;">
-   <button><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+   <button style="border: 0px solid transparent;
+   padding: 3px 10px 3px 10px;"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
   </div>
   <div *ngIf="item.productCount > 0" style="display: flex;flex-direction: row;width: 100px;height: 40px;
-   background-color: rgb(63, 61, 61);border-radius: 6px;border-style: groove;margin: 5%;
-   color: rgb(8, 5, 5);" >
+   background-color: rgb(63, 61, 61);border-radius: 6px;border-style: groove;
+   color: rgb(8, 5, 5);float: right;" >
      <div (click)="addProduct(item)" class="btn" style="text-align: center;width: 40px;color: white;font-size: large;font-weight: bold;">
      <span > +</span>
      </div>
@@ -13,8 +15,20 @@
       <span > -</span>
        </div>
       </div>
+    </div>
+      <div style="margin-left: 20px;">
    <img (load)='imageLoaded()' [src]='getImage(item.productImage)' style="height: 100px;width: auto">
-   <div *ngIf="loadingImageGetter" class="spinner-border" role="status">
-     <span class="sr-only">Loading...</span>
-   </div>
+   <div *ngIf="loadingImageGetter" style="margin-left: 35px;" class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+   <div [routerLink]="['/customize']" routerLinkActive="router-link-active"  style="padding-bottom: 20px;padding-top: 10px;padding-bottom: 10px;height: 30px;">
+    <button style="width: 100px;
+    background-color: rgb(63, 61, 61);border-radius: 6px;border-style: groove;
+    color: white;margin-left: 20px;">Customize</button>
+  </div>
+
  </div>
+
+
+

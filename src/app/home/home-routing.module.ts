@@ -25,6 +25,7 @@ import { AuthGuard } from './../auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { CustomizeComponent } from './customize/customize.component';
 // import check from '../cart/cart.module'
 const routes: Routes = [
   { path: 'checkOut', loadChildren: '../checkOut/checkOut.module#CheckOutModule' },
@@ -51,6 +52,7 @@ const routes: Routes = [
       { path: 'supportpage', component: SupportPageComponent },
       { path: 'blog', component: BlogComponent },
       { path: 'home', component: HomeComponent },
+      { path: 'customize', component: CustomizeComponent },
 
       { path: 'giftCards', component: GiftCardsComponent },
       { path: 'referFriend', component: ReferFriendComponent },

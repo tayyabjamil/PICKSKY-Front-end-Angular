@@ -2,8 +2,8 @@
   top: 10%;
   left: 10%;
  position: absolute;
-  
-  
+
+
 }
 .block {
   position: absolute;
@@ -24,6 +24,11 @@
 .text-blockFooter{
 font-size: 32px;
 }
+.text-block-large {
+  color: white;
+  font-size: 40px;
+}
+
 .text-block-small {
   color: white;
   font-size: 18px;
@@ -134,11 +139,14 @@ font-size: 3vw;
 margin-bottom: 12px;
 }
 .carousel-inner{
-  width: 100vw;
+  // width: 100vw;
 }
 .carousel-inner-slider1{
 width: 100vw;
 
+}
+.carousel-indicators{
+margin-left: 22%;
 }
 
 .carousel-caption{

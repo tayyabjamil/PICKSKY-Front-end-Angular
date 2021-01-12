@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CartService } from '../cart.service';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class MainPageListItemComponent implements OnInit {
 
   @Input() item;
   loadingImage = true;
-  constructor(public productService: ProductService,) { }
+  constructor(public productService: ProductService,public cartService:CartService) { }
 
   ngOnInit() {
   }
@@ -34,8 +35,12 @@ export class MainPageListItemComponent implements OnInit {
   }
 
 
-  addProduct(){
+  addProduct(item){
+    this.cartService.addProduct(item);
 
   }
-  removeProduct() { }
+  removeProduct(product){
+    this.cartService.removeProduct(product)
+
+  }
 }
