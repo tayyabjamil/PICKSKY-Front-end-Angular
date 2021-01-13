@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
 import { ProductService } from '../product.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CustomizeComponent } from '../customize/customize.component';
 
 @Component({
   selector: 'app-mainPage-listItem',
@@ -11,7 +13,10 @@ export class MainPageListItemComponent implements OnInit {
 
   @Input() item;
   loadingImage = true;
-  constructor(public productService: ProductService,public cartService:CartService) { }
+  
+  constructor(public productService: ProductService,
+    public cartService:CartService,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -37,10 +42,22 @@ export class MainPageListItemComponent implements OnInit {
 
   addProduct(item){
     this.cartService.addProduct(item);
-
   }
+
   removeProduct(product){
     this.cartService.removeProduct(product)
+  }
 
+  onCustomiseModal(item): void {
+    const dialogRef = this.dialog.open(CustomizeComponent, {
+      maxWidth: '100% !important',
+      height: '100vh',
+      data: {item: item}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
   }
 }

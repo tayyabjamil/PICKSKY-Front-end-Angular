@@ -11,6 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { MyordersComponent } from './myorders/myorders.component';
 import { NavComponent } from './nav/nav.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 import { HomeRoutingModule } from './home-routing.module';
@@ -47,13 +48,17 @@ import { BlogComponent } from './blog/blog.component';
 import { PrivacyandpolicyComponent } from './privacyandpolicy/privacyandpolicy.component';
 import { ReturnandrefundsComponent } from './returnandrefunds/returnandrefunds.component';
 
-import { ReactiveFormsModule} from '@angular/forms';
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatInputModule} from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatInputModule } from '@angular/material/input';
 import { MainPageListItemComponent } from './mainPage-listItem/mainPage-listItem.component';
+import { CustomizeComponent } from './customize/customize.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ThemeModule } from '../theme/theme.module';
+
+
 @NgModule({
   imports: [
-
     CommonModule,
     FormsModule,
     HomeRoutingModule,
@@ -72,8 +77,10 @@ import { MainPageListItemComponent } from './mainPage-listItem/mainPage-listItem
     NgxPayPalModule,
     MatTabsModule,
     MatInputModule,
-    PopoverModule.forRoot()
-
+    PopoverModule.forRoot(),
+    MatDialogModule,
+    MatCheckboxModule,
+    ThemeModule
   ],
   declarations: [
     HomeComponent,
@@ -91,7 +98,7 @@ import { MainPageListItemComponent } from './mainPage-listItem/mainPage-listItem
     FooterComponent,
     CatagoryComponent,
     DiscountComponent,
-     SupportPageComponent,
+    SupportPageComponent,
     PicklesComponent,
     TraditionalPowdersComponent,
     SpecialOffersComponent,
@@ -107,7 +114,8 @@ import { MainPageListItemComponent } from './mainPage-listItem/mainPage-listItem
     ReturnandrefundsComponent,
     GiftCardsComponent,
     ReferFriendComponent,
-    MainPageListItemComponent
+    MainPageListItemComponent,
+    CustomizeComponent
 
   ],
   exports: [
@@ -124,7 +132,7 @@ import { MainPageListItemComponent } from './mainPage-listItem/mainPage-listItem
     CartComponent,
     DiscountComponent,
     BlogComponent,
-   FAQComponent,
+    FAQComponent,
     SupportPageComponent,
     AboutUSComponent,
     MyordersComponent,
