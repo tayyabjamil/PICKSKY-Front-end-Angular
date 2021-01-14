@@ -38,8 +38,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        padding-top: 20px;
-      "
+        padding-top: 20px;"
     >
       <p style="padding-left: 2%">Total Amount</p>
       <p style="font-weight: 500">${{ getTotal }}</p>
@@ -131,21 +130,23 @@
                   line-height: 35px;
                 "
               >
-                <div
-                  (click)="addProduct(item)"
-                  class="btn"
-                  style="
-                    text-align: center;
-                    width: 40px;
-                    color: white;
-                    font-size: large;
-                    font-weight: bold;
-                    padding: 0px;
-                    margin: 0px;
-                  "
-                >
-                  <span>+</span>
-                </div>
+              
+
+              <div
+              (click)="removeProduct(item)"
+              class="btn"
+              style="
+                text-align: center;
+                width: 40px;
+                color: white;
+                font-size: large;
+                font-weight: bold;
+                padding: 0px;
+                margin: 0px;"
+            >
+              <span>-</span>
+            </div>
+
                 <div
                   style="
                     width: 20px;
@@ -159,19 +160,21 @@
                   {{ item.productCount }}
                 </div>
                 <div
-                  (click)="removeProduct(item)"
-                  class="btn"
-                  style="
-                    text-align: center;
-                    width: 40px;
-                    color: white;
-                    font-size: large;
-                    font-weight: bold;
-                    padding: 0px;
-                    margin: 0px;"
-                >
-                  <span>-</span>
-                </div>
+                (click)="addProduct(item)"
+                class="btn"
+                style="
+                  text-align: center;
+                  width: 40px;
+                  color: white;
+                  font-size: large;
+                  font-weight: bold;
+                  padding: 0px;
+                  margin: 0px;
+                "
+              >
+                <span>+</span>
+              </div>
+              
               </div>
             </div>
           </div>
