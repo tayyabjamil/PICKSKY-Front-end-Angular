@@ -1,3 +1,38 @@
-<p>
-  customize works!
-</p>
+<div class="page100p">
+    <div class="headertop">
+        <div></div>
+        <div>
+            <div class="customize">Customise</div>
+            <div class="display-flex m-t-10">
+                <div>Qty 1</div>
+                <div>price</div>
+            </div>
+        </div>
+        <div class="closebtn" (click)="onClose()">
+            <mat-icon>close</mat-icon>
+        </div>
+    </div>
+
+    <div>
+        <mat-tab-group mat-align-tabs="center">
+            <mat-tab [label]="item?.tabsTitle" *ngFor="let item of items">
+                <div class="display-flex-center">
+                    <div class="alignContent">
+                        <div class="lineItem p-t-10 p-b-10">
+                            <div *ngFor="let itemContent of item?.tabsContent" (click)="onTopItem()">
+                                <div class="display-flex pointer b-b-1">
+                                    <div class="m-t-2 m-l-15">
+                                        <mat-checkbox></mat-checkbox>
+                                    </div>
+                                    <div class="w-50p m-l-20">{{itemContent?.tabItemTitle}}</div>
+                                    <app-customize-option-select [options]="itemContent?.tabItemOption">
+                                    </app-customize-option-select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

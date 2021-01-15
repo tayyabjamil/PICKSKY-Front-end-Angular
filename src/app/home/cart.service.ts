@@ -17,9 +17,12 @@ export class CartService {
       accept: ' application/json'
     })
   };
-  emptyProduct(){
-  this.cart = []
+
+  emptyProduct() {
+    this.cart = [];
+    localStorage.setItem('cart', JSON.stringify(this.cart));
   }
+
   removeProduct(product) {
     let proudctRemoved = false
     this.cart.find((item) => {
@@ -38,10 +41,10 @@ export class CartService {
 
       }
     })
-
+    localStorage.setItem('cart', JSON.stringify(this.cart));
   }
-  addProduct(product) {
 
+  addProduct(product) {
     let productInCart;
     productInCart = this.cart.find((item) => {
       if (item._id === product._id) {
@@ -51,7 +54,7 @@ export class CartService {
 
     if (!productInCart) {
       this.cart.push(product);
-       product.productCount ++
+      product.productCount++
     } else {
       this.cart.forEach((item) => {
         if (item._id == product._id) {
@@ -61,16 +64,19 @@ export class CartService {
       });
     }
     console.log(this.cart)
+    localStorage.setItem('cart', JSON.stringify(this.cart));
   }
 
   getProducts() {
+    if (JSON.parse(localStorage.getItem('cart'))) {
+      this.cart = JSON.parse(localStorage.getItem('cart'));
+    }
     return this.cart;
   }
 
   getTotalPrice() {
     let subtotal = 0;
     this.cart.forEach(item => {
-
       subtotal = item.productCount * item.price + subtotal;
     });
     return subtotal;
@@ -89,18 +95,19 @@ export class CartService {
         refrence: orderData.refrence,
         phase: orderData.phase,
         ownerEmail: orderData.ownerEmail,
-        firstName:orderData.firstName,
-      lastName:orderData.lastName,
-      city:orderData.city,
-      adress:orderData.adress,
-      code:orderData.code,
-      contry:orderData.contry,
-      method:orderData.method,
+        firstName: orderData.firstName,
+        lastName: orderData.lastName,
+        city: orderData.city,
+        adress: orderData.adress,
+        code: orderData.code,
+        contry: orderData.contry,
+        method: orderData.method,
 
       },
       this.httpHeaders
     );
   }
+
   getOrderStatus() {
     return of([
       {
