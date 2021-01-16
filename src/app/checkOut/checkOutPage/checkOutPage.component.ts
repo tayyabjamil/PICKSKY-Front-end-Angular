@@ -102,8 +102,10 @@ getAllOrders(){
 })
 }
 get useAdress(){
- this.previousData = this.dataOrder[0].adress
- return this.previousData
+  if (this.dataOrder) {
+    this.previousData = this.dataOrder[0].adress;
+    return this.previousData;
+  }
 }
 
 private initConfig(): void {

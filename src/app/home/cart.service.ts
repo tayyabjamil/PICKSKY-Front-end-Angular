@@ -30,13 +30,12 @@ export class CartService {
         if (item.productCount === 1) {
           this.cart.splice(item._id, 1)
           item.productCount = item.productCount - 1;
-
-          return true
+          return true;
         }
         else {
           item.productCount = item.productCount - 1;
           item.unitTotal = item.unitTotal - item.price
-          return true
+          return true;
         }
 
       }

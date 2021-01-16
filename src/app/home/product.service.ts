@@ -32,6 +32,7 @@ export class ProductService {
   getProducts() {
     return this.http.get('http://localhost:8000/api/products', this.httpHeaders);
   }
+
   getOrders() {
     return this.http.get('http://localhost:8000/api/orders/' + this.myauthService.getID(), this.httpHeaders);
   }
