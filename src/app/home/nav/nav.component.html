@@ -152,8 +152,9 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar class="row" style="background-color: white">
-      <div *ngIf="isShow == true" style="width: 100%; margin-left: 2%;margin-top: 1%;  margin-bottom: 1%" class="row">
+    <mat-toolbar  style="margin-top: 1%;background-color: white">
+      <div *ngIf="isShow == true" style="width: 100%; margin-left: 2%;margin-top: 1%;  margin-bottom: 1%"
+       class="row">
         <p *ngIf="isShow == true" class="col-xs-11" style="
             border-radius: 6px;
             font-weight: 300px;
@@ -172,29 +173,30 @@
           <i class="fa fa-times"></i>
         </p>
       </div>
-      <div *ngIf="isShow == false" style="width: 100%; display: flex;flex-direction: row;margin-top: 1%; margin-bottom: 1%" >
-<div class="col-xs-1 col-sm-1 col-md-1">
+      <div class="row"  *ngIf="isShow == false" >
+      <div class="col-xs-2 col-sm-2">
         <button  type="button" aria-label="Toggle sidenav" mat-icon-button
           (click)="drawer.toggle()" *ngIf="isHandset$ | async">
-          <mat-icon aria-label="Side nav toggle icon" style="color: black">menu</mat-icon>
+          <mat-icon aria-label="Side nav toggle icon" style="margin-bottom: 1%;color: black">menu</mat-icon>
         </button>
-</div>
-         <div class="col-xs-2 col-sm-2 col-md-2">
+       </div>
+         <div  class="col-xs-4 col-sm-4">
           <p style="
               color: black;
-              margin-top: 1%;
               font-size: large;
               font-weight: 500;
             " routerLink="">
             SHRIVASAFOODS
           </p>
         </div>
-        <div class="col-xs-1 col-sm-1 col-md-1">
+<div class="col-xs-2 col-sm-2"></div>
+        <div class="col-xs-1 col-sm-1">
           <p (click)="toggleDisplay()" style="font-size: large;padding-left: 15%; font-weight: 300px; color: grey">
             <i class="fa fa-search"></i>
           </p>
         </div>
-        <div class="col-xs-3 col-sm-3 col-md-2" style="display: flex; flex-direction: row">
+
+        <div class="col-xs-1 col-sm-1" style="display: flex; flex-direction: row">
           <p *ngIf="authService.loggedIn()" style="font-size: large; padding-top: 5%">
             Hi {{ usernameLogin }}
           </p>
@@ -233,10 +235,10 @@
             </ng-template>
           </div>
         </div>
-        <div class="col-xs-1 col-sm-1 col-md-1">
+        <div class="col-xs-1 col-sm-1">
           <i class="fa fa-user-circle-o" routerLink="/login" style="color: gray; font-size: xx-large"></i>
         </div>
-     <div class="col-xs-4"></div>
+
       </div>
     </mat-toolbar>
     <ng-content> </ng-content>

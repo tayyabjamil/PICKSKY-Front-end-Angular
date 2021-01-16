@@ -44,6 +44,7 @@ export class HomeComponent implements OnInit {
 
     })
 
+      console.log(this.mediaSub)
 
 
     this.getScrollingElement()

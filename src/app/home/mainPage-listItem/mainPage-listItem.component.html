@@ -1,5 +1,5 @@
 <div style="height: 180px;width: 160px;">
-  <div style="min-height: 45px;">
+  <div style="min-height: 45px;" >
     <div (click)="addProduct(item)" *ngIf="item.productCount===0" style="text-align: right;">
       <button style="border: 0px solid transparent;
    padding: 3px 10px 3px 10px;"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
@@ -20,7 +20,7 @@
       </div>
     </div>
   </div>
-  <div style="margin-left: 35px;">
+  <div style="margin-left: 35px;" [routerLink]="['/detail']">
     <img (load)='imageLoaded()' [src]='getImage(item.productImage)' style="height: 100px;width: auto">
     <div *ngIf="loadingImageGetter" style="margin-left: 35px;" class="spinner-border" role="status">
       <span class="sr-only">Loading...</span>
