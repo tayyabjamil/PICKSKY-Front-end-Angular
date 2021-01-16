@@ -9,39 +9,44 @@
   </div>
   <div style="border-radius: 6px;margin:2%;background-color: white;">
     <div *ngIf="deviceLg || deviceMd" class="deviceLg">
-
-      <div *ngFor="let item of catagoryProducts" (click)="addProduct(item)" style="padding:2%;width: 20%;">
-        <div style="text-align: right;">
-          <button class="btn"><i class="glyphicon glyphicon-shopping-cart"></i></button>
-        </div>
-        <div style="height: 250px;width: 200px;">
-          <img [src]='getImage(item.productImage)' style="height: 250px;width: 200px;">
-        </div>
-        <p style="font-weight: bold;">{{item.price}}</p>
-        <p></p>
+      <div
+        routerLinkActive="router-link-active"
+        *ngFor="let item of catagoryProducts"
+        style="
+          padding: 1%;
+          width: 200px;
+          height: 200px;
+          background-color: white;
+          margin: 1%;
+        "
+      >
+        <app-mainPage-listItem [item]="item"></app-mainPage-listItem>
       </div>
-
     </div>
     <div *ngIf="deviceXs || deviceSm">
       <div class="row">
-        <div style="display:flex;flex-direction: row;flex-wrap: wrap;flex: 2;justify-content: space-evenly;">
-
-
-          <div *ngFor="let item of catagoryProducts" (click)="addProduct(item)" style="padding:2%;width: 40%;">
-            <div style="text-align: right;">
-              <button class="btn"><i class="glyphicon glyphicon-shopping-cart"></i></button>
-            </div>
-            <div>
-              <img class="img-responsive" src={{item.image}}>
-            </div>
-            <p style="font-weight: bold;">{{item.price}}</p>
-            <p></p>
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            flex: 2;
+            justify-content: space-evenly;
+          "
+        >
+          <div
+            *ngFor="let item of catagoryProducts"
+            style="
+              padding: 2%;
+              width: 180px;
+              height: 200px;
+              background-color: white;
+              margin: 2%;
+            "
+          >
+            <app-mainPage-listItem [item]="item"></app-mainPage-listItem>
           </div>
         </div>
-
       </div>
-
-
-    </div>
-  </div>
+    </div></div>
 </div>

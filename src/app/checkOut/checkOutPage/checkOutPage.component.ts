@@ -18,7 +18,8 @@ export class CheckOutPageComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder,
     public cartService:CartService,
      public productService:ProductService,
-     public authService:AuthService,    private router: Router,) { }
+     public authService:AuthService,
+     private router: Router,) { }
 
 
      cartItems
@@ -56,7 +57,15 @@ ngOnInit() {
       // contact: ['', Validators.required],
 
     });
-    this.getAllOrders()
+    // this.getAllOrders()
+   this.gotoPayment()
+  }
+  gotoPayment(){
+    // let  loggedin  =this.authService.loggedIn()
+    // if(loggedin == true){
+    // this.move(2)
+    // }
+
   }
   getCartItems(){
     this.cartItems = this.cartService.getProducts()
@@ -96,10 +105,10 @@ move(index: number) {
   this.stepper.selectedIndex = index;
 }
 getAllOrders(){
- let id= this.authService.getID()
- this.productService.getOrders().subscribe((data: any) => {
-   this.dataOrder = data.orders
-})
+//  let id= this.authService.getID()
+//  this.productService.getOrders().subscribe((data: any) => {
+//    this.dataOrder = data.orders
+// })
 }
 get useAdress(){
  this.previousData = this.dataOrder[0].adress

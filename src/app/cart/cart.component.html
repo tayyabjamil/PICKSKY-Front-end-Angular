@@ -1,8 +1,7 @@
-<div>
-  <div class="row">
-    <div class="col-lg-2 col-sm-1 col-xs-1"></div>
-    <div
-      class="col-lg-8 col-xs-10 col-sm-10"
+<div >
+  <div class="row" style="margin:1%">
+    <div class="col-lg-2 col-sm-1 "></div>
+    <div class="col-lg-8 col-xs-12 col-sm-10"
       style="
         margin-top: 3%;
         margin-bottom: 3%;
@@ -27,23 +26,23 @@
         routerLinkActive="router-link-active"
       ></span>
     </div>
-    <div class="col-lg-2 col-sm-1 col-xs-1"></div>
+    <div class="col-lg-2 col-sm-1 "></div>
   </div>
 
-  <div class="row" style="background-color: rgb(243, 242, 242)">
-    <div class="col-lg-2 col-sm-1 col-xs-1"></div>
-    <div
-      class="col-lg-8 col-xs-10 col-sm-10"
+  <div class="row" style="margin: 1%;background-color: rgb(243, 242, 242)">
+    <div class="col-lg-2 col-sm-1 "></div>
+    <div  class="col-lg-8 col-xs-12 col-sm-10"
       style="
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        padding-top: 20px;"
+        padding-top: 20px;
+      "
     >
       <p style="padding-left: 2%">Total Amount</p>
       <p style="font-weight: 500">${{ getTotal }}</p>
     </div>
-    <div class="col-lg-2 col-sm-1 col-xs-1"></div>
+    <div class="col-lg-2 col-sm-1 "></div>
   </div>
 
   <div class="container">
@@ -62,9 +61,9 @@
   <div class="cartHeight">
     <div class="row" *ngFor="let item of getCartItems">
       <div class="col-lg-2 col-md-2 col-xs-1 col-sm-11"></div>
-      <div class="col-lg-8 col-xs-10 col-sm-10">
+      <div class="col-lg-8 col-xs-12 col-sm-10">
         <div class="row" style="padding-top: 2%">
-          <div class="col-4 col-lg-2" (click)="removeProduct(item)">
+          <div class="col-4 col-lg-2 col-xs-3" (click)="removeProduct(item)">
             <div class="container" style="height: 80px; width: 130px">
               <div style="background-color: grey">
                 <img
@@ -86,7 +85,7 @@
               </div>
             </div>
           </div>
-          <div class="col-4 col-lg-8" style="min-width: 30px">
+          <div class="col-4 col-lg-8 col-xs-4" style="min-width: 30px">
             <div>
               <p>{{ item.name }}</p>
             </div>
@@ -95,16 +94,9 @@
               <p>Total Units : {{ item.productCount }}</p>
             </div>
           </div>
-          <div class="col-4 col-lg-2" style="text-align: right">
+          <div class="col-4 col-lg-2 col-xs-3" style="text-align:right;padding-right: 40px;">
             <p style="font-weight: 500">${{ item.unitTotal }}</p>
-            <div
-              style="
-                height: 150px;
-                width: 160px;
-                margin-right: 20px;
-                margin-left: 20px;
-              "
-            >
+            <div>
               <div
                 (click)="addProduct(item)"
                 *ngIf="item.productCount === 0"
@@ -130,22 +122,21 @@
                   line-height: 35px;
                 "
               >
-              
-
-              <div
-              (click)="removeProduct(item)"
-              class="btn"
-              style="
-                text-align: center;
-                width: 40px;
-                color: white;
-                font-size: large;
-                font-weight: bold;
-                padding: 0px;
-                margin: 0px;"
-            >
-              <span>-</span>
-            </div>
+                <div
+                  (click)="removeProduct(item)"
+                  class="btn"
+                  style="
+                    text-align: center;
+                    width: 40px;
+                    color: white;
+                    font-size: large;
+                    font-weight: bold;
+                    padding: 0px;
+                    margin: 0px;
+                  "
+                >
+                  <span>-</span>
+                </div>
 
                 <div
                   style="
@@ -160,21 +151,20 @@
                   {{ item.productCount }}
                 </div>
                 <div
-                (click)="addProduct(item)"
-                class="btn"
-                style="
-                  text-align: center;
-                  width: 40px;
-                  color: white;
-                  font-size: large;
-                  font-weight: bold;
-                  padding: 0px;
-                  margin: 0px;
-                "
-              >
-                <span>+</span>
-              </div>
-              
+                  (click)="addProduct(item)"
+                  class="btn"
+                  style="
+                    text-align: center;
+                    width: 40px;
+                    color: white;
+                    font-size: large;
+                    font-weight: bold;
+                    padding: 0px;
+                    margin: 0px;
+                  "
+                >
+                  <span>+</span>
+                </div>
               </div>
             </div>
           </div>
@@ -224,7 +214,7 @@
       text-align: center;
     "
   >
-    <div style="color: white; text-align: center; width: 100%;">
+    <div style="color: white; text-align: center; width: 100%">
       <svg width="16" height="16" viewBox="0 0 16 16">
         <path
           id="shopping-bag"
@@ -234,7 +224,8 @@
           fill-rule="evenodd"
         ></path>
       </svg>
-      <span style="margin-left: 5px; justify-content: center; text-align: center"
+      <span
+        style="margin-left: 5px; justify-content: center; text-align: center"
         >Proceed To Check out</span
       >
     </div>
@@ -279,7 +270,7 @@
       text-align: center;
     "
   >
-    <div style="color: white; text-align: center; width: 100%;">
+    <div style="color: white; text-align: center; width: 100%">
       <svg width="16" height="16" viewBox="0 0 16 16">
         <path
           id="shopping-bag"
@@ -289,7 +280,8 @@
           fill-rule="evenodd"
         ></path>
       </svg>
-      <span style="margin-left: 5px; justify-content: center; text-align: center"
+      <span
+        style="margin-left: 5px; justify-content: center; text-align: center"
         >Proceed To Check out</span
       >
     </div>

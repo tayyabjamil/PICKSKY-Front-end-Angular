@@ -54,7 +54,7 @@ export class SignUpComponent implements OnInit {
     this.rformSignup = this.formBuilder.group({
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
-      phone: new FormControl(''),
+      phoneNo: new FormControl(''),
       email: new FormControl('', [Validators.required,Validators.email]),
       password: new FormControl('',  Validators.compose([
         Validators.required,

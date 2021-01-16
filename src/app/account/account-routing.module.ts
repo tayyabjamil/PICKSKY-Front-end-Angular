@@ -17,6 +17,8 @@ const routes: Routes = [
   { path: 'accountVerify/:token', component: EmailVerifyComponent },
 
   // { path: '', loadChildren: './home/home.module#HomeModule' },
+  { path: 'login', component: LoginComponent },
+
   { path: '', component: LoginComponent },
 
  ]

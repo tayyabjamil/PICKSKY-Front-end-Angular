@@ -24,7 +24,7 @@ export class AccountService {
         lastName: newUser.lastName,
         email: newUser.email,
         password: newUser.password,
-        phone: newUser.phone,
+        phoneNo: newUser.phoneNo,
         accountBonus: 1,
         provider: newUser.provider,
         token: newUser.token
