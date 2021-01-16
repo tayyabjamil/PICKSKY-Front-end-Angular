@@ -200,7 +200,8 @@
       [imagePopup]="false"
       *ngIf="deviceXs || deviceSm"
       [imageSize]="{ width: '190px', height: '12%', space: 4 }"
-      [images]="imagesUrl"
+      [images]="categories"
+      (imageClick)="onImageClick($event)"
       #nav
     ></ng-image-slider>
   </div>
@@ -210,7 +211,8 @@
       [imagePopup]="false"
       *ngIf="deviceLg || deviceMd"
       [imageSize]="{ width: '220px', height: '30%', space: 8 }"
-      [images]="imagesUrl"
+      [images]="categories"
+      (imageClick)="onImageClick($event)"
       #nav
     ></ng-image-slider>
   </div>
