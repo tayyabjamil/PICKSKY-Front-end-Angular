@@ -1,179 +1,156 @@
-
-
-
-
-
 <div class="row" style="background-color: #f7f7f7;" style="margin-top: 2%;margin-bottom: 2%;">
   <div class="col-lg-2 col-xs-1 col-sm-1"></div>
-  <div class="col-lg-8 col-xs-10 col-sm-12" >
-    <div  class="cardLeft col-lg-8 col-xs-12 col-sm-12">
+  <div class="col-lg-8 col-xs-10 col-sm-12">
+    <div class="cardLeft col-lg-8 col-xs-12 col-sm-12">
 
       <div style="width: 100%;padding-bottom: 8%;">
         <p [style.font-size.px]="deviceXs || deviceSm ? '15':'25'" class="btn"
-      style="text-align: left;padding-top: 5%;font-weight: 500;">Create Your Account</p>
-    </div>
+          style="text-align: left;padding-top: 5%;font-weight: 500;">Create Your Account</p>
+      </div>
       <form [formGroup]="rformSignup" style="text-align: left;">
         <div style="display: flex;flex-direction: row;justify-content: space-between;">
-        <div style="padding-bottom: 2%;padding-right: 2%;min-width: 60px;width: 50%;" class="">
+          <div style="padding-bottom: 2%;padding-right: 2%;min-width: 60px;width: 50%;" class="">
 
-          <ns-textField-account placeholder="First Name" style="min-width: 100px;" name="firstName" class="textfieldBorderColor font13" [rformgroup]="rformSignup"
-            rformControlName="firstName">
-          </ns-textField-account>
+            <ns-textField-account placeholder="First Name" style="min-width: 100px;" name="firstName"
+              class="textfieldBorderColor font13" [rformgroup]="rformSignup" rformControlName="firstName">
+            </ns-textField-account>
+          </div>
+          <div style="padding-bottom: 2%;padding-left: 2%;width: 50%;" class="">
+            <!-- <p ></p> -->
+            <ns-textField-account placeholder="Last Name" name="lastName" class="textfieldBorderColor font13"
+              [rformgroup]="rformSignup" rformControlName="lastName">
+            </ns-textField-account>
+          </div>
         </div>
-        <div style="padding-bottom: 2%;padding-left: 2%;width: 50%;" class="">
-          <!-- <p ></p> -->
-          <ns-textField-account  placeholder="Last Name" name="lastName" class="textfieldBorderColor font13" [rformgroup]="rformSignup"
-            rformControlName="lastName">
-          </ns-textField-account>
-        </div>
-      </div>
 
 
         <div style="padding-bottom: 2%;width:400px;">
           <!-- <p ></p> -->
 
-          <ns-textField-account
-          placeholder="Email"
-            name="email"
-            class="textfieldBorderColor font13"
-            [rformgroup]="rformSignup"
-            rformControlName="email"
-          >
+          <ns-textField-account placeholder="Email" name="email" class="textfieldBorderColor font13"
+            [rformgroup]="rformSignup" rformControlName="email">
           </ns-textField-account>
         </div>
 
-        <div  style="padding-bottom: 2%;display: flex;flex-direction: row;width:400px;">
-        <div style="width: 360px;">
-          <ns-textField-account
-          placeholder="Password"
-            name="password"
-            class="textfieldBorderColor font13"
-            [rformgroup]="rformSignup"
-            rformControlName="password"
-            [type]="showPass ? 'text' : 'password'"
-            >
-          </ns-textField-account>
-          <p
-          style="font-size: 14px;"
-          class="errorlbl"
-          *ngIf="rformSignup.controls['password'].hasError('hasCapitalCase')"
-        >
-         password must have at least 1 Capital letter!
-        </p>
-        <p
-        style="font-size: 14px;"
-        class="errorlbl"
-        *ngIf="rformSignup.controls['password'].hasError('hasSmallCase')"
-      >
-        passowrd must have at least 1 Small letter!
-      </p>
-      <p
-      style="font-size: 14px;"
+        <div style="padding-bottom: 2%;display: flex;flex-direction: row;width:400px;">
+          <div style="width: 360px;">
+            <ns-textField-account placeholder="Password" name="password" class="textfieldBorderColor font13"
+              [rformgroup]="rformSignup" rformControlName="password" [type]="showPass ? 'text' : 'password'">
+            </ns-textField-account>
+            <p style="font-size: 14px;" class="errorlbl"
+              *ngIf="rformSignup.controls['password'].hasError('hasCapitalCase')">
+              password must have at least 1 Capital letter!
+            </p>
+            <p style="font-size: 14px;" class="errorlbl"
+              *ngIf="rformSignup.controls['password'].hasError('hasSmallCase')">
+              passowrd must have at least 1 Small letter!
+            </p>
+            <p style="font-size: 14px;" *ngIf="rformSignup.controls['password'].hasError('hasDigit')">
+              passowrd must have at least 1 number!
+            </p>
+          </div>
+          <div style="width: 30px;">
+            <button style="height: 35px;" class="btn btn-default" (click)="passwordshow()" type="submit">
+              <i *ngIf="showPass" class="glyphicon glyphicon-eye-open"></i>
+              <i *ngIf="!showPass" class="glyphicon glyphicon-eye-close"></i>
+            </button>
+          </div>
 
-      *ngIf="rformSignup.controls['password'].hasError('hasDigit')"
-    >
-      passowrd must have at least 1 number!
-    </p>
-  </div>
-  <div style="width: 30px;">
-    <button style="height: 35px;" class="btn btn-default" (click)="passwordshow()" type="submit">
-      <i *ngIf="showPass" class="glyphicon glyphicon-eye-open"></i>
-      <i *ngIf="!showPass" class="glyphicon glyphicon-eye-close"></i>
-    </button>
-  </div>
+        </div>
 
-</div>
-
-        <div  style="padding-bottom: 2%;display: flex;flex-direction: row;justify-content: space-between;">
-          <div style="width: 360px;" >
-           <ns-textField-account placeholder="Confirm Password " name="password"  [type]="showConfirmPass ? 'text' : 'password'" class="textfieldBorderColor font13"
+        <div style="padding-bottom: 2%;display: flex;flex-direction: row;justify-content: space-between;">
+          <div style="width: 360px;">
+            <ns-textField-account placeholder="Confirm Password " name="password"
+              [type]="showConfirmPass ? 'text' : 'password'" class="textfieldBorderColor font13"
               [rformgroup]="rformSignup" rformControlName="confirmPassword">
             </ns-textField-account>
           </div>
-            <div style="width:40px">
-              <button style="height: 35px;" class="btn btn-default" (click)="confirmpasswordshow()" type="submit">
-                <i *ngIf="showConfirmPass" class="glyphicon glyphicon-eye-open"></i>
-                <i *ngIf="!showConfirmPass" class="glyphicon glyphicon-eye-close"></i>
-              </button>
-            </div>
+          <div style="width:40px">
+            <button style="height: 35px;" class="btn btn-default" (click)="confirmpasswordshow()" type="submit">
+              <i *ngIf="showConfirmPass" class="glyphicon glyphicon-eye-open"></i>
+              <i *ngIf="!showConfirmPass" class="glyphicon glyphicon-eye-close"></i>
+            </button>
           </div>
-
-<div style="padding-bottom: 2%">
-          <!-- <p ></p> -->
-
-          <ns-textField-account
-          placeholder="phone No (Optional)"
-          name="phone"
-
-
-            class="textfieldBorderColor font13"
-            [rformgroup]="rformSignup"
-            rformControlName="phone"
-
-          >
-          </ns-textField-account>
         </div>
 
-        </form>
+        <div style="padding-bottom: 2%">
+          <!-- <p ></p> -->
 
-        <div  class="row">
-          <div class="col-1"></div>
-          <button class="col-10 btn btn-primary"  (click)="createAccount()" type="button"  >Create Account</button>
-          <div class="col-1"></div>
+          <!-- <ns-textField-account placeholder="phone No (Optional)" name="phone" class="textfieldBorderColor font13"
+            [rformgroup]="rformSignup" rformControlName="phone">
+          </ns-textField-account> -->
+          <form  [formGroup]="rformSignup">
+            <ngx-intl-tel-input [cssClass]="'customInput'"
+              preferredCountries="[CountryISO.UnitedStates, CountryISO.UnitedKingdom]"
+              [enableAutoCountrySelect]="false" [enablePlaceholder]="true" [searchCountryFlag]="true" [selectFirstCountry]="false" [maxLength]="15" 
+              [phoneValidation]="true"  name="phone" formControlName="phone">
+            </ngx-intl-tel-input>
+          </form>
+        </div>
 
-          </div>
-          <div class="row" style="margin-top: 3%">
-            <div class="col-lg-1"></div>
+      </form>
 
-            <button (click)="signUpGoogle('google')" style="padding-right: 5px;" class="col-lg-4 btn btn-danger">SignUp With Google</button>
-            <div class="col-lg-2"></div>
+      <div class="row">
+        <div class="col-1"></div>
+        <button class="col-10 btn btn-primary" (click)="createAccount()" type="button">Create Account</button>
+        <div class="col-1"></div>
 
-            <button (click)="signUpFacebook('facebook')" style="padding-left: 5px;" class="  col-lg-4 btn btn-primary">SignUp With facebook</button>
-               <div class="col-lg-1"></div>
+      </div>
+      <div class="row" style="margin-top: 3%">
+        <div class="col-lg-1"></div>
 
-              </div>
+        <button (click)="signUpGoogle('google')" style="padding-right: 5px;" class="col-lg-4 btn btn-danger">SignUp With
+          Google</button>
+        <div class="col-lg-2"></div>
+
+        <button (click)="signUpFacebook('facebook')" style="padding-left: 5px;"
+          class="  col-lg-4 btn btn-primary">SignUp With facebook</button>
+        <div class="col-lg-1"></div>
+
+      </div>
 
 
-<!-- <button class="btn" style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(145, 145, 145); color: whitesmoke">
+      <!-- <button class="btn" style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(145, 145, 145); color: whitesmoke">
 <span style="font-weight: bold;font-size: small;"></span></button> -->
 
-  </div>
-  <div class="col-lg-4 col-xs-12 col-sm-12 cardRight">
-    <h3 class="btn">Hello Friend</h3>
-    <h4 class="btn">Fill up the Form and </h4>
-    <h4 class="btn">start Journey with us</h4>
+    </div>
+    <div class="col-lg-4 col-xs-12 col-sm-12 cardRight">
+      <h3 class="btn">Hello Friend</h3>
+      <h4 class="btn">Fill up the Form and </h4>
+      <h4 class="btn">start Journey with us</h4>
 
-    <div style="text-align: center;width: 100%;">
-      <button   (click)="login()"  type="button" class="btn btn-primary"  >Login</button>
+      <div style="text-align: center;width: 100%;">
+        <button (click)="login()" type="button" class="btn btn-primary">Login</button>
+
+      </div>
 
     </div>
 
-</div>
 
-
-</div>
-<div class="col-lg-2 col-xs-1 col-sm-1"></div>
+  </div>
+  <div class="col-lg-2 col-xs-1 col-sm-1"></div>
 </div>
 
 <div style="background-color: rgb(189, 187, 187);">
-<div style="padding-left:5% ;padding-right: 5%;padding-top: 3%;padding-bottom: 3%;">
-<div class="row">
-  <div class="col-lg-6">
-    <p>Quick Links</p>
-    <p>Search</p>
-  </div>
-  <div class="col-lg-6">
-    NewsLetter
-    <input style="width: 40vw;">
+  <div style="padding-left:5% ;padding-right: 5%;padding-top: 3%;padding-bottom: 3%;">
+    <div class="row">
+      <div class="col-lg-6">
+        <p>Quick Links</p>
+        <p>Search</p>
+      </div>
+      <div class="col-lg-6">
+        NewsLetter
+        <input style="width: 40vw;">
 
+      </div>
+    </div>
   </div>
-</div>
-</div>
 
-<hr class="hr" style="background-color: black;">
-<div style="padding:5%" (click)="createAccount()">
-  <button class="btn" style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(63, 61, 61); color: whitesmoke">
-    <span style="font-weight: bold;font-size: small;">SIGN IN</span></button>
-<p style="text-align: right;">© 2020, picksystore Powered by Shopify</p>
-</div>
+  <hr class="hr" style="background-color: black;">
+  <div style="padding:5%" (click)="createAccount()">
+    <button class="btn"
+      style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(63, 61, 61); color: whitesmoke">
+      <span style="font-weight: bold;font-size: small;">SIGN IN</span></button>
+    <p style="text-align: right;">© 2020, picksystore Powered by Shopify</p>
+  </div>
 </div>
