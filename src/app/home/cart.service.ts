@@ -8,7 +8,10 @@ import { of } from 'rxjs';
   providedIn: 'root',
 })
 export class CartService {
-  constructor(public http: HttpClient, private myauthService: AuthService) { }
+  constructor(public http: HttpClient, private myauthService: AuthService) {
+    this.getProducts();
+  }
+
   cart = [];
   total = 0;
   httpHeaders = {
