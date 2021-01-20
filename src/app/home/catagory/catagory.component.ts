@@ -11,17 +11,21 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./catagory.component.css']
 })
 export class CatagoryComponent implements OnInit {
- page;
- catagoryProducts
- mediaSub: Subscription
- deviceXs: boolean;
- deviceLg: boolean;
- deviceMd: boolean;
- deviceSm: boolean;
+
+  page;
+  catagoryProducts
+  mediaSub: Subscription
+  deviceXs: boolean;
+  deviceLg: boolean;
+  deviceMd: boolean;
+  deviceSm: boolean;
+  currentCategory;
+
   constructor(
     public route: ActivatedRoute,
     public mediaObserver: MediaObserver, public productService: ProductService,
-    public cartService: CartService
+    public cartService: CartService,
+    private _route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -32,14 +36,29 @@ export class CatagoryComponent implements OnInit {
       this.deviceLg = result.mqAlias === 'lg'
       this.deviceMd = result.mqAlias === 'md'
     })
- this.getCatagoryProducts(this.selectedPage)
-
+    
+    this._route.paramMap.subscribe((params: any) => {
+      if (params && params.params.page) {
+        let categoryRoute  =  params.params.page;
+        this.currentCategory = this.productService.categories.find((item) => {
+          if (item.routeTo === categoryRoute) {
+            return true;
+          }
+        });
+        
+      }
+      //change the value of showRoutes based on your requirements
+    });
+    if (this.currentCategory && this.currentCategory.routeTo) {
+      this.getCatagoryProducts(this.currentCategory.routeTo)
+    }
   }
-  get selectedPage(){
-    this.page = this.route.snapshot.paramMap.get('page');
 
-    return  this.page
-  }
+  // get selectedPage() {
+  //   // this.page = this.route.snapshot.paramMap.get('page');
+  //   // return this.page
+  // }
+
   getCatagoryProducts(page) {
     this.productService.getCatagoryProducts(page).subscribe((products) => {
       this.catagoryProducts = products;
@@ -47,6 +66,7 @@ export class CatagoryComponent implements OnInit {
       console.log('error in getting all products');
     });
   }
+
   addProduct(item) {
     this.cartService.addProduct(item);
   }

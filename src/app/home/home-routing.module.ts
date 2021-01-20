@@ -53,11 +53,8 @@ const routes: Routes = [
       { path: 'blog', component: BlogComponent },
       { path: 'home', component: HomeComponent },
       { path: 'customize', component: CustomizeComponent },
-
       { path: 'giftCards', component: GiftCardsComponent },
       { path: 'referFriend', component: ReferFriendComponent },
-
-
       { path: 'myOrders', component: MyordersComponent, canActivate: [AuthGuard] },
       { path: '', component: MainPageComponent },
 

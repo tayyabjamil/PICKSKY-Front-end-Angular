@@ -1,14 +1,14 @@
 import { TextFieldComponent } from './../../account/textField/textField.component';
 import { Router } from '@angular/router';
 import { AccountService } from './../account.service';
-import { FormBuilder, FormGroup,FormControl ,Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { SocialAuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
-import  {MediaObserver, MediaChange} from '@angular/flex-layout';
-import  { Subscription } from 'rxjs';
+import { MediaObserver, MediaChange } from '@angular/flex-layout';
+import { Subscription } from 'rxjs';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import {patternValidator} from '../customValidator'
+import { patternValidator } from '../customValidator'
 import {
   GoogleLoginProvider,
   FacebookLoginProvider,
@@ -20,118 +20,115 @@ import {
   styleUrls: ['./signUp.component.scss']
 })
 export class SignUpComponent implements OnInit {
-  rformSignup:FormGroup
-  username:string
-  email:string
-  password:string
-  contact:number
+  rformSignup: FormGroup
+  username: string
+  email: string
+  password: string
+  contact: number
   phone;
 
-  showConfirmPass:boolean
-  showPass:boolean
+  showConfirmPass: boolean
+  showPass: boolean
   constructor(
 
-    public mediaObserver:MediaObserver,
-    private router : Router,
-    public formBuilder:FormBuilder,
-    public accountService:AccountService,private authService: SocialAuthService,) { }
-  mediaSub:Subscription
-  deviceXs:boolean;
-  deviceLg:boolean;
-  deviceMd:boolean;
-  deviceSm:boolean;
+    public mediaObserver: MediaObserver,
+    private router: Router,
+    public formBuilder: FormBuilder,
+    public accountService: AccountService, private authService: SocialAuthService, ) { }
+  mediaSub: Subscription
+  deviceXs: boolean;
+  deviceLg: boolean;
+  deviceMd: boolean;
+  deviceSm: boolean;
   show: boolean;
- isLoggedIn = true;
+  isLoggedIn = true;
   ngOnInit() {
-    this.mediaSub = this.mediaObserver.media$.subscribe((result:MediaChange)=>{
+    this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
       console.log(result.mqAlias)
       this.deviceXs = result.mqAlias === 'xs'
-      this.deviceSm = result.mqAlias ==='sm'
+      this.deviceSm = result.mqAlias === 'sm'
       this.deviceLg = result.mqAlias === 'lg'
       this.deviceMd = result.mqAlias === 'md'
     })
-      this.show = false;
+    this.show = false;
     this.rformSignup = this.formBuilder.group({
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
       phone: new FormControl(''),
-      email: new FormControl('', [Validators.required,Validators.email]),
-      password: new FormControl('',  Validators.compose([
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', Validators.compose([
         Validators.required,
         Validators.minLength(8),
 
         patternValidator(/[A-Z]/, { hasCapitalCase: true }),
-        patternValidator(/[a-z]/,{ hasSmallCase: true }),
-        patternValidator(/[0-9]/,{ hasDigit: true }),
+        patternValidator(/[a-z]/, { hasSmallCase: true }),
+        patternValidator(/[0-9]/, { hasDigit: true }),
 
         // TextFieldComponent.patternValidator(/[ [!@#$%^&*()_+-=[]{};':"|,.<>/?]/](<mailto:!@#$%^&*()_+-=[]{};':"|,.<>/?]/>), { hasSpecialCharacters: true }),
 
-      ])  ),
-      confirmPassword: new FormControl('', [Validators.required,Validators.minLength(8)]),
+      ])),
+      confirmPassword: new FormControl('', [Validators.required, Validators.minLength(8)]),
     })
   }
 
 
 
-signUpGoogle(platform: string) {
-  platform = GoogleLoginProvider.PROVIDER_ID;
-  this.authService.signIn(GoogleLoginProvider.PROVIDER_ID)
-    .then((Response) => {
-      console.log(platform + 'logged in user is ', Response);
+  signUpGoogle(platform: string) {
+    platform = GoogleLoginProvider.PROVIDER_ID;
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID)
+      .then((Response) => {
+        console.log(platform + 'logged in user is ', Response);
 
-      const userAccount = {
-        email: Response.email,
-        firstName: Response.firstName,
-        lastName: Response.lastName,
-        contact:Response.provider,
-        provider:Response.provider,
+        const userAccount = {
+          email: Response.email,
+          firstName: Response.firstName,
+          lastName: Response.lastName,
+          contact: Response.provider,
+          provider: Response.provider,
 
-        password: Response.id,
-      };
-      this.accountService.signUp(userAccount).subscribe((data: any) => {
+          password: Response.id,
+        };
+        this.accountService.signUp(userAccount).subscribe((data: any) => {
 
-        this.router.navigate(['/login'])
+          this.router.navigate(['/login'])
 
 
 
         }, (error) => {
           alert("Already have an account Just login")
-              this.router.navigate(['/login'])
+          this.router.navigate(['/login'])
 
 
         });
       });
 
-}
-signUpFacebook(platform: string) {
-  platform = FacebookLoginProvider.PROVIDER_ID;
-  this.authService
-    .signIn(FacebookLoginProvider.PROVIDER_ID)
-    .then((Response) => {
-      console.log(platform + 'logged in user is ', Response);
-      // tslint:disable-next-line: no-unused-expression
-      const userAccount = {
-        email: Response.name,
-        firstName: Response.firstName,
-        lastName: Response.lastName,
-        password: Response.id,
-        token: Response.authToken,
-      };
+  }
+  signUpFacebook(platform: string) {
+    platform = FacebookLoginProvider.PROVIDER_ID;
+    this.authService
+      .signIn(FacebookLoginProvider.PROVIDER_ID)
+      .then((Response) => {
+        console.log(platform + 'logged in user is ', Response);
+        // tslint:disable-next-line: no-unused-expression
+        const userAccount = {
+          email: Response.name,
+          firstName: Response.firstName,
+          lastName: Response.lastName,
+          password: Response.id,
+          token: Response.authToken,
+        };
 
-      this.accountService.signUp(userAccount).subscribe((data: any) => {
+        this.accountService.signUp(userAccount).subscribe((data: any) => {
 
-        this.router.navigate(['/login'])
-
-
-
+          this.router.navigate(['/login'])
 
         }, (error) => {
-              alert("Already have an account Just login")
-              this.router.navigate(['/login'])
+          alert("Already have an account Just login")
+          this.router.navigate(['/login'])
 
         });
       });
-}
+  }
   signOut(): void {
     this.authService.signOut();
   }
@@ -157,27 +154,29 @@ signUpFacebook(platform: string) {
     localStorage.setItem('email', JSON.stringify(email));
   }
 
-createAccount(){
-  if(this.rformSignup.valid){
-    if(this.rformSignup.value.password === this.rformSignup.value.confirmPassword){
- this.accountService.createuserAccount(this.rformSignup.value).subscribe((data: any) => {
-  alert("Account Created")
-  this.router.navigate(['/login'])
+  createAccount() {
+    this.rformSignup.controls['phone'].clearValidators();
+    this.rformSignup.controls['phone'].setValue(this.rformSignup.controls['phone'].value.number);
+    if (this.rformSignup.valid) {
+      if (this.rformSignup.value.password === this.rformSignup.value.confirmPassword) {
+        this.accountService.createuserAccount(this.rformSignup.value).subscribe((data: any) => {
+          alert("Account Created")
+          this.router.navigate(['/login'])
 
-  }, (error) => {
-    alert(error.error.message);
+        }, (error) => {
+          alert(error.error.message);
 
-  });
-  }else{
-alert("Password not match")
+        });
+      } else {
+        alert("Password not match")
+      }
+    }
+    else {
+      alert("Please Fill All the entries of the Form")
+    }
   }
-}
-  else{
-    alert("Please Fill All the entries of the Form")
-  }
-}
-public login(){
-  this.router.navigate(['/login'])
+  public login() {
+    this.router.navigate(['/login'])
   }
 
 }
