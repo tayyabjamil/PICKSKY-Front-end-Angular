@@ -116,6 +116,8 @@ export class SignUpComponent implements OnInit {
           lastName: Response.lastName,
           password: Response.id,
           token: Response.authToken,
+          provider: Response.provider,
+
         };
 
         this.accountService.signUp(userAccount).subscribe((data: any) => {
