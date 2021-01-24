@@ -40,14 +40,14 @@
 
       </div>
 
-      <div class="row" style="display: flex;flex-direction: row;">
-        <div style="width: 94%;">
+      <div class="row" style="display: flex;">
+        <div style="flex: 1;">
           <ns-textField-account placeholder="Password (8 characters minimun)" name="password"
             [type]="show ? 'text' : 'password'" class="textfieldBorderColor font13" [rformgroup]="rformLogin"
             rformControlName="password">
           </ns-textField-account>
         </div>
-        <div style="width: 6%;">
+        <div style="margin-left: 20px;">
           <button style="height: 35px;" class="btn btn-default" (click)="passwordshow()" type="submit">
             <i *ngIf="show" class="glyphicon glyphicon-eye-open"></i>
             <i *ngIf="!show" class="glyphicon glyphicon-eye-close"></i>
