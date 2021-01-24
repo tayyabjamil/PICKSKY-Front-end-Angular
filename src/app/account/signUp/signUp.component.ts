@@ -156,7 +156,7 @@ export class SignUpComponent implements OnInit {
 
   createAccount() {
     this.rformSignup.controls['phone'].clearValidators();
-    if (this.rformSignup.value.phone.number) {
+    if (this.rformSignup.value.phone && this.rformSignup.value.phone.number) {
       this.rformSignup.controls['phone'].setValue(this.rformSignup.value.phone.internationalNumber);
     }
 
@@ -173,8 +173,7 @@ export class SignUpComponent implements OnInit {
       } else {
         alert("Password not match")
       }
-    }
-    else {
+    } else {
       alert("Please Fill All the entries of the Form")
     }
   }

@@ -48,10 +48,10 @@
                 <div class="col-lg-6">
                   <div *ngIf="!authService.loggedIn()">
 
-                  <div style="padding-top: 1%">
-                    <i class="fa fa-user-circle-o" routerLink="/login" style="font-size: xx-large"></i>
-                    <p routerLink="/login" routerLinkActive="router-link-active">Login</p>
-                  </div>
+                    <div style="padding-top: 1%">
+                      <i class="fa fa-user-circle-o" routerLink="/login" style="font-size: xx-large"></i>
+                      <p routerLink="/login" routerLinkActive="router-link-active">Login</p>
+                    </div>
                   </div>
                   <div style="padding-top: 1%">
                     <i class="fa fa-user-circle-o" routerLink="/myOrders" style="font-size: xx-large"></i>
@@ -125,7 +125,7 @@
       <nav class="navbar sticky-top fundpress-menu navbar sticky-top navbar-light"
         style="display: flex;flex-direction: row;min-height: 60px; line-height: 60px; background-color: white">
 
-      <!-- <p style="
+        <!-- <p style="
         font-size: 2vw;
         font-weight: 500;
         padding-top: 2%;
@@ -254,37 +254,43 @@
           </li>
         </ul>
 
-        <p  (click)="toggleDisplay()" *ngIf="visibleI && isSHowSearch==false">
+        <p (click)="toggleDisplay()" *ngIf="visibleI && isSHowSearch==false">
           <span><i class="fa fa-search" style="
                 font-weight: 200;
                 font-size: large;
-                color: rgb(134, 132, 132);
-              "></i></span>
+                color: rgb(134, 132, 132);"></i>
+          </span>
         </p>
 
-        <div  *ngIf="visibleI">
+        <div *ngIf="visibleI">
           <div *ngIf="isSHowSearch == true" style=" margin-left: 2%;margin-top: 1%;  margin-bottom: 1%">
-           <p   style="
+            <div style="
                border-radius: 6px;
                font-weight: 300px;
                background-color: rgb(240, 238, 238);
-             ">
-             <span><i class="fa fa-search" routerLink="/login" style="
-                   font-weight: 200;
-                   font-size: large;
-
-                   padding: 2%;
-
-                   color: rgb(134, 132, 132);
-                 "></i></span>
-           </p>
-           <p class="col-xs-1" (click)="toggleDisplay()" style=" font-weight: 300px; color: grey">
-             <i class="fa fa-times"></i>
-           </p>
-         </div>
+               display: flex;
+               width: 60vw;
+              padding: 0px 30px;
+               justify-content: flex-start;">
+              <div>
+                <span>
+                  <i class="fa fa-search" routerLink="/login" style="font-weight: 200;font-size: large;
+                padding: 2%;
+                color: rgb(134, 132, 132);"></i>
+                </span>
+              </div>
+              <div class="flex1">
+                <input class="searchHome" (input)="onSearchChange($event.target.value)"
+                  placeholder="What Are You Looking For?" />
+              </div>
+            </div>
+            <p class="col-xs-1" (click)="toggleDisplay()" style=" font-weight: 300px; color: grey">
+              <i class="fa fa-times"></i>
+            </p>
+          </div>
 
         </div>
-        <div  *ngIf="visibleI && !authService.loggedIn() && isSHowSearch==false">
+        <div *ngIf="visibleI && !authService.loggedIn() && isSHowSearch==false">
           <i class="fa fa-user-circle-o" routerLink="/login" style="font-size: xx-large"></i>
         </div>
         <div *ngIf="visibleI && isSHowSearch==false">

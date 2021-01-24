@@ -101,7 +101,8 @@
           <form  [formGroup]="rformSignup">
             <ngx-intl-tel-input [cssClass]="'customInput'"
               [enableAutoCountrySelect]="false" [enablePlaceholder]="true" [searchCountryFlag]="true" [selectFirstCountry]="false" [maxLength]="15"
-              [phoneValidation]="true"  name="phone" formControlName="phone">
+              [phoneValidation]="true"  name="phone" formControlName="phone"
+              [defaultCountry]="'in'">
             </ngx-intl-tel-input>
           </form>
         </div>
