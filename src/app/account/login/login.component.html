@@ -86,23 +86,23 @@
 <div *ngIf="deviceMd || deviceSm  || deviceLg" class="row" style="margin-left:1%;margin-right: 1%;margin-top: 3%;">
 
   <button (click)="signInGoogle('google')" class="col-5 btn btn-danger">
-    SignUp With Google
+    SignIn With Google
   </button>
 <div class="col-2"></div>
   <button (click)="signInFacebook('facebook')" style="font-size: small;" class="col-5 btn btn-primary">
-    SignUp With facebook
+    SignIn With facebook
   </button>
 </div>
 <div *ngIf="deviceXs" class="row" style="margin-left:1%;margin-right: 1%;margin-top: 3%;">
 
-  <button (click)="signUpGoogle('google')" class="col-12 btn btn-danger">
-    SignUp With Google
+  <button (click)="signInGoogle('google')" class="col-12 btn btn-danger">
+    SignIn With Google
   </button>
 </div>
 
 <div *ngIf="deviceXs" class="row" style="margin-left:1%;margin-right: 1%;margin-top: 3%;">
-  <button (click)="signUpFacebook('facebook')" style="font-size: small;" class="col-12 btn btn-primary">
-    SignUp With facebook
+  <button (click)="signInFacebook('facebook')" style="font-size: small;" class="col-12 btn btn-primary">
+    SignIn With facebook
   </button>
 </div>
 

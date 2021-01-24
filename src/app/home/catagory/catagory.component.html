@@ -1,10 +1,12 @@
 <div style="background-color:rgb(240, 236, 236) ;padding-bottom: 2.5%;min-height: 700px;">
   <div style="padding-top: 2.5%;padding-left: 2.5%;padding-right: 2.5%;border-radius: 6px;">
 
-    <p class="text-block1">{{selectedPage}}</p>
-    <div style="height: 20%;">
-      <img class="img-responsive gradient" style="width: 100%;;object-fit:cove
-  r;border-radius: 6px;" src="../assets/images/veg.jpg">
+    <p class="text-block1">{{currentCategory?.title}}</p>
+    <div style="height: 50vh;">
+      <img class="img-responsive gradient" style="width: 100%;
+      object-fit: cover;
+      border-radius: 6px;height: 100%;"
+      [src]="currentCategory?.thumbImage">
     </div>
   </div>
   <div style="border-radius: 6px;margin:2%;background-color: white;">
@@ -48,5 +50,8 @@
           </div>
         </div>
       </div>
-    </div></div>
+
+
+    </div>
+  </div>
 </div>

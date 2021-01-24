@@ -15,6 +15,8 @@ import { NgModule,NO_ERRORS_SCHEMA } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     ReactiveFormsModule,
     MatTabsModule,
     MatInputModule,
-    MatToolbarModule
+    MatToolbarModule,
+    NgxIntlTelInputModule
   ],
   declarations: [
     AccountComponent,
@@ -46,7 +49,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     ForgetPasswordComponent
   ], providers: [
     AccountService,
-
   ],
   schemas:[NO_ERRORS_SCHEMA ]
 })

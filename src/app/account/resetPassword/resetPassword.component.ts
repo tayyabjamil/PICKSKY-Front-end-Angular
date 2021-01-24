@@ -13,13 +13,12 @@ export class ResetPasswordComponent implements OnInit {
   newPassword:String
   confirmPassword:String
   resetToken:String
-  showPass:boolean
+  showPass :boolean
   constructor(    public route: ActivatedRoute,private router : Router,public formBuilder:FormBuilder,public accountService:AccountService,) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get("id");
     this.resetToken = id;
-    this.showPass = true;
 
     this.rformPassword = this.formBuilder.group({
 

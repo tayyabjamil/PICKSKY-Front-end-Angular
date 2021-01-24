@@ -15,7 +15,7 @@ export class AccountService {
   };
   constructor(private http: HttpClient, private myauthService: AuthService,) { }
 
-  createuserAccount(newUser) {
+  createuserAccount(newUser,phoneNo) {
 
     return this.http.post(
       'http://localhost:8000/api/users/',
@@ -24,7 +24,7 @@ export class AccountService {
         lastName: newUser.lastName,
         email: newUser.email,
         password: newUser.password,
-        phoneNo: newUser.phoneNo,
+        phoneNo: phoneNo,
         accountBonus: 1,
         provider: newUser.provider,
         token: newUser.token

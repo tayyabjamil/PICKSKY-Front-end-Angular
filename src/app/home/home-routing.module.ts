@@ -9,7 +9,6 @@ import { CatagoryComponent } from './catagory/catagory.component';
 import { SupportPageComponent } from './supportPage/supportPage.component';
 import { FooterComponent } from './footer/footer.component';
 import { MyordersComponent } from './myorders/myorders.component';
-import { CartComponent } from './cart/cart.component';
 import { MainPageComponent } from './mainPage/mainPage.component';
 import { ProductDetailComponent } from './productDetail/productDetail.component';
 import { SpecialOffersComponent } from './specialoffers/specialoffers.component';
@@ -53,11 +52,8 @@ const routes: Routes = [
       { path: 'blog', component: BlogComponent },
       { path: 'home', component: HomeComponent },
       { path: 'customize', component: CustomizeComponent },
-
       { path: 'giftCards', component: GiftCardsComponent },
       { path: 'referFriend', component: ReferFriendComponent },
-
-
       { path: 'myOrders', component: MyordersComponent, canActivate: [AuthGuard] },
       { path: '', component: MainPageComponent },
 

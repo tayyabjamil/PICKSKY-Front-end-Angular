@@ -67,7 +67,7 @@ login(){
       this.setId(data.userId);
       this.setusername(data.username);
       this.setemail(data.email)
-
+      this.passwordResetToken(data.passwordResetToken)
       this.setRefrenceId(data.refrenceId)
       this.isLoggedIn = true;
       this.router.navigate(['/'])
@@ -77,6 +77,10 @@ login(){
 
       });
   }
+}
+passwordResetToken(token){
+  localStorage.setItem('resetToken', JSON.stringify(token));
+
 }
 forgetPassword(){
       this.router.navigate(['/forgetPassword'])
@@ -124,12 +128,14 @@ signInGoogle(platform: string) {
         this.isLoggedIn = true;
          this.router.navigate(['/'])
 
-
-
-
         }, (error) => {
-         alert("NO Account Sign up First")
-         this.router.navigate(['/signUp'])
+        if(error.error.message =='No Account Create Account First')
+        {
+          alert(error.error.message)
+        this.router.navigate(['/signUp'])
+        }else if(error.error.message == 'Account not verified'){
+          alert(error.error.message)
+        }
         });
       });
 
@@ -166,13 +172,16 @@ signInFacebook(platform: string) {
 
 
         }, (error) => {
-          alert("NO Account Sign up First")
-          this.router.navigate(['/signUp'])
+          if(error.error.message =='No Account Create Account First')
+        {
+          alert(error.error.message)
+        this.router.navigate(['/signUp'])
+        }else if(error.error.message == 'Account not verified'){
+          alert(error.error.message)
+        }
+        });
 
         });
-      });
-
-
 }
 socailLogin(userAccount){
   this.accountService.login(userAccount).subscribe((data: any) => {

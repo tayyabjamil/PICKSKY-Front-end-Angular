@@ -34,6 +34,9 @@ export class HomeComponent implements OnInit {
   deviceMd: boolean;
   deviceSm: boolean;
   search: true
+  isShow:boolean
+  isSHowSearch=false
+
   ngOnInit() {
     this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
       console.log(result.mqAlias)
@@ -58,6 +61,10 @@ export class HomeComponent implements OnInit {
       this.visible = false;
     }
   }
+  toggleDisplay() {
+    this.isSHowSearch = !this.isSHowSearch;
+  }
+
 
   get visibleI() {
     return this.visible;

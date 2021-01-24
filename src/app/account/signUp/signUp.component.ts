@@ -42,6 +42,7 @@ export class SignUpComponent implements OnInit {
   deviceSm:boolean;
   show: boolean;
  isLoggedIn = true;
+ phoneNo;
   ngOnInit() {
     this.mediaSub = this.mediaObserver.media$.subscribe((result:MediaChange)=>{
       console.log(result.mqAlias)
@@ -55,6 +56,7 @@ export class SignUpComponent implements OnInit {
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
       phoneNo: new FormControl(''),
+
       email: new FormControl('', [Validators.required,Validators.email]),
       password: new FormControl('',  Validators.compose([
         Validators.required,
@@ -95,7 +97,8 @@ signUpGoogle(platform: string) {
 
 
         }, (error) => {
-          alert("Already have an account Just login")
+          alert(error.error.message);
+
               this.router.navigate(['/login'])
 
 
@@ -115,18 +118,14 @@ signUpFacebook(platform: string) {
         firstName: Response.firstName,
         lastName: Response.lastName,
         password: Response.id,
-        token: Response.authToken,
+        provider:Response.provider,
       };
 
       this.accountService.signUp(userAccount).subscribe((data: any) => {
 
         this.router.navigate(['/login'])
-
-
-
-
         }, (error) => {
-              alert("Already have an account Just login")
+              alert(error.error.message)
               this.router.navigate(['/login'])
 
         });
@@ -160,7 +159,7 @@ signUpFacebook(platform: string) {
 createAccount(){
   if(this.rformSignup.valid){
     if(this.rformSignup.value.password === this.rformSignup.value.confirmPassword){
- this.accountService.createuserAccount(this.rformSignup.value).subscribe((data: any) => {
+ this.accountService.createuserAccount(this.rformSignup.value,this.phoneNo).subscribe((data: any) => {
   alert("Account Created")
   this.router.navigate(['/login'])
 

@@ -19,6 +19,8 @@ export class MainPageComponent implements OnInit {
   loadingImage = true;
   searchProductsData = [];
   productSearch: Subscription;
+  categories;
+  cartItems = []
   // @ViewChild('nav') slider: NgImageSliderComponent;
   constructor(
     public mediaObserver: MediaObserver,
@@ -35,70 +37,7 @@ export class MainPageComponent implements OnInit {
   deviceSm: boolean;
 
 
-  imagesUrl = [
-    {
-      thumbImage: 'assets/images/slideimg1.jpg',
-      title: 'Bakery & Pastry',
-      alt: 'Image alt',
-      routeTo: 'bakery',
-    },
-    {
-      thumbImage: 'assets/images/slideimg2.jpg',
-      alt: 'alt of image',
-      title: 'Pickles',
-    },
-    {
-      thumbImage: 'assets/images/slideimg3.jpg',
-      title: 'Image title',
-      alt: 'Image alt',
-    },
-    {
-      thumbImage: 'assets/images/slideimg4.jpg',
-      alt: 'alt of image',
-      title: 'Fish & Meat',
-    },
-    {
-      thumbImage: 'assets/images/slideimg5.jpg',
-      title: 'TraditionalPowders',
-      alt: 'Image alt',
-    },
-    {
-      thumbImage: 'assets/images/slideimg6.jpg',
-      alt: 'alt of image',
-      title: 'Snakes & Beverages',
-    },
-    {
-      thumbImage: 'assets/images/slideimg1.jpg',
-      title: 'Bakery & Pastry',
-      alt: 'Image alt',
-      routeTo: 'bakery',
-    },
-    {
-      thumbImage: 'assets/images/slideimg2.jpg',
-      alt: 'alt of image',
-      title: 'Pickles',
-    },
-    {
-      thumbImage: 'assets/images/slideimg3.jpg',
-      title: 'Image title',
-      alt: 'Image alt',
-    },
-    {
-      thumbImage: 'assets/images/slideimg4.jpg',
-      alt: 'alt of image',
-      title: 'Fish & Meat',
-    },
-    {
-      thumbImage: 'assets/images/slideimg5.jpg',
-      title: 'TraditionalPowders',
-      alt: 'Image alt',
-    },
-    {
-      thumbImage: 'assets/images/slideimg6.jpg',
-      alt: 'alt of image',
-      title: 'Snakes & Beverages',
-    },
-  ];
+
 
   ngOnInit() {
     this.mediaSub = this.mediaObserver.media$.subscribe(
@@ -124,7 +63,13 @@ export class MainPageComponent implements OnInit {
       } else {
         this.searchProductsData = this.allProducts;
       }
-    })
+    });
+    this.categories = this.productService.categories
+  }
+
+  scrollToTrending(){
+    document.getElementById("trending").scrollIntoView({ behavior: "smooth" })
+
   }
 
 
@@ -186,6 +131,10 @@ export class MainPageComponent implements OnInit {
 
   removeProduct(product) {
     this.cartService.removeProduct(product)
+  }
+
+  onImageClick(index) {
+    this.router.navigate(['catagory/'+ this.categories[index].routeTo]);
 
   }
 }

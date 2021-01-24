@@ -1,23 +1,17 @@
-<link
-  rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-  crossorigin="anonymous"
-/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 
 <div *ngIf="searchProducts" style="background-color: #f7f7f7; width: 100%">
   <div class="container-fluid" style="width: 100%; padding-top: 2%">
     <div class="block">
       <div *ngIf="deviceXs || deviceSm">
         <div class="text-block">
-          <p
-            style="
+          <p style="
               color: white;
               padding-top: 15%;
               padding-bottom: 2%;
               font-size: xx-large;
-            "
-          >
+            ">
             Stay home & get
           </p>
           <p style="color: white; padding-bottom: 7%; font-size: xx-large">
@@ -28,11 +22,7 @@
           Start You'r Shopping with Shrivasafoods
         </p>
 
-        <button
-          class="btn"
-          (click)="scrollToFeatured()"
-          style="background-color: #ffffff; width: 40%"
-        >
+        <button class="btn" (click)="scrollToFeatured()" style="background-color: #ffffff; width: 40%">
           <span> Order Now </span>
         </button>
       </div>
@@ -45,47 +35,35 @@
             your tradational food
           </p>
         </div>
-        <p
-          class="text-block-small"
-          style="padding-bottom: 12%; font-size: 20px"
-        >
+        <p class="text-block-small" style="padding-bottom: 12%; font-size: 20px">
           Start You'r Shopping with Shrivasafoods
         </p>
 
-        <button
-          class="btn"
-          (click)="scrollToFeatured()"
-          style="
+        <button class="btn" (click)="scrollToFeatured()" style="
             background-color: #ffffff;
             font-size: 14px;
             width: 50%;
             height: 40px;
             font-weight: bold;
-          "
-        >
+          ">
           <span> Order Now </span>
         </button>
       </div>
     </div>
-    <img
-      class="img-responsive"
-      style="min-height: 350px; width: auto; border-radius: 6px"
-      src="../assets/images/home.jpeg"
-    />
+    <img class="img-responsive" style="min-height: 350px; width: auto; border-radius: 6px"
+      src="../assets/images/home.jpeg" />
   </div>
 
   <div style="margin-top: 4%; margin-bottom: 4%">
     <div *ngIf="deviceXs || deviceSm">
       <div>
-        <div
-          style="
+        <div style="
             padding-left: 7%;
             padding-bottom: 2%;
             display: flex;
             flex-direction: column;
             justify-content: left;
-          "
-        >
+          ">
           <div class="row" style="padding-bottom: 5%">
             <div style="float: left; padding-right: 4%">
               <i class="fa fa-home" style="width: 10%; font-size: xx-large"></i>
@@ -135,10 +113,7 @@
   </div>
 
   <div style="margin-top: 4%; margin-bottom: 4%">
-    <div
-      *ngIf="deviceLg || deviceMd"
-      style="display: flex; flex-direction: row; justify-content: space-evenly"
-    >
+    <div *ngIf="deviceLg || deviceMd" style="display: flex; flex-direction: row; justify-content: space-evenly">
       <div class="row">
         <div class="col-sm-2">
           <div><i class="fa fa-home" style="font-size: xx-large"></i></div>
@@ -195,73 +170,55 @@
 
   <!-- /////////////////////////////////////////corosal -->
 
-  <div style="margin: 2%;min-height: 12%;">
-    <ng-image-slider
-      [imagePopup]="false"
-      *ngIf="deviceXs || deviceSm"
-      [imageSize]="{ width: '190px', height: '170px', space: 4 }"
-      [images]="imagesUrl"
-      #nav
-    ></ng-image-slider>
+  <div style="margin: 2%">
+    <ng-image-slider [imagePopup]="false" *ngIf="deviceXs || deviceSm"
+      [imageSize]="{ width: '200px', height: '150px', space: 4 }" [images]="categories"
+      (imageClick)="onImageClick($event)" #nav></ng-image-slider>
   </div>
 
-  <div style="margin: 2%;min-height: 12%;">
-    <ng-image-slider
-      [imagePopup]="false"
-      *ngIf="deviceLg || deviceMd"
-      [imageSize]="{ width: '220px', height: '200px', space: 8 }"
-      [images]="imagesUrl"
-      #nav
-    ></ng-image-slider>
+  <div style="margin: 2%">
+    <ng-image-slider [imagePopup]="false" *ngIf="deviceLg || deviceMd"
+      [imageSize]="{ width: '220px', height: '30%', space: 8 }" [images]="categories"
+      (imageClick)="onImageClick($event)" #nav></ng-image-slider>
   </div>
   <!-- ////////////////////////////////////////// featured  producsts-->
-  <div style="border-radius: 6px; margin: 2%" id="target">
-    <p
-      style="
+  <div style="min-height: 50px;" id="target"></div>
+  <div style="border-radius: 6px; margin: 2%" >
+    <p style="
         font-weight: bold;
         padding-left: 1%;
         padding-top: 4%;
         font-size: 20px;
-      "
-    >
+      ">
       Featured Products
     </p>
     <div *ngIf="deviceLg || deviceMd" class="deviceLg">
-      <div
-        routerLinkActive="router-link-active"
-        *ngFor="let item of featuredProducts"
-        style="
+      <div routerLinkActive="router-link-active" *ngFor="let item of featuredProducts" style="
           padding: 1%;
           width: 200px;
           height: 200px;
           background-color: white;
           margin: 1%;
-        "
-      >
+        ">
         <app-mainPage-listItem [item]="item"></app-mainPage-listItem>
       </div>
     </div>
     <div *ngIf="deviceXs || deviceSm">
       <div class="row">
-        <div
-          style="
+        <div style="
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             flex: 2;
             justify-content: space-evenly;
-          "
-        >
-          <div
-            *ngFor="let item of featuredProducts"
-            style="
+          ">
+          <div *ngFor="let item of featuredProducts" style="
               padding: 2%;
               width: 180px;
               height: 200px;
               background-color: white;
               margin: 2%;
-            "
-          >
+            ">
             <app-mainPage-listItem [item]="item"></app-mainPage-listItem>
           </div>
         </div>
@@ -270,12 +227,7 @@
   </div>
   <div style="margin: 1%">
     <div *ngIf="deviceXs">
-      <div
-        id="myCarousel"
-        class="carousel slide"
-        data-ride="carousel"
-        style="padding-right: 5%"
-      >
+      <div id="myCarousel" class="carousel slide" data-ride="carousel" style="padding-right: 5%">
         <!-- Indicators -->
         <ol class="carousel-indicators">
           <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -291,14 +243,10 @@
                 <p class="text-block1Slider">Save upto 20%</p>
                 <p class="text-block2Slider">TraditionalPowders</p>
 
-                <button class="btn btn-imgSlider">
+                <button class="btn btn-imgSlider" (click)="scrollToTrending()">
                   <i class="fa fa-arrow">Order Now</i>
                 </button>
-                <img
-                  class="img-responsive"
-                  style="width: 100%"
-                  src="../assets/images/slide1.png"
-                />
+                <img class="img-responsive" style="width: 100%" src="../assets/images/slide1.png" />
               </div>
             </div>
           </div>
@@ -308,26 +256,17 @@
                 <p class="text-block1Slider">Save upto 20%</p>
                 <p class="text-block2Slider">TraditionalPowders</p>
 
-                <button class="btn btn-imgSlider">
+                <button class="btn btn-imgSlider" (click)="scrollToTrending()">
                   <i class="fa fa-arrow">Order Now</i>
                 </button>
-                <img
-                  class="img-responsive"
-                  style="width: 100%"
-                  src="../assets/images/slide1.png"
-                />
+                <img class="img-responsive" style="width: 100%" src="../assets/images/slide1.png" />
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div
-      *ngIf="deviceMd || deviceLg || deviceSm"
-      id="myCarousel"
-      class="carousel slide"
-      data-ride="carousel"
-    >
+    <div *ngIf="deviceMd || deviceLg || deviceSm" id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -342,7 +281,7 @@
               <p class="text-block1Slider">Save upto 20%</p>
               <p class="text-block2Slider">TraditionalPowders</p>
 
-              <button class="btn btn-imgSlider">
+              <button class="btn btn-imgSlider" (click)="scrollToTrending()">
                 <i class="fa fa-arrow">Order Now</i>
               </button>
               <img class="img-responsive" src="../assets/images/slide1.png" />
@@ -353,7 +292,7 @@
               <p class="text-block1Slider">Save upto 20%</p>
               <p class="text-block2Slider">TraditionalPowders</p>
 
-              <button class="btn btn-imgSlider">
+              <button class="btn btn-imgSlider" (click)="scrollToTrending()">
                 <i class="fa fa-arrow">Order Now</i>
               </button>
               <img class="img-responsive" src="../assets/images/slide3.png" />
@@ -369,11 +308,7 @@
               <button class="btn btn-imgSlider">
                 <i class="fa fa-arrow">Order Now</i>
               </button>
-              <img
-                class="img-responsive"
-                style="width: 100%"
-                src="../assets/images/slide1.png"
-              />
+              <img class="img-responsive" style="width: 100%" src="../assets/images/slide1.png" />
             </div>
           </div>
           <div class="col-lg-6">
@@ -381,14 +316,10 @@
               <p class="text-block1Slider">Save upto 20%</p>
               <p class="text-block2Slider">TraditionalPowders</p>
 
-                <button class="btn btn-imgSlider">
+              <button class="btn btn-imgSlider">
                 <i class="fa fa-arrow">Order Now</i>
               </button>
-              <img
-                class="img-responsive"
-                style="width: 100%"
-                src="../assets/images/slide3.png"
-              />
+              <img class="img-responsive" style="width: 100%" src="../assets/images/slide3.png" />
             </div>
           </div>
         </div>
@@ -396,54 +327,44 @@
     </div>
   </div>
   <!-- /////////////////////////    slider 2-->
-
-  <div style="border-radius: 6px; margin: 2%">
-    <p
-      style="
+<div id="trending" style="min-height: 20px;">
+</div>
+  <div  style="border-radius: 6px; margin: 2%">
+    <p style="
         font-weight: bold;
         font-size: 1.5vw;
         padding-left: 3%;
         padding-top: 4%;
-      "
-    >
+      ">
       Trending Products
     </p>
     <div *ngIf="deviceLg || deviceMd" class="deviceLg">
-      <div
-        routerLinkActive="router-link-active"
-        *ngFor="let item of allProducts"
-        style="
+      <div routerLinkActive="router-link-active" *ngFor="let item of allProducts" style="
           padding: 1%;
           width: 200px;
           height: 200px;
           background-color: white;
           margin: 1%;
-        "
-      >
+        ">
         <app-mainPage-listItem [item]="item"></app-mainPage-listItem>
       </div>
     </div>
     <div *ngIf="deviceXs || deviceSm">
       <div class="row">
-        <div
-          style="
+        <div style="
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             flex: 2;
             justify-content: space-evenly;
-          "
-        >
-          <div
-            *ngFor="let item of allProducts"
-            style="
+          ">
+          <div *ngFor="let item of allProducts" style="
               padding: 2%;
               width: 180px;
               height: 200px;
               background-color: white;
               margin: 2%;
-            "
-          >
+            ">
             <app-mainPage-listItem [item]="item"></app-mainPage-listItem>
           </div>
         </div>
@@ -466,10 +387,7 @@
         <p style="color: black; padding-bottom: 10%; font-size: 20px">
           Try it now, risk free!
         </p>
-        <button
-          class="btn"
-          style="background-color: #ffffff; width: 40%; height: 35px"
-        >
+        <button class="btn" style="background-color: #ffffff; width: 40%; height: 35px">
           <span style="font-weight: bold"> Order Now </span>
         </button>
       </div>
@@ -485,88 +403,69 @@
         <p class="text-block-small" style="color: black; padding-bottom: 5%">
           Try it now, risk free!
         </p>
-        <button
-          class="btn"
-          (click)="scrollToFeatured()"
-          style="
+        <button class="btn" (click)="scrollToFeatured()" style="
             background-color: #ffffff;
             font-size: 14px;
             width: 50%;
             height: 40px;
             font-weight: bold;
-          "
-        >
+          ">
           Order Now
         </button>
       </div>
-      <img
-        class="img-responsive"
-        style="
+      <img class="img-responsive" style="
           border-radius: 6px;
           min-height: 350px;
           width: 100%;
           border-radius: 8px;
-        "
-        src="../assets/images/slide2.png"
-      />
+        " src="../assets/images/slide2.png" />
     </div>
   </div>
 </div>
 
-   <div *ngIf="!searchProducts" style="border-radius: 6px; margin: 2%" id="target">
-    <p
-      style="
+<div *ngIf="!searchProducts" style="border-radius: 6px; margin: 2%" id="target">
+  <p style="
         font-weight: bold;
         padding-left: 1%;
         padding-top: 4%;
         font-size: 20px;
-      "
-    >
-      All Products
-    </p>
+      ">
+    All Products
+  </p>
 
-    <div *ngIf="deviceLg || deviceMd" class="deviceLg">
-      <div
-        routerLinkActive="router-link-active"
-        *ngFor="let item of searchProductsData"
-        style="
+  <div *ngIf="deviceLg || deviceMd" class="deviceLg">
+    <div routerLinkActive="router-link-active" *ngFor="let item of searchProductsData" style="
           padding: 1%;
           width: 200px;
           height: 200px;
           background-color: white;
           margin: 1%;
-        "
-      >
-        <app-mainPage-listItem [item]="item"></app-mainPage-listItem>
-      </div>
+        ">
+      <app-mainPage-listItem [item]="item"></app-mainPage-listItem>
     </div>
-    <div *ngIf="deviceXs || deviceSm">
-      <div class="row">
-        <div
-          style="
+  </div>
+  <div *ngIf="deviceXs || deviceSm">
+    <div class="row">
+      <div style="
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             flex: 2;
             justify-content: space-evenly;
-          "
-        >
-          <div
-            *ngFor="let item of searchProductsData"
-            style="
+          ">
+        <div *ngFor="let item of searchProductsData" style="
               padding: 2%;
               width: 180px;
               height: 200px;
               background-color: white;
               margin: 2%;
-            "
-          >
-            <app-mainPage-listItem [item]="item"></app-mainPage-listItem>
-          </div>
+            ">
+          <app-mainPage-listItem [item]="item"></app-mainPage-listItem>
         </div>
       </div>
     </div>
   </div>
+</div>
 <hr />
 <div style="padding: 2%">
   <div>Copyright © 2020 RedQ, Inc , All rights reserved</div>

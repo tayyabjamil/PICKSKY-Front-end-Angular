@@ -16,6 +16,16 @@ export class AddProductComponent implements OnInit {
   catagory:String;
   image;
   data;
+  toppingList: string[] = [
+    "Siting 100",
+    "Siting 300",
+    "Siting 100",
+    "Wifi",
+    "Parking",
+    "Decoration",
+    "DJ",
+    "PhotoGrapher",
+  ];
   productOrders = '1';
   constructor( public route: ActivatedRoute,
     public adminService:AdminService,public formBuilder:FormBuilder) { }
@@ -46,6 +56,7 @@ export class AddProductComponent implements OnInit {
     })
   }
 }
+
   selectProductImage(event) {
     const file = event.target.files[0];
     this.image = file;

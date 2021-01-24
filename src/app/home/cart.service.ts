@@ -22,7 +22,14 @@ export class CartService {
     this.cart = [];
     localStorage.setItem('cart', JSON.stringify(this.cart));
   }
-
+discardProduct(product){
+    this.cart.find((item) => {
+      if (item._id === product._id) {
+          this.cart.splice(item,1)
+          item.productCount = 0;
+      }
+    })
+}
   removeProduct(product) {
     let proudctRemoved = false
     this.cart.find((item) => {
@@ -30,13 +37,12 @@ export class CartService {
         if (item.productCount === 1) {
           this.cart.splice(item._id, 1)
           item.productCount = item.productCount - 1;
-
-          return true
+          return true;
         }
         else {
           item.productCount = item.productCount - 1;
           item.unitTotal = item.unitTotal - item.price
-          return true
+          return true;
         }
 
       }

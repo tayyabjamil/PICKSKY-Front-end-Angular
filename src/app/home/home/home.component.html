@@ -1,30 +1,24 @@
 <div>
   <header *ngIf="deviceLg || deviceMd">
     <div>
-      <div
-        style="
+      <div style="
           padding-top: 0.5%;
           margin-left: 2%;
           margin-right: 2%;
           display: flex;
           flex-direction: row;
           justify-content: space-between;
-        "
-      >
-        <p
-          style="
+        ">
+        <p style="
             padding-left: 0.5%;
             font-size: 2vw;
             font-weight: 500;
             padding-top: 2%;
-          "
-          routerLink="/"
-        >
+          " routerLink="/">
           SHIRIVAS FOODS
         </p>
         <div style="width: 60%; padding: 10px">
-          <div
-            style="
+          <div style="
               border-radius: 6px;
               font-weight: 300px;
               margin-left: 5%;
@@ -32,109 +26,60 @@
               background-color: rgb(240, 238, 238);
               display: flex;
               padding: 10px;
-            "
-          >
-            <span
-              ><i
-                class="fa fa-search"
-                routerLink="/login"
-                style="
+            ">
+            <span><i class="fa fa-search" routerLink="/login" style="
                   font-weight: 200;
                   font-size: large;
                   margin-right: 2%;
                   padding: 2%;
-                  color: rgb(134, 132, 132);"
-              ></i
-            ></span>
-            <input
-              class="searchHome"
-              (input)="onSearchChange($event.target.value)"
-              placeholder="What Are You Looking For?"
-            />
+                  color: rgb(134, 132, 132);"></i></span>
+            <input class="searchHome" (input)="onSearchChange($event.target.value)"
+              placeholder="What Are You Looking For?" />
           </div>
         </div>
-        <div style="padding-top: 1%">
-          <i
-            class="fa fa-user-circle-o"
-            routerLink="/login"
-            style="font-size: xx-large"
-          ></i>
-          <p routerLink="/login" routerLinkActive="router-link-active">Login</p>
-        </div>
         <div style="display: flex; flex-direction: row; padding-top: 1%">
-          <p
-            *ngIf="authService.loggedIn()"
-            style="font-size: large; padding-top: 5%"
-          >
+          <p *ngIf="authService.loggedIn()" style="font-size: large; padding-top: 5%">
             Hi {{ usernameLogin }}
           </p>
-          <i
-            class="fa fa-cog"
-            style="font-size: xx-large"
-            [popover]="popTemplate"
-          ></i>
+          <i class="fa fa-user-circle-o" style="font-size: xx-large" [popover]="popTemplate"></i>
           <div>
             <ng-template #popTemplate>
               <div class="row">
                 <div class="col-lg-6">
+                  <div *ngIf="!authService.loggedIn()">
+
                   <div style="padding-top: 1%">
-                    <i
-                      class="fa fa-user-circle-o"
-                      routerLink="/myOrders"
-                      style="font-size: xx-large"
-                    ></i>
-                    <p
-                      routerLink="/myOrders"
-                      routerLinkActive="router-link-active"
-                    >
+                    <i class="fa fa-user-circle-o" routerLink="/login" style="font-size: xx-large"></i>
+                    <p routerLink="/login" routerLinkActive="router-link-active">Login</p>
+                  </div>
+                  </div>
+                  <div style="padding-top: 1%">
+                    <i class="fa fa-user-circle-o" routerLink="/myOrders" style="font-size: xx-large"></i>
+                    <p routerLink="/myOrders" routerLinkActive="router-link-active">
                       My orders
                     </p>
                   </div>
+
                   <div style="padding-top: 1%">
-                    <i
-                      class="fa fa-user-circle-o"
-                      routerLink="/supportpage"
-                      style="font-size: xx-large"
-                    ></i>
-                    <p
-                      routerLink="/supportpage"
-                      routerLinkActive="router-link-active"
-                    >
+                    <i class="fa fa-user-circle-o" routerLink="/supportpage" style="font-size: xx-large"></i>
+                    <p routerLink="/supportpage" routerLinkActive="router-link-active">
                       Support
                     </p>
                   </div>
                   <div style="padding-top: 1%">
-                    <i
-                      class="fa fa-user-circle-o"
-                      routerLink="/aboutUs"
-                      style="font-size: xx-large"
-                    ></i>
-                    <p
-                      routerLink="/aboutUs"
-                      routerLinkActive="router-link-active"
-                    >
+                    <i class="fa fa-user-circle-o" routerLink="/aboutUs" style="font-size: xx-large"></i>
+                    <p routerLink="/aboutUs" routerLinkActive="router-link-active">
                       About
                     </p>
                   </div>
                   <div style="padding-top: 1%">
-                    <i
-                      class="fa fa-user-circle-o"
-                      routerLink="/testimonals"
-                      style="font-size: xx-large"
-                    ></i>
-                    <p
-                      routerLink="/testimonals"
-                      routerLinkActive="router-link-active"
-                    >
+                    <i class="fa fa-user-circle-o" routerLink="/testimonals" style="font-size: xx-large"></i>
+                    <p routerLink="/testimonals" routerLinkActive="router-link-active">
                       Testimonals
                     </p>
                   </div>
                   <div style="padding-top: 1%">
-                    <i
-                      class="fa fa-user-circle-o"
-                      routerLink="/blog"
-                      style="font-size: xx-large"
-                    ></i>
+                    <i class="fa fa-user-circle-o" routerLink="/blog" style="font-size: xx-large"></i>
                     <p routerLink="/blog" routerLinkActive="router-link-active">
                       Blog
                     </p>
@@ -142,47 +87,26 @@
                 </div>
                 <div class="col-lg-6">
                   <div style="padding-top: 1%">
-                    <i
-                      class="fa fa-user-circle-o"
-                      routerLink="/admin"
-                      style="font-size: xx-large"
-                    ></i>
-                    <p
-                      routerLink="/admin"
-                      routerLinkActive="router-link-active"
-                    >
+                    <i class="fa fa-user-circle-o" routerLink="/admin" style="font-size: xx-large"></i>
+                    <p routerLink="/admin" routerLinkActive="router-link-active">
                       Admin
                     </p>
                   </div>
                   <div style="padding-top: 1%">
-                    <li
-                      *ngIf="authService.loggedIn()"
-                      style="font-size: xx-large"
-                      (click)="onLogoutClick()"
-                      class="fa fa-sign-out"
-                    ></li>
+                    <li *ngIf="authService.loggedIn()" style="font-size: xx-large" (click)="onLogoutClick()"
+                      class="fa fa-sign-out"></li>
                     <p *ngIf="authService.loggedIn()">Logout</p>
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div style="padding-top: 1%">
-                    <i class="fa fa-user-circle-o"
-                      routerLink="/giftCards"
-                      style="font-size: xx-large"
-                    ></i>
+                    <i class="fa fa-user-circle-o" routerLink="/giftCards" style="font-size: xx-large"></i>
                     <p routerLink="/giftCards">Gift Cards</p>
                   </div>
                   <div style="padding-top: 1%">
-                    <li
-                      *ngIf="authService.loggedIn()"
-                      style="font-size: xx-large"
-                      routerLink="/referFriend"
-                      class="fa fa-sign-out"
-                    ></li>
-                    <p
-                      *ngIf="authService?.loggedIn()"
-                      routerLink="/referFriend "
-                    >
+                    <li *ngIf="authService.loggedIn()" style="font-size: xx-large" routerLink="/referFriend"
+                      class="fa fa-sign-out"></li>
+                    <p *ngIf="authService?.loggedIn()" routerLink="/referFriend ">
                       Refer Friend
                     </p>
                   </div>
@@ -192,106 +116,109 @@
           </div>
         </div>
         <div style="padding-top: 1%">
-          <i
-            class="fa fa-shopping-cart"
-            routerLink="/cart"
-            style="font-size: xx-large"
-          ></i>
+          <i class="fa fa-shopping-cart" routerLink="/cart" style="font-size: xx-large"></i>
         </div>
       </div>
 
       <hr style="height: 1px; margin: 0px 0px" />
 
-      <nav
-        class="navbar sticky-top fundpress-menu navbar sticky-top navbar-light"
-        style="min-height: 60px; line-height: 60px; background-color: white"
-      >
-        <ul class="nav-menu" style="width: 90%">
+      <nav class="navbar sticky-top fundpress-menu navbar sticky-top navbar-light"
+        style="display: flex;flex-direction: row;min-height: 60px; line-height: 60px; background-color: white">
+
+      <!-- <p style="
+        font-size: 2vw;
+        font-weight: 500;
+        padding-top: 2%;
+        " routerLink="/">
+      SHIRIVAS FOODS
+    </p> -->
+
+        <ul *ngIf="isSHowSearch==false" class="nav-menu" style="width: 90%;">
           <li class="dropdown" routerLink="/">
             <a>{{ getHeaderNames(1) }}</a>
           </li>
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown">{{
               getHeaderNames(2)
-            }}</a>
+              }}</a>
             <ul class="dropdown-menu">
               <li>
                 <a (click)="catagory(getPicklesConstants(1))">{{
                   getPicklesConstants(1)
-                }}</a>
+                  }}</a>
               </li>
               <li>
                 <a (click)="catagory(getPicklesConstants(2))">{{
                   getPicklesConstants(2)
-                }}</a>
+                  }}</a>
               </li>
             </ul>
           </li>
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown">{{
               getHeaderNames(3)
-            }}</a>
+              }}</a>
             <ul class="dropdown-menu">
               <li>
                 <a (click)="catagory(getTraditionalPodulu(1))">{{
                   getTraditionalPodulu(1)
-                }}</a>
+                  }}</a>
               </li>
               <li>
                 <a (click)="catagory(getTraditionalPodulu(2))">{{
                   getTraditionalPodulu(2)
-                }}</a>
+                  }}</a>
               </li>
             </ul>
           </li>
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown">{{
               getHeaderNames(4)
-            }}</a>
+              }}</a>
             <ul class="dropdown-menu">
               <li>
                 <a (click)="catagory(getSweetsandHotConstants(1))">{{
                   getSweetsandHotConstants(1)
-                }}</a>
+                  }}</a>
               </li>
               <li>
                 <a (click)="catagory(getSweetsandHotConstants(2))">{{
                   getSweetsandHotConstants(2)
-                }}</a>
+                  }}</a>
               </li>
             </ul>
           </li>
           <li class="dropdown" routerLink="/specialoffers">
             <a class="dropdown-toggle" data-toggle="dropdown">{{
               getHeaderNames(5)
-            }}</a>
+              }}</a>
             <ul class="dropdown-menu">
               <li>
                 <a (click)="catagory(getSpecialConstants(1))">{{
                   getSpecialConstants(1)
-                }}</a>
+                  }}</a>
               </li>
               <li>
                 <a (click)="catagory(getSpecialConstants(2))">{{
                   getSpecialConstants(2)
-                }}</a>
+                  }}</a>
               </li>
               <li>
                 <a (click)="catagory(getSpecialConstants(3))">{{
                   getSpecialConstants(3)
-                }}</a>
+                  }}</a>
               </li>
               <li>
                 <a (click)="catagory(getSpecialConstants(4))">{{
                   getSpecialConstants(4)
-                }}</a>
+                  }}</a>
               </li>
             </ul>
           </li>
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown">{{
               getHeaderNames(6)
-            }}</a>
+              }}</a>
             <ul class="dropdown-menu">
               <li>
                 <a routerLink="/faq">{{ getOthersConstants(1) }}</a>
@@ -307,7 +234,7 @@
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown">{{
               getHeaderNames(8)
-            }}</a>
+              }}</a>
             <ul class="dropdown-menu">
               <li>
                 <a>{{ getSupportConstants(1) }}</a>
@@ -321,44 +248,62 @@
               <li>
                 <a [routerLink]="['/supportpage']">{{
                   getSupportConstants(4)
-                }}</a>
+                  }}</a>
               </li>
             </ul>
           </li>
         </ul>
-        <div *ngIf="visibleI">
-          <i
-            class="fa fa-user-circle-o"
-            routerLink="/login"
-            style="font-size: xx-large"
-          ></i>
+
+        <p  (click)="toggleDisplay()" *ngIf="visibleI && isSHowSearch==false">
+          <span><i class="fa fa-search" style="
+                font-weight: 200;
+                font-size: large;
+                color: rgb(134, 132, 132);
+              "></i></span>
+        </p>
+
+        <div  *ngIf="visibleI">
+          <div *ngIf="isSHowSearch == true" style=" margin-left: 2%;margin-top: 1%;  margin-bottom: 1%">
+           <p   style="
+               border-radius: 6px;
+               font-weight: 300px;
+               background-color: rgb(240, 238, 238);
+             ">
+             <span><i class="fa fa-search" routerLink="/login" style="
+                   font-weight: 200;
+                   font-size: large;
+
+                   padding: 2%;
+
+                   color: rgb(134, 132, 132);
+                 "></i></span>
+           </p>
+           <p class="col-xs-1" (click)="toggleDisplay()" style=" font-weight: 300px; color: grey">
+             <i class="fa fa-times"></i>
+           </p>
+         </div>
+
         </div>
-        <div *ngIf="visibleI">
-          <i
-            class="fa fa-shopping-cart"
-            routerLink="/cart"
-            style="font-size: xx-large"
-          ></i>
+        <div  *ngIf="visibleI && !authService.loggedIn() && isSHowSearch==false">
+          <i class="fa fa-user-circle-o" routerLink="/login" style="font-size: xx-large"></i>
+        </div>
+        <div *ngIf="visibleI && isSHowSearch==false">
+          <i class="fa fa-shopping-cart" routerLink="/cart" style="font-size: xx-large"></i>
         </div>
       </nav>
 
       <router-outlet> </router-outlet>
 
       <div *ngIf="deviceLg || deviceMd">
-        <div
-          *ngIf="getCartProducts.length != 0"
-          (click)="cartPage()"
-          style="
+        <div *ngIf="getCartProducts.length != 0" (click)="cartPage()" style="
             box-sizing: border-box;
             min-width: 0px;
             max-width: 960px;
             margin-left: 20%;
             pointer-events: none;
             width: calc(100% - 40px);
-          "
-        >
-          <button
-            style="
+          ">
+          <button style="
               bottom: 32px;
               opacity: 1;
               transform: translateY(0px);
@@ -381,17 +326,12 @@
               left: auto;
               right: auto;
               z-index: 999;
-            "
-          >
+            ">
             <div style="color: white;width: 100%;">
               <svg width="16" height="16" viewBox="0 0 16 16">
-                <path
-                  id="shopping-bag"
+                <path id="shopping-bag"
                   d="M4.4,3.6H15.6a.8.8,0,0,1,.8.8V15.6a.8.8,0,0,1-.8.8H4.4a.8.8,0,0,1-.8-.8V4.4A.8.8,0,0,1,4.4,3.6ZM2,4.4A2.4,2.4,0,0,1,4.4,2H15.6A2.4,2.4,0,0,1,18,4.4V15.6A2.4,2.4,0,0,1,15.6,18H4.4A2.4,2.4,0,0,1,2,15.6ZM10,10C7.791,10,6,7.851,6,5.2H7.6c0,2.053,1.335,3.2,2.4,3.2s2.4-1.147,2.4-3.2H14C14,7.851,12.209,10,10,10Z"
-                  transform="translate(-2 -2)"
-                  fill="#ffffff"
-                  fill-rule="evenodd"
-                ></path>
+                  transform="translate(-2 -2)" fill="#ffffff" fill-rule="evenodd"></path>
               </svg>
               <span style="margin-left:5px">
                 Added {{ getCartProducts.length }} Items
@@ -406,20 +346,15 @@
 
   <div *ngIf="deviceXs || deviceSm">
     <div>
-      <div
-        *ngIf="getCartProducts.length != 0"
-        (click)="cartPage()"
-        style="
+      <div *ngIf="getCartProducts.length != 0" (click)="cartPage()" style="
           box-sizing: border-box;
           min-width: 0px;
           max-width: 960px;
           margin-left: 20%;
           pointer-events: none;
           width: calc(100% - 40px);
-        "
-      >
-        <button
-          style="
+        ">
+        <button style="
             bottom: 32px;
             opacity: 1;
             transform: translateY(0px);
@@ -442,17 +377,12 @@
             left: auto;
             right: auto;
             z-index: 999;
-          "
-        >
+          ">
           <div style="color: white;width: 100%;">
             <svg width="16" height="16" viewBox="0 0 16 16">
-              <path
-                id="shopping-bag"
+              <path id="shopping-bag"
                 d="M4.4,3.6H15.6a.8.8,0,0,1,.8.8V15.6a.8.8,0,0,1-.8.8H4.4a.8.8,0,0,1-.8-.8V4.4A.8.8,0,0,1,4.4,3.6ZM2,4.4A2.4,2.4,0,0,1,4.4,2H15.6A2.4,2.4,0,0,1,18,4.4V15.6A2.4,2.4,0,0,1,15.6,18H4.4A2.4,2.4,0,0,1,2,15.6ZM10,10C7.791,10,6,7.851,6,5.2H7.6c0,2.053,1.335,3.2,2.4,3.2s2.4-1.147,2.4-3.2H14C14,7.851,12.209,10,10,10Z"
-                transform="translate(-2 -2)"
-                fill="#ffffff"
-                fill-rule="evenodd"
-              ></path>
+                transform="translate(-2 -2)" fill="#ffffff" fill-rule="evenodd"></path>
             </svg>
             Added {{ getCartProducts.length }} Items
           </div>

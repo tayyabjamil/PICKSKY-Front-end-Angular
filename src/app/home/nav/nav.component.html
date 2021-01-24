@@ -1,3 +1,4 @@
+<div class="container">
 <mat-sidenav-container class="sidenav-container" style="height: 100%">
   <mat-sidenav style="background-color: white" #drawer class="sidenav" fixedInViewport="false"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
@@ -244,3 +245,4 @@
     <ng-content> </ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>
+</div>

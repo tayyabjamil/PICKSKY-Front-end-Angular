@@ -36,7 +36,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { CartComponent } from './cart/cart.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { SupportPageComponent } from './supportPage/supportPage.component';
@@ -47,7 +46,6 @@ import { DiscountComponent } from './discount/discount.component';
 import { BlogComponent } from './blog/blog.component';
 import { PrivacyandpolicyComponent } from './privacyandpolicy/privacyandpolicy.component';
 import { ReturnandrefundsComponent } from './returnandrefunds/returnandrefunds.component';
-
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatInputModule } from '@angular/material/input';
@@ -93,7 +91,6 @@ import { ThemeModule } from '../theme/theme.module';
     SpecialOffersComponent,
     ProductDetailComponent,
     MainPageComponent,
-    CartComponent,
     MyordersComponent,
     FooterComponent,
     CatagoryComponent,
@@ -129,7 +126,6 @@ import { ThemeModule } from '../theme/theme.module';
     SpecialOffersComponent,
     ProductDetailComponent,
     MainPageComponent,
-    CartComponent,
     DiscountComponent,
     BlogComponent,
     FAQComponent,
