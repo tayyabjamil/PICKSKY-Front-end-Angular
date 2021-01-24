@@ -13,9 +13,9 @@ export class MainPageListItemComponent implements OnInit {
 
   @Input() item;
   loadingImage = true;
-  
+
   constructor(public productService: ProductService,
-    public cartService:CartService,
+    public cartService: CartService,
     public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -31,7 +31,7 @@ export class MainPageListItemComponent implements OnInit {
 
   getImage(imageId) {
     // this.loadingImage = true;
-// this.loadingImage = false;
+    // this.loadingImage = false;
     if (!imageId) {
       return '';
     } else {
@@ -39,20 +39,27 @@ export class MainPageListItemComponent implements OnInit {
     }
   }
 
-
-  addProduct(item){
+  addProduct(item, productRef) {
+    if (productRef) {
+      let x = parseInt(productRef.innerText);
+      productRef.innerText = x + 1; 
+    }
     this.cartService.addProduct(item);
   }
 
-  removeProduct(product){
-    this.cartService.removeProduct(product)
+  removeProduct(item, productRef) {
+    if (productRef) {
+      let x = parseInt(productRef.innerText);
+      productRef.innerText = x - 1 ;
+    }
+    this.cartService.removeProduct(item);
   }
 
   onCustomiseModal(item): void {
     const dialogRef = this.dialog.open(CustomizeComponent, {
       maxWidth: '100% !important',
       height: '100vh',
-      data: {item: item}
+      data: { item: item }
     });
 
     dialogRef.afterClosed().subscribe(result => {

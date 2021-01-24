@@ -52,6 +52,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .customInput {
   height: 38px;
-  width: 20vw;
+  width: 34vw;
   border: 1px solid #ccc;
 }
+

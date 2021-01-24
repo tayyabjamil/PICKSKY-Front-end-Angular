@@ -92,7 +92,8 @@ export class CheckOutPageComponent implements OnInit {
       phase: "delievry phase",
       ownerEmail: this.authService.getemail()
     }
-    this.printOrder(orderData);
+
+    // this.printOrder(orderData);
     this.cartService.order(orderData).subscribe((data: any) => {
       // this.router.navigate(['/'])
     })
