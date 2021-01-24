@@ -28,14 +28,16 @@ export class OrdersProgressComponent implements OnInit {
   get cartDataValue() {
     return this.cartData;
   }
-
-  nextPhase(item) {
-    this.cartData = item.cartData;
+  pdfDownload(item){
     setTimeout(() => {
       this.printOrder(item);
     }, 1000);
+
+  }
+  nextPhase(item,nextPhase) {
+    this.cartData = item.cartData;
     const orderShipped = {
-      phase: this.phase = "shipping",
+      phase: nextPhase,
       ownerEmail: item.ownerEmail,
       orderId: item._id
     }

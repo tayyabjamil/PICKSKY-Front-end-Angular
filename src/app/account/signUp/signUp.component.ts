@@ -42,6 +42,7 @@ export class SignUpComponent implements OnInit {
   deviceSm: boolean;
   show: boolean;
   isLoggedIn = true;
+  passwordMatch=false
   ngOnInit() {
     this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
       console.log(result.mqAlias)
@@ -116,6 +117,8 @@ export class SignUpComponent implements OnInit {
           lastName: Response.lastName,
           password: Response.id,
           token: Response.authToken,
+          provider: Response.provider,
+
         };
 
         this.accountService.signUp(userAccount).subscribe((data: any) => {
@@ -156,7 +159,7 @@ export class SignUpComponent implements OnInit {
 
   createAccount() {
     this.rformSignup.controls['phone'].clearValidators();
-    if (this.rformSignup.value.phone.number) {
+    if (this.rformSignup.value.phone && this.rformSignup.value.phone.number) {
       this.rformSignup.controls['phone'].setValue(this.rformSignup.value.phone.internationalNumber);
     }
 
@@ -171,12 +174,14 @@ export class SignUpComponent implements OnInit {
 
         });
       } else {
-        alert("Password not match")
+        this.passwordMatch=true
       }
-    }
-    else {
+    } else {
       alert("Please Fill All the entries of the Form")
     }
+  }
+  get passwordValidMatch(){
+    return this.passwordMatch
   }
   public login() {
     this.router.navigate(['/login'])

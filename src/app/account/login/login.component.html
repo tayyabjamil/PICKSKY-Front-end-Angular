@@ -15,9 +15,8 @@
 
       <hr>
       <div style="padding-bottom: 2%">
-        <!-- <p ></p> -->
 
-        <div style="width: 100%;" *ngIf="loginType == 'email'">
+        <div *ngIf="loginType == 'email'">
           <ns-textField-account placeholder="Email" name="email" class="textfieldBorderColor font13"
             [rformgroup]="rformLogin" rformControlName="email">
           </ns-textField-account>
@@ -25,9 +24,9 @@
 
         <div *ngIf="loginType == 'phone'">
           <form [formGroup]="rformLogin">
-            <ngx-intl-tel-input [cssClass]="'customInput'" [enableAutoCountrySelect]="false" [enablePlaceholder]="true"
-              [searchCountryFlag]="true" [selectFirstCountry]="false" [maxLength]="15" [phoneValidation]="true"
-              name="phone" formControlName="phone">
+            <ngx-intl-tel-input [cssClass]="'customInput'" [enableAutoCountrySelect]="true" [enablePlaceholder]="true"
+              [searchCountryFlag]="true" [selectFirstCountry]="false"  [phoneValidation]="true"
+              name="phone" formControlName="phone" defaultCountry="in">
             </ngx-intl-tel-input>
           </form>
         </div>
@@ -40,15 +39,15 @@
 
       </div>
 
-      <div class="row" style="display: flex;">
-        <div style="flex: 1;">
+      <!-- <div class="row" >
+        <div style="width: 94%;">
           <ns-textField-account placeholder="Password (8 characters minimun)" name="password"
             [type]="show ? 'text' : 'password'" class="textfieldBorderColor font13" [rformgroup]="rformLogin"
             rformControlName="password">
           </ns-textField-account>
         </div>
-        <div style="margin-left: 20px;">
-          <button style="height: 35px;" class="btn btn-default" (click)="passwordshow()" type="submit">
+        <div style="width: 40px">
+                    <button style="height: 35px;" class="btn btn-default" (click)="passwordshow()" type="submit">
             <i *ngIf="show" class="glyphicon glyphicon-eye-open"></i>
             <i *ngIf="!show" class="glyphicon glyphicon-eye-close"></i>
           </button>
@@ -61,7 +60,34 @@
           </div>
         </div>
 
-      </div>
+      </div> -->
+      <div style="
+      padding-bottom: 2%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    ">
+    <div style="width: 94%">
+      <ns-textField-account placeholder="Password " name="password"
+        [type]="show ? 'text' : 'password'" class="textfieldBorderColor font13"
+        [rformgroup]="rformLogin" rformControlName="password">
+      </ns-textField-account>
+    </div>
+    <div style="width: 40px">
+      <button style="height: 35px" class="btn btn-default" (click)="passwordshow()" type="submit">
+        <i *ngIf="show" class="glyphicon glyphicon-eye-open"></i>
+        <i *ngIf="!show" class="glyphicon glyphicon-eye-close"></i>
+      </button>
+    </div>
+
+  </div>
+  <div class="text-primary"
+          style="display: flex; width: 100%;justify-content: flex-end; cursor: pointer;">
+          <div style="text-align: right;">
+            <p (click)="forgetPassword()" class="text text-primary btn">Forget Password? </p>
+          </div>
+        </div>
+
       <div class="row" style="margin-left: 1%;margin-right: 1%;">
         <button class="col-12 btn btn-primary" (click)="login()" type="button">Login</button>
 
