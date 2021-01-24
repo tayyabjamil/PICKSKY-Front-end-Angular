@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import { Router } from '@angular/router';
 import { MatStepper } from '@angular/material/stepper/stepper';
+import { AdminService } from 'src/app/admin/admin.service';
 
 @Component({
   selector: 'app-checkOutPage',
@@ -19,6 +20,7 @@ export class CheckOutPageComponent implements OnInit {
     public cartService: CartService,
     public productService: ProductService,
     public authService: AuthService,
+    public adminService:AdminService,
     private router: Router,) { }
 
 
@@ -40,7 +42,10 @@ export class CheckOutPageComponent implements OnInit {
   public payPalConfig?: IPayPalConfig;
   refrence: string;
   previousData;
-  // @ViewChild('stepper') private stepper: MatStepper;
+totalafterBonus=0;
+accountBonus;
+detection=0
+
   @ViewChild('stepper') public stepper: MatStepper;
   ngOnInit() {
     this.initConfig();
@@ -64,13 +69,21 @@ export class CheckOutPageComponent implements OnInit {
 
     });
     // this.getAllOrders()
-    this.gotoPayment()
+  this.getAccountBonus()
+
+}
+  getAccountBonus() {
+ this.accountBonus=  localStorage.getItem('accountBonus')
   }
-  gotoPayment() {
-    // let  loggedin  =this.authService.loggedIn()
-    // if(loggedin == true){
-    // this.move(2)
-    // }
+
+  useBonus(){
+    this.adminService.updateBonus().subscribe((data: any) => {
+      this.accountBonus = data.accountBonus
+      })
+
+    this.detection = (10 / 100) * this.total
+
+    return this.totalafterBonus
 
   }
   getCartItems() {
@@ -82,9 +95,12 @@ export class CheckOutPageComponent implements OnInit {
     return this.productService.productImageUrl(imageId);
   }
   get getTotal() {
-    this.total = this.cartService.getTotalPrice();
-    return this.total
+    this.total =  this.cartService.getTotalPrice();
+
+    this.totalafterBonus = this.total-this.detection
+    return this.totalafterBonus.toFixed(0);
   }
+
   order() {
     this.authService.getemail()
     const orderData = {
@@ -98,8 +114,9 @@ export class CheckOutPageComponent implements OnInit {
       contry: this.firstFormGroup.value.contry,
       method: this.secondFormGroup.value.method,
       refrence: this.refrence,
-      phase: "delievry phase",
+      phase: "processing",
       ownerEmail: this.authService.getemail()
+
     }
     // this.printOrder(orderData);
     this.cartService.order(orderData).subscribe((data: any) => {
@@ -110,14 +127,6 @@ export class CheckOutPageComponent implements OnInit {
   move(index: number) {
     this.stepper.selectedIndex = index;
   }
-
-  getAllOrders() {
-  }
-  //  let id= this.authService.getID()
-  //  this.productService.getOrders().subscribe((data: any) => {
-  //    this.dataOrder = data.orders
-  // })
-
 
   // getAllOrders() {
   //   let id = this.authService.getID()

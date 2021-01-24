@@ -34,7 +34,9 @@ secondFormGroup: FormGroup;
       amount: ['', Validators.required],
       stock: ['', Validators.required]
     });
+
   }
+
   getCartItems(){
     this.cartItems = this.cartService.getProducts()
     console.log(this.cartItems)

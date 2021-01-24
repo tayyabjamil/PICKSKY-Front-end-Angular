@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/auth.service';
 import { CartService } from '../cart.service';
 import { ProductService } from '../product.service';
 
@@ -13,9 +14,11 @@ export class ReferFriendComponent implements OnInit {
   allOrders = [];
   friendEmail;
   refrenceCode;
+  myRefrenceCode;
   constructor(public mediaObserver:MediaObserver,
     public productService:ProductService,
-    public cartService:CartService) { }
+    public cartService:CartService,
+    public authService:AuthService) { }
     mediaSub:Subscription
     deviceXs:boolean;
     deviceLg:boolean;
@@ -31,14 +34,16 @@ export class ReferFriendComponent implements OnInit {
       this.deviceMd = result.mqAlias === 'md'
 
     })
+  this.myRefrenceCode = this.authService.getRefrenceId()
   }
+
   refer(){
     const data ={
       refrenceCode:this.refrenceCode,
       friendEmail:this.friendEmail
     }
     this.productService.referFriend(data).subscribe((products:any) => {
-    alert("refer");
+    alert("Mail sent to your friend");
     }, (error) => {
    alert("use correct refrenceId")
     });
