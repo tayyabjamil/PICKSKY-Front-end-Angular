@@ -45,13 +45,13 @@
       <div class="col-lg-3 col-md-2 col-sm-11"></div>
       <div class="col-lg-6 col-md-8 col-xs-12 col-sm-10">
         <div class="row" style="padding-top: 2%">
-          <div class="col-lg-3 col-md-3 col-xs-4" (click)="discardProduct(item)">
-            <div class="container" style="height: 80px; width: 130px">
+          <div class="col-lg-3 col-md-3 col-xs-4"  >
+            <div class="container" style="height: 80px; width: 130px" (click)="discardProductFun(item)">
               <div style="background-color: grey">
-                <img class="image" style="width: 130px; height: 80px" [src]="getImage(item.productImage)" />
+                <img class="image" (click)="discardProductFun(item)" style="width: 130px; height: 80px" [src]="getImage(item.productImage)" />
               </div>
 
-              <div class="middle">
+              <div class="middle" (click)="discardProductFun(item)">
                 <span class="glyphicon glyphicon-remove" style="
                     background-color: white;
                     padding: 15%;
