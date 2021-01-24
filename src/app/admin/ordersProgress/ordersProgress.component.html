@@ -1,8 +1,8 @@
 <div style="margin-top: 10%;">
   <hr>
   <h1 style="text-align: center;font-weight: bold;">Admin Portal</h1>
-  <div style="border: 1px;border-style: groove;">
-    <div class="row" style="margin:1%">
+  <div  style="border: 1px;border-style: groove;">
+    <div  class="row" style="margin:1%">
       <div class="col-lg-2">
         <p style="font-size: large;">Order No #</p>
       </div>
@@ -24,7 +24,7 @@
 
     <div *ngFor="let item of allOrders">
       <div class="row" style="border:1px;border-style: groove;margin:1%;padding-top: 3px;">
-        <div class="col-lg-2">
+        <div class="col-lg-1">
 
           <p>1#</p>
         </div>
@@ -40,15 +40,25 @@
           <p>{{item?.total}}</p>
         </div>
 
-        <div class="col-lg-2">
+        <div class="col-lg-1">
           <p>{{item.phase}}</p>
         </div>
-
         <div class="col-lg-1">
-          <p class="  btn  green-btn" style="color: white;" (click)="nextPhase(item)">Send Order</p>
+          <p class="  btn  green-btn" style="color: white;" (click)="pdfDownload(item)">Download</p>
         </div>
 
 
+        <div *ngIf="item.cancelOrder==true" class="col-lg-2">
+          <p class="btn text-danger" style="color: white;" >Order is Canceled</p>
+        </div>
+
+
+        <div *ngIf="item.cancelOrder==false" class="col-lg-1">
+          <p class="  btn  green-btn" style="color: white;" (click)="nextPhase(item,'packed')">Packing </p>
+        </div>
+        <div class="col-lg-1" *ngIf="item.cancelOrder==false">
+          <p class="  btn  green-btn" style="color: white;" (click)="nextPhase(item,'shipped')">Shipping </p>
+        </div>
       </div>
     </div>
   </div>

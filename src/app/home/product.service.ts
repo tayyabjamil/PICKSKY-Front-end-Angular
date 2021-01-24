@@ -126,7 +126,10 @@ export class ProductService {
   getOrsers(id) {
     return this.http.get('http://localhost:8000/api/orders/' + id, this.httpHeaders);
   }
+  cancelOrder(id){
+    return this.http.post('http://localhost:8000/api/orders/cancelOrder/' + id, this.httpHeaders);
 
+  }
   referFriend(data) {
     return this.http.post(
       'http://localhost:8000/api/users/referFriend',

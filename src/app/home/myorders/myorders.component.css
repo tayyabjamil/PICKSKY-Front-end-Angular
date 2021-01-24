@@ -123,3 +123,90 @@
 .job-closed {
   background-color: red;
 }
+
+
+
+.panel-group {
+  background: #fff none repeat scroll 0 0;
+  border-radius: 3px;
+  box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.04);
+  margin-bottom: 0;
+  padding: 30px;
+}
+#accordion .panel {
+  border: medium none;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0 0 15px 10px;
+}
+#accordion .panel-heading {
+  border-radius: 30px;
+  padding: 0;
+}
+#accordion .panel-title a {
+  background:#b4d469 none repeat scroll 0 0;
+  border: 1px solid transparent;
+  border-radius: 30px;
+  color: black;
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 12px 20px 12px 50px;
+  position: relative;
+  transition: all 0.3s ease 0s;
+}
+#accordion .panel-title a.collapsed {
+  background:white none repeat scroll 0 0;
+  border: 1px solid #ddd;
+  color: black;
+}
+#accordion .panel-title a.collapsed:hover {
+  background:#b4d469  none repeat scroll 0 0;
+  border: 1px solid #ddd;
+  color: black;
+}
+#accordion .panel-title a::after, #accordion .panel-title a.collapsed::after {
+  background: #93bb36 none repeat scroll 0 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.58);
+  color: #fff;
+  content: "";
+  font-family: fontawesome;
+  font-size: 25px;
+  height: 55px;
+  left: -20px;
+  line-height: 55px;
+  position: absolute;
+  text-align: center;
+  top: -5px;
+  transition: all 0.3s ease 0s;
+  width: 55px;
+}
+#accordion .panel-title a.collapsed::after {
+  background:black none repeat scroll 0 0;
+  border: 1px solid #ddd;
+  box-shadow: none;
+  color: white;
+  content: "";
+}
+#accordion .panel-body {
+  background: transparent none repeat scroll 0 0;
+  border-top: medium none;
+  padding: 20px 25px 10px 9px;
+  position: auto;
+  font-family: "Open Sans", sans-serif;
+}
+#accordion .panel-body p {
+  border-left: 1px dashed #8c8c8c;
+  padding-left: 25px;
+}
+
+li.panel-body {
+   font-weight: bold;
+  font-size: small;
+
+      margin-bottom: 14px;
+  text-align: left;
+
+}

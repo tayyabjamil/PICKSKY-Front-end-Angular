@@ -36,7 +36,7 @@ export class CatagoryComponent implements OnInit {
       this.deviceLg = result.mqAlias === 'lg'
       this.deviceMd = result.mqAlias === 'md'
     })
-    
+
     this._route.paramMap.subscribe((params: any) => {
       if (params && params.params.page) {
         let categoryRoute  =  params.params.page;
@@ -45,7 +45,7 @@ export class CatagoryComponent implements OnInit {
             return true;
           }
         });
-        
+
       }
       //change the value of showRoutes based on your requirements
     });

@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AuthService } from '../auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AdminService {
   };
 
   phase = "delivery phase"
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,public authService:AuthService) { }
 
   addProducts(fd) {
     return this.http.post(
@@ -24,7 +25,7 @@ export class AdminService {
     return this.http.post(
       'http://localhost:8000/api/orders/shipping',
     {
-        phase: this.phase = "shipping",
+        phase: shippingPhase.phase,
         ownerEmail: shippingPhase.ownerEmail,
         orderId: shippingPhase.orderId
       },
@@ -33,6 +34,10 @@ export class AdminService {
   }
   getAllOrders() {
     return this.http.get('http://localhost:8000/api/orders/', this.httpHeaders);
+  }
+  updateBonus(){
+    return this.http.post('http://localhost:8000/api/users/updateBonus/'+this.authService.getID(), this.httpHeaders);
+
   }
   getPhase() {
 

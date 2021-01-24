@@ -79,6 +79,7 @@ export class LoginComponent implements OnInit {
         this.setusername(data.username);
         this.setemail(data.email)
         this.setRefrenceId(data.refrenceId)
+        this.setAccountBonus(data.accountBonus)
         this.isLoggedIn = true;
         this.router.navigate(['/'])
 
@@ -96,7 +97,9 @@ export class LoginComponent implements OnInit {
   setId(userId) {
     localStorage.setItem('userId', JSON.stringify(userId));
   }
-
+  setAccountBonus(accountBonus) {
+    localStorage.setItem('accountBonus', JSON.stringify(accountBonus));
+  }
   setRefrenceId(refrenceId) {
     localStorage.setItem('refrenceId', JSON.stringify(refrenceId));
   }
@@ -140,6 +143,7 @@ export class LoginComponent implements OnInit {
           this.setId(data.userId);
           this.setusername(data.username);
           this.setemail(data.email)
+          this.setAccountBonus(data.accountBonus)
 
           this.setRefrenceId(data.refrenceId)
           this.isLoggedIn = true;
@@ -179,6 +183,7 @@ export class LoginComponent implements OnInit {
           this.setId(data.userId);
           this.setusername(data.username);
           this.setemail(data.email)
+          this.setAccountBonus(data.accountBonus)
 
           this.setRefrenceId(data.refrenceId)
           this.isLoggedIn = true;

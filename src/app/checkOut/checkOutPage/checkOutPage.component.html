@@ -185,8 +185,8 @@
   </div>
 
 
-  <div class="col-lg-5" style="padding-top: 5%;min-height: 700px;background-color: #f3f3f3;">
-    <div style="padding-left:7%;padding-right: 7%;padding-top: 5%;">
+  <div class="col-lg-5" style="padding-top: 5%;padding-bottom: 5%;min-height: 700px;background-color: #f3f3f3;">
+    <div style="padding-left:7%;padding-right: 7%;padding-top: 5%;padding-bottom: 5%;">
 
       <div *ngFor="let item of cartItems">
 
@@ -230,9 +230,14 @@
         <p>Total</p>
         <p style="font-weight: 500;">${{getTotal}}</p>
       </div>
+<div>
+  <h3>You Can use your bonus to get 10% Discount</h3>
+  <button (click)="useBonus()">Use Bonus</button>
+  <p>You have {{accountBonus}} Bonus Remaining</p>
 
+</div>
     </div>
   </div>
 
-  
+
 </div>

@@ -82,7 +82,6 @@ discardProduct(product){
     }
     return this.cart;
   }
-
   getTotalPrice() {
     let subtotal = 0;
     this.cart.forEach(item => {
@@ -111,24 +110,12 @@ discardProduct(product){
         code: orderData.code,
         contry: orderData.contry,
         method: orderData.method,
+        cancelOrder:false
 
       },
       this.httpHeaders
     );
   }
 
-  getOrderStatus() {
-    return of([
-      {
-        "name": "Pinpont Pen", "photo": "assets/img/products/pinpoint-ballpen.jpg", "quantity": 2, "date": "02-02-2020", "price": 100, "status": "packed"
-      }, {
-        "name": "Classmate Book", "photo": "assets/img/products/classmate-classmate-notebook-cmn018-original-imae6ajy4qhfxd3k.jpeg", "quantity": 2, "date": "02-02-2020", "price": 100, "status": "shipped"
-      },
-      {
-        "name": "Classmate Book", "photo": "assets/img/products/classmate-classmate-notebook-cmn018-original-imae6ajy4qhfxd3k.jpeg", "quantity": 2, "date": "02-02-2020", "price": 100, "status": "processing"
-      },
-      {
-        "name": "Classmate Book", "photo": "assets/img/products/classmate-classmate-notebook-cmn018-original-imae6ajy4qhfxd3k.jpeg", "quantity": 2, "date": "02-02-2020", "price": 100, "status": "delivered"
-      }]);
-  }
+
 }

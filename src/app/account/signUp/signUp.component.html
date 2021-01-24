@@ -95,7 +95,11 @@
               <i *ngIf="!showConfirmPass" class="glyphicon glyphicon-eye-close"></i>
             </button>
           </div>
+
         </div>
+          <p style="font-size: 14px" class="errorlbl" *ngIf="passwordValidMatch==true">
+           password not match
+      </p>
 
         <div style="padding-bottom: 2%">
           <form  [formGroup]="rformSignup">
