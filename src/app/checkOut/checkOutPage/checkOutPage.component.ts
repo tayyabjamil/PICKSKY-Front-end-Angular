@@ -103,7 +103,7 @@ export class CheckOutPageComponent implements OnInit {
     }
     // this.printOrder(orderData);
     this.cartService.order(orderData).subscribe((data: any) => {
-      // this.router.navigate(['/'])
+      this.router.navigate(['/'])
     })
     // this.cartService.emptyProduct()
   }
