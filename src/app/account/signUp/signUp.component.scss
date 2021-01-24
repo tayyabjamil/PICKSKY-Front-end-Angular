@@ -5,9 +5,14 @@
   display: flex;
   flex-direction: column;
   height: 500px;
-  padding-left: 6vw;
-  padding-right: 6vw;
+  padding-left: 4vw;
+  padding-right: 4vw;
 
+  }
+
+  .borderRight{
+    border-top-right-radius:12px ;
+    border-bottom-right-radius: 12px;
   }
   .errorlbl{
     color: red;

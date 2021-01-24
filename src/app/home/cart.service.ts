@@ -25,7 +25,14 @@ export class CartService {
     this.cart = [];
     localStorage.setItem('cart', JSON.stringify(this.cart));
   }
-
+discardProduct(product){
+    this.cart.find((item) => {
+      if (item._id === product._id) {
+          this.cart.splice(item,1)
+          item.productCount = 0;
+      }
+    })
+}
   removeProduct(product) {
     let proudctRemoved = false
     this.cart.find((item) => {

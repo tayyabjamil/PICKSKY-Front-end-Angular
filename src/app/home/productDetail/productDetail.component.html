@@ -196,19 +196,64 @@
   </div>
 
 </div>
-<div class="row">
-  <div style="margin-bottom: 2%;margin-left:3%;margin-right: 3%;border-radius: 8px;">
-
-    <p class="text-block1Footer"> Fast, Free Shipping, Contactless Delivery</p>
-    <p class="text-block2Footer">Try it now, risk free!</p>
-
-    <button class="btn text-block3Footer"><i class="fa fa-arrow">
-        <span style="font-weight: 800;font-size: larger;">Shop Now</span></i></button>
-    <img class="img-responsive" style="width: 100%;border-radius: 8px;" src="../assets/images/slide2.png">
+<div class="row" style="margin: 1%">
+  <div class="container-fluid" style="width: 100%; padding-top: 2%">
+    <div *ngIf="deviceLg || deviceMd" class="block" style="padding-top: 5%">
+      <div>
+        <p style="color: black; padding-bottom: 5%; font-size: 40px">
+          Fast, Free Shipping<br />
+        </p>
+        <p style="color: black; padding-bottom: 10%; font-size: 40px">
+          Contactless Delivery.
+        </p>
+      </div>
+      <p style="color: black; padding-bottom: 10%; font-size: 20px">
+        Try it now, risk free!
+      </p>
+      <button
+        class="btn"
+        style="background-color: #ffffff; width: 40%; height: 35px"
+      >
+        <span style="font-weight: bold"> Order Now </span>
+      </button>
+    </div>
+    <div *ngIf="deviceSm || deviceXs" class="block" style="padding-top: 20%">
+      <div>
+        <p style="color: black; padding-bottom: 5%; font-size: 25px">
+          Fast, Free Shipping<br />
+        </p>
+        <p style="color: black; padding-bottom: 5%; font-size: 25px">
+          Contactless Delivery.
+        </p>
+      </div>
+      <p class="text-block-small" style="color: black; padding-bottom: 5%">
+        Try it now, risk free!
+      </p>
+      <button
+        class="btn"
+        (click)="scrollToFeatured()"
+        style="
+          background-color: #ffffff;
+          font-size: 14px;
+          width: 50%;
+          height: 40px;
+          font-weight: bold;
+        "
+      >
+        Order Now
+      </button>
+    </div>
+    <img
+      class="img-responsive"
+      style="
+        border-radius: 6px;
+        min-height: 350px;
+        width: 100%;
+        border-radius: 8px;
+      "
+      src="../assets/images/slide2.png"
+    />
   </div>
-
-
-
 </div>
 
 

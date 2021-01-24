@@ -20,6 +20,7 @@ export class MainPageComponent implements OnInit {
   searchProductsData = [];
   productSearch: Subscription;
   categories;
+  cartItems = []
   // @ViewChild('nav') slider: NgImageSliderComponent;
   constructor(
     public mediaObserver: MediaObserver,
@@ -55,7 +56,7 @@ export class MainPageComponent implements OnInit {
       if (searchitem) {
         this.searchProductsData = this.allProducts.find((productItem) => {
           if (productItem && productItem.name && productItem.name.find(searchitem)) {
-           return true;
+            return true;
           }
         })
         this.searchProductsData;
@@ -64,6 +65,11 @@ export class MainPageComponent implements OnInit {
       }
     });
     this.categories = this.productService.categories
+  }
+
+  scrollToTrending(){
+    document.getElementById("trending").scrollIntoView({ behavior: "smooth" })
+
   }
 
 
@@ -80,8 +86,21 @@ export class MainPageComponent implements OnInit {
     this.productService.getProducts().subscribe(
       (products) => {
 
-        this.allProducts = products;
-        this.searchProductsData = this.allProducts
+        // this.allProducts = products;
+        // this.searchProductsData = this.allProducts
+        let tempProducts: any = products;
+        let cartProducts = this.cartService.getProducts();
+        if (tempProducts && cartProducts) {
+          tempProducts.forEach(item => {
+            cartProducts.forEach((cartItem) => {
+              if (item._id === cartItem._id) {
+                item.productCount = cartItem.productCount;
+              }
+            })
+          });
+        }
+        this.searchProductsData = this.allProducts = tempProducts
+
         // this.searchProductsData = products;
       },
       (error) => {
@@ -93,7 +112,18 @@ export class MainPageComponent implements OnInit {
   getfeaturedProducts() {
     this.productService.featuredProducts().subscribe(
       (products) => {
-        this.featuredProducts = products;
+        let tempProducts: any = products;
+        let cartProducts = this.cartService.getProducts();
+        if (tempProducts && cartProducts) {
+          tempProducts.forEach(item => {
+            cartProducts.forEach((cartItem) => {
+              if (item._id === cartItem._id) {
+                item.productCount = cartItem.productCount;
+              }
+            })
+          });
+        }
+        this.featuredProducts = tempProducts
       },
       (error) => {
         console.log('error in getting featuredProducts ');
@@ -128,7 +158,7 @@ export class MainPageComponent implements OnInit {
   }
 
   onImageClick(index) {
-    this.router.navigate(['catagory/'+ this.categories[index].routeTo]);
+    this.router.navigate(['catagory/' + this.categories[index].routeTo]);
 
   }
 }

@@ -22,7 +22,10 @@ export class ForgetPasswordComponent implements OnInit {
     deviceMd:boolean;
     deviceSm:boolean;
     show: boolean;
+    passresetToken:String
     ngOnInit() {
+      // this.passresetToken = JSON.parse(localStorage.getItem('resetToken'));
+
     this.mediaSub = this.mediaObserver.media$.subscribe((result:MediaChange)=>{
       console.log(result.mqAlias)
       this.deviceXs = result.mqAlias === 'xs'

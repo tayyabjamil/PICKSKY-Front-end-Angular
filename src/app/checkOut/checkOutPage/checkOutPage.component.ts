@@ -18,7 +18,8 @@ export class CheckOutPageComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder,
     public cartService: CartService,
     public productService: ProductService,
-    public authService: AuthService, private router: Router, ) { }
+    public authService: AuthService,
+    private router: Router,) { }
 
 
   cartItems;
@@ -62,7 +63,15 @@ export class CheckOutPageComponent implements OnInit {
       // contact: ['', Validators.required],
 
     });
-    this.getAllOrders()
+    // this.getAllOrders()
+    this.gotoPayment()
+  }
+  gotoPayment() {
+    // let  loggedin  =this.authService.loggedIn()
+    // if(loggedin == true){
+    // this.move(2)
+    // }
+
   }
   getCartItems() {
     this.cartItems = this.cartService.getProducts()
@@ -92,9 +101,9 @@ export class CheckOutPageComponent implements OnInit {
       phase: "delievry phase",
       ownerEmail: this.authService.getemail()
     }
-    this.printOrder(orderData);
+    // this.printOrder(orderData);
     this.cartService.order(orderData).subscribe((data: any) => {
-      // this.router.navigate(['/'])
+      this.router.navigate(['/'])
     })
     // this.cartService.emptyProduct()
   }
@@ -103,11 +112,19 @@ export class CheckOutPageComponent implements OnInit {
   }
 
   getAllOrders() {
-    let id = this.authService.getID()
-    this.productService.getOrders().subscribe((data: any) => {
-      this.dataOrder = data.orders.toString()
-    })
   }
+  //  let id= this.authService.getID()
+  //  this.productService.getOrders().subscribe((data: any) => {
+  //    this.dataOrder = data.orders
+  // })
+
+
+  // getAllOrders() {
+  //   let id = this.authService.getID()
+  //   this.productService.getOrders().subscribe((data: any) => {
+  //     this.dataOrder = data.orders.toString()
+  //   })
+  // }
 
   get useAdress() {
     if (this.dataOrder) {
@@ -178,5 +195,5 @@ export class CheckOutPageComponent implements OnInit {
     };
   }
 
-  
+
 }

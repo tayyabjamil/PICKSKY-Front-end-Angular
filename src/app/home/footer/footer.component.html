@@ -1,128 +1,116 @@
+<div class="row" *ngIf="deviceLg || deviceMd" style="padding-top: 2%;padding-bottom: 2%; background-color: black;">
+  <div class="col-lg-1"></div>
+  <div class="col-lg-1">
+    <h2 class="btn" style="color: white;">Company</h2>
+    <h4 class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(6)}}</h4>
+    <h4 class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(1)}}</h4>
+    <h4 class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(2)}}</h4>
+    <h4 class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(3)}}</h4>
+    <h4 class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(4)}}</h4>
+    <h4 class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(5)}}</h4>
+  </div>
 
-<div class="row" *ngIf="deviceLg || deviceMd" style="padding: 5%; background-color: black;">
-<div class="col-lg-3">
-  <h2 style="color: white;">Company</h2>
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(6)}}</h4>
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(1)}}</h4>
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(2)}}</h4>
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(3)}}</h4>
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(4)}}</h4>
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(5)}}</h4>
-</div>
-<div class="col-lg-3">
-  <h2 style="color: white;">Products</h2>
+  <div class="col-lg-2"></div>
+  <div class="col-lg-1">
+    <h2 style="color: white;">Products</h2>
 
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getHeaderNames(2)}}</h4>
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getHeaderNames(3)}}</h4>
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getHeaderNames(4)}}</h4>
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getSpecialConstants(1)}}</h4>
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getSpecialConstants(2)}}</h4>
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getSpecialConstants(3)}}</h4>
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getSpecialConstants(4)}}</h4>
-  
-</div>
-<div class="col-lg-3" >
-  <h2 style="color: white;">Location</h2>
-  <h4 style="color: white;">Saftey</h4>
-</div>
-<div class="col-lg-3">
-  <h2 style="color: white;">Inovation</h2>
-  <h4 style="color: white;">Advanced Technoglogy</h4>
-  <h4 style="color: white;">AI</h4>
-</div>
- <a class="dropdown-toggle" data-toggle="dropdown"></a>
-<hr>
-<div
-class="col-lg-3 p-l-33 ">
-<span
-><i
-  class="fa fa-facebook-square"
-  routerLink="/login"
-  style="
+    <h4 class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getHeaderNames(2)}}</h4>
+    <h4 class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getHeaderNames(3)}}</h4>
+    <h4 class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getHeaderNames(4)}}</h4>
+    <h4 class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getSpecialConstants(1)}}</h4>
+    <h4 class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getSpecialConstants(2)}}</h4>
+    <h4 class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getSpecialConstants(3)}}</h4>
+    <h4 class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getSpecialConstants(4)}}</h4>
+
+  </div>
+
+  <div class="col-lg-2"></div>
+  <div class="col-lg-1">
+    <h2 class="btn" style="color: white;">Location</h2>
+    <h4 class="btn" style="color: white;">Saftey</h4>
+  </div>
+
+  <div class="col-lg-1"></div>
+  <div class="col-lg-1">
+    <h2 class="btn" style="color: white;">Inovation</h2>
+    <h4 class="btn" style="color: white;">Advanced Technoglogy</h4>
+    <h4 class="btn" style="color: white;">AI</h4>
+  </div>
+  <a class="dropdown-toggle" data-toggle="dropdown"></a>
+  <hr>
+  <div class="col-lg-1 p-l-33 ">
+    <span><i class="btn fa fa-facebook-square" routerLink="/login" style="
     font-weight: 200;
-    font-size: large;
+    font-size: xx-large;
     margin-right: 2%;
     padding: 2%;
 
     color:white;
-  "
-></i
-></span>
-<span
-><i
-  class="fa fa-whatsapp"
-  routerLink="/login"
-  style="
+  "></i></span>
+    <span><i class="btn fa fa-whatsapp" routerLink="/login" style="
     font-weight: 200;
-    font-size: large;
+    font-size: xx-large;
     margin-right: 2%;
     padding: 2%;
 
     color:white;
-  "
-></i
-></span>
-</div>
-
+  "></i></span>
+  </div>
+  <div class="col-lg-1"></div>
 </div>
 <div *ngIf="deviceXs || deviceSm">
   <div class="row" style="padding: 5%; background-color: black;">
-    <div class="col-xs-3">
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(6)}}</h4>
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(1)}}</h4>
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(2)}}</h4>
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(3)}}</h4>
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(4)}}</h4>
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(5)}}</h4>
- </div>
-    <div class="col-xs-3">
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getHeaderNames(2)}}</h4>
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getHeaderNames(3)}}</h4>
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getHeaderNames(4)}}</h4>
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getSpecialConstants(1)}}</h4>
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getSpecialConstants(2)}}</h4>
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getSpecialConstants(3)}}</h4>
-  <h4 [routerLink]="['/aboutUs']" style="color: white;">{{getSpecialConstants(4)}}</h4>
+<div class="col-xs-1">
+      <p class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(6)}}</p>
+      <p class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(1)}}</p>
+      <p class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(2)}}</p>
+      <p class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(3)}}</p>
+      <p class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(4)}}</p>
+      <p class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getAboutusConstants(5)}}</p>
     </div>
-    <div class="col-xs-3">
-      <p style="color: white;">Global CitizenShip</p>
-      <p style="color: white;">Saftey</p>
-    </div>
-    <div class="col-xs-3">
-      <p style="color: white;">Inovation</p>
-      <p style="color: white;">Advanced Technoglogy</p>
-      <p style="color: white;">AI</p>
-    </div>
-    </div>
-    <div
-    class="col-xs-3 p-l-10">
-    <span
-    ><i
-      class="fa fa-facebook-square"
-      routerLink="/login"
-      style="
-        font-weight: 200;
-        font-size: large;
-        margin-right: 2%;
-        padding: 2%;
+    <div class="col-xs-1"></div>
 
-        color:white;
-      "
-    ></i
-    ></span>
-    <span
-    ><i
-      class="fa fa-whatsapp"
-      routerLink="/login"
-      style="
-        font-weight: 200;
-        font-size: large;
-        margin-right: 2%;
-        padding: 2%;
-
-        color:white;
-      "
-    ></i
-    ></span>
+    <div class="col-xs-1">
+      <p class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getHeaderNames(2)}}</p>
+      <p class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getHeaderNames(3)}}</p>
+      <p class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getHeaderNames(4)}}</p>
+      <p class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getSpecialConstants(1)}}</p>
+      <p class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getSpecialConstants(2)}}</p>
+      <p class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getSpecialConstants(3)}}</p>
+      <p class="btn" [routerLink]="['/aboutUs']" style="color: white;">{{getSpecialConstants(4)}}</p>
     </div>
+    <div class="col-xs-2"></div>
+
+    <div class="col-xs-1">
+      <p class="btn" style="color: white;">Global CitizenShip</p>
+      <p class="btn" style="color: white;">Saftey</p>
+    </div>
+    <div class="col-xs-2"></div>
+
+    <div class="col-xs-1">
+      <p class="btn" style="color: white;">Inovation</p>
+      <p class="btn" style="color: white;">Advanced Technoglogy</p>
+      <p class="btn" style="color: white;">AI</p>
+    </div>
+    <div class="col-xs-1"></div>
+
+    <div class="col-xs-2">
+      <span><i class="fa fa-facebook-square" routerLink="/login" style="
+          font-weight: 200;
+          font-size:large;
+
+          color:white;
+        "></i></span>
+      <span><i class="fa fa-whatsapp" routerLink="/login" style="
+          font-weight: 200;
+          font-size:large;
+          margin-right: 2%;
+          padding: 2%;
+
+          color:white;
+        "></i></span>
+    </div>
+
+  </div>
+
 </div>

@@ -9,7 +9,6 @@ import { CatagoryComponent } from './catagory/catagory.component';
 import { SupportPageComponent } from './supportPage/supportPage.component';
 import { FooterComponent } from './footer/footer.component';
 import { MyordersComponent } from './myorders/myorders.component';
-import { CartComponent } from './cart/cart.component';
 import { MainPageComponent } from './mainPage/mainPage.component';
 import { ProductDetailComponent } from './productDetail/productDetail.component';
 import { SpecialOffersComponent } from './specialoffers/specialoffers.component';
