@@ -158,7 +158,10 @@ export class SignUpComponent implements OnInit {
 
   createAccount() {
     this.rformSignup.controls['phone'].clearValidators();
-    this.rformSignup.controls['phone'].setValue(this.rformSignup.controls['phone'].value.number);
+    if (this.rformSignup.value.phone.number) {
+      this.rformSignup.controls['phone'].setValue(this.rformSignup.value.phone.internationalNumber);
+    }
+
     if (this.rformSignup.valid) {
       if (this.rformSignup.value.password === this.rformSignup.value.confirmPassword) {
         this.accountService.createuserAccount(this.rformSignup.value).subscribe((data: any) => {
