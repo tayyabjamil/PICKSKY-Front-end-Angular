@@ -67,10 +67,11 @@ export class LoginComponent implements OnInit {
     }
     if (this.loginType == 'phone') {
       loginData.email = this.rformLogin.value.phone.internationalNumber;
+     if(loginData.email==""){
+       alert("select country code")
+     }else{
       loginData.password = this.rformLogin.value.password;
-    }
-    console.log(loginData);
-    if (loginData.email && loginData.password) {
+     if (loginData.email && loginData.password) {
       this.accountService.login(loginData).subscribe((data: any) => {
 
         alert("Login Successful")
@@ -84,6 +85,8 @@ export class LoginComponent implements OnInit {
       }, (error) => {
         alert(error.error.message);
       });
+    }
+    }
     }
   }
 
