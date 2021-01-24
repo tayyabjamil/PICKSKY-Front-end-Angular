@@ -20,6 +20,7 @@ export class MainPageComponent implements OnInit {
   searchProductsData = [];
   productSearch: Subscription;
   categories;
+  cartItems = []
   // @ViewChild('nav') slider: NgImageSliderComponent;
   constructor(
     public mediaObserver: MediaObserver,
@@ -64,6 +65,11 @@ export class MainPageComponent implements OnInit {
       }
     });
     this.categories = this.productService.categories
+  }
+
+  scrollToTrending(){
+    document.getElementById("trending").scrollIntoView({ behavior: "smooth" })
+
   }
 
 

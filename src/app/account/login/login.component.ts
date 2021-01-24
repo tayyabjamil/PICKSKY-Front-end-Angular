@@ -106,6 +106,10 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('contact', JSON.stringify(contact));
   }
 
+  passwordResetToken(token) {
+    localStorage.setItem('resetToken', JSON.stringify(token));
+  }
+
   setemail(email) {
     localStorage.setItem('email', JSON.stringify(email));
   }
@@ -138,16 +142,18 @@ export class LoginComponent implements OnInit {
           this.isLoggedIn = true;
           this.router.navigate(['/'])
 
-
-
-
         }, (error) => {
-          alert("NO Account Sign up First")
-          this.router.navigate(['/signUp'])
+          if (error.error.message == 'No Account Create Account First') {
+            alert(error.error.message)
+            this.router.navigate(['/signUp'])
+          } else if (error.error.message == 'Account not verified') {
+            alert(error.error.message)
+          }
         });
       });
 
   }
+
   signInFacebook(platform: string) {
     platform = FacebookLoginProvider.PROVIDER_ID;
     this.authService
@@ -180,10 +186,14 @@ export class LoginComponent implements OnInit {
 
 
         }, (error) => {
-          alert("NO Account Sign up First")
-          this.router.navigate(['/signUp'])
-
+          if (error.error.message == 'No Account Create Account First') {
+            alert(error.error.message)
+            this.router.navigate(['/signUp'])
+          } else if (error.error.message == 'Account not verified') {
+            alert(error.error.message)
+          }
         });
+
       });
   }
 

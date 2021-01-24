@@ -1,92 +1,69 @@
 <div>
-  <div class="row">
-    <div class="col-lg-2 col-sm-1 col-xs-1"></div>
-    <div
-      class="col-lg-8 col-xs-10 col-sm-10"
-      style="
+  <div class="row" style="margin:1%">
+    <div class="col-lg-2 col-sm-1 "></div>
+    <div class="col-lg-8 col-xs-12 col-sm-10" style="
         margin-top: 3%;
         margin-bottom: 3%;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-      "
-    >
-      <p
-        style="
+      ">
+      <p style="
           font-size: x-large;
           font-weight: bolder;
           padding-left: 2%;
           font-weight: bold;
-        "
-      >
+        ">
         Cart
       </p>
-      <span
-        class="glyphicon glyphicon-remove"
-        [routerLink]="['/']"
-        routerLinkActive="router-link-active"
-      ></span>
+      <span class="glyphicon glyphicon-remove" [routerLink]="['/']" routerLinkActive="router-link-active"></span>
     </div>
-    <div class="col-lg-2 col-sm-1 col-xs-1"></div>
+    <div class="col-lg-2 col-sm-1 "></div>
   </div>
 
-  <div class="row" style="background-color: rgb(243, 242, 242)">
-    <div class="col-lg-2 col-sm-1 col-xs-1"></div>
-    <div
-      class="col-lg-8 col-xs-10 col-sm-10"
-      style="
+  <div class="row" style="margin: 1%;background-color: rgb(243, 242, 242)">
+    <div class="col-lg-2 col-sm-1 "></div>
+    <div class="col-lg-8 col-xs-12 col-sm-10" style="
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        padding-top: 20px;"
-    >
+        padding-top: 20px;
+      ">
       <p style="padding-left: 2%">Total Amount</p>
       <p style="font-weight: 500">${{ getTotal }}</p>
     </div>
-    <div class="col-lg-2 col-sm-1 col-xs-1"></div>
+    <div class="col-lg-2 col-sm-1 "></div>
   </div>
 
   <div class="container">
     <div class="row" *ngIf="getCartItems.length == 0">
-      <div class="col-4"></div>
-      <img
-        class="col-4"
-        class="img-responsive"
-        style="min-height: 260px"
-        src="../assets/images/blank.PNG"
-      />
-      <div class="col-4"></div>
+      <div class="col-3"></div>
+      <img class="col-6" class="img-responsive" style="min-height: 260px" src="../assets/images/blank.PNG" />
+      <div class="col-3"></div>
     </div>
   </div>
 
   <div class="cartHeight">
     <div class="row" *ngFor="let item of getCartItems">
-      <div class="col-lg-2 col-md-2 col-xs-1 col-sm-11"></div>
-      <div class="col-lg-8 col-xs-10 col-sm-10">
+      <div class="col-lg-2 col-md-2 col-sm-11"></div>
+      <div class="col-lg-8 col-xs-12 col-sm-10">
         <div class="row" style="padding-top: 2%">
-          <div class="col-4 col-lg-2" (click)="removeProduct(item)">
+          <div class="col-lg-2 col-xs-4" (click)="discardProduct(item)">
             <div class="container" style="height: 80px; width: 130px">
               <div style="background-color: grey">
-                <img
-                  class="image"
-                  style="width: 130px; height: 80px"
-                  [src]="getImage(item.productImage)"
-                />
+                <img class="image" style="width: 130px; height: 80px" [src]="getImage(item.productImage)" />
               </div>
 
               <div class="middle">
-                <span
-                  class="glyphicon glyphicon-remove"
-                  style="
+                <span class="glyphicon glyphicon-remove" style="
                     background-color: white;
                     padding: 15%;
                     border-radius: 12px;
-                  "
-                ></span>
+                  "></span>
               </div>
             </div>
           </div>
-          <div class="col-4 col-lg-8" style="min-width: 30px">
+          <div class="col-lg-8 col-xs-4" style="min-width: 30px">
             <div>
               <p>{{ item.name }}</p>
             </div>
@@ -95,28 +72,11 @@
               <p>Total Units : {{ item.productCount }}</p>
             </div>
           </div>
-          <div class="col-4 col-lg-2" style="text-align: right">
+          <div class="col-lg-2 col-xs-4" style="text-align:right;padding-right: 40px;">
             <p style="font-weight: 500">${{ item.unitTotal }}</p>
-            <div
-              style="
-                height: 150px;
-                width: 160px;
-                margin-right: 20px;
-                margin-left: 20px;
-              "
-            >
-              <div
-                (click)="addProduct(item)"
-                *ngIf="item.productCount === 0"
-                style="text-align: right"
-              >
-                <button>
-                  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                </button>
-              </div>
-              <div
-                *ngIf="item.productCount > 0"
-                style="
+
+            <div>
+             <div *ngIf="item.productCount > 0" style="
                   display: flex;
                   flex-direction: row;
                   width: 100px;
@@ -128,78 +88,78 @@
                   color: whitesmoke;
                   border: 1px solid transparent;
                   line-height: 35px;
-                "
-              >
-              
+                ">
+                <div (click)="removeProduct(item)" class="btn" style="
+                    text-align: center;
+                    width: 40px;
+                    color: white;
+                    font-size: large;
+                    font-weight: bold;
+                    padding: 0px;
+                    margin: 0px;
+                  ">
+                  <span>-</span>
+                </div>
 
-              <div
-              (click)="removeProduct(item)"
-              class="btn"
-              style="
-                text-align: center;
-                width: 40px;
-                color: white;
-                font-size: large;
-                font-weight: bold;
-                padding: 0px;
-                margin: 0px;"
-            >
-              <span>-</span>
-            </div>
-
-                <div
-                  style="
+                <div style="
                     width: 20px;
                     color: white;
                     font-size: large;
                     text-align: center;
                     padding: 0px;
                     margin: 0px;
-                  "
-                >
+                  ">
                   {{ item.productCount }}
                 </div>
-                <div
-                (click)="addProduct(item)"
-                class="btn"
-                style="
-                  text-align: center;
-                  width: 40px;
-                  color: white;
-                  font-size: large;
-                  font-weight: bold;
-                  padding: 0px;
-                  margin: 0px;
-                "
-              >
-                <span>+</span>
-              </div>
-              
+                <div (click)="addProduct(item)" class="btn" style="
+                    text-align: center;
+                    width: 40px;
+                    color: white;
+                    font-size: large;
+                    font-weight: bold;
+                    padding: 0px;
+                    margin: 0px;
+                  ">
+                  <span>+</span>
+                </div>
               </div>
             </div>
+            <div
+            style=" display: flex;
+            flex-direction: row;
+            width: 100px;
+            height: 35px;
+            background-color: rgb(63, 61, 61);
+            border-radius: 6px;
+            border-style: groove;
+            margin: 5%;
+            color: whitesmoke;
+            border: 1px solid transparent;
+            line-height: 35px;
+        ">
+            <span (click)="onCustomiseModal(item)" style="padding-left: 16px;font-weight: bold;
+            color: white;">Customize</span>
+          </div>
+
           </div>
         </div>
+        <hr />
       </div>
     </div>
-    <div class="col-lg-2 col-md-2 col-xs-1 col-sm-1"></div>
+    <div class="col-lg-2 col-md-2  col-sm-1"></div>
 
-    <hr />
+
   </div>
 </div>
-<div
-  [routerLink]="['/home']"
-  *ngIf="getCartItems.length === 0"
-  style="
+<div [routerLink]="['/']" *ngIf="getCartItems.length === 0" style="
     box-sizing: border-box;
     min-width: 0px;
     max-width: 960px;
     margin-left: 20%;
     pointer-events: none;
     width: calc(100% - 40px);
-  "
->
-  <button
-    style="
+  ">
+  <button style="
       bottom: 32px;
       opacity: 1;
       transform: translateY(0px);
@@ -222,39 +182,27 @@
       right: auto;
       z-index: 999;
       text-align: center;
-    "
-  >
-    <div style="color: white; text-align: center; width: 100%;">
+    ">
+    <div style="color: white; text-align: center; width: 100%">
       <svg width="16" height="16" viewBox="0 0 16 16">
-        <path
-          id="shopping-bag"
+        <path id="shopping-bag"
           d="M4.4,3.6H15.6a.8.8,0,0,1,.8.8V15.6a.8.8,0,0,1-.8.8H4.4a.8.8,0,0,1-.8-.8V4.4A.8.8,0,0,1,4.4,3.6ZM2,4.4A2.4,2.4,0,0,1,4.4,2H15.6A2.4,2.4,0,0,1,18,4.4V15.6A2.4,2.4,0,0,1,15.6,18H4.4A2.4,2.4,0,0,1,2,15.6ZM10,10C7.791,10,6,7.851,6,5.2H7.6c0,2.053,1.335,3.2,2.4,3.2s2.4-1.147,2.4-3.2H14C14,7.851,12.209,10,10,10Z"
-          transform="translate(-2 -2)"
-          fill="#ffffff"
-          fill-rule="evenodd"
-        ></path>
+          transform="translate(-2 -2)" fill="#ffffff" fill-rule="evenodd"></path>
       </svg>
-      <span style="margin-left: 5px; justify-content: center; text-align: center"
-        >Proceed To Check out</span
-      >
+      <span style="margin-left: 5px; justify-content: center; text-align: center">Shop Again</span>
     </div>
   </button>
 </div>
 
-<div
-  [routerLink]="['/checkOut']"
-  *ngIf="getCartItems.length !== 0"
-  style="
+<div [routerLink]="['/checkOut']" *ngIf="getCartItems.length !== 0" style="
     box-sizing: border-box;
     min-width: 0px;
     max-width: 960px;
     margin-left: 20%;
     pointer-events: none;
     width: calc(100% - 40px);
-  "
->
-  <button
-    style="
+  ">
+  <button style="
       bottom: 32px;
       opacity: 1;
       transform: translateY(0px);
@@ -277,21 +225,14 @@
       right: auto;
       z-index: 999;
       text-align: center;
-    "
-  >
-    <div style="color: white; text-align: center; width: 100%;">
+    ">
+    <div style="color: white; text-align: center; width: 100%">
       <svg width="16" height="16" viewBox="0 0 16 16">
-        <path
-          id="shopping-bag"
+        <path id="shopping-bag"
           d="M4.4,3.6H15.6a.8.8,0,0,1,.8.8V15.6a.8.8,0,0,1-.8.8H4.4a.8.8,0,0,1-.8-.8V4.4A.8.8,0,0,1,4.4,3.6ZM2,4.4A2.4,2.4,0,0,1,4.4,2H15.6A2.4,2.4,0,0,1,18,4.4V15.6A2.4,2.4,0,0,1,15.6,18H4.4A2.4,2.4,0,0,1,2,15.6ZM10,10C7.791,10,6,7.851,6,5.2H7.6c0,2.053,1.335,3.2,2.4,3.2s2.4-1.147,2.4-3.2H14C14,7.851,12.209,10,10,10Z"
-          transform="translate(-2 -2)"
-          fill="#ffffff"
-          fill-rule="evenodd"
-        ></path>
+          transform="translate(-2 -2)" fill="#ffffff" fill-rule="evenodd"></path>
       </svg>
-      <span style="margin-left: 5px; justify-content: center; text-align: center"
-        >Proceed To Check out</span
-      >
+      <span style="margin-left: 5px; justify-content: center; text-align: center">Proceed To Check out</span>
     </div>
   </button>
 </div>

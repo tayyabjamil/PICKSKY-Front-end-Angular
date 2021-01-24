@@ -1,12 +1,21 @@
 <div class="row" style="background-color: #f7f7f7;" style="margin-top: 2%;margin-bottom: 2%;">
   <div class="col-lg-2 col-xs-1 col-sm-1"></div>
   <div class="col-lg-8 col-xs-10 col-sm-12">
-    <div class="cardLeft col-lg-8 col-xs-12 col-sm-12">
+    <div [ngClass]="{'borderRight': deviceXs}" class="cardLeft col-lg-8 col-xs-12 col-sm-12">
+      <div style="width: 100%; padding-bottom: 8%">
+        <p [style.font-size.px]="deviceXs || deviceSm ? '15' : '25'" class="btn"
+          style="text-align: left; padding-top: 5%; font-weight: 500">
+          Login Your Account
+        </p>
+        <p *ngIf="deviceXs" (click)="createAccount()"
+          style="font-size:small;font-weight: 500;padding-top: 5%;text-align: right;justify-content: right;float: right;"
+          class="btn text-primary">Login</p>
 
-      <p style="font-size:x-large;padding-top: 10%;font-weight: 500;" class="btn">Log in to Account</p>
+      </div>
+
       <hr>
-      <div class="row" style="padding-bottom: 5%;padding-top: 5%;">
-
+      <div style="padding-bottom: 2%">
+        <!-- <p ></p> -->
 
         <div style="width: 100%;" *ngIf="loginType == 'email'">
           <ns-textField-account placeholder="Email" name="email" class="textfieldBorderColor font13"
@@ -53,33 +62,36 @@
         </div>
 
       </div>
-
-
-      <div class="row">
-        <div class="col-1"></div>
-        <button class="col-10 btn btn-primary" (click)="login()" type="button">Login</button>
-        <div class="col-1"></div>
-      </div>
-
-      <div class="row" style="margin-top: 3%">
-        <div class="col-lg-1"></div>
-
-        <button (click)="signInGoogle('google')" style="padding-right: 5px;" class="col-lg-4 btn btn-danger">Sign in
-          With Google</button>
-        <div class="col-lg-2"></div>
-
-        <button (click)="signInFacebook('facebook')" style="padding-left: 5px;" class="  col-lg-4 btn btn-primary">Sign
-          in With facebook</button>
-        <div class="col-lg-1"></div>
+      <div class="row" style="margin-left: 1%;margin-right: 1%;">
+        <button class="col-12 btn btn-primary" (click)="login()" type="button">Login</button>
 
       </div>
+      <div *ngIf="deviceMd || deviceSm  || deviceLg" class="row"
+        style="margin-left:1%;margin-right: 1%;margin-top: 3%;">
 
+        <button (click)="signInGoogle('google')" class="col-5 btn btn-danger">
+          SignIn With Google
+        </button>
+        <div class="col-2"></div>
+        <button (click)="signInFacebook('facebook')" style="font-size: small;" class="col-5 btn btn-primary">
+          SignIn With facebook
+        </button>
+      </div>
+      <div *ngIf="deviceXs" class="row" style="margin-left:1%;margin-right: 1%;margin-top: 3%;">
 
-      <!-- <button class="btn" style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(145, 145, 145); color: whitesmoke">
-<span style="font-weight: bold;font-size: small;"></span></button> -->
+        <button (click)="signInGoogle('google')" class="col-12 btn btn-danger">
+          SignIn With Google
+        </button>
+      </div>
+
+      <div *ngIf="deviceXs" class="row" style="margin-left:1%;margin-right: 1%;margin-top: 3%;">
+        <button (click)="signInFacebook('facebook')" style="font-size: small;" class="col-12 btn btn-primary">
+          SignIn With facebook
+        </button>
+      </div>
 
     </div>
-    <div class="col-lg-4 col-xs-12 col-sm-12 cardRight">
+    <div *ngIf="!deviceXs" class="col-lg-4 col-xs-12 col-sm-12 cardRight">
       <h3 class="btn">Hello Friend</h3>
       <h4 class="btn">Fill up the Form and </h4>
       <h4 class="btn">start Journey with us</h4>

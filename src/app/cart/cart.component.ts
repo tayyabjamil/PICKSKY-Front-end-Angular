@@ -2,7 +2,9 @@ import { AuthService } from './../auth.service';
 import { CartService } from './../home/cart.service'
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from './../home/product.service';
+import { CustomizeComponent } from '../../app/home/customize/customize.component';
 
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -16,7 +18,7 @@ detection=0
 refrence:string;
 
 
-constructor(public cartService:CartService, public productService:ProductService,public authService:AuthService) { }
+constructor(public dialog: MatDialog,public cartService:CartService, public productService:ProductService,public authService:AuthService) { }
 
   ngOnInit() {
 
@@ -28,6 +30,19 @@ get getCartItems(){
  console.log(this.cartItems)
 
  return this.cartItems
+}
+
+onCustomiseModal(item): void {
+  const dialogRef = this.dialog.open(CustomizeComponent, {
+    maxWidth: '100% !important',
+    height: '100vh',
+    data: {item: item}
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+
+  });
 }
 
 get getTotal() {
@@ -63,6 +78,9 @@ getImage(imageId) {
 }
 removeProduct(product){
   this.cartService.removeProduct(product)
+}
+discardProduct(product){
+  this.cartService.discardProduct(product)
 
 }
 addProduct(item) {
