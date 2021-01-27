@@ -31,8 +31,12 @@ discardProduct(product){
           this.cart.splice(item,1)
           item.productCount = 0;
       }
+      localStorage.setItem('cart', JSON.stringify(this.cart));
+
     })
-}
+
+
+  }
   removeProduct(product) {
     let proudctRemoved = false
     this.cart.find((item) => {

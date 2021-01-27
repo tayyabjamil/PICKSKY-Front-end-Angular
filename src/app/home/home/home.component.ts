@@ -59,12 +59,17 @@ export class HomeComponent implements OnInit {
       this.visible = true;
     } else {
       this.visible = false;
+      this.isSHowSearch = false;
+
     }
   }
   toggleDisplay() {
     this.isSHowSearch = !this.isSHowSearch;
   }
 
+  get visibleSearch() {
+    return this.isSHowSearch;
+  }
 
   get visibleI() {
     return this.visible;

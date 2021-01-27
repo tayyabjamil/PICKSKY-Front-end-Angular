@@ -1,5 +1,4 @@
-<div class="container">
-<mat-sidenav-container class="sidenav-container" style="height: 100%">
+<mat-sidenav-container class="" style="height: 100%">
   <mat-sidenav style="background-color: white" #drawer class="sidenav" fixedInViewport="false"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar routerLink="/" TraditionalPowders>Catagories</mat-toolbar>
@@ -153,7 +152,6 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar  style="margin-top: 1%;background-color: white">
       <div *ngIf="isShow == true" style="width: 100%; margin-left: 2%;margin-top: 1%;  margin-bottom: 1%"
        class="row">
         <p *ngIf="isShow == true" class="col-xs-11" style="
@@ -170,18 +168,19 @@
                 color: rgb(134, 132, 132);
               "></i></span>
         </p>
-        <p class="col-xs-1" (click)="toggleDisplay()" style=" font-weight: 300px; color: grey">
+        <p class="col-xs-1" (click)="toggleDisplay()" style=" padding-top: 2%;font-size: large;font-weight: 300px; color: grey">
           <i class="fa fa-times"></i>
         </p>
       </div>
-      <div class="row"  *ngIf="isShow == false" >
-      <div class="col-xs-2 col-sm-2">
+      <div class="row" *ngIf="isShow == false">
+
+        <div class="col-1">
         <button  type="button" aria-label="Toggle sidenav" mat-icon-button
           (click)="drawer.toggle()" *ngIf="isHandset$ | async">
           <mat-icon aria-label="Side nav toggle icon" style="margin-bottom: 1%;color: black">menu</mat-icon>
         </button>
        </div>
-         <div  class="col-xs-4 col-sm-4">
+         <div  class="col-2" style="padding-top: 10px;">
           <p style="
               color: black;
               font-size: large;
@@ -190,21 +189,22 @@
             SHRIVASAFOODS
           </p>
         </div>
-<div class="col-xs-2 col-sm-2"></div>
-        <div class="col-xs-1 col-sm-1">
-          <p (click)="toggleDisplay()" style="font-size: large;padding-left: 15%; font-weight: 300px; color: grey">
+<div class="col-7"></div>
+        <div class="col-1" style="padding-top:10px;">
+          <p (click)="toggleDisplay()" style="font-size: large; font-weight: 300px; color: grey">
             <i class="fa fa-search"></i>
           </p>
         </div>
 
-        <div class="col-xs-1 col-sm-1" style="display: flex; flex-direction: row">
-          <p *ngIf="authService.loggedIn()" style="font-size: large; padding-top: 5%">
+        <div class="col-1" style="display: flex; flex-direction: row;padding-top: 10px">
+          <p *ngIf="authService.loggedIn()" style="font-size: large;">
             Hi {{ usernameLogin }}
           </p>
           <i class="fa fa-cog" style="font-size: xx-large" [popover]="popTemplate" popoverTitle="Hi{{ username }}"></i>
           <div>
             <ng-template #popTemplate>
               <div class="row">
+
                 <div class="col-lg-6">
                   <div style="padding-top: 1%">
                     <i class="fa fa-user-circle-o" routerLink="/myOrders" style="font-size: xx-large"></i>
@@ -213,11 +213,17 @@
                     </p>
                   </div>
                   <div style="padding-top: 1%">
+                    <i class="fa fa-user-circle-o" routerLink="/login" style="color: gray; font-size: xx-large"></i>
+
+                  </div>
+
+
+                  <!-- <div style="padding-top: 1%">
                     <i class="fa fa-user-circle-o" routerLink="/support" style="font-size: xx-large"></i>
                     <p routerLink="/support" routerLinkActive="router-link-active">
                       Support
                     </p>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="col-lg-6">
                   <div style="padding-top: 1%">
@@ -236,13 +242,7 @@
             </ng-template>
           </div>
         </div>
-        <div class="col-xs-1 col-sm-1">
-          <i class="fa fa-user-circle-o" routerLink="/login" style="color: gray; font-size: xx-large"></i>
-        </div>
-
       </div>
-    </mat-toolbar>
     <ng-content> </ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>
-</div>
