@@ -25,17 +25,31 @@
         <div *ngIf="loginType == 'phone'">
           <form [formGroup]="rformLogin">
             <ngx-intl-tel-input [cssClass]="'customInput'" [enableAutoCountrySelect]="false" [enablePlaceholder]="true"
-              [searchCountryFlag]="true" [selectFirstCountry]="false" [maxLength]="15" [phoneValidation]="true"
+              [searchCountryFlag]="true" [selectFirstCountry]="true" [maxLength]="15" [phoneValidation]="true"
+
+              [selectedCountryISO]="CountryISO.India"
               name="phone" formControlName="phone">
             </ngx-intl-tel-input>
           </form>
         </div>
-        <div class="text-primary"
+        <p style="font-size: 14px" class="errorlbl"
+        *ngIf="getcountryCodeValidation == 'show'">
+        select country code and number
+      </p>
+
+        <div *ngIf="loginType=='phone'" class="text-primary"
           style="display: flex; width: 100%; margin-top: 10px; justify-content: flex-end; cursor: pointer;"
-          (click)="toggleLoginType()">
-          {{ loginType == 'email' ?  'Phone login instead': 'Email login instead'}}
+          (click)="toggleLoginType('email')">
+         <p class="btn text-primary">Email login instead</p>
+
         </div>
 
+        <div *ngIf="loginType=='email'" class="text-primary"
+          style="display: flex; width: 100%; margin-top: 10px; justify-content: flex-end; cursor: pointer;"
+          (click)="toggleLoginType('phone')">
+         <p class="btn text-primary">Phone login instead</p>
+
+        </div>
 
       </div>
 
@@ -87,6 +101,10 @@
             <p (click)="forgetPassword()" class="text text-primary btn">Forget Password? </p>
           </div>
         </div>
+        <p style="font-size: 14px" class="errorlbl"
+        *ngIf="getfillAllValidation == 'show'">
+        Fill all form entries
+      </p>
 
       <div class="row" style="margin-left: 1%;margin-right: 1%;">
         <button class="col-12 btn btn-primary" (click)="login()" type="button">Login</button>

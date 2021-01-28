@@ -7,6 +7,8 @@ import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import { Router } from '@angular/router';
 import { MatStepper } from '@angular/material/stepper/stepper';
 import { AdminService } from 'src/app/admin/admin.service';
+import { MediaObserver, MediaChange } from '@angular/flex-layout';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-checkOutPage',
@@ -21,8 +23,16 @@ export class CheckOutPageComponent implements OnInit {
     public productService: ProductService,
     public authService: AuthService,
     public adminService:AdminService,
-    private router: Router,) { }
+    private router: Router,
+    public mediaObserver: MediaObserver,
+    ) { }
 
+    mediaSub: Subscription
+    deviceXs: boolean;
+    deviceLg: boolean;
+    deviceMd: boolean;
+    deviceSm: boolean;
+    show: boolean;
 
   cartItems;
 
@@ -34,7 +44,7 @@ export class CheckOutPageComponent implements OnInit {
   total;
   title = 'newMat';
   showSuccess: any;
-  isLinear = true;
+  isLinear = false;
   dataOrder;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -47,7 +57,18 @@ accountBonus;
 detection=0
 
   @ViewChild('stepper') public stepper: MatStepper;
-  ngOnInit() {
+  ngOnInit(
+
+  ) {
+    this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
+      console.log(result.mqAlias)
+      this.deviceXs = result.mqAlias === 'xs'
+      this.deviceSm = result.mqAlias === 'sm'
+      this.deviceLg = result.mqAlias === 'lg'
+      this.deviceMd = result.mqAlias === 'md'
+      this.show = false;
+    })
+
     this.initConfig();
     this.getCartItems()
 
@@ -122,7 +143,7 @@ detection=0
     this.cartService.order(orderData).subscribe((data: any) => {
       this.router.navigate(['/'])
     })
-    // this.cartService.emptyProduct()
+    this.cartService.emptyProduct()
   }
   move(index: number) {
     this.stepper.selectedIndex = index;

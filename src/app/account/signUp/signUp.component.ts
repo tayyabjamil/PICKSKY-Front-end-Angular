@@ -13,6 +13,7 @@ import {
   GoogleLoginProvider,
   FacebookLoginProvider,
 } from 'angularx-social-login';
+import { SearchCountryField, TooltipLabel, CountryISO, PhoneNumberFormat } from 'ngx-intl-tel-input';
 @Component({
   // tslint:disable-next-line: component-selector
   selector: 'app-signUp',
@@ -26,6 +27,7 @@ export class SignUpComponent implements OnInit {
   password: string
   contact: number
   phone;
+  CountryISO = CountryISO;
 
   showConfirmPass: boolean
   showPass: boolean
@@ -43,6 +45,8 @@ export class SignUpComponent implements OnInit {
   show: boolean;
   isLoggedIn = true;
   passwordMatch=false
+  fillAllValidation=''
+  countryCodeValidation=''
   ngOnInit() {
     this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
       console.log(result.mqAlias)
@@ -156,15 +160,27 @@ export class SignUpComponent implements OnInit {
   setemail(email) {
     localStorage.setItem('email', JSON.stringify(email));
   }
-
+  get getcountryCodeValidation(){
+    return this.countryCodeValidation
+  }
+  get getfillAllValidation(){
+    return this.fillAllValidation
+  }
   createAccount() {
     this.rformSignup.controls['phone'].clearValidators();
+if(this.rformSignup.value.phone==null){
+  this.countryCodeValidation = 'show'
+}else{
 
     if (this.rformSignup.value.phone.number) {
       this.rformSignup.controls['phone'].setValue(this.rformSignup.value.phone.internationalNumber);
+      this.countryCodeValidation = ''
+
     }
 
     if (this.rformSignup.valid) {
+      this.fillAllValidation = ''
+
       if (this.rformSignup.value.password === this.rformSignup.value.confirmPassword) {
         this.accountService.createuserAccount(this.rformSignup.value).subscribe((data: any) => {
           alert("Account Created")
@@ -179,9 +195,10 @@ export class SignUpComponent implements OnInit {
       }
     }
     else {
-      alert("Please Fill All the entries of the Form")
+      this.fillAllValidation = 'show'
     }
   }
+}
   get passwordValidMatch(){
     return this.passwordMatch
   }

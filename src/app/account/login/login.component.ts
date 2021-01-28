@@ -10,6 +10,8 @@ import {
   GoogleLoginProvider,
   FacebookLoginProvider,
 } from 'angularx-social-login';
+import { SearchCountryField, TooltipLabel, CountryISO, PhoneNumberFormat } from 'ngx-intl-tel-input';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,6 +24,8 @@ export class LoginComponent implements OnInit {
   email: String
   password: String
   loginType = 'email';
+  countryCodeValidation =''
+  fillAllValidation=''
 
   constructor(
 
@@ -35,6 +39,8 @@ export class LoginComponent implements OnInit {
   deviceMd: boolean;
   deviceSm: boolean;
   show: boolean;
+  CountryISO = CountryISO;
+
   ngOnInit() {
     this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
       console.log(result.mqAlias)
@@ -58,6 +64,12 @@ export class LoginComponent implements OnInit {
   public passwordshow() {
     this.show = !this.show;
   }
+  get getcountryCodeValidation(){
+    return this.countryCodeValidation
+  }
+  get getfillAllValidation(){
+    return this.fillAllValidation
+  }
 
   login() {
     let loginData: any = {};
@@ -66,12 +78,20 @@ export class LoginComponent implements OnInit {
       loginData.password = this.rformLogin.value.password;
     }
     if (this.loginType == 'phone') {
-      loginData.email = this.rformLogin.value.phone.internationalNumber;
-     if(loginData.email==""){
-       alert("select country code")
-     }else{
+      if(this.rformLogin.value.phone==null){
+       this.countryCodeValidation = 'show'
+      }
+
+        loginData.email = this.rformLogin.value.phone.internationalNumber;
+
+        this.countryCodeValidation = ''
+
       loginData.password = this.rformLogin.value.password;
-     if (loginData.email && loginData.password) {
+    }
+
+    if (loginData.email && loginData.password) {
+      this.fillAllValidation = ''
+
       this.accountService.login(loginData).subscribe((data: any) => {
 
         alert("Login Successful")
@@ -86,9 +106,12 @@ export class LoginComponent implements OnInit {
       }, (error) => {
         alert(error.error.message);
       });
+    }else{
+      this.fillAllValidation = 'show'
+
     }
-    }
-    }
+
+
   }
 
   forgetPassword() {
@@ -223,11 +246,15 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  toggleLoginType() {
-    if (this.loginType == 'email') {
-      this.loginType = 'phone';
-    } else {
+  toggleLoginType(type) {
+    if (type == 'email') {
       this.loginType = 'email';
+      this.countryCodeValidation = ''
+    } else {
+
+      this.loginType = 'phone';
+
+
     }
   }
 }

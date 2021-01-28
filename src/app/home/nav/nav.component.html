@@ -1,4 +1,4 @@
-<mat-sidenav-container class="" style="height: 100%">
+<mat-sidenav-container class="mydivclass" >
   <mat-sidenav style="background-color: white" #drawer class="sidenav" fixedInViewport="false"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar routerLink="/" TraditionalPowders>Catagories</mat-toolbar>
@@ -174,7 +174,7 @@
       </div>
       <div class="row" *ngIf="isShow == false">
 
-        <div class="col-1">
+        <div class="col-2">
         <button  type="button" aria-label="Toggle sidenav" mat-icon-button
           (click)="drawer.toggle()" *ngIf="isHandset$ | async">
           <mat-icon aria-label="Side nav toggle icon" style="margin-bottom: 1%;color: black">menu</mat-icon>
@@ -189,7 +189,7 @@
             SHRIVASAFOODS
           </p>
         </div>
-<div class="col-7"></div>
+<div class="col-6"></div>
         <div class="col-1" style="padding-top:10px;">
           <p (click)="toggleDisplay()" style="font-size: large; font-weight: 300px; color: grey">
             <i class="fa fa-search"></i>
