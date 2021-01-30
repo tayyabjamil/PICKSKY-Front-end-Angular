@@ -4,8 +4,8 @@
   <p style="font-size: large;font-weight: bold;">My Profile</p>
   <hr>
   <form [formGroup]="rformEdit">
-    <div style="display: flex;flex-direction: row;">
-    <div style="padding-bottom: 2%;padding-right: 20%;float: left;" class="">
+    <div class="row">
+    <div  class="col-6">
       <p style="padding-bottom: 1%">Username</p>
       <ns-textField-account
         name="username"
@@ -17,7 +17,7 @@
 
     </div>
 
-    <div style="padding-bottom: 2%;float:right">
+    <div class="col-6">
       <p style="padding-bottom: 1%">Email</p>
       <ns-textField-account
         name="email"
@@ -28,9 +28,9 @@
       </ns-textField-account>
     </div>
   </div>
-  <div style="display: flex;flex-direction: row;">
+  <div class="row">
 
-    <div style="padding-bottom: 2%">
+    <div class="col-6" style="padding-bottom: 2%">
       <p style="padding-bottom: 1%">Contact</p>
       <ns-textField-account
         name="contact" type="text"
@@ -48,30 +48,71 @@
         <p  class="btn" (click)="editInfo()" style="color: rgb(104, 104, 209);">Edit</p>
       </div>
 
-        <form [formGroup]="rformEditPassword">
-        <div style="display: flex;flex-direction: row;">
-        <div style="padding-bottom: 2%;padding-right: 20%;float: left;" class="">
-          <p style="padding-bottom: 1%">Old Password</p>
-          <ns-textField-account
-            name="oldPassword" type="password"
-            class="textfieldBorderColor font13"
-            [rformgroup]="rformEditPassword"
-            rformControlName="oldPassword"
-          >
-          </ns-textField-account>
+<div class="row">
 
-        </div>
+      <p class="col-6" style="padding-bottom: 1%">Old Password</p>
+      <p class="col-6" style="padding-bottom: 1%">New Password</p>
 
-        <div style="padding-bottom: 2%;float:right">
-          <p style="padding-bottom: 1%">New Password</p>
-          <ns-textField-account
-            name="newPassword" type="password"
-            class="textfieldBorderColor font13"
+    </div>
+
+      <form [formGroup]="rformEditPassword">
+        <div class="row">
+          <div class="col-6" style="
+          padding-bottom: 2%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        ">
+
+       <div style="width: 94%">
+
+        <ns-textField-account placeholder="Password " name="password"
+            [type]="showOld ? 'text' : 'password'" class="textfieldBorderColor font13"
             [rformgroup]="rformEditPassword"
             rformControlName="newPassword"
-          >
+       >
           </ns-textField-account>
         </div>
+        <div style="width: 40px">
+          <button style="height: 35px" class="btn btn-default" (click)="passwordshowOld()" type="submit">
+            <i *ngIf="showOld" class="glyphicon glyphicon-eye-open"></i>
+            <i *ngIf="!showOld" class="glyphicon glyphicon-eye-close"></i>
+          </button>
+        </div>
+
+      </div>
+
+
+
+        <div class="col-6" style="
+        padding-bottom: 2%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      ">
+
+     <div style="width: 94%">
+
+         <ns-textField-account placeholder="Password " name="password"
+          [type]="showPassword ? 'text' : 'password'" class="textfieldBorderColor font13"
+          [rformgroup]="rformEditPassword"
+          rformControlName="newPassword"
+     >
+        </ns-textField-account>
+      </div>
+      <div style="min-width: 40px;width: 40px">
+
+        <button style="height: 35px;" class="btn btn-default" (click)="passwordshow()" type="submit">
+          <i *ngIf="showPassword" class="glyphicon glyphicon-eye-open"></i>
+          <i *ngIf="!showPassword" class="glyphicon glyphicon-eye-close"></i>
+        </button>
+      </div>
+
+    </div>
+
+
+
+
       </div>
         </form>
         <div style="text-align: right;">

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AccountService } from '../account.service';
+import { AccountService } from '../../account/account.service';
 import {patternValidator} from '../customValidator'
 @Component({
   selector: 'app-resetPassword',
@@ -14,7 +14,8 @@ export class ResetPasswordComponent implements OnInit {
   confirmPassword:String
   resetToken:String
   showPass :boolean
-  constructor(    public route: ActivatedRoute,private router : Router,public formBuilder:FormBuilder,public accountService:AccountService,) { }
+  constructor(public route: ActivatedRoute,
+    private router : Router,public formBuilder:FormBuilder,public accountService:AccountService,) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get("id");

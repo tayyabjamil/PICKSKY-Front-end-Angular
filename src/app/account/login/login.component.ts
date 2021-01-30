@@ -101,6 +101,7 @@ export class LoginComponent implements OnInit {
         this.setusername(data.username);
         this.setemail(data.email)
         this.setRefrenceId(data.refrenceId)
+        this.setPhone(data.phone)
         this.setAccountBonus(data.accountBonus)
         this.isLoggedIn = true;
         this.router.navigate(['/'])
@@ -116,7 +117,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/signUp'])
 
         alert("No Account Create Account First")
-    }
+       }
       });
     }else{
       this.fillAllValidation = 'show'
@@ -154,6 +155,10 @@ export class LoginComponent implements OnInit {
   setemail(email) {
     localStorage.setItem('email', JSON.stringify(email));
   }
+  setPhone(phone){
+    localStorage.setItem('phone', JSON.stringify(phone));
+
+  }
 
   signInGoogle(platform: string) {
     platform = GoogleLoginProvider.PROVIDER_ID;
@@ -178,7 +183,7 @@ export class LoginComponent implements OnInit {
           this.setusername(data.username);
           this.setemail(data.email)
           this.setAccountBonus(data.accountBonus)
-
+          this.setPhone(data.email)
           this.setRefrenceId(data.refrenceId)
           this.isLoggedIn = true;
           this.router.navigate(['/'])
@@ -215,6 +220,7 @@ export class LoginComponent implements OnInit {
           this.setusername(data.username);
           this.setemail(data.email)
           this.setAccountBonus(data.accountBonus)
+          this.setPhone(data.email)
 
           this.setRefrenceId(data.refrenceId)
           this.isLoggedIn = true;
@@ -230,23 +236,6 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  socailLogin(userAccount) {
-    this.accountService.login(userAccount).subscribe((data: any) => {
-
-      alert("Login Successful")
-      this.setId(data.userId);
-      this.setusername(data.username);
-      this.setemail(data.email)
-
-      this.setRefrenceId(data.refrenceId)
-      this.isLoggedIn = true;
-      this.router.navigate(['/'])
-
-    }, (error) => {
-      alert(error.error.message);
-
-    });
-  }
 
   toggleLoginType(type) {
     if (type == 'email') {
