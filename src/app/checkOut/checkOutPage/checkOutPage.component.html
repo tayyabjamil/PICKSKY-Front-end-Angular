@@ -72,20 +72,20 @@
              Login first to make an  order
           </p>
         </mat-step>
-          <mat-step [stepControl]="secondFormGroup">
-            <form [formGroup]="secondFormGroup">
+           <mat-step [stepControl]="secondFormGroup">
+             <form [formGroup]="secondFormGroup">
               <ng-template matStepLabel>Shipping</ng-template>
               <div
                 style="border: 1px;border-style: groove;padding: 1%;margin-top: 2%;border-radius: 6px;border-color: rgb(160, 158, 158);">
                 <div class="row" style="height: 10px;">
                   <p class="col-3">Contact</p>
-                  <mat-label class="col-6">{{this.firstFormGroup.value.email}}</mat-label>
+                   <mat-label class="col-6">{{this.firstFormGroup.value.email}}</mat-label>
                   <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
                 </div>
                 <hr />
                 <div class="row" style="height: 10px;">
                   <p class="col-3">Shipping Adress</p>
-                  <mat-label class="col-6">{{useAdress}}</mat-label>
+                  <mat-label class="col-6">{{this.firstFormGroup.value.adress}}</mat-label>
                   <p class="col-3 text-primary btn">Change</p>
                 </div>
               </div>
@@ -94,7 +94,7 @@
                 <label>Shipping Method</label>
                 <div class="row"
                   style="border: 1px;border-style: groove;padding-left: 3%;border-radius: 6px;border-color: rgb(145, 141, 141);">
-                  <input class="col-3" formControlName="email" type="checkbox" class="form-check-input" id="exampleCheck2">
+                  <input class="col-3"  type="checkbox" class="form-check-input" id="exampleCheck2">
                   <div class="col-6"></div>
                   <mat-label class="col-3">Standard</mat-label>
                 </div>
@@ -107,7 +107,7 @@
                 </div>
                 <button class="col-2 btn btn-primary" (click)="payment(2)">Next</button>
               </div>
-            </form>
+            </form> -->
           </mat-step>
           <mat-step [stepControl]="thirdFormGroup">
             <form [formGroup]="thirdFormGroup">
@@ -185,7 +185,7 @@
               <button class="btn btn-primary" style="margin:1%;" (click)="order()">Submit</button>
             </div>
 
-          </mat-step>
+          </mat-step> -->
         </mat-vertical-stepper>
       </div>
       <div class="col-lg-1"></div>

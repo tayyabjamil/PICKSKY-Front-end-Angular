@@ -155,7 +155,7 @@
             <mat-icon aria-label="Side nav toggle icon" style="margin-bottom: 1%;color: black">menu</mat-icon>
           </button>
         </div>
-        <div style="margin-left: 20px;">
+        <div >
           <div style="
               color: black;
               font-size: large;
@@ -166,16 +166,16 @@
         </div>
       </div>
 
-      <div style="display: flex; align-items: center;  margin-right: 5%;">
+      <div style="display: flex; align-items: center;  margin-right: 2%;">
         <div >
           <div (click)="toggleDisplay()" style="font-size: large; font-weight: 300px; color: grey">
             <i class="fa fa-search"></i>
           </div>
         </div>
-        <div *ngIf="authService.loggedIn()" style="font-size: large; margin-left: 20px;">
+        <div *ngIf="authService.loggedIn()" style="font-size: large; ">
           Hi {{ usernameLogin }}
         </div>
-        <div style="display: flex; flex-direction: row;margin-left: 20px">
+        <div style="display: flex; flex-direction: row;">
           <i class="fa fa-cog" style="font-size: xx-large" [popover]="popTemplate" popoverTitle="Hi{{ username }}"></i>
           <div>
             <ng-template #popTemplate>
