@@ -3,7 +3,7 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar routerLink="/" TraditionalPowders>Catagories</mat-toolbar>
     <mat-nav-list class="fundpress-menu" style="background-color: white">
-      <ul class="nav-menu" (click)="drawer.toggle()">
+      <ul class="nav-menu" >
         <li class="dropdown" routerLink="/">
           <a>{{ getHeaderNames(1) }}</a>
         </li>
@@ -12,13 +12,13 @@
             getHeaderNames(2)
             }}</a>
           <ul class="dropdown-menu">
-            <li>
-              <a (click)="catagory(getPicklesConstants(1))">{{
+            <li (click)="drawer.toggle()">
+              <a (click)="catagory('vegetarian')">{{
                 getPicklesConstants(1)
                 }}</a>
             </li>
-            <li>
-              <a (click)="catagory(getPicklesConstants(2))">{{
+            <li (click)="drawer.toggle()">
+              <a (click)="catagory('Non-vegetarian')">{{
                 getPicklesConstants(2)
                 }}</a>
             </li>
@@ -29,13 +29,13 @@
             getHeaderNames(3)
             }}</a>
           <ul class="dropdown-menu">
-            <li>
-              <a (click)="catagory(getTraditionalPodulu(1))">{{
+            <li (click)="drawer.toggle()">
+              <a (click)="catagory('PoduluPowders')">{{
                 getTraditionalPodulu(1)
                 }}</a>
             </li>
-            <li>
-              <a (click)="catagory(getTraditionalPodulu(2))">{{
+            <li (click)="drawer.toggle()">
+              <a (click)="catagory('HomeMadeMasalas')">{{
                 getTraditionalPodulu(2)
                 }}</a>
             </li>
@@ -46,13 +46,13 @@
             getHeaderNames(4)
             }}</a>
           <ul class="dropdown-menu">
-            <li>
-              <a (click)="catagory(getSweetsandHotConstants(1))">{{
+            <li (click)="drawer.toggle()">
+              <a (click)="catagory('TradaitonalSweets')">{{
                 getSweetsandHotConstants(1)
                 }}</a>
             </li>
-            <li>
-              <a (click)="catagory(getSweetsandHotConstants(2))">{{
+            <li (click)="drawer.toggle()">
+              <a (click)="catagory('TradaitonalHot')">{{
                 getSweetsandHotConstants(2)
                 }}</a>
             </li>
@@ -63,92 +63,66 @@
             getHeaderNames(5)
             }}</a>
           <ul class="dropdown-menu">
-            <li>
-              <a (click)="catagory(getSpecialConstants(1))">{{
+            <li (click)="drawer.toggle()">
+              <a (click)="catagory('Non-vegetarianCombo')">{{
                 getSpecialConstants(1)
                 }}</a>
             </li>
-            <li>
-              <a (click)="catagory(getSpecialConstants(2))">{{
+            <li (click)="drawer.toggle()">
+              <a (click)="catagory('VegetarianCombo')">{{
                 getSpecialConstants(2)
                 }}</a>
             </li>
-            <li>
-              <a (click)="catagory(getSpecialConstants(3))">{{
+            <li (click)="drawer.toggle()">
+              <a (click)="catagory('HotCombo')">{{
                 getSpecialConstants(3)
                 }}</a>
             </li>
-            <li>
-              <a (click)="catagory(getSpecialConstants(4))">{{
+            <li (click)="drawer.toggle()">
+              <a (click)="catagory('SweetsCombo')">{{
                 getSpecialConstants(4)
                 }}</a>
             </li>
           </ul>
         </li>
-        <li class="dropdown" routerLink="/others">
+        <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown">{{
             getHeaderNames(6)
             }}</a>
           <ul class="dropdown-menu">
-            <li>
-              <a (click)="catagory(getOthersConstants(1))">{{
-                getOthersConstants(1)
-                }}</a>
+            <li (click)="drawer.toggle()">
+              <a routerLink="/faq">{{ getOthersConstants(1) }}</a>
             </li>
-            <li>
-              <a (click)="catagory(getOthersConstants(1))">{{
-                getOthersConstants(1)
-                }}</a>
+            <li (click)="drawer.toggle()">
+              <a routerLink="/faq">{{ getOthersConstants(1) }}</a>
             </li>
-            <li>
-              <a (click)="catagory(getOthersConstants(1))">{{
-                getOthersConstants(1)
-                }}</a>
+            <li (click)="drawer.toggle()">
+              <a routerLink="/faq">{{ getOthersConstants(1) }}</a>
             </li>
           </ul>
         </li>
-        <li class="dropdown" routerLink="/aboutus">
+        <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown">{{
-            getHeaderNames(7)
+            getHeaderNames(8)
             }}</a>
           <ul class="dropdown-menu">
-            <li>
-              <a (click)="catagory(getAboutusConstants(1))">{{
-                getAboutusConstants(1)
-                }}</a>
+            <li (click)="drawer.toggle()">
+              <a>{{ getSupportConstants(1) }}</a>
+            </li >
+            <li (click)="drawer.toggle()">
+              <a>{{ getSupportConstants(2) }}</a>
             </li>
-            <li>
-              <a (click)="catagory(getAboutusConstants(2))">{{
-                getAboutusConstants(2)
-                }}</a>
+            <li (click)="drawer.toggle()">
+              <a>{{ getSupportConstants(3) }}</a>
             </li>
-            <li>
-              <a (click)="catagory(getAboutusConstants(3))">{{
-                getAboutusConstants(3)
-                }}</a>
-            </li>
-            <li>
-              <a (click)="catagory(getAboutusConstants(4))">{{
-                getAboutusConstants(4)
-                }}</a>
-            </li>
-            <li>
-              <a (click)="catagory(getAboutusConstants(5))">{{
-                getAboutusConstants(5)
+            <li (click)="drawer.toggle()">
+              <a [routerLink]="['/supportpage']">{{
+                getSupportConstants(4)
                 }}</a>
             </li>
           </ul>
         </li>
-        <!-- <li class="dropdown" routerLink="/support">
-          <a class="dropdown-toggle" data-toggle="dropdown">{{getHeaderNames(8)}}</a>
-          <ul class="dropdown-menu">
-            <li><a (click)="catagory(getSupportConstants(1))">{{getSupportConstants(1)}}</a></li>
-            <li><a (click)="catagory()">{{getSupportConstants(2)}}</a></li>
-            <li><a (click)="catagory()">{{getSupportConstants(3)}}</a></li>
-            <li><a (click)="catagory()">{{getSupportConstants(4)}}</a></li>
-          </ul>
-        </li> -->
-      </ul>
+        </ul>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
