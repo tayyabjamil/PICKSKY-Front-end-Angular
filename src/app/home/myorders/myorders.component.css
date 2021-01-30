@@ -210,3 +210,10 @@ li.panel-body {
   text-align: left;
 
 }
+
+
+
+
+.selectedBg {
+  border: 2px solid #6f7ff7 !important;
+}
