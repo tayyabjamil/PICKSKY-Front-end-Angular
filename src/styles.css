@@ -8,9 +8,11 @@ html, body { height: 100%; }
 body { margin: 0;  }
 .mat-drawer-content {
   position: relative;
+  z-index: 1;
   height: 100%;
-  overflow: auto;
+  overflow: unset !important;
 }
+
 p {
   color: rgb(58, 57, 57);
 }
