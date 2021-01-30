@@ -3,7 +3,7 @@
   <div class="col-lg-8 col-xs-10 col-sm-12">
     <div  [ngClass]="{'borderRight': deviceXs}" class="cardLeft col-lg-8 col-xs-12 col-sm-8">
 
-      <div style="width: 100%; padding-bottom: 8%">
+      <div style="width: 100%">
         <p [style.font-size.px]="deviceXs || deviceSm ? '15' : '25'" class="btn"
           style="text-align: left; padding-top: 5%; font-weight: 500">
           Create Your Account
@@ -64,7 +64,7 @@
       *ngIf="rformSignup.controls['password'].hasError('hasSmallCase')">
       passowrd must have at least 1 Small letter!
     </p>
-    <p style="font-size: 14px" *ngIf="rformSignup.controls['password'].hasError('hasDigit')">
+    <p class="errorlbl" style="font-size: 14px" *ngIf="rformSignup.controls['password'].hasError('hasDigit')">
       passowrd must have at least 1 number!
     </p>
       </div>
@@ -104,12 +104,25 @@
         <div style="padding-bottom: 2%">
           <form  [formGroup]="rformSignup">
             <ngx-intl-tel-input [cssClass]="'customInput'"
-              [enableAutoCountrySelect]="false" [enablePlaceholder]="true" [searchCountryFlag]="true" [selectFirstCountry]="false" [maxLength]="15"
-              [phoneValidation]="true"  name="phone" formControlName="phone"
-              [defaultCountry]="'in'">
+              [enableAutoCountrySelect]="false" [enablePlaceholder]="true"
+              [selectedCountryISO]="CountryISO.India" [searchCountryFlag]="true" [selectFirstCountry]="false" [maxLength]="15"
+              [phoneValidation]="true"  name="phone" formControlName="phone">
             </ngx-intl-tel-input>
           </form>
         </div>
+        <p style="font-size: 14px" class="errorlbl"
+        *ngIf="getcountryCodeValidation == 'show'">
+        Fill all form entries
+      </p>
+      <p style="font-size: 14px" class="errorlbl"
+        *ngIf="getfillAllValidation == 'show'">
+        Fill all form entries
+      </p>
+      <p style="font-size: 14px" class="errorlbl"
+      *ngIf="showEmailAlready == 'show'">
+      Email Already exist
+    </p>
+
       </form>
 
       <div class="row" style="margin-left:1%;margin-right: 1%;">

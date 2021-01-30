@@ -10,6 +10,8 @@ import {
   GoogleLoginProvider,
   FacebookLoginProvider,
 } from 'angularx-social-login';
+import { SearchCountryField, TooltipLabel, CountryISO, PhoneNumberFormat } from 'ngx-intl-tel-input';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,6 +24,8 @@ export class LoginComponent implements OnInit {
   email: String
   password: String
   loginType = 'email';
+  countryCodeValidation =''
+  fillAllValidation=''
 
   constructor(
 
@@ -35,6 +39,10 @@ export class LoginComponent implements OnInit {
   deviceMd: boolean;
   deviceSm: boolean;
   show: boolean;
+  CountryISO = CountryISO;
+  accountNotVerfied = ''
+  authPassword=''
+  authPasswordError=''
   ngOnInit() {
     this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
       console.log(result.mqAlias)
@@ -58,6 +66,12 @@ export class LoginComponent implements OnInit {
   public passwordshow() {
     this.show = !this.show;
   }
+  get getcountryCodeValidation(){
+    return this.countryCodeValidation
+  }
+  get getfillAllValidation(){
+    return this.fillAllValidation
+  }
 
   login() {
     let loginData: any = {};
@@ -66,29 +80,51 @@ export class LoginComponent implements OnInit {
       loginData.password = this.rformLogin.value.password;
     }
     if (this.loginType == 'phone') {
-      loginData.email = this.rformLogin.value.phone.internationalNumber;
-     if(loginData.email==""){
-       alert("select country code")
-     }else{
-      loginData.password = this.rformLogin.value.password;
-     if (loginData.email && loginData.password) {
-      this.accountService.login(loginData).subscribe((data: any) => {
+      if(this.rformLogin.value.phone==null){
+       this.countryCodeValidation = 'show'
+      }
 
-        alert("Login Successful")
+        loginData.email = this.rformLogin.value.phone.internationalNumber;
+
+        this.countryCodeValidation = ''
+
+      loginData.password = this.rformLogin.value.password;
+    }
+
+    if (loginData.email && loginData.password) {
+      this.fillAllValidation = ''
+
+      this.accountService.login(loginData).subscribe((data: any) => {
+        this.accountNotVerfied = 'show'
+
         this.setId(data.userId);
         this.setusername(data.username);
         this.setemail(data.email)
         this.setRefrenceId(data.refrenceId)
+        this.setPhone(data.phone)
         this.setAccountBonus(data.accountBonus)
         this.isLoggedIn = true;
         this.router.navigate(['/'])
-
+        this.authPasswordError=''
       }, (error) => {
-        alert(error.error.message);
+         if (error.error.message == 'Account not verified') {
+            this.accountNotVerfied = 'show'
+        }else if(error.error.message == 'Auth Password failed') {
+          this.authPasswordError = 'show'
+          this.accountNotVerfied = ''
+
+        }else if(error.error.message == 'No Account Create Account First') {
+        this.router.navigate(['/signUp'])
+
+        alert("No Account Create Account First")
+       }
       });
+    }else{
+      this.fillAllValidation = 'show'
+
     }
-    }
-    }
+
+
   }
 
   forgetPassword() {
@@ -119,6 +155,10 @@ export class LoginComponent implements OnInit {
   setemail(email) {
     localStorage.setItem('email', JSON.stringify(email));
   }
+  setPhone(phone){
+    localStorage.setItem('phone', JSON.stringify(phone));
+
+  }
 
   signInGoogle(platform: string) {
     platform = GoogleLoginProvider.PROVIDER_ID;
@@ -138,13 +178,12 @@ export class LoginComponent implements OnInit {
 
         this.accountService.signIn(userAccount).subscribe((data: any) => {
 
-          alert('login successfull')
 
           this.setId(data.userId);
           this.setusername(data.username);
           this.setemail(data.email)
           this.setAccountBonus(data.accountBonus)
-
+          this.setPhone(data.email)
           this.setRefrenceId(data.refrenceId)
           this.isLoggedIn = true;
           this.router.navigate(['/'])
@@ -153,8 +192,6 @@ export class LoginComponent implements OnInit {
           if (error.error.message == 'No Account Create Account First') {
             alert(error.error.message)
             this.router.navigate(['/signUp'])
-          } else if (error.error.message == 'Account not verified') {
-            alert(error.error.message)
           }
         });
       });
@@ -178,56 +215,37 @@ export class LoginComponent implements OnInit {
 
         this.accountService.signIn(userAccount).subscribe((data: any) => {
 
-          alert('login successfull')
 
           this.setId(data.userId);
           this.setusername(data.username);
           this.setemail(data.email)
           this.setAccountBonus(data.accountBonus)
+          this.setPhone(data.email)
 
           this.setRefrenceId(data.refrenceId)
           this.isLoggedIn = true;
           this.router.navigate(['/'])
 
-
-
-
-
         }, (error) => {
           if (error.error.message == 'No Account Create Account First') {
             alert(error.error.message)
             this.router.navigate(['/signUp'])
-          } else if (error.error.message == 'Account not verified') {
-            alert(error.error.message)
           }
         });
 
       });
   }
 
-  socailLogin(userAccount) {
-    this.accountService.login(userAccount).subscribe((data: any) => {
 
-      alert("Login Successful")
-      this.setId(data.userId);
-      this.setusername(data.username);
-      this.setemail(data.email)
-
-      this.setRefrenceId(data.refrenceId)
-      this.isLoggedIn = true;
-      this.router.navigate(['/'])
-
-    }, (error) => {
-      alert(error.error.message);
-
-    });
-  }
-
-  toggleLoginType() {
-    if (this.loginType == 'email') {
-      this.loginType = 'phone';
-    } else {
+  toggleLoginType(type) {
+    if (type == 'email') {
       this.loginType = 'email';
+      this.countryCodeValidation = ''
+    } else {
+
+      this.loginType = 'phone';
+
+
     }
   }
 }

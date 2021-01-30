@@ -10,7 +10,15 @@ html, body{
 h1, h2, h3, h4, h5 ,h6{
   font-weight: 200;
 }
+.errorlbl{
+  color: red;
+  font-family: 'Roboto';
 
+}
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+  background-color: rgb(105, 170, 105);
+  color: #fff;
+}
 a{
   text-decoration: none;
 }

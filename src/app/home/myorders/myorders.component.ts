@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { CartService } from '../cart.service';
 import { ProductService } from '../product.service';
-import  {MediaObserver, MediaChange} from '@angular/flex-layout';
-import  { Subscription } from 'rxjs';
+import { MediaObserver, MediaChange } from '@angular/flex-layout';
+import { Subscription } from 'rxjs';
 import { of } from 'rxjs';
 
 @Component({
@@ -13,24 +13,26 @@ import { of } from 'rxjs';
 })
 export class MyordersComponent implements OnInit {
   allOrders = [];
-  canceledOrders=[];
+  canceledOrders = [];
   friendEmail;
-  public status:any;
+  public status: any;
   refrenceCode;
-  constructor(public mediaObserver:MediaObserver,
-    public productService:ProductService,
-    public cartService:CartService) { }
-    mediaSub:Subscription
-    deviceXs:boolean;
-    deviceLg:boolean;
-    deviceMd:boolean;
-    deviceSm:boolean;
+  selectedIndex = null;
+
+  constructor(public mediaObserver: MediaObserver,
+    public productService: ProductService,
+    public cartService: CartService) { }
+  mediaSub: Subscription
+  deviceXs: boolean;
+  deviceLg: boolean;
+  deviceMd: boolean;
+  deviceSm: boolean;
 
   ngOnInit() {
-    this.mediaSub = this.mediaObserver.media$.subscribe((result:MediaChange)=>{
+    this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
       console.log(result.mqAlias)
       this.deviceXs = result.mqAlias === 'xs'
-      this.deviceSm = result.mqAlias ==='sm'
+      this.deviceSm = result.mqAlias === 'sm'
       this.deviceLg = result.mqAlias === 'lg'
       this.deviceMd = result.mqAlias === 'md'
 
@@ -40,37 +42,44 @@ export class MyordersComponent implements OnInit {
 
 
   myOrders() {
-    this.productService.getOrders().subscribe((products:any) => {
+    this.productService.getOrders().subscribe((products: any) => {
       this.allOrders = products.orders;
       this.allOrders.forEach(element => {
 
-      if(element.cancelOrder==true){
-        this.canceledOrders.push(element)
-       }
+        if (element.cancelOrder == true) {
+          this.canceledOrders.push(element)
+        }
       });
 
-          }, (error) => {
+    }, (error) => {
       console.log('error in getting all products');
     });
   }
-  cancelOrders() {
+  
+  cancelOrders() {}
 
+  orderDetails(item) { }
 
-  }
-  orderDetails(item){
-
-  }
   getImage(imageId) {
     if (!imageId) return '';
     return this.productService.productImageUrl(imageId);
   }
 
-  orderCancel(id){
-    this.productService.cancelOrder(id).subscribe((products:any) => {
-   alert("order canceled")
+  orderCancel(id) {
+    this.productService.cancelOrder(id).subscribe((products: any) => {
+      alert("order canceled")
     }, (error) => {
-   alert(error.error.message)
+      alert(error.error.message)
     });
-}
+  }
+
+
+  onSelectedItem(i) {
+    if (this.selectedIndex == i) {
+      this.selectedIndex = null
+    } else {
+      this.selectedIndex = i
+    }
+  }
 
 }

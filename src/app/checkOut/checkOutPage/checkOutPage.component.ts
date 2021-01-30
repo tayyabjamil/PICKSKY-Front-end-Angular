@@ -7,6 +7,8 @@ import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import { Router } from '@angular/router';
 import { MatStepper } from '@angular/material/stepper/stepper';
 import { AdminService } from 'src/app/admin/admin.service';
+import { MediaObserver, MediaChange } from '@angular/flex-layout';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-checkOutPage',
@@ -21,8 +23,16 @@ export class CheckOutPageComponent implements OnInit {
     public productService: ProductService,
     public authService: AuthService,
     public adminService:AdminService,
-    private router: Router,) { }
+    private router: Router,
+    public mediaObserver: MediaObserver,
+    ) { }
 
+    mediaSub: Subscription
+    deviceXs: boolean;
+    deviceLg: boolean;
+    deviceMd: boolean;
+    deviceSm: boolean;
+    show: boolean;
 
   cartItems;
 
@@ -34,7 +44,7 @@ export class CheckOutPageComponent implements OnInit {
   total;
   title = 'newMat';
   showSuccess: any;
-  isLinear = true;
+  isLinear = false;
   dataOrder;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -45,27 +55,37 @@ export class CheckOutPageComponent implements OnInit {
 totalafterBonus=0;
 accountBonus;
 detection=0
-
+showBonusError=''
+loginFirst=''
   @ViewChild('stepper') public stepper: MatStepper;
-  ngOnInit() {
+  ngOnInit(
+
+  ) {
+    this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
+      console.log(result.mqAlias)
+      this.deviceXs = result.mqAlias === 'xs'
+      this.deviceSm = result.mqAlias === 'sm'
+      this.deviceLg = result.mqAlias === 'lg'
+      this.deviceMd = result.mqAlias === 'md'
+      this.show = false;
+    })
+
     this.initConfig();
     this.getCartItems()
 
     this.firstFormGroup = this._formBuilder.group({
-      email: ['',],
-      fname: ['',],
-      lname: ['',],
-      city: ['',],
-      adress: ['',],
-      contry: ['',],
-      code: ['']
-      ,
+      email: ['',Validators.required],
+      fname: ['',Validators.required],
+      lname: ['',Validators.required],
+      city: ['',Validators.required],
+      adress: ['',Validators.required],
+      contry: ['',Validators.required],
+      code: ['',Validators.required],
     });
     this.secondFormGroup = this._formBuilder.group({
       method: ['',]
     });
     this.thirdFormGroup = this._formBuilder.group({
-      // contact: ['', Validators.required],
 
     });
     // this.getAllOrders()
@@ -75,16 +95,36 @@ detection=0
   getAccountBonus() {
  this.accountBonus=  localStorage.getItem('accountBonus')
   }
+shipping(index){
+ if(this.authService.getID()){
+  if(this.firstFormGroup.valid){
+  this.stepper.selectedIndex = index;
+}
+}else{
+  this.loginFirst = 'show'
+}
+}
+payment(index){
+  if(this.secondFormGroup.valid){
+    this.stepper.selectedIndex = index;
+  }
 
-  useBonus(){
+}
+useBonus(){
+  if(parseInt(this.accountBonus)>0){
+    this.showBonusError=''
+
     this.adminService.updateBonus().subscribe((data: any) => {
       this.accountBonus = data.accountBonus
-      })
+      localStorage.setItem('accountBonus', JSON.stringify(this.accountBonus));
 
-    this.detection = (10 / 100) * this.total
+    })
+      this.detection = (10 / 100) * this.total
 
     return this.totalafterBonus
-
+    }else{
+      this.showBonusError='show'
+    }
   }
   getCartItems() {
     this.cartItems = this.cartService.getProducts()
@@ -122,7 +162,7 @@ detection=0
     this.cartService.order(orderData).subscribe((data: any) => {
       this.router.navigate(['/'])
     })
-    // this.cartService.emptyProduct()
+    this.cartService.emptyProduct()
   }
   move(index: number) {
     this.stepper.selectedIndex = index;

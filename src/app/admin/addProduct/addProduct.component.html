@@ -19,41 +19,22 @@
       <mat-form-field [formGroup]="productForm">
         <mat-label>catagory</mat-label>
         <mat-select formControlName="catagory">
-          <mat-option *ngFor="let catagory of ['Home','Pickles',
-        'TraditionalPowders',
-        'Sweets&Hot',
-        'SpecialOffers',
-        'Others',
-        'About-US',
-        'Support',
-        'Non-vegetarian',
-        'vegetarian',
-        'WithGralic',
-        'WithoutGralic',
-        'Podulu(Powders)',
-        'HomeMadeMasala',
-        'TradaitonalSweets',
-        'TradaitonalHot',
-        'Non-vegetarianCombo',
-        'VegetarianCombo',
-        'HotCombo',
-        'SweetsCombo'
-
+          <mat-option *ngFor="let catagory of [
+          'vegetarian',
+          'Non-vegetarian',
+          'PoduluPowders',
+          'HomeMadeMasalas',
+          'TradaitonalSweets',
+          'TradaitonalHot',
+          'Non-vegetarianCombo',
+          'VegetarianCombo',
+          'HotCombo',
+          'SweetsCombo'
         ]" [value]="catagory">
             {{catagory}}
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <!-- <div style="padding-bottom: 2%" class="">
-      <p style="padding-bottom: 1%">catagory</p>
-      <ns-textField-admin
-        name="catagory"
-        class="textfieldBorderColor font13"
-        [rformgroup]="productForm"
-        rformControlName="catagory"
-      >
-      </ns-textField-admin>
-    </div> -->
       <div style="padding-bottom: 2%" class="">
         <p style="padding-bottom: 1%">detail</p>
         <ns-textField-admin name="detail" class="textfieldBorderColor font13" [rformgroup]="productForm"

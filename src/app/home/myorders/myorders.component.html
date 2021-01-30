@@ -9,136 +9,127 @@
         <div *ngIf="allOrders.length == 0" style="text-align: center;padding: 10%;min-height: 300px;">
           <p>No Orders</p>
         </div>
-        <div *ngIf="deviceLg && allOrders.length !== 0 || deviceMd && allOrders.length !== 0">
-
+        <div class="animation">
+            <!-- *ngIf="deviceLg && allOrders.length !== 0 || deviceMd && allOrders.length !== 0"  -->
           <div class="row" style="margin:1%">
-
-            <div class="col-xs-2">
+            <div class="col-md-2">
               <p style="font-size: large;">Order Date</p>
             </div>
-            <div class="col-xs-2">
+            <div class="col-md-2">
               <p style="font-size: large;">Order Total</p>
 
             </div>
-            <div class="col-xs-2">
+            <div class="col-md-2">
               <p style="font-size: large;">Order Status</p>
+            </div>
+            <div class="col-md-6">
 
             </div>
-
           </div>
 
-          <div *ngFor="let item of allOrders">
-            <div class="row" style="border:1px;border-style: groove;margin:1%;padding-top: 3px;">
 
+          <div *ngFor="let item of allOrders; let i = index;" style="border:1px solid;
+    margin-bottom: 20px;
+        border-radius: 5px;
+    margin-bottom: 20px;" [ngClass]="{'selectedBg': selectedIndex == i}">
 
-              <div class="col-xs-2">
-
-                <p>{{item.date}}</p>
+            <div class="row" style="margin: 0% 1%; padding:5px; display: flex; align-items: center;">
+              <div class="col-md-2">
+                <div>{{item.date}}</div>
               </div>
-              <div class="col-xs-2">
-
-                <p>{{item?.total}}</p>
+              <div class="col-md-2">
+                <div>{{item?.total}}</div>
               </div>
 
-              <div class="col-xs-2">
-
-                <p>{{item.phase}}</p>
+              <div class="col-md-2">
+                <div>{{item.phase}}</div>
               </div>
-              <div class="col-xs-2">
-                <a class="btn btn-primary" style="color: white;" data-toggle="collapse" href="#{{item.total}}" role="button"
-                  aria-expanded="false" aria-controls="#{{item.total}}">
-                  Details
-                </a>
 
 
-              </div>
-              <div class="col-xs-2">
-                <a class="btn btn-primary" style="color: white;" data-toggle="collapse" href="#{{item._id}}"
-                  role="button" aria-expanded="false" aria-controls="#{{item.total}}">
-                  Status
-                </a>
-
-
-              </div>
-              <div class="col-xs-2">
-
-                <p (click)="orderCancel(item._id)" class="btn btn-danger" style="color: white;">Cancel Order</p>
-
+              <div class="col-md-6" style="display: flex; justify-content: flex-end;">
+                <div>
+                  <a class="btn btn-primary" style="color: white; margin-right: 15px;" (click)="onSelectedItem(i)">
+                    Details
+                  </a>
+                  <div (click)="orderCancel(item._id)" class="btn btn-danger" style="color: white;">Cancel Order</div>
+                </div>
               </div>
             </div>
 
-            <div class="collapse container-fluid" id="{{item._id}}"
-              style="padding-top: 1%;margin-left: 1%;margin-right: 1%;">
-              <div style="min-height: 300px;padding: 5%;">
-                <div class="row multi-steps-wrap">
-                  <ul class="list-unstyled multi-steps">
+            <div *ngIf="selectedIndex == i">
 
-                    <li class="job-status" [ngClass]="
+              <div class="container-fluid" style="padding-top: 1%;margin-left: 1%;margin-right: 1%;">
+                <div style="padding: 5%;">
+                  <div class="row multi-steps-wrap">
+                    <ul class="list-unstyled multi-steps">
+
+                      <li class="job-status" [ngClass]="
                     ((item?.phase === 'processing') ||
                     (item?.phase === 'packed') ||
                     (item?.phase === 'shipped')) ? '' : 'negative'">
-                      processing</li>
-                    <li class="job-status" [ngClass]="((item?.phase === 'packed') ||
+                        processing</li>
+                      <li class="job-status" [ngClass]="((item?.phase === 'packed') ||
                       (item?.phase === 'shipped') ||
                       (item?.phase === 'delievry phase')) ? '' : 'negative'">
-                      Packed</li>
-                    <li class="job-status " [ngClass]="((item?.phase === 'shipped')
+                        Packed</li>
+                      <li class="job-status " [ngClass]="((item?.phase === 'shipped')
                       || (item?.phase === 'delievry phase')) ? '' : 'negative'">
-                      Shipped</li>
-                    <li class="job-status" [ngClass]="item?.phase === 'delievry phase' ? '' : 'negative'">
-                      Delivered</li>
-                  </ul>
+                        Shipped</li>
+                      <li class="job-status" [ngClass]="item?.phase === 'delievry phase' ? '' : 'negative'">
+                        Delivered</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
-            </div>
 
-
-            <!--  -->
-            <div class="collapse" id="{{item._id}}" style="padding-top: 1%;margin-left: 1%;margin-right: 1%;">
-              <div class="row">
-
-                <div class="col-xs-12">
-
-                  <div
-                    style="padding-left: 2%;padding-top: 1%;display: flex;flex-direction: row;justify-content: space-between;background-color: rgb(230, 230, 230);padding-left: 5%;">
-                    <p>Total Amount </p>
-                    <p class="col-xs-2">{{item.total}}</p>
-
-
-                  </div>
-                  <div *ngFor="let item of item.cartData">
-
+              <div style="padding-top: 1%;margin-left: 1%;margin-right: 1%;">
+                <div class="row">
+                  <div class="col-xs-12">
                     <div
-                      style="padding-top: 4%;display: flex;flex-direction: row;justify-content: space-between;padding-left: 5%;padding-right: 10%;">
-                      <div class="col-xs-3" style="padding-right: 7%;">
-                        <div style="height: 100px;width: 200px;">
-                          <img [src]='getImage(item.productImage)' style="height: 100px;width: 200px;">
-                        </div>
-                      </div>
-                      <div class="col-xs-6">
-                        <div>
-                          <p>{{item.details}}</p>
-                        </div>
-                        <div style="justify-content: center;">
-                          <p style="font-size: larger;"> Unit price {{item.price}}</p>
-                          <p style="font-size: larger;">Total Units {{item.productCount}}</p>
-                        </div>
-                      </div>
-                      <div class="col-xs-3" style="float:left">
-                        <p style="font-weight: 500;font-size: large;">total price {{item.unitTotal}}</p>
-                      </div>
+                      style="padding-left: 2%;padding-top: 1%;display: flex;flex-direction: row;justify-content: space-between;background-color: rgb(230, 230, 230);padding-left: 5%;">
+                      <p>Total Amount </p>
+                      <p class="col-xs-2">{{item.total}}</p>
                     </div>
-                    <hr>
+
+                    <div *ngFor="let item of item.cartData">
+                      <div
+                        style="padding-top: 4%;display: flex;flex-direction: row;justify-content: space-between;padding-left: 5%;padding-right: 10%;">
+                        <div class="col-xs-3" style="padding-right: 7%;">
+                          <div style="height: 100px;width: 200px; object-fit:contain">
+                            <img [src]='getImage(item.productImage)' style="height: 100px;width: 200px; object-fit:contain">
+                          </div>
+                        </div>
+                        <div class="col-xs-6">
+                          <div>
+                            <p>{{item.details}}</p>
+                          </div>
+                          <div style="justify-content: center;">
+                            <p style="font-size: larger;"> Unit price {{item.price}}</p>
+                            <p style="font-size: larger;">Total Units {{item.productCount}}</p>
+                          </div>
+                        </div>
+                        <div class="col-xs-3" style="float:left">
+                          <p style="font-weight: 500;font-size: large;">total price {{item.unitTotal}}</p>
+                        </div>
+                      </div>
+                      <hr>
+                    </div>
                   </div>
                 </div>
-
               </div>
-
-
             </div>
+
+
+
           </div>
+
+
+
         </div>
-        <div *ngIf="deviceXs || deviceSm">
+
+
+
+        <!-- <div *ngIf="deviceXs && allOrders.length !== 0 || deviceSm && allOrders.length !== 0">
           <div class="row" style="margin:1%">
 
             <div class="col-xs-4">
@@ -174,8 +165,9 @@
 
               <div class="row" style="width: 100%;display: flex;flex-direction: row;justify-content: space-between;">
 
+
                 <div>
-                  <a class="btn btn-primary" style="color: white;" data-toggle="collapse" href="#{{item._id}}"
+                  <a class="btn btn-primary" style="color: white;" data-toggle="collapsedetail" href="#{{item.total}}"
                     role="button" aria-expanded="false" aria-controls="{{item._id}}">
                     Details
                   </a>
@@ -183,35 +175,40 @@
 
                 </div>
                 <div>
-                  <a class="btn btn-primary" style="color: white;" data-toggle="collapse" href="#{{item.total}}"
+                  <a class="btn btn-primary" style="color: white;" data-toggle="collapse" href="#{{item._id}}"
                     role="button" aria-expanded="false" aria-controls="{{item.total}}">
                     Status
                   </a>
-
-
-                </div>
-              </div>
+                </div></div>
             </div>
 
-            <div class="collapse container-fluid" id="{{item.total}}"
+
+            <div class="collapse container-fluid" id="{{item._id}}"
               style="padding-top: 1%;margin-left: 1%;margin-right: 1%;">
-              <div style="min-height: 100px;padding: 5%;">
+              <div style="min-height: 300px;padding: 5%;">
                 <div class="row multi-steps-wrap">
                   <ul class="list-unstyled multi-steps">
-                    <li class="job-status" [ngClass]="item.status === 'processing' ? 'job-created' : ''">processing</li>
-                    <li class="job-status is-active negative" [ngClass]="item.status === 'packed' ? 'job-packed' : ''">
-                      Packed</li>
-                    <li class="job-status" [ngClass]="item.status === 'shipped' ? 'job-completed' : ''">Shipped</li>
-                    <li class="job-status" [ngClass]="item.status === 'delivered' ? 'job-closed' : ''">Delivered</li>
 
+                    <li class="job-status" [ngClass]="
+                    ((item?.phase === 'processing') ||
+                    (item?.phase === 'packed') ||
+                    (item?.phase === 'shipped')) ? '' : 'negative'">
+                      processing</li>
+                    <li class="job-status" [ngClass]="((item?.phase === 'packed') ||
+                      (item?.phase === 'shipped') ||
+                      (item?.phase === 'delievry phase')) ? '' : 'negative'">
+                      Packed</li>
+                    <li class="job-status " [ngClass]="((item?.phase === 'shipped')
+                      || (item?.phase === 'delievry phase')) ? '' : 'negative'">
+                      Shipped</li>
+                    <li class="job-status" [ngClass]="item?.phase === 'delievry phase' ? '' : 'negative'">
+                      Delivered</li>
                   </ul>
                 </div>
               </div>
             </div>
 
-
-            <!--  -->
-            <div class="collapse" id="{{item._id}}" style="padding-top: 1%;margin-left: 1%;margin-right: 1%;">
+            <div class="collapse" id="{{item.total}}" style="padding-top: 1%;margin-left: 1%;margin-right: 1%;">
               <div class="row">
 
                 <div class="col-xs-12">
@@ -256,14 +253,16 @@
 
           </div>
 
-        </div>
+        </div> -->
+
       </mat-tab>
       <mat-tab label="Canceled Orders">
-         <div *ngIf="canceledOrders.length == 0" style="text-align: center;padding: 10%;min-height: 300px;">
+
+        <div *ngIf="canceledOrders.length == 0" style="text-align: center;padding: 10%;min-height: 300px;">
           <p>No Orders</p>
         </div>
 
-        <div *ngIf="deviceLg && canceledOrders.length !== 0 || deviceMd && canceledOrders.length !== 0">
+        <!-- <div *ngIf="deviceLg && canceledOrders.length !== 0 || deviceMd && canceledOrders.length !== 0">
 
           <div class="row" style="margin:1%">
 
@@ -347,7 +346,7 @@
             </div>
 
 
-            <!--  -->
+
             <div class="collapse" id="{{item._id}}" style="padding-top: 1%;margin-left: 1%;margin-right: 1%;">
               <div class="row">
 
@@ -365,8 +364,8 @@
                     <div
                       style="padding-top: 4%;display: flex;flex-direction: row;justify-content: space-between;padding-left: 5%;padding-right: 10%;">
                       <div class="col-xs-3" style="padding-right: 7%;">
-                        <div style="height: 100px;width: 200px;">
-                          <img [src]='getImage(item.productImage)' style="height: 100px;width: 200px;">
+                        <div style="height: 100px;width: 200px; object-fit:contain">
+                          <img [src]='getImage(item.productImage)' style="height: 100px;width: 200px; object-fit:contain">
                         </div>
                       </div>
                       <div class="col-xs-6">
@@ -391,8 +390,9 @@
 
             </div>
           </div>
-        </div>
-        <div *ngIf="deviceXs || deviceSm">
+        </div> -->
+
+        <!-- <div *ngIf="deviceXs || deviceSm">
           <div class="row" style="margin:1%">
 
             <div class="col-xs-4">
@@ -441,8 +441,6 @@
                     role="button" aria-expanded="false" aria-controls="{{item.total}}">
                     Status
                   </a>
-
-
                 </div>
               </div>
             </div>
@@ -464,7 +462,6 @@
             </div>
 
 
-            <!--  -->
             <div class="collapse" id="{{item._id}}" style="padding-top: 1%;margin-left: 1%;margin-right: 1%;">
               <div class="row">
 
@@ -510,7 +507,7 @@
 
           </div>
 
-        </div>
+        </div> -->
 
 
       </mat-tab>
@@ -520,3 +517,46 @@
 
 
 
+
+
+
+
+  <!-- 
+
+
+
+
+  <div id="accordion">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+              <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                  aria-expanded="true" aria-controls="collapseOne">
+                  Why you choose Shrivasafoods?
+                </a>
+              </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+              <div class="panel-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque
+                  at,
+                  vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus
+                  condimentum
+                  laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros.Lorem ipsum dolor sit
+                  amet,
+                  consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu.
+                  Curabitur
+                  erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit
+                  posuere
+                  tortor aliquam vitae. Curabitur molestie eros. </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div> -->

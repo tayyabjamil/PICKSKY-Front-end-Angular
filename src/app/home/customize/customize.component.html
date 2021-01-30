@@ -16,21 +16,26 @@
     <div>
         <mat-tab-group mat-align-tabs="center">
             <mat-tab [label]="item?.tabsTitle" *ngFor="let item of items">
-                <div class="display-flex-center">
-                    <div class="alignContent">
-                        <div class="lineItem p-t-10 p-b-10">
+                <div class="row" mat-align-tabs="center">
+                  <div class="col-lg-3"></div>
+                  <div class="col-lg-6" style="min-height: 400px;">
+                        <div class="lineItem">
                             <div *ngFor="let itemContent of item?.tabsContent" (click)="onTopItem()">
-                                <div class="display-flex pointer b-b-1">
-                                    <div class="m-t-2 m-l-15">
+                                <div class="row">
+                                    <div class="col-2">
                                         <mat-checkbox></mat-checkbox>
                                     </div>
-                                    <div class="w-50p m-l-20">{{itemContent?.tabItemTitle}}</div>
+                                    <div class="col-5">{{itemContent?.tabItemTitle}}</div>
+                                   <div class="col-5">
                                     <app-customize-option-select [options]="itemContent?.tabItemOption">
                                     </app-customize-option-select>
-                                </div>
+                                  </div>
+                                  </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-3"></div>
+
                 </div>
             </mat-tab>
         </mat-tab-group>

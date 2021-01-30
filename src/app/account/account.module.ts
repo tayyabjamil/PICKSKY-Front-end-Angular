@@ -1,6 +1,5 @@
 import { ForgetPasswordComponent } from './forgetPassword/forgetPassword.component';
 import { EmailVerifyComponent } from './../account/emailVerify/emailVerify.component';
-import { ResetPasswordComponent } from './resetPassword/resetPassword.component';
 import { AccountService } from './account.service';
 import { TextFieldComponent } from './../account/textField/textField.component';
 import { SignUpComponent } from './signUp/signUp.component';
@@ -16,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
+import { ResetPasswordComponent } from './resetPassword/resetPassword.component';
 
 @NgModule({
   imports: [

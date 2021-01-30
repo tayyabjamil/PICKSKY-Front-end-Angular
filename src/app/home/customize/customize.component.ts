@@ -10,7 +10,19 @@ export class CustomizeComponent implements OnInit {
 
   items = [
     {
+      tabsTitle: 'Grams',
+
+      tabsContent: [
+        { tabItemTitle: '250 g', tabItemOption: ['', '', ''] },
+        { tabItemTitle: '500g', tabItemOption: ['', '', ''] },
+        { tabItemTitle: '750g', tabItemOption: ['', '', ''] },
+        { tabItemTitle: '100g', tabItemOption: ['', '', ''] }
+      ]
+    },
+
+    {
       tabsTitle: 'Ingredients',
+
       tabsContent: [
         { tabItemTitle: 'Market Tomato Sauce', tabItemOption: ['Regular', 'On the side', 'extra'] },
         { tabItemTitle: 'Market Tomato Sauce', tabItemOption: ['Regular', 'On the side', 'extra'] },

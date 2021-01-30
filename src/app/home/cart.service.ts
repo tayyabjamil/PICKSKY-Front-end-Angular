@@ -25,14 +25,18 @@ export class CartService {
     this.cart = [];
     localStorage.setItem('cart', JSON.stringify(this.cart));
   }
-discardProduct(product){
+
+  discardProduct(product) {
     this.cart.find((item) => {
       if (item._id === product._id) {
-          this.cart.splice(item,1)
-          item.productCount = 0;
+        this.cart.splice(item, 1)
+        item.productCount = 0;
       }
+      localStorage.setItem('cart', JSON.stringify(this.cart));
+
     })
-}
+    // localStorage.setItem('cart', JSON.stringify(this.cart));
+  }
   removeProduct(product) {
     let proudctRemoved = false
     this.cart.find((item) => {
@@ -82,6 +86,7 @@ discardProduct(product){
     }
     return this.cart;
   }
+
   getTotalPrice() {
     let subtotal = 0;
     this.cart.forEach(item => {
@@ -110,7 +115,7 @@ discardProduct(product){
         code: orderData.code,
         contry: orderData.contry,
         method: orderData.method,
-        cancelOrder:false
+        cancelOrder: false
 
       },
       this.httpHeaders

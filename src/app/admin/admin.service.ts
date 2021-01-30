@@ -39,6 +39,10 @@ export class AdminService {
     return this.http.post('http://localhost:8000/api/users/updateBonus/'+this.authService.getID(), this.httpHeaders);
 
   }
+  giveBonus(){
+    return this.http.post('http://localhost:8000/api/users/updateBonus/'+this.authService.getID(), this.httpHeaders);
+
+  }
   getPhase() {
 
     return this.phase

@@ -16,31 +16,39 @@ export class ProfileComponent implements OnInit {
   email;
   refrenceId;
   rformEdit: FormGroup;
+  phone;
   rformEditPassword: FormGroup;
 contact;
+showPassword:boolean
+showOld:boolean
   constructor(public formBuilder: FormBuilder, public accountService: AccountService, private router: Router, public http: HttpClient, private myauthService: AuthService) { }
 
   ngOnInit() {
      this.username = this.myauthService.getusername();
      this.email = this.myauthService.getemail();
-     this.refrenceId = this.myauthService.getRefrenceId();
-
-
+     this.phone = this.myauthService.getPhone()
 
      this.rformEdit = this.formBuilder.group({
     username: new FormControl(this.username ),
     email: new FormControl(this.email, Validators.email),
 
-    contact: new FormControl(this.contact )
+    contact: new FormControl(this.phone)
   });
-  // tslint:disable-next-line: align
   this.rformEditPassword = this.formBuilder.group({
     oldPassword: new FormControl('' ),
     newPassword: new FormControl(''),
 
   });
 }
+public passwordshow() {
+  this.showPassword = !this.showPassword;
+  console.log(this.showPassword)
+}
+public passwordshowOld() {
+  this.showOld = !this.showOld;
+  console.log(this.showPassword)
 
+}
 editInfo(){
 
  this.accountService.editInfo(this.rformEdit.value).subscribe((data: any) => {

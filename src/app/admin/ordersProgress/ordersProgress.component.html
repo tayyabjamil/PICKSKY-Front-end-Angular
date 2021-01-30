@@ -3,7 +3,7 @@
   <h1 style="text-align: center;font-weight: bold;">Admin Portal</h1>
   <div  style="border: 1px;border-style: groove;">
     <div  class="row" style="margin:1%">
-      <div class="col-lg-2">
+      <div class="col-lg-1">
         <p style="font-size: large;">Order No #</p>
       </div>
       <div class="col-lg-2">
@@ -33,7 +33,7 @@
         </div>
 
         <div class="col-lg-2">
-          <p>{{item?.username}}</p>
+          <p>{{item?.firstName}}</p>
         </div>
 
         <div class="col-lg-2">
@@ -63,15 +63,4 @@
     </div>
   </div>
 
-  <div  style=" font-size: 14px;">
-    <table id="tableid">
-      <tr>
-        <th *ngFor="let item of ['Name'];"> {{item}} </th>
-      </tr>
-      <tr *ngFor="let item of cartDataValue">
-        <td>{{item?.name}} </td>
-        <!-- <td> {{item?.unitTotal}} </td> -->
-      </tr>
-    </table>
-  </div>
 </div>

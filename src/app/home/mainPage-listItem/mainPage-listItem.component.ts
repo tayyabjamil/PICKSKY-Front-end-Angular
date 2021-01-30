@@ -3,6 +3,8 @@ import { CartService } from '../cart.service';
 import { ProductService } from '../product.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CustomizeComponent } from '../customize/customize.component';
+import { MediaObserver, MediaChange } from '@angular/flex-layout';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-mainPage-listItem',
@@ -15,10 +17,27 @@ export class MainPageListItemComponent implements OnInit {
   loadingImage = true;
 
   constructor(public productService: ProductService,
+    public mediaObserver: MediaObserver,
     public cartService: CartService,
+
     public dialog: MatDialog) { }
+    mediaSub: Subscription;
+    deviceXs: boolean;
+    deviceLg: boolean;
+    deviceMd: boolean;
+    deviceSm: boolean;
 
   ngOnInit() {
+    this.mediaSub = this.mediaObserver.media$.subscribe(
+      (result: MediaChange) => {
+        console.log(result.mqAlias);
+        this.deviceXs = result.mqAlias === 'xs';
+        this.deviceSm = result.mqAlias === 'sm';
+        this.deviceLg = result.mqAlias === 'lg';
+        this.deviceMd = result.mqAlias === 'md';
+      }
+    );
+
   }
 
   imageLoaded() {
@@ -42,7 +61,7 @@ export class MainPageListItemComponent implements OnInit {
   addProduct(item, productRef) {
     if (productRef) {
       let x = parseInt(productRef.innerText);
-      productRef.innerText = x + 1; 
+      productRef.innerText = x + 1;
     }
     this.cartService.addProduct(item);
   }
@@ -50,9 +69,12 @@ export class MainPageListItemComponent implements OnInit {
   removeProduct(item, productRef) {
     if (productRef) {
       let x = parseInt(productRef.innerText);
+      if(x>=0){
       productRef.innerText = x - 1 ;
-    }
-    this.cartService.removeProduct(item);
+
+     this.cartService.removeProduct(item);
+      }
+     }
   }
 
   onCustomiseModal(item): void {

@@ -11,77 +11,65 @@ export class ProductService {
   categories = [
     {
       thumbImage: 'assets/images/slideimg1.jpg',
-      title: 'Bakery & Pastry',
+      title: 'Vegetarian',
       alt: 'Image alt',
-      routeTo: 'vegitables',
+      routeTo: 'vegetarian',
     },
     {
       thumbImage: 'assets/images/slideimg2.jpg',
-      title: 'Pickles',
+      title: 'Non-vegetarian',
       alt: 'alt of image',
-      routeTo: 'pickles',
+      routeTo: 'Non-vegetarian',
     },
     {
       thumbImage: 'assets/images/slideimg3.jpg',
-      title: 'Image title',
+      title: 'PoduluPowders',
       alt: 'Image alt',
-      routeTo: 'slideimg3',
+      routeTo: 'PoduluPowders',
     },
     {
       thumbImage: 'assets/images/slideimg4.jpg',
       alt: 'alt of image',
-      routeTo: 'fish',
-      title: 'Fish & Meat',
+      routeTo: "HomeMadeMasalas",
+      title: "HomeMade Masala's",
     },
     {
       thumbImage: 'assets/images/slideimg5.jpg',
-      title: 'TraditionalPowders',
+      title: 'Tradaitonal Sweets',
       alt: 'Image alt',
-      routeTo: 'traditional_powders',
+      routeTo: 'TradaitonalSweets',
     },
     {
       thumbImage: 'assets/images/slideimg6.jpg',
       alt: 'alt of image',
-      routeTo: 'snakes',
-      title: 'Snakes & Beverages',
+      routeTo: 'TradaitonalHot',
+      title: 'Tradaitonal Hot',
     },
     {
       thumbImage: 'assets/images/slideimg1.jpg',
-      title: 'Bakery & Pastry',
+      title: 'Non-vegetarian Combo',
       alt: 'Image alt',
-      routeTo: 'bakery',
+      routeTo: 'Non-vegetarianCombo',
     },
     {
       thumbImage: 'assets/images/slideimg2.jpg',
       alt: 'alt of image',
-      title: 'Pickles',
-      routeTo: 'pickles',
+      title: 'Vegetarian Combo',
+      routeTo: 'VegetarianCombo',
     },
     {
       thumbImage: 'assets/images/slideimg3.jpg',
-      title: 'Image title',
+      title: 'Hot Combo',
       alt: 'Image alt',
-      routeTo: 'slideimg3',
+      routeTo: 'HotCombo',
     },
     {
       thumbImage: 'assets/images/slideimg4.jpg',
       alt: 'alt of image',
-      routeTo: 'Fish',
-      title: 'Fish & Meat',
+      routeTo: 'SweetsCombo',
+      title: 'Sweets Combo',
     },
-    {
-      thumbImage: 'assets/images/slideimg5.jpg',
-      title: 'TraditionalPowders',
-      alt: 'Image alt',
-      routeTo: 'slideimg5',
-    },
-    {
-      thumbImage: 'assets/images/slideimg6.jpg',
-      alt: 'alt of image',
-      routeTo: 'Snakes',
-      title: 'Snakes & Beverages',
-    },
-  ];
+   ];
 
   constructor(public http: HttpClient, private myauthService: AuthService) { }
 

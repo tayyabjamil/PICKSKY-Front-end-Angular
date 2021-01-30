@@ -23,6 +23,10 @@ getID() {
     return JSON.parse(localStorage.getItem('refrenceId'));
   }
 
+  getPhone() {
+    return JSON.parse(localStorage.getItem('phone'));
+  }
+
   getemail() {
     return JSON.parse(localStorage.getItem('email'));
   }

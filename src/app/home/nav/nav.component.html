@@ -1,10 +1,9 @@
-<div class="container">
-<mat-sidenav-container class="sidenav-container" style="height: 100%">
+<mat-sidenav-container>
   <mat-sidenav style="background-color: white" #drawer class="sidenav" fixedInViewport="false"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar routerLink="/" TraditionalPowders>Catagories</mat-toolbar>
     <mat-nav-list class="fundpress-menu" style="background-color: white">
-      <ul class="nav-menu" (click)="drawer.toggle()">
+      <ul class="nav-menu" >
         <li class="dropdown" routerLink="/">
           <a>{{ getHeaderNames(1) }}</a>
         </li>
@@ -13,13 +12,13 @@
             getHeaderNames(2)
             }}</a>
           <ul class="dropdown-menu">
-            <li>
-              <a (click)="catagory(getPicklesConstants(1))">{{
+            <li (click)="drawer.toggle()">
+              <a (click)="catagory('vegetarian')">{{
                 getPicklesConstants(1)
                 }}</a>
             </li>
-            <li>
-              <a (click)="catagory(getPicklesConstants(2))">{{
+            <li (click)="drawer.toggle()">
+              <a (click)="catagory('Non-vegetarian')">{{
                 getPicklesConstants(2)
                 }}</a>
             </li>
@@ -30,13 +29,13 @@
             getHeaderNames(3)
             }}</a>
           <ul class="dropdown-menu">
-            <li>
-              <a (click)="catagory(getTraditionalPodulu(1))">{{
+            <li (click)="drawer.toggle()">
+              <a (click)="catagory('PoduluPowders')">{{
                 getTraditionalPodulu(1)
                 }}</a>
             </li>
-            <li>
-              <a (click)="catagory(getTraditionalPodulu(2))">{{
+            <li (click)="drawer.toggle()">
+              <a (click)="catagory('HomeMadeMasalas')">{{
                 getTraditionalPodulu(2)
                 }}</a>
             </li>
@@ -47,13 +46,13 @@
             getHeaderNames(4)
             }}</a>
           <ul class="dropdown-menu">
-            <li>
-              <a (click)="catagory(getSweetsandHotConstants(1))">{{
+            <li (click)="drawer.toggle()">
+              <a (click)="catagory('TradaitonalSweets')">{{
                 getSweetsandHotConstants(1)
                 }}</a>
             </li>
-            <li>
-              <a (click)="catagory(getSweetsandHotConstants(2))">{{
+            <li (click)="drawer.toggle()">
+              <a (click)="catagory('TradaitonalHot')">{{
                 getSweetsandHotConstants(2)
                 }}</a>
             </li>
@@ -64,104 +63,76 @@
             getHeaderNames(5)
             }}</a>
           <ul class="dropdown-menu">
-            <li>
-              <a (click)="catagory(getSpecialConstants(1))">{{
+            <li (click)="drawer.toggle()">
+              <a (click)="catagory('Non-vegetarianCombo')">{{
                 getSpecialConstants(1)
                 }}</a>
             </li>
-            <li>
-              <a (click)="catagory(getSpecialConstants(2))">{{
+            <li (click)="drawer.toggle()">
+              <a (click)="catagory('VegetarianCombo')">{{
                 getSpecialConstants(2)
                 }}</a>
             </li>
-            <li>
-              <a (click)="catagory(getSpecialConstants(3))">{{
+            <li (click)="drawer.toggle()">
+              <a (click)="catagory('HotCombo')">{{
                 getSpecialConstants(3)
                 }}</a>
             </li>
-            <li>
-              <a (click)="catagory(getSpecialConstants(4))">{{
+            <li (click)="drawer.toggle()">
+              <a (click)="catagory('SweetsCombo')">{{
                 getSpecialConstants(4)
                 }}</a>
             </li>
           </ul>
         </li>
-        <li class="dropdown" routerLink="/others">
+        <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown">{{
             getHeaderNames(6)
             }}</a>
           <ul class="dropdown-menu">
-            <li>
-              <a (click)="catagory(getOthersConstants(1))">{{
-                getOthersConstants(1)
-                }}</a>
+            <li (click)="drawer.toggle()">
+              <a routerLink="/faq">{{ getOthersConstants(1) }}</a>
             </li>
-            <li>
-              <a (click)="catagory(getOthersConstants(1))">{{
-                getOthersConstants(1)
-                }}</a>
+            <li (click)="drawer.toggle()">
+              <a routerLink="/faq">{{ getOthersConstants(1) }}</a>
             </li>
-            <li>
-              <a (click)="catagory(getOthersConstants(1))">{{
-                getOthersConstants(1)
-                }}</a>
+            <li (click)="drawer.toggle()">
+              <a routerLink="/faq">{{ getOthersConstants(1) }}</a>
             </li>
           </ul>
         </li>
-        <li class="dropdown" routerLink="/aboutus">
+        <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown">{{
-            getHeaderNames(7)
+            getHeaderNames(8)
             }}</a>
           <ul class="dropdown-menu">
-            <li>
-              <a (click)="catagory(getAboutusConstants(1))">{{
-                getAboutusConstants(1)
-                }}</a>
+            <li (click)="drawer.toggle()">
+              <a>{{ getSupportConstants(1) }}</a>
+            </li >
+            <li (click)="drawer.toggle()">
+              <a>{{ getSupportConstants(2) }}</a>
             </li>
-            <li>
-              <a (click)="catagory(getAboutusConstants(2))">{{
-                getAboutusConstants(2)
-                }}</a>
+            <li (click)="drawer.toggle()">
+              <a>{{ getSupportConstants(3) }}</a>
             </li>
-            <li>
-              <a (click)="catagory(getAboutusConstants(3))">{{
-                getAboutusConstants(3)
-                }}</a>
-            </li>
-            <li>
-              <a (click)="catagory(getAboutusConstants(4))">{{
-                getAboutusConstants(4)
-                }}</a>
-            </li>
-            <li>
-              <a (click)="catagory(getAboutusConstants(5))">{{
-                getAboutusConstants(5)
+            <li (click)="drawer.toggle()">
+              <a [routerLink]="['/supportpage']">{{
+                getSupportConstants(4)
                 }}</a>
             </li>
           </ul>
         </li>
-        <!-- <li class="dropdown" routerLink="/support">
-          <a class="dropdown-toggle" data-toggle="dropdown">{{getHeaderNames(8)}}</a>
-          <ul class="dropdown-menu">
-            <li><a (click)="catagory(getSupportConstants(1))">{{getSupportConstants(1)}}</a></li>
-            <li><a (click)="catagory()">{{getSupportConstants(2)}}</a></li>
-            <li><a (click)="catagory()">{{getSupportConstants(3)}}</a></li>
-            <li><a (click)="catagory()">{{getSupportConstants(4)}}</a></li>
-          </ul>
-        </li> -->
-      </ul>
+        </ul>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar  style="margin-top: 1%;background-color: white">
-      <div *ngIf="isShow == true" style="width: 100%; margin-left: 2%;margin-top: 1%;  margin-bottom: 1%"
-       class="row">
-        <p *ngIf="isShow == true" class="col-xs-11" style="
+    <div *ngIf="isShow == true" style="width: 100%; margin-left: 2%;margin-top: 1%;  margin-bottom: 1%" class="row">
+      <div *ngIf="isShow == true" class="col-xs-10" style="
             border-radius: 6px;
             font-weight: 300px;
             background-color: rgb(240, 238, 238);
           ">
-          <span><i class="fa fa-search" routerLink="/login" style="
+        <span><i class="fa fa-search" style="
                 font-weight: 200;
                 font-size: large;
 
@@ -169,53 +140,83 @@
 
                 color: rgb(134, 132, 132);
               "></i></span>
-        </p>
-        <p class="col-xs-1" (click)="toggleDisplay()" style=" font-weight: 300px; color: grey">
-          <i class="fa fa-times"></i>
-        </p>
       </div>
-      <div class="row"  *ngIf="isShow == false" >
-      <div class="col-xs-2 col-sm-2">
-        <button  type="button" aria-label="Toggle sidenav" mat-icon-button
-          (click)="drawer.toggle()" *ngIf="isHandset$ | async">
-          <mat-icon aria-label="Side nav toggle icon" style="margin-bottom: 1%;color: black">menu</mat-icon>
-        </button>
-       </div>
-         <div  class="col-xs-4 col-sm-4">
-          <p style="
+      <div class="col-xs-1" (click)="toggleDisplay()"
+        style=" padding-top: 2%;font-size: large;font-weight: 300px; color: grey">
+        <i class="fa fa-times"></i>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center;" *ngIf="isShow == false">
+
+      <div style="display: flex; align-items: center; margin-left: 5%;">
+        <div>
+          <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+            *ngIf="isHandset$ | async">
+            <mat-icon aria-label="Side nav toggle icon" style="margin-bottom: 1%;color: black">menu</mat-icon>
+          </button>
+        </div>
+        <div >
+          <div style="
               color: black;
               font-size: large;
               font-weight: 500;
-            " routerLink="">
+              " routerLink="">
             SHRIVASAFOODS
-          </p>
+          </div>
         </div>
-<div class="col-xs-2 col-sm-2"></div>
-        <div class="col-xs-1 col-sm-1">
-          <p (click)="toggleDisplay()" style="font-size: large;padding-left: 15%; font-weight: 300px; color: grey">
-            <i class="fa fa-search"></i>
-          </p>
-        </div>
+      </div>
 
-        <div class="col-xs-1 col-sm-1" style="display: flex; flex-direction: row">
-          <p *ngIf="authService.loggedIn()" style="font-size: large; padding-top: 5%">
-            Hi {{ usernameLogin }}
-          </p>
+      <div style="display: flex; align-items: center;  margin-right: 2%;">
+        <div >
+          <div (click)="toggleDisplay()" style="font-size: large; font-weight: 300px; color: grey">
+            <i class="fa fa-search"></i>
+          </div>
+        </div>
+        <div *ngIf="authService.loggedIn()" style="font-size: large; ">
+          Hi {{ usernameLogin }}
+        </div>
+        <div style="display: flex; flex-direction: row;">
           <i class="fa fa-cog" style="font-size: xx-large" [popover]="popTemplate" popoverTitle="Hi{{ username }}"></i>
           <div>
             <ng-template #popTemplate>
               <div class="row">
                 <div class="col-lg-6">
+                  <div *ngIf="!authService.loggedIn()">
+
+                    <div style="padding-top: 1%">
+                      <i class="fa fa-user-circle-o" routerLink="/login" style="font-size: xx-large"></i>
+                      <p routerLink="/login" routerLinkActive="router-link-active">Login</p>
+                    </div>
+                  </div>
                   <div style="padding-top: 1%">
                     <i class="fa fa-user-circle-o" routerLink="/myOrders" style="font-size: xx-large"></i>
                     <p routerLink="/myOrders" routerLinkActive="router-link-active">
                       My orders
                     </p>
                   </div>
+
                   <div style="padding-top: 1%">
-                    <i class="fa fa-user-circle-o" routerLink="/support" style="font-size: xx-large"></i>
-                    <p routerLink="/support" routerLinkActive="router-link-active">
+                    <i class="fa fa-user-circle-o" routerLink="/supportpage" style="font-size: xx-large"></i>
+                    <p routerLink="/supportpage" routerLinkActive="router-link-active">
                       Support
+                    </p>
+                  </div>
+                  <div style="padding-top: 1%">
+                    <i class="fa fa-user-circle-o" routerLink="/aboutUs" style="font-size: xx-large"></i>
+                    <p routerLink="/aboutUs" routerLinkActive="router-link-active">
+                      About
+                    </p>
+                  </div>
+                  <div style="padding-top: 1%">
+                    <i class="fa fa-user-circle-o" routerLink="/testimonals" style="font-size: xx-large"></i>
+                    <p routerLink="/testimonals" routerLinkActive="router-link-active">
+                      Testimonals
+                    </p>
+                  </div>
+                  <div style="padding-top: 1%">
+                    <i class="fa fa-user-circle-o" routerLink="/blog" style="font-size: xx-large"></i>
+                    <p routerLink="/blog" routerLinkActive="router-link-active">
+                      Blog
                     </p>
                   </div>
                 </div>
@@ -232,17 +233,27 @@
                     <p *ngIf="authService.loggedIn()">Logout</p>
                   </div>
                 </div>
+                <div class="col-lg-6">
+                  <div style="padding-top: 1%">
+                    <i class="fa fa-user-circle-o" routerLink="/giftCards" style="font-size: xx-large"></i>
+                    <p routerLink="/giftCards">Gift Cards</p>
+                  </div>
+                  <div style="padding-top: 1%">
+                    <li *ngIf="authService.loggedIn()" style="font-size: xx-large" routerLink="/referFriend"
+                      class="fa fa-sign-out"></li>
+                    <p *ngIf="authService?.loggedIn()" routerLink="/referFriend ">
+                      Refer Friend
+                    </p>
+                  </div>
+                </div>
               </div>
             </ng-template>
           </div>
         </div>
-        <div class="col-xs-1 col-sm-1">
-          <i class="fa fa-user-circle-o" routerLink="/login" style="color: gray; font-size: xx-large"></i>
-        </div>
-
       </div>
-    </mat-toolbar>
-    <ng-content> </ng-content>
+
+    </div>
+    <ng-content>
+    </ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>
-</div>
