@@ -118,7 +118,7 @@ export class HomeComponent implements OnInit {
   }
 
   catagory(page) {
-    this.router.navigate(['catagory/', page])
+    this.router.navigate(['catagory/',page])
   }
   getHeaderNames(indx: number) { return HeaderConstants[indx]; }
 

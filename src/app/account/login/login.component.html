@@ -53,28 +53,6 @@
 
       </div>
 
-      <!-- <div class="row" >
-        <div style="width: 94%;">
-          <ns-textField-account placeholder="Password (8 characters minimun)" name="password"
-            [type]="show ? 'text' : 'password'" class="textfieldBorderColor font13" [rformgroup]="rformLogin"
-            rformControlName="password">
-          </ns-textField-account>
-        </div>
-        <div style="width: 40px">
-                    <button style="height: 35px;" class="btn btn-default" (click)="passwordshow()" type="submit">
-            <i *ngIf="show" class="glyphicon glyphicon-eye-open"></i>
-            <i *ngIf="!show" class="glyphicon glyphicon-eye-close"></i>
-          </button>
-        </div>
-
-        <div class="text-primary"
-          style="display: flex; width: 100%; margin-top: 10px; justify-content: flex-end; cursor: pointer;">
-          <div style="text-align: right;">
-            <p (click)="forgetPassword()" class="text text-primary btn">Forget Password? </p>
-          </div>
-        </div>
-
-      </div> -->
       <div style="
       padding-bottom: 2%;
       display: flex;
@@ -105,6 +83,15 @@
         *ngIf="getfillAllValidation == 'show'">
         Fill all form entries
       </p>
+      <p style="font-size: 14px" class="errorlbl"
+      *ngIf="authPasswordError == 'show'">
+      Auth Password Failed
+    </p>
+
+      <p style="font-size: 14px" class="errorlbl"
+      *ngIf="accountNotVerfied == 'show'">
+      Account Not Verified
+    </p>
 
       <div class="row" style="margin-left: 1%;margin-right: 1%;">
         <button class="col-12 btn btn-primary" (click)="login()" type="button">Login</button>

@@ -1,120 +1,86 @@
-
-
 <div style="margin-top: 5%;display: flex;flex-direction: row;flex: 1;justify-content: center;">
   <div style="margin-bottom: 5%;">
-  <p style="font-size: xx-large;font-weight: 500;text-align: center;">Add Product</p><br>
-  <form [formGroup]="productForm">
-    <div style="padding-bottom: 2%" class="">
-      <p style="padding-bottom: 1%">name</p>
-      <ns-textField-admin
-        name="name"
-        class="textfieldBorderColor font13"
-        [rformgroup]="productForm"
-        rformControlName="name"
-      >
-      </ns-textField-admin>
-    </div>
+    <p style="font-size: xx-large;font-weight: 500;text-align: center;">Add Product</p><br>
+    <form [formGroup]="productForm">
+      <div style="padding-bottom: 2%" class="">
+        <p style="padding-bottom: 1%">name</p>
+        <ns-textField-admin name="name" class="textfieldBorderColor font13" [rformgroup]="productForm"
+          rformControlName="name">
+        </ns-textField-admin>
+      </div>
 
-    <div style="padding-bottom: 2%" class="">
-      <p style="padding-bottom: 1%">price</p>
-      <ns-textField-admin
-        name="price" type="number"
-        class="textfieldBorderColor font13"
-        [rformgroup]="productForm"
-        rformControlName="price"
-      >
-      </ns-textField-admin>
-    </div>
-    <h4>mat-select</h4>
-    <mat-form-field [formGroup]="productForm">
-      <mat-label>catagory</mat-label>
-      <mat-select formControlName="catagory">
-        <mat-option *ngFor="let catagory of ['Home','Pickles',
-        'TraditionalPowders',
-        'Sweets&Hot',
-        'SpecialOffers',
-        'Others',
-        'About-US',
-        'Support',
-        'Non-vegetarian',
-        'vegetarian',
-        'WithGralic',
-        'WithoutGralic',
-        'Podulu(Powders)',
-        'HomeMadeMasala',
-        'TradaitonalSweets',
-        'TradaitonalHot',
-        'Non-vegetarianCombo',
-        'VegetarianCombo',
-        'HotCombo',
-        'SweetsCombo'
-
-        ]"
-          [value]="catagory">
-          {{catagory}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>  <!-- <div style="padding-bottom: 2%" class="">
-      <p style="padding-bottom: 1%">catagory</p>
-      <ns-textField-admin
-        name="catagory"
-        class="textfieldBorderColor font13"
-        [rformgroup]="productForm"
-        rformControlName="catagory"
-      >
-      </ns-textField-admin>
-    </div> -->
-    <div style="padding-bottom: 2%" class="">
-      <p style="padding-bottom: 1%">detail</p>
-      <ns-textField-admin
-        name="detail"
-        class="textfieldBorderColor font13"
-        [rformgroup]="productForm"
-        rformControlName="detail"
-      >
-      </ns-textField-admin>
-    </div>
+      <div style="padding-bottom: 2%" class="">
+        <p style="padding-bottom: 1%">price</p>
+        <ns-textField-admin name="price" type="number" class="textfieldBorderColor font13" [rformgroup]="productForm"
+          rformControlName="price">
+        </ns-textField-admin>
+      </div>
+      <h4>mat-select</h4>
+      <mat-form-field [formGroup]="productForm">
+        <mat-label>catagory</mat-label>
+        <mat-select formControlName="catagory">
+          <mat-option *ngFor="let catagory of [
+          'vegetarian',
+          'Non-vegetarian',
+          'PoduluPowders',
+          'HomeMadeMasalas',
+          'TradaitonalSweets',
+          'TradaitonalHot',
+          'Non-vegetarianCombo',
+          'VegetarianCombo',
+          'HotCombo',
+          'SweetsCombo'
+        ]" [value]="catagory">
+            {{catagory}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div style="padding-bottom: 2%" class="">
+        <p style="padding-bottom: 1%">detail</p>
+        <ns-textField-admin name="detail" class="textfieldBorderColor font13" [rformgroup]="productForm"
+          rformControlName="detail">
+        </ns-textField-admin>
+      </div>
 
 
-    <div class="form-group">
+      <div class="form-group">
 
-      <input style="float: left;width: 30%;" type="file" name="imagePath" (change)="selectProductImage($event)"
-        class="form-control" /><br>
+        <input style="float: left;width: 30%;" type="file" name="imagePath" (change)="selectProductImage($event)"
+          class="form-control" /><br>
 
-    </div>
+      </div>
 
     </form>
-<div style="text-align: center;">
-
-
-  <button *ngIf="!data" class="btn" (click)="addProduct()" style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(63, 61, 61); color: whitesmoke">
-  <span style="font-weight: bold;font-size: small;">ADD PRODCUT</span></button>
-  <button *ngIf="data" class="btn" (click)="edit()" style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(63, 61, 61); color: whitesmoke">
-    <span style="font-weight: bold;font-size: small;">Edit PRODCUT</span></button>
+    <div style="text-align: center;">
+      <button *ngIf="!data" class="btn" (click)="addProduct()"
+        style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(63, 61, 61); color: whitesmoke">
+        <span style="font-weight: bold;font-size: small;">ADD PRODCUT</span></button>
+      <button *ngIf="data" class="btn" (click)="edit()"
+        style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(63, 61, 61); color: whitesmoke">
+        <span style="font-weight: bold;font-size: small;">Edit PRODCUT</span></button>
+    </div>
+  </div>
 </div>
 
-
-</div>
-</div>
 <div style="background-color: rgb(231, 228, 228);">
-<div style="padding-left:5% ;padding-right: 5%;padding-top: 3%;padding-bottom: 3%;">
-<div class="row">
-  <div class="col-lg-6">
-    <p>Quick Links</p>
-    <p>Search</p>
+  <div style="padding-left:5% ;padding-right: 5%;padding-top: 3%;padding-bottom: 3%;">
+    <div class="row">
+      <div class="col-lg-6">
+        <p>Quick Links</p>
+        <p>Search</p>
+      </div>
+      <div class="col-lg-6">
+        NewsLetter
+        <input style="width: 40vw;">
+      </div>
+    </div>
   </div>
-  <div class="col-lg-6">
-    NewsLetter
-    <input style="width: 40vw;">
 
+  <hr class="hr" style="background-color: black;">
+  <div style="padding:5%" (click)="addProduct()">
+    <button class="btn"
+      style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(63, 61, 61); color: whitesmoke">
+      <span style="font-weight: bold;font-size: small;">SIGN IN</span></button>
+    <p style="text-align: right;">© 2020, Shrivasafoods store Powered by Shopify</p>
   </div>
-</div>
-</div>
-
-<hr class="hr" style="background-color: black;">
-<div style="padding:5%" (click)="addProduct()">
-  <button class="btn" style="padding-left:2.5%;padding-right: 2.5%; background-color: rgb(63, 61, 61); color: whitesmoke">
-    <span style="font-weight: bold;font-size: small;">SIGN IN</span></button>
-<p style="text-align: right;">© 2020, Shrivasafoods store Powered by Shopify</p>
-</div>
 </div>

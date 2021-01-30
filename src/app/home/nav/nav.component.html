@@ -204,26 +204,45 @@
           <div>
             <ng-template #popTemplate>
               <div class="row">
-
                 <div class="col-lg-6">
+                  <div *ngIf="!authService.loggedIn()">
+
+                    <div style="padding-top: 1%">
+                      <i class="fa fa-user-circle-o" routerLink="/login" style="font-size: xx-large"></i>
+                      <p routerLink="/login" routerLinkActive="router-link-active">Login</p>
+                    </div>
+                  </div>
                   <div style="padding-top: 1%">
                     <i class="fa fa-user-circle-o" routerLink="/myOrders" style="font-size: xx-large"></i>
                     <p routerLink="/myOrders" routerLinkActive="router-link-active">
                       My orders
                     </p>
                   </div>
+
                   <div style="padding-top: 1%">
-                    <i class="fa fa-user-circle-o" routerLink="/login" style="color: gray; font-size: xx-large"></i>
-
-                  </div>
-
-
-                  <!-- <div style="padding-top: 1%">
-                    <i class="fa fa-user-circle-o" routerLink="/support" style="font-size: xx-large"></i>
-                    <p routerLink="/support" routerLinkActive="router-link-active">
+                    <i class="fa fa-user-circle-o" routerLink="/supportpage" style="font-size: xx-large"></i>
+                    <p routerLink="/supportpage" routerLinkActive="router-link-active">
                       Support
                     </p>
-                  </div> -->
+                  </div>
+                  <div style="padding-top: 1%">
+                    <i class="fa fa-user-circle-o" routerLink="/aboutUs" style="font-size: xx-large"></i>
+                    <p routerLink="/aboutUs" routerLinkActive="router-link-active">
+                      About
+                    </p>
+                  </div>
+                  <div style="padding-top: 1%">
+                    <i class="fa fa-user-circle-o" routerLink="/testimonals" style="font-size: xx-large"></i>
+                    <p routerLink="/testimonals" routerLinkActive="router-link-active">
+                      Testimonals
+                    </p>
+                  </div>
+                  <div style="padding-top: 1%">
+                    <i class="fa fa-user-circle-o" routerLink="/blog" style="font-size: xx-large"></i>
+                    <p routerLink="/blog" routerLinkActive="router-link-active">
+                      Blog
+                    </p>
+                  </div>
                 </div>
                 <div class="col-lg-6">
                   <div style="padding-top: 1%">
@@ -236,6 +255,19 @@
                     <li *ngIf="authService.loggedIn()" style="font-size: xx-large" (click)="onLogoutClick()"
                       class="fa fa-sign-out"></li>
                     <p *ngIf="authService.loggedIn()">Logout</p>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div style="padding-top: 1%">
+                    <i class="fa fa-user-circle-o" routerLink="/giftCards" style="font-size: xx-large"></i>
+                    <p routerLink="/giftCards">Gift Cards</p>
+                  </div>
+                  <div style="padding-top: 1%">
+                    <li *ngIf="authService.loggedIn()" style="font-size: xx-large" routerLink="/referFriend"
+                      class="fa fa-sign-out"></li>
+                    <p *ngIf="authService?.loggedIn()" routerLink="/referFriend ">
+                      Refer Friend
+                    </p>
                   </div>
                 </div>
               </div>

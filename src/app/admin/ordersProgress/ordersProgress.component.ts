@@ -43,7 +43,7 @@ export class OrdersProgressComponent implements OnInit {
     }
 
     this.adminService.shippingPhase(orderShipped).subscribe((data: any) => {
-      alert("Shipping")
+      alert("Order sucessfully progressed to " + nextPhase)
 
     })
 

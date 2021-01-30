@@ -40,7 +40,9 @@ export class LoginComponent implements OnInit {
   deviceSm: boolean;
   show: boolean;
   CountryISO = CountryISO;
-
+  accountNotVerfied = ''
+  authPassword=''
+  authPasswordError=''
   ngOnInit() {
     this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
       console.log(result.mqAlias)
@@ -93,8 +95,8 @@ export class LoginComponent implements OnInit {
       this.fillAllValidation = ''
 
       this.accountService.login(loginData).subscribe((data: any) => {
+        this.accountNotVerfied = 'show'
 
-        alert("Login Successful")
         this.setId(data.userId);
         this.setusername(data.username);
         this.setemail(data.email)
@@ -102,9 +104,19 @@ export class LoginComponent implements OnInit {
         this.setAccountBonus(data.accountBonus)
         this.isLoggedIn = true;
         this.router.navigate(['/'])
-
+        this.authPasswordError=''
       }, (error) => {
-        alert(error.error.message);
+         if (error.error.message == 'Account not verified') {
+            this.accountNotVerfied = 'show'
+        }else if(error.error.message == 'Auth Password failed') {
+          this.authPasswordError = 'show'
+          this.accountNotVerfied = ''
+
+        }else if(error.error.message == 'No Account Create Account First') {
+        this.router.navigate(['/signUp'])
+
+        alert("No Account Create Account First")
+    }
       });
     }else{
       this.fillAllValidation = 'show'
@@ -161,7 +173,6 @@ export class LoginComponent implements OnInit {
 
         this.accountService.signIn(userAccount).subscribe((data: any) => {
 
-          alert('login successfull')
 
           this.setId(data.userId);
           this.setusername(data.username);
@@ -176,8 +187,6 @@ export class LoginComponent implements OnInit {
           if (error.error.message == 'No Account Create Account First') {
             alert(error.error.message)
             this.router.navigate(['/signUp'])
-          } else if (error.error.message == 'Account not verified') {
-            alert(error.error.message)
           }
         });
       });
@@ -201,7 +210,6 @@ export class LoginComponent implements OnInit {
 
         this.accountService.signIn(userAccount).subscribe((data: any) => {
 
-          alert('login successfull')
 
           this.setId(data.userId);
           this.setusername(data.username);
@@ -212,16 +220,10 @@ export class LoginComponent implements OnInit {
           this.isLoggedIn = true;
           this.router.navigate(['/'])
 
-
-
-
-
         }, (error) => {
           if (error.error.message == 'No Account Create Account First') {
             alert(error.error.message)
             this.router.navigate(['/signUp'])
-          } else if (error.error.message == 'Account not verified') {
-            alert(error.error.message)
           }
         });
 

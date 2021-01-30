@@ -11,79 +11,80 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-cartItems = [];
-total = 0;
-totalafterBonus=0;
-detection=0
-refrence:string;
+  cartItems = [];
+  total = 0;
+  totalafterBonus = 0;
+  detection = 0
+  refrence: string;
 
 
-constructor(public dialog: MatDialog,public cartService:CartService, public productService:ProductService,public authService:AuthService) { }
+  constructor(public dialog: MatDialog, public cartService: CartService, public productService: ProductService, public authService: AuthService) { }
 
   ngOnInit() {
 
 
   }
-get getCartItems(){
- this.cartItems = this.cartService.getProducts()
+  get getCartItems() {
+    this.cartItems = this.cartService.getProducts()
 
- console.log(this.cartItems)
+    console.log(this.cartItems)
 
- return this.cartItems
-}
+    return this.cartItems
+  }
 
-onCustomiseModal(item): void {
-  const dialogRef = this.dialog.open(CustomizeComponent, {
-    maxWidth: '100% !important',
-    height: '100vh',
-    data: {item: item}
-  });
+  onCustomiseModal(item): void {
+    const dialogRef = this.dialog.open(CustomizeComponent, {
+      maxWidth: '100% !important',
+      height: '100vh',
+      data: { item: item }
+    });
 
-  dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
 
-  });
-}
+    });
+  }
 
-get getTotal() {
-  this.total =  this.cartService.getTotalPrice();
+  get getTotal() {
+    this.total = this.cartService.getTotalPrice();
 
-  this.totalafterBonus = this.total-this.detection
-  return this.totalafterBonus.toFixed(0);
-}
-   order(){
+    this.totalafterBonus = this.total - this.detection
+    return this.totalafterBonus.toFixed(0);
+  }
+  order() {
     this.authService.getemail()
     const orderData = {
-      cartItems : this.cartItems,
-      total : this.total,
+      cartItems: this.cartItems,
+      total: this.total,
       refrence: this.refrence,
-      phase:"delievry phase",
+      phase: "delievry phase",
       ownerEmail: this.authService.getemail()
-     }
+    }
     this.cartService.order(orderData).subscribe((data: any) => {
       alert("Order Sent")
 
-   })
-}
-getImage(imageId) {
-  if (!imageId) return '';
-  return this.productService.productImageUrl(imageId);
-}
- getBonus(){
+    })
+  }
+  getImage(imageId) {
+    if (!imageId) return '';
+    return this.productService.productImageUrl(imageId);
+  }
+  getBonus() {
 
-   this.detection = (10 / 100) * this.total
+    this.detection = (10 / 100) * this.total
 
-   console.log(this.totalafterBonus)
-   return this.totalafterBonus
-}
-removeProduct(product){
-  this.cartService.removeProduct(product)
-}
-discardProduct(product){
-  this.cartService.discardProduct(product)
+    console.log(this.totalafterBonus)
+    return this.totalafterBonus
+  }
+  removeProduct(product) {
+    this.cartService.removeProduct(product)
+  }
 
-}
-addProduct(item) {
-  this.cartService.addProduct(item);
-}
+  discardProductFun(product) {
+    this.cartService.discardProduct(product)
+  }
+  
+  addProduct(item) {
+    this.cartService.addProduct(item);
+  }
 }

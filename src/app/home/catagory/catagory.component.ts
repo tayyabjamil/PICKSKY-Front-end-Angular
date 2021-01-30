@@ -47,11 +47,11 @@ export class CatagoryComponent implements OnInit {
         });
 
       }
-      //change the value of showRoutes based on your requirements
+      if (this.currentCategory && this.currentCategory.routeTo) {
+        this.getCatagoryProducts(this.currentCategory.routeTo)
+      }
+
     });
-    if (this.currentCategory && this.currentCategory.routeTo) {
-      this.getCatagoryProducts(this.currentCategory.routeTo)
-    }
   }
 
   // get selectedPage() {
@@ -66,7 +66,9 @@ export class CatagoryComponent implements OnInit {
       console.log('error in getting all products');
     });
   }
-
+get getcatagoryProducts(){
+  return this.catagoryProducts
+}
   addProduct(item) {
     this.cartService.addProduct(item);
   }

@@ -47,6 +47,8 @@ export class SignUpComponent implements OnInit {
   passwordMatch=false
   fillAllValidation=''
   countryCodeValidation=''
+  showEmailAlready=''
+
   ngOnInit() {
     this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
       console.log(result.mqAlias)
@@ -97,13 +99,9 @@ export class SignUpComponent implements OnInit {
 
           this.router.navigate(['/login'])
 
-
-
         }, (error) => {
           alert("Already have an account Just login")
           this.router.navigate(['/login'])
-
-
         });
       });
 
@@ -184,11 +182,14 @@ if(this.rformSignup.value.phone==null){
       if (this.rformSignup.value.password === this.rformSignup.value.confirmPassword) {
         this.accountService.createuserAccount(this.rformSignup.value).subscribe((data: any) => {
           alert("Account Created")
+          this.showEmailAlready = ''
+
           this.router.navigate(['/login'])
 
         }, (error) => {
-          alert(error.error.message);
-
+          if(error.error.message = 'Email Already Exist'){
+          this.showEmailAlready = 'show'
+          }
         });
       } else {
         this.passwordMatch=true

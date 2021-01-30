@@ -55,7 +55,8 @@ export class CheckOutPageComponent implements OnInit {
 totalafterBonus=0;
 accountBonus;
 detection=0
-
+showBonusError=''
+loginFirst=''
   @ViewChild('stepper') public stepper: MatStepper;
   ngOnInit(
 
@@ -73,20 +74,18 @@ detection=0
     this.getCartItems()
 
     this.firstFormGroup = this._formBuilder.group({
-      email: ['',],
-      fname: ['',],
-      lname: ['',],
-      city: ['',],
-      adress: ['',],
-      contry: ['',],
-      code: ['']
-      ,
+      email: ['',Validators.required],
+      fname: ['',Validators.required],
+      lname: ['',Validators.required],
+      city: ['',Validators.required],
+      adress: ['',Validators.required],
+      contry: ['',Validators.required],
+      code: ['',Validators.required],
     });
     this.secondFormGroup = this._formBuilder.group({
       method: ['',]
     });
     this.thirdFormGroup = this._formBuilder.group({
-      // contact: ['', Validators.required],
 
     });
     // this.getAllOrders()
@@ -96,16 +95,36 @@ detection=0
   getAccountBonus() {
  this.accountBonus=  localStorage.getItem('accountBonus')
   }
+shipping(index){
+ if(this.authService.getID()){
+  if(this.firstFormGroup.valid){
+  this.stepper.selectedIndex = index;
+}
+}else{
+  this.loginFirst = 'show'
+}
+}
+payment(index){
+  if(this.secondFormGroup.valid){
+    this.stepper.selectedIndex = index;
+  }
 
-  useBonus(){
+}
+useBonus(){
+  if(parseInt(this.accountBonus)>0){
+    this.showBonusError=''
+
     this.adminService.updateBonus().subscribe((data: any) => {
       this.accountBonus = data.accountBonus
-      })
+      localStorage.setItem('accountBonus', JSON.stringify(this.accountBonus));
 
-    this.detection = (10 / 100) * this.total
+    })
+      this.detection = (10 / 100) * this.total
 
     return this.totalafterBonus
-
+    }else{
+      this.showBonusError='show'
+    }
   }
   getCartItems() {
     this.cartItems = this.cartService.getProducts()
