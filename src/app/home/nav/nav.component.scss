@@ -8,8 +8,18 @@ html, body {
   max-width: 100%;
   overflow-x: hidden;
 }
+.mat-drawer-content {
+  position: relative;
+  height: 100%;
+  overflow: auto;
+}
+.mat-drawer-content {
+  position: relative;
+  height: 100%;
+  overflow: auto;
+}
 .sidenav{
-  width: 400px;
+  // width: 400px;
   // box-shadow: rgb(199, 199, 199);
 }
 .dropdown:hover>.dropdown-menu {
@@ -34,7 +44,7 @@ font-weight: lighter;
 }
 .dropdown-toggle::after {
   display: flex;
-  margin-left: 250px;
+  // margin-left: 250px;
 
 }
 .mat-toolbar-row, .mat-toolbar-single-row {
@@ -46,7 +56,7 @@ font-weight: lighter;
 
 }
 .dropdown-menu{
-width: 100%;
+// width: 100%;
 }
 .mat-toolbar {
   border-color: white;

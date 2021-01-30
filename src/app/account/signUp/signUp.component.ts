@@ -181,7 +181,6 @@ if(this.rformSignup.value.phone==null){
 
       if (this.rformSignup.value.password === this.rformSignup.value.confirmPassword) {
         this.accountService.createuserAccount(this.rformSignup.value).subscribe((data: any) => {
-          alert("Account Created")
           this.showEmailAlready = ''
 
           this.router.navigate(['/login'])

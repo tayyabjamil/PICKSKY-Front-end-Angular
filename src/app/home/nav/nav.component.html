@@ -1,4 +1,4 @@
-<mat-sidenav-container class="mydivclass" >
+<mat-sidenav-container>
   <mat-sidenav style="background-color: white" #drawer class="sidenav" fixedInViewport="false"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar routerLink="/" TraditionalPowders>Catagories</mat-toolbar>
@@ -152,14 +152,13 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-      <div *ngIf="isShow == true" style="width: 100%; margin-left: 2%;margin-top: 1%;  margin-bottom: 1%"
-       class="row">
-        <p *ngIf="isShow == true" class="col-xs-11" style="
+    <div *ngIf="isShow == true" style="width: 100%; margin-left: 2%;margin-top: 1%;  margin-bottom: 1%" class="row">
+      <div *ngIf="isShow == true" class="col-xs-10" style="
             border-radius: 6px;
             font-weight: 300px;
             background-color: rgb(240, 238, 238);
           ">
-          <span><i class="fa fa-search" routerLink="/login" style="
+        <span><i class="fa fa-search" style="
                 font-weight: 200;
                 font-size: large;
 
@@ -167,39 +166,42 @@
 
                 color: rgb(134, 132, 132);
               "></i></span>
-        </p>
-        <p class="col-xs-1" (click)="toggleDisplay()" style=" padding-top: 2%;font-size: large;font-weight: 300px; color: grey">
-          <i class="fa fa-times"></i>
-        </p>
       </div>
-      <div class="row" *ngIf="isShow == false">
+      <div class="col-xs-1" (click)="toggleDisplay()"
+        style=" padding-top: 2%;font-size: large;font-weight: 300px; color: grey">
+        <i class="fa fa-times"></i>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center;" *ngIf="isShow == false">
 
-        <div class="col-2">
-        <button  type="button" aria-label="Toggle sidenav" mat-icon-button
-          (click)="drawer.toggle()" *ngIf="isHandset$ | async">
-          <mat-icon aria-label="Side nav toggle icon" style="margin-bottom: 1%;color: black">menu</mat-icon>
-        </button>
-       </div>
-         <div  class="col-2" style="padding-top: 10px;">
-          <p style="
+      <div style="display: flex; align-items: center; margin-left: 5%;">
+        <div>
+          <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+            *ngIf="isHandset$ | async">
+            <mat-icon aria-label="Side nav toggle icon" style="margin-bottom: 1%;color: black">menu</mat-icon>
+          </button>
+        </div>
+        <div style="margin-left: 20px;">
+          <div style="
               color: black;
               font-size: large;
               font-weight: 500;
-            " routerLink="">
+              " routerLink="">
             SHRIVASAFOODS
-          </p>
+          </div>
         </div>
-<div class="col-6"></div>
-        <div class="col-1" style="padding-top:10px;">
-          <p (click)="toggleDisplay()" style="font-size: large; font-weight: 300px; color: grey">
-            <i class="fa fa-search"></i>
-          </p>
-        </div>
+      </div>
 
-        <div class="col-1" style="display: flex; flex-direction: row;padding-top: 10px">
-          <p *ngIf="authService.loggedIn()" style="font-size: large;">
-            Hi {{ usernameLogin }}
-          </p>
+      <div style="display: flex; align-items: center;  margin-right: 5%;">
+        <div >
+          <div (click)="toggleDisplay()" style="font-size: large; font-weight: 300px; color: grey">
+            <i class="fa fa-search"></i>
+          </div>
+        </div>
+        <div *ngIf="authService.loggedIn()" style="font-size: large; margin-left: 20px;">
+          Hi {{ usernameLogin }}
+        </div>
+        <div style="display: flex; flex-direction: row;margin-left: 20px">
           <i class="fa fa-cog" style="font-size: xx-large" [popover]="popTemplate" popoverTitle="Hi{{ username }}"></i>
           <div>
             <ng-template #popTemplate>
@@ -275,6 +277,9 @@
           </div>
         </div>
       </div>
-    <ng-content> </ng-content>
+
+    </div>
+    <ng-content>
+    </ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>

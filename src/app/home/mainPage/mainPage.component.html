@@ -192,8 +192,8 @@
       ">
       Featured Products
     </p>
-    <div *ngIf="deviceLg || deviceMd" class="deviceLg">
-      <div routerLinkActive="router-link-active" *ngFor="let item of featuredProducts" style="
+    <div *ngIf="deviceLg || deviceMd" class="deviceLg ">
+      <div class="card" routerLinkActive="router-link-active" *ngFor="let item of featuredProducts" style="
           padding: 1%;
           background-color: white;
           margin: 1%;
@@ -210,7 +210,7 @@
             flex: 2;
             justify-content: space-evenly;
           ">
-          <div *ngFor="let item of featuredProducts" style="
+          <div class="card" *ngFor="let item of featuredProducts" style="
               padding: 2%;
               background-color: white;
               margin: 2%;
@@ -346,7 +346,7 @@
       Trending Products
     </p>
     <div *ngIf="deviceLg || deviceMd" class="deviceLg">
-      <div routerLinkActive="router-link-active" *ngFor="let item of allProducts" style="
+      <div class="card" routerLinkActive="router-link-active" *ngFor="let item of allProducts" style="
           padding: 1%;
           background-color: white;
           margin: 1%;
@@ -363,7 +363,7 @@
             flex: 2;
             justify-content: space-evenly;
           ">
-          <div *ngFor="let item of allProducts" style="
+          <div class="card" *ngFor="let item of allProducts" style="
               padding: 2%;
               background-color: white;
               margin: 2%;
@@ -390,7 +390,7 @@
         <p style="color: black; padding-bottom: 10%; font-size: 20px">
           Try it now, risk free!
         </p>
-        <button class="btn" style="background-color: #ffffff; width: 40%; height: 35px">
+        <button (click)="scrollToTrending()" class="btn" style="background-color: #ffffff; width: 40%; height: 35px">
           <span style="font-weight: bold"> Order Now </span>
         </button>
       </div>
@@ -406,16 +406,12 @@
         <p class="text-block-small" style="color: black; padding-bottom: 5%">
           Try it now, risk free!
         </p>
-        <button class="btn" (click)="scrollToFeatured()" style="
-            background-color: #ffffff;
-            font-size: 14px;
-            width: 50%;
-            height: 40px;
-            font-weight: bold;
-          ">
-          Order Now
+        <div (click)="scrollToTrending()">
+        <button class="btn">
+          <span> Order Now </span>
         </button>
       </div>
+       </div>
       <img class="img-responsive" style="
           border-radius: 6px;
           min-height: 350px;
@@ -437,7 +433,7 @@
   </p>
 
   <div *ngIf="deviceLg || deviceMd" class="deviceLg">
-    <div routerLinkActive="router-link-active" *ngFor="let item of searchProductsData" style="
+    <div class="card" routerLinkActive="router-link-active" *ngFor="let item of searchProductsData" style="
           padding: 1%;
           width: 200px;
           height: 200px;
