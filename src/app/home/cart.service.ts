@@ -99,7 +99,7 @@ export class CartService {
     const username = this.myauthService.getusername()
     const user = this.myauthService.getID()
     return this.http.post(
-      'http://localhost:8080/api/orders/',
+      'http://localhost:8000/api/orders/',
       {
         cartData: orderData.cartItems,
         total: orderData.total,
