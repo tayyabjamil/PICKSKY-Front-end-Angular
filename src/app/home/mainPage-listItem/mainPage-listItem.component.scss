@@ -151,7 +151,15 @@ width: 100vw;
 .carousel{
 
 }
-
+.price{
+  box-sizing: border-box;
+    margin: 0px;
+    min-width: 0px;
+    color: rgb(41, 41, 41);
+    font-weight: 700;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
 .btn-imgSlider {
   position: absolute;
   background-color:white;

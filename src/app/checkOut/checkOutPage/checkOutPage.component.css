@@ -19,6 +19,12 @@ h1, h2, h3, h4, h5 ,h6{
   background-color: rgb(105, 170, 105);
   color: #fff;
 }
+.mat-horizontal-stepper-header{
+  pointer-events: none;
+}
+::ng-deep .mat-horizontal-stepper-header{
+  pointer-events: none !important;
+}
 a{
   text-decoration: none;
 }
