@@ -69,7 +69,7 @@ export class MainPageListItemComponent implements OnInit {
   removeProduct(item, productRef) {
     if (productRef) {
       let x = parseInt(productRef.innerText);
-      if(x>=0){
+      if(x>0){
       productRef.innerText = x - 1 ;
 
      this.cartService.removeProduct(item);
