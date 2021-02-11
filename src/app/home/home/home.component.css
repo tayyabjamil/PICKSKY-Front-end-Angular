@@ -134,12 +134,11 @@
 .fundpress-menu .nav-menu li a {
   font-weight: 100;
   font-family: "Open Sans", sans-serif;
-  color: rgb(117, 117, 117);
-  font-size: 12px;
+  text-align: center;
+  font-size: 10px;
+  background-color: white;
+  padding-left: 20px;
   -webkit-font-smoothing: antialiased;
-  /* display: flex; */
-  /* align-items: center; */
-  color: var(--theme-ui-colors-text, #5a5a5a);
   cursor: pointer;
   font-weight: 400;
   display: flex;
@@ -151,8 +150,6 @@
 .mat-body,
 .mat-body-1,
 .mat-typography {
-  /* font: 10 7px/10px Roboto, ; */
-  /* letter-spacing: normal; */
   font-weight: 100;
 }
 

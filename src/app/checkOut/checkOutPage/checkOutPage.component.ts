@@ -92,6 +92,8 @@ loginFirst=''
   this.getAccountBonus()
 
 }
+stepClick(ev)
+ {console.log(ev)}
   getAccountBonus() {
  this.accountBonus=  localStorage.getItem('accountBonus')
   }

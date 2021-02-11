@@ -1,4 +1,4 @@
-<div  *ngIf="!deviceXs" style="height: 180px;width: 160px;">
+<div  *ngIf="!deviceXs" style="height: 240px;width: 200px;">
   <div style="min-height: 45px;" >
     <div (click)="addProduct(item)" *ngIf="item.productCount===0" style="text-align: right;">
       <button style="border: 0px solid transparent;
@@ -20,17 +20,25 @@
       </div>
     </div>
   </div>
-  <div style="margin-left: 35px;" [routerLink]="['/detail']">
+  <div style="margin-left: 50px;" [routerLink]="['/detail']">
     <img (load)='imageLoaded()' [src]='getImage(item.productImage)' style="height: 100px;width: auto">
-    <div *ngIf="loadingImageGetter" style="margin-left: 35px;" class="spinner-border" role="status">
+    <div *ngIf="loadingImageGetter" style="margin-left: 50px;" class="spinner-border" role="status">
       <span class="sr-only">Loading...</span>
     </div>
   </div>
+  <div style="margin-top: 15px;">
+  <div class="price">
+   ${{item.price}}
+  </div>
+  <div style="margin-top: 2%;margin-bottom: 2%;">
+    {{item.name}}
+  </div>
+</div>
   <div
     style="padding-bottom: 20px;padding-top: 10px;padding-left: 3px;height: 30px;">
     <button (click)="onCustomiseModal(item)" style="width: 100px;
     background-color: rgb(63, 61, 61);border-radius: 6px;border-style: groove;
-    color: white;margin-left: 30px;">Customize</button>
+    color: white;margin-left: 50px;">Customize</button>
   </div>
 
 </div>
