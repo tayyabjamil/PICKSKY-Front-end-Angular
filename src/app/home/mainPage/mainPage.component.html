@@ -50,7 +50,7 @@
         </button>
       </div>
     </div>
-    <img class="img-responsive" style="min-height: 350px; width: auto; border-radius: 6px"
+    <img class="img-responsive" style="min-height: 350px; width: 100%; border-radius: 6px"
       src="../assets/images/home.jpeg" />
   </div>
 
@@ -178,7 +178,7 @@
 
   <div style="margin: 2%">
     <ng-image-slider [imagePopup]="false" *ngIf="deviceLg || deviceMd"
-      [imageSize]="{ width: '220px', height: '18%', space:14 }" [images]="categories"
+      [imageSize]="{ width: '220px', height: '180px', space:14 }" [images]="categories"
       (imageClick)="onImageClick($event)" #nav></ng-image-slider>
   </div>
   <!-- ////////////////////////////////////////// featured  producsts-->

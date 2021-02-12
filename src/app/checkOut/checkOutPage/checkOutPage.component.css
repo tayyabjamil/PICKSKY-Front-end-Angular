@@ -4,7 +4,7 @@ html, body{
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
-  background-color: #3498db;
+  background-color: green;
 }
 
 h1, h2, h3, h4, h5 ,h6{
@@ -15,6 +15,7 @@ h1, h2, h3, h4, h5 ,h6{
   font-family: 'Roboto';
 
 }
+
 .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
   background-color: rgb(105, 170, 105);
   color: #fff;
@@ -25,6 +26,15 @@ h1, h2, h3, h4, h5 ,h6{
 ::ng-deep .mat-horizontal-stepper-header{
   pointer-events: none !important;
 }
+.mat-vertical-content {
+  padding: 0px 0px 0px 0px;
+}
+.cartHeight {
+  height: 35vh;
+  overflow-y: overlay;
+  overflow-x: hidden;
+}
+
 a{
   text-decoration: none;
 }
@@ -117,7 +127,7 @@ fieldset{
 }
 
 .steps li.is-active{
-  border-bottom: 1px solid #3498db;
+  border-bottom: 1px solid green;
   color: #3498db;
 }
 

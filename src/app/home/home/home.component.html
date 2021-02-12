@@ -29,10 +29,14 @@
               placeholder="What Are You Looking For?" />
           </div>
         </div>
-        <div class="col-2"
+        <div  class="col-2"
           style="display: flex; flex-direction: row;padding-right: 2%;justify-content: flex-end; padding-top: 1%">
-          <div style="display: flex; flex-direction: row; padding-top: 1%">
-            <p *ngIf="authService.loggedIn()" style="font-size: large; padding-top: 5%">
+          <div *ngIf="!authService.loggedIn()" style="padding-top: 1%">
+            <i class="fa fa-user-circle-o" routerLink="/login" style="font-size: xx-large"></i>
+          </div>
+
+          <div *ngIf="authService.loggedIn()" style="display: flex; flex-direction: row; padding-top: 1%">
+            <p  style="font-size: large; padding-top: 5%">
               Hi {{ usernameLogin }}
             </p>
             <i class="fa fa-user-circle-o" style="font-size: xx-large" [popover]="popTemplate"></i>
@@ -47,6 +51,13 @@
                         <p routerLink="/login" routerLinkActive="router-link-active">Login</p>
                       </div>
                     </div>
+                    <div style="padding-top: 1%">
+                      <i class="glyphicon glyphicon-user" routerLink="/profile" style="font-size: xx-large"></i>
+                      <p routerLink="/profile" routerLinkActive="router-link-active">
+                        My Profile
+                      </p>
+                    </div>
+
                     <div style="padding-top: 1%">
                       <i class="fa fa-user-circle-o" routerLink="/myOrders" style="font-size: xx-large"></i>
                       <p routerLink="/myOrders" routerLinkActive="router-link-active">
@@ -129,7 +140,7 @@
           SHIRIVAS FOODS
         </p>
 
-        <ul *ngIf="isSHowSearch==false" class="nav-menu" style="width: 80%;">
+        <ul *ngIf="isSHowSearch==false" class="nav-menu" style="width: 85%;">
           <li class="dropdown" routerLink="/">
             <a>{{ getHeaderNames(1) }}</a>
           </li>
@@ -269,7 +280,7 @@
           <input class="searchHome" (input)="onSearchChange($event.target.value)"
             placeholder="What Are You Looking For?" />
         </div>
-        <div style="display: flex;justify-content: flex-end;">
+        <div style="display: flex;text-align: right;justify-content: flex-end;">
           <p style="justify-content: flex-end;" (click)="toggleDisplay()" *ngIf="visibleI && isSHowSearch==false">
             <span><i class="fa fa-search" style="
                 font-weight: 200;
@@ -357,7 +368,6 @@
           max-width: 960px;
           margin: 5%;
           pointer-events: none;
-          width: calc(100% - 10px);
         ">
         <button style="
             bottom: 32px;
@@ -371,7 +381,7 @@
             padding: 0px 30px;
             position: fixed;
             pointer-events: all;
-            width: 80% !important;
+            width: 60% !important;
             border-radius: 6px;
             display: flex;
             align-items: center;
@@ -379,7 +389,7 @@
             background-color: rgb(41, 41, 41);
             box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 12px;
             cursor: pointer;
-            left: auto;
+            left: 20%;
             right: auto;
             z-index: 999;
           ">
@@ -402,5 +412,5 @@
     </div>
   </div>
   </div>
-  <app-footer></app-footer>
+  <!-- <app-footer></app-footer> -->
 

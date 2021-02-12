@@ -20,6 +20,8 @@ export class ProfileComponent implements OnInit {
   rformEditPassword: FormGroup;
 contact;
 showPassword:boolean
+adress1:''
+adress2:''
 showOld:boolean
   constructor(public formBuilder: FormBuilder, public accountService: AccountService, private router: Router, public http: HttpClient, private myauthService: AuthService) { }
 
@@ -32,7 +34,9 @@ showOld:boolean
     username: new FormControl(this.username ),
     email: new FormControl(this.email, Validators.email),
 
-    contact: new FormControl(this.phone)
+    contact: new FormControl(this.phone),
+    adress1: new FormControl(''),
+    adress2: new FormControl(''),
   });
   this.rformEditPassword = this.formBuilder.group({
     oldPassword: new FormControl('' ),

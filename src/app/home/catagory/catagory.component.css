@@ -7,6 +7,10 @@
   margin-bottom: 12px;
   font-weight: 500;
 }
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 80%;
+}
 .deviceXs{
   display: flex;
   flex-direction: column;

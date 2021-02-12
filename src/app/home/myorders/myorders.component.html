@@ -9,7 +9,7 @@
         <div *ngIf="allOrders.length == 0" style="text-align: center;padding: 10%;min-height: 300px;">
           <p>No Orders</p>
         </div>
-        <div class="animation">
+        <div *ngIf="allOrders.length !== 0" class="animation">
             <!-- *ngIf="deviceLg && allOrders.length !== 0 || deviceMd && allOrders.length !== 0"  -->
           <div class="row" style="margin:1%">
             <div class="col-md-2">
@@ -90,8 +90,8 @@
                       <p>Total Amount </p>
                       <p class="col-xs-2">{{item.total}}</p>
                     </div>
-
-                    <div *ngFor="let item of item.cartData">
+                   <div class="cartHeight">
+                    <div  *ngFor="let item of item.cartData">
                       <div
                         style="padding-top: 4%;display: flex;flex-direction: row;justify-content: space-between;padding-left: 5%;padding-right: 10%;">
                         <div class="col-xs-3" style="padding-right: 7%;">
@@ -114,6 +114,7 @@
                       </div>
                       <hr>
                     </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -129,7 +130,7 @@
 
 
 
-        <!-- <div *ngIf="deviceXs && allOrders.length !== 0 || deviceSm && allOrders.length !== 0">
+         <div *ngIf="deviceXs && allOrders.length !== 0 || deviceSm && allOrders.length !== 0">
           <div class="row" style="margin:1%">
 
             <div class="col-xs-4">
@@ -253,16 +254,16 @@
 
           </div>
 
-        </div> -->
+        </div>
 
       </mat-tab>
       <mat-tab label="Canceled Orders">
 
         <div *ngIf="canceledOrders.length == 0" style="text-align: center;padding: 10%;min-height: 300px;">
-          <p>No Orders</p>
+          <p>No Canceled Orders</p>
         </div>
 
-        <!-- <div *ngIf="deviceLg && canceledOrders.length !== 0 || deviceMd && canceledOrders.length !== 0">
+         <div *ngIf="deviceLg && canceledOrders.length !== 0 || deviceMd && canceledOrders.length !== 0">
 
           <div class="row" style="margin:1%">
 
@@ -390,9 +391,9 @@
 
             </div>
           </div>
-        </div> -->
+        </div>
 
-        <!-- <div *ngIf="deviceXs || deviceSm">
+         <div *ngIf="deviceXs || deviceSm">
           <div class="row" style="margin:1%">
 
             <div class="col-xs-4">
@@ -507,7 +508,7 @@
 
           </div>
 
-        </div> -->
+        </div>
 
 
       </mat-tab>
@@ -521,7 +522,7 @@
 
 
 
-  <!-- 
+  <!--
 
 
 

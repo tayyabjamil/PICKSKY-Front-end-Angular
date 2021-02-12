@@ -41,11 +41,39 @@
       </ns-textField-account>
     </div>
   </div>
+  <div class="row">
+
+    <div class="col-6" style="padding-bottom: 2%">
+      <p style="padding-bottom: 1%">Adress 1</p>
+      <ns-textField-account
+        name="adress1" type="text"
+        placeholder="Adress 1"
+        class="textfieldBorderColor font13"
+        [rformgroup]="rformEdit"
+        rformControlName="adress1"
+      >
+      </ns-textField-account>
+    </div>
+
+    <div class="col-6" style="padding-bottom: 2%">
+      <p style="padding-bottom: 1%">Adress 2</p>
+      <ns-textField-account
+        name="adress2" type="text"
+        placeholder="Adress 2"
+        class="textfieldBorderColor font13"
+        [rformgroup]="rformEdit"
+        rformControlName="adress2"
+      >
+      </ns-textField-account>
+    </div>
+
+  </div>
 
 
     </form>
+
     <div style="text-align: right;">
-        <p  class="btn" (click)="editInfo()" style="color: rgb(104, 104, 209);">Edit</p>
+        <p class="  btn  green-btn" (click)="editInfo()" >Edit</p>
       </div>
 
 <div class="row">
@@ -100,9 +128,10 @@
      >
         </ns-textField-account>
       </div>
+
       <div style="min-width: 40px;width: 40px">
 
-        <button style="height: 35px;" class="btn btn-default" (click)="passwordshow()" type="submit">
+        <button style="height: 35px;" class="btn btn-green" (click)="passwordshow()" type="submit">
           <i *ngIf="showPassword" class="glyphicon glyphicon-eye-open"></i>
           <i *ngIf="!showPassword" class="glyphicon glyphicon-eye-close"></i>
         </button>
@@ -116,7 +145,7 @@
       </div>
         </form>
         <div style="text-align: right;">
-          <p  class="btn"  (click)="editPassowrd()" style="color: rgb(104, 104, 209);">Edit</p>
+          <p  class="  btn  green-btn"  (click)="editPassowrd()" >Edit</p>
         </div>
 
         </div>
