@@ -1,12 +1,27 @@
 <mat-sidenav-container>
   <mat-sidenav style="background-color: white" #drawer class="sidenav" fixedInViewport="false"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-    <mat-toolbar routerLink="/" TraditionalPowders>Catagories</mat-toolbar>
+    <mat-toolbar  class="row" routerLink="/" >
+    <div class="col-1"></div>
+      <div style="padding-left: 35px;" class="col-9" >
+      Catagories
+    </div>
+    <div (click)="drawer.toggle()" class="col-2">
+      <a >
+        <span class="glyphicon glyphicon-arrow-left"></span>
+      </a>
+    </div>
+
+  <div>
+
+  </div>
+  </mat-toolbar>
     <mat-nav-list class="fundpress-menu" style="background-color: white">
       <ul class="nav-menu" >
-        <li class="dropdown" routerLink="/">
+        <li class="dropdown"  routerLink="/">
           <a>{{ getHeaderNames(1) }}</a>
         </li>
+
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown">{{
             getHeaderNames(2)
@@ -172,83 +187,96 @@
             <i class="fa fa-search"></i>
           </div>
         </div>
+        <div *ngIf="!authService.loggedIn()" >
+          <i class="fa fa-user-circle-o" routerLink="/login" style="font-size: x-large;"></i>
+         </div>
+
         <div *ngIf="authService.loggedIn()" style="font-size: large; ">
           Hi {{ usernameLogin }}
         </div>
-        <div style="display: flex; flex-direction: row;">
+        <div *ngIf="authService.loggedIn()" style="display: flex; flex-direction: row;">
           <i class="fa fa-cog" style="font-size: xx-large" [popover]="popTemplate" popoverTitle="Hi{{ username }}"></i>
           <div>
             <ng-template #popTemplate>
-              <div class="row">
-                <div class="col-lg-6">
-                  <div *ngIf="!authService.loggedIn()">
 
-                    <div style="padding-top: 1%">
-                      <i class="fa fa-user-circle-o" routerLink="/login" style="font-size: xx-large"></i>
-                      <p routerLink="/login" routerLinkActive="router-link-active">Login</p>
-                    </div>
+              <div  class="row">
+
+                  <div class="col-6" style="padding-top: 1%">
+                    <i class="fa fa-user-circle-o" routerLink="/myOrders" style="font-size: xx-large"></i>
+                    <p routerLink="/myOrders" routerLinkActive="router-link-active">
+                      My Profile
+                    </p>
                   </div>
-                  <div style="padding-top: 1%">
+                  <div class="col-6" style="padding-top: 1%">
                     <i class="fa fa-user-circle-o" routerLink="/myOrders" style="font-size: xx-large"></i>
                     <p routerLink="/myOrders" routerLinkActive="router-link-active">
                       My orders
                     </p>
                   </div>
 
-                  <div style="padding-top: 1%">
-                    <i class="fa fa-user-circle-o" routerLink="/supportpage" style="font-size: xx-large"></i>
-                    <p routerLink="/supportpage" routerLinkActive="router-link-active">
-                      Support
-                    </p>
-                  </div>
-                  <div style="padding-top: 1%">
+                </div>
+                  <div class="row">
+
+                  <div class="col-6" style="padding-top: 1%">
                     <i class="fa fa-user-circle-o" routerLink="/aboutUs" style="font-size: xx-large"></i>
                     <p routerLink="/aboutUs" routerLinkActive="router-link-active">
                       About
                     </p>
                   </div>
-                  <div style="padding-top: 1%">
+                  <div class="col-6" style="padding-top: 1%">
                     <i class="fa fa-user-circle-o" routerLink="/testimonals" style="font-size: xx-large"></i>
                     <p routerLink="/testimonals" routerLinkActive="router-link-active">
                       Testimonals
                     </p>
                   </div>
-                  <div style="padding-top: 1%">
-                    <i class="fa fa-user-circle-o" routerLink="/blog" style="font-size: xx-large"></i>
-                    <p routerLink="/blog" routerLinkActive="router-link-active">
-                      Blog
-                    </p>
+
                   </div>
-                </div>
-                <div class="col-lg-6">
-                  <div style="padding-top: 1%">
+                  <div class="row">
+                    <div class="col-6" style="padding-top: 1%">
                     <i class="fa fa-user-circle-o" routerLink="/admin" style="font-size: xx-large"></i>
                     <p routerLink="/admin" routerLinkActive="router-link-active">
                       Admin
                     </p>
                   </div>
-                  <div style="padding-top: 1%">
-                    <li *ngIf="authService.loggedIn()" style="font-size: xx-large" (click)="onLogoutClick()"
-                      class="fa fa-sign-out"></li>
-                    <p *ngIf="authService.loggedIn()">Logout</p>
+                  <div class="col-6" style="padding-top: 1%">
+                    <i class="fa fa-user-circle-o" routerLink="/supportpage" style="font-size: xx-large"></i>
+                    <p routerLink="/supportpage" routerLinkActive="router-link-active">
+                      Support
+                    </p>
                   </div>
+
                 </div>
-                <div class="col-lg-6">
-                  <div style="padding-top: 1%">
+                <div class="row">
+                  <div class="col-6" style="padding-top: 1%">
                     <i class="fa fa-user-circle-o" routerLink="/giftCards" style="font-size: xx-large"></i>
                     <p routerLink="/giftCards">Gift Cards</p>
                   </div>
-                  <div style="padding-top: 1%">
+                  <div class="col-6" style="padding-top: 1%">
                     <li *ngIf="authService.loggedIn()" style="font-size: xx-large" routerLink="/referFriend"
                       class="fa fa-sign-out"></li>
                     <p *ngIf="authService?.loggedIn()" routerLink="/referFriend ">
                       Refer Friend
                     </p>
                   </div>
+
                 </div>
-              </div>
+                <div class="row">
+
+                  <div class="col-6" style="padding-top: 1%">
+                    <i class="fa fa-user-circle-o" routerLink="/blog" style="font-size: xx-large"></i>
+                    <p routerLink="/blog" routerLinkActive="router-link-active">
+                      Blog
+                    </p>
+                  </div>
+                  <div  class="col-6" style="padding-top: 1%">
+                    <li *ngIf="authService.loggedIn()" style="font-size: xx-large" (click)="onLogoutClick()"
+                      class="fa fa-sign-out"></li>
+                    <p *ngIf="authService.loggedIn()">Logout</p>
+                  </div>
+                </div>
+
             </ng-template>
-          </div>
+             </div>
         </div>
       </div>
 

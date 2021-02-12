@@ -192,6 +192,8 @@ export class LoginComponent implements OnInit {
           if (error.error.message == 'No Account Create Account First') {
             alert(error.error.message)
             this.router.navigate(['/signUp'])
+          }else{
+            alert("Network Error")
           }
         });
       });

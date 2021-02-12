@@ -27,22 +27,20 @@ export class CartService {
   }
 
   discardProduct(product) {
-    this.cart.find((item) => {
-      if (item._id === product._id) {
-        this.cart.splice(item, 1)
-        item.productCount = 0;
-      }
-      localStorage.setItem('cart', JSON.stringify(this.cart));
+    this.cart.forEach((element,index)=>{
+      if(element._id==product._id){
+        this.cart.splice(index,1);
+        localStorage.setItem('cart', JSON.stringify(this.cart));
 
-    })
-    // localStorage.setItem('cart', JSON.stringify(this.cart));
-  }
+      }
+   });
+   }
   removeProduct(product) {
     let proudctRemoved = false
-    this.cart.find((item) => {
+    this.cart.forEach((item,index)=>{
       if (item._id === product._id && proudctRemoved == false) {
         if (item.productCount === 1) {
-          this.cart.splice(item._id, 1)
+          this.cart.splice(index,1);
           item.productCount = item.productCount - 1;
           return true;
         }

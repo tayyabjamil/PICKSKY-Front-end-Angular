@@ -4,7 +4,7 @@
       <button style="border: 0px solid transparent;
    padding: 3px 10px 3px 10px;"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
     </div>
-    <div *ngIf="item.productCount !== 0"
+    <div *ngIf="item.productCount > 0 "
       style="display: flex;flex-direction: row;width: 100px;height: 35px;
    background-color: rgb(63, 61, 61);border-radius: 6px;border-style: groove;cursor: pointer;
    color: rgb(8, 5, 5);float: right; user-select: none; border: 1px solid transparent; padding: 0px;margin:0px;line-height: 35px;">
@@ -44,34 +44,43 @@
 </div>
 
 
-<div *ngIf="deviceXs" style="height: 160px;width: 140px;">
-  <div style="min-height: 25px;" >
+<div *ngIf="deviceXs" style="height: 190px;width: 140px;">
+  <div style="min-height: 45px;" >
     <div (click)="addProduct(item)" *ngIf="item.productCount===0" style="text-align: right;">
       <button style="border: 0px solid transparent;
    padding: 3px 10px 3px 10px;"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
     </div>
-    <div *ngIf="item.productCount !== 0"
-      style="display: flex;flex-direction: row;width: 100px;height: 35px;
-   background-color: rgb(63, 61, 61);border-radius: 6px;border-style: groove;cursor: pointer;
-   color: rgb(8, 5, 5);float: right; user-select: none; border: 1px solid transparent; padding: 0px;margin:0px;line-height: 35px;">
-      <div (click)="removeProduct(item, productRef)"
-        style="text-align: center;width: 40px;color: white;user-select: none;font-size: large;font-weight: bold;">
-        <span >-</span>
-      </div>
-      <div style="width: 20px;color: white;font-size: 15;user-select: none;text-align: center;" #productRef>{{item?.productCount}}
-      </div>
-      <div (click)="addProduct(item, productRef)"
-        style="text-align: center;width: 40px;color: white;user-select: none;font-size: large;font-weight: bold;">
-        <span >+</span>
-      </div>
+    <div *ngIf="item.productCount !== 0 "
+    style="display: flex;flex-direction: row;width: 100px;height: 35px;
+ background-color: rgb(63, 61, 61);border-radius: 6px;border-style: groove;cursor: pointer;
+ color: rgb(8, 5, 5);float: right; user-select: none; border: 1px solid transparent; padding: 0px;margin:0px;line-height: 35px;">
+    <div (click)="removeProduct(item, productRef)"
+      style="text-align: center;width: 40px;color: white;user-select: none;font-size: large;font-weight: bold;">
+      <span>-</span>
+    </div>
+    <div style="width: 20px;color: white;font-size: 15;user-select: none;text-align: center;" #productRef>{{item?.productCount}}
+    </div>
+    <div (click)="addProduct(item, productRef)"
+      style="text-align: center;width: 40px;color: white;user-select: none;font-size: large;font-weight: bold;">
+      <span>+</span>
     </div>
   </div>
-  <div style="margin-left: 20px;height: 100px;" [routerLink]="['/detail']">
-    <img (load)='imageLoaded()' [src]='getImage(item.productImage)' style="height: 100px;width: auto">
-    <div *ngIf="loadingImageGetter" style="margin-left: 35px;" class="spinner-border" role="status">
+</div>
+  <div style="margin-left: 50px;" [routerLink]="['/detail']">
+    <img (load)='imageLoaded()' [src]='getImage(item.productImage)' style="height: 60px;width: auto">
+    <div *ngIf="loadingImageGetter" style="margin-left: 20px;" class="spinner-border" role="status">
       <span class="sr-only">Loading...</span>
     </div>
   </div>
+  <div style="margin-top: 15px;">
+    <div class="price">
+     ${{item.price}}
+    </div>
+    <div style="margin-top: 2%;margin-bottom: 2%;">
+      {{item.name}}
+    </div>
+  </div>
+
   <div
     style="padding-bottom: 20px;height: 30px;">
     <button (click)="onCustomiseModal(item)" style="width: 100px;

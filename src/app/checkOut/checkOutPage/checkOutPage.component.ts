@@ -74,13 +74,16 @@ loginFirst=''
     this.getCartItems()
 
     this.firstFormGroup = this._formBuilder.group({
-      email: ['',Validators.required],
-      fname: ['',Validators.required],
-      lname: ['',Validators.required],
-      city: ['',Validators.required],
-      adress: ['',Validators.required],
-      contry: ['',Validators.required],
-      code: ['',Validators.required],
+      email: [''],
+      fname: [''],
+      lname: [''],
+      city: [''],
+      adress: [''],
+      contry: [''],
+      code: [''],
+      state: [''],
+      appartment: [''],
+
     });
     this.secondFormGroup = this._formBuilder.group({
       method: ['',]

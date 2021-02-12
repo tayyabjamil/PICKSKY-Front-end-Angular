@@ -20,7 +20,7 @@ export class CatagoryComponent implements OnInit {
   deviceMd: boolean;
   deviceSm: boolean;
   currentCategory;
-
+  cartItems=[]
   constructor(
     public route: ActivatedRoute,
     public mediaObserver: MediaObserver, public productService: ProductService,
@@ -48,20 +48,26 @@ export class CatagoryComponent implements OnInit {
 
       }
       if (this.currentCategory && this.currentCategory.routeTo) {
-        this.getCatagoryProducts(this.currentCategory.routeTo)
+        this.CatagoryProducts(this.currentCategory.routeTo)
       }
 
     });
   }
 
-  // get selectedPage() {
-  //   // this.page = this.route.snapshot.paramMap.get('page');
-  //   // return this.page
-  // }
-
-  getCatagoryProducts(page) {
-    this.productService.getCatagoryProducts(page).subscribe((products) => {
+   getCartItems() {
+    this.cartItems = this.cartService.getProducts()
+}
+  CatagoryProducts(page) {
+  this.getCartItems()
+    this.productService.getCatagoryProducts(page).subscribe((products:any) => {
+    //  this.cartItems.forEach(cartItem => {
+    //    if(cartItem._id == products._id){
+    //     products.productCount = cartItem.productCount
+    //    }
+    //  this.catagoryProducts.push(products)
+    //   });
       this.catagoryProducts = products;
+
     }, (error) => {
       console.log('error in getting all products');
     });

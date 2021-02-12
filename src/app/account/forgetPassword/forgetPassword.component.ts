@@ -23,9 +23,10 @@ export class ForgetPasswordComponent implements OnInit {
     deviceSm:boolean;
     show: boolean;
     passresetToken:String
+    token:boolean
     ngOnInit() {
       // this.passresetToken = JSON.parse(localStorage.getItem('resetToken'));
-
+this.token=false
     this.mediaSub = this.mediaObserver.media$.subscribe((result:MediaChange)=>{
       console.log(result.mqAlias)
       this.deviceXs = result.mqAlias === 'xs'
@@ -44,6 +45,7 @@ export class ForgetPasswordComponent implements OnInit {
   reset(){
 if(this.forgetPasswordForm.valid){
     this.accountService.forgetPassword(this.forgetPasswordForm.value).subscribe((data) => {
+      this.token=true
       alert("Mail send to your gmail")
 
 

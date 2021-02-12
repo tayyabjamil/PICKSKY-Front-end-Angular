@@ -115,7 +115,13 @@ export class ProductService {
     return this.http.get('http://localhost:8000/api/orders/' + id, this.httpHeaders);
   }
   cancelOrder(id){
-    return this.http.post('http://localhost:8000/api/orders/cancelOrder/' + id, this.httpHeaders);
+  const ownerEmail= this.myauthService.getemail()
+    return this.http.post('http://localhost:8000/api/orders/cancelOrder/',
+    {
+     id:id,
+     ownerEmail:ownerEmail
+    },
+    this.httpHeaders);
 
   }
   referFriend(data) {

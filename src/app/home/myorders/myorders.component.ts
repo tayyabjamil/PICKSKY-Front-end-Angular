@@ -55,7 +55,7 @@ export class MyordersComponent implements OnInit {
       console.log('error in getting all products');
     });
   }
-  
+
   cancelOrders() {}
 
   orderDetails(item) { }
