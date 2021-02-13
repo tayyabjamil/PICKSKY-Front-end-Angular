@@ -35,8 +35,8 @@ showOld:boolean
     email: new FormControl(this.email, Validators.email),
 
     contact: new FormControl(this.phone),
-    adress1: new FormControl(''),
-    adress2: new FormControl(''),
+    state: new FormControl(''),
+    appartment: new FormControl(''),
   });
   this.rformEditPassword = this.formBuilder.group({
     oldPassword: new FormControl('' ),

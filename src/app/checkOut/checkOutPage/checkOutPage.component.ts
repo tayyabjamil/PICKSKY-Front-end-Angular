@@ -72,17 +72,18 @@ loginFirst=''
 
     this.initConfig();
     this.getCartItems()
+    const data= JSON.parse(localStorage.getItem('checkOutForm'))
 
     this.firstFormGroup = this._formBuilder.group({
-      email: [''],
-      fname: [''],
-      lname: [''],
-      city: [''],
-      adress: [''],
-      contry: [''],
-      code: [''],
-      state: [''],
-      appartment: [''],
+      email: [data?.email,Validators.required],
+      fname: [data?.fname,Validators.required],
+      lname: [data?.lname,Validators.required],
+      city: [data?.city,Validators.required],
+      adress: [data?.adress,Validators.required],
+      contry: [data?.contry,Validators.required],
+      code: [data?.code,Validators.required],
+      state: [data?.state,Validators.required],
+      appartment: [data?.appartment,Validators.required],
 
     });
     this.secondFormGroup = this._formBuilder.group({
@@ -106,6 +107,7 @@ shipping(index){
   this.stepper.selectedIndex = index;
 }
 }else{
+  localStorage.setItem('checkOutForm', JSON.stringify(this.firstFormGroup.value));
   this.loginFirst = 'show'
 }
 }
