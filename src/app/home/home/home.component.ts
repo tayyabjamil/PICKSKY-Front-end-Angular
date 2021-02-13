@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
   deviceSm: boolean;
   search: true
   isShow:boolean
+  placement="bottom-right"
   isSHowSearch=false
 
   ngOnInit() {

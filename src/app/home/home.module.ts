@@ -53,7 +53,8 @@ import { MainPageListItemComponent } from './mainPage-listItem/mainPage-listItem
 import { CustomizeComponent } from './customize/customize.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ThemeModule } from '../theme/theme.module';
-
+// For MDB Angular Free
+import { CollapseModule, WavesModule } from 'angular-bootstrap-md'
 
 @NgModule({
   imports: [
@@ -78,7 +79,9 @@ import { ThemeModule } from '../theme/theme.module';
     PopoverModule.forRoot(),
     MatDialogModule,
     MatCheckboxModule,
-    ThemeModule
+    ThemeModule,
+    CollapseModule,
+    WavesModule
   ],
   declarations: [
     HomeComponent,

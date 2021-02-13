@@ -11,6 +11,7 @@ import {
   FacebookLoginProvider,
 } from 'angularx-social-login';
 import { SearchCountryField, TooltipLabel, CountryISO, PhoneNumberFormat } from 'ngx-intl-tel-input';
+import { CartService } from 'src/app/home/cart.service';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit {
     public mediaObserver: MediaObserver,
     private router: Router,
     public formBuilder: FormBuilder,
-    public accountService: AccountService, private authService: SocialAuthService, ) { }
+    public accountService: AccountService, public cartService: CartService,private authService: SocialAuthService, ) { }
   mediaSub: Subscription
   deviceXs: boolean;
   deviceLg: boolean;
@@ -43,6 +44,7 @@ export class LoginComponent implements OnInit {
   accountNotVerfied = ''
   authPassword=''
   authPasswordError=''
+  cartItems=[]
   ngOnInit() {
     this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
       console.log(result.mqAlias)
@@ -58,8 +60,15 @@ export class LoginComponent implements OnInit {
       phone: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     })
+    this.getCartItems()
   }
+   getCartItems() {
+    this.cartItems = this.cartService.getProducts()
 
+    console.log(this.cartItems)
+
+    return this.cartItems
+  }
   public createAccount() {
     this.router.navigate(['/signUp'])
   }
@@ -104,7 +113,14 @@ export class LoginComponent implements OnInit {
         this.setPhone(data.phone)
         this.setAccountBonus(data.accountBonus)
         this.isLoggedIn = true;
-        this.router.navigate(['/'])
+
+        if(this.cartItems.length == 0){
+
+          this.router.navigate(['/'])
+        }else{
+          this.router.navigate(['/checkOut'])
+
+        }
         this.authPasswordError=''
       }, (error) => {
          if (error.error.message == 'Account not verified') {
@@ -186,7 +202,13 @@ export class LoginComponent implements OnInit {
           this.setPhone(data.email)
           this.setRefrenceId(data.refrenceId)
           this.isLoggedIn = true;
-          this.router.navigate(['/'])
+          if(this.cartItems.length == 0){
+
+            this.router.navigate(['/'])
+          }else{
+            this.router.navigate(['/checkOut'])
+
+          }
 
         }, (error) => {
           if (error.error.message == 'No Account Create Account First') {
@@ -226,7 +248,13 @@ export class LoginComponent implements OnInit {
 
           this.setRefrenceId(data.refrenceId)
           this.isLoggedIn = true;
-          this.router.navigate(['/'])
+          if(this.cartItems.length == 0){
+
+            this.router.navigate(['/'])
+          }else{
+            this.router.navigate(['/checkOut'])
+
+          }
 
         }, (error) => {
           if (error.error.message == 'No Account Create Account First') {
