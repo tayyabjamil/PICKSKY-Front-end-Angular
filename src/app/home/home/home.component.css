@@ -5,6 +5,10 @@
   background-color: green;
   border: 1px solid transparent;
 }
+.popover {
+  top: 71px !important;
+  left: 379px !important;
+}
 .textimages {
   top: 10%;
   left: 10%;

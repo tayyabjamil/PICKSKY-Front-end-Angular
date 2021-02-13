@@ -22,11 +22,11 @@
       </div>
     </div>
 
-    <div *ngFor="let item of allOrders">
+    <div *ngFor="let item of allOrders; let i = index">
       <div class="row" style="border:1px;border-style: groove;margin:1%;padding-top: 3px;">
         <div class="col-lg-1">
 
-          <p>1#</p>
+          <p>{{i + 1 }}</p>
         </div>
         <div class="col-lg-2">
           <p>{{item?.date}}</p>

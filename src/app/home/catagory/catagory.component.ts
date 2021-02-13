@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
 export class CatagoryComponent implements OnInit {
 
   page;
-  catagoryProducts
+  catagoryItems = []
   mediaSub: Subscription
   deviceXs: boolean;
   deviceLg: boolean;
@@ -45,10 +45,11 @@ export class CatagoryComponent implements OnInit {
             return true;
           }
         });
-
       }
       if (this.currentCategory && this.currentCategory.routeTo) {
+        this.catagoryItems = []
         this.CatagoryProducts(this.currentCategory.routeTo)
+
       }
 
     });
@@ -60,20 +61,24 @@ export class CatagoryComponent implements OnInit {
   CatagoryProducts(page) {
   this.getCartItems()
     this.productService.getCatagoryProducts(page).subscribe((products:any) => {
-    //  this.cartItems.forEach(cartItem => {
-    //    if(cartItem._id == products._id){
-    //     products.productCount = cartItem.productCount
-    //    }
-    //  this.catagoryProducts.push(products)
-    //   });
-      this.catagoryProducts = products;
+    // this.catagoryItems = products
+      products.forEach(catagoryProduct => {
+
+        this.cartItems.forEach(cartProduct => {
+        if(catagoryProduct._id ==  cartProduct._id){
+          catagoryProduct.productCount = cartProduct.productCount
+         }
+        });
+        this.catagoryItems.push(catagoryProduct)
+
+      });
 
     }, (error) => {
       console.log('error in getting all products');
     });
   }
 get getcatagoryProducts(){
-  return this.catagoryProducts
+  return this.catagoryItems
 }
   addProduct(item) {
     this.cartService.addProduct(item);

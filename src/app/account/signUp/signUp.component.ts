@@ -96,7 +96,7 @@ export class SignUpComponent implements OnInit {
           password: Response.id,
         };
         this.accountService.signUp(userAccount).subscribe((data: any) => {
-
+          alert("Account Created")
           this.router.navigate(['/login'])
 
         }, (error) => {
@@ -124,7 +124,7 @@ export class SignUpComponent implements OnInit {
         };
 
         this.accountService.signUp(userAccount).subscribe((data: any) => {
-
+          alert("Account Created")
           this.router.navigate(['/login'])
 
         }, (error) => {
@@ -182,7 +182,7 @@ if(this.rformSignup.value.phone==null){
       if (this.rformSignup.value.password === this.rformSignup.value.confirmPassword) {
         this.accountService.createuserAccount(this.rformSignup.value).subscribe((data: any) => {
           this.showEmailAlready = ''
-
+         alert("Account Created")
           this.router.navigate(['/login'])
 
         }, (error) => {

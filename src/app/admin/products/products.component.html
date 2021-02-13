@@ -3,8 +3,12 @@
   <h1 style="text-align: center;font-weight: bold;">Products</h1>
  <div style="border: 1px;border-style: groove;">
     <div class="row" style="margin:1%">
-    <div class="col-lg-2">
-   <p style="font-size: large;">Product Name #</p>
+      <div class="col-lg-2">
+        <p style="font-size: large;">Product No </p>
+         </div>
+
+      <div class="col-lg-2">
+      <p style="font-size: large;">Product Name </p>
     </div>
     <div class="col-lg-2">
       <p style="font-size: large;">Product Price</p>
@@ -16,9 +20,14 @@
 
     </div>
 
-  <div  *ngFor="let item of allProducts">
+  <div  *ngFor="let item of allProducts ;let i = index">
     <div class="row"   style="border:1px;border-style: groove;margin:1%;padding-top: 3px;">
-  <div class="col-lg-2">
+      <div class="col-lg-2">
+
+        <p  >{{i + 1}}</p>
+      </div>
+
+      <div class="col-lg-2">
 
     <p  >{{item?.name}}</p>
   </div>
