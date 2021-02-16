@@ -53,16 +53,17 @@ export class MainPageComponent implements OnInit {
     this.getfeaturedProducts();
 
     this.productSearch = this.productService.searchItems.subscribe((searchitem) => {
-      if (searchitem) {
-        this.searchProductsData = this.allProducts.find((productItem) => {
-          if (productItem && productItem.name && productItem.name.find(searchitem)) {
-            return true;
-          }
-        })
-        this.searchProductsData;
-      } else {
-        this.searchProductsData = this.allProducts;
-      }
+
+      // if (searchitem) {
+      //   this.searchProductsData = this.allProducts.find((productItem) => {
+      //     if (productItem && productItem.name && productItem.name.find(searchitem)) {
+      //       return true;
+      //     }
+      //   })
+      //   this.searchProductsData;
+      // } else {
+      //   this.searchProductsData = this.allProducts;
+      // }
     });
     this.categories = this.productService.categories
   }

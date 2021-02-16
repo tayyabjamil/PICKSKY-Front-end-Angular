@@ -9,6 +9,60 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 80%;
 }
+.carousel-control-prev-small {
+  position: absolute;
+
+  display: flex;
+
+  left: 10;
+  top: 10;
+  height: 40px;
+
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  border-radius: 20px;
+  background-color: green;
+  color: green;
+  text-align: center;
+
+}
+.carousel-control-next-small {
+  position: absolute;
+
+  display: flex;
+
+  right: 10;
+  top: 10;
+  height: 40px;
+
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  border-radius: 20px;
+  background-color: green;
+  color: green;
+  text-align: center;
+
+}
+.carousel-control-next, .carousel-control-prev {
+  position: absolute;
+
+  display: flex;
+  margin-top: 160px;
+
+  height: 40px;
+
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  border-radius: 20px;
+  background-color: green;
+  color: green;
+  text-align: center;
+
+}
+
 .block {
   position: absolute;
   left: 30px;

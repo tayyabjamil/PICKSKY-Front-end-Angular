@@ -14,6 +14,7 @@ import {
   FacebookLoginProvider,
 } from 'angularx-social-login';
 import { SearchCountryField, TooltipLabel, CountryISO, PhoneNumberFormat } from 'ngx-intl-tel-input';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   // tslint:disable-next-line: component-selector
   selector: 'app-signUp',
@@ -32,7 +33,7 @@ export class SignUpComponent implements OnInit {
   showConfirmPass: boolean
   showPass: boolean
   constructor(
-
+    private toastr: ToastrService,
     public mediaObserver: MediaObserver,
     private router: Router,
     public formBuilder: FormBuilder,
@@ -96,11 +97,12 @@ export class SignUpComponent implements OnInit {
           password: Response.id,
         };
         this.accountService.signUp(userAccount).subscribe((data: any) => {
-          alert("Account Created")
+          this.toastr.success('Account Created', 'Success' )
           this.router.navigate(['/login'])
 
         }, (error) => {
-          alert("Already have an account Just login")
+
+          this.toastr.error('Already have an account Just login', 'Error' )
           this.router.navigate(['/login'])
         });
       });
@@ -124,11 +126,11 @@ export class SignUpComponent implements OnInit {
         };
 
         this.accountService.signUp(userAccount).subscribe((data: any) => {
-          alert("Account Created")
+          this.toastr.success('Account Created', 'Success' )
           this.router.navigate(['/login'])
 
         }, (error) => {
-          alert("Already have an account Just login")
+          this.toastr.error('Already have an account Just login', 'Error' )
           this.router.navigate(['/login'])
 
         });
@@ -165,16 +167,16 @@ export class SignUpComponent implements OnInit {
     return this.fillAllValidation
   }
   createAccount() {
-    this.rformSignup.controls['phone'].clearValidators();
-if(this.rformSignup.value.phone==null){
-  this.countryCodeValidation = 'show'
-}else{
+//     this.rformSignup.controls['phone'].clearValidators();
+// if(this.rformSignup.value.phone==null){
+//   this.countryCodeValidation = 'show'
+// }else{
 
-    if (this.rformSignup.value.phone.number) {
-      this.rformSignup.controls['phone'].setValue(this.rformSignup.value.phone.internationalNumber);
-      this.countryCodeValidation = ''
+    // if (this.rformSignup.value.phone.number) {
+    //   this.rformSignup.controls['phone'].setValue(this.rformSignup.value.phone.internationalNumber);
+    //   this.countryCodeValidation = ''
 
-    }
+    // }
 
     if (this.rformSignup.valid) {
       this.fillAllValidation = ''
@@ -182,7 +184,7 @@ if(this.rformSignup.value.phone==null){
       if (this.rformSignup.value.password === this.rformSignup.value.confirmPassword) {
         this.accountService.createuserAccount(this.rformSignup.value).subscribe((data: any) => {
           this.showEmailAlready = ''
-         alert("Account Created")
+          this.toastr.success('Account Created', 'Success' )
           this.router.navigate(['/login'])
 
         }, (error) => {
@@ -198,7 +200,7 @@ if(this.rformSignup.value.phone==null){
       this.fillAllValidation = 'show'
     }
   }
-}
+// }
   get passwordValidMatch(){
     return this.passwordMatch
   }

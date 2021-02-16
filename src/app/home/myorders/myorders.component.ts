@@ -4,7 +4,9 @@ import { CartService } from '../cart.service';
 import { ProductService } from '../product.service';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
-import { of } from 'rxjs';
+import { OrderPipe } from 'ngx-order-pipe';
+import * as jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable'
 
 @Component({
   selector: 'app-myorders',
@@ -16,10 +18,11 @@ export class MyordersComponent implements OnInit {
   canceledOrders = [];
   friendEmail;
   public status: any;
+  sortedCollection=[]
   refrenceCode;
   selectedIndex = null;
-
-  constructor(public mediaObserver: MediaObserver,
+p: number = 1;
+  constructor(public mediaObserver: MediaObserver,private orderPipe: OrderPipe,
     public productService: ProductService,
     public cartService: CartService) { }
   mediaSub: Subscription
@@ -40,10 +43,16 @@ export class MyordersComponent implements OnInit {
     this.myOrders()
   }
 
+  setOrder(value: string) {
+
+    this.allOrders = this.orderPipe.transform(this.allOrders, value);
+    console.log(this.allOrders);
+  }
 
   myOrders() {
     this.productService.getOrders().subscribe((products: any) => {
       this.allOrders = products.orders;
+
       this.allOrders.forEach(element => {
 
         if (element.cancelOrder == true) {
@@ -55,6 +64,115 @@ export class MyordersComponent implements OnInit {
       console.log('error in getting all products');
     });
   }
+  pdfDownload(item){
+    setTimeout(() => {
+      this.printOrder(item);
+    }, 1000);
+
+  }
+printOrder(data) {
+
+  const doc = new jsPDF.jsPDF()
+
+
+  doc.setPage(1)
+  doc.setFont("helvetica");
+  doc.setTextColor("black");
+  doc.setFontSize(25);
+  doc.text('Shirivas Food', 15, 15);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(15);
+  doc.text('Name :', 15, 30);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(10);
+  doc.text((data.firstName.toString() + ' ' + data.lastName.toString()), 100, 30);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(15);
+  doc.text('Order date is :', 15, 40);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(10);
+  doc.text(data.date, 100, 40);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(15);
+  doc.text('Order Adress is :', 15, 50);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(10);
+  doc.text('Adress :', 15, 55);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(10);
+  doc.text('Contry :', 15, 60);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(10);
+  doc.text('City :', 15, 65);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(10);
+  doc.text(data.adress, 100, 55);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(10);
+  doc.text(data.contry, 100, 60);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(10);
+  doc.text(data.city, 100, 65);
+
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(15);
+  doc.text('Order Status is :', 15, 70);
+
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(10);
+  doc.text(data.phase, 100, 70);
+
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(15);
+  doc.text('Order Total is', 15, 80);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(10);
+  // doc.text(data.total, 160, 55);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(15);
+  doc.text('Shipping method :', 15, 90);
+
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(15);
+  doc.text('Payment infomation :', 15, 100);
+
+  // Save the PDF
+  doc.save('Test.pdf');
+}
 
   cancelOrders() {}
 

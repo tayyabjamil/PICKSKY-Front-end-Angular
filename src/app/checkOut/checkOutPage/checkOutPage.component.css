@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5 ,h6{
   padding: 0px 0px 0px 0px;
 }
 .cartHeight {
-  height: 35vh;
+  height: 60vh;
   overflow-y: overlay;
   overflow-x: hidden;
 }

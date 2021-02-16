@@ -9,6 +9,7 @@ import { MatStepper } from '@angular/material/stepper/stepper';
 import { AdminService } from 'src/app/admin/admin.service';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-checkOutPage',
@@ -19,6 +20,7 @@ export class CheckOutPageComponent implements OnInit {
 
 
   constructor(private _formBuilder: FormBuilder,
+    private toastr: ToastrService,
     public cartService: CartService,
     public productService: ProductService,
     public authService: AuthService,
@@ -57,10 +59,12 @@ accountBonus;
 detection=0
 showBonusError=''
 loginFirst=''
-  @ViewChild('stepper') public stepper: MatStepper;
+backtoCheckOut;
+  @ViewChild('stepper')  stepper: MatStepper;
   ngOnInit(
 
   ) {
+
     this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
       console.log(result.mqAlias)
       this.deviceXs = result.mqAlias === 'xs'
@@ -90,11 +94,19 @@ loginFirst=''
       method: ['',]
     });
     this.thirdFormGroup = this._formBuilder.group({
+      cardNo:[''],
+      name:[''],
+      expirationDate:[''],
+      sequrityCode:['']
 
     });
     // this.getAllOrders()
   this.getAccountBonus()
+  this.backtoCheckOut= localStorage.getItem('backtoCheckOut')
+  if(this.backtoCheckOut == "true"){
 
+    // this.move(2)
+  }
 }
 stepClick(ev)
  {console.log(ev)}
@@ -102,13 +114,12 @@ stepClick(ev)
  this.accountBonus=  localStorage.getItem('accountBonus')
   }
 shipping(index){
- if(this.authService.getID()){
+
   if(this.firstFormGroup.valid){
   this.stepper.selectedIndex = index;
-}
+
 }else{
   localStorage.setItem('checkOutForm', JSON.stringify(this.firstFormGroup.value));
-  this.loginFirst = 'show'
 }
 }
 payment(index){
@@ -149,6 +160,7 @@ useBonus(){
   }
 
   order() {
+    if(this.authService.getID()){
     this.authService.getemail()
     const orderData = {
       cartItems: this.cartItems,
@@ -167,11 +179,20 @@ useBonus(){
     }
     // this.printOrder(orderData);
     this.cartService.order(orderData).subscribe((data: any) => {
+      this.toastr.success('Order Submitted Successfully', 'Success' )
+
       this.router.navigate(['/'])
     })
+    localStorage.setItem('backtoCheckOut',"");
     this.cartService.emptyProduct()
+    }else{
+      localStorage.setItem('backtoCheckOut',"true");
+      this.loginFirst = 'show'
+
+    }
   }
   move(index: number) {
+
     this.stepper.selectedIndex = index;
   }
 

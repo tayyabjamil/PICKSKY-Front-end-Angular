@@ -2,12 +2,16 @@
 
   <div class="col-lg-7" style="padding-top:5%;;background-color: #ffffff">
     <p style="font-size: 22px;font-weight: bold;padding-left: 10%;">Shirivas Store</p>
-    <div style="display: flex;flex-direction: row;justify-content: flex-end;padding-left: 5%;">
+    <div *ngIf="!authService.loggedIn()" style="display: flex;flex-direction: row;justify-content: flex-end;padding-left: 5%;">
       <p style="font-size: 18px;">Already have an account ?<span style="font-size: 18px;" class="text text-primary btn" [routerLink]="['/login']"
           routerLinkActive="router-link-active">Login</span> </p>
+
     </div>
 
-
+    <p style="font-size: 14px;text-align: right;padding-right: 20px;" class="errorlbl"
+    *ngIf="loginFirst == 'show'">
+     Login first to make an  order
+  </p>
     <div   *ngIf="deviceXs || deviceSm" class="row">
       <div class="col-lg-1 "></div>
       <div class="col-lg-10 col-xs-12 col-sm-12">
@@ -72,7 +76,13 @@
               <div style="display: flex;flex-direction: row;justify-content: space-between;">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1" style="padding-right: 4%;">
                 <label style="margin-left: 8%;font-size: 16px;">Save details for next time</label>
+
+                <p style="font-size: 16px;padding-top: 2%;" [routerLink]="['/cart']" class="text text-primary btn">< Return to Cart</p>
+
               </div>
+
+
+
 
 
               <div class="row" >
@@ -82,10 +92,7 @@
               </div>
 
        </form>
-        <p style="font-size: 14px" class="errorlbl"
-            *ngIf="loginFirst == 'show'">
-             Login first to make an  order
-          </p>
+
         </mat-step>
            <mat-step [stepControl]="secondFormGroup">
             <form [formGroup]="secondFormGroup">
@@ -139,15 +146,52 @@
             <form [formGroup]="thirdFormGroup" style="margin-top: 5%;">
               <ng-template matStepLabel>Paymemt</ng-template>
               <ngx-paypal [config]="payPalConfig"></ngx-paypal>
-              <div class="row">
 
-                <button class="col-2 btn text-primary" matStepperPrevious>< Return to Shipping</button>
-                <div class="col-8">
-                </div>
-
-                <button class="col-2 btn btn-primary" matStepperNext>Next</button>
-              </div>
             </form>
+
+
+            <label for="">Payments</label>
+            <label for="">All transactions are secured and encrypted</label>
+            <form [formGroup]="thirdFormGroup">
+
+              <ng-template matStepLabel></ng-template>
+              <mat-form-field style="width: 250px;">
+                <mat-label><span style="font-size: 16px;">Card no</span></mat-label>
+                <input matInput formControlName="cardNo">
+              </mat-form-field>
+              <p style="font-size: large;font-size: 22px;font-weight: bold;">Name on Card</p>
+              <mat-form-field style="width: 250px;">
+                <mat-label><span style="font-size: 16px;">Name on Card</span></mat-label>
+                <input matInput formControlName="name">
+              </mat-form-field>
+              <div class="row">
+                <mat-form-field class="col-xs-6">
+                  <mat-label><span style="font-size: 16px;">Expiration Data MM/YY</span></mat-label>
+                  <input matInput formControlName="expirationDate">
+                </mat-form-field>
+
+
+                <mat-form-field class="col-xs-6">
+                  <mat-label><span style="font-size: 16px;">Sequrity Code</span></mat-label>
+                  <input matInput formControlName="sequrityCode">
+                </mat-form-field>
+              </div>
+
+
+              <div style="display: flex;flex-direction: row;justify-content: space-between;">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" style="padding-right: 4%;">
+                <label style="margin-left: 8%;font-size: 16px;">Save details for next time</label>
+              </div>
+
+       </form>
+       <div class="row">
+
+        <button class="col-2 btn text-primary" matStepperPrevious>< Return to Shipping</button>
+        <div class="col-8">
+        </div>
+
+        <button class="col-2 btn btn-primary" matStepperNext>Next</button>
+      </div>
           </mat-step>
           <mat-step>
             <ng-template matStepLabel>Done</ng-template>
@@ -284,6 +328,8 @@
                <div style="padding-top: 10px;">
                  <input type="checkbox" class="form-check-input" id="exampleCheck1" style="width: 30px;">
                 <label style="margin-left: 30px;font-size: 18px;">Save details for next time</label>
+
+
               </div>
 
               <div style="text-align: right;">
@@ -347,14 +393,172 @@
             <form [formGroup]="thirdFormGroup">
               <ng-template matStepLabel>Paymemt</ng-template>
               <ngx-paypal [config]="payPalConfig"></ngx-paypal>
-              <div class="row" style="margin-right: 2%;">
 
-                <button class="col-2 btn text-primary" matStepperPrevious><span style="font-size: 18px;"> < Return to Shipping</span></button>
-                <div class="col-7"></div>
-
-                <button  class="col-3 btn btn-primary" style="width: 160px;height: 60px;" (click)="move(3)">Continue to Checkout</button>
-              </div>
             </form>
+
+
+            <label style="font-size: 22px;" for="">Payments</label>
+           <div>
+            <p  style="font-size: 18px;"for="">All transactions are secured and encrypted</p>
+            </div>
+              <form [formGroup]="thirdFormGroup" style="border: 1px;border-style: solid;border-radius: 6px;border-color: lightgray;">
+
+              <ng-template matStepLabel></ng-template>
+            <div style="padding-top:2%;padding-left: 2%;padding-right: 2%;display: flex;flex-direction: row;justify-content: space-between;">
+
+              <label style="font-size: 18px;">Credit Card</label>
+       <p>Options</p>
+
+      </div>
+      <hr>
+            <div style="padding: 2%;">
+              <div class="row">
+              <mat-form-field class="col-12"  appearance="outline" >
+                <mat-label><span style="font-size: 16px;">Card no</span></mat-label>
+                <input matInput formControlName="cardNo">
+              </mat-form-field>
+            </div>
+
+              <div  class="row">
+
+              <mat-form-field class="col-12"  appearance="outline">
+                <mat-label><span style="font-size: 16px;">Name on Card</span></mat-label>
+                <input matInput formControlName="name">
+              </mat-form-field>
+            </div>
+              <div class="row">
+                <mat-form-field class="col-6"  appearance="outline">
+                  <mat-label><span style="font-size: 16px;">Expiration Data MM/YY</span></mat-label>
+                  <input matInput formControlName="expirationDate">
+                </mat-form-field>
+
+
+                <mat-form-field class="col-6"  appearance="outline">
+                  <mat-label><span style="font-size: 16px;">Sequrity Code</span></mat-label>
+                  <input matInput formControlName="sequrityCode">
+                </mat-form-field>
+              </div>
+
+            </div>
+
+              <hr style="margin: 0px;">
+              <div style="display: flex;flex-direction: row;justify-content: space-between;padding-top: 20px;">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" style="padding-right: 4%;margin-left: 3%;">
+                <label style="margin-left: 8%;font-size: 16px;">Credit Card</label>
+
+                <p style="font-size: 16px;" class="text text-primary btn">Options</p>
+
+              </div>
+
+           <hr style="margin: 0px;">
+           <div style="display: flex;flex-direction: row;justify-content: space-between;padding-top: 20px;">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" style="padding-right: 4%;margin-left: 3%;">
+            <label style="margin-left: 8%;font-size: 16px;">Credit Card</label>
+
+            <p style="font-size: 16px;" class="text text-primary btn">Options</p>
+
+          </div>
+
+
+
+             </form>
+
+
+
+
+
+             <label style="font-size: 22px;margin-top: 3%;" for="">Billing Adress</label>
+             <div>
+              <p  style="font-size: 18px;"for="">Select the method that matches your card or payment adress</p>
+              </div>
+                <form [formGroup]="thirdFormGroup" style="border: 1px;border-style: solid;border-radius: 6px;border-color: lightgray;">
+
+                <ng-template matStepLabel></ng-template>
+                <div style="display: flex;flex-direction: row;justify-content: space-between;padding-top: 20px;">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1" style="padding-right: 4%;margin-left: 3%;">
+                  <label style="margin-left: 8%;font-size: 16px;">Same as shiping adress</label>
+
+
+                </div>
+
+             <hr style="margin: 0px;">
+             <div style="display: flex;flex-direction: row;justify-content: space-between;padding-top: 20px;">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1" style="padding-right: 4%;margin-left: 3%;">
+              <label style="margin-left: 8%;font-size: 16px;">Use a different billing adress</label>
+
+
+            </div>
+
+         <hr style="margin: 0px;">
+
+         <form [formGroup]="firstFormGroup" >
+          <ng-template matStepLabel><span style="font-size: 18px;">Information</span> </ng-template>
+          <div style="min-height: 550px;padding: 3%;">
+          <mat-form-field style="width: 250px;" appearance="outline">
+            <mat-label><span style="font-size: 18px;">Email or Phone number</span></mat-label>
+            <input matInput formControlName="email">
+          </mat-form-field>
+          <p style="font-size: large;font-size: 22px;font-weight: bold;">Shipping Adress</p>
+          <div >
+            <mat-form-field class="col-xs-5" appearance="outline">
+              <mat-label><span style="font-size: 18px;"> First Name</span></mat-label>
+              <input matInput formControlName="fname">
+            </mat-form-field>
+            <div class="col-xs-2"></div>
+            <mat-form-field class="col-xs-5" appearance="outline">
+              <mat-label><span style="font-size: 18px;"> Last Name</span></mat-label>
+              <input matInput formControlName="lname">
+            </mat-form-field>
+          </div>
+          <div >
+            <mat-form-field class="col-xs-12" appearance="outline">
+              <mat-label><span style="font-size: 18px;"> Adress</span></mat-label>
+              <input matInput formControlName="adress">
+            </mat-form-field>
+          </div>
+          <div >
+            <mat-form-field class="col-xs-12" appearance="outline">
+              <mat-label><span style="font-size: 18px;"> City</span></mat-label>
+              <input matInput formControlName="city">
+            </mat-form-field>
+          </div>
+          <div >
+            <mat-form-field class="col-xs-5" appearance="outline">
+              <mat-label><span style="font-size: 18px;"> Contry</span></mat-label>
+              <input matInput formControlName="contry">
+            </mat-form-field>
+            <div class="col-xs-2"></div>
+
+            <mat-form-field class="col-xs-5" appearance="outline">
+              <mat-label><span style="font-size: 18px;"> Postal Code</span></mat-label>
+              <input matInput formControlName="code">
+            </mat-form-field>
+          </div>
+          <div >
+            <mat-form-field class="col-xs-5" appearance="outline">
+              <mat-label><span style="font-size: 18px;"> State</span></mat-label>
+              <input matInput formControlName="state">
+            </mat-form-field>
+
+            <div class="col-xs-2"></div>
+
+            <mat-form-field class="col-xs-5" appearance="outline">
+              <mat-label><span style="font-size: 18px;"> Appartment</span></mat-label>
+              <input matInput formControlName="appartment">
+            </mat-form-field>
+          </div>
+          </div>
+
+
+
+        </form>
+
+               </form>
+
+               <div style="text-align: right;margin-top: 20px;">
+                <button class="btn btn-primary" style="width: 160px;height: 60px;" (click)="move(3)">CheckOut</button>
+              </div>
+
           </mat-step>
           <mat-step>
             <ng-template matStepLabel>Done</ng-template>
@@ -444,7 +648,10 @@
 
   <div class="col-lg-5" style="padding-top: 5%;padding-bottom: 5%;min-height: 1000px;background-color: #f3f3f3;">
     <div style="padding-left:7%;padding-right: 7%;padding-top: 5%;padding-bottom: 5%;">
-<p style="font-weight: bol;font-size: 22px;">Selected Items</p>
+<div style="display: flex;flex-direction: row;justify-content: space-between;">
+<p style="font-weight: bold;font-size: 22px;">Selected Items</p>
+<p  style="font-size: 18px;" [routerLink]="['/cart']"  class="row text text-primary btn">back to Cart</p>
+</div>
       <div class="cartHeight">
       <div *ngFor="let item of cartItems">
 

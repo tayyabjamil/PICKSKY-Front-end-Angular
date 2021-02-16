@@ -55,7 +55,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ThemeModule } from '../theme/theme.module';
 // For MDB Angular Free
 import { CollapseModule, WavesModule } from 'angular-bootstrap-md'
-
+import { ToastrModule } from 'ngx-toastr';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { OrderModule } from 'ngx-order-pipe';
 @NgModule({
   imports: [
     CommonModule,
@@ -81,7 +84,12 @@ import { CollapseModule, WavesModule } from 'angular-bootstrap-md'
     MatCheckboxModule,
     ThemeModule,
     CollapseModule,
-    WavesModule
+    WavesModule,
+    ToastrModule.forRoot(),
+    OrderModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule
+
   ],
   declarations: [
     HomeComponent,
