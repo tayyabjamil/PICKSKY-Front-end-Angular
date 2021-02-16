@@ -53,15 +53,6 @@ export class OrdersProgressComponent implements OnInit {
 
     const doc = new jsPDF.jsPDF()
 
-    // let doc = new jsPDF();
-    autoTable(doc, {
-      theme: 'plain',
-      html: '#tableid',
-      useCss: true,
-      // showHead: 'everyPage',
-      startY: 80,
-    })
-
     doc.setPage(1)
     doc.setFont("helvetica");
     doc.setTextColor("black");

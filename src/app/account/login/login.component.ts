@@ -1,5 +1,5 @@
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild, ElementRef  } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountService } from '../account.service';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
@@ -12,7 +12,7 @@ import {
 } from 'angularx-social-login';
 import { SearchCountryField, TooltipLabel, CountryISO, PhoneNumberFormat } from 'ngx-intl-tel-input';
 import { CartService } from 'src/app/home/cart.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   fillAllValidation=''
 
   constructor(
-
+    private toastr: ToastrService,
     public mediaObserver: MediaObserver,
     private router: Router,
     public formBuilder: FormBuilder,
@@ -45,7 +45,10 @@ export class LoginComponent implements OnInit {
   authPassword=''
   authPasswordError=''
   cartItems=[]
+  backtoCheckOut =''
+  @ViewChild('alert', { static: true }) alert: ElementRef;
   ngOnInit() {
+     this.backtoCheckOut= localStorage.getItem('backtoCheckOut')
     this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
       console.log(result.mqAlias)
       this.deviceXs = result.mqAlias === 'xs'
@@ -57,7 +60,7 @@ export class LoginComponent implements OnInit {
 
     this.rformLogin = this.formBuilder.group({
       email: new FormControl('', [Validators.required, Validators.email]),
-      phone: new FormControl('', [Validators.required]),
+      phone: new FormControl('',),
       password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     })
     this.getCartItems()
@@ -72,6 +75,7 @@ export class LoginComponent implements OnInit {
   public createAccount() {
     this.router.navigate(['/signUp'])
   }
+
   public passwordshow() {
     this.show = !this.show;
   }
@@ -114,8 +118,8 @@ export class LoginComponent implements OnInit {
         this.setAccountBonus(data.accountBonus)
         this.isLoggedIn = true;
 
-        if(this.cartItems.length == 0){
-
+        if(this.backtoCheckOut !== 'true'){
+          this.toastr.success('Logged in', 'Success' )
           this.router.navigate(['/'])
         }else{
           this.router.navigate(['/checkOut'])
@@ -131,11 +135,12 @@ export class LoginComponent implements OnInit {
 
         }else if(error.error.message == 'No Account Create Account First') {
         this.router.navigate(['/signUp'])
-
-        alert("No Account Create Account First")
+        this.toastr.error('No Account Create Account First', 'Error' )
+        // alert("No Account Create Account First")
        }
       });
     }else{
+
       this.fillAllValidation = 'show'
 
     }
@@ -202,8 +207,8 @@ export class LoginComponent implements OnInit {
           this.setPhone(data.email)
           this.setRefrenceId(data.refrenceId)
           this.isLoggedIn = true;
-          if(this.cartItems.length == 0){
-
+          if(this.backtoCheckOut !== 'true'){
+            this.toastr.success('Logged in', 'Success' )
             this.router.navigate(['/'])
           }else{
             this.router.navigate(['/checkOut'])
@@ -215,10 +220,14 @@ export class LoginComponent implements OnInit {
             alert(error.error.message)
             this.router.navigate(['/signUp'])
           }else{
-            alert("Network Error")
+            this.toastr.error('Network Error', 'Failed Try Again' )
           }
         });
-      });
+      }).catch((error)=>{
+        this.toastr.error('Bad Internet Connection  ', 'Try Again' )
+      }
+
+      );
 
   }
 
@@ -248,8 +257,8 @@ export class LoginComponent implements OnInit {
 
           this.setRefrenceId(data.refrenceId)
           this.isLoggedIn = true;
-          if(this.cartItems.length == 0){
-
+          if(this.backtoCheckOut !== 'true'){
+            this.toastr.success('Logged in', 'Success' )
             this.router.navigate(['/'])
           }else{
             this.router.navigate(['/checkOut'])
@@ -258,7 +267,7 @@ export class LoginComponent implements OnInit {
 
         }, (error) => {
           if (error.error.message == 'No Account Create Account First') {
-            alert(error.error.message)
+            this.toastr.error('No Account Create Account First', 'Error' )
             this.router.navigate(['/signUp'])
           }
         });

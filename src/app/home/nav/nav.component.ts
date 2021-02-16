@@ -65,7 +65,15 @@ export class NavComponent implements OnInit {
   catagory(page){
     this.router.navigate(['catagory/', page])
      }
+     onSearchChange(searchValue: string): void {
+      if (searchValue) {
+        this.productService.search = true;
+      } else {
+        this.productService.search = false;
+      }
 
+      this.productService.setSearchItems(searchValue);
+    }
   getHeaderNames(indx: number) { return HeaderConstants[indx]; }
 
   getPicklesConstants(indx: number) { return PicklesConstants[indx]; }

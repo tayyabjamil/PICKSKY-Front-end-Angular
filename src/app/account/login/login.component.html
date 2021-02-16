@@ -22,7 +22,7 @@
           </ns-textField-account>
         </div>
 
-        <div *ngIf="loginType == 'phone'">
+        <!-- <div *ngIf="loginType == 'phone'">
           <form [formGroup]="rformLogin">
             <ngx-intl-tel-input [cssClass]="'customInput'" [enableAutoCountrySelect]="false" [enablePlaceholder]="true"
               [searchCountryFlag]="true" [selectFirstCountry]="true" [maxLength]="15" [phoneValidation]="true"
@@ -31,11 +31,11 @@
               name="phone" formControlName="phone">
             </ngx-intl-tel-input>
           </form>
-        </div>
-        <p style="font-size: 14px" class="errorlbl"
+        </div> -->
+        <!-- <p style="font-size: 14px" class="errorlbl"
         *ngIf="getcountryCodeValidation == 'show'">
         select country code and number
-      </p>
+      </p> -->
 
         <div *ngIf="loginType=='phone'" class="text-primary"
           style="display: flex; width: 100%; margin-top: 10px; justify-content: flex-end; cursor: pointer;"
@@ -44,12 +44,12 @@
 
         </div>
 
-        <div *ngIf="loginType=='email'" class="text-primary"
+        <!-- <div *ngIf="loginType=='email'" class="text-primary"
           style="display: flex; width: 100%; margin-top: 10px; justify-content: flex-end; cursor: pointer;"
           (click)="toggleLoginType('phone')">
          <p class="btn text-primary">Phone login instead</p>
 
-        </div>
+        </div> -->
 
       </div>
 

@@ -9,7 +9,10 @@ import { MatStepper } from '@angular/material/stepper/stepper';
 import { AdminService } from 'src/app/admin/admin.service';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
-
+import { ToastrService } from 'ngx-toastr';
+import * as jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable'
+import {Country} from '@angular-material-extensions/select-country';
 @Component({
   selector: 'app-checkOutPage',
   templateUrl: './checkOutPage.component.html',
@@ -19,6 +22,7 @@ export class CheckOutPageComponent implements OnInit {
 
 
   constructor(private _formBuilder: FormBuilder,
+    private toastr: ToastrService,
     public cartService: CartService,
     public productService: ProductService,
     public authService: AuthService,
@@ -57,10 +61,12 @@ accountBonus;
 detection=0
 showBonusError=''
 loginFirst=''
-  @ViewChild('stepper') public stepper: MatStepper;
+backtoCheckOut;
+  @ViewChild('stepper')  stepper: MatStepper;
   ngOnInit(
 
   ) {
+
     this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
       console.log(result.mqAlias)
       this.deviceXs = result.mqAlias === 'xs'
@@ -90,11 +96,22 @@ loginFirst=''
       method: ['',]
     });
     this.thirdFormGroup = this._formBuilder.group({
+      cardNo:[''],
+      name:[''],
+      expirationDate:[''],
+      sequrityCode:['']
 
     });
     // this.getAllOrders()
   this.getAccountBonus()
+  this.backtoCheckOut= localStorage.getItem('backtoCheckOut')
+  if(this.backtoCheckOut == "true"){
 
+    // this.move(2)
+  }
+}
+onCountrySelected($event: Country) {
+  console.log($event);
 }
 stepClick(ev)
  {console.log(ev)}
@@ -102,13 +119,12 @@ stepClick(ev)
  this.accountBonus=  localStorage.getItem('accountBonus')
   }
 shipping(index){
- if(this.authService.getID()){
+
   if(this.firstFormGroup.valid){
   this.stepper.selectedIndex = index;
-}
+
 }else{
   localStorage.setItem('checkOutForm', JSON.stringify(this.firstFormGroup.value));
-  this.loginFirst = 'show'
 }
 }
 payment(index){
@@ -149,6 +165,7 @@ useBonus(){
   }
 
   order() {
+    if(this.authService.getID()){
     this.authService.getemail()
     const orderData = {
       cartItems: this.cartItems,
@@ -167,20 +184,133 @@ useBonus(){
     }
     // this.printOrder(orderData);
     this.cartService.order(orderData).subscribe((data: any) => {
+      this.toastr.success('Order Submitted Successfully', 'Success' )
+      this.pdfDownload(orderData)
       this.router.navigate(['/'])
     })
+    localStorage.setItem('backtoCheckOut',"");
     this.cartService.emptyProduct()
+    }else{
+      localStorage.setItem('backtoCheckOut',"true");
+      this.loginFirst = 'show'
+
+    }
   }
   move(index: number) {
+
     this.stepper.selectedIndex = index;
   }
 
-  // getAllOrders() {
-  //   let id = this.authService.getID()
-  //   this.productService.getOrders().subscribe((data: any) => {
-  //     this.dataOrder = data.orders.toString()
-  //   })
-  // }
+  pdfDownload(item){
+    setTimeout(() => {
+      this.printOrder(item);
+    }, 1000);
+
+  }
+printOrder(data) {
+
+  const doc = new jsPDF.jsPDF()
+
+
+  doc.setPage(1)
+  doc.setFont("helvetica");
+  doc.setTextColor("black");
+  doc.setFontSize(25);
+  doc.text('Shirivas Food', 15, 15);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(15);
+  doc.text('Name :', 15, 30);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(10);
+  doc.text((data.firstName.toString() + ' ' + data.lastName.toString()), 100, 30);
+
+  // doc.setPage(1)
+  // doc.setTextColor("black");
+  // doc.setFontSize(15);
+  // doc.text('Order date is :', 15, 40);
+
+  // doc.setPage(1)
+  // doc.setTextColor("black");
+  // doc.setFontSize(10);
+  // doc.text(data.date, 100, 40);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(15);
+  doc.text('Order Adress is :', 15, 50);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(10);
+  doc.text('Adress :', 15, 55);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(10);
+  doc.text('Contry :', 15, 60);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(10);
+  doc.text('City :', 15, 65);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(10);
+  doc.text(data.adress, 100, 55);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(10);
+  doc.text(data.contry, 100, 60);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(10);
+  doc.text(data.city, 100, 65);
+
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(15);
+  doc.text('Order Status is :', 15, 70);
+
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(10);
+  doc.text(data.phase, 100, 70);
+
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(15);
+  doc.text('Order Total is', 15, 80);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(10);
+  // doc.text(data.total, 160, 55);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(15);
+  doc.text('Shipping method :', 15, 90);
+
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(15);
+  doc.text('Payment infomation :', 15, 100);
+
+  // Save the PDF
+const PDFFILE =  doc.save('Test.pdf');
+console.log(PDFFILE)
+}
 
   get useAdress() {
     if (this.dataOrder) {

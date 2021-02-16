@@ -5,7 +5,7 @@
 
       <div style="width: 100%">
         <p [style.font-size.px]="deviceXs || deviceSm ? '15' : '25'" class="btn"
-          style="text-align: left; padding-top: 5%; font-weight: 500;padding-bottom: 15%;">
+          style="text-align: left; padding-top: 5%; font-weight: 500;">
           Create Your Account
         </p>
         <p *ngIf="deviceXs" (click)="login()" style="font-size:small;font-weight: 500;padding-top: 5%;text-align: right;justify-content: right;float: right;" class="btn text-primary" >Login</p>
@@ -55,18 +55,18 @@
           [type]="showPass ? 'text' : 'password'" class="textfieldBorderColor font13"
           [rformgroup]="rformSignup" rformControlName="password">
         </ns-textField-account>
-        <p style="font-size: 14px" class="errorlbl" *ngIf="
+        <div style="font-size: 14px" class="errorlbl" *ngIf="
         rformSignup.controls['password'].hasError('hasCapitalCase')
       ">
       password must have at least 1 Capital letter!
-    </p>
-    <p style="font-size: 14px" class="errorlbl"
+      </div>
+    <div style="font-size: 14px" class="errorlbl"
       *ngIf="rformSignup.controls['password'].hasError('hasSmallCase')">
       passowrd must have at least 1 Small letter!
-    </p>
-    <p class="errorlbl" style="font-size: 14px" *ngIf="rformSignup.controls['password'].hasError('hasDigit')">
+    </div>
+    <div class="errorlbl" style="font-size: 14px" *ngIf="rformSignup.controls['password'].hasError('hasDigit')">
       passowrd must have at least 1 number!
-    </p>
+    </div>
       </div>
       <div style="width: 40px">
         <button style="height: 35px" class="btn btn-default" (click)="passwordshow()" type="submit">

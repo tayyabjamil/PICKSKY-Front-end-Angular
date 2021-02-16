@@ -1,6 +1,6 @@
 <div [formGroup]="rformgroup" >
   <input [formControlName]="rformControlName" [placeholder]="placeholder" [hint]="hint" [type]="type" [ngClass]="{ errorBorder :invalidControl}" class="form-control textFieldStling ">
-  <p  *ngIf="errorRequired" class="errorlbl">{{rformControlName}} is required</p>
-  <p  *ngIf="errorFormate" class="errorlbl">Email format is incorrect</p>
-  <p  *ngIf="errorminLength || errormaxLength"  class="errorlbl">password must be minimum  {{minlength}} character </p>
+  <div  *ngIf="errorRequired" class="errorlbl">{{rformControlName}} is required</div>
+  <div  *ngIf="errorFormate" class="errorlbl">Email format is incorrect</div>
+  <div  *ngIf="errorminLength || errormaxLength"  class="errorlbl">password must be minimum  {{minlength}} character </div>
 </div>
