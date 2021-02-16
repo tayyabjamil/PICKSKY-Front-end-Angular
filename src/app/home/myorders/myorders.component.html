@@ -17,14 +17,14 @@
             </div>
             <div class="col-1">
               <p style="font-size: large;"   >Order Date</p>
-              <span (click)="setOrder('date')">Sort ▼</span>
-              <span (click)="setOrder('date')">Sort ▲</span>
+              <span (click)="setOrder('date', false)">Sort ▼</span>
+              <span (click)="setOrder('date', true)">Sort ▲</span>
 
             </div>
             <div class="col-1">
-              <p style="font-size: large; " >Order Total</p>
-              <span (click)="setOrder('total')">Sort ▼</span>
-              <span (click)="setOrder('total')">Sort ▲</span>
+              <p style="font-size: large;" >Order Total</p>
+              <span (click)="setOrder('total', false)">Sort ▼</span>
+              <span (click)="setOrder('total', true)">Sort ▲</span>
             </div>
             <div class="col-1">
               <p style="font-size: large;">Order Status</p>
@@ -37,25 +37,24 @@
           </div>
          <div class="cartHeight">
 
-          <div *ngFor="let item of allOrders | orderBy: 'item.total':'false'  |  paginate: { itemsPerPage: 4, currentPage: p }; let i = index">
+          <div *ngFor="let item of allOrders | orderBy: orderBy : reverse  |  paginate: { itemsPerPage: 4, currentPage: p }; let i = index">
             <div class="row panel-title" style="margin:1%;padding-top: 3px;border-radius: 12px;background-color: #b4d469;">
               <div class="col-1" style="padding-top: 15px;">
                 <p>{{i + 1 }}</p>
               </div>
 
               <div class="col-1" style="padding-top: 15px;">
-
                 <p>{{item.date}}</p>
               </div>
-              <div class="col-1" style="padding-top: 15px;">
 
+              <div class="col-1" style="padding-top: 15px;">
                 <p>{{item?.total}}</p>
               </div>
 
               <div class="col-1" style="padding-top: 15px;">
-
                 <p>{{item?.phase}}</p>
               </div>
+
               <div class="col-3">
 
 
@@ -74,8 +73,8 @@
                 </div>
 
                 <div class="col-1"  *ngIf="item.phase !== 'canceled'" style="padding-top: 5px;">
-                  <a class="btn btn-primary" style="color: white;" data-toggle="collapse" href="#{{item.total}}"
-                    role="button" aria-expanded="false" aria-controls="{{item.total}}">
+                  <a class="btn btn-primary" style="color: white;" data-toggle="collapse" href="#{{i}}"
+                    role="button" aria-expanded="false" aria-controls="{{i}}">
                     Status
                   </a>
                 </div>
@@ -86,22 +85,23 @@
               </div>
                 <div class="col-1" style="padding-top: 8px;">
                   <a class="btn btn-danger" (click)="orderCancel(item._id)"
-                    role="button" aria-expanded="false" aria-controls="{{item.total}}">
+                    role="button" aria-expanded="false" aria-controls="{{i}}">
                     Cancel Order
                   </a>
                 </div>
               </div>
 
-            <div class="collapse container-fluid" id="{{item.total}}"
-              style="padding-top: 1%;margin-left: 1%;margin-right: 1%;">
-              <div style="min-height: 30px;height: 30px;padding: 1%;">
+            <div class="collapse " id="{{i}}"
+              >
+              <div style="min-height: 80px;height: 80px;padding: 1%;">
                 <div class="row multi-steps-wrap">
                   <ul class="list-unstyled multi-steps">
-                    <li class="job-status" [ngClass]="item.status === 'processing' ? 'job-created' : ''">processing</li>
-                    <li class="job-status is-active negative" [ngClass]="item.status === 'packed' ? 'job-packed' : ''">
-                      Packed</li>
-                    <li class="job-status" [ngClass]="item.status === 'shipped' ? 'job-completed' : ''">Shipped</li>
-                    <li class="job-status" [ngClass]="item.status === 'delivered' ? 'job-closed' : ''">Delivered</li>
+                    <li class="job-status" [ngClass]="(item.phase === 'processing' || item.phase === 'packed' ||  item.phase === 'shipped' ||  item.phase === 'delivered' ) ? '' : 'negative'">processing</li>
+                    <li class="job-status" [ngClass]="(item.phase === 'packed' ||  item.phase === 'shipped' ||  item.phase === 'delivered' )  ? '' : 'negative'">
+                      Packed
+                    </li>
+                    <li class="job-status" [ngClass]="( item.phase === 'shipped'  ||  item.phase === 'delivered' ) ? '' : 'negative'">Shipped</li>
+                    <li class="job-status" [ngClass]="( item.phase === 'delivered')  ? '' : 'negative'">Delivered</li>
 
                   </ul>
                 </div>
@@ -209,16 +209,16 @@
 
                 </div>
                 <div style="padding-bottom: 5px;">
-                  <a class="btn btn-primary" style="color: white;width: 200%;" data-toggle="collapse" href="#{{item.total}}"
-                    role="button" aria-expanded="false" aria-controls="{{item.total}}">
+                  <a class="btn btn-primary" style="color: white;width: 200%;" data-toggle="collapse" href="#{{i}}"
+                    role="button" aria-expanded="false" aria-controls="{{i}}">
                     Status
                   </a>
                 </div>
               </div>
             </div>
 
-            <div class="collapse container-fluid" id="{{item.total}}"
-              style="margin: 2%;min-height: 30px;height: 30px;">
+            <div class="collapse container-fluid" id="{{i}}"
+            style="min-height: 80px;height: 80px;padding: 1%;">
 
                 <div class="row multi-steps-wrap">
                   <ul class="list-unstyled multi-steps">
@@ -339,8 +339,8 @@
 
             </div>
 
-            <div class="collapse container-fluid" id="{{item.total}}"
-              style="margin: 2%; min-height: 30px;height: 30px;">
+            <div class="collapse container-fluid" id="{{item._id}}"
+            style="min-height: 80px;height: 80px;padding: 1%;">
                 <div class="row multi-steps-wrap">
                   <ul class="list-unstyled multi-steps">
                     <li class="job-status" [ngClass]="item.status === 'processing' ? 'job-created' : ''">processing</li>
@@ -442,9 +442,9 @@
               </div>
             </div>
 
-            <div class="collapse container-fluid" id="{{item.total}}"
-              style="padding-top: 1%;margin-left: 1%;margin-right: 1%;">
-              <div style="min-height: 30px;height: 30px;padding: 5%;">
+            <div class="collapse container-fluid" id="{{item._id}}"
+            style="min-height: 80px;height: 80px;padding: 1%;">
+              <div >
                 <div class="row multi-steps-wrap">
                   <ul class="list-unstyled multi-steps">
                     <li class="job-status" [ngClass]="item.status === 'processing' ? 'job-created' : ''">processing</li>

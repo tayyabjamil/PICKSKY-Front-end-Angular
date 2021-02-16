@@ -16,6 +16,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { ResetPasswordComponent } from './resetPassword/resetPassword.component';
+// import { FooterComponent } from '../home/footer/footer.component';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { ResetPasswordComponent } from './resetPassword/resetPassword.component'
     MatInputModule,
     MatToolbarModule,
     NgxIntlTelInputModule
+    // FooterComponent
   ],
   declarations: [
     AccountComponent,
@@ -36,7 +38,8 @@ import { ResetPasswordComponent } from './resetPassword/resetPassword.component'
     ResetPasswordComponent,
     ProfileComponent,
     EmailVerifyComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+
   ],
   exports: [
     AccountComponent,

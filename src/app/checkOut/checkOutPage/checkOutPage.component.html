@@ -57,7 +57,7 @@
 
                 <mat-form-field class="col-xs-6">
                   <mat-label><span style="font-size: 16px;"> Postal Code</span></mat-label>
-                  <input matInput formControlName="code">
+                  <input matInput formControlName="code" type="number">
                 </mat-form-field>
               </div>
               <div class="row">
@@ -173,7 +173,7 @@
 
                 <mat-form-field class="col-xs-6">
                   <mat-label><span style="font-size: 16px;">Sequrity Code</span></mat-label>
-                  <input matInput formControlName="sequrityCode">
+                  <input matInput formControlName="sequrityCode" type="number">
                 </mat-form-field>
               </div>
 
@@ -299,15 +299,20 @@
                 </mat-form-field>
               </div>
               <div >
-                <mat-form-field class="col-xs-5" appearance="outline">
+                <!-- <mat-select-country class="col-xs-5" appearance="outline"
+                label="Country"
+                [formControl]="countryFormControl"
+                (onCountrySelected)="onCountrySelected($event)">
+               </mat-select-country> -->
+                <!-- <mat-form-field class="col-xs-5" appearance="outline">
                   <mat-label><span style="font-size: 18px;"> Contry</span></mat-label>
                   <input matInput formControlName="contry">
-                </mat-form-field>
+                </mat-form-field> -->
                 <div class="col-xs-2"></div>
 
                 <mat-form-field class="col-xs-5" appearance="outline">
                   <mat-label><span style="font-size: 18px;"> Postal Code</span></mat-label>
-                  <input matInput formControlName="code">
+                  <input matInput formControlName="code" type="number">
                 </mat-form-field>
               </div>
               <div >
@@ -435,7 +440,7 @@
 
                 <mat-form-field class="col-6"  appearance="outline">
                   <mat-label><span style="font-size: 16px;">Sequrity Code</span></mat-label>
-                  <input matInput formControlName="sequrityCode">
+                  <input matInput formControlName="sequrityCode" type="number">
                 </mat-form-field>
               </div>
 
@@ -531,7 +536,7 @@
 
             <mat-form-field class="col-xs-5" appearance="outline">
               <mat-label><span style="font-size: 18px;"> Postal Code</span></mat-label>
-              <input matInput formControlName="code">
+              <input matInput formControlName="code" type="number">
             </mat-form-field>
           </div>
           <div >

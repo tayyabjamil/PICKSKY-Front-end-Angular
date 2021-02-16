@@ -55,18 +55,18 @@
           [type]="showPass ? 'text' : 'password'" class="textfieldBorderColor font13"
           [rformgroup]="rformSignup" rformControlName="password">
         </ns-textField-account>
-        <p style="font-size: 14px" class="errorlbl" *ngIf="
+        <div style="font-size: 14px" class="errorlbl" *ngIf="
         rformSignup.controls['password'].hasError('hasCapitalCase')
       ">
       password must have at least 1 Capital letter!
-    </p>
-    <p style="font-size: 14px" class="errorlbl"
+      </div>
+    <div style="font-size: 14px" class="errorlbl"
       *ngIf="rformSignup.controls['password'].hasError('hasSmallCase')">
       passowrd must have at least 1 Small letter!
-    </p>
-    <p class="errorlbl" style="font-size: 14px" *ngIf="rformSignup.controls['password'].hasError('hasDigit')">
+    </div>
+    <div class="errorlbl" style="font-size: 14px" *ngIf="rformSignup.controls['password'].hasError('hasDigit')">
       passowrd must have at least 1 number!
-    </p>
+    </div>
       </div>
       <div style="width: 40px">
         <button style="height: 35px" class="btn btn-default" (click)="passwordshow()" type="submit">

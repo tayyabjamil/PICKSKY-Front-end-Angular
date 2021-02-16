@@ -17,7 +17,7 @@ export class MainPageComponent implements OnInit {
   featuredProducts;
   loadingData = true;
   loadingImage = true;
-  searchProductsData = [];
+  searchProductsData;
   productSearch: Subscription;
   categories;
   cartItems = []
@@ -54,12 +54,14 @@ export class MainPageComponent implements OnInit {
 
     this.productSearch = this.productService.searchItems.subscribe((searchitem) => {
 
+      this.searchProductsData = searchitem
       // if (searchitem) {
-      //   this.searchProductsData = this.allProducts.find((productItem) => {
+      //   this.searchProductsData = this.allProducts.foreach((productItem) => {
       //     if (productItem && productItem.name && productItem.name.find(searchitem)) {
       //       return true;
       //     }
-      //   })
+      //   });
+
       //   this.searchProductsData;
       // } else {
       //   this.searchProductsData = this.allProducts;
@@ -68,7 +70,7 @@ export class MainPageComponent implements OnInit {
     this.categories = this.productService.categories
   }
 
-  scrollToTrending(){
+  scrollToTrending() {
     document.getElementById("trending").scrollIntoView({ behavior: "smooth" })
 
   }

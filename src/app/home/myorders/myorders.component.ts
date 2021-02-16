@@ -30,6 +30,8 @@ p: number = 1;
   deviceLg: boolean;
   deviceMd: boolean;
   deviceSm: boolean;
+  orderBy;
+  reverse = false;
 
   ngOnInit() {
     this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
@@ -43,10 +45,11 @@ p: number = 1;
     this.myOrders()
   }
 
-  setOrder(value: string) {
-
-    this.allOrders = this.orderPipe.transform(this.allOrders, value);
-    console.log(this.allOrders);
+  setOrder(order, reverse) {
+    // this.allOrders = this.orderPipe.transform(this.allOrders, value);
+    // console.log(this.allOrders);
+    this.orderBy = order;
+    this.reverse = reverse;
   }
 
   myOrders() {

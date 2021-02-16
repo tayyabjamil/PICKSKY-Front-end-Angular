@@ -1,24 +1,20 @@
 <mat-sidenav-container>
   <mat-sidenav style="background-color: white" #drawer class="sidenav" fixedInViewport="false"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-    <mat-toolbar  class="row" routerLink="/" >
-    <div class="col-1"></div>
-      <div style="padding-left: 35px;" class="col-9" >
-      Catagories
-    </div>
-    <div (click)="drawer.toggle()" class="col-2">
-      <a >
-        <span class="glyphicon glyphicon-arrow-left"></span>
-      </a>
-    </div>
+    <mat-toolbar class="row" routerLink="/">
+      <div class="col-1"></div>
+      <div style="padding-left: 35px" class="col-9">Catagories</div>
+      <div (click)="drawer.toggle()" class="col-2">
+        <a>
+          <span class="glyphicon glyphicon-arrow-left"></span>
+        </a>
+      </div>
 
-  <div>
-
-  </div>
-  </mat-toolbar>
+      <div></div>
+    </mat-toolbar>
     <mat-nav-list class="fundpress-menu" style="background-color: white">
-      <ul class="nav-menu" >
-        <li class="dropdown"  routerLink="/">
+      <ul class="nav-menu">
+        <li class="dropdown" routerLink="/">
           <a>{{ getHeaderNames(1) }}</a>
         </li>
 
@@ -89,9 +85,7 @@
                 }}</a>
             </li>
             <li (click)="drawer.toggle()">
-              <a (click)="catagory('HotCombo')">{{
-                getSpecialConstants(3)
-                }}</a>
+              <a (click)="catagory('HotCombo')">{{ getSpecialConstants(3) }}</a>
             </li>
             <li (click)="drawer.toggle()">
               <a (click)="catagory('SweetsCombo')">{{
@@ -123,7 +117,7 @@
           <ul class="dropdown-menu">
             <li (click)="drawer.toggle()">
               <a>{{ getSupportConstants(1) }}</a>
-            </li >
+            </li>
             <li (click)="drawer.toggle()">
               <a>{{ getSupportConstants(2) }}</a>
             </li>
@@ -137,151 +131,133 @@
             </li>
           </ul>
         </li>
-        </ul>
+      </ul>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <div *ngIf="isShow == true" style="width: 100%; margin-left: 2%;margin-top: 1%;  margin-bottom: 1%" class="row">
-      <div *ngIf="isShow == true" class="col-xs-10" style="
-            border-radius: 6px;
-            font-weight: 300px;
-            background-color: rgb(240, 238, 238);
-          ">
-        <span><i class="fa fa-search" style="
-                font-weight: 200;
-                font-size: large;
+    <div *ngIf="isShow == true" style="width: 100%; margin-left: 2%; margin-top: 1%; margin-bottom: 1%" class="row">
+      <span><i class="fa fa-search" style="
+            font-weight: 200;
+            font-size: large;
+            padding: 2%;
+            color: rgb(134, 132, 132);
+          "></i></span>
+      <input class="searchHome" *ngIf="isShow == true" class="col-xs-10" style="
+          border-radius: 6px;
+          margin-left: 10px;
+          font-weight: 300px;
+          background-color: rgb(240, 238, 238);
+        " (input)="onSearchChange($event.target.value)" placeholder="What Are You Looking For?" />
 
-                padding: 2%;
-
-                color: rgb(134, 132, 132);
-              "></i></span>
-      </div>
-      <div class="col-xs-1" (click)="toggleDisplay()"
-        style=" padding-top: 2%;font-size: large;font-weight: 300px; color: grey">
+      <div class="col-xs-1" (click)="toggleDisplay()" style="font-size: large; font-weight: 300px; color: grey">
         <i class="fa fa-times"></i>
       </div>
     </div>
-    <div style="display: flex; justify-content: space-between; align-items: center;" *ngIf="isShow == false">
-
-      <div style="display: flex; align-items: center; margin-left: 5%;">
+    <div style="display: flex; justify-content: space-between; align-items: center" *ngIf="isShow == false">
+      <div style="display: flex; align-items: center; margin-left: 5%">
         <div>
           <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
             *ngIf="isHandset$ | async">
-            <mat-icon aria-label="Side nav toggle icon" style="margin-bottom: 1%;color: black">menu</mat-icon>
+            <mat-icon aria-label="Side nav toggle icon" style="margin-bottom: 1%; color: black">menu</mat-icon>
           </button>
         </div>
-        <div >
-          <div style="
-              color: black;
-              font-size: large;
-              font-weight: 500;
-              " routerLink="">
+        <div>
+          <div style="color: black; font-size: large; font-weight: 500" routerLink="">
             SHRIVASAFOODS
           </div>
         </div>
       </div>
 
-      <div style="display: flex; align-items: center;  margin-right: 2%;">
-        <div >
+      <div style="display: flex; align-items: center; margin-right: 2%">
+        <div>
           <div (click)="toggleDisplay()" style="font-size: large; font-weight: 300px; color: grey">
             <i class="fa fa-search"></i>
           </div>
         </div>
-        <div *ngIf="!authService.loggedIn()" >
-          <i class="fa fa-user-circle-o" routerLink="/login" style="font-size: x-large;"></i>
-         </div>
+        <div *ngIf="!authService.loggedIn()">
+          <i class="fa fa-user-circle-o" routerLink="/login" style="font-size: x-large"></i>
+        </div>
 
-        <div *ngIf="authService.loggedIn()" style="font-size: large; ">
+        <div *ngIf="authService.loggedIn()" style="font-size: large">
           Hi {{ usernameLogin }}
         </div>
-        <div *ngIf="authService.loggedIn()" style="display: flex; flex-direction: row;">
+        <div *ngIf="authService.loggedIn()" style="display: flex; flex-direction: row">
           <i class="fa fa-cog" style="font-size: xx-large" [popover]="popTemplate" popoverTitle="Hi{{ username }}"></i>
           <div>
             <ng-template #popTemplate>
-
-              <div  class="row">
-
-                  <div class="col-6" style="padding-top: 1%">
-                    <i class="fa fa-user-circle-o" routerLink="/myOrders" style="font-size: xx-large"></i>
-                    <p routerLink="/myOrders" routerLinkActive="router-link-active">
-                      My Profile
-                    </p>
-                  </div>
-                  <div class="col-6" style="padding-top: 1%">
-                    <i class="fa fa-user-circle-o" routerLink="/myOrders" style="font-size: xx-large"></i>
-                    <p routerLink="/myOrders" routerLinkActive="router-link-active">
-                      My orders
-                    </p>
-                  </div>
-
+              <div class="row">
+                <div class="col-6" style="padding-top: 1%">
+                  <i class="fa fa-user-circle-o" routerLink="/myOrders" style="font-size: xx-large"></i>
+                  <p routerLink="/myOrders" routerLinkActive="router-link-active">
+                    My Profile
+                  </p>
                 </div>
-                  <div class="row">
-
-                  <div class="col-6" style="padding-top: 1%">
-                    <i class="fa fa-user-circle-o" routerLink="/aboutUs" style="font-size: xx-large"></i>
-                    <p routerLink="/aboutUs" routerLinkActive="router-link-active">
-                      About
-                    </p>
-                  </div>
-                  <div class="col-6" style="padding-top: 1%">
-                    <i class="fa fa-user-circle-o" routerLink="/testimonals" style="font-size: xx-large"></i>
-                    <p routerLink="/testimonals" routerLinkActive="router-link-active">
-                      Testimonal
-                    </p>
-                  </div>
-
-                  </div>
-                  <div class="row">
-                    <div class="col-6" style="padding-top: 1%">
-                    <i class="fa fa-user-circle-o" routerLink="/admin" style="font-size: xx-large"></i>
-                    <p routerLink="/admin" routerLinkActive="router-link-active">
-                      Admin
-                    </p>
-                  </div>
-                  <div class="col-6" style="padding-top: 1%">
-                    <i class="fa fa-user-circle-o" routerLink="/supportpage" style="font-size: xx-large"></i>
-                    <p routerLink="/supportpage" routerLinkActive="router-link-active">
-                      Support
-                    </p>
-                  </div>
-
+                <div class="col-6" style="padding-top: 1%">
+                  <i class="fa fa-user-circle-o" routerLink="/myOrders" style="font-size: xx-large"></i>
+                  <p routerLink="/myOrders" routerLinkActive="router-link-active">
+                    My orders
+                  </p>
                 </div>
-                <div class="row">
-                  <div class="col-6" style="padding-top: 1%">
-                    <i class="fa fa-user-circle-o" routerLink="/giftCards" style="font-size: xx-large"></i>
-                    <p routerLink="/giftCards">Gift Cards</p>
-                  </div>
-                  <div class="col-6" style="padding-top: 1%">
-                    <li *ngIf="authService.loggedIn()" style="font-size: xx-large" routerLink="/referFriend"
-                      class="fa fa-sign-out"></li>
-                    <p *ngIf="authService?.loggedIn()" routerLink="/referFriend ">
-                      Refer Friend
-                    </p>
-                  </div>
-
+              </div>
+              <div class="row">
+                <div class="col-6" style="padding-top: 1%">
+                  <i class="fa fa-user-circle-o" routerLink="/aboutUs" style="font-size: xx-large"></i>
+                  <p routerLink="/aboutUs" routerLinkActive="router-link-active">
+                    About
+                  </p>
                 </div>
-                <div class="row">
-
-                  <div class="col-6" style="padding-top: 1%">
-                    <i class="fa fa-user-circle-o" routerLink="/blog" style="font-size: xx-large"></i>
-                    <p routerLink="/blog" routerLinkActive="router-link-active">
-                      Blog
-                    </p>
-                  </div>
-                  <div  class="col-6" style="padding-top: 1%">
-                    <li *ngIf="authService.loggedIn()" style="font-size: xx-large" (click)="onLogoutClick()"
-                      class="fa fa-sign-out"></li>
-                    <p *ngIf="authService.loggedIn()">Logout</p>
-                  </div>
+                <div class="col-6" style="padding-top: 1%">
+                  <i class="fa fa-user-circle-o" routerLink="/testimonals" style="font-size: xx-large"></i>
+                  <p routerLink="/testimonals" routerLinkActive="router-link-active">
+                    Testimonal
+                  </p>
                 </div>
-
+              </div>
+              <div class="row">
+                <div class="col-6" style="padding-top: 1%">
+                  <i class="fa fa-user-circle-o" routerLink="/admin" style="font-size: xx-large"></i>
+                  <p routerLink="/admin" routerLinkActive="router-link-active">
+                    Admin
+                  </p>
+                </div>
+                <div class="col-6" style="padding-top: 1%">
+                  <i class="fa fa-user-circle-o" routerLink="/supportpage" style="font-size: xx-large"></i>
+                  <p routerLink="/supportpage" routerLinkActive="router-link-active">
+                    Support
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6" style="padding-top: 1%">
+                  <i class="fa fa-user-circle-o" routerLink="/giftCards" style="font-size: xx-large"></i>
+                  <p routerLink="/giftCards">Gift Cards</p>
+                </div>
+                <div class="col-6" style="padding-top: 1%">
+                  <li *ngIf="authService.loggedIn()" style="font-size: xx-large" routerLink="/referFriend"
+                    class="fa fa-sign-out"></li>
+                  <p *ngIf="authService?.loggedIn()" routerLink="/referFriend ">
+                    Refer Friend
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6" style="padding-top: 1%">
+                  <i class="fa fa-user-circle-o" routerLink="/blog" style="font-size: xx-large"></i>
+                  <p routerLink="/blog" routerLinkActive="router-link-active">
+                    Blog
+                  </p>
+                </div>
+                <div class="col-6" style="padding-top: 1%">
+                  <li *ngIf="authService.loggedIn()" style="font-size: xx-large" (click)="onLogoutClick()"
+                    class="fa fa-sign-out"></li>
+                  <p *ngIf="authService.loggedIn()">Logout</p>
+                </div>
+              </div>
             </ng-template>
-             </div>
+          </div>
         </div>
       </div>
-
     </div>
-    <ng-content>
-    </ng-content>
+    <ng-content> </ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>

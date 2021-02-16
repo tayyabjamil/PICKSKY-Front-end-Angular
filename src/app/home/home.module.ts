@@ -59,6 +59,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { OrderModule } from 'ngx-order-pipe';
+import { MatSelectCountryModule } from '@angular-material-extensions/select-country';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -88,7 +90,9 @@ import { OrderModule } from 'ngx-order-pipe';
     ToastrModule.forRoot(),
     OrderModule,
     NgxPaginationModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    MatSelectCountryModule,
+    MatSelectCountryModule.forRoot('de')
 
   ],
   declarations: [

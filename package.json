@@ -12,6 +12,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-material-extensions/select-country": "^4.0.3",
     "@angular/animations": "^10.1.6",
     "@angular/cdk": "^10.2.7",
     "@angular/common": "~10.1.6",
