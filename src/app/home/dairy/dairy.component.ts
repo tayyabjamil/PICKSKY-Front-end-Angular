@@ -37,9 +37,10 @@ export class DairyComponent implements OnInit {
         addProduct(item){
       this.cartService.addProduct(item);
         }
-        getCatagoryProducts() {
-          this.productService.getCatagoryProducts('dairy').subscribe((products) => {
-            this.dairyProducts = products;
+  getCatagoryProducts() {
+    this.productService.getProducts().subscribe((products: any) => {
+      let pageProduct = products.filter((productPage) => productPage.catagory === 'dairy')
+        this.dairyProducts = pageProduct;
           }, (error) => {
             console.log('error in getting all products');
           });
