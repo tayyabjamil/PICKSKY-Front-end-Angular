@@ -38,8 +38,9 @@ export class SpecialOffersComponent implements OnInit {
     this.cartService.addProduct(item);
   }
   getCatagoryProducts() {
-    this.productService.getCatagoryProducts('specialoffers').subscribe((products) => {
-      this.specialoffersProducts = products;
+    this.productService.getProducts().subscribe((products: any) => {
+      let pageProduct = products.filter((productPage) => productPage.catagory === 'specialoffers')
+      this.specialoffersProducts = pageProduct;
     }, (error) => {
       console.log('error in getting all products');
     });

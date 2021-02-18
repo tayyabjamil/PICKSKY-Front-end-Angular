@@ -33,8 +33,9 @@ export class PicklesComponent implements OnInit {
   }
 
   getCatagoryProducts() {
-    this.productService.getCatagoryProducts('pickles').subscribe((products) => {
-      this.vegProducts = products;
+    this.productService.getProducts().subscribe((products: any) => {
+      let pageProduct = products.filter((productPage) => productPage.catagory === 'pickles')
+      this.vegProducts = pageProduct;
     }, (error) => {
       console.log('error in getting all products');
     });

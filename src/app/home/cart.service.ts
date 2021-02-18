@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../auth.service';
 import { of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -97,7 +98,7 @@ export class CartService {
     const username = this.myauthService.getusername()
     const user = this.myauthService.getID()
     return this.http.post(
-      'http://localhost:8000/api/orders/',
+      `${environment.apiURL}${environment.SHRIVASA_FOODS_ORDERS_API}`,
       {
         cartData: orderData.cartItems,
         total: orderData.total,

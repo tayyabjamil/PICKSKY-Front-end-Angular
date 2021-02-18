@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../auth.service';
+import { environment } from '../../environments/environment';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +21,7 @@ export class AccountService {
   createuserAccount(newUser) {
 
     return this.http.post(
-      'http://localhost:8000/api/users/',
+      `${environment.apiURL}${environment.SHRIVASA_FOODS_USER_API}`,
       {
         firstName: newUser.firstName,
         lastName: newUser.lastName,
@@ -36,7 +39,7 @@ export class AccountService {
   signUp(newUser) {
 
     return this.http.post(
-      'http://localhost:8000/api/users/signUpSocial',
+      `${environment.apiURL}${environment.SHRIVASA_FOODS_USER_API}` +'/signUpSocial',
       {
         firstName: newUser.firstName,
         lastName: newUser.lastName,
@@ -54,7 +57,7 @@ export class AccountService {
   signIn(newUser) {
 
     return this.http.post(
-      'http://localhost:8000/api/users/signInSocial',
+      `${environment.apiURL}${environment.SHRIVASA_FOODS_USER_API}`+'/signInSocial',
       {
         firstName: newUser.firstName,
         lastName: newUser.lastName,
@@ -70,9 +73,8 @@ export class AccountService {
     );
   }
   login(user) {
-
     return this.http.post(
-      'http://localhost:8000/api/users/login',
+      `${environment.apiURL}${environment.SHRIVASA_FOODS_USER_API}`+'/login',
       {
         email: user.email,
         password: user.password,
@@ -86,7 +88,7 @@ export class AccountService {
   forgetPassword(data) {
     // const email = this.myauthService.getemail()
     return this.http.post(
-      'http://localhost:8000/api/users/forgetPassword/',
+      `${environment.apiURL}${environment.SHRIVASA_FOODS_USER_API}` +'/forgetPassword/',
       {
         email: data.email
       },
@@ -95,7 +97,7 @@ export class AccountService {
   }
   resetPassword(newPass) {
     return this.http.post(
-      'http://localhost:8000/api/users/resetPassword/',
+      `${environment.apiURL}${environment.SHRIVASA_FOODS_USER_API}`+'/resetPassword/',
       {
         confirmPassword: newPass.confirmPassword,
         password: newPass.newPassword,
@@ -106,7 +108,7 @@ export class AccountService {
   }
   accountVerify(data) {
     return this.http.post(
-      'http://localhost:8000/api/users/accountVerify/',
+      `${environment.apiURL}${environment.SHRIVASA_FOODS_USER_API}`+'/accountVerify/',
       {
         token: data.accountToken,
         isVerify: data.isVerify,
@@ -117,7 +119,7 @@ export class AccountService {
   }
   editInfo(data) {
     return this.http.post(
-      'http://localhost:8000/api/users/editInfo/',
+      `${environment.apiURL}${environment.SHRIVASA_FOODS_USER_API}`+'/editInfo/',
       {
         userId: this.myauthService.getID(),
         username: data.username,
@@ -132,7 +134,7 @@ export class AccountService {
   }
   editPassword(data) {
     return this.http.post(
-      'http://localhost:8000/api/users/editPassword/',
+      `${environment.apiURL}${environment.SHRIVASA_FOODS_USER_API}`+'/editPassword/',
       {
         userId: this.myauthService.getID(),
         oldPassword: data.oldPassword,

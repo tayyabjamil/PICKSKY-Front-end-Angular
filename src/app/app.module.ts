@@ -63,12 +63,12 @@ const facebookid = '2702502043208538';
         {
           id: GoogleLoginProvider.PROVIDER_ID,
           provider: new GoogleLoginProvider(
-            '957381003231-bt0brr1vn47vpgg10u2naiekq1tgbo3k.apps.googleusercontent.com'
+            '572390913824-bm7m30cl9kdl89kdbp00mhnl92jh91ae.apps.googleusercontent.com'
           )
         },
         {
           id: FacebookLoginProvider.PROVIDER_ID,
-          provider: new FacebookLoginProvider('712246012755918')
+          provider: new FacebookLoginProvider('1162828197469396')
         }
       ]
     } as SocialAuthServiceConfig,

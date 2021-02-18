@@ -36,8 +36,10 @@ export class TraditionalPowdersComponent implements OnInit {
   }
 
   getCatagoryProducts() {
-    this.productService.getCatagoryProducts('traditionalpowders').subscribe((products) => {
-      this.traditionalpowdersProducts = products;
+    
+    this.productService.getProducts().subscribe((products: any) => {
+      let pageProduct = products.filter((productPage) => productPage.catagory === 'traditionalpowders')
+      this.traditionalpowdersProducts = pageProduct;
     }, (error) => {
       console.log('error in getting all products');
     });

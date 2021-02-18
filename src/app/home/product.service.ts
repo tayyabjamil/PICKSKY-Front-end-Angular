@@ -2,10 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../auth.service';
 import { Subject } from 'rxjs/internal/Subject';
+import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
+  private featuredProductsSavedResponse;
+  private allProductsSavedResponse;
+  private allOrdersSavedResponse;
 
   public searchItems = new Subject<string>();
   categories = [
@@ -69,7 +74,7 @@ export class ProductService {
       routeTo: 'SweetsCombo',
       title: 'Sweets Combo',
     },
-   ];
+  ];
 
   constructor(public http: HttpClient, private myauthService: AuthService) { }
 
@@ -91,42 +96,80 @@ export class ProductService {
     this.searchItems.next(value)
   }
 
-  getProducts() {
-    return this.http.get('http://localhost:8000/api/products', this.httpHeaders);
+  getProducts(): Observable<any> {
+    //This service even after this update returns observable in both cases (http or cache).
+    return new Observable((observer) => {
+      if (this.allProductsSavedResponse) {
+        observer.next(this.allProductsSavedResponse);
+        observer.complete();
+      } else { /* make http request & process */
+        this.http.get(`${environment.apiURL}${environment.SHRIVASA_FOODS_PRODUCTS_API}`, this.httpHeaders).subscribe(data => {
+          this.allProductsSavedResponse = data;
+          observer.next(this.allProductsSavedResponse);
+          observer.complete();
+        }); /* make sure to handle http error */
+
+      }
+    });
+
   }
 
-  getOrders() {
-    return this.http.get('http://localhost:8000/api/orders/' + this.myauthService.getID(), this.httpHeaders);
+  getOrders(): Observable<any>  {
+    return new Observable((observer) => {
+      if (this.allOrdersSavedResponse) {
+        observer.next(this.allOrdersSavedResponse);
+        observer.complete();
+      } else { /* make http request & process */
+        this.http.get(`${environment.apiURL}${environment.SHRIVASA_FOODS_ORDERS_API}` + this.myauthService.getID(), this.httpHeaders).subscribe(data => {
+          this.allOrdersSavedResponse = data;
+          observer.next(this.allOrdersSavedResponse);
+          observer.complete();
+        }); /* make sure to handle http error */
+
+      }
+    });
   }
 
-  featuredProducts() {
-    return this.http.get('http://localhost:8000/api/products/featuredProducts', this.httpHeaders);
+  featuredProducts(): Observable<any> {
+    return new Observable((observer) => {
+      if (this.featuredProductsSavedResponse) {
+        observer.next(this.featuredProductsSavedResponse);
+        observer.complete();
+      } else { /* make http request & process */
+        this.http.get(`${environment.apiURL}${environment.SHRIVASA_FOODS_PRODUCTS_API}` + '/featuredProducts', this.httpHeaders).subscribe(data => {
+          this.featuredProductsSavedResponse = data;
+          observer.next(this.featuredProductsSavedResponse);
+          observer.complete();
+        }); /* make sure to handle http error */
+      }
+
+    });
   }
 
   getCatagoryProducts(catagory) {
-    return this.http.get('http://localhost:8000/api/products/catagory/' + catagory, this.httpHeaders);
+    return this.http.get(`${environment.apiURL}${environment.SHRIVASA_FOODS_PRODUCTS_API}` + '/catagory/' + catagory, this.httpHeaders);
   }
 
   productImageUrl(name) {
-    return 'http://localhost:8000/api/products/image/' + name;
+    return `${environment.apiURL}${environment.SHRIVASA_FOODS_PRODUCTS_API}` + '/image/' + name;
   }
 
   getOrsers(id) {
-    return this.http.get('http://localhost:8000/api/orders/' + id, this.httpHeaders);
+    //  return this.http.get(`${environment.apiURL}${environment.SHRIVASA_FOODS_ORDERS_API}` + id, this.httpHeaders);
   }
-  cancelOrder(id){
-  const ownerEmail= this.myauthService.getemail()
-    return this.http.post('http://localhost:8000/api/orders/cancelOrder/',
-    {
-     id:id,
-     ownerEmail:ownerEmail
-    },
-    this.httpHeaders);
+  cancelOrder(id) {
+    const ownerEmail = this.myauthService.getemail()
+    return this.http.post(`${environment.apiURL}${environment.SHRIVASA_FOODS_ORDERS_API}` + '/cancelOrder/',
+      {
+        id: id,
+        ownerEmail: ownerEmail
+      },
+      this.httpHeaders);
 
   }
   referFriend(data) {
     return this.http.post(
-      'http://localhost:8000/api/users/referFriend',
+      `${environment.apiURL}${environment.SHRIVASA_FOODS_USER_API}` + '/referFriend',
       {
         userId: this.myauthService.getID(),
         refrenceCode: data.refrenceCode,
@@ -138,4 +181,6 @@ export class ProductService {
   // supportPage(data){
   //   return 'http://localhost:8000/api/products/image/' + data;
   // }
+
+
 }
