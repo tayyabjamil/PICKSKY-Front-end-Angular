@@ -64,9 +64,9 @@ export class CheckOutPageComponent implements OnInit {
   selectShippingMethod = ''
   backtoCheckOut;
   firstName: ''
-  paymentFormError=''
+  paymentFormError = ''
   lastName: ''
-  countryError=''
+  countryError = ''
   @ViewChild('stepper') stepper: MatStepper;
   ngOnInit(
 
@@ -95,20 +95,20 @@ export class CheckOutPageComponent implements OnInit {
     // }
     this.firstFormGroup = this._formBuilder.group({
 
-      email: [dataEmail, ],
-      fname: ['', ],
-      lname: ['', ],
-      city: ['', ],
-      adress1: ['', ],
+      email: [dataEmail,],
+      fname: ['',],
+      lname: ['',],
+      city: ['',],
+      adress1: ['',],
       adress2: ['',],
-      contry: ['', ],
-      code: ['', ],
-      state: ['', ],
-      appartment: ['', ],
+      contry: ['',],
+      code: ['',],
+      state: ['',],
+      appartment: ['',],
 
     });
     this.secondFormGroup = this._formBuilder.group({
-      method: ['', ]
+      method: ['',]
     });
     this.thirdFormGroup = this._formBuilder.group({
       cardNo: ['',],
@@ -140,18 +140,18 @@ export class CheckOutPageComponent implements OnInit {
     if (this.firstFormGroup.valid) {
       this.stepper.selectedIndex = index;
       this.countryError = ''
-    }else{
-  this.countryError = 'show'
+    } else {
+      this.countryError = 'show'
     }
   }
-  paymentDone(){
+  paymentDone() {
     if (this.thirdFormGroup.valid) {
-     this.move(3)
-  }else{
-    this.paymentFormError = 'show'
+      this.move(3)
+    } else {
+      this.paymentFormError = 'show'
 
     }
-}
+  }
   payment(index) {
     if (this.secondFormGroup.valid) {
       this.stepper.selectedIndex = index;
@@ -193,42 +193,42 @@ export class CheckOutPageComponent implements OnInit {
 
   order() {
     this.productService.payment(this.thirdFormGroup.value).subscribe((data: any) => {
-      if(data){
-    if (this.authService.getID()) {
-      this.authService.getemail()
-      const orderData = {
-        cartItems: this.cartItems,
-        total: this.total,
-        firstName: this.firstFormGroup.value.fname,
-        lastName: this.firstFormGroup.value.lname,
-        city: this.firstFormGroup.value.city,
-        adress: this.firstFormGroup.value.adress,
-        code: this.firstFormGroup.value.code,
-        contry: this.firstFormGroup.value.contry,
-        method: this.secondFormGroup.value.method,
-        refrence: this.refrence,
-        phase: "processing",
-        ownerEmail: this.authService.getemail()
+      if (data) {
+        if (this.authService.getID()) {
+          this.authService.getemail()
+          const orderData = {
+            cartItems: this.cartItems,
+            total: this.total,
+            firstName: this.firstFormGroup.value.fname,
+            lastName: this.firstFormGroup.value.lname,
+            city: this.firstFormGroup.value.city,
+            adress: this.firstFormGroup.value.adress,
+            code: this.firstFormGroup.value.code,
+            contry: this.firstFormGroup.value.contry,
+            method: this.secondFormGroup.value.method,
+            refrence: this.refrence,
+            phase: "processing",
+            ownerEmail: this.authService.getemail()
+
+          }
+          // this.printOrder(orderData);
+          this.cartService.order(orderData).subscribe((data: any) => {
+            this.toastr.success('Order Submitted Successfully', 'Success')
+            this.pdfDownload(orderData)
+            this.router.navigate(['/'])
+          })
+          localStorage.setItem('backtoCheckOut', "");
+          this.cartService.emptyProduct()
+        } else {
+          localStorage.setItem('backtoCheckOut', "true");
+          this.loginFirst = 'show'
+
+        }
 
       }
-      // this.printOrder(orderData);
-      this.cartService.order(orderData).subscribe((data: any) => {
-        this.toastr.success('Order Submitted Successfully', 'Success')
-        this.pdfDownload(orderData)
-        this.router.navigate(['/'])
-      })
-      localStorage.setItem('backtoCheckOut', "");
-      this.cartService.emptyProduct()
-    } else {
-      localStorage.setItem('backtoCheckOut', "true");
-      this.loginFirst = 'show'
-
-    }
-
-  }
-},(error)=>{
-alert("payment not succesfull")
-})
+    }, (error) => {
+      alert("payment not succesfull")
+    })
 
   }
   move(index: number) {
