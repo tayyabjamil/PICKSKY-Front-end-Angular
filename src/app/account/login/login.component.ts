@@ -114,8 +114,13 @@ export class LoginComponent implements OnInit {
         this.setusername(data.username);
         this.setemail(data.email)
         this.setRefrenceId(data.refrenceId)
+
+        this.setfName(data.firstName)
+        this.setlName(data.lastName)
         this.setPhone(data.phone)
         this.setAccountBonus(data.accountBonus)
+        this.setAccountType(data.role)
+
         this.isLoggedIn = true;
 
         if(this.backtoCheckOut !== 'true'){
@@ -151,6 +156,18 @@ export class LoginComponent implements OnInit {
   forgetPassword() {
     this.router.navigate(['/forgetPassword'])
   }
+  setAccountType(role){
+    localStorage.setItem('role', JSON.stringify(role));
+
+  }
+  setfName(firstName){
+    localStorage.setItem('firstName', JSON.stringify(firstName));
+  }
+
+setlName(lastname){
+    localStorage.setItem('lastname', JSON.stringify(lastname));
+  }
+
   setId(userId) {
     localStorage.setItem('userId', JSON.stringify(userId));
   }
@@ -206,6 +223,7 @@ export class LoginComponent implements OnInit {
           this.setAccountBonus(data.accountBonus)
           this.setPhone(data.email)
           this.setRefrenceId(data.refrenceId)
+          this.setAccountType(data.role)
           this.isLoggedIn = true;
           if(this.backtoCheckOut !== 'true'){
             this.toastr.success('Logged in', 'Success' )
@@ -254,7 +272,7 @@ export class LoginComponent implements OnInit {
           this.setemail(data.email)
           this.setAccountBonus(data.accountBonus)
           this.setPhone(data.email)
-
+          this.setAccountType(data.role)
           this.setRefrenceId(data.refrenceId)
           this.isLoggedIn = true;
           if(this.backtoCheckOut !== 'true'){

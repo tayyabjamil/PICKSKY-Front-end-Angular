@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { CartService } from '../cart.service';
-import { ProductService } from '../product.service';
 import { AboutusConstants, HeaderConstants, SpecialConstants } from '../../appconstants';
 import { AdminService } from '../../admin/admin.service'
+import { CartService } from 'src/app/home/cart.service';
+import { ProductService } from 'src/app/home/product.service';
 
 
 @Component({
@@ -58,9 +58,9 @@ export class FooterComponent implements OnInit {
         maximumAge: 0
       });
     });
-  
+
   }
-  
+
   getlocation() {
     this.watchpostion().then(resp => {
       this.adminService.getlocation(resp.latitude, resp.longitude).subscribe((data: any) => {

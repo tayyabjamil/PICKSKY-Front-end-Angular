@@ -7,7 +7,6 @@ import { TestimonalsComponent } from './testimonals/testimonals.component';
 import { DiscountComponent } from './discount/discount.component';
 import { CatagoryComponent } from './catagory/catagory.component';
 import { SupportPageComponent } from './supportPage/supportPage.component';
-import { FooterComponent } from './footer/footer.component';
 import { MyordersComponent } from './myorders/myorders.component';
 import { MainPageComponent } from './mainPage/mainPage.component';
 import { ProductDetailComponent } from './productDetail/productDetail.component';
@@ -25,10 +24,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { CustomizeComponent } from './customize/customize.component';
+import { PaymentPageComponent } from './paymentPage/paymentPage.component';
 // import check from '../cart/cart.module'
 const routes: Routes = [
   { path: 'checkOut', loadChildren: '../checkOut/checkOut.module#CheckOutModule' },
   { path: 'cart', loadChildren: '../cart/cart.module#CartModule' },
+  { path: 'products', loadChildren: './admin/admin.module#AdminModule' },
+
+
   {
     path: '', component: HomeComponent,
 
@@ -50,6 +53,7 @@ const routes: Routes = [
       // { path: 'support', component: SupportPageComponent },
       { path: 'supportpage', component: SupportPageComponent },
       { path: 'blog', component: BlogComponent },
+      { path: 'paymentPage', component: PaymentPageComponent },
       { path: 'home', component: HomeComponent },
       { path: 'customize', component: CustomizeComponent },
       { path: 'giftCards', component: GiftCardsComponent },

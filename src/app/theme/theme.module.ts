@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CustomizeOptionSelectComponent } from './customize-option-select/customize-option-select.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   imports: [
@@ -10,7 +11,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatIconModule,
     MatCheckboxModule
   ],
-  declarations: [CustomizeOptionSelectComponent],
-  exports: [CustomizeOptionSelectComponent]
+  declarations: [CustomizeOptionSelectComponent, FooterComponent],
+  exports: [CustomizeOptionSelectComponent, FooterComponent]
 })
 export class ThemeModule { }

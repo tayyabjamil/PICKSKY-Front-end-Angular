@@ -134,7 +134,11 @@ export class MainPageComponent implements OnInit {
     );
   }
 
-  addProduct(item) {
+  addProduct(item, productRef) {
+    if (productRef) {
+      let x = parseInt(productRef.innerText);
+      productRef.innerText = x + 1;
+    }
     this.cartService.addProduct(item);
   }
 
@@ -156,10 +160,16 @@ export class MainPageComponent implements OnInit {
     }
   }
 
-  removeProduct(product) {
-    this.cartService.removeProduct(product)
-  }
+  removeProduct(item, productRef) {
+    if (productRef) {
+      let x = parseInt(productRef.innerText);
+      if(x>0){
+      productRef.innerText = x - 1 ;
 
+     this.cartService.removeProduct(item);
+      }
+     }
+  }
   onImageClick(index) {
     this.router.navigate(['catagory/' + this.categories[index].routeTo]);
 

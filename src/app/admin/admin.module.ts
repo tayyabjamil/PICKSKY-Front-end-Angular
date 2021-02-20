@@ -11,9 +11,9 @@ import { TextFieldComponent } from './../admin/textField/textField.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ProductsComponent } from './products/products.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
-  imports: [CommonModule, AdminRoutingModule, FormsModule, ReactiveFormsModule, MatSelectModule, MatFormFieldModule],
+  imports: [CommonModule, AdminRoutingModule,NgxPaginationModule, FormsModule, ReactiveFormsModule, MatSelectModule, MatFormFieldModule],
   declarations: [AdminComponent, AddProductComponent,ProductsComponent, TextFieldComponent, OrdersProgressComponent],
   exports: [AdminComponent, AddProductComponent, ProductsComponent,TextFieldComponent, OrdersProgressComponent],
   providers: [AdminService],

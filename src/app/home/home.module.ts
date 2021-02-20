@@ -6,8 +6,6 @@ import { AboutUSComponent } from './aboutus/aboutus.component';
 import { AboutusConstants } from './../appconstants';
 import { TestimonalsComponent } from './testimonals/testimonals.component';
 import { CatagoryComponent } from './catagory/catagory.component';
-
-import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { MyordersComponent } from './myorders/myorders.component';
 import { NavComponent } from './nav/nav.component';
@@ -60,6 +58,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { OrderModule } from 'ngx-order-pipe';
 import { MatSelectCountryModule } from '@angular-material-extensions/select-country';
+import { PaymentPageComponent } from './paymentPage/paymentPage.component';
 
 @NgModule({
   imports: [
@@ -107,7 +106,6 @@ import { MatSelectCountryModule } from '@angular-material-extensions/select-coun
     ProductDetailComponent,
     MainPageComponent,
     MyordersComponent,
-    FooterComponent,
     CatagoryComponent,
     DiscountComponent,
     SupportPageComponent,
@@ -127,7 +125,8 @@ import { MatSelectCountryModule } from '@angular-material-extensions/select-coun
     GiftCardsComponent,
     ReferFriendComponent,
     MainPageListItemComponent,
-    CustomizeComponent
+    CustomizeComponent,
+    PaymentPageComponent
 
   ],
   exports: [
@@ -147,7 +146,6 @@ import { MatSelectCountryModule } from '@angular-material-extensions/select-coun
     SupportPageComponent,
     AboutUSComponent,
     MyordersComponent,
-    FooterComponent,
     PicklesComponent,
     TraditionalPowdersComponent,
     SpecialOffersComponent,
@@ -158,7 +156,7 @@ import { MatSelectCountryModule } from '@angular-material-extensions/select-coun
     ReturnandrefundsComponent,
     GiftCardsComponent,
     ReferFriendComponent,
-
+    PaymentPageComponent
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })

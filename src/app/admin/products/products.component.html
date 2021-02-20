@@ -1,7 +1,7 @@
-<div  style="margin-top: 10%;" >
+<div  style="min-height: 500px;" >
   <hr>
   <h1 style="text-align: center;font-weight: bold;">Products</h1>
- <div style="border: 1px;border-style: groove;">
+ <div >
     <div class="row" style="margin:1%">
       <div class="col-lg-2">
         <p style="font-size: large;">Product No </p>
@@ -20,7 +20,7 @@
 
     </div>
 
-  <div  *ngFor="let item of allProducts ;let i = index">
+  <div  *ngFor="let item of allProducts|  paginate: { itemsPerPage: 2, currentPage: p }; ;let i = index">
     <div class="row"   style="border:1px;border-style: groove;margin:1%;padding-top: 3px;">
       <div class="col-lg-2">
 
@@ -55,4 +55,6 @@
 </div>
 
   </div>
+
 </div>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

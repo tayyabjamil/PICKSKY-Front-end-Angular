@@ -69,7 +69,7 @@ export class ProductService {
       routeTo: 'SweetsCombo',
       title: 'Sweets Combo',
     },
-   ];
+  ];
 
   constructor(public http: HttpClient, private myauthService: AuthService) { }
 
@@ -114,15 +114,33 @@ export class ProductService {
   getOrsers(id) {
     return this.http.get('http://localhost:8000/api/orders/' + id, this.httpHeaders);
   }
-  cancelOrder(id){
-  const ownerEmail= this.myauthService.getemail()
+  cancelOrder(id) {
+    const ownerEmail = this.myauthService.getemail()
     return this.http.post('http://localhost:8000/api/orders/cancelOrder/',
-    {
-     id:id,
-     ownerEmail:ownerEmail
-    },
-    this.httpHeaders);
+      {
+        id: id,
+        ownerEmail: ownerEmail
+      },
+      this.httpHeaders);
 
+  }
+  payment(data) {
+    const userId = this.myauthService.getID()
+    return this.http.post(
+      'http://localhost:8000/api/payment/',
+      {
+        cardNo: data.cardNo,
+        name: data.name,
+        expirationDate: data.expirationDate,
+        sequrityCode: data.sequrityCode,
+        userId
+      },
+      this.httpHeaders
+    );
+  }
+  getAllPayments() {
+    const userId = this.myauthService.getID()
+    return this.http.get('http://localhost:8000/api/payment/' + userId, this.httpHeaders);
   }
   referFriend(data) {
     return this.http.post(

@@ -9,59 +9,76 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 80%;
 }
-.carousel-control-prev-small {
+.carousel-control-next, .carousel-control-prev {
   position: absolute;
-
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  display: -ms-flexbox;
   display: flex;
-
-  left: 10;
-  top: 10;
-  height: 40px;
-
+  -ms-flex-align: center;
   align-items: center;
+  -ms-flex-pack: center;
   justify-content: center;
-  width: 40px;
-  border-radius: 20px;
-  background-color: green;
-  color: green;
+  width: 15%;
+  color: #fff;
   text-align: center;
-
-}
-.carousel-control-next-small {
-  position: absolute;
-
-  display: flex;
-
-  right: 10;
-  top: 10;
-  height: 40px;
-
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  border-radius: 20px;
-  background-color: green;
-  color: green;
-  text-align: center;
-
+  opacity: .5;
+  transition: opacity .15s ease;
 }
 .carousel-control-next, .carousel-control-prev {
   position: absolute;
-
+  top: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  margin-top: 160px;
-
-  height: 40px;
-
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
-  width: 40px;
-  border-radius: 20px;
-  background-color: green;
-  color: green;
+  width: 15%;
+  color: #fff;
   text-align: center;
-
+  opacity: .5;
 }
+// .carousel-control-next-small {
+//   position: absolute;
+
+//   display: flex;
+
+//   right: 10;
+//   top: 10;
+//   height: 40px;
+
+//   align-items: center;
+//   justify-content: center;
+//   width: 40px;
+//   border-radius: 20px;
+//   background-color: green;
+//   color: green;
+//   text-align: center;
+
+// }
+// .carousel-control-next, .carousel-control-prev {
+
+//   position: absolute;
+//   display: flex;
+//   // margin-top: 160px;
+
+//   height: 40px;
+
+//   align-items: center;
+//   justify-content: center;
+//   width: 40px;
+//   border-radius: 20px;
+//   // background-color: green;
+//   color: green;
+//   text-align: center;
+
+// }
 
 .block {
   position: absolute;

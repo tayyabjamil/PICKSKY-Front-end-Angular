@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-customize-option-select',
@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CustomizeOptionSelectComponent implements OnInit {
 
   @Input() options = [];
+  @Output() customOptionChange = new EventEmitter<any>();
   currentOptionIndex = 0;
 
   constructor() { }
@@ -28,6 +29,7 @@ export class CustomizeOptionSelectComponent implements OnInit {
   }
 
   get getCurrentOption() {
+    this.customOptionChange.emit(this.options[this.currentOptionIndex])
     return this.options[this.currentOptionIndex];
   }
 }
