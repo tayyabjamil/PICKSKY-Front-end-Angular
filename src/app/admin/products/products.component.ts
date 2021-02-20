@@ -27,6 +27,8 @@ export class ProductsComponent implements OnInit {
   deviceMd: boolean;
   deviceSm: boolean;
   allProducts
+  p: number = 1;
+
   ngOnInit() {
     this.mediaSub = this.mediaObserver.media$.subscribe(
       (result: MediaChange) => {

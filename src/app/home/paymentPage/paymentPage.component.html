@@ -1,0 +1,51 @@
+<div style="min-height: 500px;">
+  <hr>
+  <h1 style="text-align: center;font-weight: bold;">Payment Information</h1>
+ <div>
+    <div class="row" style="margin:1%">
+      <div class="col-lg-2">
+        <p style="font-size: large;">Card No </p>
+         </div>
+
+      <div class="col-lg-2">
+      <p style="font-size: large;"> Name on Card</p>
+    </div>
+    <div class="col-lg-2">
+      <p style="font-size: large;">Expiration Date</p>
+
+     </div>
+    <div class="col-lg-2">
+   <p style="font-size: large;">Sequrity Code</p>
+      </div>
+
+    </div>
+
+  <div  *ngFor="let item of allpayments|  paginate: { itemsPerPage: 2, currentPage: p }; ;let i = index">
+    <div class="row"   style="border:1px;border-style: groove;margin:1%;padding-top: 3px;">
+      <div class="col-lg-2">
+
+        <p  >{{i + 1}}</p>
+      </div>
+
+      <div class="col-lg-2">
+
+    <p  >{{item?.name}}</p>
+  </div>
+  <div class="col-lg-2">
+
+    <p  >{{item?.expirationDate}}</p>
+  </div>
+  <div class="col-lg-2">
+
+    <p  >{{item?.sequrityCode}}</p>
+  </div>
+
+
+
+</div>
+</div>
+
+  </div>
+
+</div>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

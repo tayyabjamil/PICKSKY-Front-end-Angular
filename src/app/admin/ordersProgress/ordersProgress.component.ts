@@ -2,6 +2,8 @@ import { AdminService } from './../admin.service';
 import { Component, OnInit } from '@angular/core';
 import * as jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable'
+import { MediaObserver, MediaChange } from '@angular/flex-layout';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-ordersProgress',
@@ -10,14 +12,35 @@ import autoTable from 'jspdf-autotable'
 })
 export class OrdersProgressComponent implements OnInit {
   phase = "delievery";
-  constructor(public adminService: AdminService) { }
+  constructor(public mediaObserver: MediaObserver,
+     public adminService: AdminService
+
+  ) { }
+
+  mediaSub: Subscription
+  deviceXs: boolean;
+  deviceLg: boolean;
+  deviceMd: boolean;
+  deviceSm: boolean;
+  search: true
+  isShow:boolean
+  placement="bottom-right"
+  isSHowSearch=false
+
+  ngOnInit() {
+    this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
+      console.log(result.mqAlias)
+      this.deviceXs = result.mqAlias === 'xs'
+      this.deviceSm = result.mqAlias === 'sm'
+      this.deviceLg = result.mqAlias === 'lg'
+      this.deviceMd = result.mqAlias === 'md'
+      this.orders()
+    })
+  }
   allOrders = []
   ownerEmail;
   cartData;
-
-  ngOnInit() {
-    this.orders()
-  }
+  p: number = 1;
 
   orders() {
     this.adminService.getAllOrders().subscribe((data: any) => {

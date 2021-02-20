@@ -10,20 +10,21 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   { path: 'checkOut', loadChildren: '../checkOut/checkOut.module#CheckOutModule' },
-  { path: '', component: AccountComponent, children: [
-    { path: 'resetPassword/:id', component: ResetPasswordComponent },
-  { path: 'signUp', component: SignUpComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'forgetPassword', component: ForgetPasswordComponent },
-  { path: 'accountVerify/:token', component: EmailVerifyComponent },
+  {
+    path: '', component: AccountComponent, children: [
+      { path: 'resetPassword/:id', component: ResetPasswordComponent },
+      { path: 'signUp', component: SignUpComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'forgetPassword', component: ForgetPasswordComponent },
+      { path: 'accountVerify/:token', component: EmailVerifyComponent },
 
-  // { path: '', loadChildren: './home/home.module#HomeModule' },
-  { path: 'login', component: LoginComponent },
+      // { path: '', loadChildren: './home/home.module#HomeModule' },
+      { path: 'login', component: LoginComponent },
 
-  { path: '', component: LoginComponent },
+      { path: '', component: LoginComponent },
 
- ]
-},
+    ]
+  },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

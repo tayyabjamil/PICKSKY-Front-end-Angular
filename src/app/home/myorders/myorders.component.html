@@ -15,50 +15,43 @@
             <div class="col-1">
               <p style="font-size: large;">Order No</p>
             </div>
-            <div class="col-1">
+            <div style="display: flex;flex-direction: row;" class="col-2">
               <p style="font-size: large;"   >Order Date</p>
-              <span (click)="setOrder('date', false)">Sort ▼</span>
-              <span (click)="setOrder('date', true)">Sort ▲</span>
+              <span (click)="setOrder('date', false)"> ▼</span>
+              <span (click)="setOrder('date', true)"> ▲</span>
 
             </div>
-            <div class="col-1">
+            <div style="display: flex;flex-direction: row;" class="col-2">
               <p style="font-size: large;" >Order Total</p>
-              <span (click)="setOrder('total', false)">Sort ▼</span>
-              <span (click)="setOrder('total', true)">Sort ▲</span>
+              <span (click)="setOrder('total', false)"> ▼</span>
+              <span (click)="setOrder('total', true)"> ▲</span>
             </div>
-            <div class="col-1">
+            <div class="col-2">
               <p style="font-size: large;">Order Status</p>
-
-            </div>
-            <div class="col-3">
-
 
             </div>
           </div>
          <div class="cartHeight">
 
-          <div *ngFor="let item of allOrders | orderBy: orderBy : reverse  |  paginate: { itemsPerPage: 4, currentPage: p }; let i = index">
+          <div *ngFor="let item of allOrders | orderBy: orderBy : reverse  |  paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
             <div class="row panel-title" style="margin:1%;padding-top: 3px;border-radius: 12px;background-color: #b4d469;">
               <div class="col-1" style="padding-top: 15px;">
                 <p>{{i + 1 }}</p>
               </div>
 
-              <div class="col-1" style="padding-top: 15px;">
+              <div class="col-2" style="padding-top: 15px;">
                 <p>{{item.date}}</p>
               </div>
 
-              <div class="col-1" style="padding-top: 15px;">
+              <div class="col-2" style="padding-top: 15px;">
                 <p>{{item?.total}}</p>
               </div>
 
-              <div class="col-1" style="padding-top: 15px;">
+              <div class="col-2" style="padding-top: 15px;">
                 <p>{{item?.phase}}</p>
               </div>
 
-              <div class="col-3">
 
-
-              </div>
 
                 <div class="col-1" style="padding-top: 8px;">
                   <a class="btn btn-primary" style="color: white;" data-toggle="collapse" href="#{{item._id}}"
@@ -96,12 +89,12 @@
               <div style="min-height: 80px;height: 80px;padding: 1%;">
                 <div class="row multi-steps-wrap">
                   <ul class="list-unstyled multi-steps">
-                    <li class="job-status" [ngClass]="(item.phase === 'processing' || item.phase === 'packed' ||  item.phase === 'shipped' ||  item.phase === 'delivered' ) ? '' : 'negative'">processing</li>
-                    <li class="job-status" [ngClass]="(item.phase === 'packed' ||  item.phase === 'shipped' ||  item.phase === 'delivered' )  ? '' : 'negative'">
+                    <li  [ngClass]="(item.phase === 'processing' || item.phase === 'packed' ||  item.phase === 'shipped' ||  item.phase === 'delivered' ) ? '' : 'negative'">processing</li>
+                    <li  [ngClass]="(item.phase === 'packed' ||  item.phase === 'shipped' ||  item.phase === 'delivered' )  ? '' : 'negative'">
                       Packed
                     </li>
-                    <li class="job-status" [ngClass]="( item.phase === 'shipped'  ||  item.phase === 'delivered' ) ? '' : 'negative'">Shipped</li>
-                    <li class="job-status" [ngClass]="( item.phase === 'delivered')  ? '' : 'negative'">Delivered</li>
+                    <li  [ngClass]="( item.phase === 'shipped'  ||  item.phase === 'delivered' ) ? '' : 'negative'">Shipped</li>
+                    <li  [ngClass]="( item.phase === 'delivered')  ? '' : 'negative'">Delivered</li>
 
                   </ul>
                 </div>
@@ -156,29 +149,32 @@
         </div>
         </div>
 
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
 
         <div *ngIf="deviceSm && allOrders.length !== 0 || deviceXs && allOrders.length !== 0">
 
-          <div class="row" style="margin:1%">
-            <div class="col-xs-3" >
+             <div class="row" style="margin:1%">
+            <div class="col-xs-3">
               <p style="font-size: large;">Order No</p>
             </div>
-            <div class="col-xs-3">
-              <p style="font-size: large;">Order Date</p>
-            </div>
-            <div class="col-xs-3">
-              <p style="font-size: large;">Order Total</p>
+            <div style="display: flex;flex-direction: row;" class="col-xs-3">
+              <p style="font-size: large;"   >Order Date</p>
+              <span (click)="setOrder('date', false)"> ▼</span>
+              <span (click)="setOrder('date', true)"> ▲</span>
 
+            </div>
+            <div style="display: flex;flex-direction: row;" class="col-xs-3">
+              <p style="font-size: large;" >Order Total</p>
+              <span (click)="setOrder('total', false)"> ▼</span>
+              <span (click)="setOrder('total', true)"> ▲</span>
             </div>
             <div class="col-xs-3">
               <p style="font-size: large;">Order Status</p>
 
             </div>
-
           </div>
        <div class="cartHeight">
-          <div *ngFor="let item of allOrders; let i = index">
+          <div *ngFor="let item of allOrders | orderBy: orderBy : reverse  |  paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
             <div class="row"  style="margin:1%;padding-top: 3px;border-radius: 12px;background-color: #b4d469;">
 
               <div class="col-xs-3" style="padding-top: 15px;">
@@ -286,6 +282,9 @@
           </div>
         </div>
         </div>
+
+
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
       </mat-tab>
       <mat-tab label="Canceled Orders">
 

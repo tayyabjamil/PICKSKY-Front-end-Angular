@@ -105,6 +105,8 @@ export class HomeComponent implements OnInit {
     this.authService.loggedOutEmail();
     this.authService.loggedOutuserId();
     this.authService.loggedOutRefrenceId();
+    this.authService.loggedOutRole();
+    this.router.navigate([''])
   }
   getAllProducts() {
     this.productService.getProducts().subscribe(

@@ -5,6 +5,7 @@ import { AccountService } from '../account.service';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-forgetPassword',
   templateUrl: './forgetPassword.component.html',
@@ -13,7 +14,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 export class ForgetPasswordComponent implements OnInit {
   forgetPasswordForm: FormGroup
   constructor(public mediaObserver: MediaObserver,
-    private router: Router,
+    private router: Router,public toster:ToastrService,
     public formBuilder: FormBuilder,
     public accountService: AccountService,) { }
   mediaSub: Subscription
@@ -58,7 +59,10 @@ export class ForgetPasswordComponent implements OnInit {
       }, (error) => {
         if (error.error.message == 'Email NOt found') {
           this.errorForgetPassword = 'show'
-        } else {
+        }else if(error.error.message=='Social Account Error'){
+          this.toster.error('You Can not Change Password of Social Account ', 'Create Account Manually' )
+        }
+         else {
           this.errorNetwork = 'show'
         }
         // alert(error.error.message);

@@ -160,9 +160,7 @@ export class SignUpComponent implements OnInit {
   setemail(email) {
     localStorage.setItem('email', JSON.stringify(email));
   }
-  get getcountryCodeValidation(){
-    return this.countryCodeValidation
-  }
+
   get getfillAllValidation(){
     return this.fillAllValidation
   }

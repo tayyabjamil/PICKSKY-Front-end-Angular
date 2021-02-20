@@ -33,6 +33,8 @@ showOld:boolean
      this.rformEdit = this.formBuilder.group({
     username: new FormControl(this.username ),
     email: new FormControl(this.email, Validators.email),
+    adress1: new FormControl(''),
+    adress2: new FormControl(''),
 
     contact: new FormControl(this.phone),
     state: new FormControl(''),

@@ -3,15 +3,17 @@
     <div>
       <div class="row" style="
           padding-top: 0.5%;
+          color: white;
         ">
         <p class="col-3" style="
-            font-size: 2vw;
+            font-size: 26px;
             font-weight: 500;
             padding-left: 3%;
             padding-top: 2%;
           " routerLink="/">
+
           SHIRIVAS FOODS
-        </p>
+    </p>
         <div class="col-7" style=" padding: 10px">
           <div style="
               border-radius: 6px;
@@ -48,8 +50,8 @@
               <div  class="row">
            <div class="col-1"></div>
                   <div class="col-5 btn">
-                    <i class="fa fa-user-circle-o" routerLink="/myOrders" style="font-size: xx-large"></i>
-                    <p routerLink="/myOrders" routerLinkActive="router-link-active">
+                    <i class="fa fa-user-circle-o" routerLink="/profile" style="font-size: xx-large"></i>
+                    <p routerLink="/profile" routerLinkActive="router-link-active">
                       My Profile
                     </p>
                   </div>
@@ -90,9 +92,9 @@
                         Help
                       </p>
                     </div>
-                    <div class="col-5 btn">
-                    <i class="fa fa-user-circle-o"  style="font-size: xx-large"></i>
-                    <p  routerLinkActive="router-link-active">
+                    <div class="col-5 btn"  >
+                    <i routerLink="/paymentPage" class="fa fa-user-circle-o" style="font-size: xx-large"></i>
+                    <p  routerLink="/paymentPage" routerLinkActive="router-link-active">
                       Payment Cards
                     </p>
 
@@ -132,12 +134,48 @@
                 <div class="row">
                   <div class="col-1"></div>
                   <div class="col-5 btn">
+                    <i class="fa fa-user-circle-o"  style="font-size: xx-large"></i>
+                    <p >Favourite offers </p>
+                  </div>
+                  <div class="col-5 btn">
+                    <i class="fa fa-user-circle-o"  style="font-size: xx-large"></i>
+                    <p  routerLinkActive="router-link-active">
+                      Payment Card
+                    </p>
+                  </div>
+                  <div class="col-1"></div>
+                </div>
+                <div class="row" *ngIf="!authService.getRole() == 'admin'">
+                  <div class="col-1"></div>
+                  <div class="col-5 btn">
                     <i class="fa fa-user-circle-o" routerLink="/blog" style="font-size: xx-large"></i>
                     <p routerLink="/blog" routerLinkActive="router-link-active">
                       Blog
                     </p>
                   </div>
                 </div>
+                <hr style="margin: 0px;">
+                  <div  *ngIf="authService.getRole() == 'admin'">
+                    <div  class="col-12 btn" [routerLink]="['admin/products']"  >
+                      <p style="font-size: 18px;"  ><span>Products</span> </p>
+                    </div>
+
+                  </div>
+                  <hr style="margin: 0px;">
+                  <div  *ngIf="authService.getRole() == 'admin'">
+                    <div  class="col-12 btn"  [routerLink]="['admin/addProduct']">
+                      <p style="font-size: 18px;"  ><span>Add Product</span> </p>
+                    </div>
+
+                  </div>
+                  <hr style="margin: 0px;">
+                  <div  *ngIf="authService.getRole() == 'admin'">
+                    <div  class="col-12 btn"  [routerLink]="['admin/']">
+                      <p style="font-size: 18px;"  ><span>Order Status</span> </p>
+                    </div>
+
+                  </div>
+
                 <hr style="margin: 0px;">
                   <div  >
                     <div  class="col-12 btn"  (click)="onLogoutClick()">

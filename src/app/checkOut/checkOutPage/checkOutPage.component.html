@@ -2,20 +2,20 @@
 
   <div class="col-lg-7" style="padding-top:5%;;background-color: #ffffff">
     <p style="font-size: 22px;font-weight: bold;padding-left: 10%;">Shirivas Store</p>
-    <div *ngIf="!authService.loggedIn()" style="display: flex;flex-direction: row;justify-content: flex-end;padding-left: 5%;">
-      <p style="font-size: 18px;">Already have an account ?<span style="font-size: 18px;" class="text text-primary btn" [routerLink]="['/login']"
-          routerLinkActive="router-link-active">Login</span> </p>
+    <div *ngIf="!authService.loggedIn()"
+      style="display: flex;flex-direction: row;justify-content: flex-end;padding-left: 5%;">
+      <p style="font-size: 18px;">Already have an account ?<span style="font-size: 18px;" class="text text-primary btn"
+          [routerLink]="['/login']" routerLinkActive="router-link-active">Login</span> </p>
 
     </div>
 
-    <p style="font-size: 14px;text-align: right;padding-right: 20px;" class="errorlbl"
-    *ngIf="loginFirst == 'show'">
-     Login first to make an  order
-  </p>
-    <div   *ngIf="deviceXs || deviceSm" class="row">
+    <p style="font-size: 14px;text-align: right;padding-right: 20px;" class="errorlbl" *ngIf="loginFirst == 'show'">
+      Login first to make an order
+    </p>
+    <div *ngIf="deviceXs || deviceSm" class="row">
       <div class="col-lg-1 "></div>
       <div class="col-lg-10 col-xs-12 col-sm-12">
-        <mat-vertical-stepper class="mat-step-header"  [linear]="isLinear" #stepper>
+        <mat-vertical-stepper class="mat-step-header" [linear]="isLinear" #stepper>
 
           <mat-step [stepControl]="firstFormGroup">
             <form [formGroup]="firstFormGroup">
@@ -37,10 +37,22 @@
                 </mat-form-field>
               </div>
               <div class="row">
-                <mat-form-field class="col-xs-6">
-                  <mat-label><span style="font-size: 16px;"> Adress</span></mat-label>
-                  <input matInput formControlName="adress">
+                <mat-form-field class="col-xs-12">
+                  <mat-label><span style="font-size: 16px;"> Adress 1</span></mat-label>
+                  <input matInput formControlName="adress1">
                 </mat-form-field>
+              </div> <div class="row">
+                <mat-form-field class="col-xs-12">
+                  <mat-label><span style="font-size: 16px;"> Adress 2</span></mat-label>
+                  <input matInput formControlName="adress2">
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-select-country  class="col-lg-3" appearance="outline"
+                label="Country"  formControlName="contry"
+
+                (onCountrySelected)="onCountrySelected($event)">
+              </mat-select-country>
 
 
                 <mat-form-field class="col-xs-6">
@@ -49,11 +61,11 @@
                 </mat-form-field>
               </div>
               <div class="row">
-                <mat-form-field class="col-xs-6">
-                  <mat-label><span style="font-size: 16px;"> Contry</span></mat-label>
-                  <input matInput formControlName="contry">
-                </mat-form-field>
 
+                <mat-form-field class="col-xs-6">
+                  <mat-label><span style="font-size: 16px;"> State</span></mat-label>
+                  <input matInput formControlName="state">
+                </mat-form-field>
 
                 <mat-form-field class="col-xs-6">
                   <mat-label><span style="font-size: 16px;"> Postal Code</span></mat-label>
@@ -61,10 +73,6 @@
                 </mat-form-field>
               </div>
               <div class="row">
-                <mat-form-field class="col-xs-6">
-                  <mat-label><span style="font-size: 16px;"> State</span></mat-label>
-                  <input matInput formControlName="state">
-                </mat-form-field>
 
 
                 <mat-form-field class="col-xs-6">
@@ -77,7 +85,6 @@
                 <input type="checkbox" class="form-check-input" id="exampleCheck1" style="padding-right: 4%;">
                 <label style="margin-left: 8%;font-size: 16px;">Save details for next time</label>
 
-                <p style="font-size: 16px;padding-top: 2%;" [routerLink]="['/cart']" class="text text-primary btn">< Return to Cart</p>
 
               </div>
 
@@ -85,63 +92,75 @@
 
 
 
-              <div class="row" >
-              <div class="col-xs-4"></div>
-                <button class="col-xs-8 btn btn-primary" (click)="shipping(1)">Continue to Shipping</button>
+              <div class="row">
+                <div class="col-xs-5"></div>
+                <button class="col-xs-7 btn btn-primary" (click)="shipping(1)">Continue to Shipping</button>
 
               </div>
 
-       </form>
+            </form>
 
-        </mat-step>
-           <mat-step [stepControl]="secondFormGroup">
+          </mat-step>
+          <mat-step [stepControl]="secondFormGroup">
             <form [formGroup]="secondFormGroup">
               <ng-template matStepLabel>Shipping</ng-template>
 
-                <div class="row" style="height: 10px;">
-                  <p class="col-3">Contact</p>
-                  <mat-label class="col-6">{{this.firstFormGroup.value.contact}}</mat-label>
-                  <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+              <div class="row" style="height: 10px;">
+                <p class="col-3">Contact</p>
+                <mat-label class="col-6">{{this.firstFormGroup.value.contact}}</mat-label>
+                <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
 
-                </div>
-
-
-
-                <hr />
-                <div class="row" style="height: 10px;">
-                  <p class="col-3">Adress</p>
-                  <mat-label class="col-6">{{this.firstFormGroup.value.adress}}</mat-label>
-                  <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
-
-                </div>
-                <hr />
+              </div>
 
 
 
-              <p   style="font-weight: bold;font-size: 18px;margin-top: 2%;margin-bottom: 2%;">Shipping Method</p>
+              <hr />
+              <div class="row" style="height: 10px;">
+                <p class="col-3">Adress</p>
+                <mat-label class="col-6">{{this.firstFormGroup.value.adress}}</mat-label>
+                <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
+              </div>
+              <hr />
+
+
+
+              <p style="font-weight: bold;font-size: 18px;margin-top: 2%;margin-bottom: 2%;">Shipping Method</p>
 
               <div class="row" style="height: 10px;">
+<<<<<<< HEAD
+                <div class="col-xs-1">
+                  <input type="checkbox" formControlName="method" class="form-check-input" id="exampleCheck2">
+                </div>
+                <mat-label class="col-xs-7" style="text-align: left;">Standard Method</mat-label>
+                <div class="col-3 text-primary btn" style="padding-left: 10px;" (click)="move(0)">Change</div>
+=======
                <div class="col-1">
                 <input  type="checkbox"  class="form-check-input" id="exampleCheck2">
               </div>
                 <mat-label class="col-8" style="text-align: left;">Standard Method</mat-label>
                 <div class="col-3 text-primary btn">Allow next 4-5 bussiness days</div>
+>>>>>>> d9d232129db176842109f3843c63acbe3837657a
 
               </div>
-<hr />
+              <p style="font-size: 14px" class="errorlbl"
+              *ngIf="selectShippingMethod == 'show'">
+              Select shipping method
+            </p>
+              <hr />
 
               <div class="row" style="height: 10px;">
-                  <p style="font-size: 14px;text-align: left;" class="col-2 btn text-primary" matStepperPrevious>
-                    < Return
-                       </p>
-                   <div class="col-2"></div>
-                   <button class="col-7 btn btn-primary" (click)="payment(2)">Continue to Payment</button>
+                <p style="font-size: 13px;text-align: left;" class="col-xs-5 btn text-primary" matStepperPrevious>
+                  < Return to Information</p>
+              </div>
+              <div class="row" style="height: 10px;">
+                  <div class="col-xs-4"></div>
+                <button class="col-xs-7 btn btn-primary" (click)="payment(2)">Continue to Payment</button>
 
-               </div>
-
+              </div>
 
             </form>
-      </mat-step>
+          </mat-step>
           <mat-step [stepControl]="thirdFormGroup">
             <form [formGroup]="thirdFormGroup" style="margin-top: 5%;">
               <ng-template matStepLabel>Paymemt</ng-template>
@@ -152,107 +171,372 @@
 
             <label for="">Payments</label>
             <label for="">All transactions are secured and encrypted</label>
-            <form [formGroup]="thirdFormGroup">
+            <form [formGroup]="thirdFormGroup"
+            style="border: 1px;border-style: solid;border-radius: 6px;border-color: lightgray;">
 
-              <ng-template matStepLabel></ng-template>
-              <mat-form-field style="width: 250px;">
-                <mat-label><span style="font-size: 16px;">Card no</span></mat-label>
-                <input matInput formControlName="cardNo">
-              </mat-form-field>
-              <p style="font-size: large;font-size: 22px;font-weight: bold;">Name on Card</p>
-              <mat-form-field style="width: 250px;">
-                <mat-label><span style="font-size: 16px;">Name on Card</span></mat-label>
-                <input matInput formControlName="name">
-              </mat-form-field>
+            <ng-template matStepLabel></ng-template>
+            <div data-toggle="collapse" href="#collapseExample"
+              style="padding-top:2%;padding-left: 2%;padding-right: 2%;display: flex;flex-direction: row;justify-content: space-between;">
+
+              <label style="font-size: 18px;">Credit Card</label>
+              <p>Options</p>
+
+            </div>
+
+            <div style="padding: 4%;" class="collapse" id="collapseExample">
               <div class="row">
-                <mat-form-field class="col-xs-6">
-                  <mat-label><span style="font-size: 16px;">Expiration Data MM/YY</span></mat-label>
-                  <input matInput formControlName="expirationDate">
+                <mat-form-field class="col-12">
+                  <mat-label><span style="font-size: 16px;">Card no</span></mat-label>
+                  <input matInput formControlName="cardNo">
                 </mat-form-field>
-                <mat-form-field class="col-xs-6">
+              </div>
+
+              <div class="row">
+
+                <mat-form-field class="col-12">
+                  <mat-label><span style="font-size: 16px;">Name on Card</span></mat-label>
+                  <input matInput formControlName="name">
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field class="col-6">
+                  <mat-label><span style="font-size: 16px;">Expiration Data MM/YY</span></mat-label>
+                  <input matInput formControlName="expirationDate" type="date">
+                </mat-form-field>
+
+
+                <mat-form-field class="col-6">
                   <mat-label><span style="font-size: 16px;">Sequrity Code</span></mat-label>
                   <input matInput formControlName="sequrityCode" type="number">
                 </mat-form-field>
               </div>
 
+            </div>
+
+            </form>
+
+          <label style="font-size: 22px;margin-top: 3%;" for="">Billing Adress</label>
+          <div>
+            <p style="font-size: 18px;" for="">Select the method that matches your card or payment adress</p>
+          </div>
+
+
+          <form [formGroup]="thirdFormGroup"
+            style="border: 1px;border-style: solid;border-radius: 6px;border-color: lightgray;">
+
+            <ng-template matStepLabel></ng-template>
+            <div class="row" style="padding: 20px;">
+              <div class="col-xs-2" >
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              </div>
+              <!-- <div class="col-xs-2"></div> -->
+              <label class="col-xs-10" style="font-size: 16px;">Same as shiping adress</label>
+
+
+            </div>
+
+            <div data-toggle="collapse" href="#collapseExample2" style="display: flex;flex-direction: row;justify-content: space-between;padding-top: 20px;">
+
+              <label style="margin-left: 8%;font-size: 16px;">Use a different billing adress</label>
+
+
+            </div>
+            <hr />
+            <form style="padding: 1%;" class="collapse" id="collapseExample2" [formGroup]="firstFormGroup">
+              <ng-template matStepLabel><span style="font-size: 18px;">Information</span> </ng-template>
+              <mat-form-field style="width: 250px;">
+                <mat-label><span style="font-size: 16px;">Email or Phone number</span></mat-label>
+                <input matInput formControlName="email">
+              </mat-form-field>
+              <p style="font-size: large;font-size: 22px;font-weight: bold;margin-bottom: 4%;">Shipping Adress</p>
+              <hr>
+              <div class="row">
+                <mat-form-field class="col-xs-6">
+                  <mat-label><span style="font-size: 16px;"> First Name</span></mat-label>
+                  <input matInput formControlName="fname">
+                </mat-form-field>
+
+                <mat-form-field class="col-xs-6">
+                  <mat-label><span style="font-size: 16px;"> Last Name</span></mat-label>
+                  <input matInput formControlName="lname">
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field class="col-xs-12">
+                  <mat-label><span style="font-size: 16px;"> Adress 1</span></mat-label>
+                  <input matInput formControlName="adress1">
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field class="col-xs-12">
+                  <mat-label><span style="font-size: 16px;"> Adress 2</span></mat-label>
+                  <input matInput formControlName="adress2">
+                </mat-form-field>
+<<<<<<< HEAD
+              </div>
+              <div class="row">
+
+                <mat-select-country  class="col-xs-12"
+                label="Country"  formControlName="contry"
+
+                (onCountrySelected)="onCountrySelected($event)">
+              </mat-select-country>
+
+
+
+              </div>
+              <div class="row">
+                <mat-form-field class="col-xs-12">
+                  <mat-label><span style="font-size: 16px;"> City</span></mat-label>
+                  <input matInput formControlName="city">
+                </mat-form-field>
+              </div>
+              <div class="row">
+
+=======
+>>>>>>> d9d232129db176842109f3843c63acbe3837657a
+                <mat-form-field class="col-xs-6">
+                  <mat-label><span style="font-size: 16px;"> State</span></mat-label>
+                  <input matInput formControlName="state">
+                </mat-form-field>
+
+                <mat-form-field class="col-xs-6">
+                  <mat-label><span style="font-size: 16px;"> Postal Code</span></mat-label>
+                  <input matInput formControlName="code" type="number">
+                </mat-form-field>
+              </div>
+              <div class="row">
+
+
+                <mat-form-field class="col-xs-6">
+                  <mat-label><span style="font-size: 16px;"> Appartment</span></mat-label>
+                  <input matInput formControlName="appartment">
+                </mat-form-field>
+              </div>
 
               <div style="display: flex;flex-direction: row;justify-content: space-between;">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1" style="padding-right: 4%;">
                 <label style="margin-left: 8%;font-size: 16px;">Save details for next time</label>
+
+
+
               </div>
 
-       </form>
-       <div class="row">
+              <p style="font-size: 14px" class="errorlbl"
+              *ngIf="countryError == 'show'">
+              Select Country
+            </p>
 
-        <button class="col-2 btn text-primary" matStepperPrevious>< Return to Shipping</button>
-        <div class="col-8">
-        </div>
+            </form>
+          </form>
 
-        <button class="col-2 btn btn-primary" matStepperNext>Next</button>
-      </div>
+
+
+
+
+            <div class="row">
+
+              <button class="col-2 btn text-primary" matStepperPrevious>
+                < Return to Shipping</button>
+            </div>
+                <div class="row">
+
+                      <div class="col-4">
+                      </div>
+
+                      <button class="col-8 btn btn-primary" (click)="shipping(3)">Continue to Done</button>
+                    </div>
           </mat-step>
           <mat-step>
             <ng-template matStepLabel>Done</ng-template>
             <p>You are now done.</p>
 
             <mat-list>
-              <div style="border: 1px;padding: 1%;
-                  margin-top: 2%;">
-                <div class="row" style="height: 10px;">
-                  <p class="col-3">Name</p>
-                  <mat-label class="col-6">{{this.firstFormGroup.value.fname}}</mat-label>
-                  <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
 
+
+              <div id="accordion">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                      <div class="panel panel-default">
+                        <div class="panel-heading"   aria-expanded="false" aria-controls="contact" data-toggle="collapse" href="#contact" role="button">
+                          <h4 class="panel-title">
+
+
+
+                                <a class="text text-primary"
+                                >
+                                  <mat-label style="font-style: 18px;" style="font-style: 22px;font-weight: bold;">+ Information</mat-label>
+                                </a>
+
+                          </h4>
+                        </div>
+                        <div  class="panel-collapse collapse in" role="tabpanel"
+                          aria-labelledby="headingOne">
+                          <div >
+
+                            <div class="collapse" id="contact">
+                              <div class="card card-body">
+                                <div class="row" style="height: 10px;">
+                                  <p class="col-4">Name</p>
+                                  <mat-label class="col-5">{{this.firstFormGroup.value.fname}}</mat-label>
+                                  <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
+                                </div>
+                                <hr />
+                                <div class="row" style="height: 10px;">
+                                  <p class="col-4">Email</p>
+                                  <mat-label class="col-5">{{this.firstFormGroup.value.email}}</mat-label>
+                                  <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
+                                </div>
+                                <hr />
+
+                                <div class="row" style="height: 10px;">
+                                  <p class="col-4">Adress 1 </p>
+                                  <mat-label class="col-5">{{this.firstFormGroup.value.adress1}}</mat-label>
+                                  <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
+                                </div>
+                                <hr />
+                                <div class="row" style="height: 10px;">
+                                  <p class="col-4">Adress 2</p>
+                                  <mat-label class="col-5">{{this.firstFormGroup.value.adress2}}</mat-label>
+                                  <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
+                                </div>
+                                <hr />
+
+                                <div class="row" style="height: 10px;">
+                                  <p class="col-4">Contact</p>
+                                  <mat-label class="col-5">{{this.firstFormGroup.value.email}}</mat-label>
+                                  <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
+                                </div>
+                                <hr />
+                                <div class="row" style="height: 10px;">
+                                  <p class="col-4">State</p>
+
+                                  <mat-label class="col-5">{{this.firstFormGroup.value.state}}</mat-label>
+                                  <p class="col-3 text-primary btn" (click)="move(1)">Change</p>
+
+                                </div>
+                                <hr />
+                                <div class="row" style="height: 10px;">
+                                  <p class="col-5">Appartment</p>
+
+                                  <mat-label class="col-4">{{this.firstFormGroup.value.appartment}}</mat-label>
+                                  <p class="col-3 text-primary btn" (click)="move(1)">Change</p>
+
+                                </div>
+                                <hr />
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading"  data-toggle="collapse" href="#shipping" role="button"
+                        aria-expanded="false" aria-controls="shipping">
+                          <h4 class="panel-title">
+                                <a class="text text-primary" >
+                                  <mat-label style="font-style: 22px;font-weight: bold;">+ Shipping Adress</mat-label>
+                                </a>
+
+                           </h4>
+                        </div>
+
+
+                            <div class="collapse" id="shipping">
+                              <div class="card card-body">
+                                <div class="row" >
+                                  <p class="col-5">Shipping Method:</p>
+                                  <mat-label class="col-4">Standard</mat-label>
+                                  <p class="col-3 text-primary btn" (click)="move(1)">Change</p>
+
+                                </div>
+
+                              </div>
+                            </div>
+
+
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading" role="tab"  data-toggle="collapse" href="#payment" role="button"
+                        aria-expanded="false" aria-controls="payment">
+                          <h4 class="panel-title">
+
+                                <a class="text text-primary">
+                                  <mat-label style="font-style: 22px;font-weight: bold;">+ Payment</mat-label>
+                                </a>
+
+                            </h4>
+                        </div>
+
+
+                            <div class="collapse" id="payment">
+                              <div class="card card-body">
+                                <div class="row" style="height: 10px;">
+                                  <p class="col-4">Card No</p>
+                                  <mat-label class="col-4">{{this.thirdFormGroup.value.cardNo}}</mat-label>
+                                  <p class="col-4 text-primary btn" (click)="move(0)">Change</p>
+
+                                </div>
+                                <hr />
+                                <div class="row" style="height: 10px;">
+                                  <p class="col-4">Name on Card</p>
+                                  <mat-label class="col-4">{{this.thirdFormGroup.value.name}}</mat-label>
+                                  <p class="col-4 text-primary btn" (click)="move(0)">Change</p>
+
+                                </div>
+                                <hr />
+
+                                <div class="row" style="height: 10px;">
+                                  <p class="col-4">Expiration Date </p>
+                                  <mat-label class="col-4">{{this.thirdFormGroup.value.expirationDate}}</mat-label>
+                                  <p class="col-4 text-primary btn" (click)="move(0)">Change</p>
+
+                                </div>
+                                <hr />
+                                <div class="row" style="height: 10px;">
+                                  <p class="col-4">Sequrity Code</p>
+                                  <mat-label class="col-4">{{this.firstFormGroup.value.sequrityCode}}</mat-label>
+                                  <p class="col-4 text-primary btn" (click)="move(0)">Change</p>
+
+                                </div>
+                                <hr />
+
+
+                              </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                  </div>
+                  <!--- END COL -->
                 </div>
-                <hr />
-                <div class="row" style="height: 10px;">
-                  <p class="col-3">Email</p>
-                  <mat-label class="col-6">{{this.firstFormGroup.value.email}}</mat-label>
-                  <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
-
-                </div>
-                <hr />
-
-                <div class="row" style="height: 10px;">
-                  <p class="col-3">Adress</p>
-                  <mat-label class="col-6">{{this.firstFormGroup.value.adress}}</mat-label>
-                  <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
-
-                </div>
-                <hr />
-
-                <div class="row" style="height: 10px;">
-                  <p class="col-3">Contact</p>
-                  <mat-label class="col-6">{{this.firstFormGroup.value.contact}}</mat-label>
-                  <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
-
-                </div>
-                <hr />
-
-                <div class="row" style="height: 10px;">
-                  <p class="col-3">Shipping Method:</p>
-                  <mat-label class="col-6">{{this.firstFormGroup.value.method}}</mat-label>
-                  <p class="col-3 text-primary btn" (click)="move(1)">Change</p>
-
-                </div>
-                <hr />
 
               </div>
-
 
             </mat-list>
 
             <div class="row">
 
-              <button class="col-2 btn text-primary" matStepperPrevious>< Return to Payment
+              <button class="col-2 btn text-primary" matStepperPrevious>
+                < Return to Payment </button>
+                  </div>
+            <div class="row">
 
-              </button>
-              <div class="col-8">
-              </div>
 
-              <button class="btn btn-primary" style="margin:1%;" (click)="order()">Submit</button>
+                  <div class="col-6">
+                  </div>
+
+                  <button  class="col-6" class="btn btn-primary" style="margin:1%;" (click)="order()">Order Now</button>
             </div>
-
           </mat-step>
         </mat-vertical-stepper>
       </div>
@@ -262,89 +546,88 @@
     <div *ngIf="deviceMd || deviceLg" class="row">
       <div class="col-lg-1 "></div>
       <div class="col-lg-10 col-xs-12 col-sm-12">
-        <mat-horizontal-stepper  [linear]="isLinear" #stepper>
+        <mat-horizontal-stepper [linear]="isLinear" #stepper>
 
-          <mat-step [stepControl]="firstFormGroup" >
-            <form [formGroup]="firstFormGroup" >
+          <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
               <ng-template matStepLabel><span style="font-size: 18px;">Information</span> </ng-template>
-              <div style="min-height: 550px;border: 1px;border-radius: 6px;border-width: 1px;border-color: lightgrey;border-style:solid;padding: 3%;">
-              <mat-form-field style="width: 250px;" appearance="outline">
-                <mat-label><span style="font-size: 18px;">Email or Phone number</span></mat-label>
-                <input matInput formControlName="email">
-              </mat-form-field>
-              <p style="font-size: large;font-size: 22px;font-weight: bold;">Shipping Adress</p>
-              <div >
-                <mat-form-field class="col-xs-5" appearance="outline">
-                  <mat-label><span style="font-size: 18px;"> First Name</span></mat-label>
-                  <input matInput formControlName="fname">
+              <div
+                style="min-height: 650px;border: 1px;border-radius: 6px;border-width: 1px;border-color: lightgrey;border-style:solid;padding: 3%;">
+                <mat-form-field style="width: 250px;" appearance="outline">
+                  <mat-label><span style="font-size: 18px;">Email or Phone number</span></mat-label>
+                  <input matInput formControlName="email">
                 </mat-form-field>
-                <div class="col-xs-2"></div>
-                <mat-form-field class="col-xs-5" appearance="outline">
-                  <mat-label><span style="font-size: 18px;"> Last Name</span></mat-label>
-                  <input matInput formControlName="lname">
-                </mat-form-field>
-              </div>
-              <div >
-                <mat-form-field class="col-xs-12" appearance="outline">
-                  <mat-label><span style="font-size: 18px;"> Adress</span></mat-label>
-                  <input matInput formControlName="adress">
-                </mat-form-field>
-              </div>
-              <div >
-                <mat-form-field class="col-xs-12" appearance="outline">
-                  <mat-label><span style="font-size: 18px;"> City</span></mat-label>
-                  <input matInput formControlName="city">
-                </mat-form-field>
-              </div>
-              <div >
-                <!-- <mat-select-country class="col-xs-5" appearance="outline"
-                label="Country"
-                [formControl]="countryFormControl"
+                <p style="font-size: large;font-size: 22px;font-weight: bold;">Shipping Adress</p>
+                <div>
+                  <mat-form-field class="col-xs-5" appearance="outline">
+                    <mat-label><span style="font-size: 18px;"> First Name</span></mat-label>
+                    <input matInput formControlName="fname">
+                  </mat-form-field>
+                  <div class="col-xs-2"></div>
+                  <mat-form-field class="col-xs-5" appearance="outline">
+                    <mat-label><span style="font-size: 18px;"> Last Name</span></mat-label>
+                    <input matInput formControlName="lname">
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-form-field class="col-xs-12" appearance="outline">
+                    <mat-label><span style="font-size: 18px;"> Adress 1</span></mat-label>
+                    <input matInput formControlName="adress1">
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-form-field class="col-xs-12" appearance="outline">
+                    <mat-label><span style="font-size: 18px;"> Adress 2 (Optional)</span></mat-label>
+                    <input matInput formControlName="adress2">
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-form-field class="col-xs-12" appearance="outline">
+                    <mat-label><span style="font-size: 18px;"> City</span></mat-label>
+                    <input matInput formControlName="city">
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-select-country  class="col-lg-3" appearance="outline"
+                label="Country"  formControlName="contry"
+
                 (onCountrySelected)="onCountrySelected($event)">
-               </mat-select-country> -->
-                <!-- <mat-form-field class="col-xs-5" appearance="outline">
-                  <mat-label><span style="font-size: 18px;"> Contry</span></mat-label>
-                  <input matInput formControlName="contry">
-                </mat-form-field> -->
-                <div class="col-xs-2"></div>
+              </mat-select-country>
+              <div class="col-lg-1"></div>
+              <mat-form-field class="col-lg-4" appearance="outline">
+                <mat-label><span style="font-size: 18px;"> State</span></mat-label>
+                <input matInput formControlName="state">
+              </mat-form-field>
 
-                <mat-form-field class="col-xs-5" appearance="outline">
-                  <mat-label><span style="font-size: 18px;"> Postal Code</span></mat-label>
-                  <input matInput formControlName="code" type="number">
-                </mat-form-field>
-              </div>
-              <div >
-                <mat-form-field class="col-xs-5" appearance="outline">
-                  <mat-label><span style="font-size: 18px;"> State</span></mat-label>
-                  <input matInput formControlName="state">
-                </mat-form-field>
+                  <mat-form-field class="col-lg-4" appearance="outline">
+                    <mat-label><span style="font-size: 18px;"> Postal Code</span></mat-label>
+                    <input matInput formControlName="code" type="number">
+                  </mat-form-field>
+                </div>
+                <div>
 
-                <div class="col-xs-2"></div>
 
-                <mat-form-field class="col-xs-5" appearance="outline">
-                  <mat-label><span style="font-size: 18px;"> Appartment</span></mat-label>
-                  <input matInput formControlName="appartment">
-                </mat-form-field>
-              </div>
+                  <mat-form-field class="col-xs-12" appearance="outline">
+                    <mat-label><span style="font-size: 18px;"> Appartment</span></mat-label>
+                    <input matInput formControlName="appartment">
+                  </mat-form-field>
+                </div>
               </div>
               <div style="padding-top: 2%;display: flex;flex-direction: row;justify-content: space-between;">
-               <div style="padding-top: 10px;">
-                 <input type="checkbox" class="form-check-input" id="exampleCheck1" style="width: 30px;">
-                <label style="margin-left: 30px;font-size: 18px;">Save details for next time</label>
+                <div style="padding-top: 10px;">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1" style="width: 30px;">
+                  <label style="margin-left: 30px;font-size: 18px;">Save details for next time</label>
 
 
+                </div>
+
+                <div style="text-align: right;">
+                  <button class="btn btn-primary" style="width: 160px;height: 60px;" (click)="shipping(1)">Continue to
+                    Shipping</button>
+                </div>
               </div>
-
-              <div style="text-align: right;">
-                <button class="btn btn-primary" style="width: 160px;height: 60px;" (click)="shipping(1)">Continue to Shipping</button>
-              </div>
-            </div>
 
             </form>
-            <p style="font-size: 14px" class="errorlbl"
-            *ngIf="loginFirst == 'show'">
-             Login first to make an  order
-          </p>
 
           </mat-step>
 
@@ -353,7 +636,7 @@
               <ng-template matStepLabel>Shipping</ng-template>
               <div
                 style="padding: 1%;margin-top: 2%;border-style: solid;border-width: 1px;border-color: lightgrey;border-radius: 6px;">
-                <div  style="display: flex;flex-direction: row;justify-content: space-evenly;">
+                <div style="display: flex;flex-direction: row;justify-content: space-evenly;">
                   <div style="text-align: left;font-size: 18px;" class="col-xs-3 btn">Contact</div>
                   <mat-label class="col-xs-7" style="font-size: 18px;">{{this.firstFormGroup.value.email}}</mat-label>
                   <div style="font-size: 18px;" class="col-xs-2 text-primary btn" (click)="move(0)">Change</div>
@@ -363,204 +646,207 @@
                 <div style="display: flex;flex-direction: row;justify-content: space-evenly;">
                   <p class="col-xs-3 btn" style="text-align: left;font-size: 18px;">Shipping Adress</p>
                   <mat-label class="col-xs-7" style="font-size: 18px;">{{this.firstFormGroup.value.adress}}</mat-label>
-                  <p  style="font-size: 18px;" class="col-xs-2 text-primary btn">Change</p>
+                  <p style="font-size: 18px;" class="col-xs-2 text-primary btn">Change</p>
                 </div>
 
               </div>
-              <p   style="font-weight: bold;font-size: 22px;margin-top: 2%;margin-bottom: 2%;">Shipping Method</p>
+              <p style="font-weight: bold;font-size: 22px;margin-top: 2%;margin-bottom: 2%;">Shipping Method</p>
 
 
-  <div style="padding-top: 20px;border-style: solid;border-width: 1px;border-color: lightgrey;border-radius: 6px;;display: flex;flex-direction: row;justify-content: space-evenly;">
+              <div
+                style="padding-top: 20px;border-style: solid;border-width: 1px;border-color: lightgrey;border-radius: 6px;;display: flex;flex-direction: row;justify-content: space-evenly;">
 
-     <div class="col-xs-1">
-
+<<<<<<< HEAD
+                <div class="col-xs-1">
+=======
      <input  type="checkbox"  class="form-check-input" id="exampleCheck2">
    </div>
    <mat-label class="col-8" style="text-align: left;font-size: 18px;">Standard Method</mat-label>
        <p  style="font-size: 18px;">Allow next 4-5 bussiness days</p>
+>>>>>>> d9d232129db176842109f3843c63acbe3837657a
 
-     </div>
+                  <input type="checkbox" formControlName="method" class="form-check-input" id="exampleCheck2">
+                </div>
+                <mat-label class="col-8" style="text-align: left;font-size: 18px;">Standard Method</mat-label>
+                <p style="font-size: 18px;" class="col-xs-2 text-primary btn">Change</p>
 
+              </div>
+              <p style="font-size: 14px" class="errorlbl"
+              *ngIf="selectShippingMethod == 'show'">
+              Select shipping method
+            </p>
 
               <div class="row" style="margin-right: 2%;">
                 <p style="font-size: 18px;text-align: left;" class="col-xs-4 btn text-primary" (click)="move(0)">
-             < Return to Information
-                </p>
-                <div class="col-xs-5">
-                </div>
-                <button class="col-xs-3 btn btn-primary" style="width: 160px;height: 60px;" (click)="payment(2)">Continue to Payment</button>
+                  < Return to Information </p>
+                    <div class="col-xs-5">
+                    </div>
+                    <button class="col-xs-3 btn btn-primary" style="width: 160px;height: 60px;"
+                      (click)="payment(2)">Continue to Payment</button>
               </div>
             </form>
           </mat-step>
           <mat-step [stepControl]="thirdFormGroup">
             <form [formGroup]="thirdFormGroup">
               <ng-template matStepLabel>Paymemt</ng-template>
-              <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+              <!-- <ngx-paypal [config]="payPalConfig"></ngx-paypal> -->
 
             </form>
 
 
             <label style="font-size: 22px;" for="">Payments</label>
-           <div>
-            <p  style="font-size: 18px;"for="">All transactions are secured and encrypted</p>
+            <div>
+              <p style="font-size: 18px;" for="">All transactions are secured and encrypted</p>
             </div>
-              <form [formGroup]="thirdFormGroup" style="border: 1px;border-style: solid;border-radius: 6px;border-color: lightgray;">
+            <form [formGroup]="thirdFormGroup"
+              style="border: 1px;border-style: solid;border-radius: 6px;border-color: lightgray;">
 
               <ng-template matStepLabel></ng-template>
-            <div style="padding-top:2%;padding-left: 2%;padding-right: 2%;display: flex;flex-direction: row;justify-content: space-between;">
+              <div data-toggle="collapse" href="#collapseExample"
+                style="padding-top:2%;padding-left: 2%;padding-right: 2%;display: flex;flex-direction: row;justify-content: space-between;">
 
-              <label style="font-size: 18px;">Credit Card</label>
-       <p>Options</p>
-
-      </div>
-      <hr>
-            <div style="padding: 2%;">
-              <div class="row">
-              <mat-form-field class="col-12"  appearance="outline" >
-                <mat-label><span style="font-size: 16px;">Card no</span></mat-label>
-                <input matInput formControlName="cardNo">
-              </mat-form-field>
-            </div>
-
-              <div  class="row">
-
-              <mat-form-field class="col-12"  appearance="outline">
-                <mat-label><span style="font-size: 16px;">Name on Card</span></mat-label>
-                <input matInput formControlName="name">
-              </mat-form-field>
-            </div>
-              <div class="row">
-                <mat-form-field class="col-6"  appearance="outline">
-                  <mat-label><span style="font-size: 16px;">Expiration Data MM/YY</span></mat-label>
-                  <input matInput formControlName="expirationDate">
-                </mat-form-field>
-
-
-                <mat-form-field class="col-6"  appearance="outline">
-                  <mat-label><span style="font-size: 16px;">Sequrity Code</span></mat-label>
-                  <input matInput formControlName="sequrityCode" type="number">
-                </mat-form-field>
-              </div>
-
-            </div>
-
-              <hr style="margin: 0px;">
-              <div style="display: flex;flex-direction: row;justify-content: space-between;padding-top: 20px;">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1" style="padding-right: 4%;margin-left: 3%;">
-                <label style="margin-left: 8%;font-size: 16px;">Credit Card</label>
-
-                <p style="font-size: 16px;" class="text text-primary btn">Options</p>
+                <label style="font-size: 18px;font-weight: bold;" class="text text-primary">+ Credit Card</label>
+                <p>Options</p>
 
               </div>
 
-           <hr style="margin: 0px;">
-           <div style="display: flex;flex-direction: row;justify-content: space-between;padding-top: 20px;">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1" style="padding-right: 4%;margin-left: 3%;">
-            <label style="margin-left: 8%;font-size: 16px;">Credit Card</label>
 
-            <p style="font-size: 16px;" class="text text-primary btn">Options</p>
-
-          </div>
-
-
-
-             </form>
-
-
-
-
-
-             <label style="font-size: 22px;margin-top: 3%;" for="">Billing Adress</label>
-             <div>
-              <p  style="font-size: 18px;"for="">Select the method that matches your card or payment adress</p>
-              </div>
-                <form [formGroup]="thirdFormGroup" style="border: 1px;border-style: solid;border-radius: 6px;border-color: lightgray;">
-
-                <ng-template matStepLabel></ng-template>
-                <div style="display: flex;flex-direction: row;justify-content: space-between;padding-top: 20px;">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1" style="padding-right: 4%;margin-left: 3%;">
-                  <label style="margin-left: 8%;font-size: 16px;">Same as shiping adress</label>
-
-
+              <div style="padding: 2%;" class="collapse" id="collapseExample">
+                <div class="row">
+                  <mat-form-field class="col-12" appearance="outline">
+                    <mat-label><span style="font-size: 16px;">Card no</span></mat-label>
+                    <input matInput formControlName="cardNo">
+                  </mat-form-field>
                 </div>
 
-             <hr style="margin: 0px;">
-             <div style="display: flex;flex-direction: row;justify-content: space-between;padding-top: 20px;">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1" style="padding-right: 4%;margin-left: 3%;">
-              <label style="margin-left: 8%;font-size: 16px;">Use a different billing adress</label>
+                <div class="row">
+
+                  <mat-form-field class="col-12" appearance="outline">
+                    <mat-label><span style="font-size: 16px;">Name on Card</span></mat-label>
+                    <input matInput formControlName="name">
+                  </mat-form-field>
+                </div>
+                <div class="row">
+                  <mat-form-field class="col-6" appearance="outline">
+                    <mat-label><span style="font-size: 16px;">Expiration Data MM/YY</span></mat-label>
+                    <input matInput formControlName="expirationDate">
+                  </mat-form-field>
 
 
-            </div>
+                  <mat-form-field class="col-6" appearance="outline">
+                    <mat-label><span style="font-size: 16px;">Sequrity Code</span></mat-label>
+                    <input matInput formControlName="sequrityCode" type="number">
+                  </mat-form-field>
+                </div>
 
-         <hr style="margin: 0px;">
-
-         <form [formGroup]="firstFormGroup" >
-          <ng-template matStepLabel><span style="font-size: 18px;">Information</span> </ng-template>
-          <div style="min-height: 550px;padding: 3%;">
-          <mat-form-field style="width: 250px;" appearance="outline">
-            <mat-label><span style="font-size: 18px;">Email or Phone number</span></mat-label>
-            <input matInput formControlName="email">
-          </mat-form-field>
-          <p style="font-size: large;font-size: 22px;font-weight: bold;">Shipping Adress</p>
-          <div >
-            <mat-form-field class="col-xs-5" appearance="outline">
-              <mat-label><span style="font-size: 18px;"> First Name</span></mat-label>
-              <input matInput formControlName="fname">
-            </mat-form-field>
-            <div class="col-xs-2"></div>
-            <mat-form-field class="col-xs-5" appearance="outline">
-              <mat-label><span style="font-size: 18px;"> Last Name</span></mat-label>
-              <input matInput formControlName="lname">
-            </mat-form-field>
-          </div>
-          <div >
-            <mat-form-field class="col-xs-12" appearance="outline">
-              <mat-label><span style="font-size: 18px;"> Adress</span></mat-label>
-              <input matInput formControlName="adress">
-            </mat-form-field>
-          </div>
-          <div >
-            <mat-form-field class="col-xs-12" appearance="outline">
-              <mat-label><span style="font-size: 18px;"> City</span></mat-label>
-              <input matInput formControlName="city">
-            </mat-form-field>
-          </div>
-          <div >
-            <mat-form-field class="col-xs-5" appearance="outline">
-              <mat-label><span style="font-size: 18px;"> Contry</span></mat-label>
-              <input matInput formControlName="contry">
-            </mat-form-field>
-            <div class="col-xs-2"></div>
-
-            <mat-form-field class="col-xs-5" appearance="outline">
-              <mat-label><span style="font-size: 18px;"> Postal Code</span></mat-label>
-              <input matInput formControlName="code" type="number">
-            </mat-form-field>
-          </div>
-          <div >
-            <mat-form-field class="col-xs-5" appearance="outline">
-              <mat-label><span style="font-size: 18px;"> State</span></mat-label>
-              <input matInput formControlName="state">
-            </mat-form-field>
-
-            <div class="col-xs-2"></div>
-
-            <mat-form-field class="col-xs-5" appearance="outline">
-              <mat-label><span style="font-size: 18px;"> Appartment</span></mat-label>
-              <input matInput formControlName="appartment">
-            </mat-form-field>
-          </div>
-          </div>
-
-
-
-        </form>
-
-               </form>
-
-               <div style="text-align: right;margin-top: 20px;">
-                <button class="btn btn-primary" style="width: 160px;height: 60px;" (click)="move(3)">CheckOut</button>
               </div>
+
+            </form>
+
+            <p style="text-align: left;justify-content: flex-end;font-size: 14px;" class="errorlbl"
+            *ngIf="paymentFormError == 'show'">
+             Provide Payment Information
+          </p>
+            <label style="font-size: 22px;margin-top: 3%;" for="">Billing Adress</label>
+            <div>
+              <p style="font-size: 18px;" for="">Select the method that matches your card or payment adress</p>
+            </div>
+            <form [formGroup]="thirdFormGroup"
+              style="border: 1px;border-style: solid;border-radius: 6px;border-color: lightgray;">
+
+              <ng-template matStepLabel></ng-template>
+              <div style="display: flex;flex-direction: row;justify-content: space-between;padding-top: 20px;">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1"
+                  style="padding-right: 4%;margin-left: 3%;">
+                <label style="margin-left: 8%;font-size: 16px;">Same as shiping adress</label>
+
+
+              </div>
+              <hr />
+              <div data-toggle="collapse" href="#collapseExample2" style="display: flex;flex-direction: row;justify-content: space-between;padding-top: 20px;">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1"
+                  style="padding-right: 4%;margin-left: 3%;">
+                <label style="margin-left: 8%;font-size: 16px;">Use a different billing adress</label>
+
+
+              </div>
+              <form   [formGroup]="firstFormGroup"   >
+                <ng-template matStepLabel><span style="font-size: 18px;">Information</span> </ng-template>
+                <div class="collapse" id="collapseExample2" style="min-height: 600px;padding: 3%;">
+                  <mat-form-field style="width: 250px;" appearance="outline">
+                    <mat-label><span style="font-size: 18px;">Email or Phone number</span></mat-label>
+                    <input matInput formControlName="email">
+                  </mat-form-field>
+                  <p style="font-size: large;font-size: 22px;font-weight: bold;">Shipping Adress</p>
+                  <div>
+                    <mat-form-field class="col-xs-5" appearance="outline">
+                      <mat-label><span style="font-size: 18px;"> First Name</span></mat-label>
+                      <input matInput formControlName="fname">
+                    </mat-form-field>
+                    <div class="col-xs-2"></div>
+                    <mat-form-field class="col-xs-5" appearance="outline">
+                      <mat-label><span style="font-size: 18px;"> Last Name</span></mat-label>
+                      <input matInput formControlName="lname">
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field class="col-xs-12" appearance="outline">
+                      <mat-label><span style="font-size: 18px;"> Adress 1</span></mat-label>
+                      <input matInput formControlName="adress1">
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field class="col-xs-12" appearance="outline">
+                      <mat-label><span style="font-size: 18px;"> Adress 2 (optional)</span></mat-label>
+                      <input matInput formControlName="adress2">
+                    </mat-form-field>
+                  </div>
+
+                  <div>
+                    <mat-form-field class="col-xs-12" appearance="outline">
+                      <mat-label><span style="font-size: 18px;"> City</span></mat-label>
+                      <input matInput formControlName="city">
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field class="col-xs-5" appearance="outline">
+                      <mat-label><span style="font-size: 18px;"> Contry</span></mat-label>
+                      <input matInput formControlName="contry">
+                    </mat-form-field>
+                    <div class="col-xs-2"></div>
+
+                    <mat-form-field class="col-xs-5" appearance="outline">
+                      <mat-label><span style="font-size: 18px;"> Postal Code</span></mat-label>
+                      <input matInput formControlName="code" type="number">
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field class="col-xs-5" appearance="outline">
+                      <mat-label><span style="font-size: 18px;"> State</span></mat-label>
+                      <input matInput formControlName="state">
+                    </mat-form-field>
+
+                    <div class="col-xs-2"></div>
+
+                    <mat-form-field class="col-xs-5" appearance="outline">
+                      <mat-label><span style="font-size: 18px;"> Appartment</span></mat-label>
+                      <input matInput formControlName="appartment">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+
+
+              </form>
+            </form>
+
+
+
+
+
+            <div style="text-align: right;margin-top: 20px;">
+              <button class="btn btn-primary" style="width: 160px;height: 60px;" (click)="paymentDone()">CheckOut</button>
+            </div>
 
           </mat-step>
           <mat-step>
@@ -568,76 +854,187 @@
             <p>You are now done.</p>
 
             <mat-list>
-              <div style="border-style: solid;border-width: 1px;border-color: lightgrey;border-radius: 6px;padding: 3%;">
-                <div class="row" style="height: 10px;">
-                  <p class="col-3">Name</p>
-                  <mat-label class="col-6">{{this.firstFormGroup.value.fname}}</mat-label>
-                  <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
 
+
+              <div id="accordion">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                      <div class="panel panel-default">
+                        <div class="panel-heading"   aria-expanded="false" aria-controls="contact" data-toggle="collapse" href="#contact" role="button">
+                          <h4 class="panel-title">
+
+
+
+                                <a class="text text-primary"
+                                >
+                                  <mat-label  style="font-style: 22px;font-weight: bold;">+ Information</mat-label>
+                                </a>
+
+                          </h4>
+                        </div>
+                        <div  class="panel-collapse collapse in" role="tabpanel"
+                          aria-labelledby="headingOne">
+                          <div >
+
+                            <div class="collapse" id="contact">
+                              <div class="card card-body">
+                                <div class="row" style="height: 10px;">
+                                  <p class="col-3">Name</p>
+                                  <mat-label class="col-6">{{this.firstFormGroup.value.fname}}</mat-label>
+                                  <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
+                                </div>
+                                <hr />
+                                <div class="row" style="height: 10px;">
+                                  <p class="col-3">Email</p>
+                                  <mat-label class="col-6">{{this.firstFormGroup.value.email}}</mat-label>
+                                  <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
+                                </div>
+                                <hr />
+
+                                <div class="row" style="height: 10px;">
+                                  <p class="col-3">Adress 1 </p>
+                                  <mat-label class="col-6">{{this.firstFormGroup.value.adress1}}</mat-label>
+                                  <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
+                                </div>
+                                <div class="row" style="height: 10px;">
+                                  <p class="col-3">Adress 2</p>
+                                  <mat-label class="col-6">{{this.firstFormGroup.value.adress2}}</mat-label>
+                                  <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
+                                </div>
+                                <hr />
+
+                                <div class="row" style="height: 10px;">
+                                  <p class="col-3">Contact</p>
+                                  <mat-label class="col-6">{{this.firstFormGroup.value.email}}</mat-label>
+                                  <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
+                                </div>
+                                <hr />
+                                <div class="row" style="height: 10px;">
+                                  <p class="col-3">State</p>
+
+                                  <mat-label class="col-6">{{this.firstFormGroup.value.state}}</mat-label>
+                                  <p class="col-3 text-primary btn" (click)="move(1)">Change</p>
+
+                                </div>
+                                <hr />
+                                <div class="row" style="height: 10px;">
+                                  <p class="col-3">Appartment</p>
+
+                                  <mat-label class="col-6">{{this.firstFormGroup.value.appartment}}</mat-label>
+                                  <p class="col-3 text-primary btn" (click)="move(1)">Change</p>
+
+                                </div>
+                                <hr />
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading"  data-toggle="collapse" href="#shipping" role="button"
+                        aria-expanded="false" aria-controls="shipping">
+                          <h4 class="panel-title">
+                                <a class="text text-primary" >
+                                  <mat-label style="font-style: 22px;font-weight: bold;">+ Shipping Adress</mat-label>
+                                </a>
+
+                           </h4>
+                        </div>
+
+
+                            <div class="collapse" id="shipping">
+                              <div class="card card-body">
+                                <div class="row" style="height: 10px;">
+                                  <p class="col-5">Shipping Method:</p>
+                                  <mat-label class="col-4">Standard</mat-label>
+                                  <p class="col-3 text-primary btn" (click)="move(1)">Change</p>
+
+                                </div>
+
+                              </div>
+                            </div>
+
+
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading" role="tab"  data-toggle="collapse" href="#payment" role="button"
+                        aria-expanded="false" aria-controls="payment">
+                          <h4 class="panel-title">
+
+                                <a class="text text-primary">
+                                  <mat-label style="font-style: 22px;font-weight: bold;">+ Payment</mat-label>
+                                </a>
+
+                            </h4>
+                        </div>
+
+
+                        <div class="collapse" id="payment">
+                          <div class="card card-body">
+                            <div class="row" style="height: 10px;">
+                              <p class="col-3">Card No</p>
+                              <mat-label class="col-6">{{this.thirdFormGroup.value.cardNo}}</mat-label>
+                              <p class="col-3 text-primary btn" (click)="move(2)">Change</p>
+
+                            </div>
+                            <hr />
+                            <div class="row" style="height: 10px;">
+                              <p class="col-3">Name on Card</p>
+                              <mat-label class="col-6">{{this.thirdFormGroup.value.name}}</mat-label>
+                              <p class="col-3 text-primary btn" (click)="move(2)">Change</p>
+
+                            </div>
+                            <hr />
+
+                            <div class="row" style="height: 10px;">
+                              <p class="col-3">Expiration Date </p>
+                              <mat-label class="col-6">{{this.thirdFormGroup.value.expirationDate}}</mat-label>
+                              <p class="col-3 text-primary btn" (click)="move(2)">Change</p>
+
+                            </div>
+                            <hr />
+                            <div class="row" style="height: 10px;">
+                              <p class="col-3">Sequrity Code</p>
+                              <mat-label class="col-6">{{this.thirdFormGroup.value.sequrityCode}}</mat-label>
+                              <p class="col-3 text-primary btn" (click)="move(2)">Change</p>
+
+                            </div>
+
+
+
+                          </div>
+                        </div>
+
+
+                        </div>
+
+
+                    </div>
+                  </div>
+                  <!--- END COL -->
                 </div>
-                <hr />
-                <div class="row" style="height: 10px;">
-                  <p class="col-3">Email</p>
-                  <mat-label class="col-6">{{this.firstFormGroup.value.email}}</mat-label>
-                  <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
-
-                </div>
-                <hr />
-
-                <div class="row" style="height: 10px;">
-                  <p class="col-3">Adress</p>
-                  <mat-label class="col-6">{{this.firstFormGroup.value.adress}}</mat-label>
-                  <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
-
-                </div>
-                <hr />
-
-                <div class="row" style="height: 10px;">
-                  <p class="col-3">Contact</p>
-                  <mat-label class="col-6">{{this.firstFormGroup.value.email}}</mat-label>
-                  <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
-
-                </div>
-                <hr />
-
-                <div class="row" style="height: 10px;">
-                  <p class="col-3">Shipping Method:</p>
-                  <mat-label class="col-6">Standard</mat-label>
-                  <p class="col-3 text-primary btn" (click)="move(1)">Change</p>
-
-                </div>
-                <hr />
-
-                <div class="row" style="height: 10px;">
-                  <p class="col-3">State</p>
-
-                  <mat-label class="col-6">{{this.firstFormGroup.value.state}}</mat-label>
-                  <p class="col-3 text-primary btn" (click)="move(1)">Change</p>
-
-                </div>
-                <hr />
-                <div class="row" style="height: 10px;">
-                  <p class="col-3">Appartment</p>
-
-                  <mat-label class="col-6">{{this.firstFormGroup.value.appartment}}</mat-label>
-                  <p class="col-3 text-primary btn" (click)="move(1)">Change</p>
-
-                </div>
-                <hr />
 
               </div>
-
 
             </mat-list>
 
             <div class="row">
 
-              <button class="col-2 btn text-primary"  matStepperPrevious><span style="font-size: 18px;"> < back to Payment</span>
+              <button class="col-2 btn text-primary" matStepperPrevious><span style="font-size: 18px;">
+                  < back to Payment</span>
 
               </button>
               <div class="col-7"> </div>
 
-              <button class="col-3 btn btn-primary" style="width: 160px;height: 60px;"  (click)="order()">Order Complete</button>
+              <button class="col-3 btn btn-primary" style="width: 160px;height: 60px;" (click)="order()">Order
+                Complete</button>
             </div>
 
           </mat-step>
@@ -651,33 +1048,33 @@
 
   <div class="col-lg-5" style="padding-top: 5%;padding-bottom: 5%;min-height: 1000px;background-color: #f3f3f3;">
     <div style="padding-left:7%;padding-right: 7%;padding-top: 5%;padding-bottom: 5%;">
-<div style="display: flex;flex-direction: row;justify-content: space-between;">
-<p style="font-weight: bold;font-size: 22px;">Selected Items</p>
-<p  style="font-size: 18px;" [routerLink]="['/cart']"  class="row text text-primary btn">back to Cart</p>
-</div>
+      <div style="display: flex;flex-direction: row;justify-content: space-between;">
+        <p style="font-weight: bold;font-size: 22px;">Selected Items</p>
+        <p style="font-size: 18px;" [routerLink]="['/cart']" class="row text text-primary btn">back to Cart</p>
+      </div>
       <div class="cartHeight">
-      <div *ngFor="let item of cartItems">
+        <div *ngFor="let item of cartItems">
 
-        <div>
-          <div class="row" style="width: 100%;">
-            <div class="col-xs-4">
-              <div>
-                <img [src]='getImage(item.productImage)' style="width: 50%;">
+          <div>
+            <div class="row" style="width: 100%;">
+              <div class="col-xs-4">
+                <div>
+                  <img [src]='getImage(item.productImage)' style="width: 50%;">
+                </div>
               </div>
-            </div>
-            <div class="col-xs-8"
-              style="display: flex;flex-direction: row;justify-content: space-between;min-width: 30px;">
-              <div>
-                <p>{{item.name}}</p>
-              </div>
-              <div>
-                <p style="font-weight: 500;"> ${{item.unitTotal}}</p>
+              <div class="col-xs-8"
+                style="display: flex;flex-direction: row;justify-content: space-between;min-width: 30px;">
+                <div>
+                  <p>{{item.name}}</p>
+                </div>
+                <div>
+                  <p style="font-weight: 500;"> ${{item.unitTotal}}</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
       <div>
         <hr class="hr" style="background-color: grey;height: 2px;width: 100%;">
         <div style="display: flex;flex-direction: row;justify-content: space-between;">
@@ -698,23 +1095,23 @@
         <p>Total</p>
         <p style="font-weight: 500;">${{getTotal}}</p>
       </div>
-<div>
-  <label>You Can use your bonus to get 10% Discount</label>
-  <button (click)="useBonus()">Use Bonus</button>
-  <p>You have <span > {{accountBonus}}</span> Bonus Remaining</p>
-  <p style="text-align: right;justify-content: flex-end;font-size: 14px;padding-right:15%;" class="errorlbl"
-  *ngIf="showBonusError == 'show'">
-   You have no bonus to use
-</p>
+      <div>
+        <label>You Can use your bonus to get 10% Discount</label>
+        <button (click)="useBonus()">Use Bonus</button>
+        <p>You have <span> {{accountBonus}}</span> Bonus Remaining</p>
+        <p style="text-align: right;justify-content: flex-end;font-size: 14px;padding-right:15%;" class="errorlbl"
+          *ngIf="showBonusError == 'show'">
+          You have no bonus to use
+        </p>
 
-</div>
-<div>
-  <label>You Can use your friend code  to give him 10% Discount</label>
-  <input  [(ngModel)]="refrence"/>
+      </div>
+      <div>
+        <label>You Can use your friend code to give him 10% Discount</label>
+        <input [(ngModel)]="refrence" />
 
-</div>
+      </div>
 
-</div>
+    </div>
   </div>
 
 

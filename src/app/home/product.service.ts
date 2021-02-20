@@ -159,13 +159,35 @@ export class ProductService {
   }
   cancelOrder(id) {
     const ownerEmail = this.myauthService.getemail()
+<<<<<<< HEAD
+    return this.http.post('http://localhost:8000/api/orders/cancelOrder/',
+=======
     return this.http.post(`${environment.apiURL}${environment.SHRIVASA_FOODS_ORDERS_API}` + '/cancelOrder/',
+>>>>>>> d9d232129db176842109f3843c63acbe3837657a
       {
         id: id,
         ownerEmail: ownerEmail
       },
       this.httpHeaders);
 
+  }
+  payment(data) {
+    const userId = this.myauthService.getID()
+    return this.http.post(
+      'http://localhost:8000/api/payment/',
+      {
+        cardNo: data.cardNo,
+        name: data.name,
+        expirationDate: data.expirationDate,
+        sequrityCode: data.sequrityCode,
+        userId
+      },
+      this.httpHeaders
+    );
+  }
+  getAllPayments() {
+    const userId = this.myauthService.getID()
+    return this.http.get('http://localhost:8000/api/payment/' + userId, this.httpHeaders);
   }
   referFriend(data) {
     return this.http.post(

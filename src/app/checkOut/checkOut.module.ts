@@ -24,6 +24,8 @@ import { AuthService } from '../auth.service';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { CheckOutComponent } from './../home/checkOut/checkOut.component';
 // import { AppMaterialModules } from './material.module';
+import { MatSelectCountryModule } from '@angular-material-extensions/select-country';
+
 
 @NgModule({
   imports: [
@@ -46,7 +48,8 @@ import { CheckOutComponent } from './../home/checkOut/checkOut.component';
     NgxPayPalModule,
     MatTabsModule,
     MatInputModule,
-    PopoverModule.forRoot()
+    PopoverModule.forRoot(),
+    MatSelectCountryModule.forRoot('de'),
   ],
   declarations: [CheckOutComponent,CheckOutPageComponent],
 exports:[CheckOutComponent,CheckOutPageComponent],

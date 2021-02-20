@@ -1,12 +1,17 @@
-<div style="margin-left:5%;margin-right: 5%;">
+<div style="margin-left:5%;margin-right: 5%;margin-bottom: 5%;">
 
 <div class="card"  >
   <p style="font-size: large;font-weight: bold;">My Profile</p>
-  <hr>
+
+  <div style="background-color: lightskyblue;margin-bottom: 5%;" >
+    <div style="font-size: 22px;font-weight: bold;padding: 20px;">
+      General Information</div>
+
+  </div>
   <form [formGroup]="rformEdit">
     <div class="row">
     <div  class="col-6">
-      <p style="padding-bottom: 1%">Username</p>
+      <p style="padding-bottom: 1%" style="font-size: 18px;">Username</p>
       <ns-textField-account
         name="username"
         class="textfieldBorderColor font13"
@@ -18,7 +23,7 @@
     </div>
 
     <div class="col-6">
-      <p style="padding-bottom: 1%">Email</p>
+      <p style="padding-bottom: 1%;font-size: 18px;" >Email</p>
       <ns-textField-account
         name="email"
         class="textfieldBorderColor font13"
@@ -31,7 +36,7 @@
   <div class="row">
 
     <div class="col-6" style="padding-bottom: 2%">
-      <p style="padding-bottom: 1%">Contact</p>
+      <p style="padding-bottom: 1%;font-size: 18px;">Contact</p>
       <ns-textField-account
         name="contact" type="text"
         class="textfieldBorderColor font13"
@@ -43,8 +48,39 @@
   </div>
   <div class="row">
 
+    <div class="col-12" style="padding-bottom: 2%">
+      <p style="padding-bottom: 1%;font-size: 18px;">Adress 1</p>
+      <ns-textField-account
+        name="adress1" type="text"
+        placeholder="Adress 1"
+
+        class="textfieldBorderColor font13"
+        [rformgroup]="rformEdit"
+        rformControlName="adress1"
+      >
+      </ns-textField-account>
+    </div>
+  </div>
+  <div class="row">
+
+    <div class="col-12" style="padding-bottom: 2%">
+      <p style="padding-bottom: 1%;font-size: 18px;">Adress 2</p>
+      <ns-textField-account
+        name="adress2" type="text"
+        placeholder="Adress 2"
+
+        class="textfieldBorderColor font13"
+        [rformgroup]="rformEdit"
+        rformControlName="adress2"
+      >
+      </ns-textField-account>
+    </div>
+  </div>
+
+  <div class="row">
+
     <div class="col-6" style="padding-bottom: 2%">
-      <p style="padding-bottom: 1%">State </p>
+      <p style="padding-bottom: 1%;font-size: 18px;">State </p>
       <ns-textField-account
         name="state" type="text"
         placeholder="State "
@@ -56,7 +92,7 @@
     </div>
 
     <div class="col-6" style="padding-bottom: 2%">
-      <p style="padding-bottom: 1%">Appartment</p>
+      <p style="padding-bottom: 1%;font-size: 18px;">Appartment</p>
       <ns-textField-account
         name="appartment" type="text"
         placeholder="Appartment"
@@ -76,10 +112,16 @@
         <p class="  btn  green-btn" (click)="editInfo()" >Edit</p>
       </div>
 
-<div class="row">
+      <div style="background-color: lightskyblue;margin-bottom: 2%;" >
+        <div style="font-size: 22px;font-weight: bold;padding: 20px;">
+          Change Password</div>
 
-      <p class="col-6" style="padding-bottom: 1%">Old Password</p>
-      <p class="col-6" style="padding-bottom: 1%">New Password</p>
+      </div>
+
+      <div class="row">
+
+      <p class="col-6" style="padding-bottom: 1%;font-size: 18px;">Old Password</p>
+      <p class="col-6" style="padding-bottom: 1%;font-size: 18px;">New Password</p>
 
     </div>
 
