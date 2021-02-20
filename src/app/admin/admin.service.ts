@@ -1,11 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { AuthService } from '../auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
+  private allAdminOrdersSavedResponse;
   httpHeaders = {
     headers: new HttpHeaders({
       'Content-Type': 'Application/Json',
@@ -14,17 +17,17 @@ export class AdminService {
   };
 
   phase = "delivery phase"
-  constructor(private http: HttpClient,public authService:AuthService) { }
+  constructor(private http: HttpClient, public authService: AuthService) { }
 
   addProducts(fd) {
     return this.http.post(
-      'http://localhost:8000/api/products/', fd
+      `${environment.apiURL}${environment.SHRIVASA_FOODS_PRODUCTS_API}`, fd
     );
   }
   shippingPhase(shippingPhase) {
     return this.http.post(
-      'http://localhost:8000/api/orders/shipping',
-    {
+      `${environment.apiURL}${environment.SHRIVASA_FOODS_ORDERS_API}` + '/shipping',
+      {
         phase: shippingPhase.phase,
         ownerEmail: shippingPhase.ownerEmail,
         orderId: shippingPhase.orderId
@@ -32,15 +35,29 @@ export class AdminService {
       this.httpHeaders
     );
   }
-  getAllOrders() {
-    return this.http.get('http://localhost:8000/api/orders/', this.httpHeaders);
-  }
-  updateBonus(){
-    return this.http.post('http://localhost:8000/api/users/updateBonus/'+this.authService.getID(), this.httpHeaders);
+  getAllOrders(): Observable<any> {
+    //This service even after this update returns observable in both cases (http or cache).
+    return new Observable((observer) => {
+      if (this.allAdminOrdersSavedResponse) {
+        observer.next(this.allAdminOrdersSavedResponse);
+        observer.complete();
+      } else { /* make http request & process */
+        this.http.get(`${environment.apiURL}${environment.SHRIVASA_FOODS_ORDERS_API}`, this.httpHeaders).subscribe(data => {
+          this.allAdminOrdersSavedResponse = data;
+          observer.next(this.allAdminOrdersSavedResponse);
+          observer.complete();
+        }); /* make sure to handle http error */
+
+      }
+    });
 
   }
-  giveBonus(){
-    return this.http.post('http://localhost:8000/api/users/updateBonus/'+this.authService.getID(), this.httpHeaders);
+  updateBonus() {
+    return this.http.post(`${environment.apiURL}${environment.SHRIVASA_FOODS_USER_API}` + '/updateBonus/' + this.authService.getID(), this.httpHeaders);
+
+  }
+  giveBonus() {
+    return this.http.post(`${environment.apiURL}${environment.SHRIVASA_FOODS_USER_API}` + '/updateBonus/' + this.authService.getID(), this.httpHeaders);
 
   }
   getPhase() {
@@ -55,29 +72,28 @@ export class AdminService {
 
   getlocation(latitude: number, longitude: number) {
     return this.http.post(
-      'http://localhost:8000/api/location',
+      `${environment.apiURL}${environment.SHRIVASA_FOODS_LOCATION_API}`,
       {
-
         latitude: latitude,
         longitude: longitude
       },
       this.httpHeaders
     );
   }
-  edit(data){
+  edit(data) {
     return this.http.post(
-      'http://localhost:8000/api/products/editProduct',
+      `${environment.apiURL}${environment.SHRIVASA_FOODS_PRODUCTS_API}` + '/editProduct',
       data
     );
 
   }
   deleteProduct(id) {
-    return this.http.post('http://localhost:8000/api/products/delete',
-    {
-     id:id
-    },
-    this.httpHeaders
-  );
-}
+    return this.http.post(`${environment.apiURL}${environment.SHRIVASA_FOODS_PRODUCTS_API}` + '/delete',
+      {
+        id: id
+      },
+      this.httpHeaders
+    );
+  }
 }
 

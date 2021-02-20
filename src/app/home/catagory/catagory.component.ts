@@ -60,14 +60,15 @@ export class CatagoryComponent implements OnInit {
 }
   CatagoryProducts(page) {
   this.getCartItems()
-    this.productService.getCatagoryProducts(page).subscribe((products:any) => {
-    // this.catagoryItems = products
-      products.forEach(catagoryProduct => {
-
+    this.productService.getProducts().subscribe((products: any) => {
+      let pageMatch = products.filter((productPage) => productPage.catagory === page)
+      // this.catagoryItems = products
+        pageMatch.forEach(catagoryProduct => {
+        catagoryProduct.fil
         this.cartItems.forEach(cartProduct => {
-        if(catagoryProduct._id ==  cartProduct._id){
-          catagoryProduct.productCount = cartProduct.productCount
-         }
+          if (catagoryProduct._id == cartProduct._id) {
+            catagoryProduct.productCount = cartProduct.productCount
+          }
         });
         this.catagoryItems.push(catagoryProduct)
 

@@ -5,10 +5,16 @@
   "scripts": {
     "start": "npm run build && ng serve --open",
     "build": "ng build",
-    "test": "ng test",
+    "unit:test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prod": "ng  build --aot --prod --output-hashing none"
+    "build:prod": "ng  build --configuration=prod --aot --prod --output-hashing none",
+    "build:dev": "ng build --configuration=dev",
+    "build:test": "ng build --configuration=test",
+    "run:prod":"npm run build:test && ng serve --configuration=prod --open",
+    "run:dev":"npm run build:dev && ng serve  --configuration=dev --open",
+    "run:test":"npm run build:test && ng serve  --configuration=test --open"
+    
   },
   "private": true,
   "dependencies": {

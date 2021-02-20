@@ -40,8 +40,9 @@ export class OthersComponent implements OnInit {
   // this.cartService.addProduct(item);
   //   }
   getCatagoryProducts() {
-    this.productService.getCatagoryProducts('others').subscribe((products) => {
-      this.othersProducts = products;
+    this.productService.getProducts().subscribe((products: any) => {
+      let pageProduct = products.filter((productPage) => productPage.catagory === 'others')
+      this.othersProducts = pageProduct;
     }, (error) => {
       console.log('error in getting all products');
     });
