@@ -86,15 +86,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   display: flex;
 }
 
-.customInput {
-  height: 38px;
-  width: 34vw;
-  border: 1px solid #ccc;
-  border-width: 1dp;
-  size: 10;
-  border-radius: 5px;
 
-}
 
 .w34vw {
   width: 34vw;

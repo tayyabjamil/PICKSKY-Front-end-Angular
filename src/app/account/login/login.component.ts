@@ -127,6 +127,7 @@ export class LoginComponent implements OnInit {
           this.toastr.success('Logged in', 'Success' )
           this.router.navigate(['/'])
         }else{
+          this.toastr.success('Logged in', 'Success' )
           this.router.navigate(['/checkOut'])
 
         }

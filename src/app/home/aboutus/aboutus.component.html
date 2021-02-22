@@ -1,7 +1,28 @@
-<div style="background-color:rgb(240, 236, 236) ;min-height: 500px;">
-  <div >
+<div style="background-color:rgb(255, 255, 255) ;min-height: 500px;">
+  <div>
 
-    <p class="text-block1" style="text-align: center;" >About Us</p>
+    <div *ngIf="deviceLg || deviceMd || deviceSm" class="text-block1">
+      <p  class="text-block2 btn" style="font-size:52px;font-weight: 400;" >About Us</p>
+      <div style="display: flex;flex-direction: row;">
+        <div style="margin-right: 10px;" >
+          <p class="text-block2 btn"  style="font-size: 22px;font-weight: 400;">Home <i class="fa fa-home" aria-hidden="true"></i>
+          </p>
+
+        </div>
+        <p class="text-block2 btn"  style="font-size: 22px;font-weight: 400;margin-left: 10px;"> About Us</p>
+      </div>
+    </div>
+    <div *ngIf="deviceXs " class="text-block1-small">
+      <p style="font-size: 42px;font-weight: 400;" class="text-block2 " >About Us</p>
+      <div style="display: flex;flex-direction: row;">
+        <div style="margin-right: 10px;" class="text-block2 " >
+          <p style="font-size: 22px;font-weight: 400;">Home <i class="fa fa-home" aria-hidden="true"></i>
+          </p>
+
+        </div>
+        <p class="text-block2 "  style="font-size: 22px;font-weight: 400;margin-left: 10px;"> About Us</p>
+      </div>
+    </div>
     <div style="height: 20%;">
       <img class="img-responsive gradient" style="width: 100%;height: 400px;object-fit:cove
   r;border-radius: 6px;" src="../assets/images/10.jpg">
@@ -10,18 +31,25 @@
   <div class="row">
     <div class="col-lg-3 col-xs-2 col-sm-2"></div>
     <div class="col-lg-6 col-xs-8 col-sm-8">
-      <h1 style="text-align: center;padding-top: 4%;">Introductions</h1>
-      <h3 style="text-align: center;word-wrap: break-word;color: #c59d5f;">Eros ludus laboramus ne eam. Mea inani utamur
+      <p style="text-align: center;padding-top: 10%;margin-bottom: 10%;font-size: 40px;font-weight: 500;">Introductions
+      </p>
+      <p style="text-align: center;word-wrap: break-word;color: #c59d5f;font-size: 18px;">Eros ludus laboramus ne eam.
+        Mea inani utamur
         rationibus eu, his ei assum volutpat. Integre dolorem mel
         an, mei nihil omittam et. Postea regione
         mentitum ei quo, debitis phaedrum conceptam vis at. Fug
         it choro scriptorem nam an, vel ex possit
-        audire. Qui elitr graeci referrentur ad, eu ludus laudem tincidunt vel, ad vim wisi graeci efficiendi.</h3>
+        audire. Qui elitr graeci referrentur ad, eu ludus laudem tincidunt vel, ad vim wisi graeci efficiendi.</p>
     </div>
     <div class="col-lg-3 col-xs-2 col-sm-2"></div>
 
   </div>
-  <div class="row" style="margin: 1%;">
+  <div style="text-align: center;margin-top: 5%;margin-bottom: 5%;display: flex;flex-direction: column;">
+    <p style="font-size: 32px;font-weight: 500;" class="btn">- Shrivas</p>
+    <p style="font-size: 18px;font-weight: 500;color: #c59d5f;" class="btn">Founder -Ceo</p>
+
+  </div>
+  <div class="row" style="margin: 5%;">
     <div class="container col-lg-6 col-sm-12" style="margin-bottom: 2%;">
       <div style="background-color: grey;">
         <img class="img-responsive gradient" style="width: 100%;height: 100%;;border-radius: 6px;"
@@ -37,7 +65,7 @@
 
     </div>
 
-    <div class="container col-lg-6 col-sm-12">
+    <div class="container col-lg-6 col-sm-12" style="margin-bottom: 2%;">
       <div style="background-color: grey;">
         <img class="img-responsive gradient" style="width: 100%;height: 100%;
     ;border-radius: 6px;" src="../assets/images/about2.jpg">
@@ -52,77 +80,147 @@
 
     </div>
   </div>
-  <div
-    style="background-color: black;text-align: center;padding-top: 5%;padding-left:5%;padding-right: 5%;display: flex;flex-direction: column;">
-    <h2 style="text-align: center;color: #c59d5f;">Begin Here</h2>
-    <div class="row" style="margin-bottom: 1%;">
-      <div class="col-xs-10 col-sm-10 col-lg-5" style="padding:5%">
-        <h1 style="text-align: center;color: #c59d5f;">Diving in returant</h1>
-        <h3 style="word-wrap: break-word;color: #c59d5f;">Maecenas est dui, commodo a rutrum eget, interdum vel
+  <div style="background-color: black;text-align: center;padding: 5%;display: flex;flex-direction: column;">
+    <div style="text-align: center;">
+      <button type="button" class="btn btn-outline-warning btn-lg"
+        style="width: 150px;margin-top: 5%;border-color: #c59d5f;">Begin Here</button>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-lg-6" style="padding: 5%;">
+        <p class="text-block2 " style="text-align: center;font-size: 24px;">Diving in returant</p>
+
+        <p class="text-block2 " style="word-wrap: break-word;font-size: 16px;">Maecenas est dui, commodo a rutrum eget,
+          interdum vel
           lorem. Aliquam euismod dapibus turpis, vitae placerat purus vestibulum non. Pellentesque ut nisi
-          viverra, dictum nisi sed.</h3>
+          viverra, dictum nisi sed.</p>
       </div>
-      <div class="col-xs-1 col-lg-1"></div>
-      <div class="col-xs-10 col-sm-10 col-lg-5">
+      <div *ngIf="deviceLg || deviceMd" class="col-lg-1 vl"></div>
+      <div class="col-xs-12 col-sm-12 col-lg-5">
         <div class="container">
           <img class="img-responsive gradient image" style="width: 100%;height: 100%;;object-fit:cove
   r;border-radius: 6px;" src="../assets/images/about2.jpg">
 
-        <div class="middle" >
+          <div class="middle">
 
-          <p class="text-block2 ">Add Label here</p>
+            <p class="text-block2 ">Add Label here</p>
+          </div>
         </div>
       </div>
     </div>
-    </div>
-    <div class="row" style="margin-bottom: 1%;">
-      <div class="col-xs-10 col-lg-5">
+    <div class="row">
+      <div  *ngIf="deviceSm || deviceXs" class="col-xs-12 col-sm-12 col-lg-5" style="padding: 5%;">
+        <p class="text-block2 " style="text-align: center;font-size: 24px;">Diving in returant</p>
+        <p class="text-block2 " style="word-wrap: break-word;font-size: 16px;">Maecenas est dui, commodo a rutrum eget,
+          interdum vel
+          lorem. Aliquam euismod dapibus turpis, vitae placerat purus vestibulum non. Pellentesque ut nisi
+          viverra, dictum nisi sed.</p>
+      </div>
+      <div class="col-xs-12  col-sm-12 col-lg-6" style="padding: 5%;">
         <div class="container">
           <img class="img-responsive gradient image" style="width: 100%;height: 100%;;object-fit:cove
   r;border-radius: 6px;" src="../assets/images/about2.jpg">
 
-        <div class="middle" >
+          <div class="middle">
 
-          <p class="text-block2 ">Add Label here</p>
+            <p class="text-block2 ">Add Label here</p>
+          </div>
         </div>
       </div>
-    </div>
-      <div class="col-xs-1"></div>
+      <div *ngIf="deviceLg || deviceMd" class=" col-lg-1 vl"></div>
 
-      <div class="col-xs-10 col-lg-5" style="padding:5%">
-        <h1 style="text-align: center;color: #c59d5f;">Diving in returant</h1>
-        <h3 style="word-wrap: break-word;color: #c59d5f;">Maecenas est dui, commodo a rutrum eget, interdum vel
+      <div  *ngIf="deviceLg || deviceMd" class="col-xs-12 col-sm-12 col-lg-5" style="padding: 5%;">
+        <p class="text-block2 " style="text-align: center;font-size: 24px;">Diving in returant</p>
+        <p class="text-block2 " style="word-wrap: break-word;font-size: 16px;">Maecenas est dui, commodo a rutrum eget,
+          interdum vel
           lorem. Aliquam euismod dapibus turpis, vitae placerat purus vestibulum non. Pellentesque ut nisi
-          viverra, dictum nisi sed.</h3>
+          viverra, dictum nisi sed.</p>
       </div>
     </div>
-    <div class="row" style="margin-bottom: 1%;">
-      <div class="col-xs-10 col-lg-5" style="padding:5%">
-        <h1 style="text-align: center;color: #c59d5f;">Diving in returant</h1>
-        <h3 style="word-wrap: break-word;color: #c59d5f;">Maecenas est dui, commodo a rutrum eget, interdum vel
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-lg-6" style="padding: 5%;">
+        <p class="text-block2 " style="text-align: center;font-size: 24px;">Diving in returant</p>
+
+        <p class="text-block2 " style="word-wrap: break-word;font-size: 16px;">Maecenas est dui, commodo a rutrum eget,
+          interdum vel
           lorem. Aliquam euismod dapibus turpis, vitae placerat purus vestibulum non. Pellentesque ut nisi
-          viverra, dictum nisi sed.</h3>
+          viverra, dictum nisi sed.</p>
       </div>
-      <div class="col-xs-1"></div>
-      <div class="col-xs-10 col-lg-5">
+      <div *ngIf="deviceLg || deviceMd" class="col-lg-1 vl"></div>
+      <div class="col-xs-12 col-sm-12 col-lg-5">
         <div class="container">
           <img class="img-responsive gradient image" style="width: 100%;height: 100%;;object-fit:cove
   r;border-radius: 6px;" src="../assets/images/about2.jpg">
 
-        <div class="middle" >
+          <div class="middle">
 
-          <p class="text-block2 ">Add Label here</p>
+            <p class="text-block2 ">Add Label here</p>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+
+<div class="row" style="display: flex;flex-direction: row;justify-content: center;">
+  <p style="padding: 5%;font-size: 40px;font-weight: 500;">Rewards we Recieved
+  </p>
+   </div>
+<div class="row" *ngIf="deviceLg || deviceMd || deviceSm " style="display: flex;flex-direction: row;justify-content: space-between;padding:5%;background-color: white;">
+
+  <div ><img width="244" height="204"
+      src="https://rnzxu3lrgrj1046y63g4g7l1-wpengine.netdna-ssl.com/wp-content/uploads/2018/09/client-1.png"
+      class="aligncenter dt-sc-custom-gray-img attachment-full" alt="client-1" loading="lazy">
+  </div>
+  <div >
+    <img width="244" height="204"
+      src="https://rnzxu3lrgrj1046y63g4g7l1-wpengine.netdna-ssl.com/wp-content/uploads/2018/09/client-2.png"
+      class="aligncenter dt-sc-custom-gray-img attachment-full" alt="client-2" loading="lazy">
+   </div>
+  <div >
+    <img width="244" height="204"
+      src="https://rnzxu3lrgrj1046y63g4g7l1-wpengine.netdna-ssl.com/wp-content/uploads/2018/09/client-3.png"
+      class="aligncenter dt-sc-custom-gray-img attachment-full" alt="client-3" loading="lazy">
+   </div>
+  <div ><img width="244" height="204"
+      src="https://rnzxu3lrgrj1046y63g4g7l1-wpengine.netdna-ssl.com/wp-content/uploads/2018/09/client-4.png"
+      class="aligncenter dt-sc-custom-gray-img attachment-full" alt="client-4" loading="lazy"></div>
 
     </div>
+
+    <div *ngIf="deviceXs " class="row" style="padding:5%;background-color: white;">
+
+      <div class="col-sm-12 col-xs-12"  style="padding-left: 15%;"><img
+          src="https://rnzxu3lrgrj1046y63g4g7l1-wpengine.netdna-ssl.com/wp-content/uploads/2018/09/client-1.png"
+          class="aligncenter dt-sc-custom-gray-img attachment-full" alt="client-1" loading="lazy">
+      </div>
+      <div class="col-sm-12 col-xs-12"  style="padding-left: 15%;">
+        <img
+          src="https://rnzxu3lrgrj1046y63g4g7l1-wpengine.netdna-ssl.com/wp-content/uploads/2018/09/client-2.png"
+          class="aligncenter dt-sc-custom-gray-img attachment-full" alt="client-2" loading="lazy">
+      </div>
+      <div class="col-sm-12 col-xs-12"  style="padding-left: 15%;">
+        <img
+          src="https://rnzxu3lrgrj1046y63g4g7l1-wpengine.netdna-ssl.com/wp-content/uploads/2018/09/client-3.png"
+          class="aligncenter dt-sc-custom-gray-img attachment-full" alt="client-3" loading="lazy">
+      </div>
+      <div class="col-sm-12 col-xs-12"  style="padding-left: 15%;"><img
+          src="https://rnzxu3lrgrj1046y63g4g7l1-wpengine.netdna-ssl.com/wp-content/uploads/2018/09/client-4.png"
+          class="aligncenter dt-sc-custom-gray-img attachment-full" alt="client-4" loading="lazy"></div>
+    </div>
+    <div>
+  <div *ngIf="deviceLg || deviceMd || deviceSm ">
+    <p class="text-block3" style="font-size: 40px;font-weight: 500;padding-bottom: 15px;">How work bring us Here</p>
+
+    <p class="text-block4" style="font-size: 30px;font-weight: 500;text-align: center;">Our Success Story</p>
+  </div>
+  <div *ngIf="deviceXs ">
+    <p class="text-block3-small" style="font-size: 35px;font-weight: 500;">How work bring us Here</p>
+
+    <p class="text-block4-small" style="font-size: 30px;font-weight: 500;text-align: center;">Our Success Story</p>
+  </div>
+  <div style="height: 400px;">
+    <img class="img-responsive gradient"
+      style="height: 400px;width: 100%; background-color:  linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9))"
+      src="../assets/images/hot.png">
   </div>
 </div>
-<div>
-
-  <p class="text-block3">How work bring us Here</p>
-  <div style="height: 300px;">
-    <img class="img-responsive gradient" style="height: 300px;width: 100%;" src="../assets/images/7.jpg">
-  </div>
 </div>

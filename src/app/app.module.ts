@@ -20,6 +20,7 @@ import { HomeModule } from './home/home.module';
 import { AppComponent } from './app.component';
 
 import { AuthService } from '../app/auth.service';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import {
@@ -38,7 +39,7 @@ const facebookid = '2702502043208538';
   imports: [
     BrowserModule,
     CommonModule,
-
+    ModalModule.forRoot(),
     AppRoutingModule,
     NgImageSliderModule,
     CommonModule,

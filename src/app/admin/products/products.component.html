@@ -20,8 +20,9 @@
 
     </div>
 
-  <div  *ngFor="let item of allProducts|  paginate: { itemsPerPage: 2, currentPage: p }; ;let i = index">
-    <div class="row"   style="border:1px;border-style: groove;margin:1%;padding-top: 3px;">
+  <div  *ngFor="let item of allProducts|  paginate: { itemsPerPage: 10, currentPage: p }; ;let i = index">
+    <div class="row panel-title" style="margin:1%;padding-top: 10px;border-radius: 12px;background-color: #b4d469;">
+
       <div class="col-lg-2">
 
         <p  >{{i + 1}}</p>
@@ -42,7 +43,7 @@
 
   <div class="col-lg-1">
 
-    <p     class="  btn  green-btn"  style="color: white;" (click)="edit(item)">Edit</p>
+    <p     class="btn  green-btn"  style="color: white;" (click)="edit(item)">Edit</p>
   </div>
 
   <div class="col-lg-1">

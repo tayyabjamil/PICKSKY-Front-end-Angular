@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./addProduct.component.scss']
 })
 export class AddProductComponent implements OnInit {
-  
+
   productForm: FormGroup
   name: String;
   price: number;

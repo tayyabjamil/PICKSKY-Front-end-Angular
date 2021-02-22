@@ -1,16 +1,37 @@
 .text-block1 {
   position: absolute;
   color: white;
-  padding-top: 9%;
-  padding-left: 45%;
+  padding-top: 8vw;
+  padding-left: 40vw;
+
+  margin-bottom: 12px;
+  font-weight: 500;
+  text-align: center;
+}
+p:hover {
+  color: #c59d5f;
+}
+p:default {
+  color: whitesmoke;
+}
+.text-block1-small {
+  position: absolute;
+  color: white;
+  padding-top: 25vw;
+  padding-left: 18vw;
   font-size: 2vw;
   margin-bottom: 12px;
   font-weight: 500;
   text-align: center;
 }
+
 .container {
   position: relative;
   width: 100%;
+}
+.vl {
+  border-left: 1px solid #c59d5f;
+  height: 500px;
 }
 .image {
   opacity: 1;
@@ -41,7 +62,7 @@
 }
 .text-block2 {
   color: white;
-  font-size: 2vw;
+
   font-weight: 500;
 }
 .text-block3 {
@@ -50,6 +71,34 @@
   padding-top: 10%;
   padding-left: 40%;
   font-size: 2vw;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.text-block4 {
+  position: absolute;
+  color: white;
+  padding-top: 14%;
+  padding-left: 45%;
+  font-size: 30px;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+.text-block3-small {
+  position: absolute;
+  color: white;
+  padding-top: 35vw;
+  padding-left: 5vw;
+  // margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.text-block4-small {
+  position: absolute;
+  color: white;
+  padding-top: 55vw;
+  padding-left: 15vw;
+  font-size: 30px;
   margin-bottom: 12px;
   font-weight: 500;
 }
@@ -67,5 +116,5 @@
    flex-wrap: wrap;
 }
 .gradient{
-  background-color:  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  background-color:  linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));
 }

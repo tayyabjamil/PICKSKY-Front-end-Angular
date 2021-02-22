@@ -1,5 +1,16 @@
-<div class="row" *ngIf="deviceLg || deviceMd" style="padding-top: 2%;padding-bottom: 2%; background-color: black;">
-  <div class="col-lg-1"></div>
+
+<div class="row" *ngIf="deviceLg || deviceMd" style="padding-left: 2%;padding-top: 2%;padding-bottom: 2%; background-color: black;">
+  <div style="display: flex;flex-direction: column;">
+  <div  >
+    <p  style="padding: 20px;color: white;font-size: 32px;">Shirivas Foods</p>
+  </div>
+  <div >
+    <p style="padding: 20px;color: white;font-size: 16px;"> Visit help center</p>
+
+ </div>
+</div>
+  <div class="row" >
+
   <div class="col-lg-1">
     <h1 class="btn" style="color: white;">Company</h1>
     <h4 class="btn" routerLink="['/aboutUs']" style="color: white;">{{getAboutusConstants(6)}}</h4>
@@ -32,32 +43,49 @@
   </div>
 
   <!-- <div class="col-lg-1"></div> -->
-  <div class="col-lg-1">
-    <h2 class="btn" style="color: white;">Inovation</h2>
-    <h4 class="btn" style="color: white;">Advanced</h4>
-    <h4 class="btn" style="color: white;">Technology</h4>
-    <h4 class="btn" style="color: white;">AI</h4>
+  <div class="col-lg-2">
+    <h2 class="btn" style="color: white;">Help</h2>
+    <h4 class="btn" style="color: white;">Shipping & Returns</h4>
+    <h4 class="btn" style="color: white;">Privacy Policy</h4>
+    <h4 class="btn" style="color: white;">FAQ</h4>
+    <button class="btn" style="background-color: orange;font-size: 16px;font-weight: bold;">ORDER ONLINE</button>
   </div>
-  <a class="dropdown-toggle" data-toggle="dropdown"></a>
   <hr>
-  <div class="col-lg-1 p-l-33 ">
-    <span><i class="btn fa fa-facebook-square" routerLink="/login" style="
-    font-weight: 200;
-    font-size: xx-large;
-    margin-right: 2%;
-    padding: 2%;
+  <div class="col-lg-4">
 
-    color:white;
-  "></i></span>
-    <span><i class="btn fa fa-whatsapp" routerLink="/login" style="
-    font-weight: 200;
-    font-size: xx-large;
-    margin-right: 2%;
-    padding: 2%;
+    <div class="row" style="padding:5%;background-color: black;">
+      <div  class="col-2 btn"><i class="btn fa fa-facebook-square" routerLink="/login" style="
+             font-weight: 200;
+             font-size:large;
 
-    color:white;
-  "></i></span>
+             color:white;
+           "></i></div>
+         <div   class="col-2 btn"><i class="btn fa fa-whatsapp" routerLink="/login" style="
+             font-weight: 200;
+             font-size:large;
+             margin-right: 2%;
+             padding: 2%;
 
+             color:white;
+           "></i></div>
+            <div  class="col-2 btn"><i class="btn fa fa-twitter" routerLink="/login" style="
+             font-weight: 200;
+             font-size:large;
+
+             color:white;
+           "></i></div>
+            <div  class="col-2 btn"><i class="btn fa fa-instagram" routerLink="/login" style="
+             font-weight: 200;
+             font-size:large;
+
+             color:white;
+           "></i></div><div  class="col-2 btn"><i class="btn fa fa-youtube-play" routerLink="/login" style="
+             font-weight: 200;
+             font-size:large;
+
+             color:white;
+           "></i></div>
+       </div>
     <div class="row" style="padding-top: 10%;display: flex;flex-direction: column;justify-content: left;background-color: black;">
       <p style="
       font-weight: 200;
@@ -72,7 +100,7 @@
 
       color:white;
     ">Email</p>
-      <input />
+      <input  style="width: 50%;"/>
       <p style="
       font-weight: 200;
       font-size:18px;
@@ -80,19 +108,30 @@
 
       color:white;
     ">Zip Code</p>
-      <input />
+      <input style="width: 50%;"/>
 
      <div style="margin-top: 5%;">
-            <button class="btn btn-primary">Count me in</button>
+            <button class="btn btn-primary" style="font-size: 16px;">Count me in</button>
           </div>
 
     </div>
 
   </div>
-  <div class="col-lg-1"></div>
+  <!-- <div class="col-lg-3"></div> -->
+</div>
 </div>
 <div *ngIf="deviceSm || deviceXs" >
-  <div  class="row" style="padding:2%;display: flex;flex-direction: column;justify-content: left;background-color: black;">
+  <div  class="row" style="padding:5%;display: flex;flex-direction: column;justify-content: left;background-color: black;">
+    <div  >
+      <p  style="padding: 20px;color: white;font-size: 26px;">Shirivas Foods</p>
+    </div>
+    <div >
+      <p style="padding: 20px;color: white;font-size: 16px;"> Visit help center</p>
+
+   </div>
+
+  </div>
+  <div  class="row" style="padding:5%;display: flex;flex-direction: column;justify-content: left;background-color: black;">
       <div class="btn " style="color: white;text-align: left;font-size: 26px;">Company</div>
       <div class="btn " routerLink="['/aboutUs']" style="color: white;text-align: left;">{{getAboutusConstants(6)}}</div>
       <div class="btn " routerLink="['/aboutUs']" style="color: white;text-align: left;">{{getAboutusConstants(1)}}</div>
@@ -101,7 +140,7 @@
       <div class="btn " routerLink="['/aboutUs']" style="color: white;text-align: left;">{{getAboutusConstants(4)}}</div>
       <div class="btn " routerLink="['/aboutUs']" style="color: white;text-align: left;">{{getAboutusConstants(5)}}</div>
   </div>
-  <div  class="row" style="padding:2%;display: flex;flex-direction: column;justify-content: left;background-color: black;" >
+  <div  class="row" style="padding:5%;display: flex;flex-direction: column;justify-content: left;background-color: black;" >
 
       <div style="color: white;text-align: left;font-size: 26px;padding: 2%;">Products</div>
       <div class="btn" routerLink="['/aboutUs']" style="color: white;text-align: left;">{{getHeaderNames(2)}}</div>
@@ -113,7 +152,7 @@
       <div class="btn" routerLink="['/aboutUs']" style="color: white;text-align: left;">{{getSpecialConstants(4)}}</div>
 
   </div>
-    <div class="row" style="padding:2%;background-color: black;">
+    <div class="row" style="padding:5%;background-color: black;">
       <div class="btn" style="color: white;text-align: left;font-size: 18px;">Global CitizenShip</div>
       <div class="btn" style="color: white;text-align: left;font-size: 18px;">Diversity and Insluction</div>
 
@@ -121,7 +160,7 @@
     </div>
 
 
-    <div class="row" style="padding:2%;background-color: black;">
+    <div class="row" style="padding:5%;background-color: black;">
       <p class="btn col-xs-3" style="color: white;text-align: left;">Inovation</p>
       <p class="btn  col-xs-3" style="color: white;text-align: left;">Advanced </p>
       <p class="btn  col-xs-3" style="color: white;text-align: left;">Technology </p>
@@ -130,18 +169,35 @@
     </div>
 
 
-    <div class="row" style="padding:2%;background-color: black;">
-   <div  class="col-xs-4"><i class="btn fa fa-facebook-square" routerLink="/login" style="
+    <div class="row" style="padding:5%;background-color: black;">
+   <div  class="col-xs-2 btn"><i class="btn fa fa-facebook-square" routerLink="/login" style="
           font-weight: 200;
           font-size:large;
 
           color:white;
         "></i></div>
-      <div   class="col-xs-4"><i class="btn fa fa-whatsapp" routerLink="/login" style="
+      <div   class="col-xs-2 btn"><i class="btn fa fa-whatsapp" routerLink="/login" style="
           font-weight: 200;
           font-size:large;
           margin-right: 2%;
           padding: 2%;
+
+          color:white;
+        "></i></div>
+         <div  class="col-xs-2 btn"><i class="btn fa fa-twitter" routerLink="/login" style="
+          font-weight: 200;
+          font-size:large;
+
+          color:white;
+        "></i></div>
+         <div  class="col-xs-2 btn"><i class="btn fa fa-instagram" routerLink="/login" style="
+          font-weight: 200;
+          font-size:large;
+
+          color:white;
+        "></i></div><div  class="col-xs-2 btn"><i class="btn fa fa-youtube-play" routerLink="/login" style="
+          font-weight: 200;
+          font-size:large;
 
           color:white;
         "></i></div>
@@ -164,7 +220,7 @@
 
   color:white;
 ">Email</p>
-  <input />
+  <input  style="width: 50%;"/>
   <p style="
   font-weight: 200;
   font-size:18px;
@@ -173,7 +229,7 @@
 
   color:white;
 ">Zip Code</p>
-  <input />
+  <input  style="width: 50%;"/>
 
   <div style="margin-top: 5%;">
     <button class="btn btn-primary">Count me in</button>

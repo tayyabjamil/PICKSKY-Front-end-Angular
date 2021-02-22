@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , TemplateRef} from '@angular/core';
 
 import { CartService } from '../cart.service';
 import { ProductService } from '../product.service';
@@ -7,7 +7,8 @@ import { Subscription } from 'rxjs';
 import { OrderPipe } from 'ngx-order-pipe';
 import * as jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable'
-
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-myorders',
   templateUrl: './myorders.component.html',
@@ -22,9 +23,11 @@ export class MyordersComponent implements OnInit {
   refrenceCode;
   selectedIndex = null;
 p: number = 1;
+ modalRef: BsModalRef;
+  message: string;
   constructor(public mediaObserver: MediaObserver,private orderPipe: OrderPipe,
-    public productService: ProductService,
-    public cartService: CartService) { }
+    public productService: ProductService,private modalService: BsModalService,
+    public cartService: CartService,public toastr : ToastrService) { }
   mediaSub: Subscription
   deviceXs: boolean;
   deviceLg: boolean;
@@ -72,6 +75,18 @@ p: number = 1;
       this.printOrder(item);
     }, 1000);
 
+  }
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+  confirm(): void {
+    this.message = 'Confirmed!';
+    this.modalRef.hide();
+  }
+
+  decline(): void {
+    this.message = 'Declined!';
+    this.modalRef.hide();
   }
 printOrder(data) {
 
@@ -187,10 +202,15 @@ printOrder(data) {
   }
 
   orderCancel(id) {
+    this.modalRef.hide();
     this.productService.cancelOrder(id).subscribe((products: any) => {
-      alert("order canceled")
+
+      this.toastr.success('order canceled', 'Success' )
+
     }, (error) => {
-      alert(error.error.message)
+
+      this.toastr.error(error.error.message, 'Failed' )
+
     });
   }
 

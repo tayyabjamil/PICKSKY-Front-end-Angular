@@ -120,7 +120,7 @@ export class ProductService {
         observer.next(this.allOrdersSavedResponse);
         observer.complete();
       } else { /* make http request & process */
-        this.http.get(`${environment.apiURL}${environment.SHRIVASA_FOODS_ORDERS_API}` + this.myauthService.getID(), this.httpHeaders).subscribe(data => {
+        this.http.get(`${environment.apiURL}${environment.SHRIVASA_FOODS_ORDERS_API}` +'/'+ this.myauthService.getID(), this.httpHeaders).subscribe(data => {
           this.allOrdersSavedResponse = data;
           observer.next(this.allOrdersSavedResponse);
           observer.complete();
@@ -159,11 +159,7 @@ export class ProductService {
   }
   cancelOrder(id) {
     const ownerEmail = this.myauthService.getemail()
-<<<<<<< HEAD
-    return this.http.post('http://localhost:8000/api/orders/cancelOrder/',
-=======
     return this.http.post(`${environment.apiURL}${environment.SHRIVASA_FOODS_ORDERS_API}` + '/cancelOrder/',
->>>>>>> d9d232129db176842109f3843c63acbe3837657a
       {
         id: id,
         ownerEmail: ownerEmail

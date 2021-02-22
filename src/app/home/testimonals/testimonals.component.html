@@ -1,93 +1,158 @@
-<div style="background-color:rgb(240, 236, 236) ;padding-bottom: 2.5%;min-height: 500px;">
-  <div style="padding-top: 2.5%;padding-left: 2.5%;padding-right: 2.5%;border-radius: 6px;">
+<div style="background-color:rgb(255, 255, 255) ;padding-bottom: 2.5%;min-height: 500px;">
+  <div style="border-radius: 6px;">
 
-    <p class="text-block1">Testimonals</p>
-    <div style="height: 20%;">
-      <img class="img-responsive gradient" style="width: 100%;;object-fit:cove
-  r;border-radius: 6px;" src="../assets/images/veg.jpg">
+    <div *ngIf="deviceLg || deviceMd || deviceSm" class="text-block1">
+      <p    style="color: white;font-size: 52px;font-weight: 400;" >Testimonals</p>
+      <div   style="display: flex;flex-direction: row;padding-left: 20px;padding-top: 30px;">
+
+          <p class="text-block2 btn" style="font-size: 20px;font-weight: 400;">Home </p>
+          <p  class="text-block2 btn" style="padding-left: 10px;font-size: 20px;font-weight: 400;"> | </p>
+        <p class="text-block2 btn"  style="font-size: 20px;font-weight: 400;margin-left: 10px;">Testimonals</p>
+
+      </div>
+    </div>
+    <div *ngIf="deviceXs " class="text-block1-small">
+      <p class="text-block2 btn" style="font-size: 42px;font-weight: 400;" >Testimonals</p>
+      <div style="display: flex;flex-direction: row;">
+        <div   style="display: flex;flex-direction: row">
+
+          <p class="text-block2 btn" style="font-size: 20px;font-weight: 400;">Home </p>
+          <p  class="text-block2 btn" style="padding-left: 10px;font-size: 20px;font-weight: 400;"> | </p>
+        <p class="text-block2 btn" style="font-size: 20px;font-weight: 400;">Testimonals</p>
+
+      </div>
+      </div>
+    </div>
+    <div style="height: 400px">
+      <img class="img-responsive gradient" style="height: 300px;width: 100%;;object-fit:cover;" src="../assets/images/veg.jpg">
     </div>
   </div>
-  <div class="card"  style="text-align: center;margin-top: 5%;margin-left:20%;margin-right: 20%;display: flex;flex-direction: column;">
-    <h1>Top Clients</h1>
-    <h3 style="word-wrap: break-word;">Maecenas est dui, commodo a rutrum eget, interdum vel
-      lorem. Aliquam euismod dapibus turpis, vitae placerat purus vestibulum non. Pellentesque ut nisi
-       viverra, dictum nisi sed.</h3>
-    </div>
-    <div class="card"  style="text-align: center;margin-top: 5%;margin-left:20%;margin-right: 20%;display: flex;flex-direction: column;">
-  <h1>Leave Your Review</h1>
+  <div class="row" style="margin-top: 5%;text-align: center;">
+  <div class="col-lg-3 col-md-3"></div>
+  <div class="col-lg-6 col-xs-12 col-sm-12">
+  <p style="font-size: 32px;padding-bottom: 30px;padding-top: 30px;font-weight: 500;">Top Clients Reviews</p>
+    <h1 style="word-wrap: break-word;font-size: 30px;">Maecenas est dui, commodo a rutrum eget lorem. Aliquam euismod dapibus turpis, vitae placerat purus vestibulum non. Pellentesque ut nis viverra, dictum nisi sed.</h1>
+  </div>
+    <div class="col-lg-3 col-md-3"></div>
+
+  </div>
+    <div
+    style="background-color: rgb(207, 197, 177);text-align: center;margin-top: 5%;padding-left:2%;padding-right: 2%;display: flex;flex-direction: column;">
+      <div class="row" style="margin-top: 5%;text-align: center;">
+        <div class="col-lg-2 col-md-2"></div>
+        <div class="col-lg-8 col-md-8 col-xs-12 col-sm-12">
+          <p style="font-size: 22px;padding-bottom: 30px;padding-top: 30px;font-weight: 600;">Feedback</p>
+
+          <p style="font-size: 32px;padding-bottom: 30px;font-weight:500;color:black">Leave your Review</p>
+          <h1 style="word-wrap: break-word;font-size: 22px;">
+            Maecenas est dui, commodo a rutrum eget lorem. Aliquam euismod dapibus turpis, vitae placerat purus vestibulum non. Pellentesque ut nis viverra, dictum nisi sed.</h1>
+
+              <div style="display:flex;flex-direction: row;justify-content: space-around;">
+                <input  [(ngModel)]="username" placeholder="username" style="height:50px;margin-right: 10px;border-radius: 50px;" class="form-control" type="text" name="refrence">
+                <input    [(ngModel)]="email" placeholder="email" style="height:50px;;margin-left: 10px;border-radius: 50px;" class="form-control" type="text" name="refrence">
+              </div>
 
 
-  <div style="margin-left:5%;margin-right: 5%;" >
+              <input  [(ngModel)]="message" placeholder="message" style="margin-top: 5%;width: 100%;height: 200px;border-radius: 50px;" class="form-control" type="text" name="refrence">
 
-    <div  style="margin-left: 10%;margin-right: 10%;">
-     <div style="display: flex;flex-direction: row;justify-content: space-between">
-      <input [(ngModel)]="username" placeholder="username" style="width: 40%;" class="form-control" type="text" name="refrence">
-      <input  [(ngModel)]="email" placeholder="email" style="width: 40%;" class="form-control" type="text" name="refrence">
-    </div>
-      <input  [(ngModel)]="message" placeholder="message" style="margin-top: 5%;width: 100%;height: 120%;" class="form-control" type="text" name="refrence">
+                   <div
+                    style="background-color: orange;border-radius: 50px;margin-top: 5%;margin-bottom: 5%;margin-left: 5%;display: flex;justify-content: center;height: 50px;">
+                      <p   style="font-size: 22px;padding-top: 10px;font-weight: bold;" (click)="submit()" >Submit</p>
+                    </div>
+                  </div>
+                </div>
+              <div class="col-lg-2 col-md-2"></div>
 
-           <div style="text-align: center;">
-              <p  class="btn btn-primary"  (click)="submit()" >Submit</p>
-            </div>
-
-            </div>
-    </div>
+        </div>
 
 
-</div>
-<div style="text-align: center;margin-top: 5%;margin-left:5%;margin-right: 5%;display: flex;flex-direction: column;">
+<div style="text-align: center;margin-top: 5%;padding-left:10%;padding-right:10%;display: flex;flex-direction: column;">
  <h2>What our Clients say</h2>
-<div class="row" style="margin-bottom: 1%;">
-  <div class="col-xs-5" style="border: 1px;border-style: groove;padding:5%;">
+<div class="row">
+  <div class="col-xs-12 col-lg-5" style="margin-bottom: 10px;padding:10%;min-height: 500px;border: 1px;border-style: dashed;border-radius: 12px;padding:5%;">
     <h1 style="text-align: center;">username</h1>
-    <h3 style="word-wrap: break-word;">Maecenas est dui, commodo a rutrum eget, interdum vel
+    <h3 style="word-wrap: break-word;padding-right:10%;padding-left: 10%;">Maecenas est dui, commodo a rutrum eget, interdum vel
       lorem. Aliquam euismod dapibus turpis, vitae placerat purus vestibulum non. Pellentesque ut nisi
        viverra, dictum nisi sed.</h3>
-  </div>
-  <div class="col-xs-1"></div>
-  <div class="col-xs-5" style="border: 1px;border-style: groove;padding:5%">
-    <h1 style="text-align: center;">username</h1>
+  <hr style="margin-top:30px;margin-bottom: 30px;">
 
-    <h3 style="word-wrap: break-word;">Maecenas est dui, commodo a rutrum eget, interdum vel
+  <img width="110" height="110" src="http://gomoto.like-themes.com/wp-content/uploads/2019/06/client-16-110x110.jpg"
+  class="attachment-gomoto-tiny-square size-gomoto-tiny-square wp-post-image" alt=""/>
+  <p style="font-size: 22px;font-weight: 400;margin-top: 30px;">name</p>
+  <p  style="font-size: 22px;font-weight: 400;margin-top: 30px;">Free lancer</p>
+</div>
+  <div class="col-lg-2"></div>
+    <div class="col-xs-12 col-lg-5" style="margin-bottom: 10px;padding:10%;min-height: 500px;border: 1px;border-style: dashed;border-radius: 12px;padding:5%;">
+    <h1 style="text-align: center;">username</h1>
+    <h3 style="word-wrap: break-word; padding-right:10%;padding-left: 10%;">Maecenas est dui, commodo a rutrum eget, interdum vel
       lorem. Aliquam euismod dapibus turpis, vitae placerat purus vestibulum non. Pellentesque ut nisi
        viverra, dictum nisi sed.</h3>
-  </div>
+  <hr style="margin-top:30px;margin-bottom: 30px;">
+
+  <img width="110" height="110" src="http://gomoto.like-themes.com/wp-content/uploads/2019/06/client-16-110x110.jpg"
+  class="attachment-gomoto-tiny-square size-gomoto-tiny-square wp-post-image" alt=""/>
+  <p style="font-size: 22px;font-weight: 400;margin-top: 30px;">name</p>
+  <p  style="font-size: 22px;font-weight: 400;margin-top: 30px;">Free lancer</p>
+</div>
 
 </div>
-<div class="row" style="margin-bottom: 1%;">
-  <div class="col-xs-5" style="border: 1px;border-style: groove;padding:5%;">
+<div class="row" >
+  <div class="col-xs-12 col-lg-5" style="margin-bottom: 10px;padding:10%;min-height: 500px;border: 1px;border-style: dashed;border-radius: 12px;padding:5%;">
     <h1 style="text-align: center;">username</h1>
-    <h3 style="word-wrap: break-word;">Maecenas est dui, commodo a rutrum eget, interdum vel
+    <h3 style="word-wrap: break-word;padding-right:10%;padding-left: 10%;">Maecenas est dui, commodo a rutrum eget, interdum vel
       lorem. Aliquam euismod dapibus turpis, vitae placerat purus vestibulum non. Pellentesque ut nisi
        viverra, dictum nisi sed.</h3>
-  </div>
-  <div class="col-xs-1"></div>
-  <div class="col-xs-5" style="border: 1px;border-style: groove;padding:5%">
-    <h1 style="text-align: center;">username</h1>
+  <hr style="margin-top:30px;margin-bottom: 30px;">
 
-    <h3 style="word-wrap: break-word;">Maecenas est dui, commodo a rutrum eget, interdum vel
+  <img width="110" height="110" src="http://gomoto.like-themes.com/wp-content/uploads/2019/06/client-16-110x110.jpg"
+  class="attachment-gomoto-tiny-square size-gomoto-tiny-square wp-post-image" alt=""/>
+  <p style="font-size: 22px;font-weight: 400;margin-top: 30px;">name</p>
+  <p  style="font-size: 22px;font-weight: 400;margin-top: 30px;">Free lancer</p>
+</div>
+  <div class="col-lg-2"></div>
+    <div class="col-xs-12 col-lg-5" style="margin-bottom: 10px;padding:10%;min-height: 500px;border: 1px;border-style: dashed;border-radius: 12px;padding:5%;">
+    <h1 style="text-align: center;">username</h1>
+    <h3 style="word-wrap: break-word;padding-right:10%;padding-left: 10%;">Maecenas est dui, commodo a rutrum eget, interdum vel
       lorem. Aliquam euismod dapibus turpis, vitae placerat purus vestibulum non. Pellentesque ut nisi
        viverra, dictum nisi sed.</h3>
-  </div>
+  <hr style="margin-top:30px;margin-bottom: 30px;">
+
+  <img width="110" height="110" src="http://gomoto.like-themes.com/wp-content/uploads/2019/06/client-16-110x110.jpg"
+  class="attachment-gomoto-tiny-square size-gomoto-tiny-square wp-post-image" alt=""/>
+  <p style="font-size: 22px;font-weight: 400;margin-top: 30px;">name</p>
+  <p  style="font-size: 22px;font-weight: 400;margin-top: 30px;">Free lancer</p>
+</div>
 
 </div>
-<div class="row" style="margin-bottom: 1%;">
-  <div class="col-xs-5" style="border: 1px;border-style: groove;padding:5%;">
+<div class="row" >
+  <div class="col-xs-12 col-lg-5" style="margin-bottom: 10px;padding:10%;min-height: 500px;border: 1px;border-style: dashed;border-radius: 12px;padding:5%;">
     <h1 style="text-align: center;">username</h1>
-    <h3 style="word-wrap: break-word;">Maecenas est dui, commodo a rutrum eget, interdum vel
+    <h3 style="word-wrap: break-word;padding-right:10%;padding-left: 10%;">Maecenas est dui, commodo a rutrum eget, interdum vel
       lorem. Aliquam euismod dapibus turpis, vitae placerat purus vestibulum non. Pellentesque ut nisi
        viverra, dictum nisi sed.</h3>
-  </div>
-  <div class="col-xs-1"></div>
-  <div class="col-xs-5" style="border: 1px;border-style: groove;padding:5%">
-    <h1 style="text-align: center;">username</h1>
+  <hr style="margin-top:30px;margin-bottom: 30px;">
 
-    <h3 style="word-wrap: break-word;">Maecenas est dui, commodo a rutrum eget, interdum vel
+  <img width="110" height="110" src="http://gomoto.like-themes.com/wp-content/uploads/2019/06/client-16-110x110.jpg"
+  class="attachment-gomoto-tiny-square size-gomoto-tiny-square wp-post-image" alt=""/>
+  <p style="font-size: 22px;font-weight: 400;margin-top: 30px;">name</p>
+  <p  style="font-size: 22px;font-weight: 400;margin-top: 30px;">Free lancer</p>
+</div>
+  <div class="col-lg-2"></div>
+    <div class="col-xs-12 col-lg-5" style="margin-bottom: 10px;padding:10%;min-height: 500px;border: 1px;border-style: dashed;border-radius: 12px;padding:5%;">
+    <h1 style="text-align: center;">username</h1>
+    <h3 style="word-wrap: break-word;padding-right:10%;padding-left: 10%;">Maecenas est dui, commodo a rutrum eget, interdum vel
       lorem. Aliquam euismod dapibus turpis, vitae placerat purus vestibulum non. Pellentesque ut nisi
        viverra, dictum nisi sed.</h3>
-  </div>
+  <hr style="margin-top:30px;margin-bottom: 30px;">
+
+  <img width="110" height="110" src="http://gomoto.like-themes.com/wp-content/uploads/2019/06/client-16-110x110.jpg"
+  class="attachment-gomoto-tiny-square size-gomoto-tiny-square wp-post-image" alt=""/>
+  <p style="font-size: 22px;font-weight: 400;margin-top: 30px;">name</p>
+  <p  style="font-size: 22px;font-weight: 400;margin-top: 30px;">Free lancer</p>
+</div>
 
 </div>
+
 </div>
 </div>
 

@@ -11,10 +11,9 @@
     "build:prod": "ng  build --configuration=prod --aot --prod --output-hashing none",
     "build:dev": "ng build --configuration=dev",
     "build:test": "ng build --configuration=test",
-    "run:prod":"npm run build:test && ng serve --configuration=prod --open",
-    "run:dev":"npm run build:dev && ng serve  --configuration=dev --open",
-    "run:test":"npm run build:test && ng serve  --configuration=test --open"
-    
+    "run:prod": "npm run build:test && ng serve --configuration=prod --open",
+    "run:dev": "npm run build:dev && ng serve  --configuration=dev --open",
+    "run:test": "npm run build:test && ng serve  --configuration=test --open"
   },
   "private": true,
   "dependencies": {
@@ -52,6 +51,7 @@
     "owl.carousel": "^2.3.4",
     "react-multi-carousel": "^2.5.5",
     "rxjs": "~6.6.0",
+    "svg-country-flags": "^1.2.10",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },

@@ -65,12 +65,18 @@
   transition: all 0.3s ease 0s;
   width: 55px;
 }
-#accordion .panel-title a.collapsed::after {
-  background:black none repeat scroll 0 0;
-  border: 1px solid #ddd;
-  box-shadow: none;
-  color: white;
-  content: "";
+
+#accordion .panel-title a {
+  background:#b4d469 none repeat scroll 0 0;
+  border: 1px solid transparent;
+  border-radius: 30px;
+  color: black;
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 12px 20px 12px 50px;
+  position: relative;
+  transition: all 0.3s ease 0s;
 }
 #accordion .panel-body {
   background: transparent none repeat scroll 0 0;
