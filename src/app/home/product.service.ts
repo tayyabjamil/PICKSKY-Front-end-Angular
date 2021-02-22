@@ -15,61 +15,61 @@ export class ProductService {
   public searchItems = new Subject<string>();
   categories = [
     {
-      thumbImage: 'assets/images/slideimg1.jpg',
+      thumbImage: 'assets/images/Vegpickle.jpg',
       title: 'Vegetarian',
       alt: 'Image alt',
       routeTo: 'vegetarian',
     },
     {
-      thumbImage: 'assets/images/slideimg2.jpg',
+      thumbImage: 'assets/images/Muttonpickel.jpg',
       title: 'Non-vegetarian',
       alt: 'alt of image',
       routeTo: 'Non-vegetarian',
     },
     {
-      thumbImage: 'assets/images/slideimg3.jpg',
+      thumbImage: 'assets/images/podi.jpg',
       title: 'PoduluPowders',
       alt: 'Image alt',
       routeTo: 'PoduluPowders',
     },
     {
-      thumbImage: 'assets/images/slideimg4.jpg',
+      thumbImage: 'assets/images/masala.jpg',
       alt: 'alt of image',
       routeTo: "HomeMadeMasalas",
       title: "HomeMade Masala's",
     },
     {
-      thumbImage: 'assets/images/slideimg5.jpg',
+      thumbImage: 'assets/images/sweets.jpg',
       title: 'Tradaitonal Sweets',
       alt: 'Image alt',
       routeTo: 'TradaitonalSweets',
     },
     {
-      thumbImage: 'assets/images/slideimg6.jpg',
+      thumbImage: 'assets/images/Indianhot.jpg',
       alt: 'alt of image',
       routeTo: 'TradaitonalHot',
       title: 'Tradaitonal Hot',
     },
     {
-      thumbImage: 'assets/images/slideimg1.jpg',
+      thumbImage: 'assets/images/Muttonpickel.jpg',
       title: 'Non-vegetarian Combo',
       alt: 'Image alt',
       routeTo: 'Non-vegetarianCombo',
     },
     {
-      thumbImage: 'assets/images/slideimg2.jpg',
+      thumbImage: 'assets/images/Vegpickle.jpg',
       alt: 'alt of image',
       title: 'Vegetarian Combo',
       routeTo: 'VegetarianCombo',
     },
     {
-      thumbImage: 'assets/images/slideimg3.jpg',
+      thumbImage: 'assets/images/podi.jpg',
       title: 'Hot Combo',
       alt: 'Image alt',
       routeTo: 'HotCombo',
     },
     {
-      thumbImage: 'assets/images/slideimg4.jpg',
+      thumbImage: 'assets/images/masala.jpg',
       alt: 'alt of image',
       routeTo: 'SweetsCombo',
       title: 'Sweets Combo',
@@ -115,19 +115,9 @@ export class ProductService {
   }
 
   getOrders(): Observable<any>  {
-    return new Observable((observer) => {
-      if (this.allOrdersSavedResponse) {
-        observer.next(this.allOrdersSavedResponse);
-        observer.complete();
-      } else { /* make http request & process */
-        this.http.get(`${environment.apiURL}${environment.SHRIVASA_FOODS_ORDERS_API}` + this.myauthService.getID(), this.httpHeaders).subscribe(data => {
-          this.allOrdersSavedResponse = data;
-          observer.next(this.allOrdersSavedResponse);
-          observer.complete();
-        }); /* make sure to handle http error */
+    return this.http.get(`${environment.apiURL}${environment.SHRIVASA_FOODS_ORDERS_API}` + '/' +this.myauthService.getID(), this.httpHeaders)
 
-      }
-    });
+
   }
 
   featuredProducts(): Observable<any> {

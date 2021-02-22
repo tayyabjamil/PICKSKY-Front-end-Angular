@@ -59,6 +59,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { OrderModule } from 'ngx-order-pipe';
 import { MatSelectCountryModule } from '@angular-material-extensions/select-country';
 import { PaymentPageComponent } from './paymentPage/paymentPage.component';
+import { TotalProductsComponent } from './total-products/total-products.component';
 
 @NgModule({
   imports: [
@@ -126,7 +127,8 @@ import { PaymentPageComponent } from './paymentPage/paymentPage.component';
     ReferFriendComponent,
     MainPageListItemComponent,
     CustomizeComponent,
-    PaymentPageComponent
+    PaymentPageComponent,
+    TotalProductsComponent
 
   ],
   exports: [
