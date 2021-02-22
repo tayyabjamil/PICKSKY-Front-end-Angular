@@ -51,9 +51,9 @@ import { MatSelectCountryModule } from '@angular-material-extensions/select-coun
     PopoverModule.forRoot(),
     MatSelectCountryModule.forRoot('de'),
   ],
-  declarations: [CheckOutComponent,CheckOutPageComponent],
-exports:[CheckOutComponent,CheckOutPageComponent],
-  providers:[AuthService],
-  schemas:[NO_ERRORS_SCHEMA ]
+  declarations: [CheckOutComponent, CheckOutPageComponent],
+  exports: [CheckOutComponent, CheckOutPageComponent],
+  providers: [AuthService],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class CheckOutModule { }
