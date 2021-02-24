@@ -61,6 +61,8 @@ import { MatSelectCountryModule } from '@angular-material-extensions/select-coun
 import { PaymentPageComponent } from './paymentPage/paymentPage.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { TotalProductsComponent } from './total-products/total-products.component';
+
 
 @NgModule({
   imports: [
@@ -128,7 +130,8 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
     ReferFriendComponent,
     MainPageListItemComponent,
     CustomizeComponent,
-    PaymentPageComponent
+    PaymentPageComponent,
+    TotalProductsComponent
 
   ],
   exports: [
@@ -158,7 +161,8 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
     ReturnandrefundsComponent,
     GiftCardsComponent,
     ReferFriendComponent,
-    PaymentPageComponent
+    PaymentPageComponent,
+    TotalProductsComponent
   ],
   providers: [BsModalService],
   schemas: [NO_ERRORS_SCHEMA]

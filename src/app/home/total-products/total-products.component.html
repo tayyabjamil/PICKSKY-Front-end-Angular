@@ -1,0 +1,52 @@
+    <div *ngIf="deviceLg || deviceMd" class="deviceLg ">
+      <div class="card" routerLinkActive="router-link-active" *ngFor="let item of featuredProducts" style="
+          padding: 1%;
+          background-color: white;
+          margin: 1%;
+        ">
+<div  *ngIf="!deviceXs" style="height: 240px;width: 180px;">
+  <div style="min-height: 45px;" >
+    <div (click)="addProduct(item)" *ngIf="item.productCount===0" style="text-align: right;">
+      <button style="border: 0px solid transparent;
+   padding: 3px 10px 3px 10px;"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+    </div>
+    <div *ngIf="item.productCount > 0 "
+      style="display: flex;flex-direction: row;width: 100px;height: 35px;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+   background-color: rgb(63, 61, 61);border-radius: 6px;border-style: groove;cursor: pointer;
+   color: rgb(8, 5, 5);float: right; user-select: none; border: 1px solid transparent; padding: 0px;margin:0px;line-height: 35px;">
+      <div (click)="removeProduct(item, productRef)"
+        style="text-align: center;width: 40px;color: white;user-select: none;font-size: large;font-weight: bold;">
+        <span>-</span>
+      </div>
+      <div style="width: 20px;color: white;font-size: 15;user-select: none;text-align: center;" #productRef>{{item?.productCount}}
+      </div>
+      <div (click)="addProduct(item, productRef)"
+        style="text-align: center;width: 40px;color: white;user-select: none;font-size: large;font-weight: bold;">
+        <span>+</span>
+      </div>
+    </div>
+  </div>
+  <div style="display: flex;flex-direction: row;justify-content: center;" [routerLink]="['/detail']">
+    <img (load)='imageLoaded()' [src]='getImage(item.productImage)' style="height: 100px;width: auto">
+    <div *ngIf="loadingImageGetter" style="position: absolute;left: 30;" class="spinner-border" role="status">
+      <span class="sr-only" >Loading...</span>
+    </div>
+  </div>
+  <div style="margin-top: 15px;">
+  <div style="font-size:18px" class="price">
+   ${{item.price}}
+  </div>
+  <div  style="margin-top: 2%;margin-bottom: 2%;font-size:16px">
+    {{item.name}}
+  </div>
+</div>
+  <div
+    style="padding-bottom: 20px;padding-top: 10px;padding-left: 3px;height: 30px;">
+    <button (click)="onCustomiseModal(item)" style="width: 100px;
+    background-color: rgb(63, 61, 61);border-radius: 6px;border-style: groove;
+    color: white;margin-left: 30px;">Customize</button>
+  </div>
+
+</div>
+      </div>
+    </div>
