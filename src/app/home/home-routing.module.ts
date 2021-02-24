@@ -25,6 +25,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { CustomizeComponent } from './customize/customize.component';
 import { PaymentPageComponent } from './paymentPage/paymentPage.component';
+import { TotalProductsComponent } from './total-products/total-products.component';
 // import check from '../cart/cart.module'
 const routes: Routes = [
   { path: 'checkOut', loadChildren: '../checkOut/checkOut.module#CheckOutModule' },
@@ -58,7 +59,9 @@ const routes: Routes = [
       { path: 'customize', component: CustomizeComponent },
       { path: 'giftCards', component: GiftCardsComponent },
       { path: 'referFriend', component: ReferFriendComponent },
+      { path: 'totalproducts', component: TotalProductsComponent },
       { path: 'myOrders', component: MyordersComponent, canActivate: [AuthGuard] },
+
       { path: '', component: MainPageComponent },
 
     ]

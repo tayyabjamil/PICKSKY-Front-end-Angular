@@ -158,7 +158,8 @@ import { TotalProductsComponent } from './total-products/total-products.componen
     ReturnandrefundsComponent,
     GiftCardsComponent,
     ReferFriendComponent,
-    PaymentPageComponent
+    PaymentPageComponent,
+    TotalProductsComponent
   ],
   schemas: [NO_ERRORS_SCHEMA]
 })
