@@ -15,18 +15,10 @@ export class AddProductComponent implements OnInit {
   price: number;
   detail: String;
   catagory: String;
+  ingredients;
   image;
   data;
-  toppingList: string[] = [
-    "Siting 100",
-    "Siting 300",
-    "Siting 100",
-    "Wifi",
-    "Parking",
-    "Decoration",
-    "DJ",
-    "PhotoGrapher",
-  ];
+  multipleImages
   productOrders = '1';
   constructor(public route: ActivatedRoute,
     public adminService: AdminService, public formBuilder: FormBuilder) { }
@@ -51,13 +43,21 @@ export class AddProductComponent implements OnInit {
         catagory: new FormControl('', [Validators.required]),
         price: new FormControl('', [Validators.required]),
         detail: new FormControl('', [Validators.required]),
-        productImage: new FormControl(''),
+        productImage: new FormControl('',[Validators.required]),
+        multipleImages: new FormControl(''),
+        grams:new FormControl('',Validators.required),
 
-
+        ingredients:new FormControl('',Validators.required),
+        sweet_spice:new FormControl('',Validators.required)
       })
     }
   }
-
+  selectMultipleImage(event) {
+    if (event.target.files.length > 0) {
+      this.multipleImages = event.target.files;
+      this.productForm.controls.multipleImages.setValue(this.multipleImages);
+    }
+  }
   selectProductImage(event) {
     const file = event.target.files[0];
     this.image = file;
@@ -71,13 +71,18 @@ export class AddProductComponent implements OnInit {
       fd.append('catagory', this.productForm.value.catagory);
       fd.append('price', this.productForm.value.price);
       fd.append('detail', this.productForm.value.detail);
-      fd.append('productOrders', this.productOrders);
+      fd.append('grams', this.productForm.value.grams);
+      fd.append('ingredients', this.productForm.value.ingredients);
+      fd.append('sweet_spice', this.productForm.value.sweet_spice);
 
       if (this.productForm.value.productImage) {
         fd.append('productImage', this.productForm.value.productImage);
       }
-
-
+      if (this.productForm.value.multipleImages) {
+        for (const image of this.productForm.value.multipleImages) {
+          fd.append('multipleImages', image);
+        }
+      }
 
       this.adminService.addProducts(fd).subscribe((data: any) => {
         alert("Product Added")

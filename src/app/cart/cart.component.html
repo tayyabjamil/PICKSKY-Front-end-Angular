@@ -24,12 +24,13 @@
   <div class="row" style="padding-top: 10px;padding-bottom: 10px;background-color: rgb(243, 242, 242)">
     <div class="col-lg-3 col-md-2 col-sm-1 col-xs-1"></div>
     <div  class="col-lg-6 col-md-8 col-xs-10 col-sm-10" style="height: 30px;" >
-      <div  class="col-lg-3 col-md-3 col-xs-2 col-sm-3" >
-      <p style="font-size: 18px;padding-top: 5px;" >Total Amount</p>
+      <div  class="col-lg-3 col-md-3 col-xs-5 col-sm-5" >
+      <p style="font-size: 18px;padding-top: 5px;padding-bottom: 5px;" >Total Amount</p>
+
     </div>
-      <div class="col-lg-6 col-xs-8 col-md-6 col-sm-6"></div>
+      <div class="col-lg-6 col-xs-5 col-md-6 col-sm-4"></div>
       <div class="col-lg-3 col-md-3 col-xs-2 col-sm-3">
-      <p  style="font-weight: 500;text-align:right;padding-right: 15px;padding-top: 10px;">${{ getTotal }}</p>
+      <p  style="font-weight: 500;text-align:right;padding-right: 15px;padding-top: 10px;font-size: 18px;">${{ getTotal }}</p>
     </div>
     </div>
     <div class="col-lg-3 col-md-2 col-sm-1 col-xs-1"></div>
@@ -48,8 +49,18 @@
       <div class="col-lg-3 col-md-2 col-sm-1 "></div>
       <div class="col-lg-6 col-md-8 col-xs-12 col-sm-10">
         <div class="row" style="padding-top: 2%;min-height: 165px;">
-          <div class="col-lg-3 col-md-3 col-xs-4 col-sm-4" (click)="discardProductFun(item)">
-            <div class="container" style="height: 100px; width: 120px">
+
+
+          <ng-template #template>
+            <div class="modal-body text-center">
+              <p>Do you want to confirm?</p>
+              <button type="button" class="btn btn-default" (click)="discardProductFun(item)" >Yes</button>
+              <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+            </div>
+          </ng-template>
+
+          <div class="col-lg-3 col-md-3 col-xs-4 col-sm-4"  >
+            <div class="container" (click)="openModal(template)" style="height: 100px; width: 120px">
               <div >
                 <img class="image"  style="width: 90px; height: 100px;" [src]="getImage(item.productImage)" />
               </div>
@@ -63,9 +74,8 @@
               </div>
 
             </div>
-                <div class="btn"
-              style=" display: flex;
-              flex-direction: row;
+            <div class="btn"
+              style="
               width: 100px;
               height: 35px;
               background-color: rgb(63, 61, 61);
@@ -81,15 +91,19 @@
               color: white;">Customize</span>
             </div>
 
-          </div>
+        </div>
           <div class="col-lg-6 col-xs-4 col-md-6 col-sm-4" style="min-width: 30px">
             <div>
               <p style="font-size: 18px;">{{ item.name }}</p>
+
             </div>
             <div>
               <p  style="font-size: 18px;"><span style="font-weight: 600;">Unit price :</span>  ${{ item.price }}</p>
               <p  style="font-size: 18px;"><span style="font-weight: 600;">Total Units :</span> {{ item.productCount }}</p>
             </div>
+            <div style="padding-top: 20px;" *ngIf="item.customiztion.length > 0">
+              <p style="color:rgb(128, 185, 43);font-weight: bold;font-size: 18px;">Customized</p>
+              </div>
           </div>
           <div  class="col-lg-3 col-md-3 col-xs-4 col-sm-4" >
             <p style="font-weight: 500;text-align: right;padding-right: 30px;font-size: 18px;">${{ item.unitTotal }}</p>
@@ -153,6 +167,52 @@
 
 
   </div>
+<div *ngIf="deviceXs || deviceSm">
+<div [routerLink]="['/checkOut']" *ngIf="getCartItems.length !== 0" style="
+    box-sizing: border-box;
+            min-width: 0px;
+            max-width: 960px;
+            margin-left: 10%;
+            margin-right: 10%;
+
+            pointer-events: none;
+            min-width: 400px;
+">
+<button style="
+      bottom: 32px;
+              opacity: 1;
+              transform: translateY(0px);
+              border: 0px;
+              outline: 0px;
+              max-width: 960px;
+              height: 50px;
+              color: white;
+              padding: 0px 30px;
+              position: fixed;
+              pointer-events: all;
+              width: 80% !important;
+              border-radius: 6px;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              background-color: rgb(41, 41, 41);
+              box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 12px;
+              cursor: pointer;
+         ">
+<div style="color: white; text-align: center; width: 100%">
+  <div style="float: left;">
+     <svg width="16" height="16" viewBox="0 0 16 16">
+                <path id="shopping-bag"
+                  d="M4.4,3.6H15.6a.8.8,0,0,1,.8.8V15.6a.8.8,0,0,1-.8.8H4.4a.8.8,0,0,1-.8-.8V4.4A.8.8,0,0,1,4.4,3.6ZM2,4.4A2.4,2.4,0,0,1,4.4,2H15.6A2.4,2.4,0,0,1,18,4.4V15.6A2.4,2.4,0,0,1,15.6,18H4.4A2.4,2.4,0,0,1,2,15.6ZM10,10C7.791,10,6,7.851,6,5.2H7.6c0,2.053,1.335,3.2,2.4,3.2s2.4-1.147,2.4-3.2H14C14,7.851,12.209,10,10,10Z"
+                  transform="translate(-2 -2)" fill="#ffffff" fill-rule="evenodd"></path>
+      </svg>
+  </div>
+  <span style="margin-left: 5px; justify-content: center; text-align: center">Proceed To Check out</span>
+</div>
+</button>
+</div>
+</div>
+<div *ngIf="deviceMd || deviceLg">
 
 <div [routerLink]="['/checkOut']" *ngIf="getCartItems.length !== 0" style="
     box-sizing: border-box;
@@ -197,7 +257,54 @@
 </div>
 </button>
 </div>
+</div>
+<div *ngIf="deviceXs || deviceSm">
+
 <div [routerLink]="['/']" *ngIf="getCartItems.length === 0" style="
+    box-sizing: border-box;
+    min-width: 0px;
+    max-width: 960px;
+    margin-left: 10%;
+   pointer-events: none;
+    width: calc(100% - 40px);
+  ">
+  <button style="
+      bottom: 32px;
+      opacity: 1;
+      transform: translateY(0px);
+      border: 0px;
+      outline: 0px;
+      max-width: 960px;
+      height: 50px;
+      color: white;
+      position: fixed;
+      pointer-events: all;
+      width: 80% !important;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: rgb(41, 41, 41);
+      box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 12px;
+      cursor: pointer;
+      left: auto;
+      right: auto;
+      z-index: 999;
+      text-align: center;
+    ">
+    <div style="color: white; text-align: center; width: 100%">
+      <svg width="16" height="16" viewBox="0 0 16 16">
+        <path id="shopping-bag"
+          d="M4.4,3.6H15.6a.8.8,0,0,1,.8.8V15.6a.8.8,0,0,1-.8.8H4.4a.8.8,0,0,1-.8-.8V4.4A.8.8,0,0,1,4.4,3.6ZM2,4.4A2.4,2.4,0,0,1,4.4,2H15.6A2.4,2.4,0,0,1,18,4.4V15.6A2.4,2.4,0,0,1,15.6,18H4.4A2.4,2.4,0,0,1,2,15.6ZM10,10C7.791,10,6,7.851,6,5.2H7.6c0,2.053,1.335,3.2,2.4,3.2s2.4-1.147,2.4-3.2H14C14,7.851,12.209,10,10,10Z"
+          transform="translate(-2 -2)" fill="#ffffff" fill-rule="evenodd"></path>
+      </svg>
+      <span style="margin-left: 5px; justify-content: center; text-align: center">Shop Again</span>
+    </div>
+  </button>
+</div>
+</div>
+<div *ngIf="deviceMd || deviceLg">
+<div [routerLink]="['/']" *ngIf="getCartItems.length === 0 " style="
     box-sizing: border-box;
     min-width: 0px;
     max-width: 960px;
@@ -238,6 +345,7 @@
       <span style="margin-left: 5px; justify-content: center; text-align: center">Shop Again</span>
     </div>
   </button>
+</div>
 </div>
 
 </div>

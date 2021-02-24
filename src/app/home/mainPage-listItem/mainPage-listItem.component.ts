@@ -15,7 +15,8 @@ export class MainPageListItemComponent implements OnInit {
 
   @Input() item;
   loadingImage = true;
-
+  cartItems
+  customizationData
   constructor(public productService: ProductService,
     public mediaObserver: MediaObserver,
     public cartService: CartService,
@@ -42,6 +43,9 @@ export class MainPageListItemComponent implements OnInit {
 
   imageLoaded() {
     this.loadingImage = false;
+  }
+  get products() {
+    return this.item;
   }
 
   get loadingImageGetter() {
@@ -76,17 +80,38 @@ export class MainPageListItemComponent implements OnInit {
       }
      }
   }
+  get getCartItems() {
+    this.cartItems = this.cartService.getProducts()
+
+    // console.log(this.cartItems)
+
+    return this.cartItems
+  }
 
   onCustomiseModal(item): void {
-    const dialogRef = this.dialog.open(CustomizeComponent, {
+    const dialogRef = this.dialog.open(CustomizeComponent,{
       maxWidth: '100% !important',
-      height: '100vh',
+      height: '60vh',
       data: { item: item }
+
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    //  item.customization = result;
+    this.customizationData = result;
+   const customized = true
+    this.cartItems.forEach(cartData => {
+       if(cartData._id===item._id){
+         cartData.customiztion = result
+
+        }
+     });
+     localStorage.setItem('cart', JSON.stringify(this.cartItems));
+    //  result  = JSON.parse(localStorage.getItem('cart'));
+    console.log('The dialog was closed'+this.cartItems);
+
 
     });
   }
+
 }

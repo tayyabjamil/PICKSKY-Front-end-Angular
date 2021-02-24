@@ -180,7 +180,7 @@
 
 
         <div *ngIf="authService.loggedIn()" style="display: flex; flex-direction: row">
-          <p class="btn"  style="font-size: large; padding-top: 15%" [popover]="popTemplate">
+          <p class="btn"  style="font-size: large; padding-top: 15%;" [popover]="popTemplate">
             Hi {{ usernameLogin }}
           </p>
 
@@ -188,8 +188,8 @@
 
               <div class="row">
                 <div class="col-6" style="padding-top: 1%">
-                  <i class="fa fa-user-circle-o" routerLink="/myOrders" style="font-size: xx-large"></i>
-                  <p routerLink="/myOrders" routerLinkActive="router-link-active">
+                  <i class="fa fa-user-circle-o" routerLink="/profile" style="font-size: xx-large"></i>
+                  <p routerLink="/profile" routerLinkActive="router-link-active">
                     My Profile
                   </p>
                 </div>
@@ -214,20 +214,7 @@
                   </p>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-6" style="padding-top: 1%">
-                  <i class="fa fa-user-circle-o" routerLink="/admin" style="font-size: xx-large"></i>
-                  <p routerLink="/admin" routerLinkActive="router-link-active">
-                    Admin
-                  </p>
-                </div>
-                <div class="col-6" style="padding-top: 1%">
-                  <i class="fa fa-user-circle-o" routerLink="/supportpage" style="font-size: xx-large"></i>
-                  <p routerLink="/supportpage" routerLinkActive="router-link-active">
-                    Support
-                  </p>
-                </div>
-              </div>
+
               <div class="row">
                 <div class="col-6" style="padding-top: 1%">
                   <i class="fa fa-user-circle-o" routerLink="/giftCards" style="font-size: xx-large"></i>
@@ -248,12 +235,40 @@
                     Blog
                   </p>
                 </div>
-                <div class="col-6" style="padding-top: 1%">
-                  <li *ngIf="authService.loggedIn()" style="font-size: xx-large" (click)="onLogoutClick()"
-                    class="fa fa-sign-out"></li>
-                  <p *ngIf="authService.loggedIn()">Logout</p>
-                </div>
               </div>
+                <div class="row" *ngIf="authService.getRole() == 'admin'">
+                  <hr style="margin: 0px;">
+                  <div  class="col-12 btn" [routerLink]="['admin/products']"  style="padding-left:30px ;padding-right: 30px;margin-right: 30px;"  >
+                    <p style="font-size: 18px;"  ><span>Products</span> </p>
+                  </div>
+
+                </div>
+
+                <div class="row"  *ngIf="authService.getRole() == 'admin'">
+                  <hr style="margin: 0px;">
+                  <div  class="col-12 btn"  style="padding-left:30px ;padding-right: 30px;margin-right: 30px;" [routerLink]="['admin/addProduct']">
+                    <p style="font-size: 18px;"  ><span>Add Product</span> </p>
+                  </div>
+
+                </div>
+
+                <div class="row"  *ngIf="authService.getRole() == 'admin'">
+                  <hr style="margin: 0px;">
+                  <div  class="col-12 btn" style="padding-left:30px ;padding-right: 30px;margin-right: 30px;"  [routerLink]="['admin/']">
+                    <p style="font-size: 18px;"  ><span>Order Status</span> </p>
+                  </div>
+
+                </div>
+                <div class="row"  *ngIf="authService.getRole() == 'admin'">
+                  <hr style="margin: 0px;"  (click)="onLogoutClick()">
+                  <div  class="col-12 btn" style="padding-left:30px ;padding-right: 30px;margin-right: 30px;"  [routerLink]="['admin/']">
+                    <p   style="font-size: 18px;" *ngIf="authService.loggedIn()">Logout {{usernameLogin}}</p>
+                  </div>
+
+                </div>
+
+
+
             </ng-template>
           </div>
         </div>
