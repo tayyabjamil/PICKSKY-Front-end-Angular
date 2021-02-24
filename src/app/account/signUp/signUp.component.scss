@@ -9,7 +9,14 @@
   padding-right: 4vw;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   }
-
+  .customInput {
+    height: 70vw;
+    width: 500px;
+    border: 1px solid #ccc;
+    border-width: 1dp;
+    size: 10;
+    border-radius: 5px;
+}
   .borderRight{
     border-top-right-radius:12px ;
     border-bottom-right-radius: 12px;

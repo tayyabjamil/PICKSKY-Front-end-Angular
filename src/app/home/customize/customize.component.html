@@ -1,11 +1,11 @@
-<div class="page100p">
+<div [style.width]="deviceXs || deviceSm ? 'page100p' : 'page50p'" >
     <div class="headertop">
         <div></div>
         <div>
-            <div class="customize">Customise</div>
-            <div class="display-flex m-t-10">
-                <div>Qty 1</div>
-                <div>price</div>
+            <div class="customize" style="font-size: 22px;text-align: center;padding-bottom: 10px;">Customize</div>
+            <div class="m-t-10" style="display: flex;flex-direction: column;justify-content: center;">
+              <div style="font-size: 22px;text-align: center;padding-bottom: 10px;">{{this.data.item.name}}</div>
+              <div style="font-size: 16px;text-align: center;padding-bottom: 10px;">price {{this.data.item.price}}</div>
             </div>
         </div>
         <div class="closebtn" (click)="onClose()">
@@ -16,25 +16,44 @@
     <div>
         <mat-tab-group mat-align-tabs="center" [selectedIndex]="selected" (selectedIndexChange)="onSelectionIndexChange($event)">
             <mat-tab [label]="item?.tabsTitle" *ngFor="let item of items">
-                <div class="row" mat-align-tabs="center">
-                  <div class="col-lg-3"></div>
-                  <div class="col-lg-6" style="min-height: 400px;">
+                <div class="row" mat-align-tabs="center" >
+                  <div class="col-lg-1"></div>
+                  <div class="col-lg-10" style="min-height: 500px;">
                         <div class="lineItem">
-                            <div *ngFor="let itemContent of item?.tabsContent" (click)="onTopItem()">
-                                <div class="row">
+                            <div *ngFor="let itemContent of item?.tabsContent" (click)="onTopItem(item.tabsContent)">
+                                <div class="row" *ngIf="itemContent?.tabItemTitle !== 'Custom Requirnments'">
                                     <div class="col-2">
                                         <mat-checkbox></mat-checkbox>
                                     </div>
                                     <div class="col-5">{{itemContent?.tabItemTitle}}</div>
-                                   <div class="col-5">
+                                   <div  class="col-5">
                                     <app-customize-option-select (customOptionChange)='onCustomOptionChange($event)' [options]="itemContent?.tabItemOption">
                                     </app-customize-option-select>
                                   </div>
                                   </div>
+                                  <div *ngIf="item?.tabsTitle == 'Grams'" style="">
+                                    <div style="font-size: 18px;font-weight: 500;">Select Custom Grams</div>
+                                    <input [(ngModel)]="customGrams" style="width: 200px;height: 30px;border-radius: 6px;" type="number"/>
+                                  </div>
+
+
+                            </div>
+                            <div *ngIf="item?.tabsTitle == 'Custom Requirnments'" >
+                              <div *ngIf="deviceSm || deviceXs">
+                              <div style="font-size: 18px;font-weight: 500;">Custom Instructions</div>
+                              <textarea  [(ngModel)]="customInstructions" style="width: 350px;height: 150px;border-radius: 6px;" ></textarea>
+                            </div>
+                            </div>
+                            <div *ngIf="item?.tabsTitle == 'Custom Requirnments'" >
+                              <div *ngIf="deviceMd || deviceLg">
+
+                              <div style="font-size: 18px;font-weight: 500;">Custom Instructions</div>
+                              <textarea  placeholder="Add custom Requirnments" [(ngModel)]="customInstructions" style="width: 600px;height: 150px;border-radius: 6px;" ></textarea>
+                            </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3"></div>
+                    <div class="col-lg-1"></div>
 
                 </div>
             </mat-tab>

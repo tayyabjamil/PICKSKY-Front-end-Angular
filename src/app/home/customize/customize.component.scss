@@ -1,10 +1,20 @@
 .page100p {
-    height: 100%;
-    width: 96vw;
-}
 
+    width: 35vw;
+}
+.page50p {
+
+  width: 45vw;
+}
+.width100p{
+width: 500px;
+}
+.width50p{
+width: 400px;
+}
 .headertop {
     font-size: 16;
+    margin-bottom: 5% ;
     height: 10%;
     display: flex;
     justify-content: space-between;

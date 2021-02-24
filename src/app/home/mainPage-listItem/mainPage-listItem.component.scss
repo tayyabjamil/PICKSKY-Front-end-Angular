@@ -151,6 +151,18 @@ width: 100vw;
 .carousel{
 
 }
+.spinner-border {
+  margin-top: 60px;
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: text-bottom;
+  border: .25em solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  -webkit-animation: spinner-border .75s linear infinite;
+  animation: spinner-border .75s linear infinite;
+}
 .price{
   box-sizing: border-box;
     margin: 0px;

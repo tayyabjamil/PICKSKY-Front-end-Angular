@@ -115,8 +115,8 @@ export class ProductService {
   }
 
   getOrders(): Observable<any>  {
-    return this.http.get(`${environment.apiURL}${environment.SHRIVASA_FOODS_ORDERS_API}` + '/' +this.myauthService.getID(), this.httpHeaders)
 
+    return this.http.get(`${environment.apiURL}${environment.SHRIVASA_FOODS_ORDERS_API}` + '/' +this.myauthService.getID(), this.httpHeaders)
 
   }
 

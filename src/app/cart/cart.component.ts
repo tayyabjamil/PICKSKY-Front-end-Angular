@@ -35,7 +35,7 @@ export class CartComponent implements OnInit {
   onCustomiseModal(item): void {
     const dialogRef = this.dialog.open(CustomizeComponent, {
       maxWidth: '100% !important',
-      height: '100vh',
+      height: '60vh',
       data: { item: item }
     });
 
@@ -83,7 +83,7 @@ export class CartComponent implements OnInit {
   discardProductFun(product) {
     this.cartService.discardProduct(product)
   }
-  
+
   addProduct(item) {
     this.cartService.addProduct(item);
   }

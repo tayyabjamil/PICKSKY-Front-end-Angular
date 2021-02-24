@@ -178,13 +178,14 @@
           <i class="fa fa-user-circle-o" routerLink="/login" style="font-size: x-large"></i>
         </div>
 
-        <div *ngIf="authService.loggedIn()" style="font-size: large">
-          Hi {{ usernameLogin }}
-        </div>
+
         <div *ngIf="authService.loggedIn()" style="display: flex; flex-direction: row">
-          <i class="fa fa-cog" style="font-size: xx-large" [popover]="popTemplate" popoverTitle="Hi{{ username }}"></i>
-          <div>
-            <ng-template #popTemplate>
+          <p class="btn"  style="font-size: large; padding-top: 15%" [popover]="popTemplate">
+            Hi {{ usernameLogin }}
+          </p>
+
+          <ng-template #popTemplate>
+
               <div class="row">
                 <div class="col-6" style="padding-top: 1%">
                   <i class="fa fa-user-circle-o" routerLink="/myOrders" style="font-size: xx-large"></i>
@@ -257,7 +258,7 @@
           </div>
         </div>
       </div>
-    </div>
+
     <ng-content> </ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>

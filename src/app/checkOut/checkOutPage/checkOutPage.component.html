@@ -5,7 +5,7 @@
     <div *ngIf="!authService.loggedIn()"
       style="display: flex;flex-direction: row;justify-content: flex-end;padding-left: 5%;">
       <p style="font-size: 18px;">Already have an account ?<span style="font-size: 18px;" class="text text-primary btn"
-          [routerLink]="['/login']" routerLinkActive="router-link-active">Login</span> </p>
+          (click)="login()" routerLinkActive="router-link-active">Login</span> </p>
 
     </div>
 
@@ -134,7 +134,6 @@
                 <mat-label class="col-xs-7" style="text-align: left;">Standard Method</mat-label>
                 <div class="col-3 text-primary btn" style="padding-left: 10px;" (click)="move(0)">Change</div>
 
-
               </div>
               <p style="font-size: 14px" class="errorlbl"
               *ngIf="selectShippingMethod == 'show'">
@@ -155,7 +154,8 @@
             </form>
           </mat-step>
           <mat-step [stepControl]="thirdFormGroup">
-            <form [formGroup]="thirdFormGroup" style="margin-top: 5%;">
+               <hr>
+            <form [formGroup]="thirdFormGroup" style="margin-top: 15%;">
               <ng-template matStepLabel>Paymemt</ng-template>
               <ngx-paypal [config]="payPalConfig"></ngx-paypal>
 
@@ -176,8 +176,12 @@
 
             </div>
 
-            <div style="padding: 4%;" class="collapse" id="collapseExample">
+<div class="collapse" id="collapseExample">
+  <hr>
+              <div style="padding: 4%;" >
+
               <div class="row">
+
                 <mat-form-field class="col-12">
                   <mat-label><span style="font-size: 16px;">Card no</span></mat-label>
                   <input matInput formControlName="cardNo">
@@ -205,6 +209,7 @@
               </div>
 
             </div>
+          </div>
 
             </form>
 
@@ -576,13 +581,21 @@
                     <input matInput formControlName="city">
                   </mat-form-field>
                 </div>
+
                 <div>
-                  <mat-select-country  class="col-lg-3" appearance="outline"
+
+
+                  <mat-form-field class="col-xs-12" appearance="outline">
+                    <mat-label><span style="font-size: 18px;"> Appartment</span></mat-label>
+                    <input matInput formControlName="appartment">
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-select-country  class="col-lg-4" appearance="outline"
                 label="Country"  formControlName="contry"
 
                 (onCountrySelected)="onCountrySelected($event)">
               </mat-select-country>
-              <div class="col-lg-1"></div>
               <mat-form-field class="col-lg-4" appearance="outline">
                 <mat-label><span style="font-size: 18px;"> State</span></mat-label>
                 <input matInput formControlName="state">
@@ -591,14 +604,6 @@
                   <mat-form-field class="col-lg-4" appearance="outline">
                     <mat-label><span style="font-size: 18px;"> Postal Code</span></mat-label>
                     <input matInput formControlName="code" type="number">
-                  </mat-form-field>
-                </div>
-                <div>
-
-
-                  <mat-form-field class="col-xs-12" appearance="outline">
-                    <mat-label><span style="font-size: 18px;"> Appartment</span></mat-label>
-                    <input matInput formControlName="appartment">
                   </mat-form-field>
                 </div>
               </div>
@@ -644,8 +649,8 @@
 
               <div
                 style="padding-top: 20px;border-style: solid;border-width: 1px;border-color: lightgrey;border-radius: 6px;;display: flex;flex-direction: row;justify-content: space-evenly;">
-                <div class="col-xs-1">
 
+                <div class="col-xs-1">
 
                   <input type="checkbox" formControlName="method" class="form-check-input" id="exampleCheck2">
                 </div>
@@ -669,11 +674,6 @@
             </form>
           </mat-step>
           <mat-step [stepControl]="thirdFormGroup">
-            <form [formGroup]="thirdFormGroup">
-              <ng-template matStepLabel>Paymemt</ng-template>
-              <!-- <ngx-paypal [config]="payPalConfig"></ngx-paypal> -->
-
-            </form>
 
 
             <label style="font-size: 22px;" for="">Payments</label>
@@ -684,16 +684,36 @@
               style="border: 1px;border-style: solid;border-radius: 6px;border-color: lightgray;">
 
               <ng-template matStepLabel></ng-template>
-              <div data-toggle="collapse" href="#collapseExample"
+
+              <div data-toggle="collapse" href="#collapseExamplePaypal"
                 style="padding-top:2%;padding-left: 2%;padding-right: 2%;display: flex;flex-direction: row;justify-content: space-between;">
 
-                <label style="font-size: 18px;font-weight: bold;" class="text text-primary">+ Credit Card</label>
+                <label style="font-size: 18px;font-weight: bold;" class="text text-primary">+ PayPal Card</label>
                 <p>Options</p>
 
               </div>
 
+              <hr>
+              <div data-toggle="collapse" href="#collapseExample"
+              style="padding-top:2%;padding-left: 2%;padding-right: 2%;display: flex;flex-direction: row;justify-content: space-between;">
 
-              <div style="padding: 2%;" class="collapse" id="collapseExample">
+              <label style="font-size: 18px;font-weight: bold;" class="text text-primary">+ Credit Card</label>
+              <p>Options</p>
+
+            </div>
+            <div class="collapse" id="collapseExamplePaypal">
+              <hr>
+              <form [formGroup]="thirdFormGroup" style="margin-top: 15%;padding: 2%;">
+                <ng-template matStepLabel>Paymemt</ng-template>
+                <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+
+              </form>
+
+            </div>
+            <div class="collapse" id="collapseExample">
+              <hr>
+              <div style="padding: 2%;" >
+
                 <div class="row">
                   <mat-form-field class="col-12" appearance="outline">
                     <mat-label><span style="font-size: 16px;">Card no</span></mat-label>
@@ -722,7 +742,7 @@
                 </div>
 
               </div>
-
+            </div>
             </form>
 
             <p style="text-align: left;justify-content: flex-end;font-size: 14px;" class="errorlbl"

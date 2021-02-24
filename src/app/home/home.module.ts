@@ -59,7 +59,10 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { OrderModule } from 'ngx-order-pipe';
 import { MatSelectCountryModule } from '@angular-material-extensions/select-country';
 import { PaymentPageComponent } from './paymentPage/paymentPage.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { TotalProductsComponent } from './total-products/total-products.component';
+
 
 @NgModule({
   imports: [
@@ -92,8 +95,8 @@ import { TotalProductsComponent } from './total-products/total-products.componen
     NgxPaginationModule,
     Ng2SearchPipeModule,
     MatSelectCountryModule,
-    MatSelectCountryModule.forRoot('de')
-
+    MatSelectCountryModule.forRoot('en'),
+    ModalModule
   ],
   declarations: [
     HomeComponent,
@@ -161,6 +164,7 @@ import { TotalProductsComponent } from './total-products/total-products.componen
     PaymentPageComponent,
     TotalProductsComponent
   ],
+  providers: [BsModalService],
   schemas: [NO_ERRORS_SCHEMA]
 })
 

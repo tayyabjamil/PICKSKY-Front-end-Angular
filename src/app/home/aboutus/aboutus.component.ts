@@ -32,6 +32,8 @@ export class AboutUSComponent implements OnInit {
 
 
   }
+
+
   submit(){
 
   }

@@ -21,9 +21,10 @@
         <p style="font-size: large;">Order Phase</p>
       </div>
     </div>
+    <div *ngFor="let item of allOrders  |  paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+      <div class="row panel-title" style="margin:1%;padding-top: 10px;border-radius: 12px;background-color: #b4d469;">
 
-    <div *ngFor="let item of allOrders  |  paginate: { itemsPerPage: 8, currentPage: p }; let i = index">
-      <div class="row" style="border:1px;border-style: groove;margin:1%;padding-top: 3px;">
+
         <div class="col-lg-1">
 
           <p>{{i + 1 }}</p>

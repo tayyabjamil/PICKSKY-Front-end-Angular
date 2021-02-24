@@ -64,9 +64,10 @@ export class CheckOutPageComponent implements OnInit {
   selectShippingMethod = ''
   backtoCheckOut;
   firstName: ''
-  paymentFormError = ''
+  paymentFormError=''
   lastName: ''
-  countryError = ''
+  gotoCheckOut:true
+  countryError=''
   @ViewChild('stepper') stepper: MatStepper;
   ngOnInit(
 
@@ -81,40 +82,33 @@ export class CheckOutPageComponent implements OnInit {
       this.show = false;
     })
 
-    // this.initConfig();
+    this.initConfig();
     this.getCartItems()
     const data = JSON.parse(localStorage.getItem('checkOutForm'))
     const dataEmail = JSON.parse(localStorage.getItem('email'))
-    // if(localStorage.getItem('firstName')){
 
-    // this.firstName  = JSON.parse(localStorage.getItem('firstName'))
-    // }
-    // if(localStorage.getItem('lastName')){
-
-    // this.lastName= JSON.parse(localStorage.getItem('lastName'))
-    // }
     this.firstFormGroup = this._formBuilder.group({
 
-      email: [dataEmail,],
-      fname: ['',],
-      lname: ['',],
-      city: ['',],
-      adress1: ['',],
+      email: [dataEmail, ],
+      fname: ['',Validators.required ],
+      lname: ['',Validators.required ],
+      city: ['',Validators.required ],
+      adress1: ['',Validators.required ],
       adress2: ['',],
-      contry: ['',],
-      code: ['',],
-      state: ['',],
-      appartment: ['',],
+      contry: ['',Validators.required ],
+      code: ['',Validators.required ],
+      state: ['',Validators.required ],
+      appartment: ['',Validators.required ],
 
     });
     this.secondFormGroup = this._formBuilder.group({
-      method: ['',]
+      method: ['', Validators.required]
     });
     this.thirdFormGroup = this._formBuilder.group({
-      cardNo: ['',],
-      name: ['',],
-      expirationDate: ['',],
-      sequrityCode: ['',]
+      cardNo: ['',Validators.required],
+      name: ['',Validators.required],
+      expirationDate: ['',Validators.required],
+      sequrityCode: ['',Validators.required]
 
     });
     // this.getAllOrders()
@@ -131,6 +125,7 @@ export class CheckOutPageComponent implements OnInit {
     this.firstFormGroup.controls['contry'].setValue($event.name);
   }
 
+
   stepClick(ev) { console.log(ev) }
   getAccountBonus() {
     this.accountBonus = localStorage.getItem('accountBonus')
@@ -140,18 +135,18 @@ export class CheckOutPageComponent implements OnInit {
     if (this.firstFormGroup.valid) {
       this.stepper.selectedIndex = index;
       this.countryError = ''
-    } else {
-      this.countryError = 'show'
+    }else{
+  this.countryError = 'show'
     }
   }
-  paymentDone() {
+  paymentDone(){
     if (this.thirdFormGroup.valid) {
-      this.move(3)
-    } else {
-      this.paymentFormError = 'show'
+     this.move(3)
+  }else{
+    this.paymentFormError = 'show'
 
     }
-  }
+}
   payment(index) {
     if (this.secondFormGroup.valid) {
       this.stepper.selectedIndex = index;
@@ -190,45 +185,49 @@ export class CheckOutPageComponent implements OnInit {
     this.totalafterBonus = this.total - this.detection
     return this.totalafterBonus.toFixed(0);
   }
-
+  login(){
+    localStorage.setItem('backtoCheckOut', "true");
+    this.router.navigate(['login'])
+  }
   order() {
     this.productService.payment(this.thirdFormGroup.value).subscribe((data: any) => {
-      if (data) {
-        if (this.authService.getID()) {
-          this.authService.getemail()
-          const orderData = {
-            cartItems: this.cartItems,
-            total: this.total,
-            firstName: this.firstFormGroup.value.fname,
-            lastName: this.firstFormGroup.value.lname,
-            city: this.firstFormGroup.value.city,
-            adress: this.firstFormGroup.value.adress,
-            code: this.firstFormGroup.value.code,
-            contry: this.firstFormGroup.value.contry,
-            method: this.secondFormGroup.value.method,
-            refrence: this.refrence,
-            phase: "processing",
-            ownerEmail: this.authService.getemail()
-
-          }
-          // this.printOrder(orderData);
-          this.cartService.order(orderData).subscribe((data: any) => {
-            this.toastr.success('Order Submitted Successfully', 'Success')
-            this.pdfDownload(orderData)
-            this.router.navigate(['/'])
-          })
-          localStorage.setItem('backtoCheckOut', "");
-          this.cartService.emptyProduct()
-        } else {
-          localStorage.setItem('backtoCheckOut', "true");
-          this.loginFirst = 'show'
-
-        }
+      if(data){
+    if (this.authService.getID()) {
+      this.authService.getemail()
+      const orderData = {
+        cartItems: this.cartItems,
+        total: this.total,
+        firstName: this.firstFormGroup.value.fname,
+        lastName: this.firstFormGroup.value.lname,
+        city: this.firstFormGroup.value.city,
+        adress: this.firstFormGroup.value.adress,
+        code: this.firstFormGroup.value.code,
+        contry: this.firstFormGroup.value.contry,
+        method: this.secondFormGroup.value.method,
+        refrence: this.refrence,
+        phase: "processing",
+        ownerEmail: this.authService.getemail()
 
       }
-    }, (error) => {
-      alert("payment not succesfull")
-    })
+      // this.printOrder(orderData);
+      this.cartService.order(orderData).subscribe((data: any) => {
+        this.toastr.success('Order Submitted Successfully', 'Success')
+        this.pdfDownload(orderData)
+        localStorage.setItem('backtoCheckOut', "");
+        this.router.navigate(['/myOrders'])
+      })
+
+      this.cartService.emptyProduct()
+    } else {
+
+      this.loginFirst = 'show'
+
+    }
+
+  }
+},(error)=>{
+alert("payment not succesfull")
+})
 
   }
   move(index: number) {
@@ -354,67 +353,67 @@ export class CheckOutPageComponent implements OnInit {
     }
   }
 
-  // private initConfig(): void {
-  //   this.payPalConfig = {
-  //     currency: 'EUR',
-  //     clientId: 'sb',
-  //     // tslint:disable-next-line: no-angle-bracket-type-assertion
-  //     createOrderOnClient: (data) => <ICreateOrderRequest>{
-  //       intent: 'CAPTURE',
-  //       purchase_units: [
-  //         {
-  //           amount: {
-  //             currency_code: 'EUR',
-  //             value: '9.99',
-  //             breakdown: {
-  //               item_total: {
-  //                 currency_code: 'EUR',
-  //                 value: '9.99'
-  //               }
-  //             }
-  //           },
-  //           items: [
-  //             {
-  //               name: 'Enterprise Subscription',
-  //               quantity: '1',
-  //               category: 'DIGITAL_GOODS',
-  //               unit_amount: {
-  //                 currency_code: 'EUR',
-  //                 value: '9.99',
-  //               },
-  //             }
-  //           ]
-  //         }
-  //       ]
-  //     },
-  //     advanced: {
-  //       commit: 'true'
-  //     },
-  //     style: {
-  //       label: 'paypal',
-  //       layout: 'vertical'
-  //     },
-  //     onApprove: (data, actions) => {
-  //       console.log('onApprove - transaction was approved, but not authorized', data, actions);
-  //       actions.order.get().then(details => {
-  //         console.log('onApprove - you can get full order details inside onApprove: ', details);
-  //       });
-  //     },
-  //     onClientAuthorization: (data) => {
-  //       console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
-  //       this.showSuccess = true;
-  //     },
-  //     onCancel: (data, actions) => {
-  //       console.log('OnCancel', data, actions);
-  //     },
-  //     onError: err => {
-  //       console.log('OnError', err);
-  //     },
-  //     onClick: (data, actions) => {
-  //       console.log('onClick', data, actions);
-  //     },
-  //   };
-  // }
+  private initConfig(): void {
+    this.payPalConfig = {
+      currency: 'EUR',
+      clientId: 'sb',
+      // tslint:disable-next-line: no-angle-bracket-type-assertion
+      createOrderOnClient: (data) => <ICreateOrderRequest>{
+        intent: 'CAPTURE',
+        purchase_units: [
+          {
+            amount: {
+              currency_code: 'EUR',
+              value: '9.99',
+              breakdown: {
+                item_total: {
+                  currency_code: 'EUR',
+                  value: '9.99'
+                }
+              }
+            },
+            items: [
+              {
+                name: 'Enterprise Subscription',
+                quantity: '1',
+                category: 'DIGITAL_GOODS',
+                unit_amount: {
+                  currency_code: 'EUR',
+                  value: '9.99',
+                },
+              }
+            ]
+          }
+        ]
+      },
+      advanced: {
+        commit: 'true'
+      },
+      style: {
+        label: 'paypal',
+        layout: 'vertical'
+      },
+      onApprove: (data, actions) => {
+        console.log('onApprove - transaction was approved, but not authorized', data, actions);
+        actions.order.get().then(details => {
+          console.log('onApprove - you can get full order details inside onApprove: ', details);
+        });
+      },
+      onClientAuthorization: (data) => {
+        console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+        this.showSuccess = true;
+      },
+      onCancel: (data, actions) => {
+        console.log('OnCancel', data, actions);
+      },
+      onError: err => {
+        console.log('OnError', err);
+      },
+      onClick: (data, actions) => {
+        console.log('onClick', data, actions);
+      },
+    };
+  }
 
 
 }

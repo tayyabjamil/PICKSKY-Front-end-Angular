@@ -101,9 +101,9 @@
            password not match
       </p>
 
-        <div style="padding-bottom: 2%">
+        <div  style="padding-bottom: 2%;">
           <form  [formGroup]="rformSignup">
-            <ngx-intl-tel-input [cssClass]="'customInput'"
+            <ngx-intl-tel-input [cssClass]="'customInput'" [ngClass]="{'customInputsmall': deviceXs}"
               [enableAutoCountrySelect]="false" [enablePlaceholder]="true"
               [selectedCountryISO]="CountryISO.India" [searchCountryFlag]="true" [selectFirstCountry]="false" [maxLength]="15"
               [phoneValidation]="true"  name="phone" formControlName="phone">
