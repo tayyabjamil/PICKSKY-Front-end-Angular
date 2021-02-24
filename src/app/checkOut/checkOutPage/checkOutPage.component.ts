@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import * as jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable'
-import { Country } from '@angular-material-extensions/select-country';
+// import { Country } from '@angular-material-extensions/select-country';
 @Component({
   selector: 'app-checkOutPage',
   templateUrl: './checkOutPage.component.html',
@@ -64,6 +64,7 @@ export class CheckOutPageComponent implements OnInit {
   selectShippingMethod = ''
   backtoCheckOut;
   firstName: ''
+  contry;
   paymentFormError=''
   lastName: ''
   gotoCheckOut:true
@@ -95,7 +96,7 @@ export class CheckOutPageComponent implements OnInit {
       city: ['',Validators.required ],
       adress1: ['',Validators.required ],
       adress2: ['',],
-      contry: ['',Validators.required ],
+      contry: [ '',Validators.required ],
       code: ['',Validators.required ],
       state: ['',Validators.required ],
       appartment: ['',Validators.required ],
@@ -120,10 +121,10 @@ export class CheckOutPageComponent implements OnInit {
     }
   }
 
-  onCountrySelected($event: Country) {
-    console.log($event);
-    this.firstFormGroup.controls['contry'].setValue($event.name);
-  }
+  // onCountrySelected($event: Country) {
+  //   console.log($event);
+  //   this.firstFormGroup.controls['contry'].setValue($event.name);
+  // }
 
 
   stepClick(ev) { console.log(ev) }

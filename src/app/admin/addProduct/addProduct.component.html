@@ -15,7 +15,8 @@
           rformControlName="price">
         </ns-textField-admin>
       </div>
-      <h4>mat-select</h4>
+      <p style="font-size: 22px;font-weight: bold;padding-top: 2%;padding-bottom:2%">Select Catagory</p>
+
       <mat-form-field [formGroup]="productForm">
         <mat-label>catagory</mat-label>
         <mat-select formControlName="catagory">
@@ -35,6 +36,50 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <p style="font-size: 22px;font-weight: bold;padding-top: 2%;padding-bottom:2%">Select Customization</p>
+      <mat-form-field [formGroup]="productForm">
+        <mat-label>Default Grams</mat-label>
+        <mat-select formControlName="grams" >
+          <mat-option *ngFor="let grams of [
+          '50g',
+          '100g',
+          '200g',
+          '250g'
+        ]" [value]="grams">
+            {{grams}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field [formGroup]="productForm">
+        <mat-label>Ingredients</mat-label>
+        <mat-select formControlName="ingredients" multiple>
+          <mat-option *ngFor="let ingredients of [
+          'Ingredient 1',
+          'Ingredient 2',
+          'Ingredient 3',
+          'Ingredient 4',
+          'Ingredient 5',
+          'Ingredient 6'
+        ]" [value]="ingredients">
+            {{ingredients}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field [formGroup]="productForm">
+        <mat-label>Sweet or Spice</mat-label>
+        <mat-select formControlName="sweet_spice" >
+          <mat-option *ngFor="let sweet_spice of [
+          'Sweet',
+          'Spice'
+
+        ]" [value]="sweet_spice">
+            {{sweet_spice}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
       <div style="padding-bottom: 2%" class="">
         <p style="padding-bottom: 1%">detail</p>
         <ns-textField-admin name="detail" class="textfieldBorderColor font13" [rformgroup]="productForm"
@@ -42,14 +87,23 @@
         </ns-textField-admin>
       </div>
 
+      <p style="font-size: 22px;font-weight: bold;padding-top: 2%;padding-bottom:2%">Select Product Image</p>
 
-      <div class="form-group">
+      <div >
 
         <input style="float: left;width: 30%;" type="file" name="imagePath" (change)="selectProductImage($event)"
           class="form-control" /><br>
 
       </div>
+      <br>
+      <p style="font-size: 22px;font-weight: bold;padding-top: 2%;padding-bottom:2%">Select Product Images</p>
+<br>
+      <div >
 
+
+          <input type="file" name="images" multiple (change)="selectMultipleImage($event)" />
+
+      </div>
     </form>
     <div style="text-align: center;">
       <button *ngIf="!data" class="btn" (click)="addProduct()"

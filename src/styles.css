@@ -20,9 +20,9 @@ body { margin: 0;  }
   background-color: rgb(105, 170, 105);
   color: #fff;
 }
-.popover {
+/* .popover {
   position: absolute;
-  margin-right: 15px;
+   margin-right: 15px;
   padding-right: 10px;
   min-width: 260px;
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
@@ -40,7 +40,7 @@ body { margin: 0;  }
   word-wrap: break-word;
   border: 1px solid rgba(0,0,0,.2);
   border-radius: .3rem;
-}
+} */
 .popover.bottom>.arrow {
   top: -18px;
   /* left: 50%; */
