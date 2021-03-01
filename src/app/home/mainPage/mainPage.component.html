@@ -64,7 +64,7 @@
 
       </div>
     </div>
-    <img class="img-responsive" style="height: 5000%; width: 100%; border-radius: 6px"
+    <img class="img-responsive" style="min-height: 350px; width: 100%; border-radius: 6px"
       src="../assets/images/home.jpeg" />
   </div>
 
@@ -229,7 +229,7 @@
       Featured Products
     </p>
     <div *ngIf="deviceLg || deviceMd" class="deviceLg ">
-      <div class="card" routerLinkActive="router-link-active" *ngFor="let item of featuredProducts" style="
+      <div class="card" routerLinkActive="router-link-active" *ngFor="let item of trendingProducts" style="
           padding: 1%;
           background-color: white;
           margin: 1%;
@@ -446,7 +446,7 @@
       Trending Products
     </p>
     <div *ngIf="deviceLg || deviceMd" class="deviceLg" >
-      <div class="card" routerLinkActive="router-link-active" *ngFor="let item of featuredProducts" style="
+      <div class="card" routerLinkActive="router-link-active" *ngFor="let item of trendingProducts" style="
           padding: 1%;
           background-color: white;
           margin: 1%;

@@ -31,6 +31,7 @@ export class CartService {
     this.cart.forEach((element,index)=>{
       if(element._id==product._id){
         this.cart.splice(index,1);
+        product.productCount=0
         localStorage.setItem('cart', JSON.stringify(this.cart));
 
       }

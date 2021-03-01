@@ -66,7 +66,7 @@ export class CartComponent implements OnInit {
   onCustomiseModal(item): void {
     const dialogRef = this.dialog.open(CustomizeComponent,{
       maxWidth: '100% !important',
-      height: '60vh',
+      height: '80vh',
       data: { item: item }
 
     });

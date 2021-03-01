@@ -1,79 +1,69 @@
-<hr>
-
 <div style="margin:5%">
   <div class="row">
     <div class="col-lg-6">
       <div style="display: flex;flex-direction: row;justify-content: space-evenly;">
+        <div >
 
+          <div
+            style="margin: 2%;border-radius: 5px;min-width: 200px;min-height: 250px;border:2px;border-style: groove;">
+             <img style="width: 20vw;padding:5px;min-width: auto;min-height: 200px;"
+              [src]='getImage(data.multipleImages[0])'>
+          </div>
+          <div
+            style="margin: 2%;border-radius: 5px;border:2px;border-style: groove;min-width: 200px;min-height: 250px;">
+             <img style="width: 20vw;padding:5px;min-width: auto;min-height: 200px;"
+              [src]='getImage(data.multipleImages[1])'>
+          </div>
+        </div>
         <div>
-
-          <div style="margin: 2%;border-radius: 5px;min-width: 150px;min-height: 150px;border:2px;border-style: groove;">
-            <img style="width: 20vw;padding:5px;min-width: 150px;min-height: 150px;" src="../assets/images/veg1.jpg">
+          <div
+            style="margin: 2%;border-radius: 5px;min-width: 200px;min-height: 250px;;border:2px;border-style: groove;">
+             <img style="width: 20vw;padding:5px;min-width: auto;min-height: 200px;"
+              [src]='getImage(data.multipleImages[2])'>
           </div>
-          <div style="margin: 2%;border-radius: 5px;border:2px;border-style: groove;min-width: 150px;min-height: 150px;">
-            <img style="width: 20vw;padding:5px;min-width: 150px;min-height: 150px;" src="../assets/images/veg1.jpg">
-          </div>
-        </div>
-        <div>
-          <div style="margin: 2%;border-radius: 5px;min-width: 150px;min-height: 150px;;border:2px;border-style: groove;">
-            <img style="width: 20vw;padding:5px;min-width: 150px;min-height: 150px;" src="../assets/images/veg1.jpg">
-          </div>
-          <div style="margin: 2%;border-radius: 5px;min-width: 150px;min-height: 150px;border:2px;border-style: groove;">
-            <img style="width: 20vw;padding:5px;min-width: 150px;min-height: 150px;" src="../assets/images/veg1.jpg">
+          <div
+            style="margin: 2%;border-radius: 5px;min-width: 200px;min-height: 250px;border:2px;border-style: groove;">
+             <img style="width: 20vw;padding:5px;min-width: auto;min-height: 200px;"
+              [src]='getImage(data.multipleImages[3])'>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-lg-6"
-      style="margin-top: 5%;display: flex;flex-direction: column;justify-content: space-between;">
-      <div>
-        <p style="font-size: larger;font-weight: 500;">Market Corner Classic Burger Buns 400g</p>
-      </div>
-      <div style="padding-top: 5%;">
-        <div style="float:left;font-size: larger;font-weight: 500;">0.50$</div>
-        <div style="float:right;margin-right:20%;">
-          <button class="btn" style=" width: 140px;height: 50px;background-color: rgb(63, 61, 61); color: whitesmoke">
-            <span style="font-weight: bold;">Add To Cart</span></button>
+    <div class="col-lg-6">
+      <div style="margin-top: 5%;display: flex;flex-direction: column;justify-content: space-between;">
+        <div style="margin-top: 2%;">
+          <p style="font-size: larger;font-weight: 500;"><span style="font-weight: bold;font-size: 18px;"> Title :
+            </span>{{data.name}}</p>
         </div>
+        <div class="row" style="margin-top: 2%;">
+          <div class="col-3">
+            <p style="font-size: larger;font-weight: 500;"><span style="font-weight: bold;font-size: 18px;">Grams
+                :</span>{{data.grams}}</p>
+          </div>
+
+        </div>
+        <div style="margin-top: 2%;">
+          <div style="float:left;font-size: larger;font-weight: 500;"><span
+              style="font-weight: bold;font-size: 18px;">Price :</span>{{data.price}}$</div>
+          <div style="float:right;margin-right:20%;">
+            <button (click)="addProduct()" class="btn"
+              style=" width: 140px;height: 50px;background-color: rgb(63, 61, 61); color: whitesmoke">
+              <span style="font-weight: bold;">Add To Cart</span></button>
+          </div>
+        </div>
+
+
+        <hr>
+        <h3 style="padding-bottom: 5%;word-wrap: break-word;">{{data.detail}}</h3>
       </div>
-      <label for="">Select Amount</label>
+      <p style="margin-right:5%;font-size: 20px;font-weight: bold;">Ingredients :</p>
 
-      <div class="row">
-    <div class="col-3">
-      <button class="btn" style="width: 100px;height: 40px;border-radius: 6px;border-color: rgb(63, 61, 61); color: rgb(63, 61, 61)">
-        <span style="font-weight: bold;">250 g</span></button>
-    </div>
-    <div class="col-3">
-      <button class="btn" style=" width: 100px;height: 40px;border-radius: 6px;border-color: rgb(63, 61, 61); color: rgb(63, 61, 61)">
-        <span style="font-weight: bold;">500 g</span></button>
-    </div>
-    <div class="col-3">
-      <button class="btn" style=" width: 100px;height: 40px;border-radius: 6px;border-color: rgb(63, 61, 61); color: rgb(63, 61, 61)">
-        <span style="font-weight: bold;">750 g</span></button>
-    </div>
-    <div class="col-3">
-      <button class="btn" style=" width: 100px;height: 40px;border-radius: 6px;border-color: rgb(63, 61, 61); color: rgb(63, 61, 61)">
-        <span style="font-weight: bold;">1000 g</span></button>
-    </div>
+      <div style="display: flex; flex-direction: row;width: 300px;">
+      <div *ngFor="let item of ingredients" style="margin-bottom: 1%;margin: 2%;">
 
-  </div>
-      <hr>
-      <h3 style="padding-bottom: 5%;word-wrap: break-word;">Shrivasafoods is a React Gatsby based E-commerce
-        Template that
-        uses two Headless API. One of them is Shopify Storefront
-        API for E-commerce purposes and another one is for Static Content Management
-        [ Prismic ]. You can easily change any text or product data from there. As
-        we’ve used Shopify E-commerce api, it’s behaving like a fully functional E-commerce template.</h3>
-      <div style="margin-bottom: 5%;display: flex; flex-direction: row;">
-        <p style="margin-right:5%;font-size: larger;">Tag :</p>
-        <p class="btn" style="margin-right:2%;border:2px;border-style: groove;">
-          Buns</p>
-        <p class="btn" style="margin-right:2%;border:2px;border-style: groove;">
-          Features</p>
-        <p class="btn" style="margin-right:2%;border:2px;border-style: groove;">
-          Fresh</p>
-        <p class="btn" style="margin-right:2%;border:2px;border-style: groove;">
-          Packed</p>
+          <p class="btn" style="border:2px;border-style: groove;">
+            {{item}}</p>
+          </div>
       </div>
       <div style="display: flex; flex-direction: row;">
         <p style="margin-right:5%;font-size: larger;">Share on :</p>
@@ -81,73 +71,47 @@
         <button>Twiter</button>
         <button>Linkedin</button>
       </div>
-
     </div>
   </div>
 
-
   <div style="border-radius: 6px;margin: 2.5%;background-color: white;">
-    <p style="font-weight: bold;font-size: 1.5vw;padding-left:3%;padding-top:4% ; "> Related Products</p>
+    <p style="font-weight: bold;font-size: 1.5vw; "> Related Products</p>
 
 
-    <div *ngIf="deviceLg || deviceMd" class="deviceLg">
 
-      <div style="padding:2%;width: 20%;">
-        <div style="text-align: right;">
-          <button class="btn"><i class="glyphicon glyphicon-shopping-cart"></i></button>
+      <div *ngIf="deviceLg || deviceMd" class="deviceLg" >
+        <div class="card" routerLinkActive="router-link-active" *ngFor="let item of relatedProducts" style="
+            padding: 1%;
+            background-color: white;
+            margin: 1%;
+          ">
+          <app-mainPage-listItem [item]="item"></app-mainPage-listItem>
+
         </div>
-        <div>
-          <img class="img-responsive" src="../assets/images/veg1.jpg">
-        </div>
-        <p style="font-weight: bold;">12$</p>
-        <p> Twix 30g</p>
       </div>
-
-      <div style="padding:2%;;width: 20%">
-        <div style="text-align: right;">
-          <button class="btn"><i class="glyphicon glyphicon-shopping-cart"></i></button>
+      <div *ngIf="deviceXs || deviceSm">
+        <div class="row">
+          <div style="
+              display: flex;
+              flex-direction: row;
+              flex-wrap: wrap;
+              flex: 2;
+              justify-content: space-evenly;
+            ">
+            <div class="card" *ngFor="let item of relatedProducts" style="
+                padding: 2%;
+                background-color: white;
+                margin: 2%;
+              ">
+              <app-mainPage-listItem [item]="item"></app-mainPage-listItem>
+            </div>
+          </div>
         </div>
-        <div>
-          <img class="img-responsive" src="../assets/images/trend1.jpg">
-        </div>
-        <p style="font-weight: bold;">12$</p>
-        <p> Twix 30g</p>
-      </div>
-
-      <div style="padding:2%;;width: 20%">
-        <div style="text-align: right;">
-          <button class="btn"><i class="glyphicon glyphicon-shopping-cart"></i></button>
-        </div>
-        <div>
-          <img class="img-responsive" src="../assets/images/trend2.jpg">
-        </div>
-        <p style="font-weight: bold;">12$</p>
-        <p> Twix 30g</p>
-      </div>
-      <div style="padding:2%;;width: 20%">
-        <div style="text-align: right;">
-          <button class="btn"><i class="glyphicon glyphicon-shopping-cart"></i></button>
-        </div>
-        <div>
-          <img class="img-responsive" src="../assets/images/trend3.jpg">
-        </div>
-        <p style="font-weight: bold;">12$</p>
-        <p> Twix 30g</p>
-      </div>
-      <div style="padding:2%;;width: 20%">
-        <div style="text-align: right;">
-          <button class="btn"><i class="glyphicon glyphicon-shopping-cart"></i></button>
-        </div>
-        <div>
-          <img class="img-responsive" src="../assets/images/trend4.jpg">
-        </div>
-        <p style="font-weight: bold;">12$</p>
-        <p> Twix 30g</p>
       </div>
 
 
     </div>
-    <div *ngIf="deviceXs || deviceSm">
+    <!-- <div *ngIf="deviceXs || deviceSm">
       <div class="row">
         <div style="display:flex;flex-direction: row;justify-content: space-evenly;">
 
@@ -163,57 +127,13 @@
             <p> Twix 30g</p>
           </div>
 
-          <div>
-            <div class="col-lg-6">
-              <div style="padding:2%">
-                <div style="text-align: right;">
-                  <button class="btn"><i class="glyphicon glyphicon-shopping-cart"></i></button>
-                </div>
-                <div style="width: 17vw">
-                  <img class="img-responsive" src="../assets/images/trend2.jpg">
-                </div>
-                <p style="font-weight: bold;">12$</p>
-                <p> Twix 30g</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div style="display:flex;flex-direction: row;justify-content: space-evenly;">
-
-
-          <div style="padding:2%">
-            <div style="text-align: right;">
-              <button class="btn"><i class="glyphicon glyphicon-shopping-cart"></i></button>
-            </div>
-            <div style="width: 17vw">
-              <img class="img-responsive" src="../assets/images/trend2.jpg">
-            </div>
-            <p style="font-weight: bold;">12$</p>
-            <p> Twix 30g</p>
-          </div>
-
-          <div>
-            <div class="col-lg-6">
-              <div style="padding:2%">
-                <div style="text-align: right;">
-                  <button class="btn"><i class="glyphicon glyphicon-shopping-cart"></i></button>
-                </div>
-                <div style="width: 17vw">
-                  <img class="img-responsive" src="../assets/images/trend2.jpg">
-                </div>
-                <p style="font-weight: bold;">12$</p>
-                <p> Twix 30g</p>
-              </div>
-            </div>
-          </div>
-        </div>
 
 
       </div>
 
 
     </div>
-  </div>
+  </div> -->
 
 </div>
 <div class="row" style="margin: 1%">
@@ -230,10 +150,7 @@
       <p style="color: black; padding-bottom: 10%; font-size: 20px">
         Try it now, risk free!
       </p>
-      <button
-        class="btn"
-        style="background-color: #ffffff; width: 40%; height: 35px"
-      >
+      <button class="btn" style="background-color: #ffffff; width: 40%; height: 35px">
         <span style="font-weight: bold"> Order Now </span>
       </button>
     </div>
@@ -249,29 +166,22 @@
       <p class="text-block-small" style="color: black; padding-bottom: 5%">
         Try it now, risk free!
       </p>
-      <button
-        class="btn"
-        style="
+      <button class="btn" style="
           background-color: #ffffff;
           font-size: 14px;
           width: 50%;
           height: 40px;
           font-weight: bold;
-        "
-      >
+        ">
         Order Now
       </button>
     </div>
-    <img
-      class="img-responsive"
-      style="
+    <img class="img-responsive" style="
         border-radius: 6px;
         min-height: 350px;
         width: 100%;
         border-radius: 8px;
-      "
-      src="../assets/images/slide2.png"
-    />
+      " src="../assets/images/slide2.png" />
   </div>
 </div>
 
@@ -281,5 +191,3 @@
 
   <div>Copyright © 2020 RedQ, Inc , All rights reserved</div>
 </div>
-
-

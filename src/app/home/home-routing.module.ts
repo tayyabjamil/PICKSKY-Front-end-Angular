@@ -38,7 +38,7 @@ const routes: Routes = [
 
     children: [
       // ./checkOut/checkOut.module#CheckOutModule
-      { path: 'detail', component: ProductDetailComponent },
+      { path: 'detail/:id', component: ProductDetailComponent },
       { path: 'pickles', component: PicklesComponent },
       { path: 'powders', component: TraditionalPowdersComponent },
       { path: 'sweets', component: SweetandHotComponent },
