@@ -5,10 +5,7 @@
   background-color: green;
   border: 1px solid transparent;
 }
-.popover {
-  top: 71px !important;
-  left: 379px !important;
-}
+
 .textimages {
   top: 10%;
   left: 10%;
@@ -17,6 +14,7 @@
 
 .popover-body {
   padding: 0px ;
+
    width: 200px;
   color: #212529;
 }
@@ -28,6 +26,13 @@
 
   /* border-bottom-color: rgba(0,0,0,.25); */
 
+}
+element.style {
+  display: block;
+  will-change: transform;
+  top: 0px;
+  left: 100px;
+  transform: translate3d(9px, 55px, 0px);
 }
 .text-block1 {
   position: absolute;

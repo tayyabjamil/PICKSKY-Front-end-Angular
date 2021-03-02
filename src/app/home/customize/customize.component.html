@@ -13,50 +13,63 @@
       </div>
     </div>
     <div class="btn">
-    <div class="closebtn" style="color:white;background-color: rgb(20, 163, 20);" (click)="onSave()">
-      <mat-icon>done</mat-icon>
-    </div>
+
   </div>
   </div>
 
   <div>
-    <mat-tab-group mat-align-tabs="center" [selectedIndex]="selected"
+    <mat-tab-group  mat-align-tabs="center" [selectedIndex]="selected"
       (selectedIndexChange)="onSelectionIndexChange($event)">
       <mat-tab [label]="tabItem.tabsTitle" *ngFor="let tabItem of items" >
         <div class="row" mat-align-tabs="center"  >
           <div class="col-md-1"></div>
+
           <div class="col-md-10" style="min-height: 500px;">
-            <div class="lineItem">
+
+            <div  style="flex:1;min-height: 300px;">
               <div *ngFor="let itemContent of tabItem?.tabsContent">
                 <div class="row">
 
-                  <div class="col-xs-6 col-lg-6">{{itemContent?.tabItemTitle}}</div>
-                  <div class="col-xs-6 col-lg-6">
-                    <app-customize-option-select [minimumValue]='itemContent?.minimumValue' [myFormGroup]='itemContent?.formGroup' [myFormControl]='itemContent?.tabContentItemformControlName'
+                  <div class="col-xs-6 col-lg-6 col-sm-6">{{itemContent?.tabItemTitle}}</div>
+
+                    <app-customize-option-select class="col-xs-6 col-lg-6 col-sm-6" [minimumValue]='itemContent?.minimumValue' [myFormGroup]='itemContent?.formGroup' [myFormControl]='itemContent?.tabContentItemformControlName'
                       [options]="itemContent?.tabItemOption">
                     </app-customize-option-select>
-                  </div>
                 </div>
 
               </div>
+              <div *ngIf="tabItem.tabsTitle === 'Custom'" [formGroup]="customFormGroup">
+               <p style="font-size: 16px;font-weight: bold;">You can add your custom requirnments here</p>
+                <textarea placeholder="Custom Requirnments"  formControlName="custom" style="width: 100%;height: 100px;"  ></textarea>
+              </div>
+              <div *ngIf="tabItem.tabsTitle === 'Done'" style="flex: 1;min-height: 200px;">
+                <p style="text-align: center;font-size: 24px;font-weight: bold;">Your Customization is</p>
+                <div style="min-height: 170px;">
 
+                <div *ngFor="let itemArray of formData" >
+            <div style='display:flex;flex-direction: row;justify-content: space-between;padding-bottom: 5px;'>
+              <p style="font-size: 20px;font-weight: bold;">{{itemArray[0]}}</p>
+              <p style="font-size: 20px;">{{itemArray[1]}}</p>
             </div>
-            <div *ngIf="tabItem.tabsTitle === 'Done'" >
-              <p style="text-align: center;font-size: 24px;font-weight: bold;">Your Customization is</p>
-             <div *ngFor="let itemArray of formData">
-        <div>
-          <div style='display:flex;flex-direction: row;justify-content: space-between;padding-bottom: 5px;'>
-            <p style="font-size: 20px;font-weight: bold;">{{itemArray[0]}}</p>
-            <p style="font-size: 20px;">{{itemArray[1]}}</p>
           </div>
         </div>
+        <div  style="float:right;">
+          <button (click)="addProduct()" class="btn"
+            style=" width: 120px;height: 40px;background-color: rgb(54, 54, 54); color: whitesmoke">
+            <span >Add to Cart</span></button>
+        </div>
+
       </div>
+
             </div>
-            <div *ngIf="tabItem.tabsTitle === 'Custom'" [formGroup]="customFormGroup">
-             <p style="font-size: 16px;font-weight: bold;">You can add your custom requirnments here</p>
-              <textarea placeholder="Custom Requirnments"  formControlName="custom" style="width: 100%;height: 100px;"  ></textarea>
+
+            <div *ngIf="tabItem.tabsTitle !== 'Done'" style="float:right;">
+              <button (click)="onSave()" class="btn"
+                style=" width: 120px;height: 40px;background-color: rgb(36, 167, 32); color: whitesmoke">
+                <span style="font-size: 18px;">Save</span></button>
             </div>
           </div>
+
           <div class="col-md-1"></div>
         </div>
       </mat-tab>

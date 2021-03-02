@@ -19,7 +19,7 @@ export class AddProductComponent implements OnInit {
   image;
   data;
   multipleImages
-  productOrders = '1';
+  productOrders;
   constructor(public route: ActivatedRoute,
     public adminService: AdminService, public formBuilder: FormBuilder) { }
 
@@ -74,7 +74,7 @@ export class AddProductComponent implements OnInit {
       fd.append('grams', this.productForm.value.grams);
       fd.append('ingredients', this.productForm.value.ingredients);
       fd.append('sweet_spice', this.productForm.value.sweet_spice);
-
+      fd.append('productOrders', this.productOrders);
       if (this.productForm.value.productImage) {
         fd.append('productImage', this.productForm.value.productImage);
       }

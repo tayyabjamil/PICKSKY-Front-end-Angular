@@ -84,11 +84,16 @@ export class MainPageComponent implements OnInit {
     let search = this.productService.searchProducts()
     return search;
   }
+  get trendingProducts() {
+    return this.allProducts;
+  }
 
   getAllProducts() {
     this.productService.getProducts().subscribe(
       (products) => {
-
+     products.forEach(element => {
+       element.productCount =0
+     });
         // this.allProducts = products;
         // this.searchProductsData = this.allProducts
         let tempProducts: any = products;
@@ -140,6 +145,7 @@ export class MainPageComponent implements OnInit {
       productRef.innerText = x + 1;
     }
     this.cartService.addProduct(item);
+    this.getAllProducts()
   }
 
   imageLoaded() {
@@ -169,7 +175,9 @@ export class MainPageComponent implements OnInit {
      this.cartService.removeProduct(item);
       }
      }
-  }
+     this.getAllProducts()
+
+    }
   onImageClick(index) {
     this.router.navigate(['catagory/' + this.categories[index].routeTo]);
 

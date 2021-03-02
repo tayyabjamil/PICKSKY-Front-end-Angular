@@ -40,7 +40,7 @@
 
 
           <div *ngIf="authService.loggedIn()" style="display: flex; flex-direction: row; padding-top: 1%">
-            <p class="btn"  style="font-size: large; padding-top: 5%" [popover]="popTemplate">
+            <p class="btn"  style="min-width: 100px;font-size: large; padding-top: 5%" [popover]="popTemplate">
               Hi {{ usernameLogin }}
             </p>
 
@@ -197,7 +197,7 @@
         </p>
 
         <ul *ngIf="isSHowSearch==false" class="nav-menu" style="max-height: 70px;width: auto;">
-          <li class="dropdown" routerLink="/aboutUs">
+          <li class="dropdown" routerLink="/">
             <a>{{ getHeaderNames(1) }}</a>
           </li>
           <li class="dropdown">

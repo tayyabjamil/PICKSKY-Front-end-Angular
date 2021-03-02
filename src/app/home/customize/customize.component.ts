@@ -127,10 +127,6 @@ custom;
         tabsTitle: 'Custom',
 
        },
-       {
-        tabsTitle: 'Done',
-
-       }
 
     ];
 
@@ -141,7 +137,11 @@ custom;
         tabsContent: [
           { formGroup: this.spiceLevelFormGroup, tabContentItemformControlName: 'spice', tabItemTitle: 'Select Spice Level', tabItemOption: ['less spice', 'normal spice', 'extra spice'] },
         ]
-      })
+      },{
+        tabsTitle: 'Done',
+
+       }
+)
     } else {
       this.items.push(
         {
@@ -149,7 +149,11 @@ custom;
           tabsContent: [
             { formGroup: this.sweetFormGroup, tabContentItemformControlName: 'sweet', tabItemTitle: 'Select Sweet Level', tabItemOption: ['less sweet', 'normal sweet', 'extra sweet'] },
           ]
-        }
+        },{
+          tabsTitle: 'Done',
+
+         }
+
       )
     }
 
@@ -160,10 +164,17 @@ custom;
     });
   }
 
+  addProduct() {
+    this.cartService.addProduct(this.data.item);
+    this.dialogRef.close(this.formData);
+
+  }
 
 
   onSave() {
     this.formData = [];
+    this.onSelectionIndexChange(4);
+
     this.formData.push(...Object.entries(this.gramsFormGroup.value));
     this.formData.push(...Object.entries(this.ingredientsFormGroup.value));
     if (this.data.item.sweet_spice == "Sweet") {

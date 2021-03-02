@@ -101,9 +101,9 @@
               <p  style="font-size: 18px;"><span style="font-weight: 600;">Unit price :</span>  ${{ item.price }}</p>
               <p  style="font-size: 18px;"><span style="font-weight: 600;">Total Units :</span> {{ item.productCount }}</p>
             </div>
-            <div style="padding-top: 20px;" *ngIf="item.customiztion.length > 0">
+             <!-- <div style="padding-top: 20px;" *ngIf="item.customiztion && item.customiztion.length > 0">
               <p style="color:rgb(128, 185, 43);font-weight: bold;font-size: 18px;">Customized</p>
-              </div>
+              </div> -->
           </div>
           <div  class="col-lg-3 col-md-3 col-xs-4 col-sm-4" >
             <p style="font-weight: 500;text-align: right;padding-right: 30px;font-size: 18px;">${{ item.unitTotal }}</p>
