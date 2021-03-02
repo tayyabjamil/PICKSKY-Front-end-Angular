@@ -114,9 +114,9 @@ export class ProductService {
 
   }
 
-  getOrders(): Observable<any>  {
+  getOrders(): Observable<any> {
 
-    return this.http.get(`${environment.apiURL}${environment.SHRIVASA_FOODS_ORDERS_API}` + '/' +this.myauthService.getID(), this.httpHeaders)
+    return this.http.get(`${environment.apiURL}${environment.SHRIVASA_FOODS_ORDERS_API}` + '/' + this.myauthService.getID(), this.httpHeaders)
 
   }
 
@@ -160,7 +160,7 @@ export class ProductService {
   payment(data) {
     const userId = this.myauthService.getID()
     return this.http.post(
-      'http://localhost:8000/api/payment/',
+      `${environment.apiURL}${environment.SHRIVASA_FOODS_PAYMENT_API}`,
       {
         cardNo: data.cardNo,
         name: data.name,
@@ -173,7 +173,7 @@ export class ProductService {
   }
   getAllPayments() {
     const userId = this.myauthService.getID()
-    return this.http.get('http://localhost:8000/api/payment/' + userId, this.httpHeaders);
+    return this.http.get(`${environment.apiURL}${environment.SHRIVASA_FOODS_PAYMENT_API}` + '/' + userId, this.httpHeaders);
   }
   referFriend(data) {
     return this.http.post(

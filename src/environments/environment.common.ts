@@ -4,5 +4,6 @@ export const common = {
     SHRIVASA_FOODS_USER_API: 'api/users',
     SHRIVASA_FOODS_ORDERS_API: 'api/orders',
     SHRIVASA_FOODS_PRODUCTS_API: 'api/products',
-    SHRIVASA_FOODS_LOCATION_API: 'api/location'
+    SHRIVASA_FOODS_LOCATION_API: 'api/location',
+    SHRIVASA_FOODS_PAYMENT_API: 'api/payment'
 };
