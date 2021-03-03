@@ -41,7 +41,7 @@ export class CartComponent implements OnInit {
       this.deviceMd = result.mqAlias === 'md'
       this.show = false;
     })
-
+    window.scrollTo(0, 0);
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, {class: 'modal-sm'});

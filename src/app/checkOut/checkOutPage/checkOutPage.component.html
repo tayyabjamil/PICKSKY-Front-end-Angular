@@ -130,25 +130,25 @@
               <p style="font-weight: bold;font-size: 18px;margin-top: 2%;margin-bottom: 2%;">Shipping Method</p>
 
               <div class="row" style="height: 10px;">
-                <div class="col-xs-1">
-                  <input type="checkbox" formControlName="method" class="form-check-input" id="exampleCheck2">
+                <div class="col-3">
+                  <input type="checkbox" formControlName="method" (click)="methodcheck()" class="form-check-input" id="exampleCheck2">
                 </div>
-                <mat-label class="col-xs-7" style="text-align: left;">Standard Method</mat-label>
-                <div class="col-3 text-primary btn" style="padding-left: 10px;" (click)="move(0)">Change</div>
+                <mat-label class="col-6" >Standard Method</mat-label>
+                <div class="col-3 text-primary btn"   (click)="move(0)">Change</div>
 
               </div>
+
+              <hr />
               <p style="font-size: 14px" class="errorlbl" *ngIf="selectShippingMethod == 'show'">
                 Select shipping method
               </p>
-              <hr />
-
               <div class="row" style="height: 10px;">
                 <p style="font-size: 13px;text-align: left;" class="col-xs-5 btn text-primary" matStepperPrevious>
                   < Return to Information</p>
               </div>
               <div class="row" style="height: 10px;">
-                <div class="col-xs-4"></div>
-                <button class="col-xs-7 btn btn-primary" (click)="payment(2)">Continue to Payment</button>
+                <div class="col-xs-6"></div>
+                <button class="col-xs-6 btn btn-primary" (click)="payment(2)">Continue to Payment</button>
 
               </div>
 
@@ -164,19 +164,20 @@
               style="border: 1px;border-style: solid;border-radius: 6px;border-color: lightgray;">
 
               <ng-template matStepLabel></ng-template>
+
               <div data-toggle="collapse" href="#collapsePaypal"
-                style="padding-top:2%;padding-left: 2%;padding-right: 2%;display: flex;flex-direction: row;justify-content: space-between;">
+              style="padding-top:2%;padding-left: 2%;padding-right: 2%;display: flex;flex-direction: row;justify-content: space-between;">
 
-                <label style="font-size: 18px;">Paypal </label>
-                <p>Options</p>
+              <label style="font-size: 18px;" class="btn text-primary">+ Paypal</label>
+              <p style="text-align: right;">Options</p>
 
-              </div>
-
+            </div>
+<hr />
               <div data-toggle="collapse" href="#collapseExample"
                 style="padding-top:2%;padding-left: 2%;padding-right: 2%;display: flex;flex-direction: row;justify-content: space-between;">
 
-                <label style="font-size: 18px;">Credit Card</label>
-                <p>Options</p>
+                <label style="font-size: 18px;" class="btn text-primary">+ Credit Card</label>
+                <p style="text-align: right;">Options</p>
 
               </div>
 
@@ -240,7 +241,7 @@
 
               <ng-template matStepLabel></ng-template>
               <div class="row" style="padding: 20px;">
-                <div class="col-xs-2">
+                <div class="col-xs-2" >
                   <input type="checkbox" class="form-check-input" id="exampleCheck1">
                 </div>
                 <!-- <div class="col-xs-2"></div> -->
@@ -250,10 +251,9 @@
                 <hr />
               </div>
 
-              <div data-toggle="collapse" href="#collapseExample2"
-                style="display: flex;flex-direction: row;justify-content: space-between;padding-top: 20px;">
-
-                <label style="margin-left: 8%;font-size: 16px;">Use a different billing adress</label>
+              <div class="row" data-toggle="collapse" href="#collapseExample2"
+                style="padding-top: 20px;" >
+                <div class="col-lg-10" style="font-size: 16px;text-align: left;padding-left: 20px;" >Use a different billing adress</div>
 
 
               </div>
@@ -339,7 +339,10 @@
               </form>
             </form>
 
-
+            <p style="text-align: left;justify-content: flex-end;font-size: 14px;" class="errorlbl"
+            *ngIf="billingFormError == 'show'">
+            Select billing adress
+          </p>
 
 
 
@@ -648,14 +651,14 @@
                 style="padding: 1%;margin-top: 2%;border-style: solid;border-width: 1px;border-color: lightgrey;border-radius: 6px;">
                 <div style="display: flex;flex-direction: row;justify-content: space-evenly;">
                   <div style="text-align: left;font-size: 18px;" class="col-xs-3 btn">Contact</div>
-                  <mat-label class="col-xs-7" style="font-size: 18px;">{{this.firstFormGroup.value.email}}</mat-label>
+                  <mat-label class="col-xs-7" style="font-size: 18px;padding-top: 10px;">{{this.firstFormGroup.value.email}}</mat-label>
                   <div style="font-size: 18px;" class="col-xs-2 text-primary btn" (click)="move(0)">Change</div>
                 </div>
                 <hr />
 
                 <div style="display: flex;flex-direction: row;justify-content: space-evenly;">
                   <p class="col-xs-3 btn" style="text-align: left;font-size: 18px;">Shipping Adress</p>
-                  <mat-label class="col-xs-7" style="font-size: 18px;">{{this.firstFormGroup.value.adress}}</mat-label>
+                  <mat-label class="col-xs-7" style="font-size: 18px;padding-top: 10px;">{{this.firstFormGroup.value.adress1}}</mat-label>
                   <p style="font-size: 18px;" class="col-xs-2 text-primary btn">Change</p>
                 </div>
 
@@ -664,32 +667,45 @@
 
 
               <div
-                style="padding-top: 20px;border-style: solid;border-width: 1px;border-color: lightgrey;border-radius: 6px;;display: flex;flex-direction: row;justify-content: space-evenly;">
+                style="padding-top: 10px;padding-bottom: 10px;border-style: solid;border-width: 1px;border-color: lightgrey;border-radius: 6px;;display: flex;flex-direction: row;justify-content: space-evenly;">
 
-                <div class="col-xs-1">
+                <div class="col-xs-1" style="padding-top: 10px;">
 
-                  <input type="checkbox" formControlName="method" class="form-check-input" id="exampleCheck2">
+                  <input type="checkbox" formControlName="method" (click)="methodcheck()" class="form-check-input" id="exampleCheck2">
                 </div>
-                <mat-label class="col-8" style="text-align: left;font-size: 18px;">Standard Method</mat-label>
+                <mat-label class="col-8" style="text-align: left;font-size: 18px;padding-top: 10px;">Standard Method</mat-label>
+
                 <p style="font-size: 18px;" class="col-xs-2 text-primary btn">Change</p>
 
               </div>
               <p style="font-size: 14px" class="errorlbl" *ngIf="selectShippingMethod == 'show'">
                 Select shipping method
               </p>
+              <div style="padding-top: 2%;display: flex;flex-direction: row;justify-content: space-between;">
+                <div style="padding-top: 10px;">
+                  <p style="font-size: 18px;text-align: left;" class="col-xs-4 btn text-primary" (click)="move(0)">
+                    < Return to Information </p>
 
-              <div class="row" style="margin-right: 2%;">
+                </div>
+
+                <div style="text-align: right;">
+                  <button class="col-xs-3 btn btn-primary" style="width: 160px;height: 60px;"
+                  (click)="payment(2)">Continue to Payment</button>
+                </div>
+              </div>
+
+              <!-- <div class="row" style="margin-right: 2%;">
                 <p style="font-size: 18px;text-align: left;" class="col-xs-4 btn text-primary" (click)="move(0)">
                   < Return to Information </p>
                     <div class="col-xs-5">
                     </div>
                     <button class="col-xs-3 btn btn-primary" style="width: 160px;height: 60px;"
                       (click)="payment(2)">Continue to Payment</button>
-              </div>
+              </div> -->
             </form>
           </mat-step>
           <mat-step [stepControl]="thirdFormGroup">
-
+            <ng-template matStepLabel>Payments</ng-template>
 
             <label style="font-size: 22px;" for="">Payments</label>
             <div>
@@ -772,83 +788,82 @@
               style="border: 1px;border-style: solid;border-radius: 6px;border-color: lightgray;">
 
               <ng-template matStepLabel></ng-template>
-              <div style="display: flex;flex-direction: row;justify-content: space-between;padding-top: 20px;">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1"
-                  style="padding-right: 4%;margin-left: 3%;">
+              <div  style="display: flex;flex-direction: row;justify-content: space-between;padding-top: 20px;">
+                <input type="checkbox" (click)="billingAdress('same')"  class="form-check-input" id="exampleCheck1"
+                  style="padding-right: 4%;margin-left: 3%;" >
                 <label style="margin-left: 8%;font-size: 16px;">Same as shiping adress</label>
 
 
               </div>
               <hr />
-              <div data-toggle="collapse" href="#collapseExample2"
-                style="display: flex;flex-direction: row;justify-content: space-between;padding-top: 20px;">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1"
-                  style="padding-right: 4%;margin-left: 3%;">
-                <label style="margin-left: 8%;font-size: 16px;">Use a different billing adress</label>
+              <div  (click)="billingAdress('different')"  data-toggle="collapse" href="#collapseExample2"
+                style="padding-top: 20px;">
+                <div ></div>
+                <label style="font-size: 16px;margin-left: 5%;">Use a different billing adress</label>
 
 
               </div>
-              <form [formGroup]="firstFormGroup">
+              <form [formGroup]="forthFormGroup">
                 <ng-template matStepLabel><span style="font-size: 18px;">Information</span> </ng-template>
                 <div class="collapse" id="collapseExample2" style="min-height: 600px;padding: 3%;">
                   <mat-form-field style="width: 250px;" appearance="outline">
                     <mat-label><span style="font-size: 18px;">Email or Phone number</span></mat-label>
-                    <input matInput formControlName="email">
+                    <input matInput formControlName="billingemail">
                   </mat-form-field>
                   <p style="font-size: large;font-size: 22px;font-weight: bold;">Shipping Adress</p>
                   <div>
                     <mat-form-field class="col-xs-5" appearance="outline">
                       <mat-label><span style="font-size: 18px;"> First Name</span></mat-label>
-                      <input matInput formControlName="fname">
+                      <input matInput formControlName="billingfname">
                     </mat-form-field>
                     <div class="col-xs-2"></div>
                     <mat-form-field class="col-xs-5" appearance="outline">
                       <mat-label><span style="font-size: 18px;"> Last Name</span></mat-label>
-                      <input matInput formControlName="lname">
+                      <input matInput formControlName="billinglname">
                     </mat-form-field>
                   </div>
                   <div>
                     <mat-form-field class="col-xs-12" appearance="outline">
                       <mat-label><span style="font-size: 18px;"> Adress 1</span></mat-label>
-                      <input matInput formControlName="adress1">
+                      <input matInput formControlName="billingadress1">
                     </mat-form-field>
                   </div>
                   <div>
                     <mat-form-field class="col-xs-12" appearance="outline">
                       <mat-label><span style="font-size: 18px;"> Adress 2 (optional)</span></mat-label>
-                      <input matInput formControlName="adress2">
+                      <input matInput formControlName="billingadress2">
                     </mat-form-field>
                   </div>
 
                   <div>
                     <mat-form-field class="col-xs-12" appearance="outline">
                       <mat-label><span style="font-size: 18px;"> City</span></mat-label>
-                      <input matInput formControlName="city">
+                      <input matInput formControlName="billingcity">
                     </mat-form-field>
                   </div>
                   <div>
                     <mat-form-field class="col-xs-5" appearance="outline">
                       <mat-label><span style="font-size: 18px;"> Contry</span></mat-label>
-                      <input matInput formControlName="contry">
+                      <input matInput formControlName="billingcontry">
                     </mat-form-field>
                     <div class="col-xs-2"></div>
 
                     <mat-form-field class="col-xs-5" appearance="outline">
                       <mat-label><span style="font-size: 18px;"> Postal Code</span></mat-label>
-                      <input matInput formControlName="code" type="number">
+                      <input matInput formControlName="billingcode" type="number">
                     </mat-form-field>
                   </div>
                   <div>
                     <mat-form-field class="col-xs-5" appearance="outline">
                       <mat-label><span style="font-size: 18px;"> State</span></mat-label>
-                      <input matInput formControlName="state">
+                      <input matInput formControlName="billingstate">
                     </mat-form-field>
 
                     <div class="col-xs-2"></div>
 
                     <mat-form-field class="col-xs-5" appearance="outline">
                       <mat-label><span style="font-size: 18px;"> Appartment</span></mat-label>
-                      <input matInput formControlName="appartment">
+                      <input matInput formControlName="billingappartment">
                     </mat-form-field>
                   </div>
                 </div>
@@ -857,7 +872,10 @@
 
               </form>
             </form>
-
+            <p style="text-align: left;justify-content: flex-end;font-size: 14px;" class="errorlbl"
+            *ngIf="billingFormError == 'show'">
+            Select billing adress
+          </p>
 
 
 

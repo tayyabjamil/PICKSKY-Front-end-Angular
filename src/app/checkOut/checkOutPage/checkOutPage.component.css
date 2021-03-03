@@ -236,7 +236,9 @@ fieldset{
   color: #fff;
   display: none;
 }
-
+.mat-typography p {
+  margin: 0px 0px 0px;
+}
 .form-wrapper input[type="radio"]:checked + label:before{
   display: block;
 }

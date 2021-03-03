@@ -1,7 +1,7 @@
 <div style="min-height: 500px;">
   <hr>
   <h1 style="text-align: center;font-weight: bold;">Admin Portal</h1>
-  <div  *ngIf="deviceMd || deviceLg" >
+  <div  *ngIf="deviceMd || deviceLg"  style="min-height: 500px;">
     <div  class="row" style="margin:1%">
       <div class="col-lg-1">
         <p style="font-size: large;">Order No #</p>
@@ -21,8 +21,8 @@
         <p style="font-size: large;">Order Phase</p>
       </div>
     </div>
-    <div *ngFor="let item of allOrders  |  paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
-      <div class="row panel-title" style="margin:1%;padding-top: 10px;border-radius: 12px;background-color: #b4d469;">
+    <div  *ngFor="let item of allOrders  |  paginate: { itemsPerPage: 10, currentPage: p }; let i = index">
+      <div class="row panel-title" style="padding-bottom: 10px;margin:1%;padding-top: 10px;border-radius: 12px;background-color: #b4d469;">
 
 
         <div class="col-lg-1">

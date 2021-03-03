@@ -135,7 +135,7 @@ custom;
       this.items.push({
         tabsTitle: 'Spice Level',
         tabsContent: [
-          { formGroup: this.spiceLevelFormGroup, tabContentItemformControlName: 'spice', tabItemTitle: 'Select Spice Level', tabItemOption: ['less spice', 'normal spice', 'extra spice'] },
+          { formGroup: this.spiceLevelFormGroup, tabContentItemformControlName: 'spice', tabItemTitle: 'Select Spice Level', tabItemOption: ['less ', 'normal ', 'extra '] },
         ]
       },{
         tabsTitle: 'Done',
@@ -147,7 +147,7 @@ custom;
         {
           tabsTitle: 'Sweet Level',
           tabsContent: [
-            { formGroup: this.sweetFormGroup, tabContentItemformControlName: 'sweet', tabItemTitle: 'Select Sweet Level', tabItemOption: ['less sweet', 'normal sweet', 'extra sweet'] },
+            { formGroup: this.sweetFormGroup, tabContentItemformControlName: 'sweet', tabItemTitle: 'Select Sweet Level', tabItemOption: ['less ', 'normal ', 'extra '] },
           ]
         },{
           tabsTitle: 'Done',

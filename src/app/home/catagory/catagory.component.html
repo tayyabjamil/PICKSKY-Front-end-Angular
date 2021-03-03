@@ -1,12 +1,12 @@
 <div style="background-color:rgb(240, 236, 236) ;padding-bottom: 2.5%;min-height: 700px;">
-  <div style="padding-top: 2.5%;padding-left: 2.5%;padding-right: 2.5%;border-radius: 6px;">
+  <div >
 
     <p   *ngIf="deviceLg || deviceMd" class="text-block1" style="font-size: 32px;">{{currentCategory?.title}}</p>
-    <p  *ngIf="deviceSm || deviceXs" class="text-block1-small" style="font-size: 32px;">{{currentCategory?.title}}</p>
+    <p  *ngIf="deviceSm || deviceXs" class="text-block1-small" >{{currentCategory?.title}}</p>
     <div style="height: 50vh;">
       <img class="img-responsive gradient" style="width: 100%;
       object-fit: cover;
-      border-radius: 6px;height: 100%;"
+      height: 100%;"
       [src]="currentCategory?.thumbImage">
     </div>
   </div>

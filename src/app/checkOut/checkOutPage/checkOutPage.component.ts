@@ -53,6 +53,7 @@ export class CheckOutPageComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
+  forthFormGroup: FormGroup;
   public payPalConfig?: IPayPalConfig;
   refrence: string;
   previousData;
@@ -65,10 +66,15 @@ export class CheckOutPageComponent implements OnInit {
   backtoCheckOut;
   firstName: ''
   contry;
-  paymentFormError=''
+  paymentFormError = ''
   lastName: ''
-  gotoCheckOut:true
-  countryError=''
+  gotoCheckOut: true
+  countryError = ''
+  billingFormError = ''
+  sameShipping = ''
+  samebillingadress = false
+  methodchecked = false
+  method: Boolean
   @ViewChild('stepper') stepper: MatStepper;
   ngOnInit(
 
@@ -89,28 +95,41 @@ export class CheckOutPageComponent implements OnInit {
     const dataEmail = JSON.parse(localStorage.getItem('email'))
 
     this.firstFormGroup = this._formBuilder.group({
-
-      email: [dataEmail, ],
-      fname: ['',Validators.required ],
-      lname: ['',Validators.required ],
-      city: ['',Validators.required ],
-      adress1: ['',Validators.required ],
+      // dataEmail
+      email: ['',],
+      fname: ['',],
+      lname: ['',],
+      city: ['',],
+      adress1: ['',],
       adress2: ['',],
-      contry: [ '',Validators.required ],
-      code: ['',Validators.required ],
-      state: ['',Validators.required ],
-      appartment: ['',Validators.required ],
+      contry: ['',],
+      code: ['',],
+      state: ['',],
+      appartment: ['',],
 
     });
     this.secondFormGroup = this._formBuilder.group({
-      method: ['', Validators.required]
+      method: ['',]
     });
-    this.thirdFormGroup = this._formBuilder.group({
-      cardNo: ['',Validators.required],
-      name: ['',Validators.required],
-      expirationDate: ['',Validators.required],
-      sequrityCode: ['',Validators.required]
 
+    this.thirdFormGroup = this._formBuilder.group({
+      cardNo: [''],
+      name: [''],
+      expirationDate: [''],
+      sequrityCode: [''],
+
+    });
+    this.forthFormGroup = this._formBuilder.group({
+      billingemail: ['', Validators.required],
+      billingfname: ['', Validators.required],
+      billinglname: ['', Validators.required],
+      billingcity: ['', Validators.required],
+      billingadress1: ['', Validators.required],
+      billingadress2: [''],
+      billingcontry: ['', Validators.required],
+      billingcode: ['', Validators.required],
+      billingstate: ['', Validators.required],
+      billingappartment: ['', Validators.required],
     });
     // this.getAllOrders()
     this.getAccountBonus()
@@ -121,11 +140,19 @@ export class CheckOutPageComponent implements OnInit {
     }
   }
 
-  // onCountrySelected($event: Country) {
-  //   console.log($event);
-  //   this.firstFormGroup.controls['contry'].setValue($event.name);
-  // }
+  methodcheck() {
+    this.methodchecked = !this.methodchecked
+    if (this.methodchecked == true) {
+      this.secondFormGroup.controls.method.setValue("checked");
 
+      this.selectShippingMethod = ''
+    } else {
+      this.secondFormGroup.controls.method.setValue('');
+
+      this.selectShippingMethod = 'show'
+    }
+    console.log(this.secondFormGroup.value.method)
+  }
 
   stepClick(ev) { console.log(ev) }
   getAccountBonus() {
@@ -136,21 +163,53 @@ export class CheckOutPageComponent implements OnInit {
     if (this.firstFormGroup.valid) {
       this.stepper.selectedIndex = index;
       this.countryError = ''
-    }else{
-  this.countryError = 'show'
+    } else {
+      this.countryError = 'show'
     }
   }
-  paymentDone(){
-    if (this.thirdFormGroup.valid) {
-     this.move(3)
-  }else{
-    this.paymentFormError = 'show'
-
+  billingAdress(type) {
+    // this.forthFormGroup.value.billingAdress = type
+    this.billingFormError = ''
+    if (type === 'same') {
+      this.samebillingadress = !this.samebillingadress
+      if (this.samebillingadress == true) {
+          this.forthFormGroup.controls['billingemail'].setValue(this.firstFormGroup.value.email);
+          this.forthFormGroup.controls['billingfname'].setValue(this.firstFormGroup.value.fname);
+          this.forthFormGroup.controls['billinglname'].setValue(this.firstFormGroup.value.lname);
+          this.forthFormGroup.controls['billingcity'].setValue(this.firstFormGroup.value.city);
+          this.forthFormGroup.controls['billingadress1'].setValue(this.firstFormGroup.value.adress1);
+          this.forthFormGroup.controls['billingadress2'].setValue(this.firstFormGroup.value.adress2);
+          this.forthFormGroup.controls['billingcontry'].setValue(this.firstFormGroup.value.contry);
+          this.forthFormGroup.controls['billingcode'].setValue(this.firstFormGroup.value.code);
+          this.forthFormGroup.controls['billingstate'].setValue(this.firstFormGroup.value.state);
+          this.forthFormGroup.controls['billingappartment'].setValue(this.firstFormGroup.value.appartment);
+      }
     }
-}
+  }
+
+
+  paymentDone() {
+    if (this.thirdFormGroup.valid) {
+      if (this.forthFormGroup.valid) {
+        this.move(3)
+        this.billingFormError = ''
+      } else {
+        this.billingFormError = 'show'
+        this.paymentFormError = ''
+      }
+    } else {
+
+      this.paymentFormError = 'show'
+    }
+
+  }
+
   payment(index) {
     if (this.secondFormGroup.valid) {
-      this.stepper.selectedIndex = index;
+      if (this.selectShippingMethod !== 'show') {
+        this.stepper.selectedIndex = index;
+        this.selectShippingMethod = ''
+      }
     } else {
       this.selectShippingMethod = 'show'
     }
@@ -186,49 +245,49 @@ export class CheckOutPageComponent implements OnInit {
     this.totalafterBonus = this.total - this.detection
     return this.totalafterBonus.toFixed(0);
   }
-  login(){
+  login() {
     localStorage.setItem('backtoCheckOut', "true");
     this.router.navigate(['login'])
   }
   order() {
     this.productService.payment(this.thirdFormGroup.value).subscribe((data: any) => {
-      if(data){
-    if (this.authService.getID()) {
-      this.authService.getemail()
-      const orderData = {
-        cartItems: this.cartItems,
-        total: this.total,
-        firstName: this.firstFormGroup.value.fname,
-        lastName: this.firstFormGroup.value.lname,
-        city: this.firstFormGroup.value.city,
-        adress: this.firstFormGroup.value.adress,
-        code: this.firstFormGroup.value.code,
-        contry: this.firstFormGroup.value.contry,
-        method: this.secondFormGroup.value.method,
-        refrence: this.refrence,
-        phase: "processing",
-        ownerEmail: this.authService.getemail()
+      if (data) {
+        if (this.authService.getID()) {
+          this.authService.getemail()
+          const orderData = {
+            cartItems: this.cartItems,
+            total: this.total,
+            firstName: this.firstFormGroup.value.fname,
+            lastName: this.firstFormGroup.value.lname,
+            city: this.firstFormGroup.value.city,
+            adress: this.firstFormGroup.value.adress,
+            code: this.firstFormGroup.value.code,
+            contry: this.firstFormGroup.value.contry,
+            method: this.secondFormGroup.value.method,
+            refrence: this.refrence,
+            phase: "processing",
+            ownerEmail: this.authService.getemail()
+
+          }
+          // this.printOrder(orderData);
+          this.cartService.order(orderData).subscribe((data: any) => {
+            this.toastr.success('Order Submitted Successfully', 'Success')
+            this.pdfDownload(orderData)
+            localStorage.setItem('backtoCheckOut', "");
+            this.router.navigate(['/myOrders'])
+          })
+
+          this.cartService.emptyProduct()
+        } else {
+
+          this.loginFirst = 'show'
+
+        }
 
       }
-      // this.printOrder(orderData);
-      this.cartService.order(orderData).subscribe((data: any) => {
-        this.toastr.success('Order Submitted Successfully', 'Success')
-        this.pdfDownload(orderData)
-        localStorage.setItem('backtoCheckOut', "");
-        this.router.navigate(['/myOrders'])
-      })
-
-      this.cartService.emptyProduct()
-    } else {
-
-      this.loginFirst = 'show'
-
-    }
-
-  }
-},(error)=>{
-alert("payment not succesfull")
-})
+    }, (error) => {
+      alert("payment not succesfull")
+    })
 
   }
   move(index: number) {

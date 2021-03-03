@@ -8,11 +8,18 @@ html, body {
   max-width: 100%;
   overflow-x: hidden;
 }
+.popover{
+  max-width: 200px /* Max Width of the popover (depending on the container!) */
+}
 .popover-body {
   padding: 0px ;
-   min-width: 300px;
+   min-width: 200px;
   color: #212529;
 }
+.popover.bottom {
+  left: 0px !important;
+}
+
 .sidenav{
   width: 400px;
   // box-shadow: rgb(199, 199, 199);

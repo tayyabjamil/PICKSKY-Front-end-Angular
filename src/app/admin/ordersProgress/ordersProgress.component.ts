@@ -100,7 +100,7 @@ export class OrdersProgressComponent implements OnInit {
     doc.setPage(1)
     doc.setTextColor("black");
     doc.setFontSize(10);
-    doc.text(data.contry.toString(), 15, 55);
+    // doc.text(data.contry.toString(), 15, 55);
 
     doc.setPage(1)
     doc.setTextColor("black");
@@ -110,7 +110,7 @@ export class OrdersProgressComponent implements OnInit {
     doc.setPage(1)
     doc.setTextColor("black");
     doc.setFontSize(10);
-    doc.text(data.adress.toString(), 15, 70);
+    // doc.text(data.adress.toString(), 15, 70);
 
 
     // doc.setPage(1)
@@ -131,7 +131,7 @@ export class OrdersProgressComponent implements OnInit {
     doc.setPage(1)
     doc.setTextColor("black");
     doc.setFontSize(10);
-    doc.text(data.phase.toString(), 160, 40);
+    // doc.text(data.phase.toString(), 160, 40);
 
     doc.setPage(1)
     doc.setTextColor("black");
@@ -141,7 +141,7 @@ export class OrdersProgressComponent implements OnInit {
     doc.setPage(1)
     doc.setTextColor("black");
     doc.setFontSize(10);
-    doc.text(data.total.toString(), 160, 55);
+    // doc.text(data.total.toString(), 160, 55);
 
     // Save the PDF
     doc.save('Test.pdf');

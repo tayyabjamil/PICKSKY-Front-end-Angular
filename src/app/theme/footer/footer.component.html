@@ -1,11 +1,11 @@
 
 <div class="row" *ngIf="deviceLg || deviceMd" style="padding-left: 2%;padding-top: 2%;padding-bottom: 2%; background-color: black;">
-  <div style="display: flex;flex-direction: column;">
-  <div  >
+  <div style="margin-top: 5%;margin-bottom: 5%;display: flex;flex-direction: column;">
+  <div >
     <p  style="padding: 20px;color: white;font-size: 32px;">Shirivas Foods</p>
   </div>
   <div >
-    <p style="padding: 20px;color: white;font-size: 16px;"> Visit help center</p>
+    <p style="padding: 20px;color: white;font-size: 26px;"> Visit help center</p>
 
  </div>
 </div>
@@ -13,7 +13,7 @@
 
   <div class="col-lg-1">
     <h1 class="btn" style="color: white;">Company</h1>
-    <h4 class="btn" routerLink="['/aboutUs']" style="color: white;">{{getAboutusConstants(6)}}</h4>
+    <h4 class="btn" routerLink="/home/aboutUs" style="color: white;">{{getAboutusConstants(6)}}</h4>
     <h4 class="btn" routerLink="['/aboutUs']" style="color: white;">{{getAboutusConstants(1)}}</h4>
     <h4 class="btn" routerLink="['/aboutUs']" style="color: white;">{{getAboutusConstants(2)}}</h4>
     <h4 class="btn" routerLink="['/aboutUs']" style="color: white;">{{getAboutusConstants(3)}}</h4>
@@ -36,14 +36,10 @@
   </div>
 
   <div class="col-lg-1"></div>
-  <div class="col-lg-2">
-    <h1 class="btn" style="color: white;">Global CitizenShip</h1>
-    <h3 class="btn" style="color: white;">Diversity and Insluction</h3>
-    <h3 class="btn" style="color: white;">Saftey</h3>
-  </div>
 
-  <!-- <div class="col-lg-1"></div> -->
-  <div class="col-lg-2">
+
+  <div class="col-lg-1"></div>
+  <div class="col-lg-1">
     <h2 class="btn" style="color: white;">Help</h2>
     <h4 class="btn" style="color: white;">Shipping & Returns</h4>
     <h4 class="btn" style="color: white;">Privacy Policy</h4>
@@ -51,6 +47,8 @@
     <button class="btn" style="background-color: orange;font-size: 16px;font-weight: bold;">ORDER ONLINE</button>
   </div>
   <hr>
+  <div class="col-lg-1"></div>
+
   <div class="col-lg-4">
 
     <div class="row" style="padding:5%;background-color: black;">
@@ -152,12 +150,7 @@
       <div class="btn" routerLink="['/aboutUs']" style="color: white;text-align: left;">{{getSpecialConstants(4)}}</div>
 
   </div>
-    <div class="row" style="padding:5%;background-color: black;">
-      <div class="btn" style="color: white;text-align: left;font-size: 18px;">Global CitizenShip</div>
-      <div class="btn" style="color: white;text-align: left;font-size: 18px;">Diversity and Insluction</div>
 
-      <div class="btn" style="color: white;text-align: left;font-size: 18px;">Saftey</div>
-    </div>
 
 
     <div class="row" style="padding:5%;background-color: black;">

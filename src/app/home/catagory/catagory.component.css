@@ -1,8 +1,8 @@
 .text-block1 {
   position: absolute;
   color: white;
-  padding-top: 9%;
-  padding-left: 39%;
+  padding-top: 12%;
+  padding-left: 40%;
   font-size: 2vw;
   margin-bottom: 12px;
   font-weight: 500;
@@ -10,8 +10,11 @@
 .text-block1-small {
   position: absolute;
   color: white;
+  left: 30%;
+  width: 150px;
   padding-top: 40%;
-  padding-left: 20%;
+  justify-content: center;
+  text-align: center;
   font-size: 22px;
   margin-bottom: 12px;
   font-weight: 500;

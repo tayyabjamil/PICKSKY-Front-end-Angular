@@ -35,6 +35,10 @@ export class AddProductComponent implements OnInit {
         price: new FormControl(this.data.price),
         detail: new FormControl(this.data.detail),
         productImage: new FormControl(this.data.productImage),
+        grams:new FormControl('',),
+        productOrders:new FormControl(this.data.productOrders),
+        ingredients:new FormControl('',),
+        sweet_spice:new FormControl('',)
 
       })
     } else {
@@ -102,7 +106,7 @@ export class AddProductComponent implements OnInit {
     fd.append('catagory', this.productForm.value.catagory);
     fd.append('price', this.productForm.value.price);
     fd.append('detail', this.productForm.value.detail);
-    fd.append('productOrders', this.productOrders);
+    fd.append('productOrders', this.productForm.value.productOrders);
 
     if (this.productForm.value.productImage) {
       fd.append('productImage', this.productForm.value.productImage);
