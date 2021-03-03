@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,HostListener} from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -36,6 +36,8 @@ export class NavComponent implements OnInit {
 
   username =" username";
   isShow = false;
+  visible = false;
+  isSHowSearch=false
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -55,10 +57,33 @@ export class NavComponent implements OnInit {
     );
 
   }
-  get usernameLogin(){
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event) {
+    if (window.pageYOffset >= 80) {
+      this.visible = true;
+    } else {
+      this.visible = false;
+      this.isSHowSearch = false;
+
+    }
+  }
+
+  get visibleSearch() {
+    return this.isSHowSearch;
+  }
+
+  get visibleI() {
+    return this.visible;
+  }
+  getScrollingElement(): Element {
+    return document.scrollingElement || document.documentElement;
+  }
+  get usernameLogin() {
     return this.authService.getusername()
 
   }
+
   toggleDisplay() {
     this.isShow = !this.isShow;
   }

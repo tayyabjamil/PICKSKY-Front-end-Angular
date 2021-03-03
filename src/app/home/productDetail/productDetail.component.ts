@@ -22,7 +22,7 @@ relatedProducts
   deviceSm:boolean;
 
     ngOnInit() {
-
+      window.scrollTo(0, 0);
       const object = this.route.snapshot.paramMap.get('id');
        this.data = JSON.parse(object);
       this.CatagoryProducts(this.data.catagory)

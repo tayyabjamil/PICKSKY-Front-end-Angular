@@ -6,24 +6,24 @@
 
           <div
             style="margin: 2%;border-radius: 5px;min-width: 200px;min-height: 250px;border:2px;border-style: groove;">
-             <img style="width: 20vw;padding:5px;min-width: auto;min-height: 200px;"
+             <img style="width: 20vw;padding:5px;min-width: 200px;min-height: 250px;"
               [src]='getImage(data.multipleImages[0])'>
           </div>
           <div
             style="margin: 2%;border-radius: 5px;border:2px;border-style: groove;min-width: 200px;min-height: 250px;">
-             <img style="width: 20vw;padding:5px;min-width: auto;min-height: 200px;"
+             <img style="width: 20vw;padding:5px;min-width: 200px;min-height: 250px;"
               [src]='getImage(data.multipleImages[1])'>
           </div>
         </div>
         <div>
           <div
             style="margin: 2%;border-radius: 5px;min-width: 200px;min-height: 250px;;border:2px;border-style: groove;">
-             <img style="width: 20vw;padding:5px;min-width: auto;min-height: 200px;"
+             <img style="width: 20vw;padding:5px;min-width: 200px;min-height: 250px;"
               [src]='getImage(data.multipleImages[2])'>
           </div>
           <div
             style="margin: 2%;border-radius: 5px;min-width: 200px;min-height: 250px;border:2px;border-style: groove;">
-             <img style="width: 20vw;padding:5px;min-width: auto;min-height: 200px;"
+             <img style="width: 20vw;padding:5px;min-width: 200px;min-height: 250px;"
               [src]='getImage(data.multipleImages[3])'>
           </div>
         </div>
@@ -35,13 +35,11 @@
           <p style="font-size: larger;font-weight: 500;"><span style="font-weight: bold;font-size: 18px;"> Title :
             </span>{{data.name}}</p>
         </div>
-        <div class="row" style="margin-top: 2%;">
-          <div class="col-3">
-            <p style="font-size: larger;font-weight: 500;"><span style="font-weight: bold;font-size: 18px;">Grams
-                :</span>{{data.grams}}</p>
-          </div>
-
+        <div style="margin-top: 2%;">
+          <p style="font-size: larger;font-weight: 500;"><span style="font-weight: bold;font-size: 18px;"> Grams :
+            </span>{{data.grams}}</p>
         </div>
+
         <div style="margin-top: 2%;">
           <div style="float:left;font-size: larger;font-weight: 500;"><span
               style="font-weight: bold;font-size: 18px;">Price :</span>{{data.price}}$</div>
@@ -58,14 +56,12 @@
       </div>
       <p style="margin-right:5%;font-size: 20px;font-weight: bold;">Ingredients :</p>
 
-      <div style="display: flex; flex-direction: row;width: 300px;">
-      <div *ngFor="let item of ingredients" style="margin-bottom: 1%;margin: 2%;">
+      <div *ngFor="let item of ingredients" style="margin-bottom: 1%;margin: 2%;display: flex; flex-direction: row;">
 
           <p class="btn" style="border:2px;border-style: groove;">
             {{item}}</p>
           </div>
-      </div>
-      <div style="display: flex; flex-direction: row;">
+      <div style="display: flex; flex-direction: row;margin-top: 5%;">
         <p style="margin-right:5%;font-size: larger;">Share on :</p>
         <button>Facebook</button>
         <button>Twiter</button>

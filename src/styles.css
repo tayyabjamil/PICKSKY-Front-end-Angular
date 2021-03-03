@@ -15,24 +15,20 @@ body { margin: 0;  }
 .mat-vertical-content {
   padding: 0px 0px 0px 0px;
 }
-
+.mat-typography p {
+  margin: 0px 0px 0px;
+}
 .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
   background-color: rgb(105, 170, 105);
   color: #fff;
 }
 .popover {
   position: absolute;
-   margin-right: 15px;
-  padding-right: 10px;
-  min-width: 260px;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   font-style: normal;
   font-weight: 400;
   text-decoration: none;
   text-shadow: none;
   text-transform: none;
-  margin-right: 5%;
-
   word-break: normal;
   word-spacing: normal;
   white-space: normal;
@@ -96,5 +92,5 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 .popover.bottom {
-  left: -40px !important;
+  left: -35px !important;
 }
