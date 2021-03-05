@@ -336,6 +336,7 @@
 
                 <button  (click)="scrollToTrending()" style="
                 background-color: #ffffff;
+                position: absolute;
                 font-size: 18px;
                 width: 20%;
                 height: 40px;
@@ -464,7 +465,7 @@
             flex: 2;
             justify-content: space-evenly;
           ">
-          <div class="card" *ngFor="let item of featuredProducts" style="
+          <div class="card" *ngFor="let item of trendingProducts" style="
               padding: 2%;
               background-color: white;
               margin: 2%;

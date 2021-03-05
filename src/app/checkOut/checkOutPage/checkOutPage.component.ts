@@ -74,7 +74,9 @@ export class CheckOutPageComponent implements OnInit {
   sameShipping = ''
   samebillingadress = false
   methodchecked = false
+  methodcheckedbilling= false
   method: Boolean
+  cardLength = ''
   @ViewChild('stepper') stepper: MatStepper;
   ngOnInit(
 
@@ -91,32 +93,40 @@ export class CheckOutPageComponent implements OnInit {
 
     this.initConfig();
     this.getCartItems()
-    const data = JSON.parse(localStorage.getItem('checkOutForm'))
+    // const firstForm = JSON.parse(localStorage.getItem('firstForm'))
+    // const secondForm = JSON.parse(localStorage.getItem('secondForm'))
+    // const thirdForm = JSON.parse(localStorage.getItem('thirdForm'))
+    // const forthForm = JSON.parse(localStorage.getItem('forthForm'))
+
+
+
     const dataEmail = JSON.parse(localStorage.getItem('email'))
+    const fname = JSON.parse(localStorage.getItem('firstName'))
+    const lname = JSON.parse(localStorage.getItem('lastname'))
 
     this.firstFormGroup = this._formBuilder.group({
       // dataEmail
-      email: ['',],
-      fname: ['',],
-      lname: ['',],
-      city: ['',],
-      adress1: ['',],
+      email: [dataEmail,Validators.required],
+      fname: [fname,Validators.required],
+      lname: [lname,Validators.required],
+      city: ['',Validators.required],
+      adress1: ['',Validators.required],
       adress2: ['',],
-      contry: ['',],
-      code: ['',],
-      state: ['',],
-      appartment: ['',],
+      contry: ['',Validators.required],
+      code: ['',Validators.required],
+      state: ['',Validators.required],
+      appartment: ['',Validators.required],
 
     });
     this.secondFormGroup = this._formBuilder.group({
-      method: ['',]
+      method: ['',Validators.required]
     });
 
     this.thirdFormGroup = this._formBuilder.group({
-      cardNo: [''],
-      name: [''],
-      expirationDate: [''],
-      sequrityCode: [''],
+      cardNo: ['',Validators.required],
+      name: ['',Validators.required],
+      expirationDate: ['',Validators.required],
+      sequrityCode: ['',Validators.required],
 
     });
     this.forthFormGroup = this._formBuilder.group({
@@ -139,7 +149,40 @@ export class CheckOutPageComponent implements OnInit {
       // this.move(2)
     }
   }
+  methodcheckbilling(type) {
+    this.methodcheckedbilling = !this.methodcheckedbilling
+    if (this.methodcheckedbilling == true) {
+      this.billingFormError = ''
+      this.billingFormError = ''
+      if (type === 'same') {
+        this.samebillingadress = !this.samebillingadress
 
+            this.forthFormGroup.controls['billingemail'].setValue(this.firstFormGroup.value.email);
+            this.forthFormGroup.controls['billingfname'].setValue(this.firstFormGroup.value.fname);
+            this.forthFormGroup.controls['billinglname'].setValue(this.firstFormGroup.value.lname);
+            this.forthFormGroup.controls['billingcity'].setValue(this.firstFormGroup.value.city);
+            this.forthFormGroup.controls['billingadress1'].setValue(this.firstFormGroup.value.adress1);
+            this.forthFormGroup.controls['billingadress2'].setValue(this.firstFormGroup.value.adress2);
+            this.forthFormGroup.controls['billingcontry'].setValue(this.firstFormGroup.value.contry);
+            this.forthFormGroup.controls['billingcode'].setValue(this.firstFormGroup.value.code);
+            this.forthFormGroup.controls['billingstate'].setValue(this.firstFormGroup.value.state);
+            this.forthFormGroup.controls['billingappartment'].setValue(this.firstFormGroup.value.appartment);
+
+      }
+    } else {
+           this.billingFormError = 'show'
+           this.forthFormGroup.controls['billingemail'].setValue('');
+           this.forthFormGroup.controls['billingfname'].setValue('');
+           this.forthFormGroup.controls['billinglname'].setValue('');
+           this.forthFormGroup.controls['billingcity'].setValue('');
+           this.forthFormGroup.controls['billingadress1'].setValue('');
+           this.forthFormGroup.controls['billingadress2'].setValue('');
+           this.forthFormGroup.controls['billingcontry'].setValue('');
+           this.forthFormGroup.controls['billingcode'].setValue('');
+           this.forthFormGroup.controls['billingstate'].setValue('');
+           this.forthFormGroup.controls['billingappartment'].setValue('');
+    }
+  }
   methodcheck() {
     this.methodchecked = !this.methodchecked
     if (this.methodchecked == true) {
@@ -167,37 +210,35 @@ export class CheckOutPageComponent implements OnInit {
       this.countryError = 'show'
     }
   }
-  billingAdress(type) {
-    // this.forthFormGroup.value.billingAdress = type
-    this.billingFormError = ''
-    if (type === 'same') {
-      this.samebillingadress = !this.samebillingadress
-      if (this.samebillingadress == true) {
-          this.forthFormGroup.controls['billingemail'].setValue(this.firstFormGroup.value.email);
-          this.forthFormGroup.controls['billingfname'].setValue(this.firstFormGroup.value.fname);
-          this.forthFormGroup.controls['billinglname'].setValue(this.firstFormGroup.value.lname);
-          this.forthFormGroup.controls['billingcity'].setValue(this.firstFormGroup.value.city);
-          this.forthFormGroup.controls['billingadress1'].setValue(this.firstFormGroup.value.adress1);
-          this.forthFormGroup.controls['billingadress2'].setValue(this.firstFormGroup.value.adress2);
-          this.forthFormGroup.controls['billingcontry'].setValue(this.firstFormGroup.value.contry);
-          this.forthFormGroup.controls['billingcode'].setValue(this.firstFormGroup.value.code);
-          this.forthFormGroup.controls['billingstate'].setValue(this.firstFormGroup.value.state);
-          this.forthFormGroup.controls['billingappartment'].setValue(this.firstFormGroup.value.appartment);
-      }
-    }
-  }
-
 
   paymentDone() {
+
     if (this.thirdFormGroup.valid) {
+      let count;
+      const  userCount  = this.thirdFormGroup.value.cardNo.length;
+
+   for (let index = 0; index < userCount; index++) {
+       count = index
+       count = index ++
+      }
+if(count<16){
+  this.paymentFormError = ''
+  this.cardLength = 'show'
+}else{
+  this.cardLength = ''
       if (this.forthFormGroup.valid) {
+
         this.move(3)
+
         this.billingFormError = ''
+        this.paymentFormError = ''
+
       } else {
         this.billingFormError = 'show'
         this.paymentFormError = ''
       }
-    } else {
+    }
+  } else {
 
       this.paymentFormError = 'show'
     }
@@ -281,7 +322,10 @@ export class CheckOutPageComponent implements OnInit {
         } else {
 
           this.loginFirst = 'show'
-
+          localStorage.setItem('firstForm', this.firstFormGroup.value);
+          localStorage.setItem('secondForm', this.secondFormGroup.value);
+          localStorage.setItem('thirdForm', this.thirdFormGroup.value);
+          localStorage.setItem('forthForm', this.forthFormGroup.value);
         }
 
       }

@@ -106,7 +106,7 @@ export class AddProductComponent implements OnInit {
     fd.append('catagory', this.productForm.value.catagory);
     fd.append('price', this.productForm.value.price);
     fd.append('detail', this.productForm.value.detail);
-    fd.append('productOrders', this.productForm.value.productOrders);
+    // fd.append('productOrders', this.productForm.value.productOrders);
 
     if (this.productForm.value.productImage) {
       fd.append('productImage', this.productForm.value.productImage);

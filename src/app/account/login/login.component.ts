@@ -165,8 +165,8 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('firstName', JSON.stringify(firstName));
   }
 
-setlName(lastname){
-    localStorage.setItem('lastname', JSON.stringify(lastname));
+setlName(lastName){
+    localStorage.setItem('lastname', JSON.stringify(lastName));
   }
 
   setId(userId) {
@@ -223,6 +223,8 @@ setlName(lastname){
           this.setemail(data.email)
           this.setAccountBonus(data.accountBonus)
           this.setPhone(data.email)
+          this.setfName(data.firstName)
+          this.setlName(data.lastName)
           this.setRefrenceId(data.refrenceId)
           this.setAccountType(data.role)
           this.isLoggedIn = true;
@@ -238,7 +240,12 @@ setlName(lastname){
           if (error.error.message == 'No Account Create Account First') {
             alert(error.error.message)
             this.router.navigate(['/signUp'])
-          }else{
+          } else  if (error.error.message == 'Account not verified') {
+            this.toastr.error('Error', 'Account not verified' )
+
+          }
+          else{
+
             this.toastr.error('Network Error', 'Failed Try Again' )
           }
         });

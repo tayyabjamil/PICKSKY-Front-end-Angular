@@ -50,9 +50,9 @@ export class MainPageListItemComponent implements OnInit {
     return this.item;
   }
 
-  // get productCount() {
-  //   return this.item.productCount;
-  // }
+  get productCount() {
+    return this.item.productCount;
+  }
   details(item) {
     this.router.navigate(['detail/', JSON.stringify(item)])
   }

@@ -11,7 +11,7 @@ export class ProductService {
   private featuredProductsSavedResponse;
   private allProductsSavedResponse;
   private allOrdersSavedResponse;
-
+ private trendingProductsSavedResponse
   public searchItems = new Subject<string>();
   categories = [
     {
@@ -119,8 +119,22 @@ export class ProductService {
     return this.http.get(`${environment.apiURL}${environment.SHRIVASA_FOODS_ORDERS_API}` + '/' + this.myauthService.getID(), this.httpHeaders)
 
   }
+  gettrendingProducts(): Observable<any> {
+    return new Observable((observer) => {
+      if (this.trendingProductsSavedResponse) {
+        observer.next(this.trendingProductsSavedResponse);
+        observer.complete();
+      } else { /* make http request & process */
+        this.http.get(`${environment.apiURL}${environment.SHRIVASA_FOODS_PRODUCTS_API}` + '/trendingProducts', this.httpHeaders).subscribe(data => {
+          this.trendingProductsSavedResponse = data;
+          observer.next(this.trendingProductsSavedResponse);
+          observer.complete();
+        }); /* make sure to handle http error */
+      }
 
-  featuredProducts(): Observable<any> {
+    });
+  }
+featuredProducts(): Observable<any> {
     return new Observable((observer) => {
       if (this.featuredProductsSavedResponse) {
         observer.next(this.featuredProductsSavedResponse);

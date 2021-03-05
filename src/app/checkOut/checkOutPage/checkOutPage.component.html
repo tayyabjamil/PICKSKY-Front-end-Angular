@@ -101,7 +101,7 @@
 
               <div class="row" style="height: 10px;">
                 <p class="col-3">Contact</p>
-                <mat-label class="col-6">{{this.firstFormGroup.value.contact}}</mat-label>
+                <mat-label class="col-6" style="font-size: 12px;">{{this.firstFormGroup.value.email}}</mat-label>
                 <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
 
               </div>
@@ -111,7 +111,7 @@
               <hr />
               <div class="row" style="height: 10px;">
                 <p class="col-3">Adress</p>
-                <mat-label class="col-6">{{this.firstFormGroup.value.adress}}</mat-label>
+                <mat-label class="col-6">{{this.firstFormGroup.value.adress1}}</mat-label>
                 <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
 
               </div>
@@ -190,7 +190,7 @@
 
                     <mat-form-field class="col-12">
                       <mat-label><span style="font-size: 16px;">Card no</span></mat-label>
-                      <input matInput formControlName="cardNo">
+                      <input matInput formControlName="cardNo" >
                     </mat-form-field>
                   </div>
 
@@ -222,6 +222,7 @@
             *ngIf="paymentFormError == 'show'">
             Provide Payment Information
           </p>
+
             <label style="font-size: 22px;margin-top: 3%;" for="">Billing Adress</label>
             <div>
               <p style="font-size: 18px;" for="">Select the method that matches your card or payment adress</p>
@@ -234,7 +235,7 @@
               <ng-template matStepLabel></ng-template>
               <div class="row" style="padding: 20px;">
                 <div class="col-xs-2" >
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <input type="checkbox" (click)="methodcheckbilling('same')"  class="form-check-input" id="exampleCheck1">
                 </div>
                 <!-- <div class="col-xs-2"></div> -->
 
@@ -250,48 +251,48 @@
 
               </div>
 
-              <form style="padding: 1%;" class="collapse" id="collapseExample2" [formGroup]="firstFormGroup">
+              <form style="padding: 1%;" class="collapse" id="collapseExample2" [formGroup]="forthFormGroup">
                 <hr />
                 <ng-template matStepLabel><span style="font-size: 18px;">Information</span> </ng-template>
                 <mat-form-field style="width: 250px;">
                   <mat-label><span style="font-size: 16px;">Email or Phone number</span></mat-label>
-                  <input matInput formControlName="email">
+                  <input matInput formControlName="billingemail">
                 </mat-form-field>
                 <p style="font-size: large;font-size: 22px;font-weight: bold;margin-bottom: 4%;">Shipping Adress</p>
                 <hr>
                 <div class="row">
                   <mat-form-field class="col-xs-6">
                     <mat-label><span style="font-size: 16px;"> First Name</span></mat-label>
-                    <input matInput formControlName="fname">
+                    <input matInput formControlName="billingfname">
                   </mat-form-field>
 
                   <mat-form-field class="col-xs-6">
                     <mat-label><span style="font-size: 16px;"> Last Name</span></mat-label>
-                    <input matInput formControlName="lname">
+                    <input matInput formControlName="billinglname">
                   </mat-form-field>
                 </div>
                 <div class="row">
                   <mat-form-field class="col-xs-12">
                     <mat-label><span style="font-size: 16px;"> Adress 1</span></mat-label>
-                    <input matInput formControlName="adress1">
+                    <input matInput formControlName="billingadress1">
                   </mat-form-field>
                 </div>
                 <div class="row">
                   <mat-form-field class="col-xs-12">
                     <mat-label><span style="font-size: 16px;"> Adress 2</span></mat-label>
-                    <input matInput formControlName="adress2">
+                    <input matInput formControlName="billingadress2">
                   </mat-form-field>
                 </div>
                 <div class="row">
 
                   <mat-form-field class="col-xs-6">
                     <mat-label><span style="font-size: 16px;"> Country</span></mat-label>
-                    <input matInput formControlName="contry">
+                    <input matInput formControlName="billingcontry">
                   </mat-form-field>
 
                   <mat-form-field class="col-xs-6">
                     <mat-label><span style="font-size: 16px;"> City</span></mat-label>
-                    <input matInput formControlName="city">
+                    <input matInput formControlName="billingcity">
                   </mat-form-field>
 
                 </div>
@@ -299,12 +300,12 @@
                 <div class="row">
                   <mat-form-field class="col-xs-6">
                     <mat-label><span style="font-size: 16px;"> State</span></mat-label>
-                    <input matInput formControlName="state">
+                    <input matInput formControlName="billingstate">
                   </mat-form-field>
 
                   <mat-form-field class="col-xs-6">
                     <mat-label><span style="font-size: 16px;"> Postal Code</span></mat-label>
-                    <input matInput formControlName="code" type="number">
+                    <input matInput formControlName="billingcode" type="number">
                   </mat-form-field>
                 </div>
                 <div class="row">
@@ -312,17 +313,11 @@
 
                   <mat-form-field class="col-xs-6">
                     <mat-label><span style="font-size: 16px;"> Appartment</span></mat-label>
-                    <input matInput formControlName="appartment">
+                    <input matInput formControlName="billingappartment">
                   </mat-form-field>
                 </div>
 
-                <div style="display: flex;flex-direction: row;justify-content: space-between;">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1" style="padding-right: 4%;">
-                  <label style="margin-left: 8%;font-size: 16px;">Save details for next time</label>
 
-
-
-                </div>
 
                 <p style="font-size: 14px" class="errorlbl" *ngIf="countryError == 'show'">
                   Select Country
@@ -390,7 +385,7 @@
                                 <hr />
                                 <div class="row" style="height: 10px;">
                                   <p class="col-4">Email</p>
-                                  <mat-label class="col-5">{{this.firstFormGroup.value.email}}</mat-label>
+                                  <mat-label class="col-5" style="font-size: 12px;">{{this.firstFormGroup.value.email}}</mat-label>
                                   <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
 
                                 </div>
@@ -413,7 +408,7 @@
 
                                 <div class="row" style="height: 10px;">
                                   <p class="col-4">Contact</p>
-                                  <mat-label class="col-5">{{this.firstFormGroup.value.email}}</mat-label>
+                                  <mat-label class="col-5" style="font-size: 12px;">{{this.firstFormGroup.value.email}}</mat-label>
                                   <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
 
                                 </div>
@@ -487,6 +482,11 @@
                               <p class="col-4 text-primary btn" (click)="move(0)">Change</p>
 
                             </div>
+                            <p style="text-align: left;justify-content: flex-end;font-size: 14px;" class="errorlbl"
+                            *ngIf="cardLength == 'show'">
+                            Card no Should be 16 Character
+                          </p>
+
                             <hr />
                             <div class="row" style="height: 10px;">
                               <p class="col-4">Name on Card</p>
@@ -517,7 +517,79 @@
 
 
                       </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" data-toggle="collapse" href="#billing" role="button"
+                          aria-expanded="false" aria-controls="billing">
+                          <h4 class="panel-title">
 
+                            <a class="text text-primary">
+                              <mat-label style="font-style: 22px;font-weight: bold;">+ Billing</mat-label>
+                            </a>
+
+                          </h4>
+                        </div>
+
+
+                        <div class="collapse" id="billing">
+                          <div class="card card-body">
+                            <div class="row" style="height: 10px;">
+                              <p class="col-4">Name</p>
+                              <mat-label class="col-5">{{this.forthFormGroup.value.billingfname}}</mat-label>
+                              <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
+                            </div>
+                            <hr />
+                            <div class="row" style="height: 10px;">
+                              <p class="col-4">Email</p>
+                              <mat-label class="col-5" style="font-size: 12px;">{{this.forthFormGroup.value.billingemail}}</mat-label>
+                              <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
+                            </div>
+                            <hr />
+
+                            <div class="row" style="height: 10px;">
+                              <p class="col-4">Adress 1 </p>
+                              <mat-label class="col-5">{{this.forthFormGroup.value.billingadress1}}</mat-label>
+                              <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
+                            </div>
+                            <hr />
+                            <div class="row" style="height: 10px;">
+                              <p class="col-4">Adress 2</p>
+                              <mat-label class="col-5">{{this.forthFormGroup.value.billingadress2}}</mat-label>
+                              <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
+                            </div>
+                            <hr />
+
+                            <div class="row" style="height: 10px;">
+                              <p class="col-4">Contact</p>
+                              <mat-label class="col-5" style="font-size: 12px;">{{this.forthFormGroup.value.billingemail}}</mat-label>
+                              <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
+                            </div>
+                            <hr />
+                            <div class="row" style="height: 10px;">
+                              <p class="col-4">State</p>
+
+                              <mat-label class="col-5">{{this.forthFormGroup.value.billingstate}}</mat-label>
+                              <p class="col-3 text-primary btn" (click)="move(1)">Change</p>
+
+                            </div>
+                            <hr />
+                            <div class="row" style="height: 10px;">
+                              <p class="col-5">Appartment</p>
+
+                              <mat-label class="col-4">{{this.forthFormGroup.value.billingappartment}}</mat-label>
+                              <p class="col-3 text-primary btn" (click)="move(1)">Change</p>
+
+                            </div>
+                            <hr />
+
+                          </div>
+                        </div>
+
+                      </div>
 
                     </div>
                   </div>
@@ -743,6 +815,10 @@
                       <input matInput formControlName="cardNo">
                     </mat-form-field>
                   </div>
+                  <p style="text-align: left;justify-content: flex-end;font-size: 14px;" class="errorlbl"
+                  *ngIf="cardLength == 'show'">
+                  Card no Should be 16 Character
+                </p>
 
                   <div class="row">
 
@@ -781,14 +857,14 @@
 
               <ng-template matStepLabel></ng-template>
               <div  style="display: flex;flex-direction: row;justify-content: space-between;padding-top: 20px;">
-                <input type="checkbox" (click)="billingAdress('same')"  class="form-check-input" id="exampleCheck1"
+                <input type="checkbox" (click)="methodcheckbilling('same')"  class="form-check-input" id="exampleCheck1"
                   style="padding-right: 4%;margin-left: 3%;" >
                 <label style="margin-left: 8%;font-size: 16px;">Same as shiping adress</label>
 
 
               </div>
               <hr />
-              <div  (click)="billingAdress('different')"  data-toggle="collapse" href="#collapseExample2"
+              <div    data-toggle="collapse" href="#collapseExample2"
                 style="padding-top: 20px;">
                 <div ></div>
                 <label style="font-size: 16px;margin-left: 5%;">Use a different billing adress</label>
@@ -870,12 +946,22 @@
           </p>
 
 
+          <div style="padding-top: 2%;display: flex;flex-direction: row;justify-content: space-between;">
+            <div style="padding-top: 10px;">
+              <p style="font-size: 18px;text-align: left;" class="col-xs-4 btn text-primary" (click)="move(1)">
+                < Return to Shipping </p>
 
+            </div>
 
-            <div style="text-align: right;margin-top: 20px;">
+            <div style="text-align: right;">
+              <button class="col-xs-3 btn btn-primary" style="width: 160px;height: 60px;"
+              (click)="paymentDone()">CheckOut</button>
+            </div>
+          </div>
+            <!-- <div style="text-align: right;margin-top: 20px;">
               <button class="btn btn-primary" style="width: 160px;height: 60px;"
                 (click)="paymentDone()">CheckOut</button>
-            </div>
+            </div> -->
 
           </mat-step>
           <mat-step>
@@ -1042,7 +1128,81 @@
 
 
                       </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" data-toggle="collapse" href="#billing" role="button"
+                          aria-expanded="false" aria-controls="billing">
+                          <h4 class="panel-title">
 
+                            <a class="text text-primary">
+                              <mat-label style="font-style: 22px;font-weight: bold;">+ Billing</mat-label>
+                            </a>
+
+                          </h4>
+                        </div>
+
+
+
+                          <div class="collapse" id="billing">
+                            <div class="card card-body">
+                              <div class="row" style="height: 10px;">
+                                <p class="col-3">Name</p>
+                                <mat-label class="col-6">{{this.forthFormGroup.value.fname}}</mat-label>
+                                <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
+                              </div>
+                              <hr />
+                              <div class="row" style="height: 10px;">
+                                <p class="col-3">Email</p>
+                                <mat-label class="col-6">{{this.forthFormGroup.value.email}}</mat-label>
+                                <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
+                              </div>
+                              <hr />
+
+                              <div class="row" style="height: 10px;">
+                                <p class="col-3">Adress 1 </p>
+                                <mat-label class="col-6">{{this.forthFormGroup.value.adress1}}</mat-label>
+                                <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
+                              </div>
+                              <div class="row" style="height: 10px;">
+                                <p class="col-3">Adress 2</p>
+                                <mat-label class="col-6">{{this.forthFormGroup.value.adress2}}</mat-label>
+                                <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
+                              </div>
+                              <hr />
+
+                              <div class="row" style="height: 10px;">
+                                <p class="col-3">Contact</p>
+                                <mat-label class="col-6">{{this.forthFormGroup.value.email}}</mat-label>
+                                <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+
+                              </div>
+                              <hr />
+                              <div class="row" style="height: 10px;">
+                                <p class="col-3">State</p>
+
+                                <mat-label class="col-6">{{this.forthFormGroup.value.state}}</mat-label>
+                                <p class="col-3 text-primary btn" (click)="move(1)">Change</p>
+
+                              </div>
+                              <hr />
+                              <div class="row" style="height: 10px;">
+                                <p class="col-3">Appartment</p>
+
+                                <mat-label class="col-6">{{this.forthFormGroup.value.appartment}}</mat-label>
+                                <p class="col-3 text-primary btn" (click)="move(1)">Change</p>
+
+                              </div>
+                              <hr />
+
+                            </div>
+                          </div>
+
+
+
+                      </div>
 
                     </div>
                   </div>
