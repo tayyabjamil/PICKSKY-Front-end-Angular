@@ -66,7 +66,7 @@ export class MainPageListItemComponent implements OnInit {
     if (!imageId) {
       return '';
     } else {
-      return this.productService.productImageUrl(imageId[0].filename);
+      return this.productService.productImageUrl(imageId);
     }
   }
 
