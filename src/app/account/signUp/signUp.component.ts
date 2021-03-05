@@ -182,7 +182,7 @@ export class SignUpComponent implements OnInit {
       if (this.rformSignup.value.password === this.rformSignup.value.confirmPassword) {
         this.accountService.createuserAccount(this.rformSignup.value).subscribe((data: any) => {
           this.showEmailAlready = ''
-          this.toastr.success('Account Created', 'Success' )
+          this.toastr.success('Account Created Please verify you Email to login', 'Success' )
           this.router.navigate(['/login'])
 
         }, (error) => {
