@@ -70,8 +70,13 @@ export class ForgetPasswordComponent implements OnInit {
       });
 
     } else {
-      this.showEmail='show'
-      // alert("Enter correct Gmail Account")
+      if(this.forgetPasswordForm.value.email){
+
+        this.showEmail=''
+      }else{
+        this.showEmail='show'
+
+      }
     }
   }
 }

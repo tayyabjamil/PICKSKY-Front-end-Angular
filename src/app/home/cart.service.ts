@@ -12,8 +12,9 @@ export class CartService {
   constructor(public http: HttpClient, private myauthService: AuthService) {
     this.getProducts();
   }
-
+  allProductsData;
   cart = [];
+  allSearchedProducts
   total = 0;
   httpHeaders = {
     headers: new HttpHeaders({
@@ -55,6 +56,7 @@ export class CartService {
       }
     })
     localStorage.setItem('cart', JSON.stringify(this.cart));
+    this.getAllSearchedProducts()
   }
 
   addProduct(product) {
@@ -78,8 +80,33 @@ export class CartService {
     }
     console.log(this.cart)
     localStorage.setItem('cart', JSON.stringify(this.cart));
+    this.getAllSearchedProducts()
+  }
+  allProducts(products){
+    this.allProductsData = products
+
   }
 
+getAllSearchedProducts(){
+  this.allProductsData.forEach(element => {
+    element.productCount =0
+  });
+
+  let tempProducts: any = this.allProductsData;
+  let cartProducts = this.cart
+  if (tempProducts && cartProducts) {
+    tempProducts.forEach(item => {
+      cartProducts.forEach((cartItem) => {
+        if (item._id === cartItem._id) {
+          item.productCount = cartItem.productCount;
+        }
+      })
+    });
+  }
+  return this.allSearchedProducts  = this.allProductsData = tempProducts
+
+
+}
   getProducts() {
     if (JSON.parse(localStorage.getItem('cart'))) {
       this.cart = JSON.parse(localStorage.getItem('cart'));
@@ -111,8 +138,11 @@ export class CartService {
         firstName: orderData.firstName,
         lastName: orderData.lastName,
         city: orderData.city,
-        adress: orderData.adress,
+        adress1: orderData.adress1,
+        adress2: orderData.adress2,
         code: orderData.code,
+        appartment: orderData.appartment,
+
         contry: orderData.contry,
         method: orderData.method,
         cancelOrder: false

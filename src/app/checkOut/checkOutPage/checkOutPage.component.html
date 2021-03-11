@@ -24,7 +24,7 @@
                 <mat-label><span style="font-size: 16px;">Email or Phone number</span></mat-label>
                 <input matInput formControlName="email">
               </mat-form-field>
-              <p style="font-size: large;font-size: 22px;font-weight: bold;">Shipping Adress</p>
+              <p style="font-size: large;font-size: 22px;font-weight: bold;margin-bottom:2%;">Shipping Adress</p>
               <div class="row">
                 <mat-form-field class="col-xs-6">
                   <mat-label><span style="font-size: 16px;"> First Name</span></mat-label>
@@ -254,7 +254,8 @@
 
               <div class="row" data-toggle="collapse" href="#collapseExample2"
                 style="padding-top: 20px;" >
-                <div class="col-lg-10" style="font-size: 16px;text-align: left;padding-left: 20px;" >Use a different billing adress</div>
+                <div class="col-lg-10" style="font-size: 16px;text-align: left;padding-left: 20px;" >
+                  <i class="fa fa-angle-down" aria-hidden="true"></i>Use a different billing adress</div>
 
 
               </div>
@@ -266,7 +267,7 @@
                   <mat-label><span style="font-size: 16px;">Email or Phone number</span></mat-label>
                   <input matInput formControlName="billingemail">
                 </mat-form-field>
-                <p style="font-size: large;font-size: 22px;font-weight: bold;margin-bottom: 4%;">Shipping Adress</p>
+                <p style="font-size: large;font-size: 22px;font-weight: bold;margin-bottom: 5%;">Shipping Adress</p>
                 <hr>
                 <div class="row">
                   <mat-form-field class="col-xs-6">
@@ -543,14 +544,14 @@
                             <div class="row" style="height: 10px;">
                               <p class="col-4">Name</p>
                               <mat-label class="col-5">{{this.forthFormGroup.value.billingfname}}</mat-label>
-                              <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+                              <p class="col-3 text-primary btn" (click)="move(2)">Change</p>
 
                             </div>
                             <hr />
                             <div class="row" style="height: 10px;">
                               <p class="col-4">Email</p>
                               <mat-label class="col-5" style="font-size: 12px;">{{this.forthFormGroup.value.billingemail}}</mat-label>
-                              <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+                              <p class="col-3 text-primary btn" (click)="move(2)">Change</p>
 
                             </div>
                             <hr />
@@ -558,14 +559,14 @@
                             <div class="row" style="height: 10px;">
                               <p class="col-4">Adress 1 </p>
                               <mat-label class="col-5">{{this.forthFormGroup.value.billingadress1}}</mat-label>
-                              <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+                              <p class="col-3 text-primary btn" (click)="move(2)">Change</p>
 
                             </div>
                             <hr />
                             <div class="row" style="height: 10px;">
                               <p class="col-4">Adress 2</p>
                               <mat-label class="col-5">{{this.forthFormGroup.value.billingadress2}}</mat-label>
-                              <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+                              <p class="col-3 text-primary btn" (click)="move(2)">Change</p>
 
                             </div>
                             <hr />
@@ -573,7 +574,7 @@
                             <div class="row" style="height: 10px;">
                               <p class="col-4">Contact</p>
                               <mat-label class="col-5" style="font-size: 12px;">{{this.forthFormGroup.value.billingemail}}</mat-label>
-                              <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
+                              <p class="col-3 text-primary btn" (click)="move(2)">Change</p>
 
                             </div>
                             <hr />
@@ -581,7 +582,7 @@
                               <p class="col-4">State</p>
 
                               <mat-label class="col-5">{{this.forthFormGroup.value.billingstate}}</mat-label>
-                              <p class="col-3 text-primary btn" (click)="move(1)">Change</p>
+                              <p class="col-3 text-primary btn" (click)="move(2)">Change</p>
 
                             </div>
                             <hr />
@@ -589,7 +590,7 @@
                               <p class="col-5">Appartment</p>
 
                               <mat-label class="col-4">{{this.forthFormGroup.value.billingappartment}}</mat-label>
-                              <p class="col-3 text-primary btn" (click)="move(1)">Change</p>
+                              <p class="col-3 text-primary btn" (click)="move(2)">Change</p>
 
                             </div>
                             <hr />
@@ -641,7 +642,7 @@
                   <mat-label><span style="font-size: 18px;">Email or Phone number</span></mat-label>
                   <input matInput formControlName="email">
                 </mat-form-field>
-                <p style="font-size: large;font-size: 22px;font-weight: bold;">Shipping Adress</p>
+                <p style="font-size: large;font-size: 22px;font-weight: bold;margin-bottom: 3%;">Shipping Adress</p>
                 <div>
                   <mat-form-field class="col-xs-5" appearance="outline">
                     <mat-label><span style="font-size: 18px;"> First Name</span></mat-label>
@@ -783,8 +784,9 @@
             <div>
               <p style="font-size: 18px;" for="">All transactions are secured and encrypted</p>
             </div>
-            <form [formGroup]="thirdFormGroup"
-              style="border: 1px;border-style: solid;border-radius: 6px;border-color: lightgray;">
+            <form [formGroup]="thirdFormGroup">
+              <div  style="padding: 2%;margin-top: 2%;border: 1px;border-style: solid;border-radius: 6px;border-color: lightgray;">
+
 
               <ng-template matStepLabel></ng-template>
 
@@ -796,7 +798,20 @@
 
               </div>
 
-              <hr>
+              <div class="collapse" id="collapseExamplePaypal">
+
+                <form [formGroup]="thirdFormGroup" style="margin: 10%;padding: 2%;">
+                  <ng-template matStepLabel>Paymemt</ng-template>
+                  <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+
+                </form>
+
+              </div>
+            </div>
+
+            <div  style="padding: 2%;margin-top: 2%;border: 1px;border-style: solid;border-radius: 6px;border-color: lightgray;">
+
+
               <div data-toggle="collapse" href="#collapseExample"
                 style="padding-top:2%;padding-left: 2%;padding-right: 2%;display: flex;flex-direction: row;justify-content: space-between;">
 
@@ -804,17 +819,9 @@
                 <p>Options</p>
 
               </div>
-              <div class="collapse" id="collapseExamplePaypal">
-                <hr>
-                <form [formGroup]="thirdFormGroup" style="margin-top: 15%;padding: 2%;">
-                  <ng-template matStepLabel>Paymemt</ng-template>
-                  <ngx-paypal [config]="payPalConfig"></ngx-paypal>
 
-                </form>
-
-              </div>
               <div class="collapse" id="collapseExample">
-                <hr>
+
                 <div style="padding: 2%;">
 
                   <div class="row">
@@ -836,19 +843,19 @@
                     </mat-form-field>
                   </div>
                   <div class="row">
-                    <mat-form-field class="col-6" appearance="outline">
-                      <mat-label><span style="font-size: 16px;">Expiration Data MM/YY</span></mat-label>
-                      <input matInput formControlName="expirationDate" type="date">
-                    </mat-form-field>
-
 
                     <mat-form-field class="col-6" appearance="outline">
                       <mat-label><span style="font-size: 16px;">Sequrity Code</span></mat-label>
                       <input matInput formControlName="sequrityCode" type="number">
                     </mat-form-field>
+                    <mat-form-field class="col-6" appearance="outline">
+                      <mat-label>Expiration Data MM/YY</mat-label>
+                      <input matInput formControlName="expirationDate" type="date">
+                    </mat-form-field>
                   </div>
 
                 </div>
+              </div>
               </div>
             </form>
 
@@ -875,7 +882,9 @@
               <div    data-toggle="collapse" href="#collapseExample2"
                 style="padding-top: 20px;">
                 <div ></div>
-                <label style="font-size: 16px;margin-left: 5%;">Use a different billing adress</label>
+                <label style="font-size: 16px;margin-left: 5%;">
+                  <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  Use a different billing adress</label>
 
 
               </div>
@@ -1022,6 +1031,7 @@
                                   <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
 
                                 </div>
+                                <hr />
                                 <div class="row" style="height: 10px;">
                                   <p class="col-3">Adress 2</p>
                                   <mat-label class="col-6">{{this.firstFormGroup.value.adress2}}</mat-label>
@@ -1154,14 +1164,14 @@
                             <div class="card card-body">
                               <div class="row" style="height: 10px;">
                                 <p class="col-3">Name</p>
-                                <mat-label class="col-6">{{this.forthFormGroup.value.fname}}</mat-label>
+                                <mat-label class="col-6">{{this.forthFormGroup.value.billingfname}}</mat-label>
                                 <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
 
                               </div>
                               <hr />
                               <div class="row" style="height: 10px;">
                                 <p class="col-3">Email</p>
-                                <mat-label class="col-6">{{this.forthFormGroup.value.email}}</mat-label>
+                                <mat-label class="col-6">{{this.forthFormGroup.value.billingemail}}</mat-label>
                                 <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
 
                               </div>
@@ -1169,13 +1179,15 @@
 
                               <div class="row" style="height: 10px;">
                                 <p class="col-3">Adress 1 </p>
-                                <mat-label class="col-6">{{this.forthFormGroup.value.adress1}}</mat-label>
+                                <mat-label class="col-6">{{this.forthFormGroup.value.billingadress1}}</mat-label>
                                 <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
 
                               </div>
+                              <hr />
+
                               <div class="row" style="height: 10px;">
                                 <p class="col-3">Adress 2</p>
-                                <mat-label class="col-6">{{this.forthFormGroup.value.adress2}}</mat-label>
+                                <mat-label class="col-6">{{this.forthFormGroup.value.billingadress2}}</mat-label>
                                 <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
 
                               </div>
@@ -1183,7 +1195,7 @@
 
                               <div class="row" style="height: 10px;">
                                 <p class="col-3">Contact</p>
-                                <mat-label class="col-6">{{this.forthFormGroup.value.email}}</mat-label>
+                                <mat-label class="col-6">{{this.forthFormGroup.value.billingemail}}</mat-label>
                                 <p class="col-3 text-primary btn" (click)="move(0)">Change</p>
 
                               </div>
@@ -1191,7 +1203,7 @@
                               <div class="row" style="height: 10px;">
                                 <p class="col-3">State</p>
 
-                                <mat-label class="col-6">{{this.forthFormGroup.value.state}}</mat-label>
+                                <mat-label class="col-6">{{this.forthFormGroup.value.billingstate}}</mat-label>
                                 <p class="col-3 text-primary btn" (click)="move(1)">Change</p>
 
                               </div>
@@ -1199,11 +1211,10 @@
                               <div class="row" style="height: 10px;">
                                 <p class="col-3">Appartment</p>
 
-                                <mat-label class="col-6">{{this.forthFormGroup.value.appartment}}</mat-label>
+                                <mat-label class="col-6">{{this.forthFormGroup.value.billingappartment}}</mat-label>
                                 <p class="col-3 text-primary btn" (click)="move(1)">Change</p>
 
                               </div>
-                              <hr />
 
                             </div>
                           </div>

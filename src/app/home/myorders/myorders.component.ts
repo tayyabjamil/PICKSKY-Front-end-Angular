@@ -25,6 +25,8 @@ export class MyordersComponent implements OnInit {
 p: number = 1;
  modalRef: BsModalRef;
   message: string;
+   cartDataYaxis = 0
+
   constructor(public mediaObserver: MediaObserver,private orderPipe: OrderPipe,
     public productService: ProductService,private modalService: BsModalService,
     public cartService: CartService,public toastr : ToastrService) { }
@@ -34,6 +36,7 @@ p: number = 1;
   deviceMd: boolean;
   deviceSm: boolean;
   orderBy;
+
   reverse = false;
 
   ngOnInit() {
@@ -96,97 +99,92 @@ printOrder(data) {
   doc.setPage(1)
   doc.setFont("helvetica");
   doc.setTextColor("black");
+  doc.setFontSize(20);
+  doc.text('Thanks for your order Shirivas', 60, 25);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(15);
+  doc.text((data.firstName.toString() + ' ' + data.lastName.toString()), 90, 45);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(15);
+  doc.text('Delivery :' + data.date, 80, 55);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.text('-----------------------------------------------------------------------------------------------------------', 10,  65);
+
+
+  let y = 80;
+data.cartData.forEach(element => {
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(15);
+  doc.text( element.productCount.toString(), 20, y);
+
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(15);
+  doc.text( element.name, 40, y);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(15);
+  doc.text( element.price.toString(), 180, y);
+  y = y +10
+  this.cartDataYaxis = y
+});
+
+
+doc.setPage(1)
+doc.setTextColor("black");
+doc.text('-----------------------------------------------------------------------------------------------------------', 10, this.cartDataYaxis + 10);
+
+doc.setPage(1)
+doc.setTextColor("black");
+doc.setFontSize(15);
+doc.text('Status ', 15, this.cartDataYaxis + 20);
+
+
+doc.setPage(1)
+doc.setTextColor("black");
+doc.setFontSize(15);
+doc.text(data.phase, 170, this.cartDataYaxis + 20);
+
+
+doc.setPage(1)
+doc.setTextColor("black");
+doc.setFontSize(15);
+doc.text('Total ', 15, this.cartDataYaxis + 30);
+
+doc.setPage(1)
+doc.setTextColor("black");
+doc.setFontSize(15);
+doc.text(data.total.toString(), 180, this.cartDataYaxis + 30);
+
+doc.setPage(1)
+doc.setTextColor("black");
+doc.text('-----------------------------------------------------------------------------------------------------------', 10, this.cartDataYaxis + 40);
+
+
+
+  doc.setPage(1)
+  doc.setTextColor("black");
   doc.setFontSize(25);
-  doc.text('Shirivas Food', 15, 15);
-
-  doc.setPage(1)
-  doc.setTextColor("black");
-  doc.setFontSize(15);
-  doc.text('Name :', 15, 30);
-
-  doc.setPage(1)
-  doc.setTextColor("black");
-  doc.setFontSize(10);
-  doc.text((data.firstName.toString() + ' ' + data.lastName.toString()), 100, 30);
-
-  doc.setPage(1)
-  doc.setTextColor("black");
-  doc.setFontSize(15);
-  doc.text('Order date is :', 15, 40);
-
-  doc.setPage(1)
-  doc.setTextColor("black");
-  doc.setFontSize(10);
-  doc.text(data.date, 100, 40);
-
-  doc.setPage(1)
-  doc.setTextColor("black");
-  doc.setFontSize(15);
-  doc.text('Order Adress is :', 15, 50);
-
-  doc.setPage(1)
-  doc.setTextColor("black");
-  doc.setFontSize(10);
-  doc.text('Adress :', 15, 55);
-
-  doc.setPage(1)
-  doc.setTextColor("black");
-  doc.setFontSize(10);
-  doc.text('Contry :', 15, 60);
-
-  doc.setPage(1)
-  doc.setTextColor("black");
-  doc.setFontSize(10);
-  doc.text('City :', 15, 65);
-
-  doc.setPage(1)
-  doc.setTextColor("black");
-  doc.setFontSize(10);
-  doc.text(data.adress, 100, 55);
-
-  doc.setPage(1)
-  doc.setTextColor("black");
-  doc.setFontSize(10);
-  doc.text(data.contry, 100, 60);
-
-  doc.setPage(1)
-  doc.setTextColor("black");
-  doc.setFontSize(10);
-  doc.text(data.city, 100, 65);
+  doc.text('Delievry Adress ', 80, this.cartDataYaxis + 60);
 
 
   doc.setPage(1)
   doc.setTextColor("black");
   doc.setFontSize(15);
-  doc.text('Order Status is :', 15, 70);
+  doc.text(data.adress1 +','+data.appartment +',' + data.city+',' + data.contry , 80, this.cartDataYaxis + 70);
 
 
-  doc.setPage(1)
-  doc.setTextColor("black");
-  doc.setFontSize(10);
-  doc.text(data.phase, 100, 70);
 
-
-  doc.setPage(1)
-  doc.setTextColor("black");
-  doc.setFontSize(15);
-  doc.text('Order Total is', 15, 80);
-
-  doc.setPage(1)
-  doc.setTextColor("black");
-  doc.setFontSize(10);
-  // doc.text(data.total, 160, 55);
-
-  doc.setPage(1)
-  doc.setTextColor("black");
-  doc.setFontSize(15);
-  doc.text('Shipping method :', 15, 90);
-
-
-  doc.setPage(1)
-  doc.setTextColor("black");
-  doc.setFontSize(15);
-  doc.text('Payment infomation :', 15, 100);
 
   // Save the PDF
   doc.save('Test.pdf');
@@ -205,7 +203,7 @@ printOrder(data) {
     this.modalRef.hide();
     this.productService.cancelOrder(id).subscribe((products: any) => {
 
-      this.toastr.success('order canceled', 'Success' )
+      this.toastr.success('refund will process (5-7 business days)', 'Success' )
 
     }, (error) => {
 

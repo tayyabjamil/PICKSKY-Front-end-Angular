@@ -37,7 +37,7 @@
           <p>{{item?.firstName}}</p>
         </div>
 
-        <div class="col-lg-2">
+        <div class="col-lg-1">
           <p>{{item?.total}}</p>
         </div>
 
@@ -55,10 +55,14 @@
 
 
         <div *ngIf="item.cancelOrder==false" class="col-lg-1">
-          <p class="  btn  green-btn" style="color: white;" (click)="nextPhase(item,'packed')">Packing </p>
+          <p class="  btn  green-btn" style="color: white;" (click)="nextPhase(item,'packed')">Processing </p>
         </div>
         <div class="col-lg-1" *ngIf="item.cancelOrder==false">
-          <p class="  btn  green-btn" style="color: white;" (click)="nextPhase(item,'shipped')">Shipping </p>
+          <p class="  btn  green-btn" style="color: white;" (click)="nextPhase(item,'shipped')">Shipped </p>
+        </div>
+
+        <div class="col-lg-1" *ngIf="item.cancelOrder==false">
+          <p class="  btn  green-btn" style="color: white;" (click)="nextPhase(item,'delivered')">Delivered </p>
         </div>
       </div>
     </div>

@@ -44,9 +44,9 @@
               </div>
               <div *ngIf="tabItem.tabsTitle === 'Done'" style="flex: 1;min-height: 200px;">
                 <p style="text-align: center;font-size: 24px;font-weight: bold;margin-bottom: 20px;">Your Customization is</p>
-                <div style="min-height: 170px;">
+                <div style="min-height: 300px;">
 
-                <div *ngFor="let itemArray of formData" >
+                <div  *ngFor="let itemArray of formData" >
             <div style='display:flex;flex-direction: row;justify-content: space-between;padding-bottom: 5px;'>
               <p style="font-size: 20px;font-weight: bold;padding-bottom: 20px;">{{itemArray[0]}}</p>
               <p style="font-size: 20px;">{{itemArray[1]}}</p>

@@ -115,7 +115,7 @@ export class CartComponent implements OnInit {
   }
   getImage(imageId) {
     if (!imageId) return '';
-    return this.productService.productImageUrl(imageId);
+    return this.productService.productImageUrl(imageId[0].filename);
   }
   getBonus() {
 

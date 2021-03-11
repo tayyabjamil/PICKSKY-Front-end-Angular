@@ -8,12 +8,13 @@ import { AccountComponent } from './account.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
+import { AuthGuardLoggedIn } from '../authGuardLoggedIn';
 const routes: Routes = [
   { path: 'checkOut', loadChildren: '../checkOut/checkOut.module#CheckOutModule' },
   {
     path: '', component: AccountComponent, children: [
       { path: 'resetPassword/:id', component: ResetPasswordComponent },
-      { path: 'signUp', component: SignUpComponent },
+      { path: 'signUp', component: SignUpComponent,canActivate:[AuthGuardLoggedIn]},
       { path: 'profile', component: ProfileComponent },
       { path: 'forgetPassword', component: ForgetPasswordComponent },
       { path: 'accountVerify/:token', component: EmailVerifyComponent },
@@ -21,7 +22,7 @@ const routes: Routes = [
       // { path: '', loadChildren: './home/home.module#HomeModule' },
       { path: 'login', component: LoginComponent },
 
-      { path: '', component: LoginComponent },
+      { path: '', component: LoginComponent ,canActivate:[AuthGuardLoggedIn]},
 
     ]
   },

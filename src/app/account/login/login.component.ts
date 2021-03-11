@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
   backtoCheckOut =''
   @ViewChild('alert', { static: true }) alert: ElementRef;
   ngOnInit() {
+    window.scrollTo(0, 0);
      this.backtoCheckOut= localStorage.getItem('backtoCheckOut')
     this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
       console.log(result.mqAlias)
@@ -240,20 +241,17 @@ setlName(lastName){
           if (error.error.message == 'No Account Create Account First') {
             alert(error.error.message)
             this.router.navigate(['/signUp'])
-          } else  if (error.error.message == 'Account not verified') {
-            this.toastr.error('Error', 'Account not verified' )
+          } else  if (error.error.message == 'Manual Account Error') {
+            this.toastr.error('Login Maually', 'You dont create this acount with Social login ' )
 
           }
+
           else{
 
             this.toastr.error('Network Error', 'Failed Try Again' )
           }
         });
-      }).catch((error)=>{
-        this.toastr.error('Bad Internet Connection  ', 'Try Again' )
-      }
-
-      );
+      })
 
   }
 
@@ -295,7 +293,14 @@ setlName(lastName){
           if (error.error.message == 'No Account Create Account First') {
             this.toastr.error('No Account Create Account First', 'Error' )
             this.router.navigate(['/signUp'])
+          }else  if (error.error.message == 'Manual Account Error') {
+            this.toastr.error('Login Maually', 'You dont create this acount with Social login ' )
+
+          }else{
+
+            this.toastr.error('Network Error', 'Failed Try Again' )
           }
+
         });
 
       });

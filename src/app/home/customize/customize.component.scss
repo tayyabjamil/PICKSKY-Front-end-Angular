@@ -2,6 +2,12 @@
 
     width: 35vw;
 }
+.scrollHeight {
+  height: 30vh;
+  overflow-y: overlay;
+  overflow-x: hidden;
+}
+
 .page50p {
 
   width: 45vw;

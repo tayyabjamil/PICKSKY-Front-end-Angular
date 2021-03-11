@@ -41,7 +41,7 @@
 
           <div *ngIf="authService.loggedIn()" style="display: flex; flex-direction: row; padding-top: 1%">
             <p class="btn"  style="min-width: 100px;font-size: large; padding-top: 5%" [popover]="popTemplate">
-              Hi {{ usernameLogin }}
+              <i class="fa fa-angle-down" aria-hidden="true"></i>   Hi {{ usernameLogin }}
             </p>
 
             <ng-template #popTemplate>
@@ -94,7 +94,7 @@
                     <div class="col-5 btn"  >
                     <i routerLink="/paymentPage" class="fa fa-user-circle-o" style="font-size: xx-large"></i>
                     <p  routerLink="/paymentPage" routerLinkActive="router-link-active">
-                      Payment Cards
+                      Payment
                     </p>
 
                   </div>

@@ -40,27 +40,34 @@ getID() {
   getRole() {
     return JSON.parse(localStorage.getItem('role'));
   }
-loggedOutuserId() {
-
-  return localStorage.removeItem('userId');
-
-}
-  loggedOutName() {
-    return localStorage.removeItem('username');
-
+  logOUt(){
+    localStorage.clear()
   }
-  loggedOutRefrenceId() {
-    return localStorage.removeItem('refrenceId');
+// loggedOutuserId() {
 
-  }
+//   return localStorage.removeItem('userId');
 
-  loggedOutRole() {
-    return localStorage.removeItem('role');
+// }
+  // loggedOutName() {
+  //   return localStorage.removeItem('username');
 
-  }
+  // }
+  // backtoCheckOut() {
+  //   return localStorage.removeItem('backtoCheckOut');
 
-  loggedOutEmail() {
-    return localStorage.removeItem('email');
+  // }
+  // loggedOutRefrenceId() {
+  //   return localStorage.removeItem('refrenceId');
 
-  }
+  // }
+
+  // loggedOutRole() {
+  //   return localStorage.removeItem('role');
+
+  // }
+
+  // loggedOutEmail() {
+  //   return localStorage.removeItem('email');
+
+  // }
 }

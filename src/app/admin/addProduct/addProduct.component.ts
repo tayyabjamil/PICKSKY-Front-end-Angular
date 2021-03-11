@@ -17,6 +17,7 @@ export class AddProductComponent implements OnInit {
   catagory: String;
   ingredients;
   image;
+  featured:String
   data;
   multipleImages
   productOrders;
@@ -36,6 +37,7 @@ export class AddProductComponent implements OnInit {
         detail: new FormControl(this.data.detail),
         productImage: new FormControl(this.data.productImage),
         grams:new FormControl('',),
+        featured:new FormControl('',),
         productOrders:new FormControl(this.data.productOrders),
         ingredients:new FormControl('',),
         sweet_spice:new FormControl('',)
@@ -50,7 +52,7 @@ export class AddProductComponent implements OnInit {
         productImage: new FormControl('',[Validators.required]),
         multipleImages: new FormControl(''),
         grams:new FormControl('',Validators.required),
-
+        featured:new FormControl('',Validators.required),
         ingredients:new FormControl('',Validators.required),
         sweet_spice:new FormControl('',Validators.required)
       })
@@ -79,6 +81,7 @@ export class AddProductComponent implements OnInit {
       fd.append('ingredients', this.productForm.value.ingredients);
       fd.append('sweet_spice', this.productForm.value.sweet_spice);
       fd.append('productOrders', this.productOrders);
+      fd.append('featured', this.productForm.value.featured);
       if (this.productForm.value.productImage) {
         fd.append('productImage', this.productForm.value.productImage);
       }
@@ -106,6 +109,7 @@ export class AddProductComponent implements OnInit {
     fd.append('catagory', this.productForm.value.catagory);
     fd.append('price', this.productForm.value.price);
     fd.append('detail', this.productForm.value.detail);
+    fd.append('featured', this.productForm.value.featured);
     // fd.append('productOrders', this.productForm.value.productOrders);
 
     if (this.productForm.value.productImage) {

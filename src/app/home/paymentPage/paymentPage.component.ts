@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -7,11 +8,18 @@ import { ProductService } from '../product.service';
   styleUrls: ['./paymentPage.component.scss']
 })
 export class PaymentPageComponent implements OnInit {
-
-  constructor(public productService:ProductService) { }
+  newPaymentForm: FormGroup;
+  constructor(public productService:ProductService,public _formBuilder:FormBuilder) { }
   allpayments
   p: number = 1;
   ngOnInit() {
+    this.newPaymentForm = this._formBuilder.group({
+      cardNo: ['',Validators.required],
+      name: ['',Validators.required],
+      expirationDate: ['',Validators.required],
+      sequrityCode: ['',Validators.required],
+
+    });
     this.getAllPayments()
   }
   getAllPayments() {
@@ -25,4 +33,13 @@ export class PaymentPageComponent implements OnInit {
       }
     );
   }
+  newPayment(){
+    if(this.newPaymentForm.valid){
+  this.productService.payment(this.newPaymentForm.value).subscribe((data: any) => {
+ alert("New Payment Added")
+   })
+  }else{
+    alert("fill the form")
+  }
 }
+  }

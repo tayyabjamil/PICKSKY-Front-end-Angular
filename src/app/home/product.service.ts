@@ -163,14 +163,18 @@ featuredProducts(): Observable<any> {
   }
   cancelOrder(id) {
     const ownerEmail = this.myauthService.getemail()
+    const username = this.myauthService.getusername()
+
     return this.http.post(`${environment.apiURL}${environment.SHRIVASA_FOODS_ORDERS_API}` + '/cancelOrder/',
       {
         id: id,
-        ownerEmail: ownerEmail
+        username:username
+
       },
       this.httpHeaders);
 
   }
+
   payment(data) {
     const userId = this.myauthService.getID()
     return this.http.post(

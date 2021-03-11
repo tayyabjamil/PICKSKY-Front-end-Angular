@@ -28,7 +28,7 @@ import {
   FacebookLoginProvider
 } from 'angularx-social-login';
 import { RouterModule } from '@angular/router';
-
+import { FacebookModule } from 'ngx-facebook';
 const googleid = '' ;
 const facebookid = '2702502043208538';
 
@@ -51,7 +51,7 @@ const facebookid = '2702502043208538';
     CartModule,
     BrowserAnimationsModule,
     SocialLoginModule,
-
+    FacebookModule.forRoot(),
     MatCarouselModule.forRoot(),
 
 

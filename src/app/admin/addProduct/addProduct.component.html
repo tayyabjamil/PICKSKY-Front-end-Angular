@@ -37,6 +37,32 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <br>
+      <mat-form-field [formGroup]="productForm">
+        <mat-label>Sweet or Spice</mat-label>
+        <mat-select formControlName="sweet_spice" >
+          <mat-option *ngFor="let sweet_spice of [
+          'Sweet',
+          'Spice'
+
+        ]" [value]="sweet_spice">
+            {{sweet_spice}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field [formGroup]="productForm">
+        <mat-label>Featured</mat-label>
+        <mat-select formControlName="featured" >
+          <mat-option *ngFor="let featured of [
+          'Yes',
+          'No'
+
+        ]" [value]="featured">
+            {{featured}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
       <p style="font-size: 22px;font-weight: bold;padding-top: 2%;padding-bottom:2%">Select Customization</p>
       <mat-form-field [formGroup]="productForm">
         <mat-label>Default Grams</mat-label>

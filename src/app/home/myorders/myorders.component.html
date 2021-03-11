@@ -77,7 +77,7 @@
                   Canceled
                   </a>
               </div>
-                <div  *ngIf="item.phase !== 'canceled'" (click)="openModal(template)" class="col-1" style="padding-top: 8px;">
+                <div  *ngIf="item.phase === 'processing'" (click)="openModal(template)" class="col-1" style="padding-top: 8px;">
                   <a class="btn btn-danger"
                     role="button" aria-expanded="false" aria-controls="{{i}}">
                     Cancel Order
@@ -103,7 +103,7 @@
                   <ul class="list-unstyled multi-steps">
                     <li  [ngClass]="(item.phase === 'processing' || item.phase === 'packed' ||  item.phase === 'shipped' ||  item.phase === 'delivered' ) ? '' : 'negative'">Order Placed</li>
                     <li  [ngClass]="(item.phase === 'packed' ||  item.phase === 'shipped' ||  item.phase === 'delivered' )  ? '' : 'negative'">
-                      Packed
+                      Processing
                     </li>
                     <li  [ngClass]="( item.phase === 'shipped'  ||  item.phase === 'delivered' ) ? '' : 'negative'">Shipped</li>
                     <li  [ngClass]="( item.phase === 'delivered')  ? '' : 'negative'">Delivered</li>
@@ -246,7 +246,7 @@
                 <ul class="list-unstyled multi-steps">
                   <li  [ngClass]="(item.phase === 'processing' || item.phase === 'packed' ||  item.phase === 'shipped' ||  item.phase === 'delivered' ) ? '' : 'negative'">Order Placed</li>
                   <li  [ngClass]="(item.phase === 'packed' ||  item.phase === 'shipped' ||  item.phase === 'delivered' )  ? '' : 'negative'">
-                    Packed
+                    Processing
                   </li>
                   <li  [ngClass]="( item.phase === 'shipped'  ||  item.phase === 'delivered' ) ? '' : 'negative'">Shipped</li>
                   <li  [ngClass]="( item.phase === 'delivered')  ? '' : 'negative'">Delivered</li>

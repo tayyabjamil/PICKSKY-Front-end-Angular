@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
-      console.log(result.mqAlias)
+
       this.deviceXs = result.mqAlias === 'xs'
       this.deviceSm = result.mqAlias === 'sm'
       this.deviceLg = result.mqAlias === 'lg'
@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
 
     })
 
-      console.log(this.mediaSub)
+
 
 
     this.getScrollingElement()
@@ -101,12 +101,15 @@ export class HomeComponent implements OnInit {
   }
 
   onLogoutClick() {
-    this.authService.loggedOutName();
-    this.authService.loggedOutEmail();
-    this.authService.loggedOutuserId();
-    this.authService.loggedOutRefrenceId();
-    this.authService.loggedOutRole();
+    this.authService.logOUt();
+    // this.authService.loggedOutEmail();
+    // this.authService.loggedOutuserId();
+    // this.authService.loggedOutRefrenceId();
+    // this.authService.backtoCheckOut();
+
+    // this.authService.loggedOutRole();
     this.router.navigate([''])
+
   }
   getAllProducts() {
     this.productService.getProducts().subscribe(
@@ -189,4 +192,30 @@ export class HomeComponent implements OnInit {
 
     this.productService.setSearchItems(searchValue);
   }
+
+
+//   <!-- <div id="fb-root"></div>
+//   <script>
+//     window.fbAsyncInit = function() {
+//       FB.init({
+//         xfbml            : true,
+//         version          : 'v10.0'
+//       });
+//     };
+
+//     (function(d, s, id) {
+//     var js, fjs = d.getElementsByTagName(s)[0];
+//     if (d.getElementById(id)) return;
+//     js = d.createElement(s); js.id = id;
+//     js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+//     fjs.parentNode.insertBefore(js, fjs);
+//   }(document, 'script', 'facebook-jssdk'));</script>
+
+//   <div class="fb-customerchat"
+//     attribution="setup_tool"
+//     page_id="109668901192185"
+// logged_in_greeting="Hi! Thanks for Coming at Shirivas Foods. How can we help you?"
+// logged_out_greeting="Hi! Thanks for Coming at Shirivas Foods. How can we help you?">
+//   </div> -->
+
 }

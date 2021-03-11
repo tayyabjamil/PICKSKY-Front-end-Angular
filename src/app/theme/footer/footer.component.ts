@@ -64,8 +64,8 @@ export class FooterComponent implements OnInit {
   getlocation() {
     this.watchpostion().then(resp => {
       this.adminService.getlocation(resp.latitude, resp.longitude).subscribe((data: any) => {
-        let value = data.plus_code.compound_code
-        console.log("lat " + value)
+        // let value = data.plus_code.compound_code
+        // console.log("lat " + value)
       });
     }, (err) => {
       console.log("error" + err)

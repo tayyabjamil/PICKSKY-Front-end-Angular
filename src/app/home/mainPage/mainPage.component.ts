@@ -90,35 +90,53 @@ export class MainPageComponent implements OnInit {
   // get gettrendingProducts() {
   //   return this.trendingProducts;
   // }
+  // getAllProducts(){
+  //   this.productService.getProducts().subscribe(
+  //     (products) => {
 
-  getAllProducts() {
-    this.productService.getProducts().subscribe(
-      (products) => {
-     products.forEach(element => {
-       element.productCount =0
-     });
-        // this.allProducts = products;
-        // this.searchProductsData = this.allProducts
-        let tempProducts: any = products;
-        let cartProducts = this.cartService.getProducts();
-        if (tempProducts && cartProducts) {
-          tempProducts.forEach(item => {
-            cartProducts.forEach((cartItem) => {
-              if (item._id === cartItem._id) {
-                item.productCount = cartItem.productCount;
-              }
-            })
-          });
-        }
-        this.searchProductsData = this.allProducts = tempProducts
 
-        // this.searchProductsData = products;
-      },
-      (error) => {
-        console.log('error in getting all products');
-      }
-    );
+  //       this.getAllSearchedProducts()
+  //     },
+  //     (error) => {
+  //       console.log('error in getting all products');
+  //     }
+  //   );
+
+  // }
+   getAllSearchedProducts(){
+
+    this.searchProductsData = this.allProducts
+
   }
+getAllProducts(){
+  this.productService.getProducts().subscribe(
+    (products) => {
+      this.cartService.allProducts(products)
+      this.searchProductsData = this.allProducts = products
+      // this.filterSearchProducts(this.allProducts)
+    },
+    (error) => {
+      console.log('error in getting all products');
+    }
+  );
+
+}
+// filterSearchProducts(products) {
+//         let tempProducts: any = products;
+//         let cartProducts = this.cartService.getProducts();
+//         if (tempProducts && cartProducts) {
+//           tempProducts.forEach(item => {
+//             cartProducts.forEach((cartItem) => {
+//               if (item._id === cartItem._id) {
+//                 item.productCount = cartItem.productCount;
+//               }
+//             })
+//           });
+//         }
+//         this.searchProductsData = this.allProducts = tempProducts
+
+
+//   }
   gettrendingProducts() {
     this.productService.gettrendingProducts().subscribe(
       (products) => {
@@ -176,14 +194,6 @@ export class MainPageComponent implements OnInit {
     );
   }
 
-  addProduct(item, productRef) {
-    if (productRef) {
-      let x = parseInt(productRef.innerText);
-      productRef.innerText = x + 1;
-    }
-    this.cartService.addProduct(item);
-    this.getAllProducts()
-  }
 
   imageLoaded() {
     this.loadingImage = false;
@@ -203,18 +213,7 @@ export class MainPageComponent implements OnInit {
     }
   }
 
-  removeProduct(item, productRef) {
-    if (productRef) {
-      let x = parseInt(productRef.innerText);
-      if(x>0){
-      productRef.innerText = x - 1 ;
 
-     this.cartService.removeProduct(item);
-      }
-     }
-     this.getAllProducts()
-
-    }
   onImageClick(index) {
     this.router.navigate(['catagory/' + this.categories[index].routeTo]);
 

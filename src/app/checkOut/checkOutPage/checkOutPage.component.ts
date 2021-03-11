@@ -106,20 +106,20 @@ export class CheckOutPageComponent implements OnInit {
 
     this.firstFormGroup = this._formBuilder.group({
       // dataEmail
-      email: [dataEmail,Validators.required],
-      fname: [fname,Validators.required],
-      lname: [lname,Validators.required],
-      city: ['',Validators.required],
-      adress1: ['',Validators.required],
+      email: [dataEmail,],
+      fname: [fname,],
+      lname: [lname,],
+      city: ['',],
+      adress1: ['',],
       adress2: ['',],
-      contry: ['',Validators.required],
-      code: ['',Validators.required],
-      state: ['',Validators.required],
-      appartment: ['',Validators.required],
+      contry: ['',],
+      code: ['',],
+      state: ['',],
+      appartment: ['',],
 
     });
     this.secondFormGroup = this._formBuilder.group({
-      method: ['',Validators.required]
+      method: ['',]
     });
 
     this.thirdFormGroup = this._formBuilder.group({
@@ -130,10 +130,10 @@ export class CheckOutPageComponent implements OnInit {
 
     });
     this.forthFormGroup = this._formBuilder.group({
-      billingemail: ['', Validators.required],
-      billingfname: ['', Validators.required],
-      billinglname: ['', Validators.required],
-      billingcity: ['', Validators.required],
+      billingemail: ['ds', Validators.required],
+      billingfname: ['sd', Validators.required],
+      billinglname: ['ds', Validators.required],
+      billingcity: ['ds', Validators.required],
       billingadress1: ['', Validators.required],
       billingadress2: [''],
       billingcontry: ['', Validators.required],
@@ -301,7 +301,10 @@ if(count<16){
             firstName: this.firstFormGroup.value.fname,
             lastName: this.firstFormGroup.value.lname,
             city: this.firstFormGroup.value.city,
-            adress: this.firstFormGroup.value.adress,
+            adress1: this.firstFormGroup.value.adress1,
+            appartment: this.firstFormGroup.value.appartment,
+
+            adress2: this.firstFormGroup.value.adress2,
             code: this.firstFormGroup.value.code,
             contry: this.firstFormGroup.value.contry,
             method: this.secondFormGroup.value.method,

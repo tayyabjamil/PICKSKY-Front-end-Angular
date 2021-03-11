@@ -51,7 +51,7 @@ export class ResetPasswordComponent implements OnInit {
       this.accountService.resetPassword(this.rformPassword.value).subscribe(() => {
         this.toster.success("Password Reset Successful")
 
-        this.router.navigate(['/'])
+        this.router.navigate(['/login'])
 
         }, (error) => {
 

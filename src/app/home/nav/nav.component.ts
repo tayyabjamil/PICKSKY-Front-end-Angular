@@ -116,9 +116,10 @@ export class NavComponent implements OnInit {
   getSupportConstants(indx: number) { return SupportConstants[indx] }
 
   onLogoutClick() {
-    this.authService.loggedOutName();
-    this.authService.loggedOutEmail();
-    this.authService.loggedOutuserId();
-    this.authService.loggedOutRefrenceId();
+    this.authService.logOUt()
+    // this.authService.loggedOutName();
+    // this.authService.loggedOutEmail();
+    // this.authService.loggedOutuserId();
+    // this.authService.loggedOutRefrenceId();
   }
 }

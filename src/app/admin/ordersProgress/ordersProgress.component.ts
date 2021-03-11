@@ -39,6 +39,7 @@ export class OrdersProgressComponent implements OnInit {
   }
   allOrders = []
   ownerEmail;
+  cartDataYaxis;
   cartData;
   p: number = 1;
 
@@ -76,72 +77,96 @@ export class OrdersProgressComponent implements OnInit {
 
     const doc = new jsPDF.jsPDF()
 
+
     doc.setPage(1)
     doc.setFont("helvetica");
     doc.setTextColor("black");
-    doc.setFontSize(17);
-    doc.text('Shirivas Food', 15, 15);
+    doc.setFontSize(20);
+    doc.text('Thanks for your order Shirivas', 60, 25);
 
     doc.setPage(1)
     doc.setTextColor("black");
-    doc.setFontSize(10);
-    doc.text('Name', 15, 35);
+    doc.setFontSize(15);
+    doc.text((data.firstName.toString() + ' ' + data.lastName.toString()), 90, 45);
 
     doc.setPage(1)
     doc.setTextColor("black");
-    doc.setFontSize(10);
-    doc.text((data.firstName.toString() + ' ' + data.lastName.toString()), 15, 40);
+    doc.setFontSize(15);
+    doc.text('Delivery :' + data.date, 80, 55);
 
     doc.setPage(1)
     doc.setTextColor("black");
-    doc.setFontSize(10);
-    doc.text('country', 15, 50);
+    doc.text('-----------------------------------------------------------------------------------------------------------', 10,  65);
+
+
+    let y = 80;
+  data.cartData.forEach(element => {
 
     doc.setPage(1)
     doc.setTextColor("black");
-    doc.setFontSize(10);
-    // doc.text(data.contry.toString(), 15, 55);
+    doc.setFontSize(15);
+    doc.text( element.productCount.toString(), 20, y);
+
 
     doc.setPage(1)
     doc.setTextColor("black");
-    doc.setFontSize(10);
-    doc.text('Address', 15, 65);
+    doc.setFontSize(15);
+    doc.text( element.name, 40, y);
 
     doc.setPage(1)
     doc.setTextColor("black");
-    doc.setFontSize(10);
-    // doc.text(data.adress.toString(), 15, 70);
+    doc.setFontSize(15);
+    doc.text( element.price.toString(), 180, y);
+    y = y +10
+    this.cartDataYaxis = y
+  });
 
 
-    // doc.setPage(1)
-    // doc.setTextColor("black");
-    // doc.setFontSize(10);
-    // doc.text("Order No", 160, 35);
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.text('-----------------------------------------------------------------------------------------------------------', 10, this.cartDataYaxis + 10);
 
-    // doc.setPage(1)
-    // doc.setTextColor("black");
-    // doc.setFontSize(10);
-    // doc.text('122322', 160, 40);
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(15);
+  doc.text('Status ', 15, this.cartDataYaxis + 20);
+
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(15);
+  doc.text(data.phase, 170, this.cartDataYaxis + 20);
+
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(15);
+  doc.text('Total ', 15, this.cartDataYaxis + 30);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.setFontSize(15);
+  doc.text(data.total.toString(), 180, this.cartDataYaxis + 30);
+
+  doc.setPage(1)
+  doc.setTextColor("black");
+  doc.text('-----------------------------------------------------------------------------------------------------------', 10, this.cartDataYaxis + 40);
+
+
 
     doc.setPage(1)
     doc.setTextColor("black");
-    doc.setFontSize(10);
-    doc.text('Status', 160, 35);
+    doc.setFontSize(25);
+    doc.text('Delievry Adress ', 80, this.cartDataYaxis + 60);
+
 
     doc.setPage(1)
     doc.setTextColor("black");
-    doc.setFontSize(10);
-    // doc.text(data.phase.toString(), 160, 40);
+    doc.setFontSize(15);
+    doc.text(data.adress1 +','+data.appartment +',' + data.city+',' + data.contry , 80, this.cartDataYaxis + 70);
 
-    doc.setPage(1)
-    doc.setTextColor("black");
-    doc.setFontSize(10);
-    doc.text('Total', 160, 50);
 
-    doc.setPage(1)
-    doc.setTextColor("black");
-    doc.setFontSize(10);
-    // doc.text(data.total.toString(), 160, 55);
+
 
     // Save the PDF
     doc.save('Test.pdf');

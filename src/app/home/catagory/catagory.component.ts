@@ -36,7 +36,7 @@ export class CatagoryComponent implements OnInit {
       this.deviceLg = result.mqAlias === 'lg'
       this.deviceMd = result.mqAlias === 'md'
     })
-    window.scrollTo(0, 0);
+    window.scrollTo(350, 350);
     this._route.paramMap.subscribe((params: any) => {
       if (params && params.params.page) {
         let categoryRoute  =  params.params.page;

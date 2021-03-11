@@ -38,7 +38,9 @@ showOld:boolean
 
     contact: new FormControl(this.phone),
     state: new FormControl(''),
-    appartment: new FormControl(''),
+    code: new FormControl(''),
+    contry: new FormControl(''),
+
   });
   this.rformEditPassword = this.formBuilder.group({
     oldPassword: new FormControl('' ),

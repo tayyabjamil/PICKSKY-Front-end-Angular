@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { FacebookService, InitParams } from 'ngx-facebook';
 import { setTheme } from 'ngx-bootstrap/utils';
 @Component({
   selector: 'app-root',
@@ -9,11 +9,14 @@ import { setTheme } from 'ngx-bootstrap/utils';
 export class AppComponent {
   title = 'SHRIVASAFOODS';
   navShow = true;
-  constructor() {
+  constructor(private facebookService: FacebookService) {
     setTheme('bs3');
   }
-  ngOnInIt() {
-
-
+  ngOnInit(): void {
+    this.initFacebookService();
+  }
+  private initFacebookService(): void {
+    const initParams: InitParams = { xfbml:true, version:'v3.2'};
+    this.facebookService.init(initParams);
   }
 }
