@@ -1,6 +1,6 @@
 <div style="min-height: 500px;">
 
-  <div class="col-lg-7" style="padding-top:5%;;background-color: #ffffff">
+  <div class="col-lg-7" style="padding-top:3%;;background-color: #ffffff">
     <p style="font-size: 22px;font-weight: bold;padding-left: 10%;">Shirivas Store</p>
     <div *ngIf="!authService.loggedIn()"
       style="display: flex;flex-direction: row;justify-content: flex-end;padding-left: 5%;">
@@ -74,14 +74,6 @@
                   <input matInput formControlName="code" type="number">
                 </mat-form-field>
               </div>
-              <div class="row">
-
-
-                <mat-form-field class="col-xs-6">
-                  <mat-label><span style="font-size: 16px;"> Appartment</span></mat-label>
-                  <input matInput formControlName="appartment">
-                </mat-form-field>
-              </div>
 
               <div style="display: flex;flex-direction: row;justify-content: space-between;">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1" style="padding-right: 4%;">
@@ -127,7 +119,7 @@
 
 
 
-              <p style="font-weight: bold;font-size: 18px;margin-top: 2%;margin-bottom: 2%;">Shipping Method</p>
+              <p style="font-weight: bold;font-size: 18px;margin-top: 2%;margin-bottom: 8%;">Shipping Method</p>
 
               <div class="row" style="height: 10px;">
                 <div class="col-3">
@@ -637,12 +629,12 @@
             <form [formGroup]="firstFormGroup">
               <ng-template matStepLabel><span style="font-size: 18px;">Information</span> </ng-template>
               <div
-                style="min-height: 650px;border: 1px;border-radius: 6px;border-width: 1px;border-color: lightgrey;border-style:solid;padding: 3%;">
+                style="min-height: 600px;border: 1px;border-radius: 6px;border-width: 1px;border-color: lightgrey;border-style:solid;padding: 3%;">
                 <mat-form-field style="width: 250px;" appearance="outline">
                   <mat-label><span style="font-size: 18px;">Email or Phone number</span></mat-label>
                   <input matInput formControlName="email">
                 </mat-form-field>
-                <p style="font-size: large;font-size: 22px;font-weight: bold;margin-bottom: 3%;">Shipping Adress</p>
+                <p style="font-size: large;font-size: 22px;font-weight: bold;margin-bottom:10px;">Shipping Adress</p>
                 <div>
                   <mat-form-field class="col-xs-5" appearance="outline">
                     <mat-label><span style="font-size: 18px;"> First Name</span></mat-label>
@@ -662,13 +654,13 @@
                 </div>
                 <div>
                   <mat-form-field class="col-xs-12" appearance="outline">
-                    <mat-label><span style="font-size: 18px;"> Adress 2 (Optional)</span></mat-label>
+                    <mat-label><span style="font-size: 18px;"> Adress 2 (Optional)or Appartment</span></mat-label>
                     <input matInput formControlName="adress2">
                   </mat-form-field>
                 </div>
                 <div>
                   <mat-form-field class="col-xs-12" appearance="outline">
-                    <mat-label><span style="font-size: 18px;"> City</span></mat-label>
+                    <mat-label><span style="font-size: 18px;"> Land Mark</span></mat-label>
                     <input matInput formControlName="city">
                   </mat-form-field>
                 </div>
@@ -677,7 +669,7 @@
 
 
                   <mat-form-field class="col-xs-12" appearance="outline">
-                    <mat-label><span style="font-size: 18px;"> Appartment</span></mat-label>
+                    <mat-label><span style="font-size: 18px;"> City</span></mat-label>
                     <input matInput formControlName="appartment">
                   </mat-form-field>
                 </div>
@@ -686,10 +678,10 @@
                     (onCountrySelected)="onCountrySelected($event)">
                   </mat-select-country> -->
                   <mat-form-field class="col-xs-4" appearance="outline">
-                    <mat-label><span style="font-size: 16px;"> Country</span></mat-label>
+                    <mat-label><span style="font-size: 16px;"> State</span></mat-label>
                     <input matInput formControlName="contry">
                   </mat-form-field>    <mat-form-field class="col-lg-4" appearance="outline">
-                    <mat-label><span style="font-size: 18px;"> State</span></mat-label>
+                    <mat-label><span style="font-size: 18px;"> Country</span></mat-label>
                     <input matInput formControlName="state">
                   </mat-form-field>
 
@@ -721,7 +713,7 @@
             <form [formGroup]="secondFormGroup">
               <ng-template matStepLabel>Shipping</ng-template>
               <div
-                style="padding: 1%;margin-top: 2%;border-style: solid;border-width: 1px;border-color: lightgrey;border-radius: 6px;">
+                style="padding: 1%;margin-top: 4%;border-style: solid;border-width: 1px;border-color: lightgrey;border-radius: 6px;">
                 <div style="display: flex;flex-direction: row;justify-content: space-evenly;">
                   <div style="text-align: left;font-size: 18px;" class="col-xs-3 btn">Contact</div>
                   <mat-label class="col-xs-7" style="font-size: 18px;padding-top: 10px;">{{this.firstFormGroup.value.email}}</mat-label>
@@ -736,7 +728,7 @@
                 </div>
 
               </div>
-              <p style="font-weight: bold;font-size: 22px;margin-top: 2%;margin-bottom: 2%;">Shipping Method</p>
+              <p style="font-weight: bold;font-size: 22px;margin-top: 4%;margin-bottom: 4%;">Shipping Method</p>
 
 
               <div
@@ -780,9 +772,9 @@
           <mat-step [stepControl]="thirdFormGroup">
             <ng-template matStepLabel>Payments</ng-template>
 
-            <label style="font-size: 22px;" for="">Payments</label>
+
             <div>
-              <p style="font-size: 18px;" for="">All transactions are secured and encrypted</p>
+              <p style="font-size: 18px;margin-bottom:10px" for="">All transactions are secured and encrypted</p>
             </div>
             <form [formGroup]="thirdFormGroup">
               <div  style="padding: 2%;margin-top: 2%;border: 1px;border-style: solid;border-radius: 6px;border-color: lightgray;">
@@ -863,9 +855,9 @@
               *ngIf="paymentFormError == 'show'">
               Provide Payment Information
             </p>
-            <label style="font-size: 22px;margin-top: 3%;" for="">Billing Adress</label>
+            <label style="font-size: 22px;margin-top: 4%;margin-bottom:15px" for="">Billing Adress</label>
             <div>
-              <p style="font-size: 18px;" for="">Select the method that matches your card or payment adress</p>
+              <p style="font-size: 18px; margin-bottom:12px" for="">Select the method that matches your card or payment adress</p>
             </div>
             <form [formGroup]="thirdFormGroup"
               style="border: 1px;border-style: solid;border-radius: 6px;border-color: lightgray;">
@@ -1253,7 +1245,7 @@
   </div>
 
 
-  <div class="col-lg-5" style="padding-top: 5%;padding-bottom: 5%;min-height: 1000px;background-color: #f3f3f3;">
+  <div class="col-lg-5" style="padding-top: 3%;padding-bottom: 1%;min-height: 1000px;background-color: #f3f3f3;">
     <div style="padding-left:7%;padding-right: 7%;padding-top: 5%;padding-bottom: 5%;">
       <div style="display: flex;flex-direction: row;justify-content: space-between;">
         <p style="font-weight: bold;font-size: 22px;">Selected Items</p>
@@ -1302,7 +1294,7 @@
         <p>Total</p>
         <p style="font-weight: 500;">${{getTotal}}</p>
       </div>
-      <div>
+     <!-- <div>
         <label>You Can use your bonus to get 10% Discount</label>
         <button (click)="useBonus()">Use Bonus</button>
         <p>You have <span> {{accountBonus}}</span> Bonus Remaining</p>
@@ -1316,7 +1308,7 @@
         <label>You Can use your friend code to give him 10% Discount</label>
         <input [(ngModel)]="refrence" />
 
-      </div>
+      </div>  -->
 
     </div>
   </div>

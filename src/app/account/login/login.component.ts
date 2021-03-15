@@ -134,8 +134,8 @@ export class LoginComponent implements OnInit {
         }
         this.authPasswordError=''
       }, (error) => {
-         if (error.error.message == 'Account not verified') {
-            this.accountNotVerfied = 'show'
+          if (error.error.message == 'Account not verified') {
+            this.toastr.error('Account not verified', 'Error')
         }else if(error.error.message == 'Auth Password failed') {
           this.authPasswordError = 'show'
           this.accountNotVerfied = ''
