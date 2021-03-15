@@ -63,7 +63,7 @@ export class SignUpComponent implements OnInit {
     this.rformSignup = this.formBuilder.group({
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
-      phone: new FormControl(),
+      phone: new FormControl(''),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', Validators.compose([
         Validators.required,
@@ -172,7 +172,7 @@ export class SignUpComponent implements OnInit {
 // }else{
 
     if (this.rformSignup.value.phone) {
-      this.rformSignup.controls['phone'].setValue(this.rformSignup.value.phone.internationalNumber);
+      this.rformSignup.controls['phone'].setValue(this.rformSignup.value.phone.e164Number);
 
 
     }
