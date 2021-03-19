@@ -83,7 +83,6 @@ export class CheckOutPageComponent implements OnInit {
   ) {
 
     this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
-      console.log(result.mqAlias)
       this.deviceXs = result.mqAlias === 'xs'
       this.deviceSm = result.mqAlias === 'sm'
       this.deviceLg = result.mqAlias === 'lg'

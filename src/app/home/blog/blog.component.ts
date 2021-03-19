@@ -13,6 +13,8 @@ comment;
   constructor() { }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
+
   }
 submit(){
 

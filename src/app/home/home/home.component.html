@@ -5,14 +5,18 @@
           padding-top: 0.5%;
           color: white;
         ">
-        <p class="col-3 btn" style="
+        <div class="col-3 " style="
             font-size: 26px;
             font-weight: 500;
+            justify-content: center;
+            text-align: center;
+            margin-top: 20px;
+
 
           " routerLink="/">
 
           SHIRIVAS FOODS
-    </p>
+    </div>
         <div class="col-7" style=" padding: 10px">
           <div style="
               border-radius: 6px;
@@ -26,7 +30,7 @@
                   font-size: large;
                   padding: 2%;
                   color: rgb(134, 132, 132);"></i></span>
-            <input class="searchHome" (input)="onSearchChange($event.target.value)"
+            <input class="searchHome"  [(ngModel)]='searchBarValue' (input)="onSearchChange($event.target.value)"
               placeholder="What Are You Looking For?" />
           </div>
         </div>
@@ -192,7 +196,7 @@
         </p>
 
         <ul *ngIf="isSHowSearch==false" class="nav-menu" style="max-height: 70px;width: auto;">
-          <li class="dropdown" routerLink="/">
+          <li class="dropdown" (click)="homeRoute()">
             <a>{{ getHeaderNames(1) }}</a>
           </li>
           <li class="dropdown">
@@ -329,7 +333,7 @@
               font-weight: 200;
               font-size: large;
               color: rgb(134, 132, 132);"></i>
-          <input class="searchHome" (input)="onSearchChange($event.target.value)"
+          <input class="searchHome"  [(ngModel)]='searchValue'  (input)="onSearchChange($event.target.value)"
             placeholder="What Are You Looking For?" />
         </div>
 

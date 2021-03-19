@@ -143,7 +143,8 @@
             padding: 2%;
             color: rgb(134, 132, 132);
           "></i></span>
-      <input class="searchHome" *ngIf="isShow == true" class="col-xs-10" style="
+
+      <input  [(ngModel)]='searchBarValue'  class="searchHome" *ngIf="isShow == true" class="col-xs-10" style="
           border-radius: 6px;
           margin-left: 10px;
           font-weight: 300px;

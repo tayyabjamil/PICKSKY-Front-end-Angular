@@ -171,13 +171,14 @@ export class SignUpComponent implements OnInit {
 //   this.countryCodeValidation = 'show'
 // }else{
 
-    if (this.rformSignup.value.phone) {
-      this.rformSignup.controls['phone'].setValue(this.rformSignup.value.phone.e164Number);
-
-
-    }
 
     if (this.rformSignup.valid) {
+      if (this.rformSignup.value.phone) {
+        this.rformSignup.controls['phone'].setValue(this.rformSignup.value.phone.e164Number);
+
+
+      }
+
       this.fillAllValidation = ''
 
       if (this.rformSignup.value.password === this.rformSignup.value.confirmPassword) {

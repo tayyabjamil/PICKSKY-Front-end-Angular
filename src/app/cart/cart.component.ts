@@ -34,7 +34,6 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
-      console.log(result.mqAlias)
       this.deviceXs = result.mqAlias === 'xs'
       this.deviceSm = result.mqAlias === 'sm'
       this.deviceLg = result.mqAlias === 'lg'

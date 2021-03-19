@@ -4,31 +4,31 @@
   <div >
     <p  style="padding: 20px;color: white;font-size: 32px;">Shirivas Foods</p>
   </div>
- 
+
 </div>
   <div class="row" >
 
   <div class="col-lg-1">
     <h1 class="btn" style="color: white;">Company</h1>
-    <h4 class="btn" routerLink="/home/aboutUs" style="color: white;">{{getAboutusConstants(6)}}</h4>
-    <h4 class="btn" routerLink="['/aboutUs']" style="color: white;">{{getAboutusConstants(1)}}</h4>
-    <h4 class="btn" routerLink="['/aboutUs']" style="color: white;">{{getAboutusConstants(2)}}</h4>
-    <h4 class="btn" routerLink="['/aboutUs']" style="color: white;">{{getAboutusConstants(3)}}</h4>
-    <h4 class="btn" routerLink="['/aboutUs']" style="color: white;">{{getAboutusConstants(4)}}</h4>
-    <h4 class="btn" routerLink="['/aboutUs']" style="color: white;">{{getAboutusConstants(5)}}</h4>
+    <h4 class="btn" (click)="goto('aboutUs')" style="color: white;">{{getAboutusConstants(6)}}</h4>
+    <h4 class="btn" (click)="goto('blog')" style="color: white;">{{getAboutusConstants(1)}}</h4>
+    <h4 class="btn" (click)="goto('')" style="color: white;">{{getAboutusConstants(2)}}</h4>
+    <h4 class="btn" (click)="goto('testimonals')" style="color: white;">{{getAboutusConstants(3)}}</h4>
+    <h4 class="btn" (click)="goto('')" style="color: white;">{{getAboutusConstants(4)}}</h4>
+    <h4 class="btn" (click)="goto('')" style="color: white;">{{getAboutusConstants(5)}}</h4>
   </div>
 
   <div class="col-lg-1"></div>
   <div class="col-lg-1">
     <h1 style="color: white;">Products</h1>
 
-    <h4 class="btn" routerLink="['/aboutUs']" style="color: white;">{{getHeaderNames(2)}}</h4>
-    <h4 class="btn" routerLink="['/aboutUs']" style="color: white;">{{getHeaderNames(3)}}</h4>
-    <h4 class="btn" routerLink="['/aboutUs']" style="color: white;">{{getHeaderNames(4)}}</h4>
-    <h4 class="btn" routerLink="['/aboutUs']" style="color: white;">{{getSpecialConstants(1)}}</h4>
-    <h4 class="btn" routerLink="['/aboutUs']" style="color: white;">{{getSpecialConstants(2)}}</h4>
-    <h4 class="btn" routerLink="['/aboutUs']" style="color: white;">{{getSpecialConstants(3)}}</h4>
-    <h4 class="btn" routerLink="['/aboutUs']" style="color: white;">{{getSpecialConstants(4)}}</h4>
+    <h4 class="btn" (click)="goto('/catagory/PoduluPowders')" style="color: white;">{{getHeaderNames(2)}}</h4>
+    <h4 class="btn" (click)="goto('/catagory/TradaitonalHot')" style="color: white;">{{getHeaderNames(3)}}</h4>
+    <h4 class="btn" (click)="goto('/catagory/TradaitonalHot')" style="color: white;">{{getHeaderNames(4)}}</h4>
+    <h4 class="btn" (click)="goto('/catagory/Non-vegetarianCombo')" style="color: white;">{{getSpecialConstants(1)}}</h4>
+    <h4 class="btn" (click)="goto('/catagory/VegetarianCombo')" style="color: white;">{{getSpecialConstants(2)}}</h4>
+    <h4 class="btn" (click)="goto('/catagory/HotCombo')" style="color: white;">{{getSpecialConstants(3)}}</h4>
+    <h4 class="btn" (click)="goto('/catagory/SweetsCombo')" style="color: white;">{{getSpecialConstants(4)}}</h4>
 
   </div>
 
@@ -38,15 +38,15 @@
   <div class="col-lg-1"></div>
   <div class="col-lg-1">
     <h2 class="btn" style="color: white;">Help</h2>
-    <h4 class="btn" style="color: white;">Shipping & Returns</h4>
-    <h4 class="btn" style="color: white;">Privacy Policy</h4>
-    <h4 class="btn" style="color: white;">FAQ</h4>
+    <h4 class="btn" (click)="goto('/supportPage')" style="color: white;">Shipping & Returns</h4>
+    <h4 class="btn" (click)="goto('/privacy')" style="color: white;">Privacy Policy</h4>
+    <h4 class="btn" (click)="goto('/faq')" style="color: white;">FAQ</h4>
     <button class="btn" style="background-color:  #aef110;font-size: 16px;font-weight: bold;">ORDER ONLINE</button>
   </div>
   <hr>
   <div class="col-lg-1"></div>
 
-  <div class="col-lg-4">
+  <div class="col-lg-3">
 
     <div class="row" style="padding-top: 10%;display: flex;flex-direction: column;justify-content: left;background-color: black;">
       <p style="
@@ -79,6 +79,8 @@
     </div>
 
   </div>
+  <div class="col-lg-1"></div>
+
   <!-- <div class="col-lg-3"></div> -->
 </div>
 <div class="row" style="padding:2%;width: 100%;">
@@ -125,23 +127,23 @@
    </div>
   <div  class="row" style="padding:5%;display: flex;flex-direction: column;justify-content: left;background-color: black;">
       <div class="btn " style="color: white;text-align: left;font-size: 26px;">Company</div>
-      <div class="btn " routerLink="['/aboutUs']" style="color: white;text-align: left;">{{getAboutusConstants(6)}}</div>
-      <div class="btn " routerLink="['/aboutUs']" style="color: white;text-align: left;">{{getAboutusConstants(1)}}</div>
-      <div class="btn " routerLink="['/aboutUs']" style="color: white;text-align: left;">{{getAboutusConstants(2)}}</div>
-      <div class="btn " routerLink="['/aboutUs']" style="color: white;text-align: left;">{{getAboutusConstants(3)}}</div>
-      <div class="btn " routerLink="['/aboutUs']" style="color: white;text-align: left;">{{getAboutusConstants(4)}}</div>
-      <div class="btn " routerLink="['/aboutUs']" style="color: white;text-align: left;">{{getAboutusConstants(5)}}</div>
+      <div class="btn " (click)="goto('aboutUs')" style="color: white;text-align: left;">{{getAboutusConstants(6)}}</div>
+      <div class="btn " (click)="goto('blog')" style="color: white;text-align: left;">{{getAboutusConstants(1)}}</div>
+      <div class="btn " (click)="goto('')" style="color: white;text-align: left;">{{getAboutusConstants(2)}}</div>
+      <div class="btn " (click)="goto('testimonals')" style="color: white;text-align: left;">{{getAboutusConstants(3)}}</div>
+      <div class="btn " (click)="goto('')" style="color: white;text-align: left;">{{getAboutusConstants(4)}}</div>
+      <div class="btn " (click)="goto('')" style="color: white;text-align: left;">{{getAboutusConstants(5)}}</div>
   </div>
   <div  class="row" style="padding:5%;display: flex;flex-direction: column;justify-content: left;background-color: black;" >
 
       <div style="color: white;text-align: left;font-size: 26px;padding: 2%;">Products</div>
-      <div class="btn" routerLink="['/aboutUs']" style="color: white;text-align: left;">{{getHeaderNames(2)}}</div>
-      <div class="btn" routerLink="['/aboutUs']" style="color: white;text-align: left;">{{getHeaderNames(3)}}</div>
-      <div class="btn" routerLink="['/aboutUs']" style="color: white;text-align: left;">{{getHeaderNames(4)}}</div>
-      <div class="btn" routerLink="['/aboutUs']" style="color: white;text-align: left;">{{getSpecialConstants(1)}}</div>
-      <div class="btn" routerLink="['/aboutUs']" style="color: white;text-align: left;">{{getSpecialConstants(2)}}</div>
-      <div class="btn" routerLink="['/aboutUs']" style="color: white;text-align: left;">{{getSpecialConstants(3)}}</div>
-      <div class="btn" routerLink="['/aboutUs']" style="color: white;text-align: left;">{{getSpecialConstants(4)}}</div>
+      <div class="btn" (click)="goto('/catagory/PoduluPowders')" style="color: white;text-align: left;">{{getHeaderNames(2)}}</div>
+      <div class="btn" (click)="goto('/catagory/TradaitonalHot')" style="color: white;text-align: left;">{{getHeaderNames(3)}}</div>
+      <div class="btn" (click)="goto('/catagory/TradaitonalHot')" style="color: white;text-align: left;">{{getHeaderNames(4)}}</div>
+      <div class="btn" (click)="goto('/catagory/Non-vegetarianCombo')" style="color: white;text-align: left;">{{getSpecialConstants(1)}}</div>
+      <div class="btn" (click)="goto('/catagory/VegetarianCombo')" style="color: white;text-align: left;">{{getSpecialConstants(2)}}</div>
+      <div class="btn" (click)="goto('/catagory/HotCombo')" style style="color: white;text-align: left;">{{getSpecialConstants(3)}}</div>
+      <div class="btn" (click)="goto('/catagory/SweetsCombo')" style="color: white;text-align: left;">{{getSpecialConstants(4)}}</div>
 
   </div>
 

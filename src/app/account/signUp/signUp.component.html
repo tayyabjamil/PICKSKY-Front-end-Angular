@@ -103,7 +103,7 @@
 
         <div  style="padding-bottom: 2%;">
           <form  [formGroup]="rformSignup">
-            <ngx-intl-tel-input class="customInput" [ngClass]="{'customInputsmall': deviceXs}"
+            <ngx-intl-tel-input  [ngClass]="{'customInputsmall': deviceXs}"
               [enableAutoCountrySelect]="false" [enablePlaceholder]="true"
               [selectedCountryISO]="CountryISO.India" [searchCountryFlag]="true" [selectFirstCountry]="false" [maxLength]="15"
               [phoneValidation]="true"  name="phone" formControlName="phone">

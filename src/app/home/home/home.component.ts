@@ -40,15 +40,15 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
-
       this.deviceXs = result.mqAlias === 'xs'
       this.deviceSm = result.mqAlias === 'sm'
       this.deviceLg = result.mqAlias === 'lg'
       this.deviceMd = result.mqAlias === 'md'
-
     })
 
-
+    this.productService.searchItems.subscribe((value) => {
+      this.searchBarValue = value;
+    })
 
 
     this.getScrollingElement()
@@ -106,11 +106,11 @@ export class HomeComponent implements OnInit {
     // this.authService.loggedOutuserId();
     // this.authService.loggedOutRefrenceId();
     // this.authService.backtoCheckOut();
-
     // this.authService.loggedOutRole();
     this.router.navigate([''])
-
   }
+
+  searchBarValue = '123';
   getAllProducts() {
     this.productService.getProducts().subscribe(
       (products) => {
@@ -122,7 +122,9 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-
+  homeRoute() {
+    this.router.navigate(['']);
+  }
   catagory(page) {
     this.router.navigate(['catagory/',page])
   }
@@ -183,8 +185,14 @@ export class HomeComponent implements OnInit {
 
   getPayments(indx: number) { }
 
+
+  get searchValue() {
+    return this.searchBarValue;
+  }
+
   onSearchChange(searchValue: string): void {
     if (searchValue) {
+      this.searchBarValue = searchValue;
       this.productService.search = true;
     } else {
       this.productService.search = false;

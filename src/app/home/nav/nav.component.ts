@@ -37,7 +37,9 @@ export class NavComponent implements OnInit {
   username =" username";
   isShow = false;
   visible = false;
-  isSHowSearch=false
+  isSHowSearch=false;
+  searchBarValue;
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
@@ -55,6 +57,11 @@ export class NavComponent implements OnInit {
         this.deviceMd = result.mqAlias === 'md';
       }
     );
+
+    this.productService.searchItems.subscribe((value) => {
+      this.searchBarValue = value;
+    })
+
 
   }
 

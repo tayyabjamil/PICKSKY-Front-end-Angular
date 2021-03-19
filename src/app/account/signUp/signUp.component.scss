@@ -17,6 +17,10 @@
     size: 10;
     border-radius: 5px;
 }
+.iti {
+  /* position: relative; */
+  /* display: inline-block; */
+}
   .borderRight{
     border-top-right-radius:12px ;
     border-bottom-right-radius: 12px;
@@ -66,4 +70,9 @@
 }
 .deviceLgClass {
   font-size:xx-large;
+}
+
+
+:host ::ng-deep .iti {
+  width: 100%;
 }

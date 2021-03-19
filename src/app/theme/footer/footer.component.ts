@@ -77,4 +77,8 @@ export class FooterComponent implements OnInit {
   getSpecialConstants(indx: number) { return SpecialConstants[indx]; }
 
   getAboutusConstants(indx: number) { return AboutusConstants[indx] }
+
+  goto(args) {
+    this.router.navigate([args]);
+  }
 }

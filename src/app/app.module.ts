@@ -29,6 +29,7 @@ import {
 } from 'angularx-social-login';
 import { RouterModule } from '@angular/router';
 import { FacebookModule } from 'ngx-facebook';
+import { ProductService } from './home/product.service';
 const googleid = '' ;
 const facebookid = '2702502043208538';
 
@@ -56,7 +57,7 @@ const facebookid = '2702502043208538';
 
 
   ],
-  providers: [AuthService,{
+  providers: [AuthService, ProductService,{
     provide: 'SocialAuthServiceConfig',
     useValue: {
       autoLogin: false,

@@ -62,7 +62,7 @@ export class TotalProductsComponent implements OnInit {
 
     this.productSearch = this.productService.searchItems.subscribe((searchitem) => {
 
-      this.searchProductsData = searchitem
+      this.searchProductsData = searchitem;
       // if (searchitem) {
       //   this.searchProductsData = this.allProducts.foreach((productItem) => {
       //     if (productItem && productItem.name && productItem.name.find(searchitem)) {
@@ -340,6 +340,6 @@ export class TotalProductsComponent implements OnInit {
     this.router.navigate(['catagory/' + this.categories[index].routeTo]);
 
   }
-  
+
 
 }

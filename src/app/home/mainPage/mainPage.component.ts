@@ -43,7 +43,6 @@ export class MainPageComponent implements OnInit {
   ngOnInit() {
     this.mediaSub = this.mediaObserver.media$.subscribe(
       (result: MediaChange) => {
-        console.log(result.mqAlias);
         this.deviceXs = result.mqAlias === 'xs';
         this.deviceSm = result.mqAlias === 'sm';
         this.deviceLg = result.mqAlias === 'lg';
@@ -54,10 +53,12 @@ export class MainPageComponent implements OnInit {
 
     this.getAllProducts();
     this.getfeaturedProducts();
-   this.gettrendingProducts()
+    this.gettrendingProducts();
     this.productSearch = this.productService.searchItems.subscribe((searchitem) => {
+      this.gettrendingProducts();
+      this.getAllProducts();
+      this.searchProductsData = searchitem;
 
-      this.searchProductsData = searchitem
       // if (searchitem) {
       //   this.searchProductsData = this.allProducts.foreach((productItem) => {
       //     if (productItem && productItem.name && productItem.name.find(searchitem)) {
@@ -70,12 +71,11 @@ export class MainPageComponent implements OnInit {
       //   this.searchProductsData = this.allProducts;
       // }
     });
-    this.categories = this.productService.categories
+    this.categories = this.productService.categories;
   }
 
   scrollToTrending() {
     document.getElementById("trending").scrollIntoView({ behavior: "smooth" })
-
   }
 
 
@@ -103,46 +103,44 @@ export class MainPageComponent implements OnInit {
   //   );
 
   // }
-   getAllSearchedProducts(){
-
-    this.searchProductsData = this.allProducts
-
+  getAllSearchedProducts() {
+    // this.searchProductsData = this.allProducts
   }
-getAllProducts(){
-  this.productService.getProducts().subscribe(
-    (products) => {
-      this.cartService.allProducts(products)
-      this.searchProductsData = this.allProducts = products
-      // this.filterSearchProducts(this.allProducts)
-    },
-    (error) => {
-      console.log('error in getting all products');
+
+  getAllProducts() {
+    this.productService.getProducts().subscribe(
+      (products) => {
+
+        this.filterSearchProducts(products)
+      },
+      (error) => {
+        console.log('error in getting all products');
+      });
+  }
+
+  filterSearchProducts(products) {
+    let tempProducts: any = products;
+    let cartProducts = this.cartService.getProducts();
+    if (tempProducts && cartProducts) {
+      tempProducts.forEach(item => {
+        cartProducts.forEach((cartItem) => {
+          if (item._id === cartItem._id) {
+            item.productCount = cartItem.productCount;
+          }
+        })
+      });
     }
-  );
+    if (tempProducts&& tempProducts.length >= 1) {
+      this.allProducts = tempProducts;
+    }
+  }
 
-}
-// filterSearchProducts(products) {
-//         let tempProducts: any = products;
-//         let cartProducts = this.cartService.getProducts();
-//         if (tempProducts && cartProducts) {
-//           tempProducts.forEach(item => {
-//             cartProducts.forEach((cartItem) => {
-//               if (item._id === cartItem._id) {
-//                 item.productCount = cartItem.productCount;
-//               }
-//             })
-//           });
-//         }
-//         this.searchProductsData = this.allProducts = tempProducts
-
-
-//   }
   gettrendingProducts() {
     this.productService.gettrendingProducts().subscribe(
       (products) => {
-     products.forEach(element => {
-       element.productCount =0
-     });
+        products.forEach(element => {
+          element.productCount = 0
+        });
         // this.allProducts = products;
         // this.searchProductsData = this.allProducts
         let tempProducts: any = products;
@@ -156,7 +154,7 @@ getAllProducts(){
             })
           });
         }
-        this.searchProductsData = this.trendingProducts = tempProducts
+        this.trendingProducts = tempProducts
 
         // this.searchProductsData = products;
       },
@@ -169,10 +167,10 @@ getAllProducts(){
   getfeaturedProducts() {
     this.productService.featuredProducts().subscribe(
       (products) => {
-     products.forEach(element => {
-       element.productCount =0
-     });
-    })
+        products.forEach(element => {
+          element.productCount = 0
+        });
+      })
     this.productService.featuredProducts().subscribe(
       (products) => {
         let tempProducts: any = products;

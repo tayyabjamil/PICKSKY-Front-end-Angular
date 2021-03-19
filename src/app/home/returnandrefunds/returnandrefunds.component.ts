@@ -10,6 +10,8 @@ export class ReturnandrefundsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
+
   }
 
 }

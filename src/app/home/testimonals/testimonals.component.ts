@@ -21,6 +21,8 @@ message;
   aboutUSProducts;
 
   ngOnInit() {
+    window.scrollTo(0, 0);
+
     this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {
       console.log(result.mqAlias)
       this.deviceXs = result.mqAlias === 'xs'
